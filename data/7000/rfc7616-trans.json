@@ -66,7 +66,7 @@
     {
       "indent": 3,
       "text": "This document may contain material from IETF Documents or IETF Contributions published or made publicly available before November 10, 2008. The person(s) controlling the copyright in some of this material may not have granted the IETF Trust the right to allow modifications of such material outside the IETF Standards Process. Without obtaining an adequate license from the person(s) controlling the copyright in such materials, this document may not be modified outside the IETF Standards Process, and derivative works of it may not be created outside the IETF Standards Process, except to format it for publication as an RFC or to translate it into languages other than English.",
-      "ja": "このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。 IETF標準プロセス外。このような資料の著作権を管理する人から適切なライセンスを取得せずに、このドキュメントをIETF標準プロセス外で変更したり、その派生物をIETF標準プロセス外で作成したりすることはできません。 RFCとして、またはそれを英語以外の言語に翻訳するための出版物。"
+      "ja": "このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETF寄書からの資料が含まれている場合があります。これらの資料の一部の著作権を管理する人物は、IETF標準化プロセスの外でのそのような資料の変更を許可する権利をIETFトラストに付与していない可能性があります。そのような資料の著作権を管理する人物から適切なライセンスを取得しない限り、このドキュメントをIETF標準化プロセスの外で変更したり、IETF標準化プロセスの外でその派生物を作成したりすることはできません。ただし、RFCとして出版するためにフォーマットする場合や、英語以外の言語に翻訳する場合は除きます。"
     },
     {
       "indent": 0,
@@ -178,12 +178,12 @@
     {
       "indent": 3,
       "text": "An optional header field allows the server to specify the algorithm used to create the unkeyed digest or digest. This document adds SHA-256 and SHA-512/256 algorithms. To maintain backwards compatibility with [RFC2617], the MD5 algorithm is still supported but NOT RECOMMENDED.",
-      "ja": "オプションのヘッダーフィールドを使用すると、サーバーは、キーなしダイジェストまたはダイジェストの作成に使用されるアルゴリズムを指定できます。このドキュメントでは、SHA-256およびSHA-512 / 256アルゴリズムを追加します。 [RFC2617]との下位互換性を維持するために、MD5アルゴリズムは引き続きサポートされますが、推奨されません。"
+      "ja": "オプションのヘッダーフィールドを使用すると、サーバーは、キーなしダイジェストまたはダイジェストの作成に使用されるアルゴリズムを指定できます。このドキュメントでは、SHA-256およびSHA-512/256アルゴリズムを追加します。 [RFC2617]との下位互換性を維持するために、MD5アルゴリズムは引き続きサポートされますが、推奨されません。"
     },
     {
       "indent": 3,
       "text": "The size of the digest depends on the algorithm used. The bits in the digest are converted from the most significant to the least significant bit, four bits at a time, to the ASCII representation as follows. Each sequence of four bits is represented by its familiar hexadecimal notation from the characters 0123456789abcdef; that is, binary 0000 is represented by the character '0', 0001 by '1' and so on up to the representation of 1111 as 'f'. If the MD5 algorithm is used to calculate the digest, then the MD5 digest will be represented as 32 hexadecimal characters, while SHA-256 and SHA-512/256 are represented as 64 hexadecimal characters.",
-      "ja": "ダイジェストのサイズは、使用するアルゴリズムによって異なります。ダイジェストのビットは、次のように一度に4ビットずつ、最上位ビットから最下位ビットに変換されます。 4ビットの各シーケンスは、文字0123456789abcdefからのよく知られた16進表記で表されます。つまり、バイナリ0000は文字「0」で表され、0001は「1」で表され、1111が「f」として表されるまで続きます。 MD5アルゴリズムを使用してダイジェストを計算する場合、MD5ダイジェストは32桁の16進文字として表され、SHA-256およびSHA-512 / 256は64桁の16進文字として表されます。"
+      "ja": "ダイジェストのサイズは、使用するアルゴリズムによって異なります。ダイジェストのビットは、次のように一度に4ビットずつ、最上位ビットから最下位ビットに変換されます。 4ビットの各シーケンスは、文字0123456789abcdefからのよく知られた16進表記で表されます。つまり、バイナリ0000は文字「0」で表され、0001は「1」で表され、1111が「f」として表されるまで続きます。 MD5アルゴリズムを使用してダイジェストを計算する場合、MD5ダイジェストは32桁の16進文字として表され、SHA-256およびSHA-512/256は64桁の16進文字として表されます。"
     },
     {
       "indent": 0,
@@ -465,7 +465,7 @@
     {
       "indent": 6,
       "text": "This parameter MUST be used by all implementations. The cnonce value is an opaque quoted ASCII-only string value provided by the client and used by both client and server to avoid chosen plaintext attacks, to provide mutual authentication, and to provide some message integrity protection. See the descriptions below of the calculation of the rspauth and response values.",
-      "ja": "このパラメーターは、すべての実装で使用する必要があります。 cnonce値は、クライアントによって提供される不透明な引用ASCIIのみの文字列値であり、選択された平文攻撃を回避し、相互認証を提供し、メッセージの完全性を保護するためにクライアントとサーバーの両方で使用されます。 rspauthと応答値の計算については、以下の説明を参照してください。"
+      "ja": "このパラメーターは、すべての実装で使用する必要があります。 cnonce値は、クライアントによって提供される不透明な引用ASCIIのみの文字列値であり、選択平文攻撃を回避し、相互認証を提供し、メッセージの完全性を保護するためにクライアントとサーバーの両方で使用されます。 rspauthと応答値の計算については、以下の説明を参照してください。"
     },
     {
       "indent": 3,
@@ -680,7 +680,7 @@
     {
       "indent": 3,
       "text": "The \"Method\" value is the HTTP request method, in US-ASCII letters, as specified in Section 3.1.1 of [RFC7230]. The \"request-target\" value is the request-target from the request line as specified in Section 3.1.1 of [RFC7230]. This MAY be \"*\", an \"absolute-URI\", or an \"absolute-path\" as specified in Section 2.7 of [RFC7230], but it MUST agree with the request-target. In particular, it MUST be an \"absolute-URI\" if the request-target is an \"absolute-URI\". The cnonce value is a client-chosen value whose purpose is to foil chosen plaintext attacks.",
-      "ja": "[メソッド]値は、[RFC7230]のセクション3.1.1で指定されているUS-ASCII文字のHTTPリクエストメソッドです。 「request-target」の値は、[RFC7230]のセクション3.1.1で指定されているリクエストラインからのリクエストターゲットです。これは、[RFC7230]のセクション2.7で指定されている「*」、「absolute-URI」、または「absolute-path」である場合がありますが、要求ターゲットと一致する必要があります。特に、request-targetが「absolute-URI」の場合、「absolute-URI」でなければなりません。 cnonce値はクライアントが選択した値であり、その目的は選択された平文攻撃を阻止することです。"
+      "ja": "[メソッド]値は、[RFC7230]のセクション3.1.1で指定されているUS-ASCII文字のHTTPリクエストメソッドです。 「request-target」の値は、[RFC7230]のセクション3.1.1で指定されているリクエストラインからのリクエストターゲットです。これは、[RFC7230]のセクション2.7で指定されている「*」、「absolute-URI」、または「absolute-path」である場合がありますが、要求ターゲットと一致する必要があります。特に、request-targetが「absolute-URI」の場合、「absolute-URI」でなければなりません。 cnonce値はクライアントが選択した値であり、その目的は選択平文攻撃を阻止することです。"
     },
     {
       "indent": 3,
@@ -1225,7 +1225,7 @@
     {
       "indent": 3,
       "text": "With Digest Authentication, a MITM or a malicious server can arbitrarily choose the nonce that the client will use to compute the response. This is called a \"chosen plaintext\" attack. The ability to choose the nonce is known to make cryptanalysis much easier.",
-      "ja": "ダイジェスト認証を使用すると、MITMまたは悪意のあるサーバーが、クライアントが応答の計算に使用するナンスを任意に選択できます。これは「選択された平文」攻撃と呼ばれます。ナンスを選択する機能は、暗号解読をはるかに簡単にすることが知られています。"
+      "ja": "ダイジェスト認証を使用すると、MITMまたは悪意のあるサーバーが、クライアントが応答の計算に使用するナンスを任意に選択できます。これは「選択平文」攻撃と呼ばれます。ナンスを選択する機能は、暗号解読をはるかに簡単にすることが知られています。"
     },
     {
       "indent": 3,
@@ -1246,7 +1246,7 @@
     {
       "indent": 3,
       "text": "With Digest Authentication, if the attacker can execute a chosen plaintext attack, the attacker can precompute the response for many common words to a nonce of its choice and store a dictionary of response/password pairs. Such precomputation can often be done in parallel on many machines. It can then use the chosen plaintext attack to acquire a response corresponding to that challenge and just look up the password in the dictionary. Even if most passwords are not in the dictionary, some might be. Since the attacker gets to pick the challenge, the cost of computing the response for each password on the list can be amortized over finding many passwords. A dictionary with 100 million password/response pairs would take about 3.2 gigabytes of disk storage.",
-      "ja": "ダイジェスト認証を使用すると、攻撃者が選択したプレーンテキスト攻撃を実行できる場合、攻撃者は多くの一般的な単語に対する応答をその選択したナンスに事前計算し、応答/パスワードのペアの辞書を保存できます。このような事前計算は、多くのマシンで並行して実行できることがよくあります。次に、選択したプレーンテキスト攻撃を使用して、そのチャレンジに対応する応答を取得し、辞書でパスワードを検索します。ほとんどのパスワードが辞書にない場合でも、一部のパスワードは含まれている可能性があります。攻撃者がチャレンジを選択するので、リストの各パスワードの応答を計算するコストは、多くのパスワードを見つけることよりも少なくなります。 1億のパスワードと応答のペアを持つディクショナリは、約3.2ギガバイトのディスクストレージを必要とします。"
+      "ja": "ダイジェスト認証を使用すると、攻撃者が選択平文攻撃を実行できる場合、攻撃者は多くの一般的な単語に対する応答をその選択したナンスに事前計算し、応答/パスワードのペアの辞書を保存できます。このような事前計算は、多くのマシンで並行して実行できることがよくあります。次に、選択平文攻撃を使用して、そのチャレンジに対応する応答を取得し、辞書でパスワードを検索します。ほとんどのパスワードが辞書にない場合でも、一部のパスワードは含まれている可能性があります。攻撃者がチャレンジを選択できるため、リストの各パスワードの応答を計算するコストは、多くのパスワードを見つけることによって償却できます。 1億のパスワードと応答のペアを持つディクショナリは、約3.2ギガバイトのディスクストレージを必要とします。"
     },
     {
       "indent": 3,
@@ -1262,7 +1262,7 @@
     {
       "indent": 3,
       "text": "With Digest Authentication, a MITM can execute a chosen plaintext attack and can gather responses from many users to the same nonce. It can then find all the passwords within any subset of password space that would generate one of the nonce/response pairs in a single pass over that space. It also reduces the time to find the first password by a factor equal to the number of nonce/response pairs gathered. This search of the password space can often be done in parallel on many machines, and even a single machine can search large subsets of the password space very quickly -- reports exist of searching all passwords with six or fewer letters in a few hours.",
-      "ja": "ダイジェスト認証を使用すると、MITMは選択されたプレーンテキスト攻撃を実行し、同じナンスに対する多くのユーザーからの応答を収集できます。次に、そのスペースの1回のパスでnonce / responseペアの1つを生成するパスワードスペースのサブセット内のすべてのパスワードを検索できます。また、収集されたnonce / responseペアの数に等しい係数によって、最初のパスワードを見つける時間も短縮されます。このパスワードスペースの検索は多くのマシンで並行して実行できることが多く、1台のマシンでもパスワードスペースの大きなサブセットを非常に迅速に検索できます。6時間以内のすべてのパスワードを数時間で検索するレポートが存在します。"
+      "ja": "ダイジェスト認証を使用すると、MITMは選択平文攻撃を実行し、同じナンスに対する多くのユーザーからの応答を収集できます。次に、そのスペースの1回のパスでnonce / responseペアの1つを生成するパスワードスペースのサブセット内のすべてのパスワードを検索できます。また、収集されたnonce / responseペアの数に等しい係数によって、最初のパスワードを見つける時間も短縮されます。このパスワードスペースの検索は多くのマシンで並行して実行できることが多く、1台のマシンでもパスワードスペースの大きなサブセットを非常に迅速に検索できます。6文字以下のすべてのパスワードを数時間で検索するレポートが存在します。"
     },
     {
       "indent": 3,
@@ -1537,7 +1537,7 @@
     {
       "indent": 3,
       "text": "o Adds support for two new algorithms, SHA2-256 as mandatory and SHA2-512/256 as a backup, and defines the proper algorithm negotiation. The document keeps the MD5 algorithm support but only for backward compatibility.",
-      "ja": "o SHA2-256を必須として、SHA2-512 / 256をバックアップとして2つの新しいアルゴリズムのサポートを追加し、適切なアルゴリズムネゴシエーションを定義します。このドキュメントはMD5アルゴリズムのサポートを維持していますが、下位互換性のためにのみです。"
+      "ja": "o SHA2-256を必須として、SHA2-512/256をバックアップとして2つの新しいアルゴリズムのサポートを追加し、適切なアルゴリズムネゴシエーションを定義します。このドキュメントはMD5アルゴリズムのサポートを維持していますが、下位互換性のためにのみです。"
     },
     {
       "indent": 3,
