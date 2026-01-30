@@ -751,7 +751,7 @@ When used with the Digest mechanism, each one of the algorithms has two variants
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-このドキュメントでは、秘密の「秘密」を持つデータ「データ」にダイジェストアルゴリズムを適用して得られる文字列をKD（secret、data）と表し、データ「データ」にキーなしのダイジェストアルゴリズムを適用して得られる文字列をH（データ）と表記します。 KDはキー付きダイジェストを表し、表記unq（X）は、周囲の引用符がなく、引用スラッシュが削除された引用文字列Xの値を意味します。
+このドキュメントでは、秘密の「秘密」を持つデータ「データ」にダイジェストアルゴリズムを適用して得られる文字列をKD（secret、data）と表し、データ「データ」にキーなしのダイジェストアルゴリズムを適用して得られる文字列を H(データ) と表記します。 KDはキー付きダイジェストを表し、表記 unq(X) は、周囲の引用符がなく、引用スラッシュが削除された引用文字列Xの値を意味します。
         </p>
       </div>
     </div>
@@ -1501,7 +1501,7 @@ and the user Mufasa has password &#34;Circle Of Life&#34;, then H(A1) would be H
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ユーザーMufasaのパスワードが「Circle Of Life」の場合、H（A1）はH（Mufasa：myhost@example.com：Circle Of Life）となり、ダイジェストされた文字列に引用符は含まれません。
+ユーザーMufasaのパスワードが「Circle Of Life」の場合、H(A1) はH(Mufasa:myhost@example.com:Circle Of Life) となり、ダイジェストされた文字列に引用符は含まれません。
         </p>
       </div>
     </div>
@@ -1532,7 +1532,7 @@ with no white space on either side of the colons, but with the white space betwe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-コロンの両側に空白はありませんが、パスワード値で使用される単語の間に空白があります。同様に、H()でダイジェストされた他の文字列は、引用符で囲まれた文字列またはダイジェストされるエンティティ本体に空白がない限り、フィールドを区切るコロンの両側にスペースがあってはなりません。
+コロンの両側に空白はありませんが、パスワード値で使用される単語の間に空白があります。同様に、H() でダイジェストされた他の文字列は、引用符で囲まれた文字列またはダイジェストされるエンティティ本体に空白がない限り、フィールドを区切るコロンの両側にスペースがあってはなりません。
         </p>
       </div>
     </div>
@@ -1544,7 +1544,7 @@ Also, note that if integrity protection is applied (qop=auth-int), the H(entity-
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-また、整合性保護が適用されている場合（qop = auth-int）、H（entity-body）はエンティティ本文のハッシュであり、メッセージ本文ではありません。これは、送信者が転送エンコーディングを適用する前、および受信者がそれを削除した後に計算されます。これには、マルチパートコンテンツタイプの各パートのマルチパート境界と埋め込みヘッダーフィールドが含まれることに注意してください。
+また、整合性保護が適用されている場合（qop = auth-int）、H(entity-body) はエンティティ本文のハッシュであり、メッセージ本文ではありません。これは、送信者が転送エンコーディングを適用する前、および受信者がそれを削除した後に計算されます。これには、マルチパートコンテンツタイプの各パートのマルチパート境界と埋め込みヘッダーフィールドが含まれることに注意してください。
         </p>
       </div>
     </div>
@@ -1846,7 +1846,7 @@ Note that the HTTP server does not actually need to know the user&#39;s cleartex
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-HTTPサーバーが実際にユーザーのクリアテキストのパスワードを知っている必要はないことに注意してください。 H（A1）がサーバーで使用可能である限り、Authorizationヘッダーフィールドの有効性を確認できます。
+HTTPサーバーが実際にユーザーのクリアテキストのパスワードを知っている必要はないことに注意してください。 H(A1) がサーバーで使用可能である限り、Authorizationヘッダーフィールドの有効性を確認できます。
         </p>
       </div>
     </div>
@@ -2480,7 +2480,7 @@ Digest Authentication requires that the authenticating agent (usually the server
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ダイジェスト認証では、認証エージェント（通常はサーバー）が、ユーザーの名前とパスワードから取得したデータを、特定のレルムに関連付けられた「パスワードファイル」に格納する必要があります。通常、これには、ユーザー名とH（A1）で構成されるペアが含まれる場合があります。H（A1）は、上記のようにユーザー名、レルム、パスワードのダイジェスト値です。
+ダイジェスト認証では、認証エージェント（通常はサーバー）が、ユーザーの名前とパスワードから取得したデータを、特定のレルムに関連付けられた「パスワードファイル」に格納する必要があります。通常、これには、ユーザー名と H(A1) で構成されるペアが含まれる場合があります。H(A1) は、上記のようにユーザー名、レルム、パスワードのダイジェスト値です。
         </p>
       </div>
     </div>

@@ -295,7 +295,7 @@
     {
       "indent": 0,
       "text": " In this document, the string obtained by applying the digest algorithm to the data \"data\" with secret \"secret\" will be denoted by KD(secret, data), and the string obtained by applying the unkeyed digest algorithm to the data \"data\" will be denoted H(data). KD stands for Keyed Digest, and the notation unq(X) means the value of the quoted-string X without the surrounding quotes and with quoting slashes removed.",
-      "ja": "このドキュメントでは、秘密の「秘密」を持つデータ「データ」にダイジェストアルゴリズムを適用して得られる文字列をKD（secret、data）と表し、データ「データ」にキーなしのダイジェストアルゴリズムを適用して得られる文字列をH（データ）と表記します。 KDはキー付きダイジェストを表し、表記unq（X）は、周囲の引用符がなく、引用スラッシュが削除された引用文字列Xの値を意味します。"
+      "ja": "このドキュメントでは、秘密の「秘密」を持つデータ「データ」にダイジェストアルゴリズムを適用して得られる文字列をKD（secret、data）と表し、データ「データ」にキーなしのダイジェストアルゴリズムを適用して得られる文字列を H(データ) と表記します。 KDはキー付きダイジェストを表し、表記 unq(X) は、周囲の引用符がなく、引用スラッシュが削除された引用文字列Xの値を意味します。"
     },
     {
       "indent": 8,
@@ -648,7 +648,7 @@
     {
       "indent": 3,
       "text": "and the user Mufasa has password \"Circle Of Life\", then H(A1) would be H(Mufasa:myhost@example.com:Circle Of Life) with no quotation marks in the digested string.",
-      "ja": "ユーザーMufasaのパスワードが「Circle Of Life」の場合、H（A1）はH（Mufasa：myhost@example.com：Circle Of Life）となり、ダイジェストされた文字列に引用符は含まれません。"
+      "ja": "ユーザーMufasaのパスワードが「Circle Of Life」の場合、H(A1) はH(Mufasa:myhost@example.com:Circle Of Life) となり、ダイジェストされた文字列に引用符は含まれません。"
     },
     {
       "indent": 3,
@@ -664,12 +664,12 @@
     {
       "indent": 3,
       "text": "with no white space on either side of the colons, but with the white space between the words used in the password value. Likewise, the other strings digested by H() must not have white space on either side of the colons that delimit their fields, unless that white space was in the quoted strings or entity body being digested.",
-      "ja": "コロンの両側に空白はありませんが、パスワード値で使用される単語の間に空白があります。同様に、H()でダイジェストされた他の文字列は、引用符で囲まれた文字列またはダイジェストされるエンティティ本体に空白がない限り、フィールドを区切るコロンの両側にスペースがあってはなりません。"
+      "ja": "コロンの両側に空白はありませんが、パスワード値で使用される単語の間に空白があります。同様に、H() でダイジェストされた他の文字列は、引用符で囲まれた文字列またはダイジェストされるエンティティ本体に空白がない限り、フィールドを区切るコロンの両側にスペースがあってはなりません。"
     },
     {
       "indent": 3,
       "text": "Also, note that if integrity protection is applied (qop=auth-int), the H(entity-body) is the hash of the entity body, not the message body -- it is computed before any transfer encoding is applied by the sender and after it has been removed by the recipient. Note that this includes multipart boundaries and embedded header fields in each part of any multipart content-type.",
-      "ja": "また、整合性保護が適用されている場合（qop = auth-int）、H（entity-body）はエンティティ本文のハッシュであり、メッセージ本文ではありません。これは、送信者が転送エンコーディングを適用する前、および受信者がそれを削除した後に計算されます。これには、マルチパートコンテンツタイプの各パートのマルチパート境界と埋め込みヘッダーフィールドが含まれることに注意してください。"
+      "ja": "また、整合性保護が適用されている場合（qop = auth-int）、H(entity-body) はエンティティ本文のハッシュであり、メッセージ本文ではありません。これは、送信者が転送エンコーディングを適用する前、および受信者がそれを削除した後に計算されます。これには、マルチパートコンテンツタイプの各パートのマルチパート境界と埋め込みヘッダーフィールドが含まれることに注意してください。"
     },
     {
       "indent": 0,
@@ -803,7 +803,7 @@
     {
       "indent": 3,
       "text": "Note that the HTTP server does not actually need to know the user's cleartext password. As long as H(A1) is available to the server, the validity of an Authorization header field can be verified.",
-      "ja": "HTTPサーバーが実際にユーザーのクリアテキストのパスワードを知っている必要はないことに注意してください。 H（A1）がサーバーで使用可能である限り、Authorizationヘッダーフィールドの有効性を確認できます。"
+      "ja": "HTTPサーバーが実際にユーザーのクリアテキストのパスワードを知っている必要はないことに注意してください。 H(A1) がサーバーで使用可能である限り、Authorizationヘッダーフィールドの有効性を確認できます。"
     },
     {
       "indent": 3,
@@ -1068,7 +1068,7 @@
     {
       "indent": 3,
       "text": "Digest Authentication requires that the authenticating agent (usually the server) store some data derived from the user's name and password in a \"password file\" associated with a given realm. Normally, this might contain pairs consisting of username and H(A1), where H(A1) is the digested value of the username, realm, and password as described above.",
-      "ja": "ダイジェスト認証では、認証エージェント（通常はサーバー）が、ユーザーの名前とパスワードから取得したデータを、特定のレルムに関連付けられた「パスワードファイル」に格納する必要があります。通常、これには、ユーザー名とH（A1）で構成されるペアが含まれる場合があります。H（A1）は、上記のようにユーザー名、レルム、パスワードのダイジェスト値です。"
+      "ja": "ダイジェスト認証では、認証エージェント（通常はサーバー）が、ユーザーの名前とパスワードから取得したデータを、特定のレルムに関連付けられた「パスワードファイル」に格納する必要があります。通常、これには、ユーザー名と H(A1) で構成されるペアが含まれる場合があります。H(A1) は、上記のようにユーザー名、レルム、パスワードのダイジェスト値です。"
     },
     {
       "indent": 0,
