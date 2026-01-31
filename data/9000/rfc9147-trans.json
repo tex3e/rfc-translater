@@ -1,11 +1,11 @@
 {
   "title": {
     "text": "RFC 9147 - The Datagram Transport Layer Security (DTLS) Protocol Version 1.3 (RFC 9147)",
-    "ja": "RFC 9147 - データグラムトランスポートレイヤーセキュリティ（DTLS）プロトコルバージョン1.3（RFC 9147）"
+    "ja": "RFC 9147 - データグラムトランスポート層セキュリティ（DTLS）プロトコルバージョン1.3（RFC 9147）"
   },
   "number": 9147,
   "created_at": "2022-04-23 03:00:02.099214+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -31,7 +31,7 @@
     {
       "indent": 3,
       "text": "The DTLS 1.3 protocol is based on the Transport Layer Security (TLS) 1.3 protocol and provides equivalent security guarantees with the exception of order protection / non-replayability. Datagram semantics of the underlying transport are preserved by the DTLS protocol.",
-      "ja": "DTLS 1.3プロトコルは、トランスポートレイヤーセキュリティ（TLS）1.3プロトコルに基づいており、注文保護 /非複製性を除き、同等のセキュリティ保証を提供します。基礎となる輸送のデータグラムセマンティクスは、DTLSプロトコルによって保存されます。"
+      "ja": "DTLS 1.3プロトコルは、トランスポート層セキュリティ（TLS）1.3プロトコルに基づいており、順序保護とリプレイ保護がないことを除き、同等のセキュリティ保証を提供します。基礎となるトランスポートのデータグラムセマンティクスは、DTLSプロトコルによって維持されます。"
     },
     {
       "indent": 3,
@@ -56,7 +56,7 @@
     {
       "indent": 3,
       "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9147.",
-      "ja": "この文書の現在のステータス、任意のエラータ、およびフィードバックを提供する方法は、https://www.rfc-editor.org/info/frfc9147で取得できます。"
+      "ja": "この文書の現在のステータス、任意のエラータ、およびフィードバックを提供する方法は、https://www.rfc-editor.org/info/rfc9147で取得できます。"
     },
     {
       "indent": 0,
@@ -71,12 +71,12 @@
     {
       "indent": 3,
       "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
-      "ja": "この文書は、この文書の公開日に有効なIETF文書（https://trustee.ietf.org/License-Info）に関するBCP 78およびIETF信頼の法的規定の対象となります。この文書に関してあなたの権利と制限を説明するので、これらの文書をよくレビューしてください。この文書から抽出されたコードコンポーネントには、信託法定規定のセクション4。"
+      "ja": "この文書は、この文書の公開日に有効なIETF文書（https://trustee.ietf.org/license-info）に関するBCP 78およびIETFトラストの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。この文書から抽出されたコードコンポーネントには、トラスト法的規定のセクション4.eで説明されている修正BSDライセンスのテキストが含まれている必要があり、修正BSDライセンスで説明されているように保証なしで提供されます。"
     },
     {
       "indent": 3,
       "text": "This document may contain material from IETF Documents or IETF Contributions published or made publicly available before November 10, 2008. The person(s) controlling the copyright in some of this material may not have granted the IETF Trust the right to allow modifications of such material outside the IETF Standards Process. Without obtaining an adequate license from the person(s) controlling the copyright in such materials, this document may not be modified outside the IETF Standards Process, and derivative works of it may not be created outside the IETF Standards Process, except to format it for publication as an RFC or to translate it into languages other than English.",
-      "ja": "この文書には、2008年11月10日以前に公開されたIETFの文書またはIETFの貢献からの資料が含まれている場合があります。この材料のいくつかの著作権を管理する人は、そのような材料の修正を許可する権利を信頼している権利を与えなかった人物IETF標準の外部プロセス。このような資料の著作権を管理する人から適切なライセンスを取得せずに、この文書はIETF規格プロセスの外で修正されていない可能性があり、それをフォーマットすること以外はIETF標準プロセスの外部にはデリバティブワークが作成できません。RFCとしての出版物、または英語以外の言語に翻訳する。"
+      "ja": "この文書には、2008年11月10日以前に公開されたIETFの文書またはIETFへの貢献からの資料が含まれている場合があります。この資料の一部の著作権を管理する人物は、IETF標準化プロセスの外でそのような資料の変更を許可する権利をIETFトラストに付与していない可能性があります。そのような資料の著作権を管理する人物から適切なライセンスを取得しない限り、この文書はIETF標準化プロセスの外で変更することはできず、RFCとして出版するためにフォーマットすることや英語以外の言語に翻訳することを除いて、IETF標準化プロセスの外で派生著作物を作成することはできません。"
     },
     {
       "indent": 0,
@@ -99,22 +99,22 @@
     {
       "indent": 3,
       "text": "The primary goal of the TLS protocol is to establish an authenticated, confidentiality- and integrity-protected channel between two communicating peers. The TLS protocol is composed of two layers: the TLS record protocol and the TLS handshake protocol. However, TLS must run over a reliable transport channel -- typically TCP [RFC0793].",
-      "ja": "TLSプロトコルの主な目標は、2つの通信ピア間で認証された機密性、および完全性保護チャネルを確立することです。TLSプロトコルは、TLSレコードプロトコルとTLSハンドシェイクプロトコルの2つのレイヤーで構成されています。ただし、TLSは信頼できる輸送チャネル（通常はTCP [RFC0793]）を介して実行する必要があります。"
+      "ja": "TLSプロトコルの主な目標は、2つの通信ピア間で認証され、機密性と完全性が保護されたチャネルを確立することです。TLSプロトコルは、TLSレコードプロトコルとTLSハンドシェイクプロトコルの2つのレイヤーで構成されています。ただし、TLSは信頼できるトランスポートチャネル（通常はTCP [RFC0793]）を介して実行する必要があります。"
     },
     {
       "indent": 3,
       "text": "There are applications that use UDP [RFC0768] as a transport and the Datagram Transport Layer Security (DTLS) protocol has been developed to offer communication security protection for those applications. DTLS is deliberately designed to be as similar to TLS as possible, both to minimize new security invention and to maximize the amount of code and infrastructure reuse.",
-      "ja": "UDP [RFC0768]を輸送として使用するアプリケーションがあり、データグラムトランスポートレイヤーセキュリティ（DTLS）プロトコルが開発され、これらのアプリケーションに通信セキュリティ保護を提供しています。DTLSは、新しいセキュリティの発明を最小限に抑え、コードとインフラストラクチャの再利用量を最大化するために、可能な限りTLSに似ているように意図的に設計されています。"
+      "ja": "UDP [RFC0768]をトランスポートとして使用するアプリケーションがあり、データグラムトランスポートレイヤーセキュリティ（DTLS）プロトコルが開発され、これらのアプリケーションに通信セキュリティ保護を提供しています。DTLSは、新しいセキュリティの発明を最小限に抑え、コードとインフラストラクチャの再利用量を最大化するために、可能な限りTLSに似ているように意図的に設計されています。"
     },
     {
       "indent": 3,
       "text": "DTLS 1.0 [RFC4347] was originally defined as a delta from TLS 1.1 [RFC4346], and DTLS 1.2 [RFC6347] was defined as a series of deltas to TLS 1.2 [RFC5246]. There is no DTLS 1.1; that version number was skipped in order to harmonize version numbers with TLS. This specification describes the most current version of the DTLS protocol as a delta from TLS 1.3 [TLS13]. It obsoletes DTLS 1.2.",
-      "ja": "DTLS 1.0 [RFC4347]は、もともとTLS 1.1 [RFC4346]のデルタとして定義され、DTLS 1.2 [RFC6347]はTLS 1.2 [RFC5246]の一連のDeltasとして定義されました。DTLS 1.1はありません。そのバージョン番号をTLSと調和させるために、そのバージョン番号がスキップされました。この仕様では、TLS 1.3 [TLS13]のDELTAとしてのDTLSプロトコルの最新バージョンを説明しています。DTLS 1.2が廃止されます。"
+      "ja": "DTLS 1.0 [RFC4347]は、もともとTLS 1.1 [RFC4346]のデルタとして定義され、DTLS 1.2 [RFC6347]はTLS 1.2 [RFC5246]の一連の差分として定義されました。DTLS 1.1はありません。そのバージョン番号をTLSと調和させるために、そのバージョン番号がスキップされました。この仕様では、TLS 1.3 [TLS13]の差分としてのDTLSプロトコルの最新バージョンを説明しています。これはDTLS 1.2を廃止します。"
     },
     {
       "indent": 3,
       "text": "Implementations that speak both DTLS 1.2 and DTLS 1.3 can interoperate with those that speak only DTLS 1.2 (using DTLS 1.2 of course), just as TLS 1.3 implementations can interoperate with TLS 1.2 (see Appendix D of [TLS13] for details). While backwards compatibility with DTLS 1.0 is possible, the use of DTLS 1.0 is not recommended, as explained in Section 3.1.2 of [RFC7525]. [DEPRECATE] forbids the use of DTLS 1.0.",
-      "ja": "DTLS 1.2とDTLS 1.3の両方を話す実装は、TLS 1.2の実装がTLS 1.2と相互運用できるように、DTLS 1.2のみを話すものと相互運用できます（詳細については[TLS13の付録Dを参照）。DTLS 1.0との後方互換性が可能ですが、[RFC7525]の3.1.2項で説明されているように、DTLS 1.0の使用はお勧めできません。[非推奨] DTLS 1.0の使用を禁止します。"
+      "ja": "DTLS 1.2とDTLS 1.3の両方を話す実装は、TLS 1.3の実装がTLS 1.2と相互運用できるように、DTLS 1.2のみを話すものと相互運用できます（詳細については[TLS13]の付録Dを参照）。DTLS 1.0との後方互換性が可能ですが、[RFC7525]の3.1.2項で説明されているように、DTLS 1.0の使用はお勧めできません。[DEPRECATE]はDTLS 1.0の使用を禁止します。"
     },
     {
       "indent": 0,
@@ -145,7 +145,7 @@
     {
       "indent": 3,
       "text": "connection: Synonym for association.",
-      "ja": "接続：協会の同義語。"
+      "ja": "接続：アソシエーションの同義語。"
     },
     {
       "indent": 3,
@@ -155,7 +155,7 @@
     {
       "indent": 3,
       "text": "epoch: One set of cryptographic keys used for encryption and decryption.",
-      "ja": "エポック：暗号化と復号化に使用される暗号鍵の1組。"
+      "ja": "エポック：暗号化と復号化に使用される暗号鍵のセット。"
     },
     {
       "indent": 3,
@@ -165,7 +165,7 @@
     {
       "indent": 3,
       "text": "peer: An endpoint. When discussing a particular endpoint, \"peer\" refers to the endpoint that is remote to the primary subject of discussion.",
-      "ja": "ピア：エンドポイント。特定のエンドポイントについて議論するとき、「ピア」とは、議論の主要な主題にremote延するエンドポイントを指します。"
+      "ja": "ピア：エンドポイント。特定のエンドポイントについて議論するとき、「ピア」とは、議論の主要な主題に対してリモートにあるエンドポイントを指します。"
     },
     {
       "indent": 3,
@@ -195,7 +195,7 @@
     {
       "indent": 3,
       "text": "The reader is assumed to be familiar with [TLS13]. As in TLS 1.3, the HelloRetryRequest has the same format as a ServerHello message, but for convenience we use the term HelloRetryRequest throughout this document as if it were a distinct message.",
-      "ja": "リーダーは[TLS13]に精通していると見なされます。TLS 1.3と同様に、HelloretryRequestはServerHelloメッセージと同じ形式を持ちますが、便宜上、この文書全体にわたってTERM HelloretryRequestを個別のメッセージであるかのように使用します。"
+      "ja": "読者は[TLS13]に精通していると見なされます。TLS 1.3と同様に、HelloretryRequestはServerHelloメッセージと同じ形式を持ちますが、便宜上、この文書全体にわたって用語 HelloRetryRequestを個別のメッセージであるかのように使用します。"
     },
     {
       "indent": 3,
@@ -205,17 +205,17 @@
     {
       "indent": 3,
       "text": "The reader is also assumed to be familiar with [RFC9146], as this document applies the CID functionality to DTLS 1.3.",
-      "ja": "このドキュメントはDTLS 1.3にCID機能を適用するので、リーダーは[RFC9146]に精通していると想定されています。"
+      "ja": "このドキュメントはDTLS 1.3にCID機能を適用するので、読者は[RFC9146]に精通していると想定されています。"
     },
     {
       "indent": 3,
       "text": "Figures in this document illustrate various combinations of the DTLS protocol exchanges, and the symbols have the following meaning:",
-      "ja": "この文書の数値は、DTLSプロトコル交換のさまざまな組み合わせを示し、シンボルは次の意味を持ちます。"
+      "ja": "この文書の図は、DTLSプロトコル交換のさまざまな組み合わせを示し、シンボルは次の意味を持ちます。"
     },
     {
       "indent": 3,
       "text": "'+' indicates noteworthy extensions sent in the previously noted message.",
-      "ja": "''前述のメッセージで送信された注目すべき拡張機能を示します。"
+      "ja": "'+' は前述のメッセージで送信された注目すべき拡張機能を示します。"
     },
     {
       "indent": 3,
@@ -241,32 +241,32 @@
     {
       "indent": 3,
       "text": "The basic design philosophy of DTLS is to construct \"TLS over datagram transport\". Datagram transport neither requires nor provides reliable or in-order delivery of data. The DTLS protocol preserves this property for application data. Applications such as media streaming, Internet telephony, and online gaming use datagram transport for communication due to the delay-sensitive nature of transported data. The behavior of such applications is unchanged when the DTLS protocol is used to secure communication, since the DTLS protocol does not compensate for lost or reordered data traffic. Note that while low-latency streaming and gaming use DTLS to protect data (e.g., for protection of a WebRTC data channel), telephony utilizes DTLS for key establishment and the Secure Real-time Transport Protocol (SRTP) for protection of data [RFC5763].",
-      "ja": "DTLSの基本的な設計哲学は「データグラム交通機関を介してTLS」を構成することです。データグラム輸送は、信頼性または順序のデータ配信も必要としていません。DTLSプロトコルはアプリケーションデータのこのプロパティを保持します。メディアストリーミング、インターネットテレフォニー、オンラインゲームなどのアプリケーションは、輸送データの遅延に敏感な性質のために通信のためのデータグラムトランスポートを使用します。DTLSプロトコルは、DTLSプロトコルが紛失または並べ替えられたデータトラフィックを補償しないため、このようなアプリケーションの動作は通信を保護するために使用されていないときは変わりません。低レイテンシストリーミングおよびゲームはDTLSを使用してデータを保護する（例えば、WebRTCデータチャネルの保護のために）、テレフォニーは重要な確立のためにDTLを利用し、データの保護のためのセキュアリアルタイムトランスポートプロトコル（SRTP）[RFC5763]。"
+      "ja": "DTLSの基本的な設計哲学は「データグラムトランスポート上のTLS」を構成することです。データグラムトランスポートは、信頼性のあるデータ配信や順序通りのデータ配信を要求も提供もしません。DTLSプロトコルはアプリケーションデータのこのプロパティを保持します。メディアストリーミング、インターネットテレフォニー、オンラインゲームなどのアプリケーションは、転送データの遅延に敏感な性質のために通信のためのデータグラムトランスポートを使用します。DTLSプロトコルは、紛失または並べ替えられたデータトラフィックを補償しないため、このようなアプリケーションの動作は通信を保護するために使用された場合でも変わりません。低レイテンシストリーミングおよびゲームはDTLSを使用してデータを保護しますが（例えば、WebRTCデータチャネルの保護のために）、テレフォニーは鍵確立のためにDTLSを利用し、データの保護にはセキュアリアルタイムトランスポートプロトコル（SRTP）[RFC5763]を利用します。"
     },
     {
       "indent": 3,
       "text": "TLS cannot be used directly over datagram transports for the following four reasons:",
-      "ja": "TLSは、次の4つの理由でデータグラムトランスポートを介して直接使用することはできません。"
+      "ja": "TLSは、次の4つの理由でデータグラムトランスポート上で直接使用することはできません。"
     },
     {
       "indent": 3,
       "text": "1. TLS relies on an implicit sequence number on records. If a record is not received, then the recipient will use the wrong sequence number when attempting to remove record protection from subsequent records. DTLS solves this problem by adding sequence numbers to records.",
-      "ja": "1. TLSは、レコード上の暗黙のシーケンス番号に依存しています。レコードが受信されない場合、受信者は、後続のレコードからレコード保護を削除しようとするときに間違ったシーケンス番号を使用します。DTLSは、記録にシーケンス番号を追加することにより、この問題を解決します。"
+      "ja": "1. TLSは、レコード上の暗黙のシーケンス番号に依存しています。レコードが受信されない場合、受信者は、後続のレコードからレコード保護を解除しようとするときに間違ったシーケンス番号を使用します。DTLSは、レコードにシーケンス番号を追加することにより、この問題を解決します。"
     },
     {
       "indent": 3,
       "text": "2. The TLS handshake is a lock-step cryptographic protocol. Messages must be transmitted and received in a defined order; any other order is an error. The DTLS handshake includes message sequence numbers to enable fragmented message reassembly and in-order delivery in case datagrams are lost or reordered.",
-      "ja": "2. TLSハンドシェイクは、ロックステップの暗号化プロトコルです。メッセージは、定義された順序で送信および受信する必要があります。他の注文はエラーです。DTLSハンドシェイクには、データグラムが失われたり並べ替えられたりした場合に、断片化されたメッセージの再組み立てと順序配信を有効にするためのメッセージシーケンス番号が含まれています。"
+      "ja": "2. TLSハンドシェイクは、ロックステップの暗号化プロトコルです。メッセージは、定義された順序で送信および受信する必要があります。それ以外の順序はエラーです。DTLSハンドシェイクには、データグラムが失われたり並べ替えられたりした場合に、断片化されたメッセージの再組み立てと順序配信を有効にするためのメッセージシーケンス番号が含まれています。"
     },
     {
       "indent": 3,
       "text": "3. Handshake messages are potentially larger than can be contained in a single datagram. DTLS adds fields to handshake messages to support fragmentation and reassembly.",
-      "ja": "3. ハンドシェイクメッセージは、単一のデータグラムに含まれているよりも潜在的に大きいです。DTLSは、断片化と再構成をサポートするためのハンドシェイクメッセージにフィールドを追加します。"
+      "ja": "3. ハンドシェイクメッセージは、単一のデータグラムに収まるサイズよりも潜在的に大きいです。DTLSは、断片化と再構成をサポートするためのハンドシェイクメッセージにフィールドを追加します。"
     },
     {
       "indent": 3,
       "text": "4. Datagram transport protocols are susceptible to abusive behavior effecting denial-of-service (DoS) attacks against nonparticipants. DTLS adds a return-routability check and DTLS 1.3 uses the TLS 1.3 HelloRetryRequest message (see Section 5.1 for details).",
-      "ja": "4. データグラムトランスポートプロトコルは、非参加者に対するサービス拒否（DOS）攻撃を実現する虐待的な行動の影響を受けやすい。DTLSはリターンルーティブ容量チェックを追加し、DTLS 1.3はTLS 1.3 HelloretryRequestメッセージを使用します（詳細についてはセクション5.1を参照）。"
+      "ja": "4. データグラムトランスポートプロトコルは、非参加者に対するサービス拒否（DOS）攻撃を実現する虐待的な行動の影響を受けやすい。DTLSは到達可能性確認を追加し、DTLS 1.3はTLS 1.3 HelloretryRequestメッセージを使用します（詳細についてはセクション5.1を参照）。"
     },
     {
       "indent": 0,
@@ -280,24 +280,8 @@
       "ja": "DTLSは、単純な再送信タイマーを使用してパケットの損失を処理します。図1は、DTLSハンドシェイクの最初のフェーズを使用して、基本概念を示しています。"
     },
     {
-      "indent": 12,
-      "text": "Client                                   Server\n------                                   ------\nClientHello           ------>",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 36,
-      "text": "X<-- HelloRetryRequest (lost)",
-      "ja": "X < -  HelloretryRequest（失われた）"
-    },
-    {
-      "indent": 12,
-      "text": "[Timer Expires]",
-      "ja": "[タイマーの有効期限が切れる]"
-    },
-    {
-      "indent": 12,
-      "text": "ClientHello           ------>\n(retransmit)",
+      "indent": 9,
+      "text": "Client                                   Server\n------                                   ------\nClientHello           ------>\n\n                        X<-- HelloRetryRequest\n                                         (lost)\n\n[Timer Expires]\n\nClientHello           ------>\n(retransmit)",
       "raw": true,
       "ja": ""
     },
@@ -309,12 +293,12 @@
     {
       "indent": 3,
       "text": "Once the client has transmitted the ClientHello message, it expects to see a HelloRetryRequest or a ServerHello from the server. However, if the timer expires, the client knows that either the ClientHello or the response from the server has been lost, which causes the client to retransmit the ClientHello. When the server receives the retransmission, it knows to retransmit its HelloRetryRequest or ServerHello.",
-      "ja": "クライアントがClientHelloメッセージを送信すると、サーバーからHelloretryRequestまたはサーバーヘロが表示されることが期待されます。ただし、タイマーの有効期限が切れた場合、クライアントは、クライアントヘロまたはサーバーからの応答が失われたことを知っており、クライアントはClientHelloを再送信します。サーバーが再送信を受信すると、HelloretryRequestまたはServerHelloを再送信することがわかります。"
+      "ja": "クライアントがClientHelloメッセージを送信すると、サーバーからHelloRetryRequestまたはServerHelloが表示されることが期待されます。ただし、タイマーの有効期限が切れた場合、クライアントは、ClientHelloまたはサーバーからの応答が失われたことを知っており、クライアントはClientHelloを再送信します。サーバーが再送信を受信すると、HelloRetryRequestまたはServerHelloを再送信することがわかります。"
     },
     {
       "indent": 3,
       "text": "The server also maintains a retransmission timer for messages it sends (other than HelloRetryRequest) and retransmits when that timer expires. Not applying retransmissions to the HelloRetryRequest avoids the need to create state on the server. The HelloRetryRequest is designed to be small enough that it will not itself be fragmented, thus avoiding concerns about interleaving multiple HelloRetryRequests.",
-      "ja": "また、サーバーは、送信するメッセージの再送信タイマー（HelloretryRequest以外）を維持し、そのタイマーが期限切れになったときに再送信します。HelloretryRequestに再送信を適用しないと、サーバー上に状態を作成する必要性が回避されます。HelloretryRequestは、それ自体が断片化されないほど小さくなるように設計されているため、複数のHelloretryRequestをインテリのインテリアに懸念することを避けます。"
+      "ja": "また、サーバーは、送信するメッセージの再送信タイマー（HelloRetryRequest以外）を維持し、そのタイマーが期限切れになったときに再送信します。HelloRetryRequestに再送信を適用しないと、サーバー上に状態を作成する必要性が回避されます。HelloRetryRequestは、それ自体が断片化されないほど小さくなるように設計されているため、複数のHelloRetryRequestのインターリーブに関する懸念を回避します。"
     },
     {
       "indent": 3,
@@ -330,7 +314,7 @@
     {
       "indent": 3,
       "text": "In DTLS, each handshake message is assigned a specific sequence number. When a peer receives a handshake message, it can quickly determine whether that message is the next message it expects. If it is, then it processes it. If not, it queues it for future handling once all previous messages have been received.",
-      "ja": "DTLSでは、各ハンドシェイクメッセージに特定のシーケンス番号が割り当てられます。ピアが握手メッセージを受信すると、そのメッセージが予想される次のメッセージであるかどうかをすばやく判断できます。もしそうなら、それを処理します。そうでない場合は、以前のすべてのメッセージが受信された後、将来の処理のためにキュートします。"
+      "ja": "DTLSでは、各ハンドシェイクメッセージに特定のシーケンス番号が割り当てられます。ピアが握手メッセージを受信すると、そのメッセージが予想される次のメッセージであるかどうかをすばやく判断できます。もしそうなら、それを処理します。そうでない場合は、以前のすべてのメッセージが受信された後、将来の処理のためにキューに入れます。"
     },
     {
       "indent": 0,
@@ -352,7 +336,7 @@
     {
       "indent": 3,
       "text": "DTLS optionally supports record replay detection. The technique used is the same as in IPsec AH/ESP, by maintaining a bitmap window of received records. Records that are too old to fit in the window and records that have previously been received are silently discarded. The replay detection feature is optional, since packet duplication is not always malicious but can also occur due to routing errors. Applications may conceivably detect duplicate packets and accordingly modify their data transmission strategy.",
-      "ja": "DTLはオプションでレコードの再生検出をサポートします。使用される技術は、受信したレコードのビットマップウィンドウを維持することによって、IPsec AH / ESPと同じです。ウィンドウに収まるには古すぎるレコードと以前に受信されたレコードは静かに破棄されます。再生検出機能はオプションであるため、パケットの重複は必ずしも悪意のあるものではなく、ルーティングエラーのためにも発生する可能性があります。アプリケーションは、重複したパケットを検出し、したがってデータ伝送戦略を変更する可能性があります。"
+      "ja": "DTLSはオプションでレコードのリプレイ検出をサポートします。使用される技術は、受信したレコードのビットマップウィンドウを維持することによって、IPsec AH / ESPと同じです。ウィンドウに収まるには古すぎるレコードと以前に受信されたレコードは静かに破棄されます。リプレイ検出機能はオプションであるため、パケットの重複は必ずしも悪意のあるものではなく、ルーティングエラーのためにも発生する可能性があります。アプリケーションは、重複したパケットを検出し、したがってデータ伝送戦略を変更する可能性があります。"
     },
     {
       "indent": 0,
@@ -366,34 +350,34 @@
       "ja": "DTLS 1.3レコードレイヤーは、TLS 1.3レコードレイヤーとは異なり、DTLS 1.2レコードレイヤーとも異なります。"
     },
     {
-      "indent": 3,
+      "indent": 6,
       "text": "1. The DTLSCiphertext structure omits the superfluous version number and type fields.",
       "ja": "1. DTLSciphertext構造は、余分なバージョン番号とタイプフィールドを省略します。"
     },
     {
-      "indent": 3,
+      "indent": 6,
       "text": "2. DTLS adds an epoch and sequence number to the TLS record header. This sequence number allows the recipient to correctly decrypt and verify DTLS records. However, the number of bits used for the epoch and sequence number fields in the DTLSCiphertext structure has been reduced from those in previous versions.",
-      "ja": "2. DTLSは、TLSレコードヘッダーにエポックとシーケンス番号を追加します。このシーケンス番号は、受信者がDTLSレコードを正しく復号化して検証することを可能にします。ただし、DTLSciphiperText構造体のEpochおよびSequence Numberフィールドに使用されるビット数は、以前のバージョンのものから削減されました。"
+      "ja": "2. DTLSは、TLSレコードヘッダーにエポックとシーケンス番号を追加します。このシーケンス番号は、受信者がDTLSレコードを正しく復号化して検証することを可能にします。ただし、DTLSCiphertext構造体のEpochおよびSequence Numberフィールドに使用されるビット数は、以前のバージョンのものから削減されました。"
     },
     {
-      "indent": 3,
+      "indent": 6,
       "text": "3. The DTLS epoch serialized in DTLSPlaintext is 2 octets long for compatibility with DTLS 1.2. However, this value is set as the least significant 2 octets of the connection epoch, which is an 8 octet counter incremented on every KeyUpdate. See Section 4.2 for details. The sequence number is set to be the low order 48 bits of the 64 bit sequence number. Plaintext records MUST NOT be sent with sequence numbers that would exceed 2^48-1, so the upper 16 bits will always be 0.",
-      "ja": "3. DTLSPlantextでシリアル化されたDTLSエポックは、DTLS 1.2との互換性のために2オクテットの長さです。ただし、この値は、すべてのキーアップデートで8オクテットのカウンターが増加する8オクテットのカウンターである接続エポックの最も重要でない2オクテットとして設定されています。詳細については、セクション4.2を参照してください。シーケンス番号は、64ビットシーケンス番号の48ビットが低いように設定されています。プレーンテキストレコードは、2^48-1を超えるシーケンス番号で送信してはなりません。そのため、上部16ビットは常に0になります。"
+      "ja": "3. DTLSPlaintextでシリアル化されたDTLSエポックは、DTLS 1.2との互換性のために2オクテットの長さです。ただし、この値は、すべてのキーアップデートで増加する8オクテットのカウンターである接続エポックの最下位2オクテットとして設定されています。詳細については、セクション4.2を参照してください。シーケンス番号は、64ビットシーケンス番号の下位48ビットに設定されています。プレーンテキストレコードは、2^48-1を超えるシーケンス番号で送信してはなりません。そのため、上位16ビットは常に0になります。"
     },
     {
-      "indent": 3,
+      "indent": 6,
       "text": "4. The DTLSCiphertext structure has a variable-length header.",
       "ja": "4. DTLScipherText構造体には可変長ヘッダーがあります。"
     },
     {
       "indent": 3,
       "text": "DTLSPlaintext records are used to send unprotected records and DTLSCiphertext records are used to send protected records.",
-      "ja": "DTLSPleantextレコードは、保護されていないレコードを送信するために使用され、DTLScipherTextレコードは保護されたレコードを送信するために使用されます。"
+      "ja": "DTLSPlaintextレコードは、保護されていないレコードを送信するために使用され、DTLSCiphertextレコードは保護されたレコードを送信するために使用されます。"
     },
     {
       "indent": 3,
       "text": "The DTLS record formats are shown below. Unless explicitly stated the meaning of the fields is unchanged from previous TLS/DTLS versions.",
-      "ja": "DTLSレコードフォーマットを以下に示します。明示的に明示的に記載されていない限り、フィールドの意味は以前のTLS / DTLSバージョンから変更されません。"
+      "ja": "DTLSレコードフォーマットを以下に示します。明示的に記載されていない限り、フィールドの意味は以前のTLS / DTLSバージョンから変更されません。"
     },
     {
       "indent": 7,
@@ -421,17 +405,17 @@
     {
       "indent": 3,
       "text": "legacy_record_version: This value MUST be set to {254, 253} for all records other than the initial ClientHello (i.e., one not generated after a HelloRetryRequest), where it may also be {254, 255} for compatibility purposes. It MUST be ignored for all purposes. See [TLS13], Appendix D.1 for the rationale for this.",
-      "ja": "LEGACY_RECORD_VERSION：最初のClientHello以外のすべてのレコード（すなわち、HellOretryRequestの後に生成されていない1つ）について、この値は{254,255}でも互換性を目的としても{254,253}に設定する必要があります。すべての目的で無視する必要があります。この根拠のための議論については、[TLS13]、付録D.1を参照してください。"
+      "ja": "legacy_record_version: 最初のClientHello（つまり、HelloRetryRequestの後に生成されたものではないもの）以外のすべてのレコードについて、この値は{254, 253}に設定されなければなりません（MUST）。最初のClientHelloでは、互換性のために{254, 255}に設定される場合もあります。これはすべての目的で無視されなければなりません（MUST）。これの根拠については、[TLS13]の付録D.1を参照してください。"
     },
     {
       "indent": 3,
       "text": "epoch: The least significant 2 bytes of the connection epoch value.",
-      "ja": "エポック：接続の最小2バイトのエポック値。"
+      "ja": "エポック：接続エポック値の最下位2バイト。"
     },
     {
       "indent": 3,
       "text": "unified_hdr: The unified header (unified_hdr) is a structure of variable length, shown in Figure 3.",
-      "ja": "unified_hdr：unifiedヘッダー（unified_hdr）は、図3に示すように変数長の構造です。"
+      "ja": "unified_hdr：unifiedヘッダー（unified_hdr）は、図3に示すように可変長の構造です。"
     },
     {
       "indent": 3,
@@ -452,7 +436,7 @@
     {
       "indent": 3,
       "text": "Fixed Bits: The three high bits of the first byte of the unified header are set to 001. This ensures that the value will fit within the DTLS region when multiplexing is performed as described in [RFC7983]. It also ensures that distinguishing encrypted DTLS 1.3 records from encrypted DTLS 1.2 records is possible when they are carried on the same host/port quartet; such multiplexing is only possible when CIDs [RFC9146] are in use, in which case DTLS 1.2 records will have the content type tls12_cid (25).",
-      "ja": "固定ビット：Unified Headerの最初のバイトの3つのハイビットは001に設定されています。これにより、[RFC7983]に記載されているように多重化が実行されると、値がDTLS領域内に収まるようになります。また、暗号化されたDTLS 1.3レコードからの暗号化されたDTLS 1.3レコードが同じホスト/ポートカルテットで持ち運ばれるときに可能です。このような多重化は、CIDS [RFC9146]が使用されている場合にのみ可能です。その場合、DTLS 1.2レコードにはコンテンツタイプTLS12_CID（25）があります。"
+      "ja": "固定ビット：統合ヘッダーの最初のバイトの上位3ビットは001に設定されています。これにより、[RFC7983]に記載されているように多重化が実行されると、値がDTLS領域内に収まるようになります。また、暗号化されたDTLS 1.2レコードから暗号化されたDTLS 1.3レコードを区別することが、同じホスト/ポートカルテットで伝送されるときに可能です。このような多重化は、CID [RFC9146]が使用されている場合にのみ可能です。その場合、DTLS 1.2レコードにはコンテンツタイプtls12_cid（25）があります。"
     },
     {
       "indent": 3,
@@ -492,7 +476,7 @@
     {
       "indent": 3,
       "text": "As with previous versions of DTLS, multiple DTLSPlaintext and DTLSCiphertext records can be included in the same underlying transport datagram.",
-      "ja": "以前のバージョンのDTLSと同様に、複数のDTLSPleantextとDTLScipherTextレコードを同じ基礎となるトランスポートデータグラムに含めることができます。"
+      "ja": "以前のバージョンのDTLSと同様に、複数のDTLSPlaintextとDTLSCiphertextレコードを同じ基礎となるトランスポートデータグラムに含めることができます。"
     },
     {
       "indent": 3,
@@ -518,17 +502,17 @@
     {
       "indent": 3,
       "text": "The length field MAY be omitted by clearing the L bit, which means that the record consumes the entire rest of the datagram in the lower level transport. In this case, it is not possible to have multiple DTLSCiphertext format records without length fields in the same datagram. Omitting the length field MUST only be used for the last record in a datagram. Implementations MAY mix records with and without length fields on the same connection.",
-      "ja": "Lビットをクリアすることによって長さフィールドは省略されてもよい。これは、レコードが下位レベルのトランスポートでデータグラムの残りの部分全体を消費することを意味します。この場合、同じデータグラムに長さフィールドなしで複数のDTLScipherTextフォーマットレコードを持つことはできません。長さフィールドを省略するには、データグラム内の最後のレコードにのみ使用する必要があります。実装は、同じ接続に長さフィールドの有無にかかわらずレコードを混在させることができます。"
+      "ja": "Lビットをクリアすることによって長さフィールドは省略されてもよい。これは、レコードが下位レベルのトランスポートでデータグラムの残りの部分全体を消費することを意味します。この場合、同じデータグラムに長さフィールドなしで複数のDTLScipherTextフォーマットレコードを持つことはできません。長さフィールドを省略することは、データグラム内の最後のレコードにのみ使用されなければなりません。実装は、同じ接続に長さフィールドの有無にかかわらずレコードを混在させることができます。"
     },
     {
       "indent": 3,
       "text": "If a Connection ID is negotiated, then it MUST be contained in all datagrams. Sending implementations MUST NOT mix records from multiple DTLS associations in the same datagram. If the second or later record has a connection ID which does not correspond to the same association used for previous records, the rest of the datagram MUST be discarded.",
-      "ja": "接続IDがネゴシエートされている場合、すべてのデータグラムに含める必要があります。実装の送信は、同じデータグラムの複数のDTLSアソシエーションからレコードを組み合わせてはなりません。2番目以降のレコードに、以前のレコードに使用された同じ関連付けに対応しない接続IDがある場合、データグラムの残りの部分を破棄する必要があります。"
+      "ja": "接続IDがネゴシエートされている場合、すべてのデータグラムに含める必要があります。送信側の実装は、同じデータグラムの複数のDTLSアソシエーションからレコードを組み合わせてはなりません。2番目以降のレコードに、以前のレコードに使用された同じ関連付けに対応しない接続IDがある場合、データグラムの残りの部分を破棄する必要があります。"
     },
     {
       "indent": 3,
       "text": "When expanded, the epoch and sequence number can be combined into an unpacked RecordNumber structure, as shown below:",
-      "ja": "拡張された場合、以下に示すように、エポック番号とシーケンス番号を解凍されていないレコード番号構造に組み合わせることができます。"
+      "ja": "拡張された場合、以下に示すように、エポックとシーケンス番号を展開されたレコード番号構造に組み合わせることができます。"
     },
     {
       "indent": 7,
@@ -539,23 +523,23 @@
     {
       "indent": 3,
       "text": "This 128-bit value is used in the ACK message as well as in the \"record_sequence_number\" input to the Authenticated Encryption with Associated Data (AEAD) function. The entire header value shown in Figure 4 (but prior to record number encryption; see Section 4.2.3) is used as the additional data value for the AEAD function. For instance, if the minimal variant is used, the Associated Data (AD) is 2 octets long. Note that this design is different from the additional data calculation for DTLS 1.2 and for DTLS 1.2 with Connection IDs. In DTLS 1.3 the 64-bit sequence_number is used as the sequence number for the AEAD computation; unlike DTLS 1.2, the epoch is not included.",
-      "ja": "この128ビット値は、ACKメッセージと、関連するデータ（AEAD）関数を使用した認証された暗号化への「Record_Sequence_Number」入力で使用されます。図4に示すヘッダー値全体（ただし、レコード番号暗号化の前、セクション4.2.3を参照）は、AEAD関数の追加データ値として使用されます。たとえば、最小限のバリアントを使用する場合、関連データ（AD）の長さは2オクターです。この設計は、DTLS 1.2および接続IDを使用したDTLS 1.2の追加データ計算とは異なることに注意してください。DTLS 1.3では、64ビットSequence_NumberがAEAD計算のシーケンス番号として使用されます。DTLS 1.2とは異なり、エポックは含まれていません。"
+      "ja": "この128ビット値は、ACKメッセージと、認証付き暗号（AEAD）関数への「record_sequence_number」入力で使用されます。図4に示すヘッダー値全体（ただし、レコード番号暗号化の前、セクション4.2.3を参照）は、AEAD関数の追加データ値として使用されます。たとえば、最小限のバリアントを使用する場合、関連データ（AD）の長さは2オクテットです。この設計は、DTLS 1.2および接続IDを使用したDTLS 1.2の追加データ計算とは異なることに注意してください。DTLS 1.3では、64ビットsequence_numberがAEAD計算のシーケンス番号として使用されます。DTLS 1.2とは異なり、エポックは含まれていません。"
     },
     {
       "indent": 0,
       "text": "4.1. Demultiplexing DTLS Records",
       "section_title": true,
-      "ja": "4.1. DTLSレコードの再屈折"
+      "ja": "4.1. DTLSレコードの逆多重化"
     },
     {
       "indent": 3,
       "text": "DTLS 1.3's header format is more complicated to demux than DTLS 1.2, which always carried the content type as the first byte. As described in Figure 5, the first byte determines how an incoming DTLS record is demultiplexed. The first 3 bits of the first byte distinguish a DTLS 1.3 encrypted record from record types used in previous DTLS versions and plaintext DTLS 1.3 record types. Hence, the range 32 (0b0010 0000) to 63 (0b0011 1111) needs to be excluded from future allocations by IANA to avoid problems while demultiplexing; see Section 14. Implementations can demultiplex DTLS 1.3 records by examining the first byte as follows:",
-      "ja": "DTLS 1.3のヘッダーフォーマットはDTLS 1.2よりもDEMUXに複雑です。これは、常にコンテンツタイプを最初のバイトとしました。図5に記載されているように、最初のバイトは、着信DTLSレコードがどのように分離されるかを決定します。最初のバイトの最初の3ビットは、以前のDTLSバージョンおよびPlaintext DTLS 1.3レコードタイプで使用されているレコードタイプからDTLS 1.3暗号化レコードを区別します。したがって、逆多重化中に問題を回避するために、IANAによる将来の割り当てから範囲の32（0B0010 0000）範囲から除外する必要があります。第14章を参照してください。実装は、最初のバイトを次のように調べることによってDTLS 1.3レコードをデマルチプレックスすることができます。"
+      "ja": "DTLS 1.3のヘッダーフォーマットはDTLS 1.2よりも逆多重化（demux）するのが複雑です。DTLS 1.2では常にコンテンツタイプが最初のバイトにあったためです。図5に記載されているように、最初のバイトは、着信DTLSレコードがどのように逆多重化されるかを決定します。最初のバイトの最初の3ビットは、以前のDTLSバージョンおよびプレーンテキストDTLS 1.3レコードタイプで使用されているレコードタイプからDTLS 1.3暗号化レコードを区別します。したがって、逆多重化中に問題を回避するために、IANAによる将来の割り当てから32（0b0010 0000）から63（0b0011 1111）の範囲を除外する必要があります。第14章を参照してください。実装は、最初のバイトを次のように調べることによってDTLS 1.3レコードを逆多重化することができます。"
     },
     {
       "indent": 3,
       "text": "* If the first byte is alert(21), handshake(22), or ack(proposed, 26), the record MUST be interpreted as a DTLSPlaintext record.",
-      "ja": "* 最初のバイトがアラート（21）、ハンドシェイク（22）、またはACK（提案、26）の場合、レコードはDTLSPLANTEXTレコードとして解釈する必要があります。"
+      "ja": "* 最初のバイトがアラート（21）、ハンドシェイク（22）、またはACK（提案、26）の場合、レコードはDTLSPlaintextレコードとして解釈する必要があります。"
     },
     {
       "indent": 3,
@@ -565,12 +549,12 @@
     {
       "indent": 3,
       "text": "* Otherwise, the record MUST be rejected as if it had failed deprotection, as described in Section 4.5.2.",
-      "ja": "* それ以外の場合、セクション4.5.2で説明されているように、記録は脱保護に失敗したかのように拒否されなければなりません。"
+      "ja": "* それ以外の場合、セクション4.5.2で説明されているように、記録は保護解除に失敗したかのように拒否されなければなりません。"
     },
     {
       "indent": 3,
       "text": "Figure 5 shows this demultiplexing procedure graphically, taking DTLS 1.3 and earlier versions of DTLS into account.",
-      "ja": "図5は、この逆転換手順をグラフィカルに示しており、DTLS 1.3および以前のバージョンのDTLSを考慮に入れています。"
+      "ja": "図5は、この逆多重化手順をグラフィカルに示しており、DTLS 1.3および以前のバージョンのDTLSを考慮に入れています。"
     },
     {
       "indent": 3,
@@ -581,7 +565,7 @@
     {
       "indent": 11,
       "text": "Figure 5: Demultiplexing DTLS 1.2 and DTLS 1.3 Records",
-      "ja": "図5：DTLS 1.2およびDTLS 1.3レコードの反発"
+      "ja": "図5：DTLS 1.2およびDTLS 1.3レコードの逆多重化"
     },
     {
       "indent": 0,
@@ -592,12 +576,12 @@
     {
       "indent": 3,
       "text": "DTLS uses an explicit or partly explicit sequence number, rather than an implicit one, carried in the sequence_number field of the record. Sequence numbers are maintained separately for each epoch, with each sequence_number initially being 0 for each epoch.",
-      "ja": "DTLSは、記録のsequence_numberフィールドに搭載されている、暗黙的なものではなく、明示的または部分的に明示的なシーケンス番号を使用します。シーケンス番号は各エポックについて個別に維持され、各Sequence_Numberは最初の各エポックについて0である。"
+      "ja": "DTLSは、記録のsequence_numberフィールドに搭載されている、暗黙的なものではなく、明示的または部分的に明示的なシーケンス番号を使用します。シーケンス番号は各エポックについて個別に維持され、各Sequence_Numberは各エポックの開始時に0になる。"
     },
     {
       "indent": 3,
       "text": "The epoch number is initially zero and is incremented each time keying material changes and a sender aims to rekey. More details are provided in Section 6.1.",
-      "ja": "エポック数は最初はゼロであり、キーイングマテリアルが変更されるたびに増加し、送信者が再キーを目指します。詳細については、セクション6.1に記載されています。"
+      "ja": "エポック数は最初はゼロであり、キーイングマテリアルが変更されるたびに増加し、送信者が再キーイングしようとします。詳細については、セクション6.1に記載されています。"
     },
     {
       "indent": 0,
@@ -608,22 +592,22 @@
     {
       "indent": 3,
       "text": "Because DTLS records could be reordered, a record from epoch M may be received after epoch N (where N > M) has begun. Implementations SHOULD discard records from earlier epochs but MAY choose to retain keying material from previous epochs for up to the default MSL specified for TCP [RFC0793] to allow for packet reordering. (Note that the intention here is that implementers use the current guidance from the IETF for MSL, as specified in [RFC0793] or successors, not that they attempt to interrogate the MSL that the system TCP stack is using.)",
-      "ja": "DTLSレコードを並べ替えることができるので、EPOCH MからのレコードをEPOCH N（N> M）が開始された後に受信されます。実装は以前のエポックからのレコードを廃棄する必要がありますが、Packet Roderingを許可するために、TCP [RFC0793]に指定されたデフォルトのMSLまでの前のエポックからキーワード資料を維持することを選択できます。（ここでの意図は、システムTCPスタックが使用しているMSLの問い合わせを試みることは、[RFC0793]または後継者に指定されているように、実装者はMSLのIETFから現在のガイダンスを使用することです。）"
+      "ja": "DTLSレコードを並べ替えることができるので、エポックN（N > M）が開始された後にエポックMからのレコードが受信される可能性があります。実装は以前のエポックからのレコードを廃棄する必要がありますが、パケットの並べ替えを許可するために、TCP [RFC0793]に指定されたデフォルトのMSLまでの前のエポックからキーイングマテリアルを維持することを選択できます。（ここでの意図は、システムTCPスタックが使用しているMSLを問い合わせようとするのではなく、[RFC0793]またはその後継で指定されているように、実装者がMSLに関するIETFからの現在のガイダンスを使用することです。）"
     },
     {
       "indent": 3,
       "text": "Conversely, it is possible for records that are protected with the new epoch to be received prior to the completion of a handshake. For instance, the server may send its Finished message and then start transmitting data. Implementations MAY either buffer or discard such records, though when DTLS is used over reliable transports (e.g., SCTP [RFC4960]), they SHOULD be buffered and processed once the handshake completes. Note that TLS's restrictions on when records may be sent still apply, and the receiver treats the records as if they were sent in the right order.",
-      "ja": "逆に、ハンドシェイクが完了する前に、新しいエポックで保護されているレコードが受信されることが可能です。例えば、サーバはその完成メッセージを送信してからデータの送信を開始することができる。実装は、そのようなレコードをバッファまたは破棄することができますが、DTLSが信頼できるトランスポートにわたって使用されます（例えば、SCTP [RFC4960]）、ハンドシェイクが完了すると、それらをバッファリングして処理する必要があります。レコードが送信される可能性がある場合のTLSの制限が適用され、レコードはレコードを正しい順序で送信されたかのように扱います。"
+      "ja": "逆に、ハンドシェイクが完了する前に、新しいエポックで保護されているレコードが受信されることが可能です。例えば、サーバはそのFinishedメッセージを送信してからデータの送信を開始することができる。実装は、そのようなレコードをバッファまたは破棄することができますが、DTLSが信頼できるトランスポートにわたって使用されます（例えば、SCTP [RFC4960]）、ハンドシェイクが完了すると、それらをバッファリングして処理する必要があります。レコードが送信される可能性がある場合のTLSの制限が適用され、受信者はレコードを正しい順序で送信されたかのように扱います。"
     },
     {
       "indent": 3,
       "text": "Implementations MUST send retransmissions of lost messages using the same epoch and keying material as the original transmission.",
-      "ja": "実装は、元の送信として同じエポックとキーイングの資料を使用して失われたメッセージの再送信を送信する必要があります。"
+      "ja": "実装は、元の送信と同じエポックとキーイングの資料を使用して失われたメッセージの再送信を送信する必要があります。"
     },
     {
       "indent": 3,
       "text": "Implementations MUST either abandon an association or rekey prior to allowing the sequence number to wrap.",
-      "ja": "実装は、シーケンス番号を折り返す前に、関連付けまたはリリーキーを放棄する必要があります。"
+      "ja": "実装は、シーケンス番号を折り返す前に、関連付けまたは再キーイングを放棄する必要があります。"
     },
     {
       "indent": 3,
@@ -639,28 +623,28 @@
     {
       "indent": 3,
       "text": "When receiving protected DTLS records, the recipient does not have a full epoch or sequence number value in the record and so there is some opportunity for ambiguity. Because the full sequence number is used to compute the per-record nonce and the epoch determines the keys, failure to reconstruct these values leads to failure to deprotect the record, and so implementations MAY use a mechanism of their choice to determine the full values. This section provides an algorithm which is comparatively simple and which implementations are RECOMMENDED to follow.",
-      "ja": "保護されたDTLSレコードを受信する場合、受信者はレコードに完全なエポックまたはシーケンス番号値を持っていないため、あいまいさの機会があります。完全なシーケンス番号が記録ごとのノンセを計算するために使用され、エポックはキーを決定するため、これらの値を再構築できないとレコードを剥奪できないため、実装は選択のメカニズムを使用して完全な値を決定する可能性があります。このセクションでは、比較的単純で、どの実装が従うことをお勧めするアルゴリズムを提供します。"
+      "ja": "保護されたDTLSレコードを受信する場合、受信者はレコードに完全なエポックまたはシーケンス番号値を持っていないため、あいまいさの機会があります。完全なシーケンス番号が記録ごとのナンスを計算するために使用され、エポックはキーを決定するため、これらの値を再構築できないとレコードを保護解除できないため、実装は選択のメカニズムを使用して完全な値を決定する可能性があります。このセクションでは、比較的単純で、実装が従うことを推奨するアルゴリズムを提供します。"
     },
     {
       "indent": 3,
       "text": "If the epoch bits match those of the current epoch, then implementations SHOULD reconstruct the sequence number by computing the full sequence number which is numerically closest to one plus the sequence number of the highest successfully deprotected record in the current epoch.",
-      "ja": "エポックビットが現在のエポックのビットと一致する場合、実装は、現在のエポックで最も高い脱保護レコードのシーケンス番号に数値的に最も近い完全なシーケンス番号を計算することにより、シーケンス番号を再構築する必要があります。"
+      "ja": "エポックビットが現在のエポックのビットと一致する場合、実装は、現在のエポックで最も高い保護解除されたレコードのシーケンス番号プラス1に数値的に最も近い完全なシーケンス番号を計算することにより、シーケンス番号を再構築する必要があります。"
     },
     {
       "indent": 3,
       "text": "During the handshake phase, the epoch bits unambiguously indicate the correct key to use. After the handshake is complete, if the epoch bits do not match those from the current epoch, implementations SHOULD use the most recent past epoch which has matching bits, and then reconstruct the sequence number for that epoch as described above.",
-      "ja": "握手段階では、エポックは使用する正しいキーを明確に示しています。握手が完了した後、エポックビットが現在のエポックのものと一致しない場合、実装は一致するビットを持つ最新の過去のエポックを使用し、上記のようにそのエポックのシーケンス番号を再構築する必要があります。"
+      "ja": "ハンドシェイク段階では、エポックビットは使用する正しいキーを明確に示しています。握手が完了した後、エポックビットが現在のエポックのものと一致しない場合、実装は一致するビットを持つ最新の過去のエポックを使用し、上記のようにそのエポックのシーケンス番号を再構築する必要があります。"
     },
     {
       "indent": 0,
       "text": "4.2.3. Record Number Encryption",
       "section_title": true,
-      "ja": "4.2.3. 記録番号暗号化"
+      "ja": "4.2.3. レコード番号暗号化"
     },
     {
       "indent": 3,
       "text": "In DTLS 1.3, when records are encrypted, record sequence numbers are also encrypted. The basic pattern is that the underlying encryption algorithm used with the AEAD algorithm is used to generate a mask which is then XORed with the sequence number.",
-      "ja": "DTLS 1.3では、レコードが暗号化されている場合、レコードシーケンス番号も暗号化されます。基本パターンは、AEDアルゴリズムで使用される基礎となる暗号化アルゴリズムを使用してマスクを生成することで、シーケンス番号とXORSを生成することです。"
+      "ja": "DTLS 1.3では、レコードが暗号化されている場合、レコードシーケンス番号も暗号化されます。基本パターンは、AEADアルゴリズムで使用される基礎となる暗号化アルゴリズムを使用してマスクを生成することで、シーケンス番号とXORすることです。"
     },
     {
       "indent": 3,
@@ -670,17 +654,19 @@
     {
       "indent": 5,
       "text": "Mask = AES-ECB(sn_key, Ciphertext[0..15])",
-      "ja": "mask = aes-ecb（sn_key、ciphertext [0..15]）"
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "When the AEAD is based on ChaCha20, then the mask is generated by treating the first 4 bytes of the ciphertext as the block counter and the next 12 bytes as the nonce, passing them to the ChaCha20 block function (Section 2.3 of [CHACHA]):",
-      "ja": "AEADがChacha20に基づいている場合、マスクは、Ciphertextの最初の4バイトをブロックカウンターとして、次の12バイトをNonCeとして扱い、Chacha20ブロック関数（[Chacha]のセクション2.3）に渡すことで生成されます。："
+      "ja": "AEADがChacha20に基づいている場合、マスクは、Ciphertextの最初の4バイトをブロックカウンターとして、次の12バイトをNonCeとして扱い、Chacha20ブロック関数（[Chacha]のセクション2.3）に渡すことで生成されます："
     },
     {
       "indent": 5,
       "text": "Mask = ChaCha20(sn_key, Ciphertext[0..3], Ciphertext[4..15])",
-      "ja": "mask = chacha20（sn_key、ciphertext [0..3]、ciphertext [4..15]）"
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -690,22 +676,23 @@
     {
       "indent": 5,
       "text": "[sender]_sn_key = HKDF-Expand-Label(Secret, \"sn\", \"\", key_length)",
-      "ja": "[送信者] _SN_KEY = hkdf-expand-label（secret、 \"sn\"、 \"\"、key_length）"
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "[sender] denotes the sending side. The per-epoch Secret value to be used is described in Section 7.3 of [TLS13]. Note that a new key is used for each epoch: because the epoch is sent in the clear, this does not result in ambiguity.",
-      "ja": "[送信者]送信側を表します。使用するエポック秘密値は、[TLS13]のセクション7.3に記載されている。エポックごとに新しいキーが使用されていることに注意してください。エポックは明確に送信されるため、これはあいまいさにはなりません。"
+      "ja": "[送信者]送信側を表します。使用するエポックごとのSecret値は、[TLS13]のセクション7.3に記載されています。エポックごとに新しいキーが使用されていることに注意してください。エポックは平文で送信されるため、これはあいまいさにはなりません。"
     },
     {
       "indent": 3,
       "text": "The encrypted sequence number is computed by XORing the leading bytes of the mask with the on-the-wire representation of the sequence number. Decryption is accomplished by the same process.",
-      "ja": "暗号化されたシーケンス番号は、シーケンス番号のオンザワイヤ表現でマスクの先行バイトをXaringすることによって計算されます。復号化は同じプロセスによって達成されます。"
+      "ja": "暗号化されたシーケンス番号は、シーケンス番号のワイヤ上の表現とマスクの先頭バイトの排他的論理和（XOR）をとることによって計算されます。復号化も同じプロセスによって達成されます。"
     },
     {
       "indent": 3,
       "text": "This procedure requires the ciphertext length to be at least 16 bytes. Receivers MUST reject shorter records as if they had failed deprotection, as described in Section 4.5.2. Senders MUST pad short plaintexts out (using the conventional record padding mechanism) in order to make a suitable-length ciphertext. Note that most of the DTLS AEAD algorithms have a 16 byte authentication tag and need no padding. However, some algorithms, such as TLS_AES_128_CCM_8_SHA256, have a shorter authentication tag and may require padding for short inputs.",
-      "ja": "この手順では、暗号文の長さが少なくとも16バイトである必要があります。セクション4.5.2で説明されているように、受信者は脱保護に失敗したかのように短い記録を拒否する必要があります。送信者は、適切な長さの暗号文を作成するために、短いプレーンテキストを（従来のレコードパディングメカニズムを使用して）パッドアウトする必要があります。DTLS AEADアルゴリズムのほとんどには16バイト認証タグがあり、パディングが必要ではないことに注意してください。ただし、TLS_AES_128_CCM_8_SHA256などの一部のアルゴリズムには、認証タグが短く、短い入力にパディングが必要になる場合があります。"
+      "ja": "この手順では、暗号文の長さが少なくとも16バイトである必要があります。セクション4.5.2で説明されているように、受信者は保護解除に失敗したかのように短い記録を拒否する必要があります。送信者は、適切な長さの暗号文を作成するために、短いプレーンテキストを（従来のレコードパディングメカニズムを使用して）パッドアウトする必要があります。DTLS AEADアルゴリズムのほとんどには16バイト認証タグがあり、パディングが必要ではないことに注意してください。ただし、TLS_AES_128_CCM_8_SHA256などの一部のアルゴリズムには、認証タグが短く、短い入力にパディングが必要になる場合があります。"
     },
     {
       "indent": 3,
@@ -715,7 +702,7 @@
     {
       "indent": 3,
       "text": "Note that sequence number encryption is only applied to the DTLSCiphertext structure and not to the DTLSPlaintext structure, even though it also contains a sequence number.",
-      "ja": "シーケンス番号暗号化は、シーケンス番号も含まれていても、DTLSPLANTEXT構造にはDTLSciphertext構造にのみ適用されることに注意してください。"
+      "ja": "シーケンス番号暗号化は、シーケンス番号も含まれていても、DTLSPlaintext構造には適用されず、DTLSCiphertext構造にのみ適用されることに注意してください。"
     },
     {
       "indent": 0,
@@ -726,27 +713,27 @@
     {
       "indent": 3,
       "text": "DTLS messages MAY be fragmented into multiple DTLS records. Each DTLS record MUST fit within a single datagram. In order to avoid IP fragmentation, clients of the DTLS record layer SHOULD attempt to size records so that they fit within any Path MTU (PMTU) estimates obtained from the record layer. For more information about PMTU issues, see Section 4.4.",
-      "ja": "DTLSメッセージは、複数のDTLSレコードに断片化される場合があります。各DTLSレコードは、単一のデータグラム内に適合する必要があります。IPの断片化を回避するために、DTLSレコードレイヤーのクライアントは、レコード（PMTU）の推定値に適合するように、レコードのサイズをサイズしようとする必要があります。PMTUの問題の詳細については、セクション4.4を参照してください。"
+      "ja": "DTLSメッセージは、複数のDTLSレコードに断片化される場合があります。各DTLSレコードは、単一のデータグラム内に適合する必要があります。IPの断片化を回避するために、DTLSレコードレイヤーのクライアントは、パスMTU（PMTU）の推定値に適合するように、レコードのサイズをサイズしようとする必要があります。PMTUの問題の詳細については、セクション4.4を参照してください。"
     },
     {
       "indent": 3,
       "text": "Multiple DTLS records MAY be placed in a single datagram. Records are encoded consecutively. The length field from DTLS records containing that field can be used to determine the boundaries between records. The final record in a datagram can omit the length field. The first byte of the datagram payload MUST be the beginning of a record. Records MUST NOT span datagrams.",
-      "ja": "複数のDTLSレコードを単一のデータグラムに配置できます。レコードは連続してエンコードされています。そのフィールドを含むDTLSレコードからの長さフィールドは、レコード間の境界を決定するために使用できます。データグラムの最後のレコードは、長さフィールドを省略できます。データグラムペイロードの最初のバイトはレコードの先頭でなければなりません。レコードはデータグラムに掲載してはいけません。"
+      "ja": "複数のDTLSレコードを単一のデータグラムに配置できます。レコードは連続してエンコードされています。そのフィールドを含むDTLSレコードからの長さフィールドは、レコード間の境界を決定するために使用できます。データグラムの最後のレコードは、長さフィールドを省略できます。データグラムペイロードの最初のバイトはレコードの先頭でなければなりません。レコードはデータグラムにまたがってはいけません。"
     },
     {
       "indent": 3,
       "text": "DTLS records without CIDs do not contain any association identifiers, and applications must arrange to multiplex between associations. With UDP, the host/port number is used to look up the appropriate security association for incoming records without CIDs.",
-      "ja": "CIDのないDTLSレコードには関連性の識別子が含まれておらず、アプリケーションはアソシエーション間の多重に手配する必要があります。UDPを使用すると、ホスト/ポート番号を使用して、CIDなしで着信レコードに適切なセキュリティ協会を検索します。"
+      "ja": "CIDのないDTLSレコードにはアソシエーション識別子が含まれておらず、アプリケーションはアソシエーション間の多重化を手配する必要があります。UDPを使用すると、ホスト/ポート番号を使用して、CIDなしで着信レコードに適切なセキュリティアソシエーションを検索します。"
     },
     {
       "indent": 3,
       "text": "Some transports, such as DCCP [RFC4340], provide their own sequence numbers. When carried over those transports, both the DTLS and the transport sequence numbers will be present. Although this introduces a small amount of inefficiency, the transport layer and DTLS sequence numbers serve different purposes; therefore, for conceptual simplicity, it is superior to use both sequence numbers.",
-      "ja": "DCCP [RFC4340]などの一部のトランスポートは、独自のシーケンス番号を提供します。これらの輸送機関を継承すると、DTLと輸送シーケンス番号の両方が存在します。これは少量の非効率性を導入しますが、輸送層とDTLSシーケンス番号はさまざまな目的を果たします。したがって、概念的なシンプルさのために、両方のシーケンス番号を使用するよりも優れています。"
+      "ja": "DCCP [RFC4340]などの一部のトランスポートは、独自のシーケンス番号を提供します。それらのトランスポート上で運ばれる場合、DTLSと輸送シーケンス番号の両方が存在します。これは少量の非効率性を導入しますが、輸送層とDTLSシーケンス番号はさまざまな目的を果たします。したがって、概念的なシンプルさのために、両方のシーケンス番号を使用する方が優れています。"
     },
     {
       "indent": 3,
       "text": "Some transports provide congestion control for traffic carried over them. If the congestion window is sufficiently narrow, DTLS handshake retransmissions may be held rather than transmitted immediately, potentially leading to timeouts and spurious retransmission. When DTLS is used over such transports, care should be taken not to overrun the likely congestion window. [RFC5238] defines a mapping of DTLS to DCCP that takes these issues into account.",
-      "ja": "一部の輸送機は、それらを引き継がれた交通に混雑制御を提供します。輻輳ウィンドウが十分に狭い場合、DTLSハンドシェイクの再送信はすぐに送信されるのではなく保持される場合があり、タイムアウトや偽りの再送信につながる可能性があります。このような輸送でDTLが使用される場合、輻輳ウィンドウをオーバーランしないように注意する必要があります。[RFC5238]は、これらの問題を考慮に入れるDCCPへのDTLのマッピングを定義します。"
+      "ja": "一部のトランスポートは、それらを引き継がれた交通に混雑制御を提供します。輻輳ウィンドウが十分に狭い場合、DTLSハンドシェイクの再送信はすぐに送信されるのではなく保持される場合があり、タイムアウトや偽りの再送信につながる可能性があります。このような輸送でDTLSが使用される場合、輻輳ウィンドウをオーバーランしないように注意する必要があります。[RFC5238]は、これらの問題を考慮に入れるDCCPへのDTLSのマッピングを定義します。"
     },
     {
       "indent": 0,
@@ -757,7 +744,7 @@
     {
       "indent": 3,
       "text": "In general, DTLS's philosophy is to leave PMTU discovery to the application. However, DTLS cannot completely ignore the PMTU for three reasons:",
-      "ja": "一般に、DTLSの哲学は、PMTUの発見をアプリケーションに任せることです。ただし、DTLは3つの理由でPMTUを完全に無視することはできません。"
+      "ja": "一般に、DTLSの哲学は、PMTUの発見をアプリケーションに任せることです。ただし、DTLSは3つの理由でPMTUを完全に無視することはできません。"
     },
     {
       "indent": 3,
@@ -767,17 +754,17 @@
     {
       "indent": 3,
       "text": "* In some implementations, the application may not directly talk to the network, in which case the DTLS stack may absorb ICMP \"Datagram Too Big\" indications [RFC1191] or ICMPv6 \"Packet Too Big\" indications [RFC4443].",
-      "ja": "* いくつかの実装では、アプリケーションがネットワークに直接通知することはできません。その場合、DTLSスタックはICMP「データグラムが大きすぎる」datagramを吸収する可能性があります。"
+      "ja": "* いくつかの実装では、アプリケーションがネットワークに直接通信しない場合があります。その場合、DTLSスタックはICMP「Datagram Too Big」通知 [RFC1191] や ICMPv6「Packet Too Big」通知 [RFC4443] を吸収する可能性があります。"
     },
     {
       "indent": 3,
       "text": "* The DTLS handshake messages can exceed the PMTU.",
-      "ja": "* DTLSハンドシェイクメッセージはPMTUを超えることができます。"
+      "ja": "* DTLSハンドシェイクメッセージはPMTUを超える可能性があります。"
     },
     {
       "indent": 3,
       "text": "In order to deal with the first two issues, the DTLS record layer SHOULD behave as described below.",
-      "ja": "最初の2つの問題に対処するために、DTLSレコードレイヤーは以下に説明するように動作する必要があります。"
+      "ja": "最初の2つの問題に対処するために、DTLSレコードレイヤーは以下に説明するように動作すべきです。"
     },
     {
       "indent": 3,
@@ -802,17 +789,17 @@
     {
       "indent": 3,
       "text": "The DTLS record layer SHOULD also allow the upper layer protocol to discover the amount of record expansion expected by the DTLS processing; alternately, it MAY report PMTU estimates minus the estimated expansion from the transport layer and DTLS record framing.",
-      "ja": "DTLSレコードレイヤーは、上位レイヤプロトコルがDTLS処理によって予想されるレコード拡張の量を発見することもできます。あるいは、PMTU推定値からトランスポート層およびDTLSレコードフレーミングからの推定拡大を引いたものに報告することができる。"
+      "ja": "DTLSレコードレイヤーは、上位レイヤプロトコルがDTLS処理によって予想されるレコード拡張の量を発見できるようにすべきです。あるいは、PMTU推定値からトランスポート層およびDTLSレコードフレーミングからの推定拡大を引いたものに報告してもよい。"
     },
     {
       "indent": 3,
       "text": "Note that DTLS does not defend against spoofed ICMP messages; implementations SHOULD ignore any such messages that indicate PMTUs below the IPv4 and IPv6 minimums of 576 and 1280 bytes, respectively.",
-      "ja": "DTLSは、偽装されたICMPメッセージに対して損なわれません。実装は、それぞれIPv4およびIPv6の最小値576および1280バイトの下のPMTUSを示すそのようなメッセージを無視するべきです。"
+      "ja": "DTLSは、偽装されたICMPメッセージに対して防御しません。実装は、それぞれIPv4およびIPv6の最小値576および1280バイトの下のPMTUSを示すそのようなメッセージを無視するべきです。"
     },
     {
       "indent": 3,
       "text": "If there is a transport protocol indication that the PMTU was exceeded (either via ICMP or via a refusal to send the datagram as in Section 14 of [RFC4340]), then the DTLS record layer MUST inform the upper layer protocol of the error.",
-      "ja": "PMTUを超えたというトランスポートプロトコルの表示がある場合（ICMPを介して、または[RFC4340]セクション14のようにデータグラムを送信することを拒否します）、DTLSレコードレイヤーはエラーの上層プロトコルに通知する必要があります。"
+      "ja": "PMTUを超えたというトランスポートプロトコルの通知がある場合（ICMPを介して、または[RFC4340]セクション14のようにデータグラムの送信拒否を介して）、DTLSレコードレイヤーは上層プロトコルにエラーを通知する必要があります。"
     },
     {
       "indent": 3,
@@ -822,7 +809,7 @@
     {
       "indent": 3,
       "text": "* Where allowed by the underlying transport protocol, the upper layer protocol SHOULD be allowed to set the state of the Don't Fragment (DF) bit (in IPv4) or prohibit local fragmentation (in IPv6).",
-      "ja": "* 基礎となるトランスポートプロトコルによって許可されている場合、上位レイヤプロトコルは、NOTフラグメント（IPv4）の状態（IPv4）の状態を設定するか、ローカルフラグメンテーションを禁止する必要があります（IPv6）。"
+      "ja": "* 基礎となるトランスポートプロトコルによって許可されている場合、上位レイヤプロトコルは、Don't Fragment (DF)（IPv4）の状態を設定するか、ローカルフラグメンテーションを禁止する必要があります（IPv6）。"
     },
     {
       "indent": 3,
@@ -832,7 +819,7 @@
     {
       "indent": 3,
       "text": "The final issue is the DTLS handshake protocol. From the perspective of the DTLS record layer, this is merely another upper layer protocol. However, DTLS handshakes occur infrequently and involve only a few round trips; therefore, the handshake protocol PMTU handling places a premium on rapid completion over accurate PMTU discovery. In order to allow connections under these circumstances, DTLS implementations SHOULD follow the following rules:",
-      "ja": "最終的な問題は、DTLSハンドシェイクプロトコルです。DTLSレコードレイヤーの観点から見ると、これは単なる別の上層層プロトコルにすぎません。ただし、DTLSハンドシェイクはまれに発生し、数回の往復のみが含まれます。したがって、ハンドシェイクプロトコルPMTUハンドリングは、正確なPMTU発見よりも迅速な完了時にプレミアムになります。これらの状況下で接続を許可するために、DTLSの実装は次のルールに従う必要があります。"
+      "ja": "最終的な問題は、DTLSハンドシェイクプロトコルです。DTLSレコードレイヤーの観点から見ると、これは単なる別の上層層プロトコルにすぎません。ただし、DTLSハンドシェイクはまれに発生し、数回の往復のみが含まれます。したがって、ハンドシェイクプロトコルPMTUハンドリングは、正確なPMTU発見よりも迅速な完了を重視します。これらの状況下で接続を許可するために、DTLSの実装は次のルールに従う必要があります。"
     },
     {
       "indent": 3,
@@ -842,13 +829,13 @@
     {
       "indent": 3,
       "text": "* If repeated retransmissions do not result in a response, and the PMTU is unknown, subsequent retransmissions SHOULD back off to a smaller record size, fragmenting the handshake message as appropriate. This specification does not specify an exact number of retransmits to attempt before backing off, but 2-3 seems appropriate.",
-      "ja": "* 繰り返しの再送信が応答をもたらさず、PMTUが不明である場合、その後の再送信はより小さなレコードサイズに戻し、必要に応じてハンドシェイクメッセージを断片化する必要があります。この仕様では、バックアップする前に試行するための正確な再送信数を指定していませんが、2-3は適切であるようです。"
+      "ja": "* 繰り返しの再送信が応答をもたらさず、PMTUが不明である場合、その後の再送信はより小さなレコードサイズに戻し、必要に応じてハンドシェイクメッセージを断片化する必要があります。この仕様では、バックオフする前に試行するための正確な再送信数を指定していませんが、2-3は適切であるようです。"
     },
     {
       "indent": 0,
       "text": "4.5. Record Payload Protection",
       "section_title": true,
-      "ja": "4.5. ペイロード保護を記録する"
+      "ja": "4.5. レコードペイロード保護"
     },
     {
       "indent": 3,
@@ -864,17 +851,17 @@
     {
       "indent": 3,
       "text": "Each DTLS record contains a sequence number to provide replay protection. Sequence number verification SHOULD be performed using the following sliding window procedure, borrowed from Section 3.4.3 of [RFC4303]. Because each epoch resets the sequence number space, a separate sliding window is needed for each epoch.",
-      "ja": "各DTLSレコードには、再生保護を提供するためのシーケンス番号が含まれています。シーケンス番号検証は、[RFC4303]のセクション3.4.3から借用された次のスライディングウィンドウ手順を使用して実行する必要があります。各エポックはシーケンス番号スペースをリセットするので、各エポックには別のスライディングウィンドウが必要です。"
+      "ja": "各DTLSレコードには、リプレイ保護を提供するためのシーケンス番号が含まれています。シーケンス番号検証は、[RFC4303]のセクション3.4.3から借用された次のスライディングウィンドウ手順を使用して実行する必要があります。各エポックはシーケンス番号スペースをリセットするので、各エポックには別のスライディングウィンドウが必要です。"
     },
     {
       "indent": 3,
       "text": "The received record counter for an epoch MUST be initialized to zero when that epoch is first used. For each received record, the receiver MUST verify that the record contains a sequence number that does not duplicate the sequence number of any other record received in that epoch during the lifetime of the association. This check SHOULD happen after deprotecting the record; otherwise, the record discard might itself serve as a timing channel for the record number. Note that computing the full record number from the partial is still a potential timing channel for the record number, though a less powerful one than whether the record was deprotected.",
-      "ja": "そのエポックが最初に使用される場合、エポックの受信したレコードカウンターはゼロに初期化する必要があります。受信したレコードごとに、受信者は、レコードに、協会の生涯中にそのエポックで受け取った他のレコードのシーケンス番号を複製しないシーケンス番号が含まれていることを確認する必要があります。このチェックは、レコードを剥奪した後に発生するはずです。それ以外の場合、レコード廃棄自体がレコード番号のタイミングチャネルとして機能する可能性があります。部分的な記録番号を計算することは、レコード番号の潜在的なタイミングチャネルであることに注意してください。"
+      "ja": "そのエポックが最初に使用される場合、エポックの受信したレコードカウンターはゼロに初期化する必要があります。受信したレコードごとに、受信者は、レコードに、協会の生涯中にそのエポックで受け取った他のレコードのシーケンス番号を複製しないシーケンス番号が含まれていることを確認する必要があります。このチェックは、レコードを保護解除した後に発生するはずです。それ以外の場合、レコード廃棄自体がレコード番号のタイミングチャネルとして機能する可能性があります。部分的な記録番号を計算することは、レコード番号の潜在的なタイミングチャネルであることに注意してください。"
     },
     {
       "indent": 3,
       "text": "Duplicates are rejected through the use of a sliding receive window. (How the window is implemented is a local matter, but the following text describes the functionality that the implementation must exhibit.) The receiver SHOULD pick a window large enough to handle any plausible reordering, which depends on the data rate. (The receiver does not notify the sender of the window size.)",
-      "ja": "複製はスライド受信ウィンドウを使用して拒否されます。（ウィンドウがどのように実装されているかは地域的な問題ですが、次のテキストは実装が展示する機能を説明しています。）受信者は、データレートに依存するあらゆる順序を処理するのに十分な大きさのウィンドウを選択する必要があります。（受信者はウィンドウサイズの送信者に通知しません。）"
+      "ja": "複製はスライド受信ウィンドウを使用して拒否されます。（ウィンドウがどのように実装されているかはローカルな問題ですが、次のテキストは実装が展示する機能を説明しています。）受信者は、データレートに依存するもっともらしい並べ替えを処理するのに十分な大きさのウィンドウを選択する必要があります。（受信者はウィンドウサイズの送信者に通知しません。）"
     },
     {
       "indent": 3,
@@ -884,18 +871,18 @@
     {
       "indent": 3,
       "text": "The window MUST NOT be updated due to a received record until that record has been deprotected successfully.",
-      "ja": "そのレコードが正常に解凍されるまで、受信したレコードのためにウィンドウを更新してはいけません。"
+      "ja": "そのレコードが正常に保護解除されるまで、受信したレコードのためにウィンドウを更新してはいけません。"
     },
     {
       "indent": 0,
       "text": "4.5.2. Handling Invalid Records",
       "section_title": true,
-      "ja": "4.5.2. 無効なレコードを処理します"
+      "ja": "4.5.2. 無効なレコードの処理"
     },
     {
       "indent": 3,
       "text": "Unlike TLS, DTLS is resilient in the face of invalid records (e.g., invalid formatting, length, MAC, etc.). In general, invalid records SHOULD be silently discarded, thus preserving the association; however, an error MAY be logged for diagnostic purposes. Implementations which choose to generate an alert instead MUST generate fatal alerts to avoid attacks where the attacker repeatedly probes the implementation to see how it responds to various types of error. Note that if DTLS is run over UDP, then any implementation which does this will be extremely susceptible to DoS attacks because UDP forgery is so easy. Thus, generating fatal alerts is NOT RECOMMENDED for such transports, both to increase the reliability of DTLS service and to avoid the risk of spoofing attacks sending traffic to unrelated third parties.",
-      "ja": "TLSとは異なり、DTLは無効なレコード（無効なフォーマット、長さ、MACなど）に直面して回復力があります。一般に、無効な記録は静かに廃棄されるべきであるため、協会を維持する必要があります。ただし、診断目的でエラーが記録される場合があります。代わりにアラートを生成することを選択する実装は、攻撃者が実装を繰り返しプローブして、さまざまなタイプのエラーにどのように応答するかを確認する攻撃を避けるために致命的なアラートを生成する必要があります。DTLSがUDPを介して実行されている場合、UDP Forgeryが非常に簡単であるため、これを行う実装はDOS攻撃の影響を非常に受けやすいことに注意してください。したがって、DTLSサービスの信頼性を高め、無関係な第三者にトラフィックを送信するリスクを回避するために、そのような輸送には致命的なアラートを生成することは推奨されません。"
+      "ja": "TLSとは異なり、DTLSは無効なレコード（無効なフォーマット、長さ、MACなど）に直面して回復力があります。一般に、無効な記録は静かに廃棄されるべきであるため、アソシエーションを維持する必要があります。ただし、診断目的でエラーが記録される場合があります。代わりにアラートを生成することを選択する実装は、攻撃者が実装を繰り返しプローブして、さまざまなタイプのエラーにどのように応答するかを確認する攻撃を避けるために致命的なアラートを生成する必要があります。DTLSがUDPを介して実行されている場合、UDP Forgeryが非常に簡単であるため、これを行う実装はDOS攻撃の影響を非常に受けやすいことに注意してください。したがって、DTLSサービスの信頼性を高め、無関係な第三者にトラフィックを送信するリスクを回避するために、そのような輸送には致命的なアラートを生成することは推奨されません。"
     },
     {
       "indent": 3,
@@ -905,18 +892,18 @@
     {
       "indent": 3,
       "text": "Note that because invalid records are rejected at a layer lower than the handshake state machine, they do not affect pending retransmission timers.",
-      "ja": "ハンドシェイクステートマシンより低いレイヤーに無効なレコードが拒否されるため、保留中の再送信タイマーには影響しません。"
+      "ja": "ハンドシェイクステートマシンより低いレイヤーで無効なレコードが拒否されるため、保留中の再送信タイマーには影響しません。"
     },
     {
       "indent": 0,
       "text": "4.5.3. AEAD Limits",
       "section_title": true,
-      "ja": "4.5.3. aead limits."
+      "ja": "4.5.3. AEADの制限"
     },
     {
       "indent": 3,
       "text": "Section 5.5 of [TLS13] defines limits on the number of records that can be protected using the same keys. These limits are specific to an AEAD algorithm and apply equally to DTLS. Implementations SHOULD NOT protect more records than allowed by the limit specified for the negotiated AEAD. Implementations SHOULD initiate a key update before reaching this limit.",
-      "ja": "[TLS13]のセクション5.5は、同じキーを使用して保護できるレコード数の制限を定義します。これらの制限はAEDアルゴリズムに固有のもので、DTLSにも同様に適用されます。実装は、ネゴシエートされたAEADに指定された制限によって許可されているよりも多くのレコードを保護しないでください。実装はこの制限に達する前にキーアップデートを開始する必要があります。"
+      "ja": "[TLS13]のセクション5.5は、同じキーを使用して保護できるレコード数の制限を定義します。これらの制限はAEADアルゴリズムに固有のもので、DTLSにも同様に適用されます。実装は、ネゴシエートされたAEADに指定された制限によって許可されているよりも多くのレコードを保護しないでください。実装はこの制限に達する前にキーアップデートを開始する必要があります。"
     },
     {
       "indent": 3,
@@ -926,12 +913,12 @@
     {
       "indent": 3,
       "text": "The usage limits defined in TLS 1.3 exist for protection against attacks on confidentiality and apply to successful applications of AEAD protection. The integrity protections in authenticated encryption also depend on limiting the number of attempts to forge packets. TLS achieves this by closing connections after any record fails an authentication check. In comparison, DTLS ignores any packet that cannot be authenticated, allowing multiple forgery attempts.",
-      "ja": "TLS 1.3で定義された使用制限は、機密性に対する攻撃に対する保護に存在し、AED保護の成功申請に適用されます。認証された暗号化の整合性保護は、パケットを偽造する試行回数を制限することによっても異なります。TLSは、レコードが認証チェックに失敗した後に接続を閉じることによってこれを達成します。比較すると、DTLSは認証できないパケットを無視し、複数の偽造試行を可能にします。"
+      "ja": "TLS 1.3で定義された使用制限は、機密性に対する攻撃に対する保護に存在し、AEAD保護の成功した適用に適用されます。認証された暗号化の整合性保護は、パケットを偽造する試行回数を制限することによっても異なります。TLSは、レコードが認証チェックに失敗した後に接続を閉じることによってこれを達成します。比較すると、DTLSは認証できないパケットを無視し、複数の偽造試行を可能にします。"
     },
     {
       "indent": 3,
       "text": "Implementations MUST count the number of received packets that fail authentication with each key. If the number of packets that fail authentication exceeds a limit that is specific to the AEAD in use, an implementation SHOULD immediately close the connection. Implementations SHOULD initiate a key update with update_requested before reaching this limit. Once a key update has been initiated, the previous keys can be dropped when the limit is reached rather than closing the connection. Applying a limit reduces the probability that an attacker is able to successfully forge a packet; see [AEBounds] and [ROBUST].",
-      "ja": "実装は、各キーで認証に失敗した受信パケットの数をカウントする必要があります。認証に失敗したパケットの数が使用中のAEADに固有の制限を超える場合、実装は直ちに接続を閉じてください。この制限に達する前に、実装はUPDATE_REQUESTEDを使用したキーアップデートを開始する必要があります。キーアップデートが開始されると、接続を閉じるのではなく、制限に達すると前のキーを削除できます。制限を適用すると、攻撃者がパケットを正常に偽造できる可能性が低下します。[aebounds]と[robust]を参照してください。"
+      "ja": "実装は、各キーで認証に失敗した受信パケットの数をカウントする必要があります。認証に失敗したパケットの数が使用中のAEADに固有の制限を超える場合、実装は直ちに接続を閉じるべきです。この制限に達する前に、実装はupdate_requestedを使用したキーアップデートを開始する必要があります。キーアップデートが開始されると、接続を閉じるのではなく、制限に達すると前のキーを削除できます。制限を適用すると、攻撃者がパケットを正常に偽造できる可能性が低下します。[AEBounds]と[ROBUST]を参照してください。"
     },
     {
       "indent": 3,
@@ -941,7 +928,7 @@
     {
       "indent": 3,
       "text": "The AEAD_AES_128_CCM_8 AEAD, as used in TLS_AES_128_CCM_8_SHA256, does not have a limit on the number of records that fail authentication that both limits the probability of forgery by the same amount and does not expose implementations to the risk of denial of service; see Appendix B.3. Therefore, TLS_AES_128_CCM_8_SHA256 MUST NOT be used in DTLS without additional safeguards against forgery. Implementations MUST set usage limits for AEAD_AES_128_CCM_8 based on an understanding of any additional forgery protections that are used.",
-      "ja": "TLS_AES_128_CCM_8_SHA256で使用されるAED_AES_128_CCM_8 AEADは、両方とも偽造の可能性を同じ量だけ制限し、実装をサービス拒否のリスクにさらさないレコードの数に制限はありません。付録B.3を参照してください。したがって、TLS_AES_128_CCM_8_SHA256は、偽造に対する追加の保護措置なしでDTLSでは使用してはなりません。実装は、使用される追加の偽造保護の理解に基づいて、AED_AES_128_CCM_8の使用制限を設定する必要があります。"
+      "ja": "TLS_AES_128_CCM_8_SHA256で使用されるAEAD_AES_128_CCM_8 AEADは、両方とも偽造の可能性を同じ量だけ制限し、実装をサービス拒否のリスクにさらさないレコードの数に制限はありません。付録B.3を参照してください。したがって、TLS_AES_128_CCM_8_SHA256は、偽造に対する追加の保護措置なしでDTLSでは使用してはなりません。実装は、使用される追加の偽造保護の理解に基づいて、AEAD_AES_128_CCM_8の使用制限を設定する必要があります。"
     },
     {
       "indent": 3,
@@ -977,12 +964,12 @@
     {
       "indent": 3,
       "text": "In addition, DTLS reuses TLS 1.3's \"cookie\" extension to provide a return-routability check as part of connection establishment. This is an important DoS prevention mechanism for UDP-based protocols, unlike TCP-based protocols, for which TCP establishes return-routability as part of the connection establishment.",
-      "ja": "さらに、DTLSはTLS 1.3の「Cookie」拡張機能を再利用して、接続確立の一環としてリターンルーティブ可能性チェックを提供します。これは、TCPベースのプロトコルとは異なり、UDPベースのプロトコルの重要なDOS予防メカニズムであり、TCPは接続確立の一部としてリターンリューション可能性を確立します。"
+      "ja": "さらに、DTLSはTLS 1.3の「Cookie」拡張機能を再利用して、接続確立の一環として到達可能性チェックを提供します。これは、TCPベースのプロトコルとは異なり、UDPベースのプロトコルの重要なDOS予防メカニズムであり、TCPは接続確立の一部として到達可能性を確立します。"
     },
     {
       "indent": 3,
       "text": "DTLS implementations do not use the TLS 1.3 \"compatibility mode\" described in Appendix D.4 of [TLS13]. DTLS servers MUST NOT echo the \"legacy_session_id\" value from the client and endpoints MUST NOT send ChangeCipherSpec messages.",
-      "ja": "DTLS実装では、[TLS13]の付録D.4に記載されているTLS 1.3「互換モード」を使用しません。DTLSサーバーは、クライアントとエンドポイントから「legacy_session_id」値をエコーしてはなりません。"
+      "ja": "DTLS実装では、[TLS13]の付録D.4に記載されているTLS 1.3「互換モード」を使用しません。DTLSサーバーは、クライアントからの「legacy_session_id」値をエコーしてはならず、エンドポイントはChangeCipherSpecメッセージを送信してはなりません。"
     },
     {
       "indent": 3,
@@ -1003,22 +990,22 @@
     {
       "indent": 3,
       "text": "1. An attacker can consume excessive resources on the server by transmitting a series of handshake initiation requests, causing the server to allocate state and potentially to perform expensive cryptographic operations.",
-      "ja": "1. 攻撃者は、一連のハンドシェイクの開始要求を送信することによってサーバー上の過度のリソースを消費し、サーバーに状態が状態があり、潜在的に高価な暗号操作を実行することによって消費できます。"
+      "ja": "1. 攻撃者は、一連のハンドシェイクの開始要求を送信することによってサーバー上の過度のリソースを消費し、サーバーに状態を割り当てさせ、潜在的に高価な暗号操作を実行させることができます。"
     },
     {
       "indent": 3,
       "text": "2. An attacker can use the server as an amplifier by sending connection initiation messages with a forged source address that belongs to a victim. The server then sends its response to the victim machine, thus flooding it. Depending on the selected parameters, this response message can be quite large, as is the case for a Certificate message.",
-      "ja": "2. 攻撃者は、被害者に属する偽の送信元アドレスを持つ接続開始メッセージを送信することによって、アンプとしてサーバーを使用できます。その後、サーバーはその応答を犠牲Machineに送信し、それをフラッディングします。選択されたパラメータによっては、証明書メッセージの場合と同様に、この応答メッセージは非常に大きくなる可能性があります。"
+      "ja": "2. 攻撃者は、被害者に属する偽の送信元アドレスを持つ接続開始メッセージを送信することによって、アンプとしてサーバーを使用できます。その後、サーバーはその応答を被害者のマシンに送信し、それをフラッディングします。選択されたパラメータによっては、証明書メッセージの場合と同様に、この応答メッセージは非常に大きくなる可能性があります。"
     },
     {
       "indent": 3,
       "text": "In order to counter both of these attacks, DTLS borrows the stateless cookie technique used by Photuris [RFC2522] and IKE [RFC7296]. When the client sends its ClientHello message to the server, the server MAY respond with a HelloRetryRequest message. The HelloRetryRequest message, as well as the \"cookie\" extension, is defined in TLS 1.3. The HelloRetryRequest message contains a stateless cookie (see [TLS13], Section 4.2.2). The client MUST send a new ClientHello with the cookie added as an extension. The server then verifies the cookie and proceeds with the handshake only if it is valid. This mechanism forces the attacker/client to be able to receive the cookie, which makes DoS attacks with spoofed IP addresses difficult. This mechanism does not provide any defense against DoS attacks mounted from valid IP addresses.",
-      "ja": "これらの攻撃の両方に対抗するために、DTLはPHOTURIS [RFC2522]とIKE [RFC7296]で使用されるステートレスCookie技術を借ります。クライアントがそのClientHelloメッセージをサーバーに送信すると、サーバーはHelloretryRequestメッセージで応答することがあります。HelloretryRequestメッセージ、および \"Cookie\"拡張子はTLS 1.3で定義されています。HelloretryRequestメッセージにはステートレスCookieが含まれています（[TLS13]、セクション4.2.2）。クライアントは、拡張子として追加されたCookieを使用して新しいClientHelloを送信する必要があります。その後、サーバーはCookieを検証し、有効な場合にのみハンドシェイクを進めます。このメカニズムは、攻撃者/クライアントがCookieを受信できるように強制します。これにより、偽装IPアドレスでDOS攻撃が困難になります。このメカニズムは、有効なIPアドレスからマウントされたDOS攻撃に対する防御は提供されていません。"
+      "ja": "これらの攻撃の両方に対抗するために、DTLSはPHOTURIS [RFC2522]とIKE [RFC7296]で使用されるステートレスCookie技術を借ります。クライアントがそのClientHelloメッセージをサーバーに送信すると、サーバーはHelloRetryRequestメッセージで応答することがあります。HelloRetryRequestメッセージ、および \"cookie\"拡張子はTLS 1.3で定義されています。HelloRetryRequestメッセージにはステートレスCookieが含まれています（[TLS13]、セクション4.2.2）。クライアントは、拡張として追加されたCookieを使用して新しいClientHelloを送信する必要があります。その後、サーバーはCookieを検証し、有効な場合にのみハンドシェイクを進めます。このメカニズムは、攻撃者/クライアントがCookieを受信できることを強制します。これにより、偽装IPアドレスによるDoS攻撃が困難になります。このメカニズムは、有効なIPアドレスから実行されるDoS攻撃に対する防御を提供しません。"
     },
     {
       "indent": 3,
       "text": "The DTLS 1.3 specification changes how cookies are exchanged compared to DTLS 1.2. DTLS 1.3 reuses the HelloRetryRequest message and conveys the cookie to the client via an extension. The client receiving the cookie uses the same extension to place the cookie subsequently into a ClientHello message. DTLS 1.2, on the other hand, used a separate message, namely the HelloVerifyRequest, to pass a cookie to the client and did not utilize the extension mechanism. For backwards compatibility reasons, the cookie field in the ClientHello is present in DTLS 1.3 but is ignored by a DTLS 1.3-compliant server implementation.",
-      "ja": "DTLS 1.3仕様は、DTLS 1.2と比較してCookieの交換方法を変更します。DTLS 1.3は、HelloretryRequestメッセージを再利用し、拡張機能を介してクッキーをクライアントに伝えます。Cookieを受信するクライアントは、同じ拡張機能を使用してCookieをClientHelloメッセージに配置します。一方、DTLS 1.2は、別のメッセージ、つまりHelloverifeRequestを使用してクライアントにCookieを渡し、拡張メカニズムを利用しませんでした。後方互換性の理由から、ClientHelloのCookieフィールドはDTLS 1.3に存在しますが、DTLS 1.3に準拠したサーバーの実装では無視されます。"
+      "ja": "DTLS 1.3仕様は、DTLS 1.2と比較してCookieの交換方法を変更します。DTLS 1.3は、HelloRetryRequestメッセージを再利用し、拡張機能を介してCookieをクライアントに伝達します。Cookieを受信するクライアントは、同じ拡張機能を使用してCookieをClientHelloメッセージに含めます。一方、DTLS 1.2は、別のメッセージ、つまりHelloVerifyRequestを使用してクライアントにCookieを渡し、拡張メカニズムを利用しませんでした。後方互換性の理由により、ClientHelloのCookieフィールドはDTLS 1.3に存在しますが、DTLS 1.3に準拠したサーバーの実装では無視されます。"
     },
     {
       "indent": 3,
@@ -1026,27 +1013,10 @@
       "ja": "交換を図6に示します。図は、Cookie Exchangeに焦点を当てていることに注意してください。他のすべての拡張機能は省略されています。"
     },
     {
-      "indent": 9,
-      "text": "Client                                   Server\n------                                   ------\nClientHello           ------>",
+      "indent": 6,
+      "text": "Client                                   Server\n------                                   ------\nClientHello           ------>\n\n                      <----- HelloRetryRequest\n                              + cookie\n\nClientHello           ------>\n + cookie\n\n[Rest of handshake]",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "<----- HelloRetryRequest\n        + cookie",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 9,
-      "text": "ClientHello           ------>\n + cookie",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 9,
-      "text": "[Rest of handshake]",
-      "ja": "[ハンドシェイクの静止]"
     },
     {
       "indent": 7,
@@ -1066,7 +1036,7 @@
     {
       "indent": 3,
       "text": "If the HelloRetryRequest message is used, the initial ClientHello and the HelloRetryRequest are included in the calculation of the transcript hash. The computation of the message hash for the HelloRetryRequest is done according to the description in Section 4.4.1 of [TLS13].",
-      "ja": "HelloretryRequestメッセージを使用すると、最初のClientHelloとHelloretryRequestが転写産物ハッシュの計算に含まれています。[TLS13]のセクション4.4.1の説明に従って、HelloretryRequestのメッセージハッシュの計算は行われます。"
+      "ja": "HelloRetryRequestメッセージが使用される場合、最初のClientHelloとHelloRetryRequestがトランスクリプトハッシュの計算に含まれます。HelloRetryRequestのメッセージハッシュの計算は、[TLS13]のセクション4.4.1の記述に従って行われます。"
     },
     {
       "indent": 3,
@@ -1076,12 +1046,12 @@
     {
       "indent": 3,
       "text": "When the second ClientHello is received, the server can verify that the cookie is valid and that the client can receive packets at the given IP address. If the client's apparent IP address is embedded in the cookie, this prevents an attacker from generating an acceptable ClientHello apparently from another user.",
-      "ja": "2番目のClientHelloを受信すると、サーバーはCookieが有効であること、およびクライアントが指定されたIPアドレスでパケットを受信できることを確認できます。クライアントの見かけのIPアドレスがCookieに埋め込まれている場合、これにより、攻撃者が明らかに他のユーザーから許容可能なclienthelloを生成することができなくなります。"
+      "ja": "2番目のClientHelloを受信すると、サーバーはCookieが有効であること、そしてクライアントが指定されたIPアドレスでパケットを受信できることを検証できます。クライアントの見かけ上のIPアドレスがCookieに埋め込まれている場合、攻撃者が別のユーザーからのものであるかのように見せかけた許容可能なClientHelloを生成することを防ぎます。"
     },
     {
       "indent": 3,
       "text": "One potential attack on this scheme is for the attacker to collect a number of cookies from different addresses where it controls endpoints and then reuse them to attack the server. The server can defend against this attack by changing the secret value frequently, thus invalidating those cookies. If the server wishes to allow legitimate clients to handshake through the transition (e.g., a client received a cookie with Secret 1 and then sent the second ClientHello after the server has changed to Secret 2), the server can have a limited window during which it accepts both secrets. [RFC7296] suggests adding a key identifier to cookies to detect this case. An alternative approach is simply to try verifying with both secrets. It is RECOMMENDED that servers implement a key rotation scheme that allows the server to manage keys with overlapping lifetimes.",
-      "ja": "このスキームに対する1つの潜在的な攻撃は、攻撃者がエンドポイントを制御してからそれらを再利用してサーバーを攻撃するためにそれらを再利用するための攻撃者が攻撃者にとって非常に多くのクッキーを収集することです。サーバーは秘密の価値を頻繁に変更することによってこの攻撃に対して守ることができ、したがってそれらのクッキーを無効にすることができます。サーバーが正当なクライアントが遷移を介してハンドシェイクすることを許可したい場合（たとえば、クライアントが秘密1を持つCookieを受信し、サーバーが秘密2に変更した後に2番目のClientHelloを送信しました）、サーバーはそれが限られたウィンドウを持つことができます。両方の秘密を受け入れます。[RFC7296]この場合を検出するためにCookieにキー識別子を追加することを提案します。代替的なアプローチは単に両方の秘密で検証を試みることです。サーバーは、サーバーが重複する寿命を持つキーを管理できるようにするキーローテーション方式を実装することをお勧めします。"
+      "ja": "このスキームに対する1つの潜在的な攻撃は、攻撃者が、自身が制御するエンドポイントの異なるアドレスから多数のCookieを収集し、それらを再利用してサーバーを攻撃することです。サーバーは秘密値を頻繁に変更することによってこの攻撃に対して防御することができ、したがってそれらのクッキーを無効にすることができます。サーバーが正当なクライアントが遷移を介してハンドシェイクすることを許可したい場合（たとえば、クライアントがSecret 1を持つCookieを受信し、サーバーがSecret 2に変更した後に2番目のClientHelloを送信しました）、サーバーは両方の秘密を受け入れる限られたウィンドウを持つことができます。[RFC7296]はこの場合を検出するためにCookieにキー識別子を追加することを提案します。代替的なアプローチは単に両方の秘密で検証を試みることです。サーバーは、サーバーが重複する寿命を持つキーを管理できるようにするキーローテーション方式を実装することをお勧めします。"
     },
     {
       "indent": 3,
@@ -1091,7 +1061,7 @@
     {
       "indent": 3,
       "text": "DTLS servers SHOULD perform a cookie exchange whenever a new handshake is being performed. If the server is being operated in an environment where amplification is not a problem, e.g., where ICE [RFC8445] has been used to establish bidirectional connectivity, the server MAY be configured not to perform a cookie exchange. The default SHOULD be that the exchange is performed, however. In addition, the server MAY choose not to do a cookie exchange when a session is resumed or, more generically, when the DTLS handshake uses a PSK-based key exchange and the IP address matches one associated with the PSK. Servers which process 0-RTT requests and send 0.5-RTT responses without a cookie exchange risk being used in an amplification attack if the size of outgoing messages greatly exceeds the size of those that are received. A server SHOULD limit the amount of data it sends toward a client address to three times the amount of data sent by the client before it verifies that the client is able to receive data at that address. A client address is valid after a cookie exchange or handshake completion. Clients MUST be prepared to do a cookie exchange with every handshake. Note that cookies are only valid for the existing handshake and cannot be stored for future handshakes.",
-      "ja": "DTLSサーバーは、新しいハンドシェイクが実行されているときはいつでもCookie Exchangeを実行する必要があります。サーバが増幅が問題ではない環境で動作している場合、例えばICE [RFC8445]が双方向接続性を確立するために使用されてきた場合、サーバはクッキー交換を実行しないように構成されてもよい。ただし、デフォルトは交換が実行されることです。さらに、サーバーは、セッションが再開されたときに、またはより一般的に、より一般的に、PSKベースの鍵交換を使用し、IPアドレスがPSKに関連付けられている場合には、Cookie Exchangeを実行しないことを選択できます。発信メッセージのサイズが受信されたもののサイズを大きく超えると、Cookie Exchange Responseが0-RTTの要求を処理し、0.5-RTTの応答を送信するサーバー。サーバーは、クライアントがそのアドレスでデータを受信できることを確認する前に、クライアントアドレスに向かって送信するデータの量をクライアントから送信されたデータの数量に制限する必要があります。クライアントアドレスは、クッキー交換またはハンドシェイクの完了後に有効です。顧客はすべてのハンドシェイクとクッキー交換を行う準備をしなければなりません。クッキーは既存のハンドシェイクに対してのみ有効であり、将来のハンドシェイクのために保存することはできません。"
+      "ja": "DTLSサーバーは、新しいハンドシェイクが実行されているときはいつでもCookie Exchangeを実行する必要があります。サーバが増幅が問題ではない環境で動作している場合、例えばICE [RFC8445]が双方向接続性を確立するために使用されてきた場合、サーバはクッキー交換を実行しないように構成されてもよい。ただし、デフォルトは交換が実行されることです。さらに、サーバーは、セッションが再開されたときに、またはより一般的に、PSKベースの鍵交換を使用し、IPアドレスがPSKに関連付けられている場合には、Cookie Exchangeを実行しないことを選択できます。Cookie交換なしで0-RTT要求を処理し、0.5-RTT応答を送信するサーバーは、発信メッセージのサイズが受信されたもののサイズを大きく超えると、増幅攻撃に使用されるリスクがあります。サーバーは、クライアントがそのアドレスでデータを受信できることを確認する前に、クライアントアドレスに向かって送信するデータの量をクライアントから送信されたデータ量の3倍に制限する必要があります。クライアントアドレスは、クッキー交換またはハンドシェイクの完了後に有効です。クライアントはすべてのハンドシェイクとクッキー交換を行う準備をしなければなりません。クッキーは既存のハンドシェイクに対してのみ有効であり、将来のハンドシェイクのために保存することはできません。"
     },
     {
       "indent": 3,
@@ -1101,12 +1071,12 @@
     {
       "indent": 3,
       "text": "As described in Section 4.1.4 of [TLS13], clients MUST abort the handshake with an \"unexpected_message\" alert in response to any second HelloRetryRequest which was sent in the same connection (i.e., where the ClientHello was itself in response to a HelloRetryRequest).",
-      "ja": "[TLS13]のセクション4.1.4で説明されているように、クライアントは、同じ接続で送信された（すなわち、ClientHelloがHellOretryRequestに対応してそれ自体がそれ自体）任意の2番目のHelloretryRequestに応答してハンドシェイクを中止する必要があります。。"
+      "ja": "[TLS13]のセクション4.1.4で説明されているように、クライアントは、同じ接続で送信された（すなわち、ClientHello自体がHelloRetryRequestへの応答であった）任意の2番目のHelloretryRequestに応答してハンドシェイクを中止する必要があります。。"
     },
     {
       "indent": 3,
       "text": "DTLS clients which do not want to receive a Connection ID SHOULD still offer the \"connection_id\" extension [RFC9146] unless there is an application profile to the contrary. This permits a server which wants to receive a CID to negotiate one.",
-      "ja": "接続IDを受信したくないDTLSクライアントは、逆にアプリケーションプロファイルがない限り、「connection_id」拡張子[RFC9146]を提供する必要があります。これにより、CIDを受信したいサーバーが交渉するサーバーが許可されます。"
+      "ja": "接続IDを受信したくないDTLSクライアントは、反対のアプリケーションプロファイルがない限り、「connection_id」拡張子[RFC9146]を提供する必要があります。これにより、CIDを受信したいサーバーがそれをネゴシエートすることを許可します。"
     },
     {
       "indent": 0,
@@ -1134,12 +1104,12 @@
     {
       "indent": 3,
       "text": "In DTLS 1.3, the message transcript is computed over the original TLS 1.3-style Handshake messages without the message_seq, fragment_offset, and fragment_length values. Note that this is a change from DTLS 1.2 where those values were included in the transcript.",
-      "ja": "DTLS 1.3では、メッセージトランスクリプトは、message_seq、fragment_offset、およびfragment_length値なしで、元のTLS 1.3スタイルのハンドシェイクメッセージを介して計算されます。これはDTLS 1.2からの変化であり、ここでそれらの値がトランスクリプトに含まれていました。"
+      "ja": "DTLS 1.3では、メッセージトランスクリプトは、message_seq、fragment_offset、およびfragment_length値を含まない、元のTLS 1.3スタイルのハンドシェイクメッセージに対して計算されます。これは、それらの値がトランスクリプトに含まれていたDTLS 1.2からの変更であることに注意してください。"
     },
     {
       "indent": 3,
       "text": "The first message each side transmits in each association always has message_seq = 0. Whenever a new message is generated, the message_seq value is incremented by one. When a message is retransmitted, the old message_seq value is reused, i.e., not incremented. From the perspective of the DTLS record layer, the retransmission is a new record. This record will have a new DTLSPlaintext.sequence_number value.",
-      "ja": "各アソシエーションで各側面が送信される最初のメッセージには、常にメッセージ_Seq = 0があります。新しいメッセージが生成されるたびに、Message_Seq値は1つずつ増加します。メッセージが再送信されると、古いmessage_seq値が再利用されます。つまり、増加しません。DTLSレコードレイヤーの観点から見ると、再送信は新しいレコードです。このレコードには、新しいdtlsplaintext.sequence_number値があります。"
+      "ja": "各アソシエーションで各側が送信する最初のメッセージは、常にmessage_seq = 0を持ちます。新しいメッセージが生成されるたびに、message_seq値は1つずつ増加します。メッセージが再送信されると、古いmessage_seq値が再利用されます。つまり、増加しません。DTLSレコードレイヤーの観点から見ると、再送信は新しいレコードです。このレコードには、新しいDTLSPlaintext.sequence_number値があります。"
     },
     {
       "indent": 6,
@@ -1149,12 +1119,12 @@
     {
       "indent": 3,
       "text": "DTLS implementations maintain (at least notionally) a next_receive_seq counter. This counter is initially set to zero. When a handshake message is received, if its message_seq value matches next_receive_seq, next_receive_seq is incremented and the message is processed. If the sequence number is less than next_receive_seq, the message MUST be discarded. If the sequence number is greater than next_receive_seq, the implementation SHOULD queue the message but MAY discard it. (This is a simple space/ bandwidth trade-off).",
-      "ja": "DTLS実装は、（少なくとも概念的に）Next_receive_Seqカウンターを維持します。このカウンターは最初はゼロに設定されています。ハンドシェイクメッセージが受信されると、message_seq値がnext_receive_seqと一致する場合、next_receive_seqがインクリメントされ、メッセージが処理されます。シーケンス番号がnext_receive_seqよりも少ない場合、メッセージを破棄する必要があります。シーケンス番号がnext_receive_seqよりも大きい場合、実装はメッセージをキューする必要がありますが、破棄する場合があります。（これは単純なスペース/帯域幅のトレードオフです）。"
+      "ja": "DTLS実装は、（少なくとも概念的に）next_receive_seqカウンターを維持します。このカウンターは最初はゼロに設定されています。ハンドシェイクメッセージが受信されると、そのmessage_seq値がnext_receive_seqと一致する場合、next_receive_seqがインクリメントされ、メッセージが処理されます。シーケンス番号がnext_receive_seqよりも小さい場合、メッセージを破棄しなければなりません（MUST）。シーケンス番号がnext_receive_seqよりも大きい場合、実装はメッセージをキューに入れるべきですが（SHOULD）、破棄してもかまいません（MAY）。（これは単純なスペース/帯域幅のトレードオフです）。"
     },
     {
       "indent": 3,
       "text": "In addition to the handshake messages that are deprecated by the TLS 1.3 specification, DTLS 1.3 furthermore deprecates the HelloVerifyRequest message originally defined in DTLS 1.0. DTLS 1.3-compliant implementations MUST NOT use the HelloVerifyRequest to execute a return-routability check. A dual-stack DTLS 1.2 / DTLS 1.3 client MUST, however, be prepared to interact with a DTLS 1.2 server.",
-      "ja": "TLS 1.3仕様によって廃止予定されているハンドシェイクメッセージに加えて、DTLS 1.3は、DTLS 1.0で最初に定義されているHelloVelifyRequestメッセージをさらに推奨します。DTLS 1.3準拠の実装は、Return-romailifyRequestを使用して返信ルーティング性チェックを実行しないでください。ただし、デュアルスタックDTLS 1.2 / DTLS 1.3クライアントは、DTLS 1.2サーバと対話する準備をしなければなりません。"
+      "ja": "TLS 1.3仕様によって廃止予定されているハンドシェイクメッセージに加えて、DTLS 1.3は、DTLS 1.0で最初に定義されているHelloVerifyRequestメッセージをさらに廃止します。DTLS 1.3準拠の実装は、HelloVerifyRequestを使用して到達可能性確認を実行しないでください。ただし、デュアルスタックDTLS 1.2 / DTLS 1.3クライアントは、DTLS 1.2サーバと対話する準備をしなければなりません。"
     },
     {
       "indent": 0,
@@ -1188,22 +1158,22 @@
     {
       "indent": 3,
       "text": "legacy_version: In previous versions of DTLS, this field was used for version negotiation and represented the highest version number supported by the client. Experience has shown that many servers do not properly implement version negotiation, leading to \"version intolerance\" in which the server rejects an otherwise acceptable ClientHello with a version number higher than it supports. In DTLS 1.3, the client indicates its version preferences in the \"supported_versions\" extension (see Section 4.2.1 of [TLS13]) and the legacy_version field MUST be set to {254, 253}, which was the version number for DTLS 1.2. The supported_versions entries for DTLS 1.0 and DTLS 1.2 are 0xfeff and 0xfefd (to match the wire versions). The value 0xfefc is used to indicate DTLS 1.3.",
-      "ja": "Legacy_version：以前のバージョンのDTLSでは、このフィールドはバージョンのネゴシエーションに使用され、クライアントがサポートする最高のバージョン番号を表しています。経験によると、多くのサーバーがバージョンのネゴシエーションを適切に実装しておらず、「バージョンの不寛容」につながり、サーバーはサポートよりも高いバージョン番号を持つ許容可能なクライアントヘロを拒否します。DTLS 1.3では、クライアントは「supported_versions」拡張子（[TLS13]のセクション4.2.1を参照）のバージョンの設定を示し、Legacy_versionフィールドは{254、253}に設定する必要があります。これはDTLS 1.2のバージョン番号でした。DTLS 1.0およびDTLS 1.2のsupported_versionsエントリは、0xfeffと0xfefdです（ワイヤーバージョンと一致するため）。値0xFEFCは、DTLS 1.3を示すために使用されます。"
+      "ja": "legacy_version：以前のバージョンのDTLSでは、このフィールドはバージョンのネゴシエーションに使用され、クライアントがサポートする最高のバージョン番号を表しています。経験によると、多くのサーバーがバージョンのネゴシエーションを適切に実装しておらず、「バージョンの不寛容」につながり、サーバーはサポートよりも高いバージョン番号を持つ許容可能なClientHelloを拒否します。DTLS 1.3では、クライアントは「supported_versions」拡張子（[TLS13]のセクション4.2.1を参照）のバージョンの設定を示し、legacy_versionフィールドは{254、253}に設定する必要があります。これはDTLS 1.2のバージョン番号でした。DTLS 1.0およびDTLS 1.2のsupported_versionsエントリは、0xfeffと0xfefdです（ワイヤーバージョンと一致するため）。値0xFEFCは、DTLS 1.3を示すために使用されます。"
     },
     {
       "indent": 3,
       "text": "random: Same as for TLS 1.3, except that the downgrade sentinels described in Section 4.1.3 of [TLS13] when TLS 1.2 and TLS 1.1 and below are negotiated apply to DTLS 1.2 and DTLS 1.0, respectively.",
-      "ja": "ランダム：TLS 1.3と同じですが、TLS 1.2およびTLS 1.1以下がそれぞれDTLS 1.2およびDTLS 1.0に適用される場合、[TLS13]のセクション4.1.3で説明されているダウングレードセンチネルがそれぞれ説明します。"
+      "ja": "ランダム：TLS 1.3と同じですが、TLS 1.2およびTLS 1.1以下がそれぞれDTLS 1.2およびDTLS 1.0に適用される場合、[TLS13]のセクション4.1.3で説明されているダウングレードセンチネルがそれぞれ適用されます。"
     },
     {
       "indent": 3,
       "text": "legacy_session_id: Versions of TLS and DTLS before version 1.3 supported a \"session resumption\" feature, which has been merged with pre-shared keys (PSK) in version 1.3. A client which has a cached session ID set by a pre-DTLS 1.3 server SHOULD set this field to that value. Otherwise, it MUST be set as a zero-length vector (i.e., a zero-valued single byte length field).",
-      "ja": "LEGACY_SESSION_ID：バージョン1.3の前のTLSおよびDTLSのバージョンは、バージョン1.3の事前共有キー（PSK）と統合された「セッション再開」機能をサポートしています。Pre-DTLS 1.3サーバーによって設定されたキャッシュセッションIDを持つクライアントは、このフィールドをその値に設定する必要があります。それ以外の場合は、ゼロ長ベクトル（つまり、ゼロ値の単一バイトの長さフィールド）として設定する必要があります。"
+      "ja": "legacy_session_id：バージョン1.3の前のTLSおよびDTLSのバージョンは、バージョン1.3の事前共有キー（PSK）と統合された「セッション再開」機能をサポートしています。DTLS 1.3以前のサーバーによって設定されたキャッシュセッションIDを持つクライアントは、このフィールドをその値に設定する必要があります。それ以外の場合は、ゼロ長ベクトル（つまり、ゼロ値の単一バイトの長さフィールド）として設定する必要があります。"
     },
     {
       "indent": 3,
       "text": "legacy_cookie: A DTLS 1.3-only client MUST set the legacy_cookie field to zero length. If a DTLS 1.3 ClientHello is received with any other value in this field, the server MUST abort the handshake with an \"illegal_parameter\" alert.",
-      "ja": "LEGACY_COOKIE：DTLS 1.3のみのクライアントは、LEGACY_COOKIEフィールドをゼロの長さに設定する必要があります。DTLS 1.3 ClientHelloがこのフィールドの他の値で受信された場合、サーバーは「Illegal_Parameter」アラートでハンドシェイクを中止する必要があります。"
+      "ja": "legacy_cookie：DTLS 1.3のみのクライアントは、legacy_cookieフィールドをゼロの長さに設定する必要があります。DTLS 1.3 ClientHelloがこのフィールドの他の値で受信された場合、サーバーは「illegal_parameter」アラートでハンドシェイクを中止する必要があります。"
     },
     {
       "indent": 3,
@@ -1245,12 +1215,12 @@
     {
       "indent": 3,
       "text": "When transmitting the handshake message, the sender divides the message into a series of N contiguous data ranges. The ranges MUST NOT overlap. The sender then creates N DTLSHandshake messages, all with the same message_seq value as the original DTLSHandshake message. Each new message is labeled with the fragment_offset (the number of bytes contained in previous fragments) and the fragment_length (the length of this fragment). The length field in all messages is the same as the length field of the original message. An unfragmented message is a degenerate case with fragment_offset=0 and fragment_length=length. Each handshake message fragment that is placed into a record MUST be delivered in a single UDP datagram.",
-      "ja": "握手メッセージを送信するとき、送信者はメッセージを一連のN連続データ範囲に分割します。範囲は重複してはなりません。その後、送信者はn dtlshandshakeメッセージを作成します。すべてが元のdtlshandshakeメッセージと同じmessage_seq値を持っています。各新しいメッセージには、fragment_offset（以前のフラグメントに含まれるバイト数）とfragment_length（このフラグメントの長さ）でラベル付けされます。すべてのメッセージの長さフィールドは、元のメッセージの長さフィールドと同じです。fragmented fragmentedメッセージは、fragment_offset = 0およびfragment_length = lengthの縮退したケースです。レコードに配置された各ハンドシェイクメッセージフラグメントは、単一のUDPデータグラムで配信する必要があります。"
+      "ja": "ハンドシェイクメッセージを送信するとき、送信者はメッセージを一連のN個の連続したデータ範囲に分割します。範囲は重複してはなりません（MUST NOT）。その後、送信者はN個のDTLSHandshakeメッセージを作成します。すべてが元のDTLSHandshakeメッセージと同じmessage_seq値を持っています。各新しいメッセージには、fragment_offset（以前のフラグメントに含まれるバイト数）とfragment_length（このフラグメントの長さ）でラベル付けされます。すべてのメッセージの長さフィールドは、元のメッセージの長さフィールドと同じです。断片化されていないメッセージは、fragment_offset=0およびfragment_length=lengthの縮退したケースです。レコードに配置された各ハンドシェイクメッセージフラグメントは、単一のUDPデータグラムで配信されなければなりません（MUST）。"
     },
     {
       "indent": 3,
       "text": "When a DTLS implementation receives a handshake message fragment corresponding to the next expected handshake message sequence number, it MUST process it, either by buffering it until it has the entire handshake message or by processing any in-order portions of the message. The transcript consists of complete TLS Handshake messages (reassembled as necessary). Note that this requires removing the message_seq, fragment_offset, and fragment_length fields to create the Handshake structure.",
-      "ja": "DTLSの実装が、次の予想されるハンドシェイクメッセージシーケンス番号に対応するハンドシェイクメッセージフラグメントを受信した場合、ハンドシェイクメッセージ全体があるまでバッファリングするか、メッセージの順序を処理することにより、処理する必要があります。トランスクリプトは、完全なTLSハンドシェイクメッセージで構成されています（必要に応じて再組み立てされています）。これには、メッセージ_Seq、fragment_offset、およびfragment_lengthフィールドを削除して、ハンドシェイク構造を作成する必要があることに注意してください。"
+      "ja": "DTLSの実装が、次の予想されるハンドシェイクメッセージシーケンス番号に対応するハンドシェイクメッセージフラグメントを受信した場合、ハンドシェイクメッセージ全体が揃うまでバッファリングするか、メッセージの順序通りの部分を処理することにより、それを処理しなければなりません（MUST）。トランスクリプトは、完全なTLSハンドシェイクメッセージで構成されています（必要に応じて再組み立てされています）。これには、message_seq、fragment_offset、およびfragment_lengthフィールドを削除して、Handshake構造を作成する必要があることに注意してください。"
     },
     {
       "indent": 3,
@@ -1260,7 +1230,7 @@
     {
       "indent": 3,
       "text": "Note that as with TLS, multiple handshake messages may be placed in the same DTLS record, provided that there is room and that they are part of the same flight. Thus, there are two acceptable ways to pack two DTLS handshake messages into the same datagram: in the same record or in separate records.",
-      "ja": "TLSと同様に、複数のハンドシェイクメッセージを同じDTLSレコードに配置することができ、ルームがあると同じ飛行の一部であることが提供されます。したがって、2つのDTLSハンドシェイクメッセージを同じデータグラムにパックするには、同じレコードまたは別々のレコードに2つのDTLSハンドシェイクメッセージをパックする方法があります。"
+      "ja": "TLSと同様に、複数のハンドシェイクメッセージを同じDTLSレコードに配置することができ、空きがあり、それらが同じフライトの一部である場合。したがって、2つのDTLSハンドシェイクメッセージを同じデータグラムにパックするには、同じレコードまたは別々のレコードに2つのDTLSハンドシェイクメッセージをパックする方法があります。"
     },
     {
       "indent": 0,
@@ -1271,7 +1241,7 @@
     {
       "indent": 3,
       "text": "The DTLS 1.3 handshake has one important difference from the TLS 1.3 handshake: the EndOfEarlyData message is omitted both from the wire and the handshake transcript. Because DTLS records have epochs, EndOfEarlyData is not necessary to determine when the early data is complete, and because DTLS is lossy, attackers can trivially mount the deletion attacks that EndOfEarlyData prevents in TLS. Servers SHOULD NOT accept records from epoch 1 indefinitely once they are able to process records from epoch 3. Though reordering of IP packets can result in records from epoch 1 arriving after records from epoch 3, this is not likely to persist for very long relative to the round trip time. Servers could discard epoch 1 keys after the first epoch 3 data arrives, or retain keys for processing epoch 1 data for a short period. (See Section 6.1 for the definitions of each epoch.)",
-      "ja": "DTLS 1.3ハンドシェイクには、TLS 1.3ハンドシェイクと1つの重要な違いがあります。EndoFearlyDataメッセージは、ワイヤとハンドシェイクトランスクリプトの両方で省略されます。DTLSレコードにエポックがあるため、EndoFearlyDataは早期データが完了した日がいつ完了しているかを判断する必要はありません.DTLSが損失しているため、攻撃者は、ENDoFeArlyDataがTLSで防止する削除攻撃を簡単にマウントできます。EPOCH 1からのレコードを無期限に受け入れないでください。往復時間。サーバーは、最初のEPOCH 3データが到着した後、EPOCH 1キーを破棄したり、EPOCH 1データを短時間で処理するためのキーを保持することができます。（各エポックの定義については6.1項を参照してください。）"
+      "ja": "DTLS 1.3ハンドシェイクには、TLS 1.3ハンドシェイクと1つの重要な違いがあります。EndOfEarlyDataメッセージは、ワイヤ上およびハンドシェイクトランスクリプトの両方から省略されます。DTLSレコードにエポックがあるため、Early Dataがいつ完了するかを判断するためにEndOfEarlyDataは必要ありません。また、DTLSは損失が発生しやすいため、攻撃者は、EndOfEarlyDataがTLSで防止する削除攻撃を簡単に実行できます。サーバーは、エポック3からのレコードを処理できるようになったら、エポック1からのレコードを無期限に受け入れるべきではありません（SHOULD NOT）。IPパケットの並べ替えにより、エポック3からのレコードの後にエポック1からのレコードが到着する可能性がありますが、これは往復時間と比較してそれほど長く続く可能性は低いです。サーバーは、最初のエポック3データが到着した後、エポック1キーを破棄したり、エポック1データを短時間で処理するためのキーを保持したりすることができます。（各エポックの定義については6.1項を参照してください。）"
     },
     {
       "indent": 0,
@@ -1316,43 +1286,8 @@
       "ja": "以下は、飛行の概念を示すいくつかのメッセージ交換です。[TLS13]からの表記規則が使用されます。"
     },
     {
-      "indent": 3,
-      "text": "Client Server",
-      "ja": "クライアントサーバー"
-    },
-    {
-      "indent": 4,
-      "text": "                                                          +--------+\nClientHello                                               | Flight |\n                      -------->                           +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 26,
-      "text": "                                    +--------+\n<--------        HelloRetryRequest  | Flight |\n                  + cookie          +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "                                                           +--------+\nClientHello                                                | Flight |\n + cookie              -------->                           +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 26,
-      "text": "                       ServerHello\n             {EncryptedExtensions}  +--------+\n             {CertificateRequest*}  | Flight |\n                    {Certificate*}  +--------+\n              {CertificateVerify*}\n                        {Finished}\n<--------      [Application Data*]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "{Certificate*}                                            +--------+\n{CertificateVerify*}                                      | Flight |\n{Finished}            -------->                           +--------+\n[Application Data]\n                                                          +--------+\n                      <--------                    [ACK]  | Flight |\n                                     [Application Data*]  +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]    <------->      [Application Data]",
+      "indent": 0,
+      "text": "Client                                            Server\n\n                                                           +--------+\n ClientHello                                               | Flight |\n                       -------->                           +--------+\n\n                                                           +--------+\n                       <--------        HelloRetryRequest  | Flight |\n                                         + cookie          +--------+\n\n\n                                                           +--------+\nClientHello                                                | Flight |\n + cookie              -------->                           +--------+\n\n\n\n                                              ServerHello\n                                    {EncryptedExtensions}  +--------+\n                                    {CertificateRequest*}  | Flight |\n                                           {Certificate*}  +--------+\n                                     {CertificateVerify*}\n                                               {Finished}\n                       <--------      [Application Data*]\n\n\n\n {Certificate*}                                            +--------+\n {CertificateVerify*}                                      | Flight |\n {Finished}            -------->                           +--------+\n [Application Data]\n                                                           +--------+\n                       <--------                    [ACK]  | Flight |\n                                      [Application Data*]  +--------+\n\n [Application Data]    <------->      [Application Data]",
       "raw": true,
       "ja": ""
     },
@@ -1362,26 +1297,8 @@
       "ja": "図7：完全なDTLSハンドシェイクのメッセージフライト（Cookie Exchange付）"
     },
     {
-      "indent": 4,
-      "text": "ClientHello                                              +--------+\n + pre_shared_key                                        | Flight |\n + psk_key_exchange_modes                                +--------+\n + key_share*         -------->",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "                                            ServerHello\n                                       + pre_shared_key  +--------+\n                                           + key_share*  | Flight |\n                                  {EncryptedExtensions}  +--------+\n                      <--------              {Finished}\n                                    [Application Data*]\n                                                         +--------+\n{Finished}            -------->                          | Flight |\n[Application Data*]                                      +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 26,
-      "text": "                                   +--------+\n<--------                   [ACK]  | Flight |\n              [Application Data*]  +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]    <------->      [Application Data]",
+      "indent": 1,
+      "text": "ClientHello                                              +--------+\n + pre_shared_key                                        | Flight |\n + psk_key_exchange_modes                                +--------+\n + key_share*         -------->\n\n\n                                            ServerHello\n                                       + pre_shared_key  +--------+\n                                           + key_share*  | Flight |\n                                  {EncryptedExtensions}  +--------+\n                      <--------              {Finished}\n                                    [Application Data*]\n                                                         +--------+\n{Finished}            -------->                          | Flight |\n[Application Data*]                                      +--------+\n\n                                                         +--------+\n                      <--------                   [ACK]  | Flight |\n                                    [Application Data*]  +--------+\n\n[Application Data]    <------->      [Application Data]",
       "raw": true,
       "ja": ""
     },
@@ -1391,37 +1308,8 @@
       "ja": "図8：再開およびPSKハンドシェイクのメッセージフライト（クッキー交換なし）"
     },
     {
-      "indent": 3,
-      "text": "Client Server",
-      "ja": "クライアントサーバー"
-    },
-    {
-      "indent": 4,
-      "text": "ClientHello\n + early_data\n + psk_key_exchange_modes                                +--------+\n + key_share*                                            | Flight |\n + pre_shared_key                                        +--------+\n(Application Data*)     -------->",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 26,
-      "text": "                      ServerHello\n                 + pre_shared_key\n                     + key_share*  +--------+\n            {EncryptedExtensions}  | Flight |\n                       {Finished}  +--------+\n<--------     [Application Data*]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "                                                         +--------+\n{Finished}            -------->                          | Flight |\n[Application Data*]                                      +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 26,
-      "text": "                                   +--------+\n<--------                   [ACK]  | Flight |\n              [Application Data*]  +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]    <------->      [Application Data]",
+      "indent": 0,
+      "text": "Client                                            Server\n\n ClientHello\n  + early_data\n  + psk_key_exchange_modes                                +--------+\n  + key_share*                                            | Flight |\n  + pre_shared_key                                        +--------+\n (Application Data*)     -------->\n\n                                             ServerHello\n                                        + pre_shared_key\n                                            + key_share*  +--------+\n                                   {EncryptedExtensions}  | Flight |\n                                              {Finished}  +--------+\n                       <--------     [Application Data*]\n\n\n                                                          +--------+\n {Finished}            -------->                          | Flight |\n [Application Data*]                                      +--------+\n\n                                                          +--------+\n                       <--------                   [ACK]  | Flight |\n                                     [Application Data*]  +--------+\n\n [Application Data]    <------->      [Application Data]",
       "raw": true,
       "ja": ""
     },
@@ -1431,19 +1319,8 @@
       "ja": "図9：ゼロRTTハンドシェイクのメッセージフライト"
     },
     {
-      "indent": 3,
-      "text": "Client Server",
-      "ja": "クライアントサーバー"
-    },
-    {
-      "indent": 26,
-      "text": "                                   +--------+\n<--------       [NewSessionTicket] | Flight |\n                                   +--------+",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "                                                          +--------+\n[ACK]                  -------->                          | Flight |\n                                                          +--------+",
+      "indent": 0,
+      "text": "Client                                            Server\n\n                                                          +--------+\n                       <--------       [NewSessionTicket] | Flight |\n                                                          +--------+\n\n                                                          +--------+\n[ACK]                  -------->                          | Flight |\n                                                          +--------+",
       "raw": true,
       "ja": ""
     },
@@ -1475,15 +1352,10 @@
       "ja": "DTLSは、図11に示す状態機械で簡単なタイムアウトおよび再送信方式を使用します。"
     },
     {
-      "indent": 11,
-      "text": "                     +-----------+\n                     | PREPARING |\n        +----------> |           |\n        |            |           |\n        |            +-----------+\n        |                  |\n        |                  | Buffer next flight\n        |                  |\n        |                 \\|/\n        |            +-----------+\n        |            |           |\n        |            |  SENDING  |<------------------+\n        |            |           |                   |\n        |            +-----------+                   |\nReceive |                  |                         |\n   next |                  | Send flight or partial  |\n flight |                  | flight                  |\n        |                  |                         |\n        |                  | Set retransmit timer    |\n        |                 \\|/                        |\n        |            +-----------+                   |\n        |            |           |                   |\n        +------------|  WAITING  |-------------------+\n        |     +----->|           |   Timer expires   |\n        |     |      +-----------+                   |\n        |     |          |  |   |                    |\n        |     |          |  |   |                    |\n        |     +----------+  |   +--------------------+\n        |    Receive record |   Read retransmit or ACK\nReceive |  (Maybe Send ACK) |\n   last |                   |\n flight |                   | Receive ACK\n        |                   | for last flight\n       \\|/                  |\n                            |\n    +-----------+           |\n    |           | <---------+\n    | FINISHED  |\n    |           |\n    +-----------+\n        |  /|\\\n        |   |\n        |   |\n        +---+",
+      "indent": 8,
+      "text": "                     +-----------+\n                     | PREPARING |\n        +----------> |           |\n        |            |           |\n        |            +-----------+\n        |                  |\n        |                  | Buffer next flight\n        |                  |\n        |                 \\|/\n        |            +-----------+\n        |            |           |\n        |            |  SENDING  |<------------------+\n        |            |           |                   |\n        |            +-----------+                   |\nReceive |                  |                         |\n   next |                  | Send flight or partial  |\n flight |                  | flight                  |\n        |                  |                         |\n        |                  | Set retransmit timer    |\n        |                 \\|/                        |\n        |            +-----------+                   |\n        |            |           |                   |\n        +------------|  WAITING  |-------------------+\n        |     +----->|           |   Timer expires   |\n        |     |      +-----------+                   |\n        |     |          |  |   |                    |\n        |     |          |  |   |                    |\n        |     +----------+  |   +--------------------+\n        |    Receive record |   Read retransmit or ACK\nReceive |  (Maybe Send ACK) |\n   last |                   |\n flight |                   | Receive ACK\n        |                   | for last flight\n       \\|/                  |\n                            |\n    +-----------+           |\n    |           | <---------+\n    | FINISHED  |\n    |           |\n    +-----------+\n        |  /|\\\n        |   |\n        |   |\n        +---+\n\n  Server read retransmit\n      Retransmit ACK",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 13,
-      "text": "Server read retransmit Retransmit ACK",
-      "ja": "サーバーRead Retransmit retransmit ack."
     },
     {
       "indent": 10,
@@ -1493,57 +1365,57 @@
     {
       "indent": 3,
       "text": "The state machine has four basic states: PREPARING, SENDING, WAITING, and FINISHED.",
-      "ja": "州のマシンには、準備、送信、待機、および終了の4つの基本的な状態があります。"
+      "ja": "ステートマシンには、準備、送信、待機、および終了の4つの基本的な状態があります。"
     },
     {
       "indent": 3,
       "text": "In the PREPARING state, the implementation does whatever computations are necessary to prepare the next flight of messages. It then buffers them up for transmission (emptying the transmission buffer first) and enters the SENDING state.",
-      "ja": "準備状態では、次のメッセージのフライトを準備するために必要な計算が必要です。それはそれからそれらを送信するためにそれらをバッファアップする（最初に送信バッファを空にして）送信状態に入る。"
+      "ja": "準備状態では、次のメッセージのフライトを準備するために必要な計算を行います。それはそれからそれらを送信するためにそれらをバッファリングします（最初に送信バッファを空にして）送信状態に入る。"
     },
     {
       "indent": 3,
       "text": "In the SENDING state, the implementation transmits the buffered flight of messages. If the implementation has received one or more ACKs (see Section 7) from the peer, then it SHOULD omit any messages or message fragments which have already been acknowledged. Once the messages have been sent, the implementation then sets a retransmit timer and enters the WAITING state.",
-      "ja": "送信状態では、実装はメッセージのバッファフライトフライトを送信します。実装がピアから1つ以上のACK（セクション7を参照）を受信した場合は、すでに確認されているメッセージまたはメッセージフラグメントを省略してください。メッセージが送信されると、実装は再送信タイマを設定し、待機状態に入ります。"
+      "ja": "SENDING状態では、実装はバッファリングされたメッセージのフライトを送信します。実装がピアから1つ以上のACK（セクション7を参照）を受信した場合は、すでに確認応答されているメッセージまたはメッセージフラグメントを省略すべきです（SHOULD）。メッセージが送信されると、実装は再送信タイマーを設定し、WAITING状態に入ります。"
     },
     {
       "indent": 3,
       "text": "There are four ways to exit the WAITING state:",
-      "ja": "待機状態を終了するには4つの方法があります。"
+      "ja": "待機状態を終了するには4つの方法があります："
     },
     {
       "indent": 3,
       "text": "1. The retransmit timer expires: the implementation transitions to the SENDING state, where it retransmits the flight, adjusts and re-arms the retransmit timer (see Section 5.8.2), and returns to the WAITING state.",
-      "ja": "1. 再送タイマーは期限切れになります。実装は送信状態に移行します。ここで、フライトを再送信し、再送信タイマを調整し、統合します（セクション5.8.2を参照）、待機状態に戻ります。"
+      "ja": "1. 再送信タイマーが期限切れになる：実装はSENDING状態に移行します。そこで、フライトを再送信し、再送信タイマーを調整して再設定し（セクション5.8.2を参照）、WAITING状態に戻ります。"
     },
     {
       "indent": 3,
       "text": "2. The implementation reads an ACK from the peer: upon receiving an ACK for a partial flight (as mentioned in Section 7.1), the implementation transitions to the SENDING state, where it retransmits the unacknowledged portion of the flight, adjusts and re-arms the retransmit timer, and returns to the WAITING state. Upon receiving an ACK for a complete flight, the implementation cancels all retransmissions and either remains in WAITING, or, if the ACK was for the final flight, transitions to FINISHED.",
-      "ja": "2. 実装はピアからACKを読み取ります：部分飛行のACKを受信すると（セクション7.1で言及されている）、実装は送信状態に移行し、そこでフライトの未充填部分を再送信し、再送信を調整して再装填しますタイマー、そして待機状態に戻ります。完全なフライトのためにACKを受け取ると、実装はすべての再送信をキャンセルし、待機中のまま、またはACKが最終フライトの場合、完了まで移行します。"
+      "ja": "2. 実装はピアからACKを読み取ります：部分的なフライトのACKを受信すると（セクション7.1で言及されている）、実装はSENDING状態に移行し、そこでフライトの未確認部分を再送信し、再送信タイマーを調整して再設定し、WAITING状態に戻ります。完全なフライトに対するACKを受け取ると、実装はすべての再送信をキャンセルし、WAITING状態のままになるか、ACKが最終フライトに対するものであった場合はFINISHED状態へ移行します。"
     },
     {
       "indent": 3,
       "text": "3. The implementation reads a retransmitted flight from the peer when none of the messages that it sent in response to that flight have been acknowledged: the implementation transitions to the SENDING state, where it retransmits the flight, adjusts and re-arms the retransmit timer, and returns to the WAITING state. The rationale here is that the receipt of a duplicate message is the likely result of timer expiry on the peer and therefore suggests that part of one's previous flight was lost.",
-      "ja": "3. 実装は、そのフライトに応じて送信したメッセージが認められていない場合、ピアからの再送信フライトを読み取ります。実装は送信状態に移行し、そこでフライトを再送信し、再送信タイマーを調整して再装着し、再装填します。待機状態に戻ります。ここでの理論的根拠は、重複したメッセージの受領がピアのタイマーの有効期限の結果である可能性が高いため、以前のフライトの一部が失われたことを示唆していることです。"
+      "ja": "3. 実装は、そのフライトに応答して送信したメッセージのいずれも確認応答されていない場合、ピアからの再送信されたフライトを読み取ります。実装はSENDING状態に移行し、そこでフライトを再送信し、再送信タイマーを調整して再設定し、WAITING状態に戻ります。ここでの理論的根拠は、重複したメッセージの受信がピアのタイマーの有効期限の結果である可能性が高く、したがって、自分の以前のフライトの一部が失われたことを示唆しているということです。"
     },
     {
       "indent": 3,
       "text": "4. The implementation receives some or all of the next flight of messages: if this is the final flight of messages, the implementation transitions to FINISHED. If the implementation needs to send a new flight, it transitions to the PREPARING state. Partial reads (whether partial messages or only some of the messages in the flight) may also trigger the implementation to send an ACK, as described in Section 7.1.",
-      "ja": "4. 実装では、次のメッセージの一部またはすべてが受信されます。これがメッセージの最終飛行である場合、実装は終了します。実装が新しいフライトを送信する必要がある場合、準備状態に移行します。セクション7.1で説明されているように、部分的な読み取り（部分的なメッセージまたはフライト内のメッセージの一部のみ）も、ACKを送信するために実装をトリガーする場合があります。"
+      "ja": "4. 実装は、次のメッセージのフライトの一部またはすべてを受信します。これがメッセージの最終フライトである場合、実装はFINISHED状態へ移行します。実装が新しいフライトを送信する必要がある場合、PREPARING状態に移行します。セクション7.1で説明されているように、部分的な読み取り（部分的なメッセージまたはフライト内のメッセージの一部のみ）も、ACKを送信するように実装をトリガーする場合があります。"
     },
     {
       "indent": 3,
       "text": "Because DTLS clients send the first message (ClientHello), they start in the PREPARING state. DTLS servers start in the WAITING state, but with empty buffers and no retransmit timer.",
-      "ja": "DTLSクライアントは最初のメッセージ（ClientHello）を送信し、準備状態で起動します。DTLSサーバーは待機状態で始まりますが、空のバッファーと再送信タイマーがありません。"
+      "ja": "DTLSクライアントは最初のメッセージ（ClientHello）を送信するため、PREPARING状態で開始します。DTLSサーバーはWAITING状態で開始しますが、バッファは空で再送信タイマーはありません。"
     },
     {
       "indent": 3,
       "text": "In addition, for at least twice the default MSL defined for [RFC0793], when in the FINISHED state, the server MUST respond to retransmission of the client's final flight with a retransmit of its ACK.",
-      "ja": "さらに、[RFC0793]に対して定義されたデフォルトのMSLの少なくとも2倍の場合、完成した状態では、サーバーがACKの再送信でクライアントの最終フライトの再送信に応答する必要があります。"
+      "ja": "さらに、[RFC0793]に対して定義されたデフォルトのMSLの少なくとも2倍の場合、FINISHED状態では、サーバーがACKの再送信でクライアントの最終フライトの再送信に応答する必要があります。"
     },
     {
       "indent": 3,
       "text": "Note that because of packet loss, it is possible for one side to be sending application data even though the other side has not received the first side's Finished message. Implementations MUST either discard or buffer all application data records for epoch 3 and above until they have received the Finished message from the peer. Implementations MAY treat receipt of application data with a new epoch prior to receipt of the corresponding Finished message as evidence of reordering or packet loss and retransmit their final flight immediately, shortcutting the retransmission timer.",
-      "ja": "パケットの損失のため、反対側が最初の側の完成したメッセージを受信していない場合でも、一方の側がアプリケーションデータを送信することが可能であることに注意してください。実装は、ピアから完成したメッセージを受信するまで、エポック3以上のすべてのアプリケーションデータレコードを破棄またはバッファリングする必要があります。実装は、対応する完成したメッセージを受信する前にアプリケーションデータの受信を、並べ替えまたはパケット損失の証拠として扱い、すぐに最終フライトを再送信し、再送信タイマーをショートカットする場合があります。"
+      "ja": "パケットの損失のため、反対側が最初の側のFinishedメッセージを受信していない場合でも、一方の側がアプリケーションデータを送信している可能性があることに注意してください。実装は、ピアからFinishedメッセージを受信するまで、エポック3以上のすべてのアプリケーションデータレコードを破棄またはバッファリングしなければなりません（MUST）。実装は、対応するFinishedメッセージを受信する前に新しいエポックのアプリケーションデータを受信したことを、並べ替えまたはパケット損失の証拠として扱い、すぐに最終フライトを再送信し、再送信タイマーをショートカットしてもかまいません（MAY）。"
     },
     {
       "indent": 0,
@@ -1554,17 +1426,17 @@
     {
       "indent": 3,
       "text": "The configuration of timer settings varies with implementations, and certain deployment environments require timer value adjustments. Mishandling of the timer can lead to serious congestion problems -- for example, if many instances of a DTLS time out early and retransmit too quickly on a congested link.",
-      "ja": "タイマー設定の設定は実装によって異なり、特定の展開環境ではタイマー値の調整が必要です。タイマーの誤操作は重大な渋滞の問題につながる可能性があります - たとえば、DTLSの多くのインスタンスが早期にタイムアウトし、混雑したリンクで早く再送信されます。"
+      "ja": "タイマー設定の設定は実装によって異なり、特定の展開環境ではタイマー値の調整が必要です。タイマーの誤操作は重大な輻輳の問題につながる可能性があります - たとえば、DTLSの多くのインスタンスが早期にタイムアウトし、混雑したリンクで早く再送信されます。"
     },
     {
       "indent": 3,
       "text": "Unless implementations have deployment-specific and/or external information about the round trip time, implementations SHOULD use an initial timer value of 1000 ms and double the value at each retransmission, up to no less than 60 seconds (the maximum as specified in RFC 6298 [RFC6298]). Application-specific profiles MAY recommend shorter or longer timer values. For instance:",
-      "ja": "実装が展開固有および/または往復時間に関する外部情報がない限り、実装は初期タイマー値1000ミリ秒を使用し、各再送信で60秒以上の値を2倍にする必要があります（RFC 6298で指定されている最大値[RFC6298]）。アプリケーション固有のプロファイルは、より短いまたは長いタイマー値を推奨する場合があります。例えば："
+      "ja": "実装が展開固有および/または往復時間に関する外部情報を持っていない限り、実装は初期タイマー値1000ミリ秒を使用し、60秒（RFC 6298 [RFC6298]で指定されている最大値）を下回らない値になるまで、各再送信で値を2倍にすべきです（SHOULD）。アプリケーション固有のプロファイルは、より短いまたは長いタイマー値を推奨してもかまいません（MAY）。例えば："
     },
     {
       "indent": 3,
       "text": "* Profiles for specific deployment environments, such as in low-power, multi-hop mesh scenarios as used in some Internet of Things (IoT) networks, MAY specify longer timeouts. See [IOT-PROFILE] for more information about one such DTLS 1.3 IoT profile.",
-      "ja": "* 一部のインターネット（IoT）ネットワークで使用される低電力、マルチホップメッシュシナリオなど、特定の展開環境のプロファイルは、より長いタイムアウトを指定する場合があります。そのようなDTL 1.3 IoTプロファイルの1つの詳細については、[IoT-Profile]を参照してください。"
+      "ja": "* 一部のモノのインターネット（IoT）ネットワークで使用される低電力、マルチホップメッシュシナリオなど、特定の展開環境のプロファイルは、より長いタイムアウトを指定する場合があります。そのようなDTLS 1.3 IoTプロファイルの1つの詳細については、[IoT-Profile]を参照してください。"
     },
     {
       "indent": 3,
@@ -1574,17 +1446,17 @@
     {
       "indent": 3,
       "text": "In settings where there is external information (for instance, from an ICE [RFC8445] handshake, or from previous connections to the same server) about the RTT, implementations SHOULD use 1.5 times that RTT estimate as the retransmit timer.",
-      "ja": "外部情報がある設定（たとえば、氷[RFC8445]の握手から、またはRTTについての以前の接続から）では、実装はRTTが再送信タイマーとして推定される1.5倍を使用する必要があります。"
+      "ja": "RTTに関する外部情報（たとえば、ICE [RFC8445]ハンドシェイクから、または同じサーバーへの以前の接続から）がある設定では、実装はそのRTT推定値の1.5倍を再送信タイマーとして使用すべきです（SHOULD）。"
     },
     {
       "indent": 3,
       "text": "Implementations SHOULD retain the current timer value until a message is transmitted and acknowledged without having to be retransmitted, at which time the value SHOULD be adjusted to 1.5 times the measured round trip time for that message. After a long period of idleness, no less than 10 times the current timer value, implementations MAY reset the timer to the initial value.",
-      "ja": "実装は、メッセージが再送信されずに送信され、確認されるまで現在のタイマ値を保持する必要があります。その場合、そのメッセージの測定された往復時間の1.5倍になる必要があります。長時間のアイドル性が、現在のタイマ値の10倍以上、実装はタイマーを初期値にリセットすることができます。"
+      "ja": "実装は、メッセージが再送信されずに送信され、確認応答されるまで現在のタイマー値を保持すべきです（SHOULD）。その時点で、値はそのメッセージの測定された往復時間の1.5倍に調整されるべきです（SHOULD）。現在のタイマー値の10倍以上の長いアイドル期間の後、実装はタイマーを初期値にリセットしてもかまいません（MAY）。"
     },
     {
       "indent": 3,
       "text": "Note that because retransmission is for the handshake and not dataflow, the effect on congestion of shorter timeouts is smaller than in generic protocols such as TCP or QUIC. Experience with DTLS 1.2, which uses a simpler \"retransmit everything on timeout\" approach, has not shown serious congestion problems in practice.",
-      "ja": "再送信はデータフローではなく握手のためのものであるため、短いタイムアウトの混雑への影響は、TCPやQUICなどの汎用プロトコルよりも小さいことに注意してください。よりシンプルな「タイムアウトですべてを再送信する」アプローチを使用するDTLS 1.2の経験は、実際に深刻な混雑の問題を示していません。"
+      "ja": "再送信はデータフローではなく握手のためのものであるため、短いタイムアウトの輻輳への影響は、TCPやQUICなどの汎用プロトコルよりも小さいことに注意してください。よりシンプルな「タイムアウトですべてを再送信する」アプローチを使用するDTLS 1.2の経験は、実際に深刻な輻輳の問題を示していません。"
     },
     {
       "indent": 0,
@@ -1595,7 +1467,7 @@
     {
       "indent": 3,
       "text": "DTLS does not have any built-in congestion control or rate control; in general, this is not an issue because messages tend to be small. However, in principle, some messages -- especially Certificate -- can be quite large. If all the messages in a large flight are sent at once, this can result in network congestion. A better strategy is to send out only part of the flight, sending more when messages are acknowledged. Several extensions have been standardized to reduce the size of the Certificate message -- for example, the \"cached_info\" extension [RFC7924]; certificate compression [RFC8879]; and [RFC6066], which defines the \"client_certificate_url\" extension allowing DTLS clients to send a sequence of Uniform Resource Locators (URLs) instead of the client certificate.",
-      "ja": "DTLSには、混雑制御またはレート制御が組み込まれていません。一般に、メッセージは小さい傾向があるため、これは問題ではありません。ただし、原則として、一部のメッセージ（特に証明書）は非常に大きい場合があります。大規模なフライト内のすべてのメッセージが一度に送信された場合、これによりネットワークの輻輳が発生する可能性があります。より良い戦略は、フライトの一部のみを送信し、メッセージが認められたときにさらに多くを送信することです。証明書メッセージのサイズを削減するためにいくつかの拡張機能が標準化されています - たとえば、「cached_info」拡張[RFC7924]。証明書圧縮[RFC8879];[RFC6066]は、「client_certificate_url」拡張機能を定義し、DTLSクライアントがクライアント証明書の代わりに一連のユニフォームリソースロケーター（URL）を送信できるようにします。"
+      "ja": "DTLSには、輻輳制御またはレート制御が組み込まれていません。一般に、メッセージは小さい傾向があるため、これは問題ではありません。ただし、原則として、一部のメッセージ（特に証明書）は非常に大きい場合があります。大規模なフライト内のすべてのメッセージが一度に送信された場合、これによりネットワークの輻輳が発生する可能性があります。より良い戦略は、フライトの一部のみを送信し、メッセージが認められたときにさらに多くを送信することです。証明書メッセージのサイズを削減するためにいくつかの拡張機能が標準化されています - たとえば、「cached_info」拡張[RFC7924]。証明書圧縮[RFC8879];[RFC6066]は、「client_certificate_url」拡張機能を定義し、DTLSクライアントがクライアント証明書の代わりに一連のユニフォームリソースロケーター（URL）を送信できるようにします。"
     },
     {
       "indent": 3,
@@ -1641,22 +1513,22 @@
     {
       "indent": 3,
       "text": "Messages of each category can be sent independently, and reliability is established via independent state machines, each of which behaves as described in Section 5.8.1. For example, if a server sends a NewSessionTicket and a CertificateRequest message, two independent state machines will be created.",
-      "ja": "各カテゴリのメッセージは独立して送信でき、信頼性は独立した状態マシンを介して確立され、それぞれがセクション5.8.1で説明されているように動作します。たとえば、サーバーがNewsessionTicketとCertificateRequestメッセージを送信する場合、2つの独立した状態マシンが作成されます。"
+      "ja": "各カテゴリのメッセージは独立して送信でき、信頼性は独立したステートマシンを介して確立され、それぞれがセクション5.8.1で説明されているように動作します。たとえば、サーバーがNewsessionTicketとCertificateRequestメッセージを送信する場合、2つの独立したステートマシンが作成されます。"
     },
     {
       "indent": 3,
       "text": "Sending multiple instances of messages of a given category without having completed earlier transmissions is allowed for some categories, but not for others. Specifically, a server MAY send multiple NewSessionTicket messages at once without awaiting ACKs for earlier NewSessionTicket messages first. Likewise, a server MAY send multiple CertificateRequest messages at once without having completed earlier client authentication requests before. In contrast, implementations MUST NOT send KeyUpdate, NewConnectionId, or RequestConnectionId messages if an earlier message of the same type has not yet been acknowledged.",
-      "ja": "以前の送信を完了せずに特定のカテゴリのメッセージの複数のインスタンスを送信することは、いくつかのカテゴリに対して許可されていますが、他のカテゴリでは許可されていません。具体的には、以前のNewsessionTicketメッセージが最初にACKを待っていなくても、サーバーは一度に複数のNewSessionTicketメッセージを送信することがあります。同様に、サーバーは、以前に以前のクライアント認証要求を完了せずに、複数のCertificateQuestメッセージを一度に送信することができます。対照的に、同じタイプの以前のメッセージがまだ認識されていない場合、実装はKeyUpdate、NewConnectionID、またはRequestConnectionIDメッセージを送信してはいけません。"
+      "ja": "以前の送信を完了せずに特定のカテゴリのメッセージの複数のインスタンスを送信することは、いくつかのカテゴリに対して許可されていますが、他のカテゴリでは許可されていません。具体的には、サーバーは、以前のNewSessionTicketメッセージに対するACKを待たずに、一度に複数のNewSessionTicketメッセージを送信してもかまいません（MAY）。同様に、サーバーは、以前のクライアント認証要求を完了せずに、一度に複数のCertificateRequestメッセージを送信してもかまいません（MAY）。対照的に、同じタイプの以前のメッセージがまだ確認応答されていない場合、実装はKeyUpdate、NewConnectionId、またはRequestConnectionIdメッセージを送信してはなりません（MUST NOT）。"
     },
     {
       "indent": 6,
       "text": "Note: Except for post-handshake client authentication, which involves handshake messages in both directions, post-handshake messages are single-flight, and their respective state machines on the sender side reduce to waiting for an ACK and retransmitting the original message. In particular, note that a RequestConnectionId message does not force the receiver to send a NewConnectionId message in reply, and both messages are therefore treated independently.",
-      "ja": "注：ポストハンドシェイククライアント認証を除き、両方向のハンドシェイクメッセージ、ポストハンドシェイクメッセージは単一飛行であり、送信者側のそれぞれの状態マシンがACKを待って元のメッセージを再送信します。特に、RequestConnectionIDメッセージは、受信者にNewConnectionIDメッセージを返信するように強制しないため、両方のメッセージが独立して扱われることに注意してください。"
+      "ja": "注：両方向のハンドシェイクメッセージを伴うポストハンドシェイククライアント認証を除き、ポストハンドシェイクメッセージは単一フライトであり、送信者側のそれぞれのステートマシンは、ACKを待機し、元のメッセージを再送信することに縮小されます。特に、RequestConnectionIdメッセージは、受信者にNewConnectionIdメッセージを返信するように強制しないため、両方のメッセージが独立して扱われることに注意してください。"
     },
     {
       "indent": 3,
       "text": "Creating and correctly updating multiple state machines requires feedback from the handshake logic to the state machine layer, indicating which message belongs to which state machine. For example, if a server sends multiple CertificateRequest messages and receives a Certificate message in response, the corresponding state machine can only be determined after inspecting the certificate_request_context field. Similarly, a server sending a single CertificateRequest and receiving a NewConnectionId message in response can only decide that the NewConnectionId message should be treated through an independent state machine after inspecting the handshake message type.",
-      "ja": "複数の状態マシンを作成して正しく更新するには、ハンドシェイクロジックから状態マシン層へのフィードバックが必要であり、どのメッセージがどのようなメッセージに属しているかを示します。たとえば、サーバーが複数のCertificateRequestメッセージを送信し、応答して証明書メッセージを受信した場合、対応する状態マシンは、certificate_request_contextフィールドを検査した後にのみ決定できます。同様に、単一のCertificateRequestを送信し、それに応じてNewConnectionIDメッセージを受信するサーバーは、握手メッセージの種類を検査した後、NewConnectionIDメッセージを独立した状態マシンで扱う必要があることのみを決定できます。"
+      "ja": "複数のステートマシンを作成して正しく更新するには、ハンドシェイクロジックからステートマシン層へのフィードバックが必要であり、どのメッセージがどのようなメッセージに属しているかを示します。たとえば、サーバーが複数のCertificateRequestメッセージを送信し、応答して証明書メッセージを受信した場合、対応するステートマシンは、certificate_request_contextフィールドを検査した後にのみ決定できます。同様に、単一のCertificateRequestを送信し、それに応じてNewConnectionIDメッセージを受信するサーバーは、握手メッセージの種類を検査した後、NewConnectionIDメッセージを独立したステートマシンで扱う必要があることのみを決定できます。"
     },
     {
       "indent": 0,
@@ -1667,7 +1539,7 @@
     {
       "indent": 3,
       "text": "Section 7.1 of [TLS13] specifies that HKDF-Expand-Label uses a label prefix of \"tls13 \". For DTLS 1.3, that label SHALL be \"dtls13\". This ensures key separation between DTLS 1.3 and TLS 1.3. Note that there is no trailing space; this is necessary in order to keep the overall label size inside of one hash iteration because \"DTLS\" is one letter longer than \"TLS\".",
-      "ja": "[TLS13]のセクション7.1は、HKDF-Expand-Labelが「TLS13」のラベルプレフィックスを使用することを指定しています。DTLS 1.3の場合、そのラベルは「DTLS13」でなければなりません。これにより、DTLS 1.3とTLS 1.3の重要な分離が保証されます。後続のスペースはないことに注意してください。これは、「DTL」が「TLS」よりも1文字長いため、1つのハッシュ反復内にラベルサイズ全体を維持するために必要です。"
+      "ja": "[TLS13]のセクション7.1は、HKDF-Expand-Labelが「TLS13」のラベルプレフィックスを使用することを指定しています。DTLS 1.3の場合、そのラベルは「DTLS13」でなければなりません。これにより、DTLS 1.3とTLS 1.3の鍵の分離が保証されます。後続のスペースはないことに注意してください。これは、「DTL」が「TLS」よりも1文字長いため、1つのハッシュ反復内にラベルサイズ全体を維持するために必要です。"
     },
     {
       "indent": 0,
@@ -1683,7 +1555,7 @@
     {
       "indent": 3,
       "text": "Any data received with an epoch/sequence number pair after that of a valid received closure alert MUST be ignored. Note: this is a change from TLS 1.3 which depends on the order of receipt rather than the epoch and sequence number.",
-      "ja": "有効な受信閉鎖アラートのエポック/シーケンス番号ペアで受信したデータは無視する必要があります。注：これは、エポック数とシーケンス番号ではなく、領収書の順序に依存するTLS 1.3からの変更です。"
+      "ja": "有効な受信閉鎖アラートのエポック/シーケンス番号ペアより後のエポック/シーケンス番号ペアで受信したデータは、無視されなければなりません（MUST）。注：これは、エポックとシーケンス番号ではなく、受信順序に依存するTLS 1.3からの変更です。"
     },
     {
       "indent": 0,
@@ -1710,59 +1582,11 @@
     {
       "indent": 3,
       "text": "The following is an example of a handshake with lost packets and retransmissions. Note that the client sends an empty ACK message because it can only acknowledge Record 2 sent by the server once it has processed messages in Record 0 needed to establish epoch 2 keys, which are needed to encrypt or decrypt messages found in Record 2. Section 7 provides the necessary background details for this interaction. Note: For simplicity, we are not resetting record numbers in this diagram, so \"Record 1\" is really \"Epoch 2, Record 0\", etc.",
-      "ja": "以下は、失われたパケットと再送信による握手の例です。クライアントは空のACKメッセージを送信することに注意してください。なぜなら、サーバーが送信したレコード2を確認できるため、レコード2キーを確立するために必要なレコード0のメッセージを処理した後、レコード2で見つかったメッセージを暗号化または復号化するために必要な場合に注意してください。この相互作用に必要な背景の詳細を提供します。注：簡単にするために、この図でレコード番号をリセットしていないため、「レコード1」は本当に「エポック2、レコード0」などです。"
+      "ja": "以下は、失われたパケットと再送信による握手の例です。クライアントは空のACKメッセージを送信することに注意してください。なぜなら、サーバーが送信したレコード2を確認できるのは、レコード2で見つかったメッセージを暗号化または復号化するために必要なエポック2のキーを確立するために必要なレコード0のメッセージを処理した後だけだからです。セクション7は、この相互作用に必要な背景の詳細を提供します。注：簡単にするために、この図でレコード番号をリセットしていないため、「レコード1」は本当に「エポック2、レコード0」などです。"
     },
     {
-      "indent": 3,
-      "text": "Client                                                Server\n------                                                ------",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "Record 0                  -------->\nClientHello\n(message_seq=0)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 32,
-      "text": "X<-----                 Record 0\n(lost)               ServerHello\n                 (message_seq=0)\n                        Record 1\n             EncryptedExtensions\n                 (message_seq=1)\n                     Certificate\n                 (message_seq=2)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 30,
-      "text": "<--------                 Record 2\n                 CertificateVerify\n                   (message_seq=3)\n                          Finished\n                   (message_seq=4)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "Record 1                  -------->\nACK []",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 30,
-      "text": "<--------                 Record 3\n                       ServerHello\n                   (message_seq=0)\n               EncryptedExtensions\n                   (message_seq=1)\n                       Certificate\n                   (message_seq=2)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 30,
-      "text": "<--------                 Record 4\n                 CertificateVerify\n                   (message_seq=3)\n                          Finished\n                   (message_seq=4)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "Record 2                  -------->\nCertificate\n(message_seq=1)\nCertificateVerify\n(message_seq=2)\nFinished\n(message_seq=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 30,
-      "text": "<--------               Record 5\n                         ACK [2]",
+      "indent": 0,
+      "text": "Client                                                Server\n------                                                ------\n\n Record 0                  -------->\n ClientHello\n (message_seq=0)\n\n                             X<-----                 Record 0\n                             (lost)               ServerHello\n                                              (message_seq=0)\n                                                     Record 1\n                                          EncryptedExtensions\n                                              (message_seq=1)\n                                                  Certificate\n                                              (message_seq=2)\n\n\n                           <--------                 Record 2\n                                            CertificateVerify\n                                              (message_seq=3)\n                                                     Finished\n                                              (message_seq=4)\n\n Record 1                  -------->\n ACK []\n\n\n                           <--------                 Record 3\n                                                  ServerHello\n                                              (message_seq=0)\n                                          EncryptedExtensions\n                                              (message_seq=1)\n                                                  Certificate\n                                              (message_seq=2)\n\n                           <--------                 Record 4\n                                            CertificateVerify\n                                              (message_seq=3)\n                                                     Finished\n                                              (message_seq=4)\n\n\n Record 2                  -------->\n Certificate\n (message_seq=1)\n CertificateVerify\n (message_seq=2)\n Finished\n (message_seq=3)\n\n                           <--------               Record 5\n                                                    ACK [2]",
       "raw": true,
       "ja": ""
     },
@@ -1780,7 +1604,7 @@
     {
       "indent": 3,
       "text": "A recipient of a DTLS message needs to select the correct keying material in order to process an incoming message. With the possibility of message loss and reordering, an identifier is needed to determine which cipher state has been used to protect the record payload. The epoch value fulfills this role in DTLS. In addition to the TLS 1.3-defined key derivation steps (see Section 7 of [TLS13]), a sender may want to rekey at any time during the lifetime of the connection. It therefore needs to indicate that it is updating its sending cryptographic keys.",
-      "ja": "DTLSメッセージの受信者は、着信メッセージを処理するために正しいキーイング資料を選択する必要があります。メッセージの損失と並べ替えの可能性で、レコードペイロードを保護するためにどの暗号状態が使用されてきたかを判断するために識別子が必要です。EPOCH値はDTLSにおけるこの役割を果たします。TLS 1.3定義のキー導出ステップ（[TLS13]のセクション7を参照）に加えて、送信者は接続の有効期間中いつでも再確認したいと思うかもしれません。したがって、送信暗号化キーを送信していることを示す必要があります。"
+      "ja": "DTLSメッセージの受信者は、着信メッセージを処理するために正しいキーイング資料を選択する必要があります。メッセージの損失と並べ替えの可能性で、レコードペイロードを保護するためにどの暗号状態が使用されてきたかを判断するために識別子が必要です。EPOCH値はDTLSにおけるこの役割を果たします。TLS 1.3定義のキー導出ステップ（[TLS13]のセクション7を参照）に加えて、送信者は接続の有効期間中いつでも再キーイングしたいと思うかもしれません。したがって、送信暗号化キーを更新していることを示す必要があります。"
     },
     {
       "indent": 3,
@@ -1790,7 +1614,7 @@
     {
       "indent": 3,
       "text": "* Epoch value (0) is used with unencrypted messages. There are three unencrypted messages in DTLS, namely ClientHello, ServerHello, and HelloRetryRequest.",
-      "ja": "* エポック値（0）は暗号化されていないメッセージで使用されます。DTLSには3つの暗号化されていないメッセージ、すなわちClientHello、ServerHello、およびHelloretryRequestがあります。"
+      "ja": "* エポック値（0）は暗号化されていないメッセージで使用されます。DTLSには3つの暗号化されていないメッセージ、すなわちClientHello、ServerHello、およびHelloRetryRequestがあります。"
     },
     {
       "indent": 3,
@@ -1800,22 +1624,22 @@
     {
       "indent": 3,
       "text": "* Epoch value (2) is used for messages protected using keys derived from [sender]_handshake_traffic_secret. Messages transmitted during the initial handshake, such as EncryptedExtensions, CertificateRequest, Certificate, CertificateVerify, and Finished, belong to this category. Note, however, that post-handshake messages are protected under the appropriate application traffic key and are not included in this category.",
-      "ja": "* エポック値（2）は、[送信者] _handshake_traffic_secretから派生したキーを使用して保護されたメッセージに使用されます。暗号化されたTextensions、certifateaterequest、certifativeverify、および完成など、最初の握手中に送信されたメッセージは、このカテゴリに属します。ただし、ポストハンドシェイクメッセージは適切なアプリケーショントラフィックキーの下で保護されており、このカテゴリには含まれていないことに注意してください。"
+      "ja": "* エポック値（2）は、[送信者]_handshake_traffic_secretから派生したキーを使用して保護されたメッセージに使用されます。EncryptedExtensions、CertificateRequest、Certificate、CertificateVerify、およびFinishedなど、最初の握手中に送信されたメッセージは、このカテゴリに属します。ただし、ポストハンドシェイクメッセージは適切なアプリケーショントラフィックキーの下で保護されており、このカテゴリには含まれていないことに注意してください。"
     },
     {
       "indent": 3,
       "text": "* Epoch value (3) is used for payloads protected using keys derived from the initial [sender]_application_traffic_secret_0. This may include handshake messages, such as post-handshake messages (e.g., a NewSessionTicket message).",
-      "ja": "* エポック値（3）は、初期の[送信者] _Application_traffic_secret_0から派生したキーを使用して保護されたペイロードに使用されます。これには、ポストハンドシェイクメッセージ（NewsessionTicketメッセージなど）などのハンドシェイクメッセージが含まれる場合があります。"
+      "ja": "* エポック値（3）は、初期の [送信者]_application_traffic_secret_0 から派生したキーを使用して保護されたペイロードに使用されます。これには、ポストハンドシェイクメッセージ（NewSessionTicketメッセージなど）などのハンドシェイクメッセージが含まれる場合があります。"
     },
     {
       "indent": 3,
       "text": "* Epoch values (4 to 2^64-1) are used for payloads protected using keys from the [sender]_application_traffic_secret_N (N>0).",
-      "ja": "* エポック値（4~2 ^ 64-1）は、[送信者] _Application_traffic_secret_n（n> 0）からのキーを使用して保護されたペイロードに使用されます。"
+      "ja": "* エポック値（4 ~ 2^64-1）は、[送信者]_application_traffic_secret_n（n> 0）からのキーを使用して保護されたペイロードに使用されます。"
     },
     {
       "indent": 3,
       "text": "Using these reserved epoch values, a receiver knows what cipher state has been used to encrypt and integrity protect a message. Implementations that receive a record with an epoch value for which no corresponding cipher state can be determined SHOULD handle it as a record which fails deprotection.",
-      "ja": "これらの予約されたエポック値を使用して、受信者は、メッセージの暗号化と整合性を保護するために使用されたCipher状態を知っています。対応する暗号状態を決定できないエポック値でレコードを受け取る実装は、脱保護に失敗するレコードとしてそれを処理する必要があります。"
+      "ja": "これらの予約されたエポック値を使用して、受信者は、メッセージの暗号化と整合性を保護するために使用されたCipher状態を知っています。対応する暗号状態を決定できないエポック値でレコードを受け取る実装は、保護解除に失敗するレコードとしてそれを処理する必要があります。"
     },
     {
       "indent": 3,
@@ -1859,7 +1683,7 @@
     {
       "indent": 10,
       "text": "Figure 13: Example DTLS Exchange with Epoch Information",
-      "ja": "図13：Epoch情報との例示DTLS交換"
+      "ja": "図13：エポック情報との例示DTLS交換"
     },
     {
       "indent": 0,
@@ -1881,12 +1705,12 @@
     {
       "indent": 3,
       "text": "record_numbers: A list of the records containing handshake messages in the current flight which the endpoint has received and either processed or buffered, in numerically increasing order.",
-      "ja": "Record_Numbers：エンドポイントが受信し、処理またはバッファリングされた現在のフライトに握手メッセージを含むレコードのリストは、数値的に順序を増やします。"
+      "ja": "Record_Numbers：エンドポイントが受信し、処理またはバッファリングされた現在のフライトに握手メッセージを含むレコードのリストは、数値の昇順で。"
     },
     {
       "indent": 3,
       "text": "Implementations MUST NOT acknowledge records containing handshake messages or fragments which have not been processed or buffered. Otherwise, deadlock can ensue. As an example, implementations MUST NOT send ACKs for handshake messages which they discard because they are not the next expected message.",
-      "ja": "実装は、処理またはバッファリングされていないハンドシェイクメッセージまたはフラグメントを含むレコードを確認してはなりません。そうでなければ、デッドロックが続く可能性があります。例として、実装は、次の予想されるメッセージではないため、ハンドシェイクメッセージにAcksを送信してはなりません。"
+      "ja": "実装は、処理またはバッファリングされていないハンドシェイクメッセージまたはフラグメントを含むレコードを肯定応答してはなりません。そうでなければ、デッドロックが続く可能性があります。例として、実装は、次の予想されるメッセージではないため破棄するハンドシェイクメッセージに対してACKを送信してはなりません。"
     },
     {
       "indent": 3,
@@ -1901,7 +1725,7 @@
     {
       "indent": 3,
       "text": "During the handshake, ACK records MUST be sent with an epoch which is equal to or higher than the record which is being acknowledged. Note that some care is required when processing flights spanning multiple epochs. For instance, if the client receives only the ServerHello and Certificate and wishes to ACK them in a single record, it must do so in epoch 2, as it is required to use an epoch greater than or equal to 2 and cannot yet send with any greater epoch. Implementations SHOULD simply use the highest current sending epoch, which will generally be the highest available. After the handshake, implementations MUST use the highest available sending epoch.",
-      "ja": "握手中、ACKレコードは、認められているレコード以上のエポックで送信する必要があります。複数のエポックにまたがるフライトを処理する場合は、ある程度の注意が必要であることに注意してください。たとえば、クライアントがServerHelloと証明書のみを受信し、単一のレコードでそれらをACKしたい場合、Epoch 2では2以上のエポックを使用する必要があり、まだ送信できないため、それを行う必要があります。より大きな時代。実装では、単に最高の電流送信エポックを使用する必要があります。これは一般に利用可能な最高のものです。握手の後、実装は利用可能な最高の送信エポックを使用する必要があります。"
+      "ja": "握手中、ACKレコードは、認められているレコード以上のエポックで送信する必要があります。複数のエポックにまたがるフライトを処理する場合は、ある程度の注意が必要であることに注意してください。たとえば、クライアントがServerHelloと証明書のみを受信し、単一のレコードでそれらをACKしたい場合、Epoch 2では2以上のエポックを使用する必要があり、まだ送信できないため、それを行う必要があります。より大きなエポック。実装では、単に最高の電流送信エポックを使用する必要があります。これは一般に利用可能な最高のものです。握手の後、実装は利用可能な最高の送信エポックを使用する必要があります。"
     },
     {
       "indent": 0,
@@ -1917,17 +1741,17 @@
     {
       "indent": 3,
       "text": "* When they receive a message or fragment which is out of order, either because it is not the next expected message or because it is not the next piece of the current message.",
-      "ja": "* 彼らが次に予想されるメッセージではないか、現在のメッセージの次のピースではないために、故障したメッセージまたはフラグメントを受け取るとき。"
+      "ja": "* 彼らが次に予想されるメッセージではないか、現在のメッセージの次のピースではないために、順序が狂ったメッセージまたはフラグメントを受け取るとき。"
     },
     {
       "indent": 3,
       "text": "* When they have received part of a flight and do not immediately receive the rest of the flight (which may be in the same UDP datagram). \"Immediately\" is hard to define. One approach is to set a timer for 1/4 the current retransmit timer value when the first record in the flight is received and then send an ACK when that timer expires. Note: The 1/4 value here is somewhat arbitrary. Given that the round trip estimates in the DTLS handshake are generally very rough (or the default), any value will be an approximation, and there is an inherent compromise due to competition between retransmission due to over-aggressive ACKing and over-aggressive timeout-based retransmission. As a comparison point, QUIC's loss-based recovery algorithms ([RFC9002], Section 6.1.2) work out to a delay of about 1/3 of the retransmit timer.",
-      "ja": "* フライトの一部を受け取ったとき、そしてすぐにフライトの残りの部分を受け取らない場合（同じUDPデータグラムにあるかもしれません）。「すぐに」定義するのが難しいです。1つのアプローチは、フライト内の最初のレコードが受信されたときに現在の再送信タイマ値を1/4に設定し、そのタイマーが期限切れになったときにACKを送信するようにタイマーを設定することです。注：ここで1/4値はやや任意です。DTLSハンドシェイクの往復推定値が一般的に非常に荒れている（またはデフォルト）、任意の値は近似値になり、積極的な攻撃による再送信と過度の積極的なタイムアウトによる再送信の競合による固有の妥協点があります。再送に基づく。比較点として、QUICの損失ベースの回復アルゴリズム（[RFC9002]、6.1.2）は、再送信タイマの約1/3の遅延に機能します。"
+      "ja": "* フライトの一部を受け取ったとき、そしてすぐにフライトの残りの部分を受け取らない場合（同じUDPデータグラムにあるかもしれません）。「すぐに」を定義するのは難しいです。1つのアプローチは、フライト内の最初のレコードが受信されたときに現在の再送信タイマー値の1/4にタイマーを設定し、そのタイマーが期限切れになったときにACKを送信するようにタイマーを設定することです。注：ここで1/4値はやや任意です。DTLSハンドシェイクの往復推定値が一般的に非常に大まかである（またはデフォルト）ことを考えると、任意の値は近似値になり、過度に積極的なACKによる再送信と過度に積極的なタイムアウトベースの再送信の競合による固有の妥協点があります。比較点として、QUICの損失ベースの回復アルゴリズム（[RFC9002]、6.1.2）は、再送信タイマの約1/3の遅延に機能します。"
     },
     {
       "indent": 3,
       "text": "In general, flights MUST be ACKed unless they are implicitly acknowledged. In the present specification, the following flights are implicitly acknowledged by the receipt of the next flight, which generally immediately follows the flight:",
-      "ja": "一般に、フライトは暗黙のうちに認められない限り、ackedする必要があります。現在の仕様では、次のフライトは次のフライトの受領によって暗黙的に認められます。これは通常、フライトの直後になります。"
+      "ja": "一般に、フライトは暗黙のうちに認められない限り、ACKする必要があります。現在の仕様では、次のフライトは次のフライトの受領によって暗黙的に認められます。これは通常、フライトの直後になります。"
     },
     {
       "indent": 3,
@@ -1942,7 +1766,7 @@
     {
       "indent": 3,
       "text": "ACKs SHOULD NOT be sent for these flights unless the responding flight cannot be generated immediately. All other flights MUST be ACKed. In this case, implementations MAY send explicit ACKs for the complete received flight even though it will eventually also be implicitly acknowledged through the responding flight. A notable example for this is the case of client authentication in constrained environments, where generating the CertificateVerify message can take considerable time on the client. Implementations MAY acknowledge the records corresponding to each transmission of each flight or simply acknowledge the most recent one. In general, implementations SHOULD ACK as many received packets as can fit into the ACK record, as this provides the most complete information and thus reduces the chance of spurious retransmission; if space is limited, implementations SHOULD favor including records which have not yet been acknowledged.",
-      "ja": "応答フライトをすぐに生成できない限り、これらのフライトにACKを送信しないでください。他のすべてのフライトをAckedする必要があります。この場合、実装は、最終的に応答するフライトを通じて暗黙的に認められるにもかかわらず、完全な受信フライトの明示的なAcksを送信する場合があります。これの注目すべき例は、Certimateverifyメッセージを生成することでクライアントにかなりの時間がかかる可能性があるため、制約された環境でクライアント認証の場合です。実装は、各フライトの各伝送に対応するレコードを認めるか、単に最新のフライトを確認する場合があります。一般に、実装はACKレコードに収まると同じくらい多くの受信パケットをACKする必要があります。これは、最も完全な情報を提供し、したがって偽りの再送信の可能性を減らすためです。スペースが限られている場合、実装はまだ認められていない記録を含めて有利なものです。"
+      "ja": "応答フライトをすぐに生成できない限り、これらのフライトにACKを送信しないでください。他のすべてのフライトをACKする必要があります。この場合、実装は、最終的に応答するフライトを通じて暗黙的に認められるにもかかわらず、完全な受信フライトの明示的なACKを送信する場合があります。これの注目すべき例は、CertificateVerifyメッセージを生成することでクライアントにかなりの時間がかかる可能性があるため、制約された環境でクライアント認証の場合です。実装は、各フライトの各伝送に対応するレコードを認めるか、単に最新のフライトを確認する場合があります。一般に、実装はACKレコードに収まると同じくらい多くの受信パケットをACKする必要があります。これは、最も完全な情報を提供し、したがって偽りの再送信の可能性を減らすためです。スペースが限られている場合、実装はまだ認められていない記録を含めて優先すべきです。"
     },
     {
       "indent": 6,
@@ -1952,12 +1776,12 @@
     {
       "indent": 3,
       "text": "ACKs MUST NOT be sent for records of any content type other than handshake or for records which cannot be deprotected.",
-      "ja": "ACKは、ハンドシェイク以外のコンテンツタイプのレコードまたは脱保護できないレコードのために送信してはなりません。"
+      "ja": "ACKは、ハンドシェイク以外のコンテンツタイプのレコードまたは保護解除できないレコードのために送信してはなりません。"
     },
     {
       "indent": 3,
       "text": "Note that in some cases it may be necessary to send an ACK which does not contain any record numbers. For instance, a client might receive an EncryptedExtensions message prior to receiving a ServerHello. Because it cannot decrypt the EncryptedExtensions, it cannot safely acknowledge it (as it might be damaged). If the client does not send an ACK, the server will eventually retransmit its first flight, but this might take far longer than the actual round trip time between client and server. Having the client send an empty ACK shortcuts this process.",
-      "ja": "場合によっては、レコード番号が含まれていないACKを送信する必要がある場合があることに注意してください。たとえば、クライアントはServerHelloを受信する前に暗号化されたEdextensionsメッセージを受信する場合があります。暗号化されたEdedExtensionsを復号化できないため、安全に認めることはできません（損傷している可能性があるため）。クライアントがACKを送信しない場合、サーバーは最終的に最初のフライトを再送信しますが、これはクライアントとサーバー間の実際の往復時間よりもはるかに長くかかる場合があります。クライアントに空のACKショートカットを送信させると、このプロセス。"
+      "ja": "場合によっては、レコード番号が含まれていないACKを送信する必要がある場合があることに注意してください。たとえば、クライアントはServerHelloを受信する前にEncryptedExtensionsメッセージを受信する場合があります。EncryptedExtensionsを復号化できないため、安全に認めることはできません（損傷している可能性があるため）。クライアントがACKを送信しない場合、サーバーは最終的に最初のフライトを再送信しますが、これはクライアントとサーバー間の実際の往復時間よりもはるかに長くかかる場合があります。クライアントに空のACKを送信させることで、このプロセスをショートカットします。"
     },
     {
       "indent": 0,
@@ -1968,7 +1792,7 @@
     {
       "indent": 3,
       "text": "When an implementation receives an ACK, it SHOULD record that the messages or message fragments sent in the records being ACKed were received and omit them from any future retransmissions. Upon receipt of an ACK that leaves it with only some messages from a flight having been acknowledged, an implementation SHOULD retransmit the unacknowledged messages or fragments. Note that this requires implementations to track which messages appear in which records. Once all the messages in a flight have been acknowledged, the implementation MUST cancel all retransmissions of that flight. Implementations MUST treat a record as having been acknowledged if it appears in any ACK; this prevents spurious retransmission in cases where a flight is very large and the receiver is forced to elide acknowledgements for records which have already been ACKed. As noted above, the receipt of any record responding to a given flight MUST be taken as an implicit acknowledgement for the entire flight to which it is responding.",
-      "ja": "実装がACKを受信すると、ACKされているレコードで送信されたメッセージまたはメッセージフラグメントが受信され、将来の再送信からそれらを省略したことを記録する必要があります。承認されたフライトからのメッセージのみを残すACKを受信すると、実装は未確認のメッセージまたはフラグメントを再送信する必要があります。これには、どのメッセージがレコードに表示されるかを追跡するための実装が必要です。フライト内のすべてのメッセージが確認されたら、その実装はそのフライトのすべての再送信をキャンセルする必要があります。実装は、任意のACKに表示されている場合は、レコードを承認されたものとして扱う必要があります。これは、飛行が非常に大きく、受信機はすでに撮影されている記録の承認を余儀なくされることを余儀なくされている。上記のように、特定のフライトに応答するレコードの受信は、それが応答しているフライト全体の暗黙の確認として取られる必要があります。"
+      "ja": "実装がACKを受信すると、ACKされたレコードで送信されたメッセージまたはメッセージフラグメントが受信され、将来の再送信からそれらを省略したことを記録する必要があります。承認されたフライトからのメッセージのみを残すACKを受信すると、実装は未確認のメッセージまたはフラグメントを再送信する必要があります。これには、どのメッセージがレコードに表示されるかを追跡するための実装が必要です。フライト内のすべてのメッセージが確認されたら、その実装はそのフライトのすべての再送信をキャンセルする必要があります。実装は、任意のACKに表示されている場合は、レコードを承認されたものとして扱う必要があります。これは、飛行が非常に大きく、受信機はすでにACKされたレコードの確認応答を省略せざるを得ない場合に、偽の再送信を防ぎます。上記のように、特定のフライトに応答するレコードの受信は、それが応答しているフライト全体の暗黙の確認として取られる必要があります。"
     },
     {
       "indent": 0,
@@ -2020,7 +1844,7 @@
     {
       "indent": 3,
       "text": "Due to the possibility of an ACK message for a KeyUpdate being lost and thereby preventing the sender of the KeyUpdate from updating its keying material, receivers MUST retain the pre-update keying material until receipt and successful decryption of a message using the new keys.",
-      "ja": "KeyUpdateが失われ、それによってKeyUpdateの送信者がそのキーイング資料を更新するのを防ぐためのACKメッセージが失われる可能性があるため、受信者は新しいキーを使用してメッセージの受信および成功の復号化まで、更新前のキーイングを保持しなければなりません。"
+      "ja": "KeyUpdateに対するACKメッセージが失われ、それによってKeyUpdateの送信者がそのキーイング資料を更新するのを防ぐ可能性があるため、受信者は新しいキーを使用してメッセージの受信および成功の復号化まで、更新前のキーイングを保持しなければなりません。"
     },
     {
       "indent": 3,
@@ -2028,79 +1852,8 @@
       "ja": "図14は、成功したACK処理がキーアップデートメッセージ送信者のキーを更新することを示す例を示しています。これはエポック値の変化に反映されています。"
     },
     {
-      "indent": 3,
-      "text": "Client Server",
-      "ja": "クライアントサーバー"
-    },
-    {
-      "indent": 8,
-      "text": " /-------------------------------------------\\\n|                                             |\n|             Initial Handshake               |\n \\-------------------------------------------/",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]         -------->\n(epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "<--------      [Application Data]\n                        (epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 8,
-      "text": " /-------------------------------------------\\\n|                                             |\n|              Some time later ...            |\n \\-------------------------------------------/",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]         -------->\n(epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[KeyUpdate]\n(+ update_requested        -------->\n(epoch 3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "<--------      [Application Data]\n                        (epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "                            [ACK]\n<--------               (epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[Application Data]\n(epoch=4)                  -------->",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "<--------             [KeyUpdate]\n                        (epoch=3)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 4,
-      "text": "[ACK]                      -------->\n(epoch=4)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 31,
-      "text": "<--------      [Application Data]\n                        (epoch=4)",
+      "indent": 0,
+      "text": "Client                                             Server\n\n      /-------------------------------------------\\\n     |                                             |\n     |             Initial Handshake               |\n      \\-------------------------------------------/\n\n\n [Application Data]         -------->\n (epoch=3)\n\n                            <--------      [Application Data]\n                                                    (epoch=3)\n\n      /-------------------------------------------\\\n     |                                             |\n     |              Some time later ...            |\n      \\-------------------------------------------/\n\n\n [Application Data]         -------->\n (epoch=3)\n\n\n [KeyUpdate]\n (+ update_requested        -------->\n (epoch 3)\n\n\n                            <--------      [Application Data]\n                                                    (epoch=3)\n\n\n                                                        [ACK]\n                            <--------               (epoch=3)\n\n\n [Application Data]\n (epoch=4)                  -------->\n\n\n\n                            <--------             [KeyUpdate]\n                                                    (epoch=3)\n\n\n [ACK]                      -------->\n (epoch=4)\n\n\n                            <--------      [Application Data]\n                                                    (epoch=4)",
       "raw": true,
       "ja": ""
     },
@@ -2112,7 +1865,7 @@
     {
       "indent": 3,
       "text": "With a 128-bit key as in AES-128, rekeying 2^64 times has a high probability of key reuse within a given connection. Note that even if the key repeats, the IV is also independently generated. In order to provide an extra margin of security, sending implementations MUST NOT allow the epoch to exceed 2^48-1. In order to allow this value to be changed later, receiving implementations MUST NOT enforce this rule. If a sending implementation receives a KeyUpdate with request_update set to \"update_requested\", it MUST NOT send its own KeyUpdate if that would cause it to exceed these limits and SHOULD instead ignore the \"update_requested\" flag. Note: this overrides the requirement in TLS 1.3 to always send a KeyUpdate in response to \"update_requested\".",
-      "ja": "AES-128のように128ビットキーを使用すると、2^64回を再キーにすると、特定の接続内でキーの再利用の可能性が高くなります。キーが繰り返されたとしても、IVも独立して生成されることに注意してください。セキュリティの余分なマージンを提供するために、実装を送信することで、エポックが2^48-1を超えることを許可してはなりません。この値を後で変更できるようにするために、実装を受信することはこのルールを実施してはなりません。送信実装が「update_requested」に設定されたrequest_updateを使用してkeyupdateを受信した場合、これらの制限を超えて「update_requested」フラグを無視する場合、独自のkeyupdateを送信してはなりません。注：これにより、TLS 1.3の要件がオーバーライドされ、「update_requested」に応じて常にキーアップデートを送信します。"
+      "ja": "AES-128のように128ビットキーを使用すると、2^64回再キーイングすると、特定の接続内でキーの再利用の可能性が高くなります。キーが繰り返されたとしても、IVも独立して生成されることに注意してください。セキュリティの余分なマージンを提供するために、送信側の実装は、エポックが2^48-1を超えることを許可してはなりません。この値を後で変更できるようにするために、受信側の実装はこのルールを実施してはなりません。送信側の実装が「update_requested」に設定されたrequest_updateを使用してkeyupdateを受信した場合、これらの制限を超えて「update_requested」フラグを無視する場合、独自のkeyupdateを送信してはなりません。注：これにより、TLS 1.3の要件がオーバーライドされ、「update_requested」に応じて常にキーアップデートを送信します。"
     },
     {
       "indent": 0,
@@ -2161,7 +1914,7 @@
     {
       "indent": 3,
       "text": "Implementations which either did not negotiate the \"connection_id\" extension or which have negotiated receiving an empty CID MUST NOT send NewConnectionId. Implementations MUST NOT send RequestConnectionId when sending an empty Connection ID. Implementations which detect a violation of these rules MUST terminate the connection with an \"unexpected_message\" alert.",
-      "ja": "「connection_id」拡張機能を交渉しなかった、または空のCIDの受信を交渉した実装は、NewConnectionIDを送信してはなりません。実装は、空の接続IDを送信するときにRequestConnectionIDを送信してはなりません。これらのルールの違反を検出する実装では、「rediced_message」アラートとの接続を終了する必要があります。"
+      "ja": "「connection_id」拡張機能を交渉しなかった、または空のCIDの受信を交渉した実装は、NewConnectionIDを送信してはなりません。実装は、空の接続IDを送信するときにRequestConnectionIDを送信してはなりません。これらのルールの違反を検出する実装では、「unexpected_message」アラートとの接続を終了する必要があります。"
     },
     {
       "indent": 3,
@@ -2182,12 +1935,12 @@
     {
       "indent": 3,
       "text": "Endpoints SHOULD respond to RequestConnectionId by sending a NewConnectionId with usage \"cid_spare\" containing num_cids CIDs as soon as possible. Endpoints MUST NOT send a RequestConnectionId message when an existing request is still unfulfilled; this implies that endpoints need to request new CIDs well in advance. An endpoint MAY handle requests which it considers excessive by responding with a NewConnectionId message containing fewer than num_cids CIDs, including no CIDs at all. Endpoints MAY handle an excessive number of RequestConnectionId messages by terminating the connection using a \"too_many_cids_requested\" (alert number 52) alert.",
-      "ja": "エンドポイントは、num_cids cidsを含む「cid_spare」を備えたnewConnectionIDをできるだけ早く送信することにより、RequestConnectionIDに応答する必要があります。既存のリクエストがまだ満たされていない場合、エンドポイントはrequestConnectionIDメッセージを送信してはなりません。これは、エンドポイントが事前に新しいCIDをリクエストする必要があることを意味します。エンドポイントは、num_cidsよりも少ないCIDよりも少ないCIDを含むnewConnectionIDメッセージで応答することにより、過剰と見なすリクエストを処理する場合があります。エンドポイントは、「TOO_MANY_CIDS_REQUESTED」（アラート番号52）アラートを使用して接続を終了することにより、過剰な数のRequestConnectionIDメッセージを処理できます。"
+      "ja": "エンドポイントは、num_cids cidsを含む「cid_spare」を備えたnewConnectionIDをできるだけ早く送信することにより、RequestConnectionIDに応答する必要があります。既存のリクエストがまだ満たされていない場合、エンドポイントはrequestConnectionIDメッセージを送信してはなりません。これは、エンドポイントが事前に新しいCIDをリクエストする必要があることを意味します。エンドポイントは、num_cidsよりも少ないCIDを含むnewConnectionIDメッセージで応答することにより、過剰と見なすリクエストを処理する場合があります。エンドポイントは、「TOO_MANY_CIDS_REQUESTED」（アラート番号52）アラートを使用して接続を終了することにより、過剰な数のRequestConnectionIDメッセージを処理できます。"
     },
     {
       "indent": 3,
       "text": "Endpoints MUST NOT send either of these messages if they did not negotiate a CID. If an implementation receives these messages when CIDs were not negotiated, it MUST abort the connection with an \"unexpected_message\" alert.",
-      "ja": "エンドポイントは、CIDをネゴシエートしなかった場合は、これらのメッセージのいずれかを送信してはなりません。CIDがネゴシエートされなかったときに実装がこれらのメッセージを受信した場合は、「infented_message」アラートで接続を中止する必要があります。"
+      "ja": "エンドポイントは、CIDをネゴシエートしなかった場合は、これらのメッセージのいずれかを送信してはなりません。CIDがネゴシエートされなかったときに実装がこれらのメッセージを受信した場合は、「unexpected_message」アラートで接続を中止する必要があります。"
     },
     {
       "indent": 0,
@@ -2266,7 +2019,7 @@
     {
       "indent": 3,
       "text": "Application data messages are carried by the record layer and are split into records and encrypted based on the current connection state. The messages are treated as transparent data to the record layer.",
-      "ja": "アプリケーションデータメッセージはレコード層によって搬送され、現在の接続状態に基づいてレコードに分割され、暗号化されます。メッセージは透過データとしてレコード層に扱われます。"
+      "ja": "アプリケーションデータメッセージはレコード層によって搬送され、現在の接続状態に基づいてレコードに分割され、暗号化されます。メッセージはレコード層に対して透過的なデータとして扱われます。"
     },
     {
       "indent": 0,
@@ -2307,22 +2060,22 @@
     {
       "indent": 3,
       "text": "Although the cookie must allow the server to produce the right handshake transcript, it SHOULD be constructed so that knowledge of the cookie is insufficient to reproduce the ClientHello contents. Otherwise, this may create problems with future extensions such as Encrypted Client Hello [TLS-ECH].",
-      "ja": "Cookieはサーバーが右のハンドシェイクトランスクリプトを作成できるようにする必要がありますが、クッキーの知識がClientHelloの内容を再現するのに不十分であるように構築されるべきです。そうでなければ、これは暗号化されたクライアントhello [TLS-ECH]などの将来の拡張機能に関する問題を生み出すかもしれません。"
+      "ja": "Cookieはサーバーが正しいハンドシェイクトランスクリプトを作成できるようにする必要がありますが、クッキーの知識がClientHelloの内容を再現するのに不十分であるように構築されるべきです。そうでなければ、これは暗号化されたクライアントhello [TLS-ECH]などの将来の拡張機能に関する問題を生み出すかもしれません。"
     },
     {
       "indent": 3,
       "text": "When cookies are generated using a keyed authentication mechanism, it should be possible to rotate the associated secret key, so that temporary compromise of the key does not permanently compromise the integrity of the cookie-exchange mechanism. Though this secret is not as high-value as, e.g., a session-ticket-encryption key, rotating the cookie-generation key on a similar timescale would ensure that the key rotation functionality is exercised regularly and thus in working order.",
-      "ja": "キー付き認証メカニズムを使用してCookieが生成される場合、関連する秘密キーを回転させることができる必要があります。そうすれば、キーの一時的な妥協がCookie交換メカニズムの整合性を永続的に侵害しないようにします。この秘密は、たとえばセッションチケット暗号化キーほど価値がありませんが、同様のタイムスケールでCookie-Generationキーを回転させると、キーの回転機能が定期的に行使され、したがって動作していることが保証されます。"
+      "ja": "キー付き認証メカニズムを使用してCookieが生成される場合、関連する秘密キーをローテーションさせることができる必要があります。そうすれば、キーの一時的な漏洩がCookie交換メカニズムの整合性を永続的に侵害しないようにします。この秘密は、たとえばセッションチケット暗号化キーほど価値がありませんが、同様のタイムスケールでCookie-Generationキーをローテーションさせると、キーのローテーション機能が定期的に行使され、したがって動作していることが保証されます。"
     },
     {
       "indent": 3,
       "text": "The cookie exchange provides address validation during the initial handshake. DTLS with Connection IDs allows for endpoint addresses to change during the association; any such updated addresses are not covered by the cookie exchange during the handshake. DTLS implementations MUST NOT update the address they send to in response to packets from a different address unless they first perform some reachability test; no such test is defined in this specification and a future specification would need to specify a complete procedure for how and when to update addresses. Even with such a test, an active on-path adversary can also black-hole traffic or create a reflection attack against third parties because a DTLS peer has no means to distinguish a genuine address update event (for example, due to a NAT rebinding) from one that is malicious. This attack is of concern when there is a large asymmetry of request/response message sizes.",
-      "ja": "Cookie Exchangeは、最初の握手中のアドレス検証を提供します。接続IDを備えたDTLは、エンドポイントアドレスが関連性中に変更できるようにします。このような更新されたアドレスは、握手中のCookie Exchangeでカバーされません。DTLS実装は、最初に到達可能性テストを実行しない限り、異なるアドレスからパケットに応答して送信するアドレスを更新してはなりません。この仕様ではそのようなテストは定義されておらず、将来の仕様では、アドレスを更新する方法と時期の完全な手順を指定する必要があります。このようなテストがあっても、アクティブなオンパス敵は、DTLSピアが本物のアドレス更新イベントを区別する手段を持たないため、黒穴のトラフィックやサードパーティに対する反射攻撃を作成することもできます（たとえば、NATのリバインディングなど）悪意のあるものから。この攻撃は、要求/応答メッセージサイズの大きな非対称性がある場合に懸念があります。"
+      "ja": "Cookie Exchangeは、最初の握手中のアドレス検証を提供します。接続IDを備えたDTLSは、エンドポイントアドレスがアソシエーション中に変更できるようにします。このような更新されたアドレスは、握手中のCookie Exchangeでカバーされません。DTLS実装は、最初に到達可能性テストを実行しない限り、異なるアドレスからパケットに応答して送信するアドレスを更新してはなりません。この仕様ではそのようなテストは定義されておらず、将来の仕様では、アドレスを更新する方法と時期の完全な手順を指定する必要があります。このようなテストがあっても、アクティブなオンパス敵は、DTLSピアが本物のアドレス更新イベントを区別する手段を持たないため、トラフィックをブラックホール化したりサードパーティに対する反射攻撃を作成することもできます（たとえば、NATのリバインディングなど）悪意のあるものから。この攻撃は、要求/応答メッセージサイズの大きな非対称性がある場合に懸念があります。"
     },
     {
       "indent": 3,
       "text": "With the exception of order protection and non-replayability, the security guarantees for DTLS 1.3 are the same as TLS 1.3. While TLS always provides order protection and non-replayability, DTLS does not provide order protection and may not provide replay protection.",
-      "ja": "注文保護と非再生性を除いて、DTLS 1.3のセキュリティ保証はTLS 1.3と同じです。TLSは常に注文保護と再生不能性を提供しているが、DTLは注文保護を提供しないため、再生保護を提供しない可能性があります。"
+      "ja": "順序保護とリプレイ保護がないことを除いて、DTLS 1.3のセキュリティ保証はTLS 1.3と同じです。TLSは常に順序保護とリプレイ保護を提供しているが、DTLSは順序保護を提供せず、リプレイ保護を提供しない可能性があります。"
     },
     {
       "indent": 3,
@@ -2337,12 +2090,12 @@
     {
       "indent": 3,
       "text": "DTLS 1.3's handshake transcript does not include the new DTLS fields, which makes it have the same format as TLS 1.3. However, the DTLS 1.3 and TLS 1.3 transcripts are disjoint because they use different version numbers. Additionally, the DTLS 1.3 key schedule uses a different label and so will produce different keys for the same transcript.",
-      "ja": "DTLS 1.3のハンドシェイクトランスクリプトには、新しいDTLSフィールドは含まれていません。これはTLS 1.3と同じ形式です。ただし、DTLS 1.3とTLS 1.3のトランスクリプトは異なるバージョン番号を使用するためです。さらに、DTLS 1.3キースケジュールは別のラベルを使用しているため、同じトランスクリプトに対して異なるキーが生成されます。"
+      "ja": "DTLS 1.3のハンドシェイクトランスクリプトには、新しいDTLSフィールドは含まれていません。これはTLS 1.3と同じ形式です。ただし、DTLS 1.3とTLS 1.3のトランスクリプトは異なるバージョン番号を使用するため、互いに素です。さらに、DTLS 1.3鍵スケジュールは別のラベルを使用しているため、同じトランスクリプトに対して異なるキーが生成されます。"
     },
     {
       "indent": 3,
       "text": "The security and privacy properties of the CID for DTLS 1.3 build on top of what is described for DTLS 1.2 in [RFC9146]. There are, however, several differences:",
-      "ja": "DTLS 1.3のCIDのセキュリティとプライバシーのプロパティは、DTLS 1.2で説明されているものの上にある[RFC9146]。ただし、いくつかの違いがあります。"
+      "ja": "DTLS 1.3のCIDのセキュリティとプライバシーのプロパティは、DTLS 1.2で説明されているものに基づいています[RFC9146]。ただし、いくつかの違いがあります。"
     },
     {
       "indent": 3,
@@ -2352,7 +2105,7 @@
     {
       "indent": 3,
       "text": "* The use of the post-handshake message allows the client and the server to update their CIDs, and those values are exchanged with confidentiality protection.",
-      "ja": "* handshakeメッセージを使用すると、クライアントとサーバーはCIDを更新でき、それらの値は機密保護と交換されます。"
+      "ja": "* ポストハンドシェイクメッセージを使用すると、クライアントとサーバーはCIDを更新でき、それらの値は機密保護と交換されます。"
     },
     {
       "indent": 3,
@@ -2362,12 +2115,12 @@
     {
       "indent": 3,
       "text": "* The mechanism for encrypting sequence numbers (Section 4.2.3) prevents trivial tracking by on-path adversaries that attempt to correlate the pattern of sequence numbers received on different paths; such tracking could occur even when different CIDs are used on each path, in the absence of sequence number encryption. Switching CIDs based on certain events, or even regularly, helps against tracking by on-path adversaries. Note that sequence number encryption is used for all encrypted DTLS 1.3 records irrespective of whether a CID is used or not. Unlike the sequence number, the epoch is not encrypted because it acts as a key identifier, which may improve correlation of packets from a single connection across different network paths.",
-      "ja": "* シーケンス番号を暗号化するためのメカニズム（セクション4.2.3）は、さまざまなパスで受信されたシーケンス番号のパターンを相関させることを試みるオンパスの逆境による簡単な追跡を防ぎます。このようなトラッキングは、シーケンス番号暗号化がない場合に、各パスで異なるCIDが使用されていても発生する可能性があります。特定のイベントに基づいてCIDの切り替え、あるいは定期的には、経路上の逆境による追跡に役立ちます。シーケンス番号の暗号化は、CIDが使用されているかどうかにかかわらず、すべての暗号化されたDTLS 1.3レコードに使用されます。シーケンス番号とは異なり、Epochはキー識別子として機能するため暗号化されていません。これは、異なるネットワークパス間の単一の接続からのパケットの相関を向上させる可能性があります。"
+      "ja": "* シーケンス番号を暗号化するためのメカニズム（セクション4.2.3）は、さまざまなパスで受信されたシーケンス番号のパターンを相関させることを試みるオンパスの攻撃者による簡単な追跡を防ぎます。このようなトラッキングは、シーケンス番号暗号化がない場合に、各パスで異なるCIDが使用されていても発生する可能性があります。特定のイベントに基づいてCIDの切り替え、あるいは定期的には、オンパスの攻撃者による追跡に役立ちます。シーケンス番号の暗号化は、CIDが使用されているかどうかにかかわらず、すべての暗号化されたDTLS 1.3レコードに使用されます。シーケンス番号とは異なり、Epochはキー識別子として機能するため暗号化されていません。これは、異なるネットワークパス間の単一の接続からのパケットの相関を向上させる可能性があります。"
     },
     {
       "indent": 3,
       "text": "* DTLS 1.3 encrypts handshake messages much earlier than in previous DTLS versions. Therefore, less information identifying the DTLS client, such as the client certificate, is available to an on-path adversary.",
-      "ja": "* DTLS 1.3以前のDTLSバージョンよりもるかに早くハンドシェイクメッセージを暗号化します。したがって、クライアント証明書などのDTLSクライアントを識別する情報が少なく、オンパスの敵対者が利用できます。"
+      "ja": "* DTLS 1.3は、以前のDTLSバージョンよりもはるかに早くハンドシェイクメッセージを暗号化します。したがって、クライアント証明書などのDTLSクライアントを識別する情報が少なく、オンパスの攻撃者が利用できます。"
     },
     {
       "indent": 0,
@@ -2398,7 +2151,7 @@
     {
       "indent": 3,
       "text": "* HelloRetryRequest of TLS 1.3 used instead of HelloVerifyRequest.",
-      "ja": "* HelloverifeRequestの代わりに使用されるTLS 1.3のHelloretryRequest。"
+      "ja": "* HelloVerifyRequestの代わりに使用されるTLS 1.3のHelloretryRequest。"
     },
     {
       "indent": 3,
@@ -2428,7 +2181,7 @@
     {
       "indent": 3,
       "text": "* Optimized record layer encoding and thereby its size.",
-      "ja": "* 最適化されたレコード層エンコード、それによりサイズ。"
+      "ja": "* 最適化されたレコード層エンコード、それによるサイズの最適化。"
     },
     {
       "indent": 3,
@@ -2449,7 +2202,7 @@
     {
       "indent": 3,
       "text": "This document defines several changes that optionally affect implementations of DTLS 1.2, including those which do not also support DTLS 1.3.",
-      "ja": "このドキュメントは、DTLS 1.2もサポートしていないものを含むDTLS 1.2の実装に影響を与えるいくつかの変更を定義します。"
+      "ja": "このドキュメントは、DTLS 1.3をサポートしていないものを含むDTLS 1.2の実装に影響を与えるいくつかの変更を定義します。"
     },
     {
       "indent": 3,
@@ -2475,22 +2228,22 @@
     {
       "indent": 3,
       "text": "IANA has allocated the content type value 26 in the \"TLS ContentType\" registry for the ACK message, defined in Section 7. The value for the \"DTLS-OK\" column is \"Y\". IANA has reserved the content type range 32-63 so that content types in this range are not allocated.",
-      "ja": "IANAは、セクション7で定義されているACKメッセージの「TLS ContentType」レジストリにコンテンツタイプ値26を割り当てました。「DTLS-OK」列の値は「Y」です。IANAはコンテンツタイプの範囲32-63を予約しているため、この範囲のコンテンツタイプが割り当てられません。"
+      "ja": "IANAは、セクション7で定義されているACKメッセージの「TLS ContentType」レジストリにコンテンツタイプ値26を割り当てました。「DTLS-OK」列の値は「Y」です。IANAはコンテンツタイプの範囲32-63を予約し、この範囲のコンテンツタイプが割り当てられないようにしました。"
     },
     {
       "indent": 3,
       "text": "IANA has allocated value 52 for the \"too_many_cids_requested\" alert in the \"TLS Alerts\" registry. The value for the \"DTLS-OK\" column is \"Y\".",
-      "ja": "IANAは、「TLSアラート」レジストリで「TOO_MANY_CIDS_REQUESTED」アラートに値52を割り当てました。「DTLS-OK」列の値は「Y」です。"
+      "ja": "IANAは、「TLSアラート」レジストリで「too_many_cids_requested」アラートに値52を割り当てました。「DTLS-OK」列の値は「Y」です。"
     },
     {
       "indent": 3,
       "text": "IANA has allocated two values in the \"TLS HandshakeType\" registry, defined in [TLS13], for request_connection_id (9) and new_connection_id (10), as defined in this document. The value for the \"DTLS-OK\" column is \"Y\".",
-      "ja": "IANAは、[TLS13]で定義されている「TLS HandShaketype」レジストリに2つの値を割り当てました。これは、このドキュメントで定義されているように、[TLS13]で定義されています。「DTLS-OK」列の値は「Y」です。"
+      "ja": "IANAは、[TLS13]で定義されている「TLS HandshakeType」レジストリに2つの値を割り当てました。これは、このドキュメントで定義されている request_connection_id (9) および new_connection_id (10) のためです。「DTLS-OK」列の値は「Y」です。"
     },
     {
       "indent": 3,
       "text": "IANA has added this RFC as a reference to the \"TLS Cipher Suites\" registry along with the following Note:",
-      "ja": "IANAはこのRFCを「TLS暗号スイート」レジストリへの参照として次の注意しています。"
+      "ja": "IANAはこのRFCを「TLS暗号スイート」レジストリへの参照として次の注記と共に追加しました。"
     },
     {
       "indent": 3,
@@ -2518,7 +2271,7 @@
     {
       "indent": 3,
       "text": "[RFC0768] Postel, J., \"User Datagram Protocol\", STD 6, RFC 768, DOI 10.17487/RFC0768, August 1980, <https://www.rfc-editor.org/info/rfc768>.",
-      "ja": "[RFC0768] POSTEL、J。、「ユーザーデータグラムプロトコル」、STD 6、RFC 768、DOI 10.17487/RFC0768、1980年8月、<https://www.rfc-editor.org/info/rfc768>。"
+      "ja": "[RFC0768] POSTEL、J., 「ユーザーデータグラムプロトコル」、STD 6、RFC 768、DOI 10.17487/RFC0768、1980年8月、<https://www.rfc-editor.org/info/rfc768>。"
     },
     {
       "indent": 3,
@@ -2538,7 +2291,7 @@
     {
       "indent": 3,
       "text": "[RFC4443] Conta, A., Deering, S., and M. Gupta, Ed., \"Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification\", STD 89, RFC 4443, DOI 10.17487/RFC4443, March 2006, <https://www.rfc-editor.org/info/rfc4443>.",
-      "ja": "[RFC4443] Conta、A.、Deering、S。、およびM. Gupta、ed。、 \"インターネットプロトコルバージョン6（IPv6）仕様のインターネット制御メッセージプロトコル（ICMPV6）、STD 89、RFC 4443、DOI 10.17487/RFC4443、2006年3月、<https://www.rfc-editor.org/info/rfc4443>。"
+      "ja": "[RFC4443] Conta、A.、Deering、S., およびM. Gupta、ed.,  \"インターネットプロトコルバージョン6（IPv6）仕様のインターネット制御メッセージプロトコル（ICMPV6）、STD 89、RFC 4443、DOI 10.17487/RFC4443、2006年3月、<https://www.rfc-editor.org/info/rfc4443>。"
     },
     {
       "indent": 3,
@@ -2548,7 +2301,7 @@
     {
       "indent": 3,
       "text": "[RFC6298] Paxson, V., Allman, M., Chu, J., and M. Sargent, \"Computing TCP's Retransmission Timer\", RFC 6298, DOI 10.17487/RFC6298, June 2011, <https://www.rfc-editor.org/info/rfc6298>.",
-      "ja": "[RFC6298] Paxson、V.、Allman、M.、Chu、J.、およびM.Sargent、「コンピューティングTCPの再送信タイマー」、RFC 6298、DOI 10.17487 / RFC6298、2011年6月、<https：///www.rfc-editor.org/info/rfc6298>。"
+      "ja": "[RFC6298] Paxson, V., Allman, M., Chu, J., and M. Sargent, \"Computing TCP's Retransmission Timer\", RFC 6298, DOI 10.17487/RFC6298, June 2011, <https://www.rfc-editor.org/info/rfc6298>。"
     },
     {
       "indent": 3,
@@ -2558,12 +2311,12 @@
     {
       "indent": 3,
       "text": "[RFC9146] Rescorla, E., Ed., Tschofenig, H., Ed., Fossati, T., and A. Kraus, \"Connection Identifier for DTLS 1.2\", RFC 9146, DOI 10.17487/RFC9146, March 2022, <https://www.rfc-editor.org/info/rfc9146>.",
-      "ja": "[RFC9146] Rescorla、E.、Ed。、Tschofenig、H.、Ed。、Fossati、T.、およびA. Kraus、「DTLS 1.2の接続識別子」、RFC 9146、DOI 10.17487/RFC9146、2022年3月、<https：//www.rfc-editor.org/info/rfc9146>。"
+      "ja": "[RFC9146] Rescorla、E.、Ed., Tschofenig、H.、Ed., Fossati、T.、およびA. Kraus、「DTLS 1.2の接続識別子」、RFC 9146、DOI 10.17487/RFC9146、2022年3月、<https：//www.rfc-editor.org/info/rfc9146>。"
     },
     {
       "indent": 3,
       "text": "[TLS13] Rescorla, E., \"The Transport Layer Security (TLS) Protocol Version 1.3\", RFC 8446, DOI 10.17487/RFC8446, August 2018, <https://www.rfc-editor.org/info/rfc8446>.",
-      "ja": "[TLS13] RESCORLA、E。、「トランスポート層セキュリティ（TLS）プロトコルバージョン1.3」、RFC 8446、DOI 10.17487 / RFC8446、2018年8月、<https：//www.rfc-editor.org/info/rfc8446>。"
+      "ja": "[TLS13] RESCORLA、E., 「トランスポート層セキュリティ（TLS）プロトコルバージョン1.3」、RFC 8446、DOI 10.17487 / RFC8446、2018年8月、<https：//www.rfc-editor.org/info/rfc8446>。"
     },
     {
       "indent": 0,
@@ -2574,7 +2327,7 @@
     {
       "indent": 3,
       "text": "[AEAD-LIMITS] Günther, F., Thomson, M., and C. A. Wood, \"Usage Limits on AEAD Algorithms\", Work in Progress, Internet-Draft, draft-irtf-cfrg-aead-limits-04, 7 March 2022, <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-aead-limits-04>.",
-      "ja": "[aead-limits]Günther、F.、Thomson、M.、およびC.A。木材、「AEDアルゴリズムの使用制限」、進行中の作業、インターネットドラフト、ドラフト-IRTF-CFRG-AEAD-LIMITS-04,24,722、<https://datatracker.ietf.org/doc/html/draft-irf-cfrg-aead-limits-04>。"
+      "ja": "[AEAD-LIMITS] Günther, F., Thomson, M., and C. A. Wood, \"Usage Limits on AEAD Algorithms\", Work in Progress, Internet-Draft, draft-irtf-cfrg-aead-limits-04, 7 March 2022, <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-aead-limits-04>。"
     },
     {
       "indent": 3,
@@ -2599,37 +2352,37 @@
     {
       "indent": 3,
       "text": "[RFC2522] Karn, P. and W. Simpson, \"Photuris: Session-Key Management Protocol\", RFC 2522, DOI 10.17487/RFC2522, March 1999, <https://www.rfc-editor.org/info/rfc2522>.",
-      "ja": "[RFC2522] Karn、P。and W. Simpson、「Photuris：Session-Key Management Protocol」、RFC 2522、DOI 10.17487/RFC2522、1999年3月、<https://www.rfc-editor.org/info/rfc2522>。"
+      "ja": "[RFC2522] Karn, P. and W. Simpson,「Photuris：Session-Key Management Protocol」、RFC 2522、DOI 10.17487/RFC2522、1999年3月、<https://www.rfc-editor.org/info/rfc2522>。"
     },
     {
       "indent": 3,
       "text": "[RFC4303] Kent, S., \"IP Encapsulating Security Payload (ESP)\", RFC 4303, DOI 10.17487/RFC4303, December 2005, <https://www.rfc-editor.org/info/rfc4303>.",
-      "ja": "[RFC4303]ケント、S。、「IPカプセル化セキュリティペイロード（ESP）」、RFC 4303、DOI 10.17487 / RFC4303、2005年12月、<https：//www.rfc-editor.org/info/rfc4303>。"
+      "ja": "[RFC4303]ケント、S., 「IPカプセル化セキュリティペイロード（ESP）」、RFC 4303、DOI 10.17487 / RFC4303、2005年12月、<https：//www.rfc-editor.org/info/rfc4303>。"
     },
     {
       "indent": 3,
       "text": "[RFC4340] Kohler, E., Handley, M., and S. Floyd, \"Datagram Congestion Control Protocol (DCCP)\", RFC 4340, DOI 10.17487/RFC4340, March 2006, <https://www.rfc-editor.org/info/rfc4340>.",
-      "ja": "[RFC4340] Kohler、E.、Handley、M。、およびS. Floyd、「Datagram混雑制御プロトコル（DCCP）」、RFC 4340、DOI 10.17487/RFC4340、2006年3月、<https：//www.rfc-editor。org/info/rfc4340>。"
+      "ja": "[RFC4340] Kohler, E.、Handley, M., およびS. Floyd,「Datagram混雑制御プロトコル（DCCP）」、RFC 4340、DOI 10.17487/RFC4340、2006年3月、<https://www.rfc-editor.org/info/rfc4340>。"
     },
     {
       "indent": 3,
       "text": "[RFC4346] Dierks, T. and E. Rescorla, \"The Transport Layer Security (TLS) Protocol Version 1.1\", RFC 4346, DOI 10.17487/RFC4346, April 2006, <https://www.rfc-editor.org/info/rfc4346>.",
-      "ja": "[RFC4346] Dierks、T。およびE. Rescorla、「The Transport Layer Security（TLS）Protocolバージョン1.1」、RFC 4346、DOI 10.17487/RFC4346、2006年4月、<https://www.rfc-editor.org/info/RFC4346>。"
+      "ja": "[RFC4346] Dierks, T. およびE. Rescorla,「The Transport Layer Security（TLS）Protocolバージョン1.1」、RFC 4346、DOI 10.17487/RFC4346、2006年4月、<https://www.rfc-editor.org/info/RFC4346>。"
     },
     {
       "indent": 3,
       "text": "[RFC4347] Rescorla, E. and N. Modadugu, \"Datagram Transport Layer Security\", RFC 4347, DOI 10.17487/RFC4347, April 2006, <https://www.rfc-editor.org/info/rfc4347>.",
-      "ja": "[RFC4347] Rescorla、E。およびN. Modadugu、「データグラム輸送層セキュリティ」、RFC 4347、DOI 10.17487/RFC4347、2006年4月、<https://www.rfc-editor.org/info/rfc4347>"
+      "ja": "[RFC4347] Rescorla, E. およびN. Modadugu,「データグラム輸送層セキュリティ」、RFC 4347、DOI 10.17487/RFC4347、2006年4月、<https://www.rfc-editor.org/info/rfc4347>"
     },
     {
       "indent": 3,
       "text": "[RFC4960] Stewart, R., Ed., \"Stream Control Transmission Protocol\", RFC 4960, DOI 10.17487/RFC4960, September 2007, <https://www.rfc-editor.org/info/rfc4960>.",
-      "ja": "[RFC4960] Stewart、R.、ed。、「Stream Control Transmission Protocol」、RFC 4960、DOI 10.17487/RFC4960、2007年9月、<https://www.rfc-editor.org/info/rfc4960>。"
+      "ja": "[RFC4960] Stewart, R., ed., 「Stream Control Transmission Protocol」、RFC 4960、DOI 10.17487/RFC4960、2007年9月、<https://www.rfc-editor.org/info/rfc4960>。"
     },
     {
       "indent": 3,
       "text": "[RFC5238] Phelan, T., \"Datagram Transport Layer Security (DTLS) over the Datagram Congestion Control Protocol (DCCP)\", RFC 5238, DOI 10.17487/RFC5238, May 2008, <https://www.rfc-editor.org/info/rfc5238>.",
-      "ja": "[RFC5238] Phelan、T。、「データグラム輸送層セキュリティ（DTLS）データグラム混雑制御プロトコル（DCCP）上のセキュリティ（DCCP）」、RFC 5238、DOI 10.17487/RFC5238、2008年5月、<https://www.rfc-editor.org/info/rfc5238>。"
+      "ja": "[RFC5238] Phelan、T., 「データグラムトランスポート層セキュリティ（DTLS）データグラム混雑制御プロトコル（DCCP）上のセキュリティ（DCCP）」、RFC 5238、DOI 10.17487/RFC5238、2008年5月、<https://www.rfc-editor.org/info/rfc5238>。"
     },
     {
       "indent": 3,
@@ -2639,7 +2392,7 @@
     {
       "indent": 3,
       "text": "[RFC5763] Fischl, J., Tschofenig, H., and E. Rescorla, \"Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS)\", RFC 5763, DOI 10.17487/RFC5763, May 2010, <https://www.rfc-editor.org/info/rfc5763>.",
-      "ja": "[RFC5763] Fischl、J.、Tschofenig、H.、およびE. Rescorla、「データグラムトランスポート層セキュリティ（DTLS）」、RFC 5763、DOI 10.17487 /を使用したセキュリティコンテキスト（SRTP）セキュリティコンテキストを確立するためのフレームワーク。RFC5763、2010年5月、<https：//www.rfc-editor.org/info/rfc5763>。"
+      "ja": "[RFC5763] Fischl、J.、Tschofenig、H.、およびE. Rescorla、「データグラムトランスポート層セキュリティ（DTLS）を使用したSecure Real-time Transport Protocol（SRTP）セキュリティコンテキストを確立するためのフレームワーク」、RFC 5763、DOI 10.17487/RFC5763、2010年5月、<https://www.rfc-editor.org/info/rfc5763>。"
     },
     {
       "indent": 3,
@@ -2649,7 +2402,7 @@
     {
       "indent": 3,
       "text": "[RFC6066] Eastlake 3rd, D., \"Transport Layer Security (TLS) Extensions: Extension Definitions\", RFC 6066, DOI 10.17487/RFC6066, January 2011, <https://www.rfc-editor.org/info/rfc6066>.",
-      "ja": "[RFC6066]イーストレイク3RD、D.、「トランスポートレイヤセキュリティ（TLS）拡張：拡張定義」、RFC 6066、DOI 10.17487 / RFC6066、2011年1月、<https：//ww.rfc-editor.org/info/rfc6066>。"
+      "ja": "[RFC6066] Eastlake 3rd、D.、「トランスポートレイヤセキュリティ（TLS）拡張：拡張定義」、RFC 6066、DOI 10.17487/RFC6066、2011年1月、<https://www.rfc-editor.org/info/rfc6066>。"
     },
     {
       "indent": 3,
@@ -2664,7 +2417,7 @@
     {
       "indent": 3,
       "text": "[RFC7525] Sheffer, Y., Holz, R., and P. Saint-Andre, \"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)\", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May 2015, <https://www.rfc-editor.org/info/rfc7525>.",
-      "ja": "[RFC7525] Sheffer、Y.、Holz、R。、およびP. Saint-Andre、「輸送層セキュリティ（TLS）およびデータグラム輸送層のセキュリティ（DTLS）の安全な使用に関する推奨事項」、BCP 195、RFC 7525、DOI 10.17487/RFC7525、2015年5月、<https://www.rfc-editor.org/info/rfc7525>。"
+      "ja": "[RFC7525] Sheffer, Y., Holz、R., およびP. Saint-Andre、「トランスポート層セキュリティ（TLS）およびデータグラムトランスポート層セキュリティ（DTLS）の安全な使用に関する推奨事項」、BCP 195、RFC 7525、DOI 10.17487/RFC7525、2015年5月、<https://www.rfc-editor.org/info/rfc7525>。"
     },
     {
       "indent": 3,
@@ -2674,48 +2427,48 @@
     {
       "indent": 3,
       "text": "[RFC7983] Petit-Huguenin, M. and G. Salgueiro, \"Multiplexing Scheme Updates for Secure Real-time Transport Protocol (SRTP) Extension for Datagram Transport Layer Security (DTLS)\", RFC 7983, DOI 10.17487/RFC7983, September 2016, <https://www.rfc-editor.org/info/rfc7983>.",
-      "ja": "[RFC7983] Petit-Huguenin、M。and G. Salgueiro、「データグラム輸送層セキュリティ（DTLS）の安全なリアルタイム輸送プロトコル（SRTP）拡張のためのマルチプレックススキームの更新」、RFC 7983、DOI 10.17487/RFC7983、2016年9月、<https://www.rfc-editor.org/info/rfc7983>。"
+      "ja": "[RFC7983] Petit-Huguenin、M。and G. Salgueiro、「データグラムトランスポート層セキュリティ（DTLS）の安全なリアルタイムトランスポートプロトコル（SRTP）拡張のためのマルチプレックススキームの更新」、RFC 7983、DOI 10.17487/RFC7983、2016年9月、<https://www.rfc-editor.org/info/rfc7983>。"
     },
     {
       "indent": 3,
       "text": "[RFC8201] McCann, J., Deering, S., Mogul, J., and R. Hinden, Ed., \"Path MTU Discovery for IP version 6\", STD 87, RFC 8201, DOI 10.17487/RFC8201, July 2017, <https://www.rfc-editor.org/info/rfc8201>.",
-      "ja": "[RFC8201] McCann、J.、Theering、S.、Mogul、J.、およびR. Hinden、Ed。、「PATH MTUディスカバリー用IPバージョン6」、STD 87、RFC 8201、DOI 10.17487 / RFC8201、2017年7月、<https://www.rfc-editor.org/info/rfc8201>。"
+      "ja": "[RFC8201] McCann, J.、Theering、S., Mogul、J., およびR. Hinden, Ed., 「PATH MTUディスカバリー用IPバージョン6」、STD 87、RFC 8201、DOI 10.17487 / RFC8201、2017年7月、<https://www.rfc-editor.org/info/rfc8201>。"
     },
     {
       "indent": 3,
       "text": "[RFC8445] Keranen, A., Holmberg, C., and J. Rosenberg, \"Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal\", RFC 8445, DOI 10.17487/RFC8445, July 2018, <https://www.rfc-editor.org/info/rfc8445>.",
-      "ja": "[RFC8445]ケラネン、A.、Holmberg、C.、J.Rosenberg、「インタラクティブ接続確立（氷）：ネットワークアドレストランスレータ（NAT）トラバースのためのプロトコル、RFC 8445、DOI 10.17487 / RFC8445、2018年7月、<https://www.rfc-editor.org/info/rfc8445>。"
+      "ja": "[RFC8445] Keranen, A., Holmberg, C., and J. Rosenberg, \"Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal\", RFC 8445, DOI 10.17487/RFC8445, July 2018, <https://www.rfc-editor.org/info/rfc8445>。"
     },
     {
       "indent": 3,
       "text": "[RFC8879] Ghedini, A. and V. Vasiliev, \"TLS Certificate Compression\", RFC 8879, DOI 10.17487/RFC8879, December 2020, <https://www.rfc-editor.org/info/rfc8879>.",
-      "ja": "[RFC8879] Ghedini、A。およびV. Vasiliev、「TLS証明書圧縮」、RFC 8879、DOI 10.17487/RFC8879、2020年12月、<https://www.rfc-editor.org/info/rfc8879>"
+      "ja": "[RFC8879] Ghedini, A. およびV. Vasiliev、「TLS証明書圧縮」、RFC 8879、DOI 10.17487/RFC8879、2020年12月、<https://www.rfc-editor.org/info/rfc8879>"
     },
     {
       "indent": 3,
       "text": "[RFC9000] Iyengar, J., Ed. and M. Thomson, Ed., \"QUIC: A UDP-Based Multiplexed and Secure Transport\", RFC 9000, DOI 10.17487/RFC9000, May 2021, <https://www.rfc-editor.org/info/rfc9000>.",
-      "ja": "[RFC9000] Iyengar、J.、ED。M. Thomson、ED。、「QUIC：UDPベースの多重化および安全な輸送」、RFC 9000、DOI 10.17487 / RFC9000、2021年5月、<https：//www.rfc-editor.org/info/rfc9000>。"
+      "ja": "[RFC9000] Iyengar、J.、ED。M. Thomson、ED., 「QUIC：UDPベースの多重化および安全なトランスポート」、RFC 9000、DOI 10.17487/RFC9000、2021年5月、<https://www.rfc-editor.org/info/rfc9000>。"
     },
     {
       "indent": 3,
       "text": "[RFC9002] Iyengar, J., Ed. and I. Swett, Ed., \"QUIC Loss Detection and Congestion Control\", RFC 9002, DOI 10.17487/RFC9002, May 2021, <https://www.rfc-editor.org/info/rfc9002>.",
-      "ja": "[RFC9002] Iyengar、J.、Ed。I.Swett、Ed。、「QUIC損失検出および輻輳制御」、RFC 9002、DOI 10.17487 / RFC9002、2021年5月、<https：//www.rfc-editor.org/info/rfc9002>。"
+      "ja": "[RFC9002] Iyengar、J.、Ed。I.Swett、Ed., 「QUIC損失検出および輻輳制御」、RFC 9002、DOI 10.17487/RFC9002、2021年5月、<https://www.rfc-editor.org/info/rfc9002>。"
     },
     {
       "indent": 3,
       "text": "[ROBUST] Fischlin, M., Günther, F., and C. Janson, \"Robust Channels: Handling Unreliable Networks in the Record Layers of QUIC and DTLS 1.3\", received 15 June 2020, last revised 22 February 2021, <https://eprint.iacr.org/2020/718>.",
-      "ja": "[堅牢] Fischlin、M.、Günther、F.、およびC. JaSanson、「堅牢なチャンネル：QUICおよびDTLS 1.3の記録層の信頼性の低いネットワークの取り扱い」、2020年6月15日、最後の改訂2021年2月22日、<https：///eprint.iacr.org/2020/718>。"
+      "ja": "[ROBUST] Fischlin, M., Günther, F., and C. Janson, \"Robust Channels: Handling Unreliable Networks in the Record Layers of QUIC and DTLS 1.3\", received 15 June 2020, last revised 22 February 2021, <https://eprint.iacr.org/2020/718>。"
     },
     {
       "indent": 3,
       "text": "[TLS-ECH] Rescorla, E., Oku, K., Sullivan, N., and C.A. Wood, \"TLS Encrypted Client Hello\", Work in Progress, Internet-Draft, draft-ietf-tls-esni-14, 13 February 2022, <https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-14>.",
-      "ja": "[TLS-ECH] Rescorla、E.、Oku、K.、Sullivan、N。、およびC.A.wood、「TLS暗号化クライアントハロー」、作業中のインターネットドラフト、ドラフト-TLS-ESNI-14、2022年2月13日、<https://datatracker.ietf.org/doc/html/draft-ietf-TLS-ESNI-14>。"
+      "ja": "[TLS-ECH] Rescorla, E., Oku, K., Sullivan, N., and C.A. Wood, \"TLS Encrypted Client Hello\", Work in Progress, Internet-Draft, draft-ietf-tls-esni-14, 13 February 2022, <https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-14>。"
     },
     {
       "indent": 0,
       "text": "Appendix A. Protocol Data Structures and Constant Values",
       "section_title": true,
-      "ja": "付録A.プロトコルデータ構造と一定の値"
+      "ja": "付録A.プロトコルデータ構造と定数値"
     },
     {
       "indent": 3,
@@ -2845,7 +2598,7 @@
     {
       "indent": 3,
       "text": "TLS [TLS13] and [AEBounds] do not specify limits on key usage for AEAD_AES_128_CCM. However, any AEAD that is used with DTLS requires limits on use that ensure that both confidentiality and integrity are preserved. This section documents that analysis for AEAD_AES_128_CCM.",
-      "ja": "TLS [TLS13]および[Aebounds] AEAD_AES_128_CCMのキー使用法の制限を指定しないでください。しかしながら、DTLSで使用されるAEDは、機密性と完全性の両方が保存されていることを保証する使用時の制限が必要です。このセクションでは、AED_AES_128_CCMの分析を文書化します。"
+      "ja": "TLS [TLS13]および[Aebounds] AEAD_AES_128_CCMのキー使用法の制限を指定していません。しかしながら、DTLSで使用されるAEADは、機密性と完全性の両方が保存されていることを保証する使用時の制限が必要です。このセクションでは、AEAD_AES_128_CCMの分析を文書化します。"
     },
     {
       "indent": 3,
@@ -2855,7 +2608,7 @@
     {
       "indent": 3,
       "text": "This analysis uses symbols for multiplication (*), division (/), and exponentiation (^), plus parentheses for establishing precedence. The following symbols are also used:",
-      "ja": "この分析では、乗算（*）、ディビジョン（/）、および余分なもの（^）、プラレンスを確立するための括弧の記号を使用します。以下の記号も使用されます。"
+      "ja": "この分析では、乗算（*）、除算（/）、およびべき乗（^）、優先順位を確立するための括弧の記号を使用します。以下の記号も使用されます。"
     },
     {
       "indent": 3,
@@ -2875,12 +2628,12 @@
     {
       "indent": 3,
       "text": "q: The number of genuine packets created and protected by endpoints. This value is the bound on the number of packets that can be protected before updating keys.",
-      "ja": "Q：エンドポイントによって作成および保護された本物のパケットの数。この値は、キーを更新する前に保護できるパケットの数にバインドされています。"
+      "ja": "Q：エンドポイントによって作成および保護された本物のパケットの数。この値は、キーを更新する前に保護できるパケットの数の上限です。"
     },
     {
       "indent": 3,
       "text": "v: The number of forged packets that endpoints will accept. This value is the bound on the number of forged packets that an endpoint can reject before updating keys.",
-      "ja": "v：エンドポイントが受け入れる鍛造パケットの数。この値は、キーを更新する前にエンドポイントが拒否できる鍛造パケットの数のバインドです。"
+      "ja": "v：エンドポイントが受け入れる偽造パケットの数。この値は、キーを更新する前にエンドポイントが拒否できる偽造パケットの数の上限です。"
     },
     {
       "indent": 3,
@@ -2901,7 +2654,7 @@
     {
       "indent": 3,
       "text": "For confidentiality, Theorem 2 in [CCM-ANALYSIS] establishes that an attacker gains a distinguishing advantage over an ideal pseudorandom permutation (PRP) of no more than:",
-      "ja": "機密性のために、[CCM分析]の定理2は、攻撃者が以下の理想的な擬似ランダム順列（PRP）よりも際立った利点を獲得することを確立しています。"
+      "ja": "機密性のために、[CCM分析]の定理2は、攻撃者が以下の理想的な擬似ランダム順列（PRP）よりも識別上の優位性を獲得することを確立しています。"
     },
     {
       "indent": 3,
@@ -2962,12 +2715,12 @@
       "indent": 0,
       "text": "B.3. Limits for AEAD_AES_128_CCM_8",
       "section_title": true,
-      "ja": "B.3. aead_aes_128_ccm_8の制限"
+      "ja": "B.3. AEAD_AES_128_CCM_8の制限"
     },
     {
       "indent": 3,
       "text": "The TLS_AES_128_CCM_8_SHA256 cipher suite uses the AEAD_AES_128_CCM_8 function, which uses a short authentication tag (that is, t=64).",
-      "ja": "TLS_AES_128_CCM_8_SHA256 CIPHES SUITEは、AEAD_AES_128_CCM_8関数を使用します。これは、短い認証タグ（つまり、t = 64）を使用します。"
+      "ja": "TLS_AES_128_CCM_8_SHA256 暗号スイートは、AEAD_AES_128_CCM_8関数を使用します。これは、短い認証タグ（つまり、t = 64）を使用します。"
     },
     {
       "indent": 3,
@@ -2977,7 +2730,7 @@
     {
       "indent": 3,
       "text": "The shorter tag length of 64 bits means that the simplification used in Appendix B.2 does not apply to AEAD_AES_128_CCM_8. If the goal is to preserve the same margins as other cipher suites, then the limit on forgeries is largely dictated by the first term of the advantage formula:",
-      "ja": "64ビットの短いタグ長は、付録B.2で使用されている単純化がAEAD_AES_128_CCM_8には適用されないことを意味します。目標が他の暗号スイートと同じマージンを保存することである場合、フォーメーリーの制限は、利点の最初の期間によって主に決定されます。"
+      "ja": "64ビットの短いタグ長は、付録B.2で使用されている単純化がAEAD_AES_128_CCM_8には適用されないことを意味します。目標が他の暗号スイートと同じマージンを保存することである場合、偽造の制限は、優位性式の最初の項によって主に決定されます。"
     },
     {
       "indent": 3,
@@ -2999,12 +2752,12 @@
       "indent": 0,
       "text": "Appendix C. Implementation Pitfalls",
       "section_title": true,
-      "ja": "付録C.実装落とし穴"
+      "ja": "付録C.実装の落とし穴"
     },
     {
       "indent": 3,
       "text": "In addition to the aspects of TLS that have been a source of interoperability and security problems (Appendix C.3 of [TLS13]), DTLS presents a few new potential sources of issues, noted here.",
-      "ja": "相互運用性とセキュリティ問題の発生源となっているTLSの側面に加えて（[TLS13]の付録C.3）、DTLはここで述べたいくつかの新しい潜在的な問題源を提示します。"
+      "ja": "相互運用性とセキュリティ問題の発生源となっているTLSの側面に加えて（[TLS13]の付録C.3）、DTLSはここで述べたいくつかの新しい潜在的な問題源を提示します。"
     },
     {
       "indent": 3,
@@ -3024,7 +2777,7 @@
     {
       "indent": 3,
       "text": "* Do you correctly handle handshake messages received out of order? This may include either buffering or discarding them.",
-      "ja": "* あなたは順不同で受信したハンドシェイクメッセージを正しく処理しますか？これにはバッファリングまたは廃棄することが含まれます。"
+      "ja": "* 順不同で受信したハンドシェイクメッセージを正しく処理しますか？これにはバッファリングまたは廃棄することが含まれます。"
     },
     {
       "indent": 3,
@@ -3034,7 +2787,7 @@
     {
       "indent": 3,
       "text": "* Do you verify that the explicit record length is contained within the datagram in which it is contained?",
-      "ja": "* 明示的なレコード長が含まれているデータグラムに含まれていることを確認しますか？"
+      "ja": "* 明示的なレコード長が、それが含まれているデータグラム内に収まっているかを確認しますか？"
     },
     {
       "indent": 0,
