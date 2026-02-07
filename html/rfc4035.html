@@ -48,7 +48,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 4035 - DNSセキュリティ拡張機能のプロトコル変更</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -160,7 +160,7 @@ This document is part of a family of documents that describe the DNS Security Ex
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、DNSセキュリティ拡張機能（DNSSEC）を説明するドキュメントファミリの一部です。DNSセキュリティ拡張機能は、DNSにデータ起源の認証とデータの整合性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更について説明します。このドキュメントでは、DNSSECを使用してサービングと解決の要件とともに、署名ゾーンの概念を定義します。これらの手法により、セキュリティ認識リゾルバーは、DNSリソースレコードと権威あるDNSエラーの両方のエラー表示を認証できます。
+このドキュメントは、DNSセキュリティ拡張（DNSSEC）を説明する一連のドキュメントの一部です。DNSセキュリティ拡張は、DNSにデータオリジン認証とデータ完全性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更について説明します。このドキュメントでは、DNSSECを使用したサービス提供と名前解決の要件とともに、署名付きゾーンの概念を定義します。これらの技術により、セキュリティ対応リゾルバは、DNSリソースレコードと権威DNSサーバーからのエラー応答の両方を認証できます。
         </p>
       </div>
     </div>
@@ -297,7 +297,7 @@ The DNS Security Extensions (DNSSEC) are a collection of new resource records an
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DNSセキュリティ拡張機能（DNSSEC）は、DNSにデータの起源認証とデータの整合性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更を定義しています。このドキュメントのセクション2では、署名ゾーンの概念を定義し、ゾーン署名の要件をリストします。セクション3では、署名ゾーンの処理に必要な権威ある名前サーバーの動作の変更について説明します。セクション4では、セキュリティ対応のリゾルバー関数を含むエンティティの動作について説明します。最後に、セクション5では、DNSSEC RRSを使用して応答を認証する方法を定義します。
+DNSセキュリティ拡張（DNSSEC）は、DNSにデータオリジン認証とデータ完全性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更を定義します。このドキュメントのセクション2では、署名付きゾーンの概念を定義し、ゾーン署名の要件をリストアップします。セクション3では、署名付きゾーンを処理するために必要な権威ネームサーバーの動作の変更について説明します。セクション4では、セキュリティ対応リゾルバ機能を含むエンティティの動作について説明します。最後に、セクション5では、DNSSEC RRを使用して応答を認証する方法を定義します。
         </p>
       </div>
     </div>
@@ -393,7 +393,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「必須」、「そうしない」、「必須」、「shall」、「shall &#34;、&#34; ingle &#34;、&#34; should &#34;、&#34; not &#34;、&#34; becommended &#34;、&#34; bay &#34;、および「optional」は、[RFC2119]に記載されているように解釈される。
+この文書のキーワード &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL&#34;, &#34;SHALL NOT&#34;, &#34;SHOULD&#34;, &#34;SHOULD NOT&#34;, &#34;RECOMMENDED&#34;, &#34;MAY&#34;, および &#34;OPTIONAL&#34; は、[RFC2119]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -417,7 +417,7 @@ DNSSEC introduces the concept of signed zones. A signed zone includes DNS Public
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DNSSECは、署名されたゾーンの概念を紹介します。署名ゾーンには、DNS公開キー（DNSKEY）、リソースレコード署名（RRSIG）、次のセキュア（NSEC）、および（オプションで）代表者署名者（DS）がセクション2.1、2.2、2.3、および2.4で指定されたルールに従って記録されます。それぞれ。このセクションのルールに従ってこれらのレコードを含まないゾーンは、署名されていないゾーンです。
+DNSSECは、署名されたゾーンの概念を導入します。署名されたゾーンには、セクション2.1、2.2、2.3、および2.4で指定されたルールに従って、DNS公開鍵（DNSKEY）、リソースレコード署名（RRSIG）、次のセキュア（NSEC）、および（オプションで）委任署名者（DS）レコードが含まれます。このセクションのルールに従ってこれらのレコードを含まないゾーンは、署名されていないゾーンです。
         </p>
       </div>
     </div>
@@ -465,7 +465,7 @@ To sign a zone, the zone&#39;s administrator generates one or more public/privat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ゾーンに署名するために、ゾーンの管理者は1つ以上のパブリック/プライベートキーペアを生成し、秘密鍵を使用してゾーン内の信頼できるrrsetsに署名します。ゾーンでRRSIG RRSを作成するために使用される各秘密キーについて、ゾーンには、対応する公開キーを含むゾーンDNSKEY RRを含める必要があります。ゾーンキーDNSKEY RRには、フラグRDATAフィールドセットのゾーンキービットが必要です（[RFC4034]のセクション2.1.1を参照）。他のDNS操作に関連付けられているパブリックキーは、ゾーンキーとしてマークされていないが、RRSIGを確認するために使用してはならないDNSKEY RRSに保存される場合があります。
+ゾーンに署名するために、ゾーンの管理者は1つ以上のパブリック/プライベートキーペアを生成し、秘密鍵を使用してゾーン内の権威あるRRsetに署名します。ゾーンでRRSIG RRSを作成するために使用される各秘密キーについて、ゾーンには、対応する公開キーを含むゾーンDNSKEY RRを含める必要があります。ゾーンキーDNSKEY RRは、フラグRDATAフィールドのゾーンキービットがセットされていなければなりません（[RFC4034]のセクション2.1.1を参照）。他のDNS操作に関連付けられた公開鍵は、ゾーンキーとしてマークされていないDNSKEY RRに格納してもよい（MAY）が、RRSIGの検証に使用してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -537,7 +537,7 @@ o The RRSIG Type Covered field is equal to the RRset type.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIGタイプのカバーフィールドは、RRSetタイプに等しくなります。
+o RRSIGのType Coveredフィールドは、RRsetのタイプに等しい。
         </p>
       </div>
     </div>
@@ -549,7 +549,7 @@ o The RRSIG Original TTL field is equal to the TTL of the RRset.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIGオリジナルTTLフィールドは、RRSETのTTLに等しくなります。
+o RRSIGのOriginal TTLフィールドは、RRsetのTTLに等しい。
         </p>
       </div>
     </div>
@@ -573,7 +573,7 @@ o The RRSIG Labels field is equal to the number of labels in the RRset owner nam
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIGラベルフィールドは、RRSetの所有者名のラベルの数に等しく、nullルートラベルをカウントせず、ワイルドカードの場合は左端のラベルをカウントしません。
+o RRSIGのLabelsフィールドは、RRsetの所有者名のラベルの数に等しい。ただし、nullルートラベルはカウントせず、ワイルドカードの場合は左端のラベルをカウントしない。
         </p>
       </div>
     </div>
@@ -585,7 +585,7 @@ o The RRSIG Signer&#39;s Name field is equal to the name of the zone containing 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIG署名者の名前フィールドは、RRSetを含むゾーンの名前に等しくなります。
+o RRSIGのSigner&#39;s Nameフィールドは、RRsetを含むゾーンの名前に等しい。
         </p>
       </div>
     </div>
@@ -597,7 +597,7 @@ o The RRSIG Algorithm, Signer&#39;s Name, and Key Tag fields identify a zone key
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIGアルゴリズム、署名者の名前、およびキータグフィールドは、ゾーンアペックスでゾーンキーDNSKEYレコードを識別します。
+o RRSIGのAlgorithm、Signer&#39;s Name、およびKey Tagフィールドは、ゾーン頂点のゾーンキーDNSKEYレコードを識別する。
         </p>
       </div>
     </div>
@@ -633,7 +633,7 @@ The NS RRset that appears at the zone apex name MUST be signed, but the NS RRset
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ゾーンアペックス名に表示されるNS RRSETに署名する必要がありますが、委任ポイントに表示されるNS RRSets（つまり、名前をチャイルドゾーンの名前サーバーに委任する親ゾーンのNS RRSets）に署名する必要はありません。代表団に関連付けられた接着アドレスrrsetsに署名してはなりません。
+ゾーン頂点の名前に現れるNS RRsetは署名されなければなりませんが、委任ポイントに現れるNS RRset（つまり、名前を子ゾーンのネームサーバーに委任する親ゾーン内のNS RRset）は署名されてはなりません。委任に関連付けられたグルーアドレスRRsetは署名されてはなりません。
         </p>
       </div>
     </div>
@@ -693,7 +693,7 @@ An NSEC record (and its associated RRSIG RRset) MUST NOT be the only RRset at an
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-NSECレコード（および関連するRRSIG RRSet）は、特定の所有者名で唯一のRRSetであってはなりません。つまり、署名プロセスは、ゾーンが署名される前のrrsetの所有者名ではなかった所有者名ノードのNSECまたはRRSIG RRSを作成してはなりません。これの主な理由は、同じゾーンの署名されたバージョンと署名されていないバージョンとの間の名前空間の一貫性と、セキュリティ忘却の再帰名サーバーの応答の矛盾を減らすことを望んでいることです。
+NSECレコード（および関連するRRSIG RRSet）は、特定の所有者名で唯一のRRSetであってはなりません。つまり、署名プロセスは、ゾーンが署名される前のrrsetの所有者名ではなかった所有者名ノードのNSECまたはRRSIG RRSを作成してはなりません。これの主な理由は、同じゾーンの署名されたバージョンと署名されていないバージョンとの間の名前空間の一貫性を保つことと、セキュリティを認識しない再帰ネームサーバーにおける応答の不整合のリスクを減らすことです。
         </p>
       </div>
     </div>
@@ -717,7 +717,7 @@ The difference between the set of owner names that require RRSIG records and the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RRSIGレコードを必要とする所有者名のセットと、NSECレコードを必要とする所有者名のセットの違いは、微妙で強調表示される価値があります。RRSIGレコードは、すべての権威あるrrsetの所有者名に存在します。NSECレコードは、署名されたゾーンが権威あるすべての名前の所有者名に存在し、署名ゾーンからその子供への代表団の所有者名もあります。接着剤アドレスrrsetsの所有者名に、NSECもRRSIGレコードも（親ゾーンに）存在しません。ただし、NSEC rrsetsは権威あるデータであり、したがって署名されているため、この区別はゾーン署名プロセス中にのみ目に見えるものであることに注意してください。したがって、NSEC RRSetを持つ所有者名は、署名ゾーンにもRRSIG RRSを備えています。
+RRSIGレコードを必要とする所有者名のセットと、NSECレコードを必要とする所有者名のセットの違いは、微妙で強調表示される価値があります。RRSIGレコードは、すべての権威あるrrsetの所有者名に存在します。NSECレコードは、署名されたゾーンが権威あるすべての名前の所有者名に存在し、署名ゾーンからその子供への代表団の所有者名もあります。グルーアドレスRRsetの所有者名には、（親ゾーン内に）NSECレコードもRRSIGレコードも存在しません。ただし、NSEC RRSetは権威あるデータであり、したがって署名されているため、この区別はゾーン署名プロセス中にのみ目に見えるものであることに注意してください。したがって、NSEC RRSetを持つ所有者名は、署名ゾーンにもRRSIG RRSを備えています。
         </p>
       </div>
     </div>
@@ -729,7 +729,7 @@ The bitmap for the NSEC RR at a delegation point requires special attention. Bit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-委任ポイントでのNSEC RRのビットマップには、特別な注意が必要です。代表団NS RRSETおよび親ゾーンに権威あるデータを持っているRRSetsに対応するビットを設定する必要があります。親が信頼できるものではない非NS RRSetに対応するビットは明確でなければなりません。
+委任ポイントでのNSEC RRのビットマップには、特別な注意が必要です。委任NS RRsetおよび親ゾーンが権威あるデータを持つRRsetに対応するビットはセットされなければなりません。親が権威を持たない非NS RRsetに対応するビットはクリアでなければなりません。
         </p>
       </div>
     </div>
@@ -933,7 +933,7 @@ A security-aware name server MUST support the EDNS0 ([RFC2671]) message size ext
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応の名前サーバーは、EDNS0（[RFC2671]）メッセージサイズの拡張機能をサポートする必要があり、少なくとも1220オクテットのメッセージサイズをサポートする必要があり、4000オクテットのメッセージサイズをサポートする必要があります。IPv6パケットはソースホストによってのみ断片化できるため、セキュリティ認識名サーバーは、IPv6を介して送信するUDPデータグラムが、必要に応じて最小IPv6 MTUで断片化されるように手順を実行する必要があります。パケットサイズと断片化の問題についてのさらなる議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。
+セキュリティ対応ネームサーバーは、EDNS0（[RFC2671]）メッセージサイズ拡張をサポートしなければならず、少なくとも1220オクテットのメッセージサイズをサポートしなければならず、4000オクテットのメッセージサイズをサポートすべきです。IPv6パケットはソースホストによってのみ断片化できるため、セキュリティ認識名サーバーは、IPv6を介して送信するUDPデータグラムが、必要に応じて最小IPv6 MTUで断片化されるように手順を実行する必要があります。パケットサイズと断片化の問題についてのさらなる議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。
         </p>
       </div>
     </div>
@@ -945,7 +945,7 @@ A security-aware name server that receives a DNS query that does not include the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-EDNS Opt Pseudo-RRを含まないDNSクエリを受信した、またはDOが少し明確にしているDNSクエリを受信するセキュリティ対応の名前サーバーは、RRSIG、DNSKEY、およびNSEC RRSを他のRRSETと同様に処理する必要があり、実行していない必要があります。以下で説明する追加の処理。DS RRタイプは、委任ポイントの親ゾーンにのみ存在する独特のプロパティを持っているため、DS RRSは常にセクション3.1.4.1で説明されているように特別な処理が必要です。
+EDNS OPT疑似RRを含まない、またはDOビットがクリアされているDNSクエリを受信したセキュリティ対応ネームサーバーは、RRSIG、DNSKEY、およびNSEC RRを他のRRsetと同様に処理しなければならず、以下で説明する追加の処理を実行してはなりません。DS RRタイプは、委任ポイントの親ゾーンにのみ存在する独特のプロパティを持っているため、DS RRSは常にセクション3.1.4.1で説明されているように特別な処理が必要です。
         </p>
       </div>
     </div>
@@ -957,7 +957,7 @@ Security aware name servers that receive explicit queries for security RR types 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サービスを提供する複数のゾーンのコンテンツに一致するセキュリティRRタイプの明示的なクエリを受信するセキュリティ認識名サーバー（たとえば、サーバーが両方のゾーンに対して権威ある委任ポイントの上下のNSECおよびRRSIG RRSが自己行動する必要があります） -  sonsめに。応答が各クエリに対して常に一貫している限り、名前サーバーへのクエリごとに、名前サーバーは次のいずれかを返すことができます。
+サービスを提供する複数のゾーンのコンテンツに一致するセキュリティRRタイプの明示的なクエリを受信するセキュリティ認識名サーバー（たとえば、サーバーが両方のゾーンに対して権威を持つ委任ポイントの上下のNSECおよびRRSIG RR）は、一貫した動作をするべきです。応答が各クエリに対して常に一貫している限り、名前サーバーへのクエリごとに、名前サーバーは次のいずれかを返すことができます。
         </p>
       </div>
     </div>
@@ -1017,7 +1017,7 @@ Upon receiving a relevant query that has the EDNS ([RFC2671]) OPT pseudo-RR DO b
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-EDNS（[RFC2671]）OPT PSEUDO-RR DO BIT（[RFC3225]）セットを持つ関連するクエリを受信すると、署名ゾーンのセキュリティ認識権限名サーバーが追加のRRSIG、NSEC、およびDS RRSを含める必要があります。次のルールに：
+EDNS（[RFC2671]）OPT疑似RRのDOビット（[RFC3225]）がセットされた関連クエリを受信すると、署名されたゾーンのセキュリティ対応権威ネームサーバーは、以下のルールに従って追加のRRSIG、NSEC、およびDS RRを含めなければなりません。
         </p>
       </div>
     </div>
@@ -1053,7 +1053,7 @@ o Either a DS RRset or an NSEC RR proving that no DS RRs exist MUST be included 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o DS RRSETまたはNSEC RRのいずれかが、DS RRSが存在しないことを証明し、セクション3.1.4のルールに従って紹介に自動的に含める必要があります。
+o DS RRset、またはDS RRが存在しないことを証明するNSEC RRのいずれかを、セクション3.1.4のルールに従って参照に自動的に含めなければなりません。
         </p>
       </div>
     </div>
@@ -1113,7 +1113,7 @@ o When placing a signed RRset in the Answer section, the name server MUST also p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 回答セクションに署名されたRRSetを配置する場合、名前サーバーは回答セクションにRRSIG RRを配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。
+o 回答セクションに署名されたRRSetを配置する場合、名前サーバーは回答セクションにRRSIG RRを配置する必要があります。RRSIG RRは、含める必要がある可能性のある他のどのRRsetよりも包含の優先度が高くなります。スペースの都合でこれらのRRSIG RRを含めることができない場合、ネームサーバーはTCビットをセットしなければなりません。
         </p>
       </div>
     </div>
@@ -1125,7 +1125,7 @@ o When placing a signed RRset in the Authority section, the name server MUST als
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 署名済みのRRSETを当局セクションに配置する場合、名前サーバーはRRSIG RRSを当局セクションに配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。
+o 署名済みのRRSETを権威セクションに配置する場合、名前サーバーはRRSIG RRSを権威セクションに配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。
         </p>
       </div>
     </div>
@@ -1197,7 +1197,7 @@ No Data: The zone contains RRsets that exactly match &lt;SNAME, SCLASS&gt; but d
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-データなし：ゾーンには、&lt;sname、sclass&gt;が正確に一致するrrsetsが含まれていますが、&lt;sname、sclass、stype&gt;を正確に一致させるrrsetsは含まれていません。
+データなし：ゾーンには&lt;SNAME, SCLASS&gt;に正確に一致するRRsetが含まれていますが、&lt;SNAME, SCLASS, STYPE&gt;に正確に一致するRRsetは含まれていません。
         </p>
       </div>
     </div>
@@ -1209,7 +1209,7 @@ Name Error: The zone does not contain any RRsets that match &lt;SNAME, SCLASS&gt
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-名前のエラー：ゾーンには、&lt;sname、sclass&gt;正確またはワイルドカード名の拡張を介して一致するrrsetsは含まれていません。
+名前エラー：ゾーンには、正確に、またはワイルドカード名展開を介して&lt;SNAME, SCLASS&gt;に一致するRRsetが含まれていません。
         </p>
       </div>
     </div>
@@ -1221,7 +1221,7 @@ Wildcard Answer: The zone does not contain any RRsets that exactly match &lt;SNA
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ワイルドカードの回答：ゾーンには、&lt;sname、sclass&gt;に一致するrrsetsは含まれていませんが、ワイルドカード名拡張を介して&lt;sname、sclass、stype&gt;に一致するrrsetが含まれています。
+ワイルドカード回答：ゾーンには&lt;SNAME, SCLASS&gt;に正確に一致するRRsetは含まれていませんが、ワイルドカード名展開を介して&lt;SNAME, SCLASS, STYPE&gt;に一致するRRsetが含まれています。
         </p>
       </div>
     </div>
@@ -1233,7 +1233,7 @@ Wildcard No Data: The zone does not contain any RRsets that exactly match &lt;SN
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ワイルドカードデータなし：ゾーンには、&lt;sname、sclass&gt;を正確に一致させるrrsetsが含まれておらず、ワイルドカード名の拡張を介して&lt;sname、sclass&gt;に一致する1つ以上のrrsetsが含まれていますが、&lt;suname、sclassに一致するrrsetsは含まれていません。、Stype&gt; WildCard名拡張を介して。
+ワイルドカードデータなし：ゾーンには&lt;SNAME, SCLASS&gt;に正確に一致するRRsetは含まれておらず、ワイルドカード名展開を介して&lt;SNAME, SCLASS&gt;に一致する1つ以上のRRsetが含まれていますが、ワイルドカード名展開を介して&lt;SNAME, SCLASS, STYPE&gt;に一致するRRsetは含まれていません。
         </p>
       </div>
     </div>
@@ -1317,7 +1317,7 @@ o An NSEC RR proving that there is no exact match for &lt;SNAME, SCLASS&gt;.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o NSEC RRは、&lt;Snake、S Class&gt;に正確な一致がないことを証明しています。
+o NSEC RRは、&lt;SNAME, SCLASS&gt;に正確な一致がないことを証明しています。
         </p>
       </div>
     </div>
@@ -1377,7 +1377,7 @@ Note that this form of response includes cases in which SNAME corresponds to an 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この形式の応答には、sunameがゾーン内の空の非末端名に対応する場合（rrsetの所有者名ではなく、1つ以上のrrsetの親名です）。
+この形式の応答には、SNAMEがゾーン内の空の非終端名（どのRRsetの所有者名でもないが、1つ以上のRRsetの親名である名前）に対応する場合が含まれることに注意してください。
         </p>
       </div>
     </div>
@@ -1437,7 +1437,7 @@ o An NSEC RR proving that there are no RRsets matching STYPE at the wildcard own
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o WildCardの拡張を介して&lt;Sname、Sclass&gt;に一致するWildCardの所有者名に、rrsetsがStypeを一致させるrrsetがないことを証明するNSEC RR。
+o ワイルドカード展開を介して&lt;SNAME, SCLASS&gt;に一致したワイルドカード所有者名において、STYPEに一致するRRsetが存在しないことを証明するNSEC RR。
         </p>
       </div>
     </div>
@@ -1581,7 +1581,7 @@ If no DS RRset is present at the delegation point, the name server MUST return b
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DS RRSETが委任ポイントに存在しない場合、名前サーバーは、DS RRSTが存在しないことを証明するNSEC RRと、NS RRSTとともにNSEC RRに関連するRRSIG RR（S）の両方を返す必要があります。名前サーバーは、NSEC RRSETおよびそれに関連するRRSIG RRの前にNS RRSetを配置する必要があります。
+DS RRsetが委任ポイントに存在しない場合、ネームサーバーは、DS RRsetが存在しないことを証明するNSEC RRと、NSEC RRに関連付けられたRRSIG RR（複数可）の両方を、NS RRsetとともに返さなければなりません。ネームサーバーは、NSEC RRsetおよびそれに関連付けられたRRSIG RR（複数可）の前にNS RRsetを配置しなければなりません。
         </p>
       </div>
     </div>
@@ -1617,7 +1617,7 @@ The DS resource record type is unusual in that it appears only on the parent zon
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DSリソースレコードタイプは、ゾーンカットの親ゾーン側のみにのみ表示されるという点で珍しいです。たとえば、「foo.example」の委任のDS RRSETは、「foo.example」ゾーンではなく「例」ゾーンに保存されます。これには、名前サーバーとリゾルバーの両方に特別な処理ルールが必要です。これは、子ゾーンの名前サーバーは通常のDNSルールによってカットされたゾーンの名前に対して権威あるものであるため、子ゾーンにはDS RRSetが含まれていません。
+DSリソースレコードタイプは、ゾーンカットの親ゾーン側にのみ現れるという点で珍しいものです。たとえば、「foo.example」の委任のためのDS RRsetは、「foo.example」ゾーンではなく「example」ゾーンに格納されます。これには、ネームサーバーとリゾルバの両方に特別な処理ルールが必要です。子ゾーンのネームサーバーは通常のDNSルールによってゾーンカットでの名前に対して権威がありますが、子ゾーンにはDS RRsetが含まれていないためです。
         </p>
       </div>
     </div>
@@ -1749,7 +1749,7 @@ An authoritative name server is not required to verify that a zone is properly s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ゾーン転送を送信または受け入れる前に、ゾーンが適切に署名されていることを確認するために、権威ある名前サーバーは必要ありません。ただし、ゾーンがセクション2で説明されている署名要件のいずれかを満たしていない場合、ゾーン転送全体を拒否することを選択できます。ゾーン。独自のゾーン検証を実行することを選択した権威ある名前サーバーは、一部のRRを選択的に拒否し、他のRRを受け入れてはなりません。
+ゾーン転送を送信または受け入れる前に、ゾーンが適切に署名されていることを確認するために、権威ある名前サーバーは必要ありません。ただし、ゾーンがセクション2で説明されている署名要件のいずれかを満たしていない場合、権威ネームサーバーはゾーン転送全体を拒否することを選択してもよい（MAY）。ゾーン転送の主な目的は、すべての権威ネームサーバーがゾーンの同一のコピーを持つことを保証することです。独自のゾーン検証を実行することを選択した権威ネームサーバーは、一部のRRを選択的に拒否し、他のRRを受け入れるようなことをしてはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -1785,7 +1785,7 @@ RRSIG RRs appear in both the parent and child zones at a zone cut and are author
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RRSIG RRSは、ゾーンカットの親ゾーンとチャイルドゾーンの両方に表示され、RRSIG RRが署名を提供する権威あるRRSetを含むゾーンでは権威あるものです。つまり、ゾーンカットでのDS RRSETまたは親のNSEC RRのRRSIG RRは親ゾーンで権威があり、子ゾーンの頂点のRRSETのRRSIGは子供ゾーンでは権威があります。ゾーンカットでの親と子のrrsig RRSは、子ゾーンの頂点のrrsig rrの署名者の名前フィールドは、子ゾーンの頂点のdnskeyRRを示しているため、親のrrsig rrsig rrrの同じフィールドが示されているため、互いに同一になることはありません。ゾーンカットでは、親ゾーンの頂点にDNSKEY RRが示されます。他の権威あるRRSと同様に、RRSIG RRSは、権威あるデータであるゾーンのゾーン転送に含める必要があります。
+RRSIG RRは、ゾーンカットの親ゾーンと子ゾーンの両方に現れ、RRSIG RRが署名を提供する権威あるRRsetを含むゾーンのいずれにおいても権威があります。つまり、ゾーンカットでのDS RRsetまたは親のNSEC RRのRRSIG RRは親ゾーンで権威があり、子ゾーンの頂点にあるRRsetのRRSIGは子ゾーンで権威があります。ゾーンカットでの親と子のRRSIG RRは、子ゾーンの頂点にあるRRSIG RRの署名者名フィールドは子ゾーンの頂点にあるDNSKEY RRを示すのに対し、ゾーンカットでの親のRRSIG RRの同じフィールドは親ゾーンの頂点にあるDNSKEY RRを示すため、互いに同一になることはありません。他の権威あるRRと同様に、RRSIG RRは、それらが権威あるデータであるゾーンのゾーン転送に含めなければなりません。
         </p>
       </div>
     </div>
@@ -1833,7 +1833,7 @@ A security-aware name server MUST NOT set the AD bit in a response unless the na
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応の名前のサーバーは、名前サーバーが回答のすべてのrrsetsと応答のすべてのrrsetsを本物であると考慮しない限り、ADビットを応答に設定してはなりません。セキュリティ対応の名前サーバーのローカルポリシーは、権威あるゾーンからのデータを、さらに検証することなく本物であると考える場合があります。ただし、名前サーバーが安全な手段（安全なゾーン転送メカニズムなど）を介して権威あるゾーンを取得しない限り、名前サーバーはそうしてはなりません。この動作が明示的に構成されていない限り、そうしてはなりません。
+セキュリティ対応ネームサーバーは、ネームサーバーが応答の回答および権限セクション内のすべてのRRsetを真正であると見なさない限り、応答にADビットをセットしてはなりません。セキュリティ対応ネームサーバーのローカルポリシーは、権威あるゾーンからのデータを、さらなる検証なしに真正であると見なすことができます（MAY）。ただし、ネームサーバーが安全な手段（安全なゾーン転送メカニズムなど）を介して権威あるゾーンを取得しない限り、ネームサーバーはそうしてはならず、この動作が明示的に構成されていない限り、そうしてはなりません。
         </p>
       </div>
     </div>
@@ -1893,7 +1893,7 @@ The resolver side follows the usual rules for caching and negative caching that 
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.2.1. ビット
+3.2.1. DOビット
         </h5>
       </div>
     </div>
@@ -1905,7 +1905,7 @@ The resolver side of a security-aware recursive name server MUST set the DO bit 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応の再帰的な名前サーバーのリゾルバー側は、名前サーバー側が受信した開始要求のDOビットの状態に関係なく、リクエストを送信するときにDOをBITを設定する必要があります。開始クエリのbitが設定されていない場合、名前サーバー側は応答から認証DNSSEC RRを削除する必要がありますが、開始クエリが明示的に要求したDNSSEC RRタイプを削除してはなりません。
+セキュリティ対応再帰ネームサーバーのリゾルバー側は、ネームサーバー側が受信した開始要求のDOビットの状態に関係なく、リクエストを送信するときにDOビットをセットしなければなりません。開始クエリのDOビットがセットされていない場合、ネームサーバー側は応答から認証DNSSEC RRを削除しなければなりませんが、開始クエリが明示的に要求したDNSSEC RRタイプを削除してはなりません。
         </p>
       </div>
     </div>
@@ -1953,7 +1953,7 @@ The name server side of a security-aware recursive name server MUST pass the sta
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応の再帰名サーバーの名前サーバー側は、CDビットの状態をリゾルバー側に渡す必要があります。名前サーバー側に戻ります。CDビットが設定されている場合、発信元のリゾルバーが、ローカルポリシーが必要とする認証を実行する意思があることを示しています。したがって、再帰名サーバーのリゾルバー側は、応答のrrsetsで認証を実行する必要はありません。CDビットが設定されている場合、再帰的な名前サーバーのローカル認証ポリシーが問題のレコードを拒否する場合でも、可能であれば、可能であれば、要求されたデータを元のリゾルバーに返す必要があります。つまり、CDビットを設定することにより、発信元のリゾルバーは、独自の認証を実行する責任が必要であり、再帰名サーバーが干渉してはならないことを示しています。
+セキュリティ対応再帰ネームサーバーのネームサーバー側は、開始クエリの残りの部分とともにCDビットの状態をリゾルバー側に渡さなければなりません。これにより、リゾルバー側は、ネームサーバー側に返す応答データを検証する必要があるかどうかを知ることができます。CDビットがセットされている場合、それは発信元のリゾルバがローカルポリシーが必要とする認証を実行する意思があることを示しています。したがって、再帰ネームサーバーのリゾルバー側は、応答内のRRsetに対して認証を実行する必要はありません。CDビットがセットされている場合、再帰ネームサーバーは、再帰ネームサーバーのローカル認証ポリシーが問題のレコードを拒否する場合でも、可能であれば、要求されたデータを元のリゾルバに返すべきです。つまり、CDビットをセットすることにより、発信元のリゾルバは、独自の認証を実行する責任を負うことを示しており、再帰ネームサーバーは干渉すべきではありません。
         </p>
       </div>
     </div>
@@ -1965,7 +1965,7 @@ If the resolver side implements a BAD cache (see Section 4.7) and the name serve
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リゾルバー側が悪いキャッシュを実装し（セクション4.7を参照）、名前サーバー側がResolverの悪いキャッシュのエントリに一致するクエリを受信した場合、名前サーバー側の応答は元のクエリのCDビットの状態に依存します。CDビットが設定されている場合、名前サーバー側は悪いキャッシュからデータを返す必要があります。CDビットが設定されていない場合、名前サーバー側はRcode 2（サーバーの障害）を返す必要があります。
+リゾルバー側がBADキャッシュを実装し（セクション4.7を参照）、名前サーバー側がResolverのBADキャッシュのエントリに一致するクエリを受信した場合、名前サーバー側の応答は元のクエリのCDビットの状態に依存します。CDビットがセットされている場合、ネームサーバー側はBADキャッシュからデータを返すべきです（SHOULD）。CDビットがセットされていない場合、ネームサーバー側はRCODE 2（サーバー障害）を返さなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1989,7 +1989,7 @@ The intent of the above rule is to provide the raw data to clients that are capa
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.2.3. 広告ビット
+3.2.3. ADビット
         </h5>
       </div>
     </div>
@@ -2001,7 +2001,7 @@ The name server side of a security-aware recursive name server MUST NOT set the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応の再帰名サーバーの名前サーバー側は、名前サーバーが回答のすべてのrrsetsと応答のすべてのrrsetsを本物であると見なさない限り、ADビットを応答に設定してはなりません。Resolver Sideが回答セクション内のすべてのrrsetを考慮し、Authorityセクションの関連する負の応答RRが本物である場合にのみ、名前サーバー側はADビットを設定する必要があります。リゾルバー側は、セクション5で説明されている手順に従って、問題のRRが本物であるかどうかを判断する必要があります。ただし、後方互換性の場合、応答に署名されていないCNAME RRSが含まれている場合、再帰名の名前サーバーがADビットを設定することができます。[RFC2672]。
+セキュリティ対応再帰ネームサーバーのネームサーバー側は、ネームサーバーが応答の回答および権限セクション内のすべてのRRsetを真正であると見なさない限り、応答にADビットをセットしてはなりません。ネームサーバー側は、リゾルバー側が回答セクション内のすべてのRRsetおよび権限セクション内の関連する否定応答RRを真正であると見なす場合にのみ、ADビットをセットすべきです。リゾルバー側は、問題のRRが真正であるかどうかを判断するために、セクション5で説明されている手順に従わなければなりません。ただし、後方互換性のために、再帰ネームサーバーは、応答に署名されていないCNAME RRが含まれている場合、それらのCNAME RRが[RFC2672]で説明されている合成ルールに従って応答にも含まれている真正なDNAME RRから合成された可能性があることが実証できる場合に、ADビットをセットしてもかまいません（MAY）。
         </p>
       </div>
     </div>
@@ -2073,7 +2073,7 @@ A security-aware resolver MUST include an EDNS ([RFC2671]) OPT pseudo-RR with th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ認識リゾルバーには、クエリを送信するときにDO（[RFC3225]）BITセットを使用して、EDNS（[RFC2671]）OPT PSEUDO-RRを含める必要があります。
+セキュリティ対応リゾルバは、クエリを送信するときに、DO（[RFC3225]）ビットがセットされたEDNS（[RFC2671]）OPT疑似RRを含めなければなりません。
         </p>
       </div>
     </div>
@@ -2085,7 +2085,7 @@ A security-aware resolver MUST support a message size of at least 1220 octets, S
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ認識リゾルバーは、少なくとも1220オクテットのメッセージサイズをサポートする必要があり、4000オクテットのメッセージサイズをサポートし、EDNS Opt Pseudo-RRの「送信者のUDPペイロードサイズ」フィールドを使用して、それをメッセージサイズを宣伝する必要があります。喜んで受け入れます。セキュリティ認識ResolverのIPレイヤーは、IPv4またはIPv6を介してそのような断片化されたパケットが受信されたかどうかにかかわらず、断片化されたUDPパケットを正しく処理する必要があります。これらの要件の議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。
+セキュリティ対応リゾルバは、少なくとも1220オクテットのメッセージサイズをサポートしなければならず、4000オクテットのメッセージサイズをサポートすべきであり、EDNS OPT疑似RRの「送信者のUDPペイロードサイズ」フィールドを使用して、受け入れる意思のあるメッセージサイズを通知しなければなりません。セキュリティ対応リゾルバのIP層は、そのような断片化されたパケットがIPv4経由で受信されたかIPv6経由で受信されたかに関係なく、断片化されたUDPパケットを正しく処理しなければなりません。これらの要件の議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。
         </p>
       </div>
     </div>
@@ -2181,7 +2181,7 @@ When attempting to retrieve missing NSEC RRs that reside on the parental side at
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ゾーンカットで親の側に存在する欠落しているNSEC RRSを取得しようとする場合、セキュリティ認識の反復モードリゾルバーは、チャイルドゾーンではなく、親ゾーンの名前サーバーを照会する必要があります。
+ゾーンカットの親側に存在する欠落しているNSEC RRを取得しようとする場合、セキュリティ対応の反復モードリゾルバは、子ゾーンではなく、親ゾーンのネームサーバーに問い合わせなければなりません。
         </p>
       </div>
     </div>
@@ -2229,7 +2229,7 @@ Secure: An RRset for which the resolver is able to build a chain of signed DNSKE
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュア：リゾルバーが信頼できるセキュリティアンカーからRRSetまでの署名付きDNSKEYおよびDS RRのチェーンを構築できるRRSet。この場合、上記のように、RRSetに署名し、署名検証の対象となります。
+セキュア：リゾルバが信頼できるセキュリティアンカーからRRsetまでの署名付きDNSKEYおよびDS RRのチェーンを構築できるRRset。この場合、RRsetは署名されるべきであり、上記のように署名検証の対象となります。
         </p>
       </div>
     </div>
@@ -2241,7 +2241,7 @@ Insecure: An RRset for which the resolver knows that it has no chain of signed D
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-不安：リゾルバーが、信頼できる出発点からRRSetまでの署名付きDNSKEYおよびDS RRのチェーンがないことをリゾルバーが知っているRRSET。これは、ターゲットRRSetが署名されていないゾーンまたは署名されていないゾーンの子孫にある場合に発生する可能性があります。この場合、RRSetに署名されている場合とそうでない場合がありますが、リゾルバーは署名を確認できません。
+インセキュア：リゾルバが、信頼できる出発点からRRsetまでの署名付きDNSKEYおよびDS RRのチェーンがないことを知っているRRset。これは、ターゲットRRsetが署名されていないゾーンまたは署名されていないゾーンの子孫にある場合に発生する可能性があります。この場合、RRsetは署名されている場合とそうでない場合がありますが、リゾルバは署名を検証できません。
         </p>
       </div>
     </div>
@@ -2253,7 +2253,7 @@ Bogus: An RRset for which the resolver believes that it ought to be able to esta
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-偽物：リゾルバーが信頼の連鎖を確立できるはずだと信じているが、何らかの理由で検証に失敗した署名または関連するデータが欠落しているため、そうすることができないrrsetDNSSEC RRSは、存在する必要があることを示しています。このケースは攻撃を示している可能性がありますが、構成エラーまたは何らかの形式のデータ腐敗を示している場合があります。
+ボーガス：リゾルバが信頼の連鎖を確立できるはずだと信じているが、何らかの理由で検証に失敗した署名、または関連するDNSSEC RRが存在すべきであることを示しているデータの欠落のために、そうすることができないRRset。このケースは攻撃を示している可能性がありますが、構成エラーまたは何らかの形式のデータ破損を示している場合もあります。
         </p>
       </div>
     </div>
@@ -2265,7 +2265,7 @@ Indeterminate: An RRset for which the resolver is not able to determine whether 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-不確定：リゾルバーが必要なDNSSEC RRを取得できないため、RELSTがRRSetに署名するかどうかを決定できないRRSET。これは、セキュリティ対応のリゾルバーが関連するゾーンのセキュリティ対応の名前サーバーに連絡できない場合に発生する可能性があります。
+不確定：リゾルバが必要なDNSSEC RRを取得できないため、RRsetが署名されるべきかどうかを決定できないRRset。これは、セキュリティ対応リゾルバが関連するゾーンのセキュリティ対応ネームサーバーに連絡できない場合に発生する可能性があります。
         </p>
       </div>
     </div>
@@ -2301,7 +2301,7 @@ Note that trust anchors also cover key material that is updated in a secure mann
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Trust Anchorsは、安全な方法で更新される重要な資料もカバーしていることに注意してください。この安全な方法は、物理メディア、キーエクスチェンジプロトコル、またはその他の帯域外の手段を通じて行うことができます。
+トラストアンカーは、安全な方法で更新される鍵素材もカバーすることに注意してください。この安全な方法は、物理メディア、キーエクスチェンジプロトコル、またはその他の帯域外の手段を通じて行うことができます。
         </p>
       </div>
     </div>
@@ -2325,7 +2325,7 @@ A security-aware resolver SHOULD cache each response as a single atomic entry co
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ認識リゾルバーは、指定されたRRSETおよび関連するDNSSEC RRを含む、回答全体を含む単一の原子エントリとして各応答をキャッシュする必要があります。リゾルバーは、その中に含まれるRRのいずれかが期限切れになったときに、原子エントリ全体を破棄する必要があります。ほとんどの場合、アトミックエントリの適切なキャッシュインデックスはトリプル&lt;QNAME、QTYPE、QCLASS&gt;ですが、セクション3.1.3.2で説明されている応答フォームなどの場合、適切なキャッシュインデックスはdouble &lt;qName、qclass&gt;。
+セキュリティ対応リゾルバは、指定されたRRsetおよび関連するDNSSEC RRを含む、回答全体を含む単一のアトミックエントリとして各応答をキャッシュすべきです。リゾルバは、その中に含まれるRRのいずれかが期限切れになったときに、アトミックエントリ全体を破棄すべきです。ほとんどの場合、アトミックエントリの適切なキャッシュインデックスはトリプル&lt;QNAME, QTYPE, QCLASS&gt;ですが、セクション3.1.3.2で説明されている応答フォームなどの場合、適切なキャッシュインデックスはダブル&lt;QNAME, QCLASS&gt;になります。
         </p>
       </div>
     </div>
@@ -2385,7 +2385,7 @@ In theory, a resolver could use wildcards or NSEC RRs to generate positive and n
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-理論的には、リゾルバーはワイルドカードまたはNSEC RRSを使用して、問題のレコードのTTLまたは署名が期限切れになるまで（それぞれ）肯定的および負の応答を生成することができます。ただし、リソースバーが新しい権威あるデータをブロックしたり、自分で新しいデータを合成したりしないようにすることは賢明なようです。この推奨事項に従うリゾルバーは、名前空間のより一貫したビューを持っています。
+理論的には、リゾルバーはワイルドカードまたはNSEC RRSを使用して、問題のレコードのTTLまたは署名が期限切れになるまで（それぞれ）肯定的および負の応答を生成することができます。ただし、リゾルバが新しい権威あるデータをブロックしたり、自分で新しいデータを合成したりしないようにすることは賢明なようです。この推奨事項に従うリゾルバーは、名前空間のより一貫したビューを持っています。
         </p>
       </div>
     </div>
@@ -2397,7 +2397,7 @@ In theory, a resolver could use wildcards or NSEC RRs to generate positive and n
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.6. CDおよび広告ビットの処理
+4.6. CDおよびADビットの処理
         </h5>
       </div>
     </div>
@@ -2421,7 +2421,7 @@ A security-aware resolver MUST clear the AD bit when composing query messages to
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ対応のリゾルバーは、クエリ名のサーバーから保護するクエリメッセージを構成するときに広告ビットをクリアする必要があります。これは、クエリメッセージから応答メッセージまで理解できないヘッダービットを盲目的にコピーする必要があります。
+セキュリティ対応のリゾルバーは、クエリメッセージから応答メッセージまで理解できないヘッダービットを盲目的にコピーするバグのあるネームサーバーから保護するために、クエリメッセージを構成するときにADビットをクリアする必要があります。
         </p>
       </div>
     </div>
@@ -2481,7 +2481,7 @@ Conceptually, caching such data is similar to negative caching ([RFC2308]), exce
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-概念的には、そのようなデータのキャッシュは、負のキャッシュ（[RFC2308]）に似ていますが、有効な否定的な応答をキャッシュする代わりに、リゾルバーは特定の答えが検証できなかったという事実をキャッシュしています。このドキュメントは、「悪いキャッシュ」として無効な署名を持つデータのキャッシュを指します。
+概念的には、そのようなデータのキャッシュは、負のキャッシュ（[RFC2308]）に似ていますが、有効な否定的な応答をキャッシュする代わりに、リゾルバーは特定の答えが検証できなかったという事実をキャッシュしています。このドキュメントは、「BADキャッシュ」として無効な署名を持つデータのキャッシュを指します。
         </p>
       </div>
     </div>
@@ -2493,7 +2493,7 @@ Resolvers that implement a BAD cache MUST take steps to prevent the cache from b
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-悪いキャッシュを実装するリゾルバーは、サービス拒否攻撃アンプとしてキャッシュが役立つのを防ぐための手順を講じる必要があります。
+BADキャッシュを実装するリゾルバーは、サービス拒否攻撃の増幅器としてキャッシュが役立つのを防ぐための手順を講じる必要があります。
         </p>
       </div>
     </div>
@@ -2517,7 +2517,7 @@ o In order to prevent caching of a transient validation failure (which might be 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 一時的な検証障害のキャッシュを防ぐため（攻撃の結果である可能性があります）、リゾルバーは検証障害をもたらすクエリを追跡し、その特定のクエリに対する応答の回数後にのみ悪いキャッシュから答える必要があります&lt;QName、QType、QClass&gt;は、検証に失敗し、しきい値を超えています。
+o 一時的な検証の失敗 (攻撃の結果である可能性があります) のキャッシュを防ぐために、リゾルバは検証の失敗につながるクエリを追跡し、特定の &lt;QNAME, QTYPE, QCLASS&gt; に対するクエリへの応答が検証に失敗した回数がしきい値を超えた後にのみ、BAD キャッシュから応答する必要があります。
         </p>
       </div>
     </div>
@@ -2529,7 +2529,7 @@ Resolvers MUST NOT return RRsets from the BAD cache unless the resolver is not r
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リゾルバーは、このドキュメントのセクション4.2に記載されているルールに基づいて、問題のRRSetsの署名を検証する必要がない場合を除き、不良キャッシュからrrsetを返してはなりません。セキュリティ認識の再帰名サーバーによって返された応答が悪いキャッシュとどのように相互作用するかについての議論については、セクション3.2.2を参照してください。
+リゾルバーは、このドキュメントのセクション4.2に記載されているルールに基づいて、問題のRRSetsの署名を検証する必要がない場合を除き、BADキャッシュからrrsetを返してはなりません。セキュリティ認識の再帰名サーバーによって返された応答がBADキャッシュとどのように相互作用するかについての議論については、セクション3.2.2を参照してください。
         </p>
       </div>
     </div>
@@ -2589,7 +2589,7 @@ A security-aware stub resolver MUST support the DNSSEC RR types, at least to the
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.9.1. ビットの処理
+4.9.1. DOビットの処理
         </h5>
       </div>
     </div>
@@ -2601,7 +2601,7 @@ A non-validating security-aware stub resolver MAY include the DNSSEC RRs returne
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-検証されていないセキュリティ対応のスタブリゾルバーには、セキュリティ認識の再帰名サーバーによって返されるDNSSEC RRSが含まれる場合があります。これを行おうとする非検証スタブリゾルバーは、再帰名サーバーからDNSSEC RRを受信するためにDOビットを設定する必要があります。
+非検証のセキュリティ対応スタブリゾルバは、セキュリティ対応再帰ネームサーバーによって返されるDNSSEC RRを、スタブリゾルバがそれを呼び出したアプリケーションに返すデータの一部として含めてもよい（MAY）が、そうする必要はない。これを行おうとする非検証スタブリゾルバは、再帰ネームサーバーからDNSSEC RRを受信するためにDOビットをセットする必要があります。
         </p>
       </div>
     </div>
@@ -2637,7 +2637,7 @@ A non-validating security-aware stub resolver SHOULD NOT set the CD bit when sen
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-非検証のセキュリティ対応スタブリゾルバーは、アプリケーションレイヤーによって要求されない限り、クエリを送信するときにCDビットを設定しないでください。定義上、非検証型スタブリゾルバーは、セキュリティ認識の再帰名サーバーに依存して検証を実行しますその代わりに。
+非検証のセキュリティ対応スタブリゾルバは、アプリケーション層によって要求されない限り、クエリを送信するときにCDビットをセットすべきではない（SHOULD NOT）。定義上、非検証スタブリゾルバは、自身の代わりに検証を実行するためにセキュリティ対応再帰ネームサーバーに依存しているからである。
         </p>
       </div>
     </div>
@@ -2661,7 +2661,7 @@ A validating security-aware stub resolver SHOULD set the CD bit, because otherwi
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.9.3. 広告ビットの処理
+4.9.3. ADビットの処理
         </h5>
       </div>
     </div>
@@ -2673,7 +2673,7 @@ A non-validating security-aware stub resolver MAY chose to examine the setting o
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-非検証型セキュリティ対応のスタブリゾルバーは、応答を送信したセキュリティ対応の再帰名サーバーが、応答を送信したセキュリティ認識の再帰名サーバーが暗号化されたと主張していると主張していると判断するために、受信する応答メッセージのADビットの設定を調べることを選択することができます。応答メッセージの回答と権限セクション。ただし、セキュリティ認識のスタブリゾルバーによって受け取った応答は、セキュリティ対応の再帰名サーバーのローカルポリシーに大きく依存していることに注意してください。したがって、おそらくデバッグ援助として除き、広告ビットのステータスをチェックする際にはほとんど実用的な価値がないかもしれません。いずれにせよ、セキュリティ対応のスタブリゾルバーが安全なチャネルを介して信頼できるセキュリティ対応の再帰名サーバーから問題のデータを取得した場合を除き、セキュリティ認識スタブリゾルバーは、そのために実行された署名検証に依存してはなりません。。
+非検証型セキュリティ対応のスタブリゾルバーは、応答を送信したセキュリティ対応の再帰名サーバーが、応答メッセージの回答および権限セクション内のデータを暗号的に検証したと主張しているかどうかを判断するために、受信する応答メッセージのADビットの設定を調べることを選択することができます。ただし、セキュリティ認識のスタブリゾルバーによって受け取った応答は、セキュリティ対応の再帰名サーバーのローカルポリシーに大きく依存していることに注意してください。したがって、おそらくデバッグ支援として除き、ADビットの状態をチェックすることにはほとんど実用的な価値がないかもしれません。いずれにせよ、セキュリティ対応スタブリゾルバは、安全なチャネルを介して信頼できるセキュリティ対応再帰ネームサーバーから問題のデータを取得した場合を除き、自身の代わりに実行されたとされる署名検証に依存してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -2817,7 +2817,7 @@ Islands of security (see [RFC4033]) are signed zones for which it is not possibl
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティ島（[RFC4033]を参照）は、親からゾーンに認証チェーンを構築することができない署名ゾーンです。セキュリティ島内の署名を検証するには、バリッターが島の初期認証ゾーンキーを取得する他の手段を持っていることが必要です。バリーターがそのようなキーを取得できない場合、セキュリティ島のゾーンが署名されていないかのように動作に切り替える必要があります。
+セキュリティの島（[RFC4033]を参照）は、親からゾーンに認証チェーンを構築することができない署名ゾーンです。セキュリティの島内の署名を検証するには、バリッターが島の初期認証ゾーンキーを取得する他の手段を持っていることが必要です。バリーターがそのようなキーを取得できない場合、セキュリティの島のゾーンが署名されていないかのように動作に切り替える必要があります。
         </p>
       </div>
     </div>
@@ -2829,7 +2829,7 @@ All the normal processes for validating responses apply to islands of security. 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-応答を検証するためのすべての通常のプロセスは、安全保障島に適用されます。セキュリティ島内の通常の検証と検証の唯一の違いは、検証装置が認証チェーンの信頼アンカーを取得する方法です。
+応答を検証するためのすべての通常のプロセスは、セキュリティの島に適用されます。セキュリティの島内の通常の検証と検証の唯一の違いは、検証装置が認証チェーンの信頼アンカーを取得する方法です。
         </p>
       </div>
     </div>
@@ -3045,7 +3045,7 @@ o The RRSIG RR&#39;s Type Covered field MUST equal the RRset&#39;s type.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o RRSIG RRのタイプカバーフィールドは、RRSetのタイプに等しくなければなりません。
+o RRSIG RRのType Coveredフィールドは、RRSetのタイプに等しくなければなりません。
         </p>
       </div>
     </div>
@@ -3208,20 +3208,15 @@ RRSIG_RDATA is the wire format of the RRSIG RDATA fields with the Signature fiel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-rrsig_rdataは、signatureフィールドが除外され、署名者の名前が正規の形式であるrrsig rdataフィールドのワイヤー形式です。
+RRSIG_RDATAは、Signatureフィールドが除外され、署名者の名前が正規の形式であるRRSIG RDATAフィールドのワイヤー形式です。
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-12">
-RR(i) = name | type | class | OrigTTL | RDATA length | RDATA
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-12">
-rr（i）= name |タイプ|クラス|Origttl |rdata長|rdata
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+            RR(i) = name | type | class | OrigTTL | RDATA length | RDATA
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -3316,7 +3311,7 @@ let fqdn_labels = Label count of the fqdn above.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-fqdn_labels =上記のfqdnのラベルカウントとします。
+fqdn_labels = 上記のfqdnのラベルカウントとします。
         </p>
       </div>
     </div>
@@ -3328,7 +3323,7 @@ if rrsig_labels = fqdn_labels, name = fqdn
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-rrsig_labels = fqdn_labelsの場合、name = fqdn
+rrsig_labels = fqdn_labels の場合、name = fqdn
         </p>
       </div>
     </div>
@@ -3340,7 +3335,7 @@ if rrsig_labels &lt; fqdn_labels, name = &#34;*.&#34; | the rightmost rrsig_labe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-rrsig_labels &lt;fqdn_labels、name = &#34;*。&#34;|FQDNの右端のRRSIG_LABELラベル
+rrsig_labels &lt; fqdn_labels の場合、name = &#34;*.&#34; | FQDNの右端のRRSIG_LABELラベル
         </p>
       </div>
     </div>
@@ -3352,7 +3347,7 @@ if rrsig_labels &gt; fqdn_labels the RRSIG RR did not pass the necessary validat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-rrsig_labels&gt; fqdn_labelsの場合、rrsig rrは必要な検証チェックに合格せず、このrrsetを認証するために使用してはなりません。
+rrsig_labels &gt; fqdn_labels の場合、RRSIG RRは必要な検証チェックに合格せず、このrrsetを認証するために使用してはなりません。
         </p>
       </div>
     </div>
@@ -3364,7 +3359,7 @@ The canonical forms for names and RRsets are defined in [RFC4034].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-名前とrrsetの標準形式は[RFC4034]で定義されています。
+名前とRRsetの標準形式は[RFC4034]で定義されています。
         </p>
       </div>
     </div>
@@ -3448,7 +3443,7 @@ If the Labels field of the RRSIG RR is not equal to the number of labels in the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RRSIG RRのラベルフィールドが、RRSetの完全資格のある所有者名のラベルの数に等しくない場合、RRSetは無効またはワイルドカード拡張の結果です。リゾルバーは、RRSetが本物であると考える前に、ワイルドカードの拡張が適切に適用されたことを確認する必要があります。セクション5.3.4では、ワイルドカードが適切に適用されたかどうかを判断する方法について説明します。
+RRSIG RRのラベルフィールドが、RRSetの完全修飾所有者名のラベルの数に等しくない場合、RRSetは無効またはワイルドカード拡張の結果です。リゾルバーは、RRSetが本物であると考える前に、ワイルドカードの拡張が適切に適用されたことを確認する必要があります。セクション5.3.4では、ワイルドカードが適切に適用されたかどうかを判断する方法について説明します。
         </p>
       </div>
     </div>
@@ -3604,7 +3599,7 @@ o If the requested RR name matches the owner name of an authenticated NSEC RR, t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 要求されたRR名が認証されたNSEC RRの所有者名と一致する場合、NSEC RRのタイプビットマップフィールドには、その所有者名に存在するすべてのRRタイプがリストされ、リゾルバーは要求されたRRタイプが存在しないことを証明できます。RRビットマップのタイプ。認証されたNSEC RRの所有者名のラベルの数がカバーRRSIG RRのラベルフィールドに等しい場合、NSEC RRの存在は、ワイルドカードの拡張がリクエストと一致するために使用できなかったことを証明します。
+o 要求されたRR名が認証されたNSEC RRの所有者名と一致する場合、NSEC RRのタイプビットマップフィールドには、その所有者名に存在するすべてのRRタイプがリストされ、リゾルバーはビットマップ内のRRタイプを確認することによって、要求されたRRタイプが存在しないことを証明できます。認証されたNSEC RRの所有者名のラベルの数がカバーRRSIG RRのラベルフィールドに等しい場合、NSEC RRの存在は、ワイルドカードの拡張がリクエストと一致するために使用できなかったことを証明します。
         </p>
       </div>
     </div>
@@ -3676,7 +3671,7 @@ If for whatever reason none of the RRSIGs can be validated, the response SHOULD 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-何らかの理由でRRSIGを検証できない場合、応答は悪いと見なされるべきです。再帰クエリを使用するために検証が行われている場合、名前サーバーはRcode 2を元のクライアントに返す必要があります。ただし、元のクエリにCDビットが設定されている場合にのみ、完全な応答を返す必要があります。また、検証されていないキャッシュ応答のセクション4.7を参照してください。
+何らかの理由でRRSIGのいずれも検証できない場合、応答はBADと見なされるべきです（SHOULD）。再帰クエリを処理するために検証が行われていた場合、ネームサーバーはRCODE 2を元のクライアントに返さなければなりません（MUST）。ただし、元のクエリにCDビットがセットされていた場合に限り、完全な応答を返さなければなりません（MUST）。検証されない応答のキャッシュについては、セクション4.7も参照してください。
         </p>
       </div>
     </div>
@@ -3736,7 +3731,7 @@ Appendix C shows an example of the authentication process.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2535]は、メッセージヘッダーにCDおよびADビットを予約しました。ADビットの意味は[RFC3655]で再定義され、CDとADビットの両方の意味がこのドキュメントで修正されています。このドキュメントでは、DNSメッセージヘッダーの新しいビットは定義されていません。
+[RFC2535]は、メッセージヘッダーにCDおよびADビットを予約しました。ADビットの意味は[RFC3655]で再定義され、CDとADビットの両方の意味がこのドキュメントで改めて述べられています。このドキュメントでは、DNSメッセージヘッダーの新しいビットは定義されていません。
         </p>
       </div>
     </div>
@@ -3784,7 +3779,7 @@ An active attacker who can set the CD bit in a DNS query message or the AD bit i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DNSクエリメッセージまたはDNS応答メッセージのADビットでCDビットを設定できるアクティブな攻撃者は、これらのビットを使用して、DNSSECがセキュリティ称賛の再帰モードリゾルバーに提供しようとする保護を打ち負かすことができます。このため、セキュリティ対応の再帰モードリゾルバーによるこれらの制御ビットを使用するには、安全なチャネルが必要です。詳細については、セクション3.2.2および4.9を参照してください。
+DNSクエリメッセージでCDビットを、またはDNS応答メッセージでADビットをセットできるアクティブな攻撃者は、これらのビットを使用して、DNSSECがセキュリティを認識しない再帰モードリゾルバに提供しようとする保護を無効にすることができます。このため、セキュリティ対応の再帰モードリゾルバーによるこれらの制御ビットを使用するには、安全なチャネルが必要です。詳細については、セクション3.2.2および4.9を参照してください。
         </p>
       </div>
     </div>
@@ -3796,7 +3791,7 @@ The protocol described in this document attempts to extend the benefits of DNSSE
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントで説明されているプロトコルは、DNSSECの利点をセキュリティにかかるスタブリゾルバーに拡張しようとします。ただし、検証障害からの回復が特定のアプリケーションに固有の可能性が高いため、DNSSECがスタブリゾルバーに提供する施設は不十分であることが判明する可能性があります。セキュリティ認識の再帰名サーバーのオペレーターは、ローカル検証ポリシーを選択する際にサービスを使用するアプリケーションの動作に細心の注意を払う必要があります。そうしないと、再帰的な名前サーバーが誤ってサポートする予定のクライアントへのサービスを誤って拒否する可能性があります。
+このドキュメントで説明されているプロトコルは、DNSSECの利点をセキュリティを認識しないスタブリゾルバに拡張しようとします。ただし、検証失敗からの回復は特定のアプリケーションに固有である可能性が高いため、DNSSECがスタブリゾルバに提供する機能は不十分であることが判明する可能性があります。セキュリティ認識の再帰名サーバーのオペレーターは、ローカル検証ポリシーを選択する際にサービスを使用するアプリケーションの動作に細心の注意を払う必要があります。そうしないと、再帰的な名前サーバーが誤ってサポートする予定のクライアントへのサービスを誤って拒否する可能性があります。
         </p>
       </div>
     </div>
@@ -4077,27 +4072,254 @@ The following example shows a (small) complete signed zone.
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) 3600 NS ns1.example. 3600 NS ns2.example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= ) 3600 MX 1 xx.example. 3600 RRSIG MX 5 1 3600 20040509183619 ( 20040409183619 38519 example. HyDHYVT5KHSZ7HtO/vypumPmSZQrcOP3tzWB 2qaKkHVPfau/DgLgS/IKENkYOGL95G4N+NzE VyNU8dcTOckT+ChPcGeVjguQ7a3Ao9Z/ZkUO 6gmmUW4b89rz1PUxW4jzUxj66PTwoVtUU/iM W6OISukd1EQt7a0kygkg+PEDxdI= ) 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= ) 3600 DNSKEY 256 3 5 ( AQOy1bZVvpPqhg4j7EJoM9rI3ZmyEx2OzDBV rZy/lvI5CQePxXHZS4i8dANH4DX3tbHol61e k8EFMcsGXxKciJFHyhl94C+NwILQdzsUlSFo vBZsyl/NX6yEbtw/xN9ZNcrbYvgjjZ/UVPZI ySFNsgEYvh0z2542lzMKR4Dh8uZffQ== ) 3600 DNSKEY 257 3 5 ( AQOeX7+baTmvpVHb2CcLnL1dMRWbuscRvHXl LnXwDzvqp4tZVKp1sZMepFb8MvxhhW3y/0QZ syCjczGJ1qk8vJe52iOhInKROVLRwxGpMfzP RLMlGybr51bOV/1se0ODacj3DomyB4QB5gKT Yot/K9alk5/j8vfd4jWCWD+E1Sze0Q== ) 3600 RRSIG DNSKEY 5 1 3600 20040509183619 ( 20040409183619 9465 example. ZxgauAuIj+k1YoVEOSlZfx41fcmKzTFHoweZ xYnz99JVQZJ33wFS0Q0jcP7VXKkaElXk9nYJ XevO/7nAbo88iWsMkSpSR6jWzYYKwfrBI/L9 hjYmyVO9m6FjQ7uwM4dCP/bIuV/DKqOAK9NY NC3AHfvCV1Tp4VKDqxqG7R5tTVM= ) 3600 RRSIG DNSKEY 5 1 3600 20040509183619 ( 20040409183619 38519 example. eGL0s90glUqcOmloo/2y+bSzyEfKVOQViD9Z DNhLz/Yn9CQZlDVRJffACQDAUhXpU/oP34ri bKBpysRXosczFrKqS5Oa0bzMOfXCXup9qHAp eFIku28Vqfr8Nt7cigZLxjK+u0Ws/4lIRjKk 7z5OXogYVaFzHKillDt3HRxHIZM= ) a.example. 3600 IN NS ns1.a.example. 3600 IN NS ns2.a.example. 3600 DS 57855 5 1 ( B6DCD485719ADCA18E5F3D48A2331627FDD3 636B ) 3600 RRSIG DS 5 2 3600 20040509183619 ( 20040409183619 38519 example. oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/ Fm+v6ccF2EGNLRiY08kdkz+XHHo= ) 3600 NSEC ai.example. NS DS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. cOlYgqJLqlRqmBQ3iap2SyIsK4O5aqpKSoba U9fQ5SMApZmHfq3AgLflkrkXRXvgxTQSKkG2 039/cRUs6Jk/25+fi7Xr5nOVJsb0lq4zsB3I BBdjyGDAHE0F5ROJj87996vJupdm1fbH481g sdkOW6Zyqtz3Zos8N0BBkEx+2G4= ) ns1.a.example. 3600 IN A 192.0.2.5 ns2.a.example. 3600 IN A 192.0.2.6 ai.example. 3600 IN A 192.0.2.9 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example.
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。Anx0K36Rcjaxytcngq6iqnpnv5drqyasc9h 7tsjahcqbhedugdhgdhgqdhidhgqdhidgqme ZRF VKGO9EBARZ0GWDKCUWLM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）3600 NS NS1.3600 NS NS2.example。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NISPPPITMISFMFMISPMISPMISPMISPMISFMFISPMISFMFISPMISFMF QF4NF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）3600 MX 1 XX.EXAMPLE。3600 RRSIG MX 5 1 3600 20040509183619（20040409183619 38519の例。HydHyvt5KHSZ7HTO/VYPUMPMSZZQRCOP3TZWB 2QAKKHVPFAU/DGLGS/IKENKYOGL95G4N NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE /ZKUO 6GMMUW4B89RZ1PUXW4JZUXJ66PTWOVTUU/IM W6OISUKD1EQT7A0KYGKG PEDXDI =）3600 NSEC A.Example。dkqoak9ny nc3ahfvcv1tp4vkdqxqg7r5ttvm =）3600 rrsig dnskey 5 1 3600 20040509183619（20040409183619 38519例。NS1.A.Exampleの3600。NS2.A.Exampleの3600。NS DS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 2004050509183619（20040409183619 38519例K/25 FI7XR5NOVJSB0LQ4ZSB3I BBDJYGDAHE0F5ROJJ87996VJUPDM1FBH481G SDKOW6ZYQTZ3ZOS8N0BBKEX 2G4 =）NS1.A.EXAMPLE。192.0.2.5 ns2.a.exampleで3600。192.0.2.6 ai.exampleで3600。3600 in 192.0.2.9 3600 rrsig a 5 2 3600 20040509183619（20040409183619 38519例。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
- pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy 6zrTpg9FkS0XGVmYRvOTNYx2HvQ= ) 3600 HINFO &#34;KLH-10&#34; &#34;ITS&#34; 3600 RRSIG HINFO 5 2 3600 20040509183619 ( 20040409183619 38519 example. Iq/RGCbBdKzcYzlGE4ovbr5YcB+ezxbZ9W0l e/7WqyvhOO9J16HxhhL7VY/IKmTUY0GGdcfh ZEOCkf4lEykZF9NPok1/R/fWrtzNp8jobuY7 AZEcZadp1WdDF3jc2/ndCa5XZhLKD3JzOsBw FvL8sqlS5QS6FY/ijFEDnI4RkZA= ) 3600 AAAA 2001:db8::f00:baa9 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh 1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2 sZM6QjBBLmukH30+w1z3h8PUP2o= ) 3600 NSEC b.example. A HINFO AAAA RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. QoshyPevLcJ/xcRpEtMft1uoIrcrieVcc9pG CScIn5Glnib40T6ayVOimXwdSTZ/8ISXGj4p P8Sh0PlA6olZQ84L453/BUqB8BpdOGky4hsN 3AGcLEv1Gr0QMvirQaFcjzOECfnGyBm+wpFL AhS+JOVfDI/79QtyTI0SaDWcg8U= ) b.example. 3600 IN NS ns1.b.example. 3600 IN NS ns2.b.example. 3600 NSEC ns1.example. NS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= ) ns1.b.example. 3600 IN A 192.0.2.7 ns2.b.example. 3600 IN A 192.0.2.8 ns1.example. 3600 IN A 192.0.2.1 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet 5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06 im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+ +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK v/iVXSYC0b7mPSU+EOlknFpVECs= ) 3600 NSEC ns2.example. A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8 1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8 IZaIGBLryQWGLw6Y6X8dqhlnxJM= ) ns2.example. 3600 IN A 192.0.2.2 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO 6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq rdhx8SZ0yy4ObIRzIzvBFLiSS8o= ) 3600 NSEC *.w.example. A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. N0QzHvaJf5NRw1rE9uxS1Ltb2LZ73Qb9bKGE VyaISkqzGpP3jYJXZJPVTq4UVEsgT3CgeHvb 3QbeJ5Dfb2V9NGCHj/OvF/LBxFFWwhLwzngH l+bQAgAcMsLu/nL3nDi1y/JSQjAcdZNDl4bw Ymx28EtgIpo9A0qmP08rMBqs1Jw= ) *.w.example. 3600 IN MX 1 ai.example. 3600 RRSIG MX 5 2 3600 20040509183619 ( 20040409183619 38519 example. OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2 f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw 4kX18MMR34i8lC36SR5xBni8vHI= ) 3600 NSEC x.w.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9 HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU 5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx 91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8 s1InQ2UoIv6tJEaaKkP701j8OLA= ) x.w.example. 3600 IN MX 1 xx.example. 3600 RRSIG MX 5 3 3600 20040509183619 ( 20040409183619 38519 example. Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1 XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1 jNSlwZ2mSWKHfxFQxPtLj8s32+k= ) 3600 NSEC x.y.w.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 3 3600 20040509183619 ( 20040409183619 38519 example. aRbpHftxggzgMXdDlym9SsADqMZovZZl2QWK vw8J0tZEUNQByH5Qfnf5N1FqH/pS46UA7A4E mcWBN9PUA1pdPY6RVeaRlZlCr1IkVctvbtaI NJuBba/VHm+pebTbKcAPIvL9tBOoh+to1h6e IjgiM8PXkBQtxPq37wDKALkyn7Q= ) x.y.w.example. 3600 IN MX 1 xx.example. 3600 RRSIG MX 5 4 3600 20040509183619 ( 20040409183619 38519 example. k2bJHbwP5LH5qN4is39UiPzjAWYmJA38Hhia t7i9t7nbX/e0FPnvDSQXzcK7UL+zrVA+3MDj q1ub4q3SZgcbLMgexxIW3Va//LVrxkP6Xupq GtOB9prkK54QTl/qZTXfMQpW480YOvVknhvb +gLcMZBnHJ326nb/TOOmrqNmQQE= ) 3600 NSEC xx.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= ) xx.example. 3600 IN A 192.0.2.10 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP 7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa 0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx kbIDV6GPPSZVusnZU6OMgdgzHV4= ) 3600 HINFO &#34;KLH-10&#34; &#34;TOPS-20&#34; 3600 RRSIG HINFO 5 2 3600 20040509183619 ( 20040409183619 38519 example. GY2PLSXmMHkWHfLdggiox8+chWpeMNJLkML0 t+U/SXSUsoUdR91KNdNUkTDWamwcF8oFRjhq BcPZ6EqrF+vl5v5oGuvSF7U52epfVTC+wWF8 3yCUeUw8YklhLWlvk8gQ15YKth0ITQy8/wI+ RgNvuwbioFSEuv2pNlkq0goYxNY= ) 3600 AAAA 2001:db8::f00:baaa 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/ xS9cL2QgW7FChw16mzlkH6/vsfs= ) 3600 NSEC example. A HINFO AAAA RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. ZFWUln6Avc8bmGl5GFjD3BwT530DUZKHNuoY 9A8lgXYyrxu+pqgFiRVbyZRQvVB5pccEOT3k mvHgEa/HzbDB4PIYY79W+VHrgOxzdQGGCZzi asXrpSGOWwSOElghPnMIi8xdF7qtCntr382W GghLahumFIpg4MO3LS/prgzVVWo= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-paotzlp2mu0tdjuhoke5fpiihmdyscgtb5b erggpnjlua9ixoyf6xxvcgrejw0wnzssjicd hbhxfdmagkuajuulysah8ts4znrhymivk3u ardu2wft130e9uhnuumhmimyumimyumimimimimivk3u XGVMYRVOTNYX2HVQ =）3600 HINFO &#34;KLH-10&#34; &#34;ITS&#34; 3600 RRSIG HINFO 5 2 3600 20040509183619（20040409183619 38519例l7vy/ikmtuy0ggdcfh zeockf4leykzf9npok1/r/fwrtznp8jobuy7 azeczadp1wddf3jc2/ndca5xzhlkd3jzosbw fvl8sqls5qs6fy/ijfedni4rkza =Hinfo aaaa rrsig nsec 3600 rrsig nsec 5 2 3600 20040509183619（20040409183619 38519の例。 84l453/buqb8bpdogky4hsn 3agclev1gr0qmvirqafcjzoecfngybm wpfl ahs jovfdi/79qtyti0sadwcg8u =）b.example。NS1.B.Exampleの3600。NS2.B.Exampleの3600。3600 NSEC NS1.example。NS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例。GNUXHN844WFMUPZGWKJCPY5TEX/RFJDOOOX 9UEK1PTYKOWNIJ/PJKCYBCCYBCCYBCCYBCCYBCCYBCCYBCCYJ/PJKODIJ * nvbnkm6owopysy97mvj5vqews 0lm9tfoqjcptqkmqkyprwuncsnwvvclsf1xz vhrxgwt7oufxldocg6tfvfms9xe =）ns1.b.example。192.0.2.7 ns2.b.exampleで3600。192.0.2.8 ns1.exampleで3600。192.0.2.1 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519の例djypq84bhtv8vrxt5ab1wnb iaqvifdgw4sfnc6oadb1hk8qnauw9vepjhk v/ivxsyc0b7mpsu eolknfpvecs =）3600 nsec ns2.example。A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例。 vbnwqaaepjk3ukddbq ziali8qr2xhkjq38beqsbp8x0 6h4etwsgt8 izaigblryqwglw6y6x8dqhlnxjm =）ns2.example。3600 IN 192.0.2.2 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519例zgde3vt5snfeaoe1vn3mqqtu7so 6 amijk13kj/jyj4ngmdric/3cm3ipxfhntkq rdhx8szz0yy4obirzizvbfliss8o =）3600 nsec *.w.w.emample。RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例2v9ngchj/ovf/lbxffwwhlwzngh l bqagacmslu/nl3ndi1y/jsqjacdzndl4bw ymx28etgipo9a0qmp08rmbqs1jw =） *.w.example。MX 1 AI.exampleの3600。MX RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例mjhfyps8tvvfxsaxfahpyqtx 91gsmcv/1v9/bzag55cefp9cm4z9y9nt9xq8 s1inq2uoiv6tjeaakkp701j8ola =）x.w.example。MX 1 xx.exampleの3600。3600 RRSIG MX 5 3 3600 20040509183619（20040409183619 38519の例。IL2WTZBKVOYTBX4LITNW5MJB4RCWHOO8Y1 XZPHZMZUTVYL7LAA63F6T9YSVZJRI3KIN1FDDDDDDDDDDDDDDDDDRCHINCHUN1FKVO8Y1 XZPHZMZUTVYL7LAA 4FOOBKBCDM7P3I KX70EPCOFGRZ1YQ BVVXCVGUAU4XALV3W/Y1 JNSLWZ2MSWKHFXFQXPTLJ8S32 K =）3600 NSEC X.Y.W.EXAMPLE。MX RRSIG NSEC 3600 RRSIG NSEC 5 3 3600 20040509183619（20040409183619 38519例。 dpy6rvearlzlcr1ikvctvbtai njubba/vhm pebtbkcapivl9tbooh to1h6e ijgim8pxkbqtxpq37wdkalkyn7q =）x.y.w.example。MX 1 xx.exampleの3600。3600 RRSIG MX 5 4 3600 20040509183619（20040409183619 38519の例。K2BJHBWP5LH5QN4IS39UIPZJAWYMJA38HHHIAT7I9T7NBX/E0PNVDJCC7UL ZRJCXXCC7UL ZRMIN w3va // lvrxkkp6xupq gtob9prkkk54qtl/qztxfmqpw480yovvknhvb glcmzbnhj326nb/toomrqnmqqe =）3600 nsec xx.example。MX RRSIG NSEC 3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519例f/lzy2zqromubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =）xx.example。192.0.2.10の3600 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519例RKL1EZMCDMGOAEUUZZAJ2BMQ Y VDXG9IK1YZKYGY9AGBTOGPOAGBJYO9EPULSX KBIDV6GPPSZVUSNZU6OMGZGZHV4 =
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   example.       3600 IN SOA ns1.example. bugs.x.w.example. (
+                              1081539377
+                              3600
+                              300
+                              3600000
+                              3600
+                              )
+                  3600 RRSIG  SOA 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h
+                              7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF
+                              vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW
+                              DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB
+                              jV7j86HyQgM5e7+miRAz8V01b0I= )
+                  3600 NS     ns1.example.
+                  3600 NS     ns2.example.
+                  3600 RRSIG  NS 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd
+                              EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf
+                              4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8
+                              RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48
+                              0HjMeRaZB/FRPGfJPajngcq6Kwg= )
+                  3600 MX     1 xx.example.
+                  3600 RRSIG  MX 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              HyDHYVT5KHSZ7HtO/vypumPmSZQrcOP3tzWB
+                              2qaKkHVPfau/DgLgS/IKENkYOGL95G4N+NzE
+                              VyNU8dcTOckT+ChPcGeVjguQ7a3Ao9Z/ZkUO
+                              6gmmUW4b89rz1PUxW4jzUxj66PTwoVtUU/iM
+                              W6OISukd1EQt7a0kygkg+PEDxdI= )
+                  3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY
+                  3600 RRSIG  NSEC 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm
+                              FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V
+                              Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW
+                              SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm
+                              jfFJ5arXf4nPxp/kEowGgBRzY/U= )
+                  3600 DNSKEY 256 3 5 (
+                              AQOy1bZVvpPqhg4j7EJoM9rI3ZmyEx2OzDBV
+                              rZy/lvI5CQePxXHZS4i8dANH4DX3tbHol61e
+                              k8EFMcsGXxKciJFHyhl94C+NwILQdzsUlSFo
+                              vBZsyl/NX6yEbtw/xN9ZNcrbYvgjjZ/UVPZI
+                              ySFNsgEYvh0z2542lzMKR4Dh8uZffQ==
+                              )
+                  3600 DNSKEY 257 3 5 (
+                              AQOeX7+baTmvpVHb2CcLnL1dMRWbuscRvHXl
+                              LnXwDzvqp4tZVKp1sZMepFb8MvxhhW3y/0QZ
+                              syCjczGJ1qk8vJe52iOhInKROVLRwxGpMfzP
+                              RLMlGybr51bOV/1se0ODacj3DomyB4QB5gKT
+                              Yot/K9alk5/j8vfd4jWCWD+E1Sze0Q==
+                              )
+                  3600 RRSIG  DNSKEY 5 1 3600 20040509183619 (
+                              20040409183619 9465 example.
+                              ZxgauAuIj+k1YoVEOSlZfx41fcmKzTFHoweZ
+                              xYnz99JVQZJ33wFS0Q0jcP7VXKkaElXk9nYJ
+                              XevO/7nAbo88iWsMkSpSR6jWzYYKwfrBI/L9
+                              hjYmyVO9m6FjQ7uwM4dCP/bIuV/DKqOAK9NY
+                              NC3AHfvCV1Tp4VKDqxqG7R5tTVM= )
+                  3600 RRSIG  DNSKEY 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              eGL0s90glUqcOmloo/2y+bSzyEfKVOQViD9Z
+                              DNhLz/Yn9CQZlDVRJffACQDAUhXpU/oP34ri
+                              bKBpysRXosczFrKqS5Oa0bzMOfXCXup9qHAp
+                              eFIku28Vqfr8Nt7cigZLxjK+u0Ws/4lIRjKk
+                              7z5OXogYVaFzHKillDt3HRxHIZM= )
+   a.example.     3600 IN NS  ns1.a.example.
+                  3600 IN NS  ns2.a.example.
+                  3600 DS     57855 5 1 (
+                              B6DCD485719ADCA18E5F3D48A2331627FDD3
+                              636B )
+                  3600 RRSIG  DS 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ
+                              oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH
+                              kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD
+                              EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/
+                              Fm+v6ccF2EGNLRiY08kdkz+XHHo= )
+                  3600 NSEC   ai.example. NS DS RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              cOlYgqJLqlRqmBQ3iap2SyIsK4O5aqpKSoba
+                              U9fQ5SMApZmHfq3AgLflkrkXRXvgxTQSKkG2
+                              039/cRUs6Jk/25+fi7Xr5nOVJsb0lq4zsB3I
+                              BBdjyGDAHE0F5ROJj87996vJupdm1fbH481g
+                              sdkOW6Zyqtz3Zos8N0BBkEx+2G4= )
+   ns1.a.example. 3600 IN A   192.0.2.5
+   ns2.a.example. 3600 IN A   192.0.2.6
+   ai.example.    3600 IN A   192.0.2.9
+                  3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B
+                              ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd
+                              hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u
+                              ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy
+                              6zrTpg9FkS0XGVmYRvOTNYx2HvQ= )
+                  3600 HINFO  &#34;KLH-10&#34; &#34;ITS&#34;
+                  3600 RRSIG  HINFO 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              Iq/RGCbBdKzcYzlGE4ovbr5YcB+ezxbZ9W0l
+                              e/7WqyvhOO9J16HxhhL7VY/IKmTUY0GGdcfh
+                              ZEOCkf4lEykZF9NPok1/R/fWrtzNp8jobuY7
+                              AZEcZadp1WdDF3jc2/ndCa5XZhLKD3JzOsBw
+                              FvL8sqlS5QS6FY/ijFEDnI4RkZA= )
+                  3600 AAAA   2001:db8::f00:baa9
+                  3600 RRSIG  AAAA 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK
+                              kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh
+                              1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T
+                              cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2
+                              sZM6QjBBLmukH30+w1z3h8PUP2o= )
+                  3600 NSEC   b.example. A HINFO AAAA RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              QoshyPevLcJ/xcRpEtMft1uoIrcrieVcc9pG
+                              CScIn5Glnib40T6ayVOimXwdSTZ/8ISXGj4p
+                              P8Sh0PlA6olZQ84L453/BUqB8BpdOGky4hsN
+                              3AGcLEv1Gr0QMvirQaFcjzOECfnGyBm+wpFL
+                              AhS+JOVfDI/79QtyTI0SaDWcg8U= )
+   b.example.     3600 IN NS  ns1.b.example.
+                  3600 IN NS  ns2.b.example.
+                  3600 NSEC   ns1.example. NS RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx
+                              9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS
+                              xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs
+                              0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ
+                              vhRXgWT7OuFXldoCG6TfVFMs9xE= )
+   ns1.b.example. 3600 IN A   192.0.2.7
+   ns2.b.example. 3600 IN A   192.0.2.8
+   ns1.example.   3600 IN A   192.0.2.1
+                  3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet
+                              5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06
+                              im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+
+                              +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK
+                              v/iVXSYC0b7mPSU+EOlknFpVECs= )
+                  3600 NSEC   ns2.example. A RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8
+                              1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB
+                              jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq
+                              ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8
+                              IZaIGBLryQWGLw6Y6X8dqhlnxJM= )
+   ns2.example.   3600 IN A   192.0.2.2
+                  3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq
+                              Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu
+                              yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO
+                              6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq
+                              rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )
+                  3600 NSEC   *.w.example. A RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              N0QzHvaJf5NRw1rE9uxS1Ltb2LZ73Qb9bKGE
+                              VyaISkqzGpP3jYJXZJPVTq4UVEsgT3CgeHvb
+                              3QbeJ5Dfb2V9NGCHj/OvF/LBxFFWwhLwzngH
+                              l+bQAgAcMsLu/nL3nDi1y/JSQjAcdZNDl4bw
+                              Ymx28EtgIpo9A0qmP08rMBqs1Jw= )
+   *.w.example.   3600 IN MX  1 ai.example.
+                  3600 RRSIG  MX 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2
+                              f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc
+                              tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X
+                              TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw
+                              4kX18MMR34i8lC36SR5xBni8vHI= )
+                  3600 NSEC   x.w.example. MX RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9
+                              HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU
+                              5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx
+                              91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8
+                              s1InQ2UoIv6tJEaaKkP701j8OLA= )
+   x.w.example.   3600 IN MX  1 xx.example.
+                  3600 RRSIG  MX 5 3 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1
+                              XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP
+                              H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I
+                              kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1
+                              jNSlwZ2mSWKHfxFQxPtLj8s32+k= )
+                  3600 NSEC   x.y.w.example. MX RRSIG NSEC
+                  3600 RRSIG  NSEC 5 3 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              aRbpHftxggzgMXdDlym9SsADqMZovZZl2QWK
+                              vw8J0tZEUNQByH5Qfnf5N1FqH/pS46UA7A4E
+                              mcWBN9PUA1pdPY6RVeaRlZlCr1IkVctvbtaI
+                              NJuBba/VHm+pebTbKcAPIvL9tBOoh+to1h6e
+                              IjgiM8PXkBQtxPq37wDKALkyn7Q= )
+   x.y.w.example. 3600 IN MX  1 xx.example.
+                  3600 RRSIG  MX 5 4 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              k2bJHbwP5LH5qN4is39UiPzjAWYmJA38Hhia
+                              t7i9t7nbX/e0FPnvDSQXzcK7UL+zrVA+3MDj
+                              q1ub4q3SZgcbLMgexxIW3Va//LVrxkP6Xupq
+                              GtOB9prkK54QTl/qZTXfMQpW480YOvVknhvb
+                              +gLcMZBnHJ326nb/TOOmrqNmQQE= )
+                  3600 NSEC   xx.example. MX RRSIG NSEC
+                  3600 RRSIG  NSEC 5 4 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp
+                              ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg
+                              xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX
+                              a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr
+                              QoKqJDCLnoAlcPOPKAm/jJkn3jk= )
+   xx.example.    3600 IN A   192.0.2.10
+                  3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP
+                              7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa
+                              0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y
+                              VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx
+                              kbIDV6GPPSZVusnZU6OMgdgzHV4= )
+                  3600 HINFO  &#34;KLH-10&#34; &#34;TOPS-20&#34;
+                  3600 RRSIG  HINFO 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              GY2PLSXmMHkWHfLdggiox8+chWpeMNJLkML0
+                              t+U/SXSUsoUdR91KNdNUkTDWamwcF8oFRjhq
+                              BcPZ6EqrF+vl5v5oGuvSF7U52epfVTC+wWF8
+                              3yCUeUw8YklhLWlvk8gQ15YKth0ITQy8/wI+
+                              RgNvuwbioFSEuv2pNlkq0goYxNY= )
+                  3600 AAAA   2001:db8::f00:baaa
+                  3600 RRSIG  AAAA 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C
+                              aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z
+                              ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr
+                              U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/
+                              xS9cL2QgW7FChw16mzlkH6/vsfs= )
+                  3600 NSEC   example. A HINFO AAAA RRSIG NSEC
+                  3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ZFWUln6Avc8bmGl5GFjD3BwT530DUZKHNuoY
+                              9A8lgXYyrxu+pqgFiRVbyZRQvVB5pccEOT3k
+                              mvHgEa/HzbDB4PIYY79W+VHrgOxzdQGGCZzi
+                              asXrpSGOWwSOElghPnMIi8xdF7qtCntr382W
+                              GghLahumFIpg4MO3LS/prgzVVWo= )
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -4191,43 +4413,62 @@ A successful query to an authoritative server.
    ;;
    ;; Question
    x.w.example.        IN MX
+
+   ;; Answer
+   x.w.example.   3600 IN MX  1 xx.example.
+   x.w.example.   3600 RRSIG  MX 5 3 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1
+                              XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP
+                              H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I
+                              kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1
+                              jNSlwZ2mSWKHfxFQxPtLj8s32+k= )
+
+   ;; Authority
+   example.       3600 NS     ns1.example.
+   example.       3600 NS     ns2.example.
+   example.       3600 RRSIG  NS 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd
+                              EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf
+                              4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8
+                              RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48
+                              0HjMeRaZB/FRPGfJPajngcq6Kwg= )
+
+   ;; Additional
+   xx.example.    3600 IN A   192.0.2.10
+   xx.example.    3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP
+                              7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa
+                              0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y
+                              VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx
+                              kbIDV6GPPSZVusnZU6OMgdgzHV4= )
+   xx.example.    3600 AAAA   2001:db8::f00:baaa
+   xx.example.    3600 RRSIG  AAAA 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C
+                              aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z
+                              ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr
+                              U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/
+                              xS9cL2QgW7FChw16mzlkH6/vsfs= )
+   ns1.example.   3600 IN A   192.0.2.1
+   ns1.example.   3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet
+                              5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06
+                              im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+
+                              +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK
+                              v/iVXSYC0b7mPSU+EOlknFpVECs= )
+   ns2.example.   3600 IN A   192.0.2.2
+   ns2.example.   3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq
+                              Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu
+                              yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO
+                              6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq
+                              rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )
         </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Answer x.w.example. 3600 IN MX 1 xx.example. x.w.example. 3600 RRSIG MX 5 3 3600 20040509183619 ( 20040409183619 38519 example. Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1 XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1 jNSlwZ2mSWKHfxFQxPtLj8s32+k= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;回答X.W.Example。MX 1 xx.exampleの3600。X.W.Example。3600 RRSIG MX 5 3 3600 20040509183619（20040409183619 38519の例。IL2WTZBKVOYTBX4LITNW5MJB4RCWHOO8Y1 XZPHZMZUTVYL7LAA63F6T9YSVZJRI3KIN1FDCMPMPMPMPMPMPMDN1KPMPMINT9KWO8Y1 4FOOBKBCDM7P3I KX70EPCOFGRZ1YQ BVVXCVGUAU4XALV3W/Y1 JNSLWZ2MSWKHFXFQXPTLJ8S32 K =）
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 NS ns1.example. example. 3600 NS ns2.example. example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。3600 NS NS1.example。例。3600 NS NS2.example。例。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NIVWC WD1FMBNCYQL0TK3LINGF4NFISPMISFMFISPMISFMFISPMISFMF 4MISFMF 4MISFMF 4ISFMFIISMF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Additional xx.example. 3600 IN A 192.0.2.10 xx.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP 7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa 0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx kbIDV6GPPSZVusnZU6OMgdgzHV4= ) xx.example. 3600 AAAA 2001:db8::f00:baaa xx.example. 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/ xS9cL2QgW7FChw16mzlkH6/vsfs= ) ns1.example. 3600 IN A 192.0.2.1 ns1.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet 5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06 im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+ +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK v/iVXSYC0b7mPSU+EOlknFpVECs= ) ns2.example. 3600 IN A 192.0.2.2 ns2.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO 6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;追加のxx.example。192.0.2.10 xx.exampleで3600。3600 AAAA 2001：db8 :: f00：baaa xx.example。3600 RRSIG AAAA 5 2 3600 20040509183619（20040409183619 38519例。ZZJ0YODDXCBLNNOIWDSUKO5WQIAK24DLKG9C AGAXDFIKKOBUJ2JILYQFN2PPTCKSD4ZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZDLKG9C AGAXDFIKGKOBUJ2J IWP4LWPVTR U4ZFEA RDZ9STMSBP/4PEKH/X2IOAYNWCTD/XS9CL2QGW7FCHW16MZLKH6/VSFS =）NS1.EXAMPLE。192.0.2.1 ns1.exampleで3600。192.0.2.2 ns2.exampleで3600。
-        </p>
       </div>
     </div>
     <div class="row">
@@ -4261,34 +4502,45 @@ An authoritative name error. The NSEC RRs prove that the name does not exist and
    ;;
    ;; Question
    ml.example.         IN A
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
    ;; Answer
    ;; (empty)
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) b.example. 3600 NSEC ns1.example. NS RRSIG NSEC b.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= ) example. 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY example. 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LW DA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）B.EXAMPLE。3600 NSEC NS1.example。ns rrsig nsec b.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。GNUXHN844WFMUHPZGWKJCJCPY5TEX/RFJDOOX 9UEK1PTYKOWKOODIJ/PJKCYB3HHYX 858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 YSY97MVJ5VQEWS 0LM9TFOQJCPTQKMQKYPRWUNCSNWVVCLSF1XZ VHRXGWT7OUFXLDOCG6TFVFMS9XE =）例。3600 NSEC A.Example。NS SOA MX RRSIG NSEC DNSKEYの例。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
+   ;; Authority
+   example.       3600 IN SOA ns1.example. bugs.x.w.example. (
+                              1081539377
+                              3600
+                              300
+                              3600000
+                              3600
+                              )
+   example.       3600 RRSIG  SOA 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h
+                              7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF
+                              vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW
+                              DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB
+                              jV7j86HyQgM5e7+miRAz8V01b0I= )
+   b.example.     3600 NSEC   ns1.example. NS RRSIG NSEC
+   b.example.     3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx
+                              9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS
+                              xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs
+                              0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ
+                              vhRXgWT7OuFXldoCG6TfVFMs9xE= )
+   example.       3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY
+   example.       3600 RRSIG  NSEC 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm
+                              FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V
+                              Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW
+                              SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm
+                              jfFJ5arXf4nPxp/kEowGgBRzY/U= )
+
    ;; Additional
    ;; (empty)
+
         </pre>
       </div>
     </div>
@@ -4323,32 +4575,34 @@ A &#34;no data&#34; response. The NSEC RR proves that the name exists and that t
    ;;
    ;; Question
    ns1.example.        IN MX
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
    ;; Answer
    ;; (empty)
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) ns1.example. 3600 NSEC ns2.example. A RRSIG NSEC ns1.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8 1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8 IZaIGBLryQWGLw6Y6X8dqhlnxJM= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LW DA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）NS1.EXAMPLE。3600 NSEC NS2.example。rrsig nsec ns1.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。I4HJKT68RCCHCUDOLKS2S WZRI9H3FHAS8 jk3ukddbq ziali8qr2xhkjq38beqsbp8x0 6h4etwsgt8 izaigblryqwglw6y6x8dqhlnxjm =）
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
+   ;; Authority
+   example.       3600 IN SOA ns1.example. bugs.x.w.example. (
+                              1081539377
+                              3600
+                              300
+                              3600000
+                              3600
+                              )
+   example.       3600 RRSIG  SOA 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h
+                              7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF
+                              vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW
+                              DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB
+                              jV7j86HyQgM5e7+miRAz8V01b0I= )
+   ns1.example.   3600 NSEC   ns2.example. A RRSIG NSEC
+   ns1.example.   3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8
+                              1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB
+                              jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq
+                              ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8
+                              IZaIGBLryQWGLw6Y6X8dqhlnxJM= )
+
    ;; Additional
    ;; (empty)
         </pre>
@@ -4383,51 +4637,30 @@ Referral to a signed zone. The DS RR contains the data which the resolver will n
         <pre class="text text-monospace">
    ;; Header: QR DO RCODE=0
    ;;
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Question mc.a.example. IN MX
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;質問MC.A.Example。MXで
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+   ;; Question
+   mc.a.example.       IN MX
+
    ;; Answer
    ;; (empty)
+
+   ;; Authority
+   a.example.     3600 IN NS  ns1.a.example.
+   a.example.     3600 IN NS  ns2.a.example.
+   a.example.     3600 DS     57855 5 1 (
+                              B6DCD485719ADCA18E5F3D48A2331627FDD3
+                              636B )
+   a.example.     3600 RRSIG  DS 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ
+                              oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH
+                              kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD
+                              EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/
+                              Fm+v6ccF2EGNLRiY08kdkz+XHHo= )
+
+   ;; Additional
+   ns1.a.example. 3600 IN A   192.0.2.5
+   ns2.a.example. 3600 IN A   192.0.2.6
         </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority a.example. 3600 IN NS ns1.a.example. a.example. 3600 IN NS ns2.a.example. a.example. 3600 DS 57855 5 1 ( B6DCD485719ADCA18E5F3D48A2331627FDD3 636B ) a.example. 3600 RRSIG DS 5 2 3600 20040509183619 ( 20040409183619 38519 example. oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/ Fm+v6ccF2EGNLRiY08kdkz+XHHo= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限のa.example。NS1.A.Exampleの3600。A.例。NS2.A.Exampleの3600。A.例。3600 DS 57855 5 1（B6DCD485719ADCA18E5F3D48A2331627FDD3 636B）A.Example。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Additional ns1.a.example. 3600 IN A 192.0.2.5 ns2.a.example. 3600 IN A 192.0.2.6
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;追加のns1.a.example。192.0.2.5 ns2.a.exampleで3600。192.0.2.6の3600
-        </p>
       </div>
     </div>
     <div class="row">
@@ -4461,39 +4694,27 @@ Referral to an unsigned zone. The NSEC RR proves that no DS RR for this delegati
    ;;
    ;; Question
    mc.b.example.       IN MX
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
    ;; Answer
    ;; (empty)
+
+   ;; Authority
+   b.example.     3600 IN NS  ns1.b.example.
+   b.example.     3600 IN NS  ns2.b.example.
+   b.example.     3600 NSEC   ns1.example. NS RRSIG NSEC
+   b.example.     3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx
+                              9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS
+                              xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs
+                              0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ
+                              vhRXgWT7OuFXldoCG6TfVFMs9xE= )
+
+   ;; Additional
+   ns1.b.example. 3600 IN A   192.0.2.7
+   ns2.b.example. 3600 IN A   192.0.2.8
+
         </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority b.example. 3600 IN NS ns1.b.example. b.example. 3600 IN NS ns2.b.example. b.example. 3600 NSEC ns1.example. NS RRSIG NSEC b.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限b.例。NS1.B.Exampleの3600。B.例。NS2.B.Exampleの3600。B.例。3600 NSEC NS1.example。ns rrsig nsec b.example。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Additional ns1.b.example. 3600 IN A 192.0.2.7 ns2.b.example. 3600 IN A 192.0.2.8
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;追加のns1.b.example。192.0.2.7 ns2.b.exampleで3600。192.0.2.8で3600
-        </p>
       </div>
     </div>
     <div class="row">
@@ -4527,55 +4748,54 @@ A successful query that was answered via wildcard expansion. The label count in 
    ;;
    ;; Question
    a.z.w.example.      IN MX
+
+   ;; Answer
+   a.z.w.example. 3600 IN MX  1 ai.example.
+   a.z.w.example. 3600 RRSIG  MX 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2
+                              f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc
+                              tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X
+                              TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw
+                              4kX18MMR34i8lC36SR5xBni8vHI= )
+
+   ;; Authority
+   example.       3600 NS     ns1.example.
+   example.       3600 NS     ns2.example.
+   example.       3600 RRSIG  NS 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd
+                              EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf
+                              4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8
+                              RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48
+                              0HjMeRaZB/FRPGfJPajngcq6Kwg= )
+   x.y.w.example. 3600 NSEC   xx.example. MX RRSIG NSEC
+   x.y.w.example. 3600 RRSIG  NSEC 5 4 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp
+                              ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg
+                              xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX
+                              a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr
+                              QoKqJDCLnoAlcPOPKAm/jJkn3jk= )
+
+   ;; Additional
+   ai.example.    3600 IN A   192.0.2.9
+   ai.example.    3600 RRSIG  A 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B
+                              ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd
+                              hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u
+                              ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy
+                              6zrTpg9FkS0XGVmYRvOTNYx2HvQ= )
+   ai.example.    3600 AAAA   2001:db8::f00:baa9
+   ai.example.    3600 RRSIG  AAAA 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK
+                              kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh
+                              1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T
+                              cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2
+                              sZM6QjBBLmukH30+w1z3h8PUP2o= )
         </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Answer a.z.w.example. 3600 IN MX 1 ai.example. a.z.w.example. 3600 RRSIG MX 5 2 3600 20040509183619 ( 20040409183619 38519 example. OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2 f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw 4kX18MMR34i8lC36SR5xBni8vHI= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;回答a.z.w.example。MX 1 AI.exampleの3600。a.z.w.example。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 NS ns1.example. example. 3600 NS ns2.example. example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= ) x.y.w.example. 3600 NSEC xx.example. MX RRSIG NSEC x.y.w.example. 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。3600 NS NS1.example。例。3600 NS NS2.example。例。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NISPPPITMISFMFMISPMISPMISPMISPMISFMFISPMISFMFISPMISFMF QF4NF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）X.Y.W.EXAMPLE。3600 NSEC xx.example。mx rrsig nsec x.y.w.example。3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519の例。Ove6Wuzn2ziiejcvkpwbcayxyp6ef8cr6csparvstzkunwbezmmku7e34o5lmb6cwssspg x xwssspg xwmb6cwssspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgpgmb6cwssspgfmbzsspm ubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =））
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Additional ai.example. 3600 IN A 192.0.2.9 ai.example. 3600 RRSIG A 5 2 3600 20040509183619 (
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;追加のai.example。192.0.2.9 ai.exampleで3600。3600 RRSIG A 5 2 3600 20040509183619（
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
- 20040409183619 38519 example. pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy 6zrTpg9FkS0XGVmYRvOTNYx2HvQ= ) ai.example. 3600 AAAA 2001:db8::f00:baa9 ai.example. 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh 1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2 sZM6QjBBLmukH30+w1z3h8PUP2o= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-20040409183619 38519例。paotzlp2mu0tdjuhoke5fpiihmdyscgtb5b erggpnjlua9ixoyf6xxvcgrejw0wnzssjicd hbhxfdmagkuajuulysah8ts4znrhymivk3u ardu2wft130e9uhnuumhmimyumimyumimimimimivk3u xgvmyrvotnyx2hvq =）ai.example。3600 AAAA 2001：db8 :: f00：baa9 ai.example。3600 RRSIG AAAA 5 2 3600 20040509183619（20040409183619 38519の例。NLCPFUXDT35ACEEOAFOUKL69KB /E56XMFK KEWXG2IADYLKAOBIOR5 VOQV3XGTCOFTJNSH 1MSHSSH 1MSHSSHSHNSHSHNSHSSH NKR4A7CL9T CMMDWV/HWFKSBGBSJ8XSCN/CAEL2CWY/5XP2 SZM6QJBBLMUKH30 W1Z3H8PUP2O =）
-        </p>
       </div>
     </div>
     <div class="row">
@@ -4609,32 +4829,42 @@ A &#34;no data&#34; response for a name covered by a wildcard. The NSEC RRs prov
    ;;
    ;; Question
    a.z.w.example.      IN AAAA
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
    ;; Answer
    ;; (empty)
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) x.y.w.example. 3600 NSEC xx.example. MX RRSIG NSEC x.y.w.example. 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= ) *.w.example. 3600 NSEC x.w.example. MX RRSIG NSEC *.w.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9 HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU 5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx 91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8 s1InQ2UoIv6tJEaaKkP701j8OLA= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）X.Y.W.EXAMPLE。3600 NSEC xx.example。mx rrsig nsec x.y.w.example。3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519の例。Ove6Wuzn2ziiejcvkpwbcayxyp6ef8cr6csparvstzkunwbezmmku7e34o5lmb6cwssspg x xwssspg xwmb6cwssspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgpgmb6cwssspgfmbzsspm ubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =） *.w.example。3600 NSEC X.W.Example。mx rrsig nsec *.w.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。R/MZNRC3I/VICRELGICTESXDHTSDLTDTDT8NG9 HSBLABOLZLXQTFGTNN8F AOWJIAFE1EE5PXFFCJN8FCJN8FCJN8FCHPXFFCJN8FCHPXFFCJN8F vfxSaxfahpyqtx 91GSMCV/1V9/BZAG55CEFP9CM4Z9Y9NT9XQ8 S1INQ2UOIV6TJEAAKKP701J8OLA =）
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
+   ;; Authority
+   example.       3600 IN SOA ns1.example. bugs.x.w.example. (
+                              1081539377
+                              3600
+                              300
+                              3600000
+                              3600
+                              )
+   example.       3600 RRSIG  SOA 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h
+                              7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF
+                              vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW
+                              DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB
+                              jV7j86HyQgM5e7+miRAz8V01b0I= )
+   x.y.w.example. 3600 NSEC   xx.example. MX RRSIG NSEC
+   x.y.w.example. 3600 RRSIG  NSEC 5 4 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp
+                              ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg
+                              xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX
+                              a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr
+                              QoKqJDCLnoAlcPOPKAm/jJkn3jk= )
+   *.w.example.   3600 NSEC   x.w.example. MX RRSIG NSEC
+   *.w.example.   3600 RRSIG  NSEC 5 2 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9
+                              HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU
+                              5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx
+                              91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8
+                              s1InQ2UoIv6tJEaaKkP701j8OLA= )
+
    ;; Additional
    ;; (empty)
         </pre>
@@ -4671,32 +4901,34 @@ A &#34;no data&#34; response for a QTYPE=DS query that was mistakenly sent to a 
    ;;
    ;; Question
    example.            IN DS
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
    ;; Answer
    ;; (empty)
-        </pre>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) example. 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY example. 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-;;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。Anx0k36rcjaxytcngq6iqnpnv5drqyasc9h 7tsjahcqbhe67sr6ah2xdugdugqucwsufiduzuzufdugduをM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）例。3600 NSEC A.Example。NS SOA MX RRSIG NSEC DNSKEYの例。
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <pre class="text text-monospace">
+
+   ;; Authority
+   example.       3600 IN SOA ns1.example. bugs.x.w.example. (
+                              1081539377
+                              3600
+                              300
+                              3600000
+                              3600
+                              )
+   example.       3600 RRSIG  SOA 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h
+                              7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF
+                              vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW
+                              DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB
+                              jV7j86HyQgM5e7+miRAz8V01b0I= )
+   example.       3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY
+   example.       3600 RRSIG  NSEC 5 1 3600 20040509183619 (
+                              20040409183619 38519 example.
+                              O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm
+                              FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V
+                              Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW
+                              SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm
+                              jfFJ5arXf4nPxp/kEowGgBRzY/U= )
+
    ;; Additional
    ;; (empty)
         </pre>
@@ -4782,7 +5014,7 @@ This example shows the logical authentication process that starts from the a con
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この例は、設定されたルートDNSKEY（またはDS RR）から始まり、ツリーを下って目的の「例」DNSKEY RRを認証する論理認証プロセスを示しています。明確にするために論理順序が提示されることに注意してください。実装は、紹介が受信されたときに認証を構築するか、すべてのrrsetが取得された後、または適切と思われる他の組み合わせでのみ認証チェーンを構築することを選択できます。ここでの例は、論理プロセスのみを示しており、実装ルールを指示しません。
+この例は、構成されたルートDNSKEY（またはDS RR）から始まり、ツリーを下って目的の &#34;example&#34; DNSKEY RRを認証する論理認証プロセスを示しています。明確にするために論理順序が提示されることに注意してください。実装は、参照が受信されたときに認証を構築するか、すべてのrrsetが取得された後、または適切と思われる他の組み合わせでのみ認証チェーンを構築することを選択できます。ここでの例は、論理プロセスのみを示しており、実装ルールを指示しません。
         </p>
       </div>
     </div>
@@ -4890,7 +5122,7 @@ The query in Appendix B.4 returned a referral to the signed &#34;a.example.&#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-付録B.4のクエリは、署名された「a.example」への紹介を返しました。ゾーン。DS RRは、上記で説明したMX RRSTと同じ方法で認証されています。このDS RRは、「a.example」dnskey rrsetを認証するために使用されます。
+付録B.4のクエリは、署名された &#34;a.example.&#34; ゾーンへの参照を返しました。DS RRは、上記で説明したMX RRSTと同じ方法で認証されています。このDS RRは、「a.example」dnskey rrsetを認証するために使用されます。
         </p>
       </div>
     </div>
@@ -4926,7 +5158,7 @@ The query in Appendix B.5 returned a referral to an unsigned &#34;b.example.&#34
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-付録B.5のクエリは、署名されていない「b.example」への紹介を返しました。ゾーン。NSECは、「例」から「b.example」に認証が導かれないことを証明し、NSEC RRは上記のMX RRSetと同一の方法で認証されています。
+付録B.5のクエリは、署名されていない &#34;b.example.&#34; ゾーンへの参照を返しました。NSECは、&#34;example&#34; から &#34;b.example&#34; への認証がつながらないことを証明し、NSEC RRは上記のMX RRSetと同一の方法で認証されています。
         </p>
       </div>
     </div>
@@ -5010,7 +5242,7 @@ The query in Appendix B.8 returned NSEC RRs that shows the requested was answere
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-付録B.8のクエリは、要求されたものが子サーバー（「例」サーバー）によって回答されたことを示すNSEC RRSを返しました。NSEC RRは、SOA RRの存在を示し、答えは子供からのものであることを示しています。「例」DS RRSetのクエリは、親サーバー（「ルート」サーバー）に送信する必要があります。
+付録B.8のクエリは、要求が子サーバー（&#34;example&#34; サーバー）によって回答されたことを示すNSEC RRを返しました。NSEC RRはSOA RRの存在を示しており、回答が子からのものであることを示しています。&#34;example&#34; DS RRsetのクエリは、親サーバー（&#34;root&#34; サーバー）に送信する必要があります。
         </p>
       </div>
     </div>

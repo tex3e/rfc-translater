@@ -5,7 +5,7 @@
   },
   "number": 4035,
   "created_at": "2023-08-18 09:17:23.289948+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "This document is part of a family of documents that describe the DNS Security Extensions (DNSSEC). The DNS Security Extensions are a collection of new resource records and protocol modifications that add data origin authentication and data integrity to the DNS. This document describes the DNSSEC protocol modifications. This document defines the concept of a signed zone, along with the requirements for serving and resolving by using DNSSEC. These techniques allow a security-aware resolver to authenticate both DNS resource records and authoritative DNS error indications.",
-      "ja": "このドキュメントは、DNSセキュリティ拡張機能（DNSSEC）を説明するドキュメントファミリの一部です。DNSセキュリティ拡張機能は、DNSにデータ起源の認証とデータの整合性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更について説明します。このドキュメントでは、DNSSECを使用してサービングと解決の要件とともに、署名ゾーンの概念を定義します。これらの手法により、セキュリティ認識リゾルバーは、DNSリソースレコードと権威あるDNSエラーの両方のエラー表示を認証できます。"
+      "ja": "このドキュメントは、DNSセキュリティ拡張（DNSSEC）を説明する一連のドキュメントの一部です。DNSセキュリティ拡張は、DNSにデータオリジン認証とデータ完全性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更について説明します。このドキュメントでは、DNSSECを使用したサービス提供と名前解決の要件とともに、署名付きゾーンの概念を定義します。これらの技術により、セキュリティ対応リゾルバは、DNSリソースレコードと権威DNSサーバーからのエラー応答の両方を認証できます。"
     },
     {
       "indent": 3,
@@ -81,7 +81,7 @@
     {
       "indent": 3,
       "text": "The DNS Security Extensions (DNSSEC) are a collection of new resource records and protocol modifications that add data origin authentication and data integrity to the DNS. This document defines the DNSSEC protocol modifications. Section 2 of this document defines the concept of a signed zone and lists the requirements for zone signing. Section 3 describes the modifications to authoritative name server behavior necessary for handling signed zones. Section 4 describes the behavior of entities that include security-aware resolver functions. Finally, Section 5 defines how to use DNSSEC RRs to authenticate a response.",
-      "ja": "DNSセキュリティ拡張機能（DNSSEC）は、DNSにデータの起源認証とデータの整合性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更を定義しています。このドキュメントのセクション2では、署名ゾーンの概念を定義し、ゾーン署名の要件をリストします。セクション3では、署名ゾーンの処理に必要な権威ある名前サーバーの動作の変更について説明します。セクション4では、セキュリティ対応のリゾルバー関数を含むエンティティの動作について説明します。最後に、セクション5では、DNSSEC RRSを使用して応答を認証する方法を定義します。"
+      "ja": "DNSセキュリティ拡張（DNSSEC）は、DNSにデータオリジン認証とデータ完全性を追加する新しいリソースレコードとプロトコル変更のコレクションです。このドキュメントでは、DNSSECプロトコルの変更を定義します。このドキュメントのセクション2では、署名付きゾーンの概念を定義し、ゾーン署名の要件をリストアップします。セクション3では、署名付きゾーンを処理するために必要な権威ネームサーバーの動作の変更について説明します。セクション4では、セキュリティ対応リゾルバ機能を含むエンティティの動作について説明します。最後に、セクション5では、DNSSEC RRを使用して応答を認証する方法を定義します。"
     },
     {
       "indent": 0,
@@ -123,7 +123,7 @@
     {
       "indent": 3,
       "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in [RFC2119].",
-      "ja": "「必須」、「そうしない」、「必須」、「shall」、「shall \"、\" ingle \"、\" should \"、\" not \"、\" becommended \"、\" bay \"、および「optional」は、[RFC2119]に記載されているように解釈される。"
+      "ja": "この文書のキーワード \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", および \"OPTIONAL\" は、[RFC2119]で説明されているように解釈されます。"
     },
     {
       "indent": 0,
@@ -134,7 +134,7 @@
     {
       "indent": 3,
       "text": "DNSSEC introduces the concept of signed zones. A signed zone includes DNS Public Key (DNSKEY), Resource Record Signature (RRSIG), Next Secure (NSEC), and (optionally) Delegation Signer (DS) records according to the rules specified in Sections 2.1, 2.2, 2.3, and 2.4, respectively. A zone that does not include these records according to the rules in this section is an unsigned zone.",
-      "ja": "DNSSECは、署名されたゾーンの概念を紹介します。署名ゾーンには、DNS公開キー（DNSKEY）、リソースレコード署名（RRSIG）、次のセキュア（NSEC）、および（オプションで）代表者署名者（DS）がセクション2.1、2.2、2.3、および2.4で指定されたルールに従って記録されます。それぞれ。このセクションのルールに従ってこれらのレコードを含まないゾーンは、署名されていないゾーンです。"
+      "ja": "DNSSECは、署名されたゾーンの概念を導入します。署名されたゾーンには、セクション2.1、2.2、2.3、および2.4で指定されたルールに従って、DNS公開鍵（DNSKEY）、リソースレコード署名（RRSIG）、次のセキュア（NSEC）、および（オプションで）委任署名者（DS）レコードが含まれます。このセクションのルールに従ってこれらのレコードを含まないゾーンは、署名されていないゾーンです。"
     },
     {
       "indent": 3,
@@ -155,7 +155,7 @@
     {
       "indent": 3,
       "text": "To sign a zone, the zone's administrator generates one or more public/private key pairs and uses the private key(s) to sign authoritative RRsets in the zone. For each private key used to create RRSIG RRs in a zone, the zone SHOULD include a zone DNSKEY RR containing the corresponding public key. A zone key DNSKEY RR MUST have the Zone Key bit of the flags RDATA field set (see Section 2.1.1 of [RFC4034]). Public keys associated with other DNS operations MAY be stored in DNSKEY RRs that are not marked as zone keys but MUST NOT be used to verify RRSIGs.",
-      "ja": "ゾーンに署名するために、ゾーンの管理者は1つ以上のパブリック/プライベートキーペアを生成し、秘密鍵を使用してゾーン内の信頼できるrrsetsに署名します。ゾーンでRRSIG RRSを作成するために使用される各秘密キーについて、ゾーンには、対応する公開キーを含むゾーンDNSKEY RRを含める必要があります。ゾーンキーDNSKEY RRには、フラグRDATAフィールドセットのゾーンキービットが必要です（[RFC4034]のセクション2.1.1を参照）。他のDNS操作に関連付けられているパブリックキーは、ゾーンキーとしてマークされていないが、RRSIGを確認するために使用してはならないDNSKEY RRSに保存される場合があります。"
+      "ja": "ゾーンに署名するために、ゾーンの管理者は1つ以上のパブリック/プライベートキーペアを生成し、秘密鍵を使用してゾーン内の権威あるRRsetに署名します。ゾーンでRRSIG RRSを作成するために使用される各秘密キーについて、ゾーンには、対応する公開キーを含むゾーンDNSKEY RRを含める必要があります。ゾーンキーDNSKEY RRは、フラグRDATAフィールドのゾーンキービットがセットされていなければなりません（[RFC4034]のセクション2.1.1を参照）。他のDNS操作に関連付けられた公開鍵は、ゾーンキーとしてマークされていないDNSKEY RRに格納してもよい（MAY）が、RRSIGの検証に使用してはなりません（MUST NOT）。"
     },
     {
       "indent": 3,
@@ -186,12 +186,12 @@
     {
       "indent": 3,
       "text": "o The RRSIG Type Covered field is equal to the RRset type.",
-      "ja": "o RRSIGタイプのカバーフィールドは、RRSetタイプに等しくなります。"
+      "ja": "o RRSIGのType Coveredフィールドは、RRsetのタイプに等しい。"
     },
     {
       "indent": 3,
       "text": "o The RRSIG Original TTL field is equal to the TTL of the RRset.",
-      "ja": "o RRSIGオリジナルTTLフィールドは、RRSETのTTLに等しくなります。"
+      "ja": "o RRSIGのOriginal TTLフィールドは、RRsetのTTLに等しい。"
     },
     {
       "indent": 3,
@@ -201,17 +201,17 @@
     {
       "indent": 3,
       "text": "o The RRSIG Labels field is equal to the number of labels in the RRset owner name, not counting the null root label and not counting the leftmost label if it is a wildcard.",
-      "ja": "o RRSIGラベルフィールドは、RRSetの所有者名のラベルの数に等しく、nullルートラベルをカウントせず、ワイルドカードの場合は左端のラベルをカウントしません。"
+      "ja": "o RRSIGのLabelsフィールドは、RRsetの所有者名のラベルの数に等しい。ただし、nullルートラベルはカウントせず、ワイルドカードの場合は左端のラベルをカウントしない。"
     },
     {
       "indent": 3,
       "text": "o The RRSIG Signer's Name field is equal to the name of the zone containing the RRset.",
-      "ja": "o RRSIG署名者の名前フィールドは、RRSetを含むゾーンの名前に等しくなります。"
+      "ja": "o RRSIGのSigner's Nameフィールドは、RRsetを含むゾーンの名前に等しい。"
     },
     {
       "indent": 3,
       "text": "o The RRSIG Algorithm, Signer's Name, and Key Tag fields identify a zone key DNSKEY record at the zone apex.",
-      "ja": "o RRSIGアルゴリズム、署名者の名前、およびキータグフィールドは、ゾーンアペックスでゾーンキーDNSKEYレコードを識別します。"
+      "ja": "o RRSIGのAlgorithm、Signer's Name、およびKey Tagフィールドは、ゾーン頂点のゾーンキーDNSKEYレコードを識別する。"
     },
     {
       "indent": 3,
@@ -226,7 +226,7 @@
     {
       "indent": 3,
       "text": "The NS RRset that appears at the zone apex name MUST be signed, but the NS RRsets that appear at delegation points (that is, the NS RRsets in the parent zone that delegate the name to the child zone's name servers) MUST NOT be signed. Glue address RRsets associated with delegations MUST NOT be signed.",
-      "ja": "ゾーンアペックス名に表示されるNS RRSETに署名する必要がありますが、委任ポイントに表示されるNS RRSets（つまり、名前をチャイルドゾーンの名前サーバーに委任する親ゾーンのNS RRSets）に署名する必要はありません。代表団に関連付けられた接着アドレスrrsetsに署名してはなりません。"
+      "ja": "ゾーン頂点の名前に現れるNS RRsetは署名されなければなりませんが、委任ポイントに現れるNS RRset（つまり、名前を子ゾーンのネームサーバーに委任する親ゾーン内のNS RRset）は署名されてはなりません。委任に関連付けられたグルーアドレスRRsetは署名されてはなりません。"
     },
     {
       "indent": 3,
@@ -252,7 +252,7 @@
     {
       "indent": 3,
       "text": "An NSEC record (and its associated RRSIG RRset) MUST NOT be the only RRset at any particular owner name. That is, the signing process MUST NOT create NSEC or RRSIG RRs for owner name nodes that were not the owner name of any RRset before the zone was signed. The main reasons for this are a desire for namespace consistency between signed and unsigned versions of the same zone and a desire to reduce the risk of response inconsistency in security oblivious recursive name servers.",
-      "ja": "NSECレコード（および関連するRRSIG RRSet）は、特定の所有者名で唯一のRRSetであってはなりません。つまり、署名プロセスは、ゾーンが署名される前のrrsetの所有者名ではなかった所有者名ノードのNSECまたはRRSIG RRSを作成してはなりません。これの主な理由は、同じゾーンの署名されたバージョンと署名されていないバージョンとの間の名前空間の一貫性と、セキュリティ忘却の再帰名サーバーの応答の矛盾を減らすことを望んでいることです。"
+      "ja": "NSECレコード（および関連するRRSIG RRSet）は、特定の所有者名で唯一のRRSetであってはなりません。つまり、署名プロセスは、ゾーンが署名される前のrrsetの所有者名ではなかった所有者名ノードのNSECまたはRRSIG RRSを作成してはなりません。これの主な理由は、同じゾーンの署名されたバージョンと署名されていないバージョンとの間の名前空間の一貫性を保つことと、セキュリティを認識しない再帰ネームサーバーにおける応答の不整合のリスクを減らすことです。"
     },
     {
       "indent": 3,
@@ -262,12 +262,12 @@
     {
       "indent": 3,
       "text": "The difference between the set of owner names that require RRSIG records and the set of owner names that require NSEC records is subtle and worth highlighting. RRSIG records are present at the owner names of all authoritative RRsets. NSEC records are present at the owner names of all names for which the signed zone is authoritative and also at the owner names of delegations from the signed zone to its children. Neither NSEC nor RRSIG records are present (in the parent zone) at the owner names of glue address RRsets. Note, however, that this distinction is for the most part visible only during the zone signing process, as NSEC RRsets are authoritative data and are therefore signed. Thus, any owner name that has an NSEC RRset will have RRSIG RRs as well in the signed zone.",
-      "ja": "RRSIGレコードを必要とする所有者名のセットと、NSECレコードを必要とする所有者名のセットの違いは、微妙で強調表示される価値があります。RRSIGレコードは、すべての権威あるrrsetの所有者名に存在します。NSECレコードは、署名されたゾーンが権威あるすべての名前の所有者名に存在し、署名ゾーンからその子供への代表団の所有者名もあります。接着剤アドレスrrsetsの所有者名に、NSECもRRSIGレコードも（親ゾーンに）存在しません。ただし、NSEC rrsetsは権威あるデータであり、したがって署名されているため、この区別はゾーン署名プロセス中にのみ目に見えるものであることに注意してください。したがって、NSEC RRSetを持つ所有者名は、署名ゾーンにもRRSIG RRSを備えています。"
+      "ja": "RRSIGレコードを必要とする所有者名のセットと、NSECレコードを必要とする所有者名のセットの違いは、微妙で強調表示される価値があります。RRSIGレコードは、すべての権威あるrrsetの所有者名に存在します。NSECレコードは、署名されたゾーンが権威あるすべての名前の所有者名に存在し、署名ゾーンからその子供への代表団の所有者名もあります。グルーアドレスRRsetの所有者名には、（親ゾーン内に）NSECレコードもRRSIGレコードも存在しません。ただし、NSEC RRSetは権威あるデータであり、したがって署名されているため、この区別はゾーン署名プロセス中にのみ目に見えるものであることに注意してください。したがって、NSEC RRSetを持つ所有者名は、署名ゾーンにもRRSIG RRSを備えています。"
     },
     {
       "indent": 3,
       "text": "The bitmap for the NSEC RR at a delegation point requires special attention. Bits corresponding to the delegation NS RRset and any RRsets for which the parent zone has authoritative data MUST be set; bits corresponding to any non-NS RRset for which the parent is not authoritative MUST be clear.",
-      "ja": "委任ポイントでのNSEC RRのビットマップには、特別な注意が必要です。代表団NS RRSETおよび親ゾーンに権威あるデータを持っているRRSetsに対応するビットを設定する必要があります。親が信頼できるものではない非NS RRSetに対応するビットは明確でなければなりません。"
+      "ja": "委任ポイントでのNSEC RRのビットマップには、特別な注意が必要です。委任NS RRsetおよび親ゾーンが権威あるデータを持つRRsetに対応するビットはセットされなければなりません。親が権威を持たない非NS RRsetに対応するビットはクリアでなければなりません。"
     },
     {
       "indent": 0,
@@ -357,17 +357,17 @@
     {
       "indent": 3,
       "text": "A security-aware name server MUST support the EDNS0 ([RFC2671]) message size extension, MUST support a message size of at least 1220 octets, and SHOULD support a message size of 4000 octets. As IPv6 packets can only be fragmented by the source host, a security aware name server SHOULD take steps to ensure that UDP datagrams it transmits over IPv6 are fragmented, if necessary, at the minimum IPv6 MTU, unless the path MTU is known. Please see [RFC1122], [RFC2460], and [RFC3226] for further discussion of packet size and fragmentation issues.",
-      "ja": "セキュリティ対応の名前サーバーは、EDNS0（[RFC2671]）メッセージサイズの拡張機能をサポートする必要があり、少なくとも1220オクテットのメッセージサイズをサポートする必要があり、4000オクテットのメッセージサイズをサポートする必要があります。IPv6パケットはソースホストによってのみ断片化できるため、セキュリティ認識名サーバーは、IPv6を介して送信するUDPデータグラムが、必要に応じて最小IPv6 MTUで断片化されるように手順を実行する必要があります。パケットサイズと断片化の問題についてのさらなる議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。"
+      "ja": "セキュリティ対応ネームサーバーは、EDNS0（[RFC2671]）メッセージサイズ拡張をサポートしなければならず、少なくとも1220オクテットのメッセージサイズをサポートしなければならず、4000オクテットのメッセージサイズをサポートすべきです。IPv6パケットはソースホストによってのみ断片化できるため、セキュリティ認識名サーバーは、IPv6を介して送信するUDPデータグラムが、必要に応じて最小IPv6 MTUで断片化されるように手順を実行する必要があります。パケットサイズと断片化の問題についてのさらなる議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。"
     },
     {
       "indent": 3,
       "text": "A security-aware name server that receives a DNS query that does not include the EDNS OPT pseudo-RR or that has the DO bit clear MUST treat the RRSIG, DNSKEY, and NSEC RRs as it would any other RRset and MUST NOT perform any of the additional processing described below. Because the DS RR type has the peculiar property of only existing in the parent zone at delegation points, DS RRs always require some special processing, as described in Section 3.1.4.1.",
-      "ja": "EDNS Opt Pseudo-RRを含まないDNSクエリを受信した、またはDOが少し明確にしているDNSクエリを受信するセキュリティ対応の名前サーバーは、RRSIG、DNSKEY、およびNSEC RRSを他のRRSETと同様に処理する必要があり、実行していない必要があります。以下で説明する追加の処理。DS RRタイプは、委任ポイントの親ゾーンにのみ存在する独特のプロパティを持っているため、DS RRSは常にセクション3.1.4.1で説明されているように特別な処理が必要です。"
+      "ja": "EDNS OPT疑似RRを含まない、またはDOビットがクリアされているDNSクエリを受信したセキュリティ対応ネームサーバーは、RRSIG、DNSKEY、およびNSEC RRを他のRRsetと同様に処理しなければならず、以下で説明する追加の処理を実行してはなりません。DS RRタイプは、委任ポイントの親ゾーンにのみ存在する独特のプロパティを持っているため、DS RRSは常にセクション3.1.4.1で説明されているように特別な処理が必要です。"
     },
     {
       "indent": 3,
       "text": "Security aware name servers that receive explicit queries for security RR types that match the content of more than one zone that it serves (for example, NSEC and RRSIG RRs above and below a delegation point where the server is authoritative for both zones) should behave self-consistently. As long as the response is always consistent for each query to the name server, the name server MAY return one of the following:",
-      "ja": "サービスを提供する複数のゾーンのコンテンツに一致するセキュリティRRタイプの明示的なクエリを受信するセキュリティ認識名サーバー（たとえば、サーバーが両方のゾーンに対して権威ある委任ポイントの上下のNSECおよびRRSIG RRSが自己行動する必要があります） -  sonsめに。応答が各クエリに対して常に一貫している限り、名前サーバーへのクエリごとに、名前サーバーは次のいずれかを返すことができます。"
+      "ja": "サービスを提供する複数のゾーンのコンテンツに一致するセキュリティRRタイプの明示的なクエリを受信するセキュリティ認識名サーバー（たとえば、サーバーが両方のゾーンに対して権威を持つ委任ポイントの上下のNSECおよびRRSIG RR）は、一貫した動作をするべきです。応答が各クエリに対して常に一貫している限り、名前サーバーへのクエリごとに、名前サーバーは次のいずれかを返すことができます。"
     },
     {
       "indent": 3,
@@ -393,7 +393,7 @@
     {
       "indent": 3,
       "text": "Upon receiving a relevant query that has the EDNS ([RFC2671]) OPT pseudo-RR DO bit ([RFC3225]) set, a security-aware authoritative name server for a signed zone MUST include additional RRSIG, NSEC, and DS RRs, according to the following rules:",
-      "ja": "EDNS（[RFC2671]）OPT PSEUDO-RR DO BIT（[RFC3225]）セットを持つ関連するクエリを受信すると、署名ゾーンのセキュリティ認識権限名サーバーが追加のRRSIG、NSEC、およびDS RRSを含める必要があります。次のルールに："
+      "ja": "EDNS（[RFC2671]）OPT疑似RRのDOビット（[RFC3225]）がセットされた関連クエリを受信すると、署名されたゾーンのセキュリティ対応権威ネームサーバーは、以下のルールに従って追加のRRSIG、NSEC、およびDS RRを含めなければなりません。"
     },
     {
       "indent": 3,
@@ -408,7 +408,7 @@
     {
       "indent": 3,
       "text": "o Either a DS RRset or an NSEC RR proving that no DS RRs exist MUST be included in referrals automatically according to the rules in Section 3.1.4.",
-      "ja": "o DS RRSETまたはNSEC RRのいずれかが、DS RRSが存在しないことを証明し、セクション3.1.4のルールに従って紹介に自動的に含める必要があります。"
+      "ja": "o DS RRset、またはDS RRが存在しないことを証明するNSEC RRのいずれかを、セクション3.1.4のルールに従って参照に自動的に含めなければなりません。"
     },
     {
       "indent": 3,
@@ -434,12 +434,12 @@
     {
       "indent": 3,
       "text": "o When placing a signed RRset in the Answer section, the name server MUST also place its RRSIG RRs in the Answer section. The RRSIG RRs have a higher priority for inclusion than any other RRsets that may have to be included. If space does not permit inclusion of these RRSIG RRs, the name server MUST set the TC bit.",
-      "ja": "o 回答セクションに署名されたRRSetを配置する場合、名前サーバーは回答セクションにRRSIG RRを配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。"
+      "ja": "o 回答セクションに署名されたRRSetを配置する場合、名前サーバーは回答セクションにRRSIG RRを配置する必要があります。RRSIG RRは、含める必要がある可能性のある他のどのRRsetよりも包含の優先度が高くなります。スペースの都合でこれらのRRSIG RRを含めることができない場合、ネームサーバーはTCビットをセットしなければなりません。"
     },
     {
       "indent": 3,
       "text": "o When placing a signed RRset in the Authority section, the name server MUST also place its RRSIG RRs in the Authority section. The RRSIG RRs have a higher priority for inclusion than any other RRsets that may have to be included. If space does not permit inclusion of these RRSIG RRs, the name server MUST set the TC bit.",
-      "ja": "o 署名済みのRRSETを当局セクションに配置する場合、名前サーバーはRRSIG RRSを当局セクションに配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。"
+      "ja": "o 署名済みのRRSETを権威セクションに配置する場合、名前サーバーはRRSIG RRSを権威セクションに配置する必要があります。RRSIG RRSは、含める必要がある他のどのRRSetよりも包含の優先度が高くなります。スペースがこれらのRRSIG RRを含めることを許可しない場合、名前サーバーはTCビットを設定する必要があります。"
     },
     {
       "indent": 3,
@@ -471,22 +471,22 @@
     {
       "indent": 3,
       "text": "No Data: The zone contains RRsets that exactly match <SNAME, SCLASS> but does not contain any RRsets that exactly match <SNAME, SCLASS, STYPE>.",
-      "ja": "データなし：ゾーンには、<sname、sclass>が正確に一致するrrsetsが含まれていますが、<sname、sclass、stype>を正確に一致させるrrsetsは含まれていません。"
+      "ja": "データなし：ゾーンには<SNAME, SCLASS>に正確に一致するRRsetが含まれていますが、<SNAME, SCLASS, STYPE>に正確に一致するRRsetは含まれていません。"
     },
     {
       "indent": 3,
       "text": "Name Error: The zone does not contain any RRsets that match <SNAME, SCLASS> either exactly or via wildcard name expansion.",
-      "ja": "名前のエラー：ゾーンには、<sname、sclass>正確またはワイルドカード名の拡張を介して一致するrrsetsは含まれていません。"
+      "ja": "名前エラー：ゾーンには、正確に、またはワイルドカード名展開を介して<SNAME, SCLASS>に一致するRRsetが含まれていません。"
     },
     {
       "indent": 3,
       "text": "Wildcard Answer: The zone does not contain any RRsets that exactly match <SNAME, SCLASS> but does contain an RRset that matches <SNAME, SCLASS, STYPE> via wildcard name expansion.",
-      "ja": "ワイルドカードの回答：ゾーンには、<sname、sclass>に一致するrrsetsは含まれていませんが、ワイルドカード名拡張を介して<sname、sclass、stype>に一致するrrsetが含まれています。"
+      "ja": "ワイルドカード回答：ゾーンには<SNAME, SCLASS>に正確に一致するRRsetは含まれていませんが、ワイルドカード名展開を介して<SNAME, SCLASS, STYPE>に一致するRRsetが含まれています。"
     },
     {
       "indent": 3,
       "text": "Wildcard No Data: The zone does not contain any RRsets that exactly match <SNAME, SCLASS> and does contain one or more RRsets that match <SNAME, SCLASS> via wildcard name expansion, but does not contain any RRsets that match <SNAME, SCLASS, STYPE> via wildcard name expansion.",
-      "ja": "ワイルドカードデータなし：ゾーンには、<sname、sclass>を正確に一致させるrrsetsが含まれておらず、ワイルドカード名の拡張を介して<sname、sclass>に一致する1つ以上のrrsetsが含まれていますが、<suname、sclassに一致するrrsetsは含まれていません。、Stype> WildCard名拡張を介して。"
+      "ja": "ワイルドカードデータなし：ゾーンには<SNAME, SCLASS>に正確に一致するRRsetは含まれておらず、ワイルドカード名展開を介して<SNAME, SCLASS>に一致する1つ以上のRRsetが含まれていますが、ワイルドカード名展開を介して<SNAME, SCLASS, STYPE>に一致するRRsetは含まれていません。"
     },
     {
       "indent": 3,
@@ -523,7 +523,7 @@
     {
       "indent": 3,
       "text": "o An NSEC RR proving that there is no exact match for <SNAME, SCLASS>.",
-      "ja": "o NSEC RRは、<Snake、S Class>に正確な一致がないことを証明しています。"
+      "ja": "o NSEC RRは、<SNAME, SCLASS>に正確な一致がないことを証明しています。"
     },
     {
       "indent": 3,
@@ -548,7 +548,7 @@
     {
       "indent": 3,
       "text": "Note that this form of response includes cases in which SNAME corresponds to an empty non-terminal name within the zone (a name that is not the owner name for any RRset but that is the parent name of one or more RRsets).",
-      "ja": "この形式の応答には、sunameがゾーン内の空の非末端名に対応する場合（rrsetの所有者名ではなく、1つ以上のrrsetの親名です）。"
+      "ja": "この形式の応答には、SNAMEがゾーン内の空の非終端名（どのRRsetの所有者名でもないが、1つ以上のRRsetの親名である名前）に対応する場合が含まれることに注意してください。"
     },
     {
       "indent": 0,
@@ -575,7 +575,7 @@
     {
       "indent": 3,
       "text": "o An NSEC RR proving that there are no RRsets matching STYPE at the wildcard owner name that matched <SNAME, SCLASS> via wildcard expansion.",
-      "ja": "o WildCardの拡張を介して<Sname、Sclass>に一致するWildCardの所有者名に、rrsetsがStypeを一致させるrrsetがないことを証明するNSEC RR。"
+      "ja": "o ワイルドカード展開を介して<SNAME, SCLASS>に一致したワイルドカード所有者名において、STYPEに一致するRRsetが存在しないことを証明するNSEC RR。"
     },
     {
       "indent": 3,
@@ -637,7 +637,7 @@
     {
       "indent": 3,
       "text": "If no DS RRset is present at the delegation point, the name server MUST return both the NSEC RR that proves that the DS RRset is not present and the NSEC RR's associated RRSIG RR(s) along with the NS RRset. The name server MUST place the NS RRset before the NSEC RRset and its associated RRSIG RR(s).",
-      "ja": "DS RRSETが委任ポイントに存在しない場合、名前サーバーは、DS RRSTが存在しないことを証明するNSEC RRと、NS RRSTとともにNSEC RRに関連するRRSIG RR（S）の両方を返す必要があります。名前サーバーは、NSEC RRSETおよびそれに関連するRRSIG RRの前にNS RRSetを配置する必要があります。"
+      "ja": "DS RRsetが委任ポイントに存在しない場合、ネームサーバーは、DS RRsetが存在しないことを証明するNSEC RRと、NSEC RRに関連付けられたRRSIG RR（複数可）の両方を、NS RRsetとともに返さなければなりません。ネームサーバーは、NSEC RRsetおよびそれに関連付けられたRRSIG RR（複数可）の前にNS RRsetを配置しなければなりません。"
     },
     {
       "indent": 3,
@@ -653,7 +653,7 @@
     {
       "indent": 3,
       "text": "The DS resource record type is unusual in that it appears only on the parent zone's side of a zone cut. For example, the DS RRset for the delegation of \"foo.example\" is stored in the \"example\" zone rather than in the \"foo.example\" zone. This requires special processing rules for both name servers and resolvers, as the name server for the child zone is authoritative for the name at the zone cut by the normal DNS rules but the child zone does not contain the DS RRset.",
-      "ja": "DSリソースレコードタイプは、ゾーンカットの親ゾーン側のみにのみ表示されるという点で珍しいです。たとえば、「foo.example」の委任のDS RRSETは、「foo.example」ゾーンではなく「例」ゾーンに保存されます。これには、名前サーバーとリゾルバーの両方に特別な処理ルールが必要です。これは、子ゾーンの名前サーバーは通常のDNSルールによってカットされたゾーンの名前に対して権威あるものであるため、子ゾーンにはDS RRSetが含まれていません。"
+      "ja": "DSリソースレコードタイプは、ゾーンカットの親ゾーン側にのみ現れるという点で珍しいものです。たとえば、「foo.example」の委任のためのDS RRsetは、「foo.example」ゾーンではなく「example」ゾーンに格納されます。これには、ネームサーバーとリゾルバの両方に特別な処理ルールが必要です。子ゾーンのネームサーバーは通常のDNSルールによってゾーンカットでの名前に対して権威がありますが、子ゾーンにはDS RRsetが含まれていないためです。"
     },
     {
       "indent": 3,
@@ -709,7 +709,7 @@
     {
       "indent": 3,
       "text": "An authoritative name server is not required to verify that a zone is properly signed before sending or accepting a zone transfer. However, an authoritative name server MAY choose to reject the entire zone transfer if the zone fails to meet any of the signing requirements described in Section 2. The primary objective of a zone transfer is to ensure that all authoritative name servers have identical copies of the zone. An authoritative name server that chooses to perform its own zone validation MUST NOT selectively reject some RRs and accept others.",
-      "ja": "ゾーン転送を送信または受け入れる前に、ゾーンが適切に署名されていることを確認するために、権威ある名前サーバーは必要ありません。ただし、ゾーンがセクション2で説明されている署名要件のいずれかを満たしていない場合、ゾーン転送全体を拒否することを選択できます。ゾーン。独自のゾーン検証を実行することを選択した権威ある名前サーバーは、一部のRRを選択的に拒否し、他のRRを受け入れてはなりません。"
+      "ja": "ゾーン転送を送信または受け入れる前に、ゾーンが適切に署名されていることを確認するために、権威ある名前サーバーは必要ありません。ただし、ゾーンがセクション2で説明されている署名要件のいずれかを満たしていない場合、権威ネームサーバーはゾーン転送全体を拒否することを選択してもよい（MAY）。ゾーン転送の主な目的は、すべての権威ネームサーバーがゾーンの同一のコピーを持つことを保証することです。独自のゾーン検証を実行することを選択した権威ネームサーバーは、一部のRRを選択的に拒否し、他のRRを受け入れるようなことをしてはなりません（MUST NOT）。"
     },
     {
       "indent": 3,
@@ -724,7 +724,7 @@
     {
       "indent": 3,
       "text": "RRSIG RRs appear in both the parent and child zones at a zone cut and are authoritative in whichever zone contains the authoritative RRset for which the RRSIG RR provides the signature. That is, the RRSIG RR for a DS RRset or a parental NSEC RR at a zone cut will be authoritative in the parent zone, and the RRSIG for any RRset in the child zone's apex will be authoritative in the child zone. Parental and child RRSIG RRs at a zone cut will never be identical to each other, as the Signer's Name field of an RRSIG RR in the child zone's apex will indicate a DNSKEY RR in the child zone's apex whereas the same field of a parental RRSIG RR at the zone cut will indicate a DNSKEY RR in the parent zone's apex. As with any other authoritative RRs, RRSIG RRs MUST be included in zone transfers of the zone in which they are authoritative data.",
-      "ja": "RRSIG RRSは、ゾーンカットの親ゾーンとチャイルドゾーンの両方に表示され、RRSIG RRが署名を提供する権威あるRRSetを含むゾーンでは権威あるものです。つまり、ゾーンカットでのDS RRSETまたは親のNSEC RRのRRSIG RRは親ゾーンで権威があり、子ゾーンの頂点のRRSETのRRSIGは子供ゾーンでは権威があります。ゾーンカットでの親と子のrrsig RRSは、子ゾーンの頂点のrrsig rrの署名者の名前フィールドは、子ゾーンの頂点のdnskeyRRを示しているため、親のrrsig rrsig rrrの同じフィールドが示されているため、互いに同一になることはありません。ゾーンカットでは、親ゾーンの頂点にDNSKEY RRが示されます。他の権威あるRRSと同様に、RRSIG RRSは、権威あるデータであるゾーンのゾーン転送に含める必要があります。"
+      "ja": "RRSIG RRは、ゾーンカットの親ゾーンと子ゾーンの両方に現れ、RRSIG RRが署名を提供する権威あるRRsetを含むゾーンのいずれにおいても権威があります。つまり、ゾーンカットでのDS RRsetまたは親のNSEC RRのRRSIG RRは親ゾーンで権威があり、子ゾーンの頂点にあるRRsetのRRSIGは子ゾーンで権威があります。ゾーンカットでの親と子のRRSIG RRは、子ゾーンの頂点にあるRRSIG RRの署名者名フィールドは子ゾーンの頂点にあるDNSKEY RRを示すのに対し、ゾーンカットでの親のRRSIG RRの同じフィールドは親ゾーンの頂点にあるDNSKEY RRを示すため、互いに同一になることはありません。他の権威あるRRと同様に、RRSIG RRは、それらが権威あるデータであるゾーンのゾーン転送に含めなければなりません。"
     },
     {
       "indent": 0,
@@ -745,7 +745,7 @@
     {
       "indent": 3,
       "text": "A security-aware name server MUST NOT set the AD bit in a response unless the name server considers all RRsets in the Answer and Authority sections of the response to be authentic. A security-aware name server's local policy MAY consider data from an authoritative zone to be authentic without further validation. However, the name server MUST NOT do so unless the name server obtained the authoritative zone via secure means (such as a secure zone transfer mechanism) and MUST NOT do so unless this behavior has been configured explicitly.",
-      "ja": "セキュリティ対応の名前のサーバーは、名前サーバーが回答のすべてのrrsetsと応答のすべてのrrsetsを本物であると考慮しない限り、ADビットを応答に設定してはなりません。セキュリティ対応の名前サーバーのローカルポリシーは、権威あるゾーンからのデータを、さらに検証することなく本物であると考える場合があります。ただし、名前サーバーが安全な手段（安全なゾーン転送メカニズムなど）を介して権威あるゾーンを取得しない限り、名前サーバーはそうしてはなりません。この動作が明示的に構成されていない限り、そうしてはなりません。"
+      "ja": "セキュリティ対応ネームサーバーは、ネームサーバーが応答の回答および権限セクション内のすべてのRRsetを真正であると見なさない限り、応答にADビットをセットしてはなりません。セキュリティ対応ネームサーバーのローカルポリシーは、権威あるゾーンからのデータを、さらなる検証なしに真正であると見なすことができます（MAY）。ただし、ネームサーバーが安全な手段（安全なゾーン転送メカニズムなど）を介して権威あるゾーンを取得しない限り、ネームサーバーはそうしてはならず、この動作が明示的に構成されていない限り、そうしてはなりません。"
     },
     {
       "indent": 3,
@@ -772,12 +772,12 @@
       "indent": 0,
       "text": "3.2.1. The DO Bit",
       "section_title": true,
-      "ja": "3.2.1. ビット"
+      "ja": "3.2.1. DOビット"
     },
     {
       "indent": 3,
       "text": "The resolver side of a security-aware recursive name server MUST set the DO bit when sending requests, regardless of the state of the DO bit in the initiating request received by the name server side. If the DO bit in an initiating query is not set, the name server side MUST strip any authenticating DNSSEC RRs from the response but MUST NOT strip any DNSSEC RR types that the initiating query explicitly requested.",
-      "ja": "セキュリティ対応の再帰的な名前サーバーのリゾルバー側は、名前サーバー側が受信した開始要求のDOビットの状態に関係なく、リクエストを送信するときにDOをBITを設定する必要があります。開始クエリのbitが設定されていない場合、名前サーバー側は応答から認証DNSSEC RRを削除する必要がありますが、開始クエリが明示的に要求したDNSSEC RRタイプを削除してはなりません。"
+      "ja": "セキュリティ対応再帰ネームサーバーのリゾルバー側は、ネームサーバー側が受信した開始要求のDOビットの状態に関係なく、リクエストを送信するときにDOビットをセットしなければなりません。開始クエリのDOビットがセットされていない場合、ネームサーバー側は応答から認証DNSSEC RRを削除しなければなりませんが、開始クエリが明示的に要求したDNSSEC RRタイプを削除してはなりません。"
     },
     {
       "indent": 0,
@@ -798,12 +798,12 @@
     {
       "indent": 3,
       "text": "The name server side of a security-aware recursive name server MUST pass the state of the CD bit to the resolver side along with the rest of an initiating query, so that the resolver side will know whether it is required to verify the response data it returns to the name server side. If the CD bit is set, it indicates that the originating resolver is willing to perform whatever authentication its local policy requires. Thus, the resolver side of the recursive name server need not perform authentication on the RRsets in the response. When the CD bit is set, the recursive name server SHOULD, if possible, return the requested data to the originating resolver, even if the recursive name server's local authentication policy would reject the records in question. That is, by setting the CD bit, the originating resolver has indicated that it takes responsibility for performing its own authentication, and the recursive name server should not interfere.",
-      "ja": "セキュリティ対応の再帰名サーバーの名前サーバー側は、CDビットの状態をリゾルバー側に渡す必要があります。名前サーバー側に戻ります。CDビットが設定されている場合、発信元のリゾルバーが、ローカルポリシーが必要とする認証を実行する意思があることを示しています。したがって、再帰名サーバーのリゾルバー側は、応答のrrsetsで認証を実行する必要はありません。CDビットが設定されている場合、再帰的な名前サーバーのローカル認証ポリシーが問題のレコードを拒否する場合でも、可能であれば、可能であれば、要求されたデータを元のリゾルバーに返す必要があります。つまり、CDビットを設定することにより、発信元のリゾルバーは、独自の認証を実行する責任が必要であり、再帰名サーバーが干渉してはならないことを示しています。"
+      "ja": "セキュリティ対応再帰ネームサーバーのネームサーバー側は、開始クエリの残りの部分とともにCDビットの状態をリゾルバー側に渡さなければなりません。これにより、リゾルバー側は、ネームサーバー側に返す応答データを検証する必要があるかどうかを知ることができます。CDビットがセットされている場合、それは発信元のリゾルバがローカルポリシーが必要とする認証を実行する意思があることを示しています。したがって、再帰ネームサーバーのリゾルバー側は、応答内のRRsetに対して認証を実行する必要はありません。CDビットがセットされている場合、再帰ネームサーバーは、再帰ネームサーバーのローカル認証ポリシーが問題のレコードを拒否する場合でも、可能であれば、要求されたデータを元のリゾルバに返すべきです。つまり、CDビットをセットすることにより、発信元のリゾルバは、独自の認証を実行する責任を負うことを示しており、再帰ネームサーバーは干渉すべきではありません。"
     },
     {
       "indent": 3,
       "text": "If the resolver side implements a BAD cache (see Section 4.7) and the name server side receives a query that matches an entry in the resolver side's BAD cache, the name server side's response depends on the state of the CD bit in the original query. If the CD bit is set, the name server side SHOULD return the data from the BAD cache; if the CD bit is not set, the name server side MUST return RCODE 2 (server failure).",
-      "ja": "リゾルバー側が悪いキャッシュを実装し（セクション4.7を参照）、名前サーバー側がResolverの悪いキャッシュのエントリに一致するクエリを受信した場合、名前サーバー側の応答は元のクエリのCDビットの状態に依存します。CDビットが設定されている場合、名前サーバー側は悪いキャッシュからデータを返す必要があります。CDビットが設定されていない場合、名前サーバー側はRcode 2（サーバーの障害）を返す必要があります。"
+      "ja": "リゾルバー側がBADキャッシュを実装し（セクション4.7を参照）、名前サーバー側がResolverのBADキャッシュのエントリに一致するクエリを受信した場合、名前サーバー側の応答は元のクエリのCDビットの状態に依存します。CDビットがセットされている場合、ネームサーバー側はBADキャッシュからデータを返すべきです（SHOULD）。CDビットがセットされていない場合、ネームサーバー側はRCODE 2（サーバー障害）を返さなければなりません（MUST）。"
     },
     {
       "indent": 3,
@@ -814,12 +814,12 @@
       "indent": 0,
       "text": "3.2.3. The AD Bit",
       "section_title": true,
-      "ja": "3.2.3. 広告ビット"
+      "ja": "3.2.3. ADビット"
     },
     {
       "indent": 3,
       "text": "The name server side of a security-aware recursive name server MUST NOT set the AD bit in a response unless the name server considers all RRsets in the Answer and Authority sections of the response to be authentic. The name server side SHOULD set the AD bit if and only if the resolver side considers all RRsets in the Answer section and any relevant negative response RRs in the Authority section to be authentic. The resolver side MUST follow the procedure described in Section 5 to determine whether the RRs in question are authentic. However, for backward compatibility, a recursive name server MAY set the AD bit when a response includes unsigned CNAME RRs if those CNAME RRs demonstrably could have been synthesized from an authentic DNAME RR that is also included in the response according to the synthesis rules described in [RFC2672].",
-      "ja": "セキュリティ対応の再帰名サーバーの名前サーバー側は、名前サーバーが回答のすべてのrrsetsと応答のすべてのrrsetsを本物であると見なさない限り、ADビットを応答に設定してはなりません。Resolver Sideが回答セクション内のすべてのrrsetを考慮し、Authorityセクションの関連する負の応答RRが本物である場合にのみ、名前サーバー側はADビットを設定する必要があります。リゾルバー側は、セクション5で説明されている手順に従って、問題のRRが本物であるかどうかを判断する必要があります。ただし、後方互換性の場合、応答に署名されていないCNAME RRSが含まれている場合、再帰名の名前サーバーがADビットを設定することができます。[RFC2672]。"
+      "ja": "セキュリティ対応再帰ネームサーバーのネームサーバー側は、ネームサーバーが応答の回答および権限セクション内のすべてのRRsetを真正であると見なさない限り、応答にADビットをセットしてはなりません。ネームサーバー側は、リゾルバー側が回答セクション内のすべてのRRsetおよび権限セクション内の関連する否定応答RRを真正であると見なす場合にのみ、ADビットをセットすべきです。リゾルバー側は、問題のRRが真正であるかどうかを判断するために、セクション5で説明されている手順に従わなければなりません。ただし、後方互換性のために、再帰ネームサーバーは、応答に署名されていないCNAME RRが含まれている場合、それらのCNAME RRが[RFC2672]で説明されている合成ルールに従って応答にも含まれている真正なDNAME RRから合成された可能性があることが実証できる場合に、ADビットをセットしてもかまいません（MAY）。"
     },
     {
       "indent": 0,
@@ -852,12 +852,12 @@
     {
       "indent": 3,
       "text": "A security-aware resolver MUST include an EDNS ([RFC2671]) OPT pseudo-RR with the DO ([RFC3225]) bit set when sending queries.",
-      "ja": "セキュリティ認識リゾルバーには、クエリを送信するときにDO（[RFC3225]）BITセットを使用して、EDNS（[RFC2671]）OPT PSEUDO-RRを含める必要があります。"
+      "ja": "セキュリティ対応リゾルバは、クエリを送信するときに、DO（[RFC3225]）ビットがセットされたEDNS（[RFC2671]）OPT疑似RRを含めなければなりません。"
     },
     {
       "indent": 3,
       "text": "A security-aware resolver MUST support a message size of at least 1220 octets, SHOULD support a message size of 4000 octets, and MUST use the \"sender's UDP payload size\" field in the EDNS OPT pseudo-RR to advertise the message size that it is willing to accept. A security-aware resolver's IP layer MUST handle fragmented UDP packets correctly regardless of whether any such fragmented packets were received via IPv4 or IPv6. Please see [RFC1122], [RFC2460], and [RFC3226] for discussion of these requirements.",
-      "ja": "セキュリティ認識リゾルバーは、少なくとも1220オクテットのメッセージサイズをサポートする必要があり、4000オクテットのメッセージサイズをサポートし、EDNS Opt Pseudo-RRの「送信者のUDPペイロードサイズ」フィールドを使用して、それをメッセージサイズを宣伝する必要があります。喜んで受け入れます。セキュリティ認識ResolverのIPレイヤーは、IPv4またはIPv6を介してそのような断片化されたパケットが受信されたかどうかにかかわらず、断片化されたUDPパケットを正しく処理する必要があります。これらの要件の議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。"
+      "ja": "セキュリティ対応リゾルバは、少なくとも1220オクテットのメッセージサイズをサポートしなければならず、4000オクテットのメッセージサイズをサポートすべきであり、EDNS OPT疑似RRの「送信者のUDPペイロードサイズ」フィールドを使用して、受け入れる意思のあるメッセージサイズを通知しなければなりません。セキュリティ対応リゾルバのIP層は、そのような断片化されたパケットがIPv4経由で受信されたかIPv6経由で受信されたかに関係なく、断片化されたUDPパケットを正しく処理しなければなりません。これらの要件の議論については、[RFC1122]、[RFC2460]、および[RFC3226]を参照してください。"
     },
     {
       "indent": 0,
@@ -898,7 +898,7 @@
     {
       "indent": 3,
       "text": "When attempting to retrieve missing NSEC RRs that reside on the parental side at a zone cut, a security-aware iterative-mode resolver MUST query the name servers for the parent zone, not the child zone.",
-      "ja": "ゾーンカットで親の側に存在する欠落しているNSEC RRSを取得しようとする場合、セキュリティ認識の反復モードリゾルバーは、チャイルドゾーンではなく、親ゾーンの名前サーバーを照会する必要があります。"
+      "ja": "ゾーンカットの親側に存在する欠落しているNSEC RRを取得しようとする場合、セキュリティ対応の反復モードリゾルバは、子ゾーンではなく、親ゾーンのネームサーバーに問い合わせなければなりません。"
     },
     {
       "indent": 3,
@@ -919,22 +919,22 @@
     {
       "indent": 3,
       "text": "Secure: An RRset for which the resolver is able to build a chain of signed DNSKEY and DS RRs from a trusted security anchor to the RRset. In this case, the RRset should be signed and is subject to signature validation, as described above.",
-      "ja": "セキュア：リゾルバーが信頼できるセキュリティアンカーからRRSetまでの署名付きDNSKEYおよびDS RRのチェーンを構築できるRRSet。この場合、上記のように、RRSetに署名し、署名検証の対象となります。"
+      "ja": "セキュア：リゾルバが信頼できるセキュリティアンカーからRRsetまでの署名付きDNSKEYおよびDS RRのチェーンを構築できるRRset。この場合、RRsetは署名されるべきであり、上記のように署名検証の対象となります。"
     },
     {
       "indent": 3,
       "text": "Insecure: An RRset for which the resolver knows that it has no chain of signed DNSKEY and DS RRs from any trusted starting point to the RRset. This can occur when the target RRset lies in an unsigned zone or in a descendent of an unsigned zone. In this case, the RRset may or may not be signed, but the resolver will not be able to verify the signature.",
-      "ja": "不安：リゾルバーが、信頼できる出発点からRRSetまでの署名付きDNSKEYおよびDS RRのチェーンがないことをリゾルバーが知っているRRSET。これは、ターゲットRRSetが署名されていないゾーンまたは署名されていないゾーンの子孫にある場合に発生する可能性があります。この場合、RRSetに署名されている場合とそうでない場合がありますが、リゾルバーは署名を確認できません。"
+      "ja": "インセキュア：リゾルバが、信頼できる出発点からRRsetまでの署名付きDNSKEYおよびDS RRのチェーンがないことを知っているRRset。これは、ターゲットRRsetが署名されていないゾーンまたは署名されていないゾーンの子孫にある場合に発生する可能性があります。この場合、RRsetは署名されている場合とそうでない場合がありますが、リゾルバは署名を検証できません。"
     },
     {
       "indent": 3,
       "text": "Bogus: An RRset for which the resolver believes that it ought to be able to establish a chain of trust but for which it is unable to do so, either due to signatures that for some reason fail to validate or due to missing data that the relevant DNSSEC RRs indicate should be present. This case may indicate an attack but may also indicate a configuration error or some form of data corruption.",
-      "ja": "偽物：リゾルバーが信頼の連鎖を確立できるはずだと信じているが、何らかの理由で検証に失敗した署名または関連するデータが欠落しているため、そうすることができないrrsetDNSSEC RRSは、存在する必要があることを示しています。このケースは攻撃を示している可能性がありますが、構成エラーまたは何らかの形式のデータ腐敗を示している場合があります。"
+      "ja": "ボーガス：リゾルバが信頼の連鎖を確立できるはずだと信じているが、何らかの理由で検証に失敗した署名、または関連するDNSSEC RRが存在すべきであることを示しているデータの欠落のために、そうすることができないRRset。このケースは攻撃を示している可能性がありますが、構成エラーまたは何らかの形式のデータ破損を示している場合もあります。"
     },
     {
       "indent": 3,
       "text": "Indeterminate: An RRset for which the resolver is not able to determine whether the RRset should be signed, as the resolver is not able to obtain the necessary DNSSEC RRs. This can occur when the security-aware resolver is not able to contact security-aware name servers for the relevant zones.",
-      "ja": "不確定：リゾルバーが必要なDNSSEC RRを取得できないため、RELSTがRRSetに署名するかどうかを決定できないRRSET。これは、セキュリティ対応のリゾルバーが関連するゾーンのセキュリティ対応の名前サーバーに連絡できない場合に発生する可能性があります。"
+      "ja": "不確定：リゾルバが必要なDNSSEC RRを取得できないため、RRsetが署名されるべきかどうかを決定できないRRset。これは、セキュリティ対応リゾルバが関連するゾーンのセキュリティ対応ネームサーバーに連絡できない場合に発生する可能性があります。"
     },
     {
       "indent": 0,
@@ -950,7 +950,7 @@
     {
       "indent": 3,
       "text": "Note that trust anchors also cover key material that is updated in a secure manner. This secure manner could be through physical media, a key exchange protocol, or some other out-of-band means.",
-      "ja": "Trust Anchorsは、安全な方法で更新される重要な資料もカバーしていることに注意してください。この安全な方法は、物理メディア、キーエクスチェンジプロトコル、またはその他の帯域外の手段を通じて行うことができます。"
+      "ja": "トラストアンカーは、安全な方法で更新される鍵素材もカバーすることに注意してください。この安全な方法は、物理メディア、キーエクスチェンジプロトコル、またはその他の帯域外の手段を通じて行うことができます。"
     },
     {
       "indent": 0,
@@ -961,7 +961,7 @@
     {
       "indent": 3,
       "text": "A security-aware resolver SHOULD cache each response as a single atomic entry containing the entire answer, including the named RRset and any associated DNSSEC RRs. The resolver SHOULD discard the entire atomic entry when any of the RRs contained in it expire. In most cases the appropriate cache index for the atomic entry will be the triple <QNAME, QTYPE, QCLASS>, but in cases such as the response form described in Section 3.1.3.2 the appropriate cache index will be the double <QNAME,QCLASS>.",
-      "ja": "セキュリティ認識リゾルバーは、指定されたRRSETおよび関連するDNSSEC RRを含む、回答全体を含む単一の原子エントリとして各応答をキャッシュする必要があります。リゾルバーは、その中に含まれるRRのいずれかが期限切れになったときに、原子エントリ全体を破棄する必要があります。ほとんどの場合、アトミックエントリの適切なキャッシュインデックスはトリプル<QNAME、QTYPE、QCLASS>ですが、セクション3.1.3.2で説明されている応答フォームなどの場合、適切なキャッシュインデックスはdouble <qName、qclass>。"
+      "ja": "セキュリティ対応リゾルバは、指定されたRRsetおよび関連するDNSSEC RRを含む、回答全体を含む単一のアトミックエントリとして各応答をキャッシュすべきです。リゾルバは、その中に含まれるRRのいずれかが期限切れになったときに、アトミックエントリ全体を破棄すべきです。ほとんどの場合、アトミックエントリの適切なキャッシュインデックスはトリプル<QNAME, QTYPE, QCLASS>ですが、セクション3.1.3.2で説明されている応答フォームなどの場合、適切なキャッシュインデックスはダブル<QNAME, QCLASS>になります。"
     },
     {
       "indent": 3,
@@ -986,13 +986,13 @@
     {
       "indent": 3,
       "text": "In theory, a resolver could use wildcards or NSEC RRs to generate positive and negative responses (respectively) until the TTL or signatures on the records in question expire. However, it seems prudent for resolvers to avoid blocking new authoritative data or synthesizing new data on their own. Resolvers that follow this recommendation will have a more consistent view of the namespace.",
-      "ja": "理論的には、リゾルバーはワイルドカードまたはNSEC RRSを使用して、問題のレコードのTTLまたは署名が期限切れになるまで（それぞれ）肯定的および負の応答を生成することができます。ただし、リソースバーが新しい権威あるデータをブロックしたり、自分で新しいデータを合成したりしないようにすることは賢明なようです。この推奨事項に従うリゾルバーは、名前空間のより一貫したビューを持っています。"
+      "ja": "理論的には、リゾルバーはワイルドカードまたはNSEC RRSを使用して、問題のレコードのTTLまたは署名が期限切れになるまで（それぞれ）肯定的および負の応答を生成することができます。ただし、リゾルバが新しい権威あるデータをブロックしたり、自分で新しいデータを合成したりしないようにすることは賢明なようです。この推奨事項に従うリゾルバーは、名前空間のより一貫したビューを持っています。"
     },
     {
       "indent": 0,
       "text": "4.6. Handling of the CD and AD Bits",
       "section_title": true,
-      "ja": "4.6. CDおよび広告ビットの処理"
+      "ja": "4.6. CDおよびADビットの処理"
     },
     {
       "indent": 3,
@@ -1002,7 +1002,7 @@
     {
       "indent": 3,
       "text": "A security-aware resolver MUST clear the AD bit when composing query messages to protect against buggy name servers that blindly copy header bits that they do not understand from the query message to the response message.",
-      "ja": "セキュリティ対応のリゾルバーは、クエリ名のサーバーから保護するクエリメッセージを構成するときに広告ビットをクリアする必要があります。これは、クエリメッセージから応答メッセージまで理解できないヘッダービットを盲目的にコピーする必要があります。"
+      "ja": "セキュリティ対応のリゾルバーは、クエリメッセージから応答メッセージまで理解できないヘッダービットを盲目的にコピーするバグのあるネームサーバーから保護するために、クエリメッセージを構成するときにADビットをクリアする必要があります。"
     },
     {
       "indent": 3,
@@ -1028,12 +1028,12 @@
     {
       "indent": 3,
       "text": "Conceptually, caching such data is similar to negative caching ([RFC2308]), except that instead of caching a valid negative response, the resolver is caching the fact that a particular answer failed to validate. This document refers to a cache of data with invalid signatures as a \"BAD cache\".",
-      "ja": "概念的には、そのようなデータのキャッシュは、負のキャッシュ（[RFC2308]）に似ていますが、有効な否定的な応答をキャッシュする代わりに、リゾルバーは特定の答えが検証できなかったという事実をキャッシュしています。このドキュメントは、「悪いキャッシュ」として無効な署名を持つデータのキャッシュを指します。"
+      "ja": "概念的には、そのようなデータのキャッシュは、負のキャッシュ（[RFC2308]）に似ていますが、有効な否定的な応答をキャッシュする代わりに、リゾルバーは特定の答えが検証できなかったという事実をキャッシュしています。このドキュメントは、「BADキャッシュ」として無効な署名を持つデータのキャッシュを指します。"
     },
     {
       "indent": 3,
       "text": "Resolvers that implement a BAD cache MUST take steps to prevent the cache from being useful as a denial-of-service attack amplifier, particularly the following:",
-      "ja": "悪いキャッシュを実装するリゾルバーは、サービス拒否攻撃アンプとしてキャッシュが役立つのを防ぐための手順を講じる必要があります。"
+      "ja": "BADキャッシュを実装するリゾルバーは、サービス拒否攻撃の増幅器としてキャッシュが役立つのを防ぐための手順を講じる必要があります。"
     },
     {
       "indent": 3,
@@ -1043,12 +1043,12 @@
     {
       "indent": 3,
       "text": "o In order to prevent caching of a transient validation failure (which might be the result of an attack), resolvers SHOULD track queries that result in validation failures and SHOULD only answer from the BAD cache after the number of times that responses to queries for that particular <QNAME, QTYPE, QCLASS> have failed to validate exceeds a threshold value.",
-      "ja": "o 一時的な検証障害のキャッシュを防ぐため（攻撃の結果である可能性があります）、リゾルバーは検証障害をもたらすクエリを追跡し、その特定のクエリに対する応答の回数後にのみ悪いキャッシュから答える必要があります<QName、QType、QClass>は、検証に失敗し、しきい値を超えています。"
+      "ja": "o 一時的な検証の失敗 (攻撃の結果である可能性があります) のキャッシュを防ぐために、リゾルバは検証の失敗につながるクエリを追跡し、特定の <QNAME, QTYPE, QCLASS> に対するクエリへの応答が検証に失敗した回数がしきい値を超えた後にのみ、BAD キャッシュから応答する必要があります。"
     },
     {
       "indent": 3,
       "text": "Resolvers MUST NOT return RRsets from the BAD cache unless the resolver is not required to validate the signatures of the RRsets in question under the rules given in Section 4.2 of this document. See Section 3.2.2 for discussion of how the responses returned by a security-aware recursive name server interact with a BAD cache.",
-      "ja": "リゾルバーは、このドキュメントのセクション4.2に記載されているルールに基づいて、問題のRRSetsの署名を検証する必要がない場合を除き、不良キャッシュからrrsetを返してはなりません。セキュリティ認識の再帰名サーバーによって返された応答が悪いキャッシュとどのように相互作用するかについての議論については、セクション3.2.2を参照してください。"
+      "ja": "リゾルバーは、このドキュメントのセクション4.2に記載されているルールに基づいて、問題のRRSetsの署名を検証する必要がない場合を除き、BADキャッシュからrrsetを返してはなりません。セキュリティ認識の再帰名サーバーによって返された応答がBADキャッシュとどのように相互作用するかについての議論については、セクション3.2.2を参照してください。"
     },
     {
       "indent": 0,
@@ -1076,12 +1076,12 @@
       "indent": 0,
       "text": "4.9.1. Handling of the DO Bit",
       "section_title": true,
-      "ja": "4.9.1. ビットの処理"
+      "ja": "4.9.1. DOビットの処理"
     },
     {
       "indent": 3,
       "text": "A non-validating security-aware stub resolver MAY include the DNSSEC RRs returned by a security-aware recursive name server as part of the data that the stub resolver hands back to the application that invoked it, but is not required to do so. A non-validating stub resolver that seeks to do this will need to set the DO bit in order to receive DNSSEC RRs from the recursive name server.",
-      "ja": "検証されていないセキュリティ対応のスタブリゾルバーには、セキュリティ認識の再帰名サーバーによって返されるDNSSEC RRSが含まれる場合があります。これを行おうとする非検証スタブリゾルバーは、再帰名サーバーからDNSSEC RRを受信するためにDOビットを設定する必要があります。"
+      "ja": "非検証のセキュリティ対応スタブリゾルバは、セキュリティ対応再帰ネームサーバーによって返されるDNSSEC RRを、スタブリゾルバがそれを呼び出したアプリケーションに返すデータの一部として含めてもよい（MAY）が、そうする必要はない。これを行おうとする非検証スタブリゾルバは、再帰ネームサーバーからDNSSEC RRを受信するためにDOビットをセットする必要があります。"
     },
     {
       "indent": 3,
@@ -1097,7 +1097,7 @@
     {
       "indent": 3,
       "text": "A non-validating security-aware stub resolver SHOULD NOT set the CD bit when sending queries unless it is requested by the application layer, as by definition, a non-validating stub resolver depends on the security-aware recursive name server to perform validation on its behalf.",
-      "ja": "非検証のセキュリティ対応スタブリゾルバーは、アプリケーションレイヤーによって要求されない限り、クエリを送信するときにCDビットを設定しないでください。定義上、非検証型スタブリゾルバーは、セキュリティ認識の再帰名サーバーに依存して検証を実行しますその代わりに。"
+      "ja": "非検証のセキュリティ対応スタブリゾルバは、アプリケーション層によって要求されない限り、クエリを送信するときにCDビットをセットすべきではない（SHOULD NOT）。定義上、非検証スタブリゾルバは、自身の代わりに検証を実行するためにセキュリティ対応再帰ネームサーバーに依存しているからである。"
     },
     {
       "indent": 3,
@@ -1108,12 +1108,12 @@
       "indent": 0,
       "text": "4.9.3. Handling of the AD Bit",
       "section_title": true,
-      "ja": "4.9.3. 広告ビットの処理"
+      "ja": "4.9.3. ADビットの処理"
     },
     {
       "indent": 3,
       "text": "A non-validating security-aware stub resolver MAY chose to examine the setting of the AD bit in response messages that it receives in order to determine whether the security-aware recursive name server that sent the response claims to have cryptographically verified the data in the Answer and Authority sections of the response message. Note, however, that the responses received by a security-aware stub resolver are heavily dependent on the local policy of the security-aware recursive name server. Therefore, there may be little practical value in checking the status of the AD bit, except perhaps as a debugging aid. In any case, a security-aware stub resolver MUST NOT place any reliance on signature validation allegedly performed on its behalf, except when the security-aware stub resolver obtained the data in question from a trusted security-aware recursive name server via a secure channel.",
-      "ja": "非検証型セキュリティ対応のスタブリゾルバーは、応答を送信したセキュリティ対応の再帰名サーバーが、応答を送信したセキュリティ認識の再帰名サーバーが暗号化されたと主張していると主張していると判断するために、受信する応答メッセージのADビットの設定を調べることを選択することができます。応答メッセージの回答と権限セクション。ただし、セキュリティ認識のスタブリゾルバーによって受け取った応答は、セキュリティ対応の再帰名サーバーのローカルポリシーに大きく依存していることに注意してください。したがって、おそらくデバッグ援助として除き、広告ビットのステータスをチェックする際にはほとんど実用的な価値がないかもしれません。いずれにせよ、セキュリティ対応のスタブリゾルバーが安全なチャネルを介して信頼できるセキュリティ対応の再帰名サーバーから問題のデータを取得した場合を除き、セキュリティ認識スタブリゾルバーは、そのために実行された署名検証に依存してはなりません。。"
+      "ja": "非検証型セキュリティ対応のスタブリゾルバーは、応答を送信したセキュリティ対応の再帰名サーバーが、応答メッセージの回答および権限セクション内のデータを暗号的に検証したと主張しているかどうかを判断するために、受信する応答メッセージのADビットの設定を調べることを選択することができます。ただし、セキュリティ認識のスタブリゾルバーによって受け取った応答は、セキュリティ対応の再帰名サーバーのローカルポリシーに大きく依存していることに注意してください。したがって、おそらくデバッグ支援として除き、ADビットの状態をチェックすることにはほとんど実用的な価値がないかもしれません。いずれにせよ、セキュリティ対応スタブリゾルバは、安全なチャネルを介して信頼できるセキュリティ対応再帰ネームサーバーから問題のデータを取得した場合を除き、自身の代わりに実行されたとされる署名検証に依存してはなりません（MUST NOT）。"
     },
     {
       "indent": 3,
@@ -1175,12 +1175,12 @@
     {
       "indent": 3,
       "text": "Islands of security (see [RFC4033]) are signed zones for which it is not possible to construct an authentication chain to the zone from its parent. Validating signatures within an island of security requires that the validator have some other means of obtaining an initial authenticated zone key for the island. If a validator cannot obtain such a key, it SHOULD switch to operating as if the zones in the island of security are unsigned.",
-      "ja": "セキュリティ島（[RFC4033]を参照）は、親からゾーンに認証チェーンを構築することができない署名ゾーンです。セキュリティ島内の署名を検証するには、バリッターが島の初期認証ゾーンキーを取得する他の手段を持っていることが必要です。バリーターがそのようなキーを取得できない場合、セキュリティ島のゾーンが署名されていないかのように動作に切り替える必要があります。"
+      "ja": "セキュリティの島（[RFC4033]を参照）は、親からゾーンに認証チェーンを構築することができない署名ゾーンです。セキュリティの島内の署名を検証するには、バリッターが島の初期認証ゾーンキーを取得する他の手段を持っていることが必要です。バリーターがそのようなキーを取得できない場合、セキュリティの島のゾーンが署名されていないかのように動作に切り替える必要があります。"
     },
     {
       "indent": 3,
       "text": "All the normal processes for validating responses apply to islands of security. The only difference between normal validation and validation within an island of security is in how the validator obtains a trust anchor for the authentication chain.",
-      "ja": "応答を検証するためのすべての通常のプロセスは、安全保障島に適用されます。セキュリティ島内の通常の検証と検証の唯一の違いは、検証装置が認証チェーンの信頼アンカーを取得する方法です。"
+      "ja": "応答を検証するためのすべての通常のプロセスは、セキュリティの島に適用されます。セキュリティの島内の通常の検証と検証の唯一の違いは、検証装置が認証チェーンの信頼アンカーを取得する方法です。"
     },
     {
       "indent": 0,
@@ -1273,7 +1273,7 @@
     {
       "indent": 3,
       "text": "o The RRSIG RR's Type Covered field MUST equal the RRset's type.",
-      "ja": "o RRSIG RRのタイプカバーフィールドは、RRSetのタイプに等しくなければなりません。"
+      "ja": "o RRSIG RRのType Coveredフィールドは、RRSetのタイプに等しくなければなりません。"
     },
     {
       "indent": 3,
@@ -1345,12 +1345,13 @@
     {
       "indent": 12,
       "text": "RRSIG_RDATA is the wire format of the RRSIG RDATA fields with the Signature field excluded and the Signer's Name in canonical form.",
-      "ja": "rrsig_rdataは、signatureフィールドが除外され、署名者の名前が正規の形式であるrrsig rdataフィールドのワイヤー形式です。"
+      "ja": "RRSIG_RDATAは、Signatureフィールドが除外され、署名者の名前が正規の形式であるRRSIG RDATAフィールドのワイヤー形式です。"
     },
     {
       "indent": 12,
       "text": "RR(i) = name | type | class | OrigTTL | RDATA length | RDATA",
-      "ja": "rr（i）= name |タイプ|クラス|Origttl |rdata長|rdata"
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 15,
@@ -1390,27 +1391,27 @@
     {
       "indent": 15,
       "text": "let fqdn_labels = Label count of the fqdn above.",
-      "ja": "fqdn_labels =上記のfqdnのラベルカウントとします。"
+      "ja": "fqdn_labels = 上記のfqdnのラベルカウントとします。"
     },
     {
       "indent": 15,
       "text": "if rrsig_labels = fqdn_labels, name = fqdn",
-      "ja": "rrsig_labels = fqdn_labelsの場合、name = fqdn"
+      "ja": "rrsig_labels = fqdn_labels の場合、name = fqdn"
     },
     {
       "indent": 15,
       "text": "if rrsig_labels < fqdn_labels, name = \"*.\" | the rightmost rrsig_label labels of the fqdn",
-      "ja": "rrsig_labels <fqdn_labels、name = \"*。\"|FQDNの右端のRRSIG_LABELラベル"
+      "ja": "rrsig_labels < fqdn_labels の場合、name = \"*.\" | FQDNの右端のRRSIG_LABELラベル"
     },
     {
       "indent": 15,
       "text": "if rrsig_labels > fqdn_labels the RRSIG RR did not pass the necessary validation checks and MUST NOT be used to authenticate this RRset.",
-      "ja": "rrsig_labels> fqdn_labelsの場合、rrsig rrは必要な検証チェックに合格せず、このrrsetを認証するために使用してはなりません。"
+      "ja": "rrsig_labels > fqdn_labels の場合、RRSIG RRは必要な検証チェックに合格せず、このrrsetを認証するために使用してはなりません。"
     },
     {
       "indent": 3,
       "text": "The canonical forms for names and RRsets are defined in [RFC4034].",
-      "ja": "名前とrrsetの標準形式は[RFC4034]で定義されています。"
+      "ja": "名前とRRsetの標準形式は[RFC4034]で定義されています。"
     },
     {
       "indent": 3,
@@ -1446,7 +1447,7 @@
     {
       "indent": 3,
       "text": "If the Labels field of the RRSIG RR is not equal to the number of labels in the RRset's fully qualified owner name, then the RRset is either invalid or the result of wildcard expansion. The resolver MUST verify that wildcard expansion was applied properly before considering the RRset to be authentic. Section 5.3.4 describes how to determine whether a wildcard was applied properly.",
-      "ja": "RRSIG RRのラベルフィールドが、RRSetの完全資格のある所有者名のラベルの数に等しくない場合、RRSetは無効またはワイルドカード拡張の結果です。リゾルバーは、RRSetが本物であると考える前に、ワイルドカードの拡張が適切に適用されたことを確認する必要があります。セクション5.3.4では、ワイルドカードが適切に適用されたかどうかを判断する方法について説明します。"
+      "ja": "RRSIG RRのラベルフィールドが、RRSetの完全修飾所有者名のラベルの数に等しくない場合、RRSetは無効またはワイルドカード拡張の結果です。リゾルバーは、RRSetが本物であると考える前に、ワイルドカードの拡張が適切に適用されたことを確認する必要があります。セクション5.3.4では、ワイルドカードが適切に適用されたかどうかを判断する方法について説明します。"
     },
     {
       "indent": 3,
@@ -1513,7 +1514,7 @@
     {
       "indent": 3,
       "text": "o If the requested RR name matches the owner name of an authenticated NSEC RR, then the NSEC RR's type bit map field lists all RR types present at that owner name, and a resolver can prove that the requested RR type does not exist by checking for the RR type in the bit map. If the number of labels in an authenticated NSEC RR's owner name equals the Labels field of the covering RRSIG RR, then the existence of the NSEC RR proves that wildcard expansion could not have been used to match the request.",
-      "ja": "o 要求されたRR名が認証されたNSEC RRの所有者名と一致する場合、NSEC RRのタイプビットマップフィールドには、その所有者名に存在するすべてのRRタイプがリストされ、リゾルバーは要求されたRRタイプが存在しないことを証明できます。RRビットマップのタイプ。認証されたNSEC RRの所有者名のラベルの数がカバーRRSIG RRのラベルフィールドに等しい場合、NSEC RRの存在は、ワイルドカードの拡張がリクエストと一致するために使用できなかったことを証明します。"
+      "ja": "o 要求されたRR名が認証されたNSEC RRの所有者名と一致する場合、NSEC RRのタイプビットマップフィールドには、その所有者名に存在するすべてのRRタイプがリストされ、リゾルバーはビットマップ内のRRタイプを確認することによって、要求されたRRタイプが存在しないことを証明できます。認証されたNSEC RRの所有者名のラベルの数がカバーRRSIG RRのラベルフィールドに等しい場合、NSEC RRの存在は、ワイルドカードの拡張がリクエストと一致するために使用できなかったことを証明します。"
     },
     {
       "indent": 3,
@@ -1544,7 +1545,7 @@
     {
       "indent": 3,
       "text": "If for whatever reason none of the RRSIGs can be validated, the response SHOULD be considered BAD. If the validation was being done to service a recursive query, the name server MUST return RCODE 2 to the originating client. However, it MUST return the full response if and only if the original query had the CD bit set. Also see Section 4.7 on caching responses that do not validate.",
-      "ja": "何らかの理由でRRSIGを検証できない場合、応答は悪いと見なされるべきです。再帰クエリを使用するために検証が行われている場合、名前サーバーはRcode 2を元のクライアントに返す必要があります。ただし、元のクエリにCDビットが設定されている場合にのみ、完全な応答を返す必要があります。また、検証されていないキャッシュ応答のセクション4.7を参照してください。"
+      "ja": "何らかの理由でRRSIGのいずれも検証できない場合、応答はBADと見なされるべきです（SHOULD）。再帰クエリを処理するために検証が行われていた場合、ネームサーバーはRCODE 2を元のクライアントに返さなければなりません（MUST）。ただし、元のクエリにCDビットがセットされていた場合に限り、完全な応答を返さなければなりません（MUST）。検証されない応答のキャッシュについては、セクション4.7も参照してください。"
     },
     {
       "indent": 0,
@@ -1571,7 +1572,7 @@
     {
       "indent": 3,
       "text": "[RFC2535] reserved the CD and AD bits in the message header. The meaning of the AD bit was redefined in [RFC3655], and the meaning of both the CD and AD bit are restated in this document. No new bits in the DNS message header are defined in this document.",
-      "ja": "[RFC2535]は、メッセージヘッダーにCDおよびADビットを予約しました。ADビットの意味は[RFC3655]で再定義され、CDとADビットの両方の意味がこのドキュメントで修正されています。このドキュメントでは、DNSメッセージヘッダーの新しいビットは定義されていません。"
+      "ja": "[RFC2535]は、メッセージヘッダーにCDおよびADビットを予約しました。ADビットの意味は[RFC3655]で再定義され、CDとADビットの両方の意味がこのドキュメントで改めて述べられています。このドキュメントでは、DNSメッセージヘッダーの新しいビットは定義されていません。"
     },
     {
       "indent": 3,
@@ -1592,12 +1593,12 @@
     {
       "indent": 3,
       "text": "An active attacker who can set the CD bit in a DNS query message or the AD bit in a DNS response message can use these bits to defeat the protection that DNSSEC attempts to provide to security-oblivious recursive-mode resolvers. For this reason, use of these control bits by a security-aware recursive-mode resolver requires a secure channel. See Sections 3.2.2 and 4.9 for further discussion.",
-      "ja": "DNSクエリメッセージまたはDNS応答メッセージのADビットでCDビットを設定できるアクティブな攻撃者は、これらのビットを使用して、DNSSECがセキュリティ称賛の再帰モードリゾルバーに提供しようとする保護を打ち負かすことができます。このため、セキュリティ対応の再帰モードリゾルバーによるこれらの制御ビットを使用するには、安全なチャネルが必要です。詳細については、セクション3.2.2および4.9を参照してください。"
+      "ja": "DNSクエリメッセージでCDビットを、またはDNS応答メッセージでADビットをセットできるアクティブな攻撃者は、これらのビットを使用して、DNSSECがセキュリティを認識しない再帰モードリゾルバに提供しようとする保護を無効にすることができます。このため、セキュリティ対応の再帰モードリゾルバーによるこれらの制御ビットを使用するには、安全なチャネルが必要です。詳細については、セクション3.2.2および4.9を参照してください。"
     },
     {
       "indent": 3,
       "text": "The protocol described in this document attempts to extend the benefits of DNSSEC to security-oblivious stub resolvers. However, as recovery from validation failures is likely to be specific to particular applications, the facilities that DNSSEC provides for stub resolvers may prove inadequate. Operators of security-aware recursive name servers will have to pay close attention to the behavior of the applications that use their services when choosing a local validation policy; failure to do so could easily result in the recursive name server accidentally denying service to the clients it is intended to support.",
-      "ja": "このドキュメントで説明されているプロトコルは、DNSSECの利点をセキュリティにかかるスタブリゾルバーに拡張しようとします。ただし、検証障害からの回復が特定のアプリケーションに固有の可能性が高いため、DNSSECがスタブリゾルバーに提供する施設は不十分であることが判明する可能性があります。セキュリティ認識の再帰名サーバーのオペレーターは、ローカル検証ポリシーを選択する際にサービスを使用するアプリケーションの動作に細心の注意を払う必要があります。そうしないと、再帰的な名前サーバーが誤ってサポートする予定のクライアントへのサービスを誤って拒否する可能性があります。"
+      "ja": "このドキュメントで説明されているプロトコルは、DNSSECの利点をセキュリティを認識しないスタブリゾルバに拡張しようとします。ただし、検証失敗からの回復は特定のアプリケーションに固有である可能性が高いため、DNSSECがスタブリゾルバに提供する機能は不十分であることが判明する可能性があります。セキュリティ認識の再帰名サーバーのオペレーターは、ローカル検証ポリシーを選択する際にサービスを使用するアプリケーションの動作に細心の注意を払う必要があります。そうしないと、再帰的な名前サーバーが誤ってサポートする予定のクライアントへのサービスを誤って拒否する可能性があります。"
     },
     {
       "indent": 0,
@@ -1721,13 +1722,9 @@
     },
     {
       "indent": 3,
-      "text": "example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) 3600 NS ns1.example. 3600 NS ns2.example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= ) 3600 MX 1 xx.example. 3600 RRSIG MX 5 1 3600 20040509183619 ( 20040409183619 38519 example. HyDHYVT5KHSZ7HtO/vypumPmSZQrcOP3tzWB 2qaKkHVPfau/DgLgS/IKENkYOGL95G4N+NzE VyNU8dcTOckT+ChPcGeVjguQ7a3Ao9Z/ZkUO 6gmmUW4b89rz1PUxW4jzUxj66PTwoVtUU/iM W6OISukd1EQt7a0kygkg+PEDxdI= ) 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= ) 3600 DNSKEY 256 3 5 ( AQOy1bZVvpPqhg4j7EJoM9rI3ZmyEx2OzDBV rZy/lvI5CQePxXHZS4i8dANH4DX3tbHol61e k8EFMcsGXxKciJFHyhl94C+NwILQdzsUlSFo vBZsyl/NX6yEbtw/xN9ZNcrbYvgjjZ/UVPZI ySFNsgEYvh0z2542lzMKR4Dh8uZffQ== ) 3600 DNSKEY 257 3 5 ( AQOeX7+baTmvpVHb2CcLnL1dMRWbuscRvHXl LnXwDzvqp4tZVKp1sZMepFb8MvxhhW3y/0QZ syCjczGJ1qk8vJe52iOhInKROVLRwxGpMfzP RLMlGybr51bOV/1se0ODacj3DomyB4QB5gKT Yot/K9alk5/j8vfd4jWCWD+E1Sze0Q== ) 3600 RRSIG DNSKEY 5 1 3600 20040509183619 ( 20040409183619 9465 example. ZxgauAuIj+k1YoVEOSlZfx41fcmKzTFHoweZ xYnz99JVQZJ33wFS0Q0jcP7VXKkaElXk9nYJ XevO/7nAbo88iWsMkSpSR6jWzYYKwfrBI/L9 hjYmyVO9m6FjQ7uwM4dCP/bIuV/DKqOAK9NY NC3AHfvCV1Tp4VKDqxqG7R5tTVM= ) 3600 RRSIG DNSKEY 5 1 3600 20040509183619 ( 20040409183619 38519 example. eGL0s90glUqcOmloo/2y+bSzyEfKVOQViD9Z DNhLz/Yn9CQZlDVRJffACQDAUhXpU/oP34ri bKBpysRXosczFrKqS5Oa0bzMOfXCXup9qHAp eFIku28Vqfr8Nt7cigZLxjK+u0Ws/4lIRjKk 7z5OXogYVaFzHKillDt3HRxHIZM= ) a.example. 3600 IN NS ns1.a.example. 3600 IN NS ns2.a.example. 3600 DS 57855 5 1 ( B6DCD485719ADCA18E5F3D48A2331627FDD3 636B ) 3600 RRSIG DS 5 2 3600 20040509183619 ( 20040409183619 38519 example. oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/ Fm+v6ccF2EGNLRiY08kdkz+XHHo= ) 3600 NSEC ai.example. NS DS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. cOlYgqJLqlRqmBQ3iap2SyIsK4O5aqpKSoba U9fQ5SMApZmHfq3AgLflkrkXRXvgxTQSKkG2 039/cRUs6Jk/25+fi7Xr5nOVJsb0lq4zsB3I BBdjyGDAHE0F5ROJj87996vJupdm1fbH481g sdkOW6Zyqtz3Zos8N0BBkEx+2G4= ) ns1.a.example. 3600 IN A 192.0.2.5 ns2.a.example. 3600 IN A 192.0.2.6 ai.example. 3600 IN A 192.0.2.9 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example.",
-      "ja": "例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。Anx0K36Rcjaxytcngq6iqnpnv5drqyasc9h 7tsjahcqbhedugdhgdhgqdhidhgqdhidgqme ZRF VKGO9EBARZ0GWDKCUWLM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）3600 NS NS1.3600 NS NS2.example。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NISPPPITMISFMFMISPMISPMISPMISPMISFMFISPMISFMFISPMISFMF QF4NF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）3600 MX 1 XX.EXAMPLE。3600 RRSIG MX 5 1 3600 20040509183619（20040409183619 38519の例。HydHyvt5KHSZ7HTO/VYPUMPMSZZQRCOP3TZWB 2QAKKHVPFAU/DGLGS/IKENKYOGL95G4N NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE NZE /ZKUO 6GMMUW4B89RZ1PUXW4JZUXJ66PTWOVTUU/IM W6OISUKD1EQT7A0KYGKG PEDXDI =）3600 NSEC A.Example。dkqoak9ny nc3ahfvcv1tp4vkdqxqg7r5ttvm =）3600 rrsig dnskey 5 1 3600 20040509183619（20040409183619 38519例。NS1.A.Exampleの3600。NS2.A.Exampleの3600。NS DS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 2004050509183619（20040409183619 38519例K/25 FI7XR5NOVJSB0LQ4ZSB3I BBDJYGDAHE0F5ROJJ87996VJUPDM1FBH481G SDKOW6ZYQTZ3ZOS8N0BBKEX 2G4 =）NS1.A.EXAMPLE。192.0.2.5 ns2.a.exampleで3600。192.0.2.6 ai.exampleで3600。3600 in 192.0.2.9 3600 rrsig a 5 2 3600 20040509183619（20040409183619 38519例。"
-    },
-    {
-      "indent": 3,
-      "text": " pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy 6zrTpg9FkS0XGVmYRvOTNYx2HvQ= ) 3600 HINFO \"KLH-10\" \"ITS\" 3600 RRSIG HINFO 5 2 3600 20040509183619 ( 20040409183619 38519 example. Iq/RGCbBdKzcYzlGE4ovbr5YcB+ezxbZ9W0l e/7WqyvhOO9J16HxhhL7VY/IKmTUY0GGdcfh ZEOCkf4lEykZF9NPok1/R/fWrtzNp8jobuY7 AZEcZadp1WdDF3jc2/ndCa5XZhLKD3JzOsBw FvL8sqlS5QS6FY/ijFEDnI4RkZA= ) 3600 AAAA 2001:db8::f00:baa9 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh 1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2 sZM6QjBBLmukH30+w1z3h8PUP2o= ) 3600 NSEC b.example. A HINFO AAAA RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. QoshyPevLcJ/xcRpEtMft1uoIrcrieVcc9pG CScIn5Glnib40T6ayVOimXwdSTZ/8ISXGj4p P8Sh0PlA6olZQ84L453/BUqB8BpdOGky4hsN 3AGcLEv1Gr0QMvirQaFcjzOECfnGyBm+wpFL AhS+JOVfDI/79QtyTI0SaDWcg8U= ) b.example. 3600 IN NS ns1.b.example. 3600 IN NS ns2.b.example. 3600 NSEC ns1.example. NS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= ) ns1.b.example. 3600 IN A 192.0.2.7 ns2.b.example. 3600 IN A 192.0.2.8 ns1.example. 3600 IN A 192.0.2.1 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet 5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06 im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+ +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK v/iVXSYC0b7mPSU+EOlknFpVECs= ) 3600 NSEC ns2.example. A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8 1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8 IZaIGBLryQWGLw6Y6X8dqhlnxJM= ) ns2.example. 3600 IN A 192.0.2.2 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO 6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq rdhx8SZ0yy4ObIRzIzvBFLiSS8o= ) 3600 NSEC *.w.example. A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. N0QzHvaJf5NRw1rE9uxS1Ltb2LZ73Qb9bKGE VyaISkqzGpP3jYJXZJPVTq4UVEsgT3CgeHvb 3QbeJ5Dfb2V9NGCHj/OvF/LBxFFWwhLwzngH l+bQAgAcMsLu/nL3nDi1y/JSQjAcdZNDl4bw Ymx28EtgIpo9A0qmP08rMBqs1Jw= ) *.w.example. 3600 IN MX 1 ai.example. 3600 RRSIG MX 5 2 3600 20040509183619 ( 20040409183619 38519 example. OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2 f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw 4kX18MMR34i8lC36SR5xBni8vHI= ) 3600 NSEC x.w.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9 HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU 5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx 91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8 s1InQ2UoIv6tJEaaKkP701j8OLA= ) x.w.example. 3600 IN MX 1 xx.example. 3600 RRSIG MX 5 3 3600 20040509183619 ( 20040409183619 38519 example. Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1 XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1 jNSlwZ2mSWKHfxFQxPtLj8s32+k= ) 3600 NSEC x.y.w.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 3 3600 20040509183619 ( 20040409183619 38519 example. aRbpHftxggzgMXdDlym9SsADqMZovZZl2QWK vw8J0tZEUNQByH5Qfnf5N1FqH/pS46UA7A4E mcWBN9PUA1pdPY6RVeaRlZlCr1IkVctvbtaI NJuBba/VHm+pebTbKcAPIvL9tBOoh+to1h6e IjgiM8PXkBQtxPq37wDKALkyn7Q= ) x.y.w.example. 3600 IN MX 1 xx.example. 3600 RRSIG MX 5 4 3600 20040509183619 ( 20040409183619 38519 example. k2bJHbwP5LH5qN4is39UiPzjAWYmJA38Hhia t7i9t7nbX/e0FPnvDSQXzcK7UL+zrVA+3MDj q1ub4q3SZgcbLMgexxIW3Va//LVrxkP6Xupq GtOB9prkK54QTl/qZTXfMQpW480YOvVknhvb +gLcMZBnHJ326nb/TOOmrqNmQQE= ) 3600 NSEC xx.example. MX RRSIG NSEC 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= ) xx.example. 3600 IN A 192.0.2.10 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP 7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa 0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx kbIDV6GPPSZVusnZU6OMgdgzHV4= ) 3600 HINFO \"KLH-10\" \"TOPS-20\" 3600 RRSIG HINFO 5 2 3600 20040509183619 ( 20040409183619 38519 example. GY2PLSXmMHkWHfLdggiox8+chWpeMNJLkML0 t+U/SXSUsoUdR91KNdNUkTDWamwcF8oFRjhq BcPZ6EqrF+vl5v5oGuvSF7U52epfVTC+wWF8 3yCUeUw8YklhLWlvk8gQ15YKth0ITQy8/wI+ RgNvuwbioFSEuv2pNlkq0goYxNY= ) 3600 AAAA 2001:db8::f00:baaa 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/ xS9cL2QgW7FChw16mzlkH6/vsfs= ) 3600 NSEC example. A HINFO AAAA RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. ZFWUln6Avc8bmGl5GFjD3BwT530DUZKHNuoY 9A8lgXYyrxu+pqgFiRVbyZRQvVB5pccEOT3k mvHgEa/HzbDB4PIYY79W+VHrgOxzdQGGCZzi asXrpSGOWwSOElghPnMIi8xdF7qtCntr382W GghLahumFIpg4MO3LS/prgzVVWo= )",
-      "ja": "paotzlp2mu0tdjuhoke5fpiihmdyscgtb5b erggpnjlua9ixoyf6xxvcgrejw0wnzssjicd hbhxfdmagkuajuulysah8ts4znrhymivk3u ardu2wft130e9uhnuumhmimyumimyumimimimimivk3u XGVMYRVOTNYX2HVQ =）3600 HINFO \"KLH-10\" \"ITS\" 3600 RRSIG HINFO 5 2 3600 20040509183619（20040409183619 38519例l7vy/ikmtuy0ggdcfh zeockf4leykzf9npok1/r/fwrtznp8jobuy7 azeczadp1wddf3jc2/ndca5xzhlkd3jzosbw fvl8sqls5qs6fy/ijfedni4rkza =Hinfo aaaa rrsig nsec 3600 rrsig nsec 5 2 3600 20040509183619（20040409183619 38519の例。 84l453/buqb8bpdogky4hsn 3agclev1gr0qmvirqafcjzoecfngybm wpfl ahs jovfdi/79qtyti0sadwcg8u =）b.example。NS1.B.Exampleの3600。NS2.B.Exampleの3600。3600 NSEC NS1.example。NS RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例。GNUXHN844WFMUPZGWKJCPY5TEX/RFJDOOOX 9UEK1PTYKOWNIJ/PJKCYBCCYBCCYBCCYBCCYBCCYBCCYBCCYJ/PJKODIJ * nvbnkm6owopysy97mvj5vqews 0lm9tfoqjcptqkmqkyprwuncsnwvvclsf1xz vhrxgwt7oufxldocg6tfvfms9xe =）ns1.b.example。192.0.2.7 ns2.b.exampleで3600。192.0.2.8 ns1.exampleで3600。192.0.2.1 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519の例djypq84bhtv8vrxt5ab1wnb iaqvifdgw4sfnc6oadb1hk8qnauw9vepjhk v/ivxsyc0b7mpsu eolknfpvecs =）3600 nsec ns2.example。A RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例。 vbnwqaaepjk3ukddbq ziali8qr2xhkjq38beqsbp8x0 6h4etwsgt8 izaigblryqwglw6y6x8dqhlnxjm =）ns2.example。3600 IN 192.0.2.2 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519例zgde3vt5snfeaoe1vn3mqqtu7so 6 amijk13kj/jyj4ngmdric/3cm3ipxfhntkq rdhx8szz0yy4obirzizvbfliss8o =）3600 nsec *.w.w.emample。RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例2v9ngchj/ovf/lbxffwwhlwzngh l bqagacmslu/nl3ndi1y/jsqjacdzndl4bw ymx28etgipo9a0qmp08rmbqs1jw =） *.w.example。MX 1 AI.exampleの3600。MX RRSIG NSEC 3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519例mjhfyps8tvvfxsaxfahpyqtx 91gsmcv/1v9/bzag55cefp9cm4z9y9nt9xq8 s1inq2uoiv6tjeaakkp701j8ola =）x.w.example。MX 1 xx.exampleの3600。3600 RRSIG MX 5 3 3600 20040509183619（20040409183619 38519の例。IL2WTZBKVOYTBX4LITNW5MJB4RCWHOO8Y1 XZPHZMZUTVYL7LAA63F6T9YSVZJRI3KIN1FDDDDDDDDDDDDDDDDDRCHINCHUN1FKVO8Y1 XZPHZMZUTVYL7LAA 4FOOBKBCDM7P3I KX70EPCOFGRZ1YQ BVVXCVGUAU4XALV3W/Y1 JNSLWZ2MSWKHFXFQXPTLJ8S32 K =）3600 NSEC X.Y.W.EXAMPLE。MX RRSIG NSEC 3600 RRSIG NSEC 5 3 3600 20040509183619（20040409183619 38519例。 dpy6rvearlzlcr1ikvctvbtai njubba/vhm pebtbkcapivl9tbooh to1h6e ijgim8pxkbqtxpq37wdkalkyn7q =）x.y.w.example。MX 1 xx.exampleの3600。3600 RRSIG MX 5 4 3600 20040509183619（20040409183619 38519の例。K2BJHBWP5LH5QN4IS39UIPZJAWYMJA38HHHIAT7I9T7NBX/E0PNVDJCC7UL ZRJCXXCC7UL ZRMIN w3va // lvrxkkp6xupq gtob9prkkk54qtl/qztxfmqpw480yovvknhvb glcmzbnhj326nb/toomrqnmqqe =）3600 nsec xx.example。MX RRSIG NSEC 3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519例f/lzy2zqromubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =）xx.example。192.0.2.10の3600 3600 RRSIG A 5 2 3600 20040509183619（20040409183619 38519例RKL1EZMCDMGOAEUUZZAJ2BMQ Y VDXG9IK1YZKYGY9AGBTOGPOAGBJYO9EPULSX KBIDV6GPPSZVUSNZU6OMGZGZHV4 ="
+      "text": "example.       3600 IN SOA ns1.example. bugs.x.w.example. (\n                           1081539377\n                           3600\n                           300\n                           3600000\n                           3600\n                           )\n               3600 RRSIG  SOA 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h\n                           7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF\n                           vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW\n                           DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB\n                           jV7j86HyQgM5e7+miRAz8V01b0I= )\n               3600 NS     ns1.example.\n               3600 NS     ns2.example.\n               3600 RRSIG  NS 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd\n                           EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf\n                           4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8\n                           RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48\n                           0HjMeRaZB/FRPGfJPajngcq6Kwg= )\n               3600 MX     1 xx.example.\n               3600 RRSIG  MX 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           HyDHYVT5KHSZ7HtO/vypumPmSZQrcOP3tzWB\n                           2qaKkHVPfau/DgLgS/IKENkYOGL95G4N+NzE\n                           VyNU8dcTOckT+ChPcGeVjguQ7a3Ao9Z/ZkUO\n                           6gmmUW4b89rz1PUxW4jzUxj66PTwoVtUU/iM\n                           W6OISukd1EQt7a0kygkg+PEDxdI= )\n               3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY\n               3600 RRSIG  NSEC 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm\n                           FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V\n                           Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW\n                           SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm\n                           jfFJ5arXf4nPxp/kEowGgBRzY/U= )\n               3600 DNSKEY 256 3 5 (\n                           AQOy1bZVvpPqhg4j7EJoM9rI3ZmyEx2OzDBV\n                           rZy/lvI5CQePxXHZS4i8dANH4DX3tbHol61e\n                           k8EFMcsGXxKciJFHyhl94C+NwILQdzsUlSFo\n                           vBZsyl/NX6yEbtw/xN9ZNcrbYvgjjZ/UVPZI\n                           ySFNsgEYvh0z2542lzMKR4Dh8uZffQ==\n                           )\n               3600 DNSKEY 257 3 5 (\n                           AQOeX7+baTmvpVHb2CcLnL1dMRWbuscRvHXl\n                           LnXwDzvqp4tZVKp1sZMepFb8MvxhhW3y/0QZ\n                           syCjczGJ1qk8vJe52iOhInKROVLRwxGpMfzP\n                           RLMlGybr51bOV/1se0ODacj3DomyB4QB5gKT\n                           Yot/K9alk5/j8vfd4jWCWD+E1Sze0Q==\n                           )\n               3600 RRSIG  DNSKEY 5 1 3600 20040509183619 (\n                           20040409183619 9465 example.\n                           ZxgauAuIj+k1YoVEOSlZfx41fcmKzTFHoweZ\n                           xYnz99JVQZJ33wFS0Q0jcP7VXKkaElXk9nYJ\n                           XevO/7nAbo88iWsMkSpSR6jWzYYKwfrBI/L9\n                           hjYmyVO9m6FjQ7uwM4dCP/bIuV/DKqOAK9NY\n                           NC3AHfvCV1Tp4VKDqxqG7R5tTVM= )\n               3600 RRSIG  DNSKEY 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           eGL0s90glUqcOmloo/2y+bSzyEfKVOQViD9Z\n                           DNhLz/Yn9CQZlDVRJffACQDAUhXpU/oP34ri\n                           bKBpysRXosczFrKqS5Oa0bzMOfXCXup9qHAp\n                           eFIku28Vqfr8Nt7cigZLxjK+u0Ws/4lIRjKk\n                           7z5OXogYVaFzHKillDt3HRxHIZM= )\na.example.     3600 IN NS  ns1.a.example.\n               3600 IN NS  ns2.a.example.\n               3600 DS     57855 5 1 (\n                           B6DCD485719ADCA18E5F3D48A2331627FDD3\n                           636B )\n               3600 RRSIG  DS 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ\n                           oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH\n                           kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD\n                           EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/\n                           Fm+v6ccF2EGNLRiY08kdkz+XHHo= )\n               3600 NSEC   ai.example. NS DS RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           cOlYgqJLqlRqmBQ3iap2SyIsK4O5aqpKSoba\n                           U9fQ5SMApZmHfq3AgLflkrkXRXvgxTQSKkG2\n                           039/cRUs6Jk/25+fi7Xr5nOVJsb0lq4zsB3I\n                           BBdjyGDAHE0F5ROJj87996vJupdm1fbH481g\n                           sdkOW6Zyqtz3Zos8N0BBkEx+2G4= )\nns1.a.example. 3600 IN A   192.0.2.5\nns2.a.example. 3600 IN A   192.0.2.6\nai.example.    3600 IN A   192.0.2.9\n               3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B\n                           ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd\n                           hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u\n                           ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy\n                           6zrTpg9FkS0XGVmYRvOTNYx2HvQ= )\n               3600 HINFO  \"KLH-10\" \"ITS\"\n               3600 RRSIG  HINFO 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           Iq/RGCbBdKzcYzlGE4ovbr5YcB+ezxbZ9W0l\n                           e/7WqyvhOO9J16HxhhL7VY/IKmTUY0GGdcfh\n                           ZEOCkf4lEykZF9NPok1/R/fWrtzNp8jobuY7\n                           AZEcZadp1WdDF3jc2/ndCa5XZhLKD3JzOsBw\n                           FvL8sqlS5QS6FY/ijFEDnI4RkZA= )\n               3600 AAAA   2001:db8::f00:baa9\n               3600 RRSIG  AAAA 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK\n                           kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh\n                           1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T\n                           cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2\n                           sZM6QjBBLmukH30+w1z3h8PUP2o= )\n               3600 NSEC   b.example. A HINFO AAAA RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           QoshyPevLcJ/xcRpEtMft1uoIrcrieVcc9pG\n                           CScIn5Glnib40T6ayVOimXwdSTZ/8ISXGj4p\n                           P8Sh0PlA6olZQ84L453/BUqB8BpdOGky4hsN\n                           3AGcLEv1Gr0QMvirQaFcjzOECfnGyBm+wpFL\n                           AhS+JOVfDI/79QtyTI0SaDWcg8U= )\nb.example.     3600 IN NS  ns1.b.example.\n               3600 IN NS  ns2.b.example.\n               3600 NSEC   ns1.example. NS RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx\n                           9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS\n                           xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs\n                           0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ\n                           vhRXgWT7OuFXldoCG6TfVFMs9xE= )\nns1.b.example. 3600 IN A   192.0.2.7\nns2.b.example. 3600 IN A   192.0.2.8\nns1.example.   3600 IN A   192.0.2.1\n               3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet\n                           5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06\n                           im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+\n                           +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK\n                           v/iVXSYC0b7mPSU+EOlknFpVECs= )\n               3600 NSEC   ns2.example. A RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8\n                           1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB\n                           jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq\n                           ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8\n                           IZaIGBLryQWGLw6Y6X8dqhlnxJM= )\nns2.example.   3600 IN A   192.0.2.2\n               3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq\n                           Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu\n                           yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO\n                           6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq\n                           rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )\n               3600 NSEC   *.w.example. A RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           N0QzHvaJf5NRw1rE9uxS1Ltb2LZ73Qb9bKGE\n                           VyaISkqzGpP3jYJXZJPVTq4UVEsgT3CgeHvb\n                           3QbeJ5Dfb2V9NGCHj/OvF/LBxFFWwhLwzngH\n                           l+bQAgAcMsLu/nL3nDi1y/JSQjAcdZNDl4bw\n                           Ymx28EtgIpo9A0qmP08rMBqs1Jw= )\n*.w.example.   3600 IN MX  1 ai.example.\n               3600 RRSIG  MX 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2\n                           f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc\n                           tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X\n                           TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw\n                           4kX18MMR34i8lC36SR5xBni8vHI= )\n               3600 NSEC   x.w.example. MX RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9\n                           HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU\n                           5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx\n                           91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8\n                           s1InQ2UoIv6tJEaaKkP701j8OLA= )\nx.w.example.   3600 IN MX  1 xx.example.\n               3600 RRSIG  MX 5 3 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1\n                           XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP\n                           H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I\n                           kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1\n                           jNSlwZ2mSWKHfxFQxPtLj8s32+k= )\n               3600 NSEC   x.y.w.example. MX RRSIG NSEC\n               3600 RRSIG  NSEC 5 3 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           aRbpHftxggzgMXdDlym9SsADqMZovZZl2QWK\n                           vw8J0tZEUNQByH5Qfnf5N1FqH/pS46UA7A4E\n                           mcWBN9PUA1pdPY6RVeaRlZlCr1IkVctvbtaI\n                           NJuBba/VHm+pebTbKcAPIvL9tBOoh+to1h6e\n                           IjgiM8PXkBQtxPq37wDKALkyn7Q= )\nx.y.w.example. 3600 IN MX  1 xx.example.\n               3600 RRSIG  MX 5 4 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           k2bJHbwP5LH5qN4is39UiPzjAWYmJA38Hhia\n                           t7i9t7nbX/e0FPnvDSQXzcK7UL+zrVA+3MDj\n                           q1ub4q3SZgcbLMgexxIW3Va//LVrxkP6Xupq\n                           GtOB9prkK54QTl/qZTXfMQpW480YOvVknhvb\n                           +gLcMZBnHJ326nb/TOOmrqNmQQE= )\n               3600 NSEC   xx.example. MX RRSIG NSEC\n               3600 RRSIG  NSEC 5 4 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp\n                           ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg\n                           xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX\n                           a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr\n                           QoKqJDCLnoAlcPOPKAm/jJkn3jk= )\nxx.example.    3600 IN A   192.0.2.10\n               3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP\n                           7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa\n                           0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y\n                           VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx\n                           kbIDV6GPPSZVusnZU6OMgdgzHV4= )\n               3600 HINFO  \"KLH-10\" \"TOPS-20\"\n               3600 RRSIG  HINFO 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           GY2PLSXmMHkWHfLdggiox8+chWpeMNJLkML0\n                           t+U/SXSUsoUdR91KNdNUkTDWamwcF8oFRjhq\n                           BcPZ6EqrF+vl5v5oGuvSF7U52epfVTC+wWF8\n                           3yCUeUw8YklhLWlvk8gQ15YKth0ITQy8/wI+\n                           RgNvuwbioFSEuv2pNlkq0goYxNY= )\n               3600 AAAA   2001:db8::f00:baaa\n               3600 RRSIG  AAAA 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C\n                           aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z\n                           ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr\n                           U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/\n                           xS9cL2QgW7FChw16mzlkH6/vsfs= )\n               3600 NSEC   example. A HINFO AAAA RRSIG NSEC\n               3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ZFWUln6Avc8bmGl5GFjD3BwT530DUZKHNuoY\n                           9A8lgXYyrxu+pqgFiRVbyZRQvVB5pccEOT3k\n                           mvHgEa/HzbDB4PIYY79W+VHrgOxzdQGGCZzi\n                           asXrpSGOWwSOElghPnMIi8xdF7qtCntr382W\n                           GghLahumFIpg4MO3LS/prgzVVWo= )",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -1768,24 +1765,9 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nx.w.example.        IN MX",
+      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nx.w.example.        IN MX\n\n;; Answer\nx.w.example.   3600 IN MX  1 xx.example.\nx.w.example.   3600 RRSIG  MX 5 3 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1\n                           XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP\n                           H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I\n                           kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1\n                           jNSlwZ2mSWKHfxFQxPtLj8s32+k= )\n\n;; Authority\nexample.       3600 NS     ns1.example.\nexample.       3600 NS     ns2.example.\nexample.       3600 RRSIG  NS 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd\n                           EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf\n                           4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8\n                           RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48\n                           0HjMeRaZB/FRPGfJPajngcq6Kwg= )\n\n;; Additional\nxx.example.    3600 IN A   192.0.2.10\nxx.example.    3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP\n                           7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa\n                           0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y\n                           VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx\n                           kbIDV6GPPSZVusnZU6OMgdgzHV4= )\nxx.example.    3600 AAAA   2001:db8::f00:baaa\nxx.example.    3600 RRSIG  AAAA 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C\n                           aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z\n                           ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr\n                           U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/\n                           xS9cL2QgW7FChw16mzlkH6/vsfs= )\nns1.example.   3600 IN A   192.0.2.1\nns1.example.   3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet\n                           5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06\n                           im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+\n                           +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK\n                           v/iVXSYC0b7mPSU+EOlknFpVECs= )\nns2.example.   3600 IN A   192.0.2.2\nns2.example.   3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq\n                           Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu\n                           yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO\n                           6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq\n                           rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer x.w.example. 3600 IN MX 1 xx.example. x.w.example. 3600 RRSIG MX 5 3 3600 20040509183619 ( 20040409183619 38519 example. Il2WTZ+Bkv+OytBx4LItNW5mjB4RCwhOO8y1 XzPHZmZUTVYL7LaA63f6T9ysVBzJRI3KRjAP H3U1qaYnDoN1DrWqmi9RJe4FoObkbcdm7P3I kx70ePCoFgRz1Yq+bVVXCvGuAU4xALv3W/Y1 jNSlwZ2mSWKHfxFQxPtLj8s32+k= )",
-      "ja": ";;回答X.W.Example。MX 1 xx.exampleの3600。X.W.Example。3600 RRSIG MX 5 3 3600 20040509183619（20040409183619 38519の例。IL2WTZBKVOYTBX4LITNW5MJB4RCWHOO8Y1 XZPHZMZUTVYL7LAA63F6T9YSVZJRI3KIN1FDCMPMPMPMPMPMPMDN1KPMPMINT9KWO8Y1 4FOOBKBCDM7P3I KX70EPCOFGRZ1YQ BVVXCVGUAU4XALV3W/Y1 JNSLWZ2MSWKHFXFQXPTLJ8S32 K =）"
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 NS ns1.example. example. 3600 NS ns2.example. example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= )",
-      "ja": ";;権限の例。3600 NS NS1.example。例。3600 NS NS2.example。例。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NIVWC WD1FMBNCYQL0TK3LINGF4NFISPMISFMFISPMISFMFISPMISFMF 4MISFMF 4MISFMF 4ISFMFIISMF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional xx.example. 3600 IN A 192.0.2.10 xx.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. kBF4YxMGWF0D8r0cztL+2fWWOvN1U/GYSpYP 7SoKoNQ4fZKyk+weWGlKLIUM+uE1zjVTPXoa 0Z6WG0oZp46rkl1EzMcdMgoaeUzzAJ2BMq+Y VdxG9IK1yZkYGY9AgbTOGPoAgbJyO9EPULsx kbIDV6GPPSZVusnZU6OMgdgzHV4= ) xx.example. 3600 AAAA 2001:db8::f00:baaa xx.example. 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. Zzj0yodDxcBLnnOIwDsuKo5WqiaK24DlKg9C aGaxDFiKgKobUj2jilYQHpGFn2poFRetZd4z ulyQkssz2QHrVrPuTMS22knudCiwP4LWpVTr U4zfeA+rDz9stmSBP/4PekH/x2IoAYnwctd/ xS9cL2QgW7FChw16mzlkH6/vsfs= ) ns1.example. 3600 IN A 192.0.2.1 ns1.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. F1C9HVhIcs10cZU09G5yIVfKJy5yRQQ3qVet 5pGhp82pzhAOMZ3K22JnmK4c+IjUeFp/to06 im5FVpHtbFisdjyPq84bhTv8vrXt5AB1wNB+ +iAqvIfdgW4sFNC6oADb1hK8QNauw9VePJhK v/iVXSYC0b7mPSU+EOlknFpVECs= ) ns2.example. 3600 IN A 192.0.2.2 ns2.example. 3600 RRSIG A 5 2 3600 20040509183619 ( 20040409183619 38519 example. V7cQRw1TR+knlaL1z/psxlS1PcD37JJDaCMq Qo6/u1qFQu6x+wuDHRH22Ap9ulJPQjFwMKOu yfPGQPC8KzGdE3vt5snFEAoE1Vn3mQqtu7SO 6amIjk13Kj/jyJ4nGmdRIc/3cM3ipXFhNTKq rdhx8SZ0yy4ObIRzIzvBFLiSS8o= )",
-      "ja": ";;追加のxx.example。192.0.2.10 xx.exampleで3600。3600 AAAA 2001：db8 :: f00：baaa xx.example。3600 RRSIG AAAA 5 2 3600 20040509183619（20040409183619 38519例。ZZJ0YODDXCBLNNOIWDSUKO5WQIAK24DLKG9C AGAXDFIKKOBUJ2JILYQFN2PPTCKSD4ZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZPPTIZD4ZDLKG9C AGAXDFIKGKOBUJ2J IWP4LWPVTR U4ZFEA RDZ9STMSBP/4PEKH/X2IOAYNWCTD/XS9CL2QGW7FCHW16MZLKH6/VSFS =）NS1.EXAMPLE。192.0.2.1 ns1.exampleで3600。192.0.2.2 ns2.exampleで3600。"
     },
     {
       "indent": 0,
@@ -1800,24 +1782,7 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=3\n;;\n;; Question\nml.example.         IN A",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) b.example. 3600 NSEC ns1.example. NS RRSIG NSEC b.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= ) example. 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY example. 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= )",
-      "ja": ";;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LW DA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）B.EXAMPLE。3600 NSEC NS1.example。ns rrsig nsec b.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。GNUXHN844WFMUHPZGWKJCJCPY5TEX/RFJDOOX 9UEK1PTYKOWKOODIJ/PJKCYB3HHYX 858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 YSY97MVJ5VQEWS 0LM9TFOQJCPTQKMQKYPRWUNCSNWVVCLSF1XZ VHRXGWT7OUFXLDOCG6TFVFMS9XE =）例。3600 NSEC A.Example。NS SOA MX RRSIG NSEC DNSKEYの例。"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional\n;; (empty)",
+      "text": ";; Header: QR AA DO RCODE=3\n;;\n;; Question\nml.example.         IN A\n\n;; Answer\n;; (empty)\n\n;; Authority\nexample.       3600 IN SOA ns1.example. bugs.x.w.example. (\n                           1081539377\n                           3600\n                           300\n                           3600000\n                           3600\n                           )\nexample.       3600 RRSIG  SOA 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h\n                           7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF\n                           vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW\n                           DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB\n                           jV7j86HyQgM5e7+miRAz8V01b0I= )\nb.example.     3600 NSEC   ns1.example. NS RRSIG NSEC\nb.example.     3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx\n                           9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS\n                           xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs\n                           0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ\n                           vhRXgWT7OuFXldoCG6TfVFMs9xE= )\nexample.       3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY\nexample.       3600 RRSIG  NSEC 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm\n                           FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V\n                           Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW\n                           SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm\n                           jfFJ5arXf4nPxp/kEowGgBRzY/U= )\n\n;; Additional\n;; (empty)\n",
       "raw": true,
       "ja": ""
     },
@@ -1834,24 +1799,7 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nns1.example.        IN MX",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) ns1.example. 3600 NSEC ns2.example. A RRSIG NSEC ns1.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8 1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8 IZaIGBLryQWGLw6Y6X8dqhlnxJM= )",
-      "ja": ";;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LW DA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）NS1.EXAMPLE。3600 NSEC NS2.example。rrsig nsec ns1.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。I4HJKT68RCCHCUDOLKS2S WZRI9H3FHAS8 jk3ukddbq ziali8qr2xhkjq38beqsbp8x0 6h4etwsgt8 izaigblryqwglw6y6x8dqhlnxjm =）"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional\n;; (empty)",
+      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nns1.example.        IN MX\n\n;; Answer\n;; (empty)\n\n;; Authority\nexample.       3600 IN SOA ns1.example. bugs.x.w.example. (\n                           1081539377\n                           3600\n                           300\n                           3600000\n                           3600\n                           )\nexample.       3600 RRSIG  SOA 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h\n                           7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF\n                           vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW\n                           DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB\n                           jV7j86HyQgM5e7+miRAz8V01b0I= )\nns1.example.   3600 NSEC   ns2.example. A RRSIG NSEC\nns1.example.   3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           I4hj+Kt6+8rCcHcUdolks2S+Wzri9h3fHas8\n                           1rGN/eILdJHN7JpV6lLGPIh/8fIBkfvdyWnB\n                           jjf1q3O7JgYO1UdI7FvBNWqaaEPJK3UkddBq\n                           ZIaLi8Qr2XHkjq38BeQsbp8X0+6h4ETWSGT8\n                           IZaIGBLryQWGLw6Y6X8dqhlnxJM= )\n\n;; Additional\n;; (empty)",
       "raw": true,
       "ja": ""
     },
@@ -1868,30 +1816,9 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR DO RCODE=0\n;;",
+      "text": ";; Header: QR DO RCODE=0\n;;\n;; Question\nmc.a.example.       IN MX\n\n;; Answer\n;; (empty)\n\n;; Authority\na.example.     3600 IN NS  ns1.a.example.\na.example.     3600 IN NS  ns2.a.example.\na.example.     3600 DS     57855 5 1 (\n                           B6DCD485719ADCA18E5F3D48A2331627FDD3\n                           636B )\na.example.     3600 RRSIG  DS 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ\n                           oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH\n                           kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD\n                           EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/\n                           Fm+v6ccF2EGNLRiY08kdkz+XHHo= )\n\n;; Additional\nns1.a.example. 3600 IN A   192.0.2.5\nns2.a.example. 3600 IN A   192.0.2.6",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Question mc.a.example. IN MX",
-      "ja": ";;質問MC.A.Example。MXで"
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority a.example. 3600 IN NS ns1.a.example. a.example. 3600 IN NS ns2.a.example. a.example. 3600 DS 57855 5 1 ( B6DCD485719ADCA18E5F3D48A2331627FDD3 636B ) a.example. 3600 RRSIG DS 5 2 3600 20040509183619 ( 20040409183619 38519 example. oXIKit/QtdG64J/CB+Gi8dOvnwRvqrto1AdQ oRkAN15FP3iZ7suB7gvTBmXzCjL7XUgQVcoH kdhyCuzp8W9qJHgRUSwKKkczSyuL64nhgjuD EML8l9wlWVsl7PR2VnZduM9bLyBhaaPmRKX/ Fm+v6ccF2EGNLRiY08kdkz+XHHo= )",
-      "ja": ";;権限のa.example。NS1.A.Exampleの3600。A.例。NS2.A.Exampleの3600。A.例。3600 DS 57855 5 1（B6DCD485719ADCA18E5F3D48A2331627FDD3 636B）A.Example。"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional ns1.a.example. 3600 IN A 192.0.2.5 ns2.a.example. 3600 IN A 192.0.2.6",
-      "ja": ";;追加のns1.a.example。192.0.2.5 ns2.a.exampleで3600。192.0.2.6の3600"
     },
     {
       "indent": 0,
@@ -1906,25 +1833,9 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR DO RCODE=0\n;;\n;; Question\nmc.b.example.       IN MX",
+      "text": ";; Header: QR DO RCODE=0\n;;\n;; Question\nmc.b.example.       IN MX\n\n;; Answer\n;; (empty)\n\n;; Authority\nb.example.     3600 IN NS  ns1.b.example.\nb.example.     3600 IN NS  ns2.b.example.\nb.example.     3600 NSEC   ns1.example. NS RRSIG NSEC\nb.example.     3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx\n                           9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS\n                           xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs\n                           0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ\n                           vhRXgWT7OuFXldoCG6TfVFMs9xE= )\n\n;; Additional\nns1.b.example. 3600 IN A   192.0.2.7\nns2.b.example. 3600 IN A   192.0.2.8\n",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority b.example. 3600 IN NS ns1.b.example. b.example. 3600 IN NS ns2.b.example. b.example. 3600 NSEC ns1.example. NS RRSIG NSEC b.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. GNuxHn844wfmUhPzGWKJCPY5ttEX/RfjDoOx 9ueK1PtYkOWKOOdiJ/PJKCYB3hYX+858dDWS xb2qnV/LSTCNVBnkm6owOpysY97MVj5VQEWs 0lm9tFoqjcptQkmQKYPrwUnCSNwvvclSF1xZ vhRXgWT7OuFXldoCG6TfVFMs9xE= )",
-      "ja": ";;権限b.例。NS1.B.Exampleの3600。B.例。NS2.B.Exampleの3600。B.例。3600 NSEC NS1.example。ns rrsig nsec b.example。"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional ns1.b.example. 3600 IN A 192.0.2.7 ns2.b.example. 3600 IN A 192.0.2.8",
-      "ja": ";;追加のns1.b.example。192.0.2.7 ns2.b.exampleで3600。192.0.2.8で3600"
     },
     {
       "indent": 0,
@@ -1939,29 +1850,9 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\na.z.w.example.      IN MX",
+      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\na.z.w.example.      IN MX\n\n;; Answer\na.z.w.example. 3600 IN MX  1 ai.example.\na.z.w.example. 3600 RRSIG  MX 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2\n                           f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc\n                           tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X\n                           TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw\n                           4kX18MMR34i8lC36SR5xBni8vHI= )\n\n;; Authority\nexample.       3600 NS     ns1.example.\nexample.       3600 NS     ns2.example.\nexample.       3600 RRSIG  NS 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd\n                           EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf\n                           4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8\n                           RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48\n                           0HjMeRaZB/FRPGfJPajngcq6Kwg= )\nx.y.w.example. 3600 NSEC   xx.example. MX RRSIG NSEC\nx.y.w.example. 3600 RRSIG  NSEC 5 4 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp\n                           ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg\n                           xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX\n                           a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr\n                           QoKqJDCLnoAlcPOPKAm/jJkn3jk= )\n\n;; Additional\nai.example.    3600 IN A   192.0.2.9\nai.example.    3600 RRSIG  A 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B\n                           ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd\n                           hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u\n                           ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy\n                           6zrTpg9FkS0XGVmYRvOTNYx2HvQ= )\nai.example.    3600 AAAA   2001:db8::f00:baa9\nai.example.    3600 RRSIG  AAAA 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK\n                           kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh\n                           1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T\n                           cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2\n                           sZM6QjBBLmukH30+w1z3h8PUP2o= )",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer a.z.w.example. 3600 IN MX 1 ai.example. a.z.w.example. 3600 RRSIG MX 5 2 3600 20040509183619 ( 20040409183619 38519 example. OMK8rAZlepfzLWW75Dxd63jy2wswESzxDKG2 f9AMN1CytCd10cYISAxfAdvXSZ7xujKAtPbc tvOQ2ofO7AZJ+d01EeeQTVBPq4/6KCWhqe2X TjnkVLNvvhnc0u28aoSsG0+4InvkkOHknKxw 4kX18MMR34i8lC36SR5xBni8vHI= )",
-      "ja": ";;回答a.z.w.example。MX 1 AI.exampleの3600。a.z.w.example。"
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 NS ns1.example. example. 3600 NS ns2.example. example. 3600 RRSIG NS 5 1 3600 20040509183619 ( 20040409183619 38519 example. gl13F00f2U0R+SWiXXLHwsMY+qStYy5k6zfd EuivWc+wd1fmbNCyql0Tk7lHTX6UOxc8AgNf 4ISFve8XqF4q+o9qlnqIzmppU3LiNeKT4FZ8 RO5urFOvoMRTbQxW3U0hXWuggE4g3ZpsHv48 0HjMeRaZB/FRPGfJPajngcq6Kwg= ) x.y.w.example. 3600 NSEC xx.example. MX RRSIG NSEC x.y.w.example. 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= )",
-      "ja": ";;権限の例。3600 NS NS1.example。例。3600 NS NS2.example。例。3600 RRSIG NS 5 1 3600 20040509183619（20040409183619 38519の例。GL13F00F00F2U0RSWIXXLHWSMYQSTYY5K6ZFD EUIVWC WD1FMBNCYQL0TK7LHTX6UOXC8AGNF 4ISPMISFF4IISMF 4MISPMISFMF -NISPPPITMISFMFMISPMISPMISPMISPMISFMFISPMISFMFISPMISFMF QF4NF T4FZ8 RO5URFOVOVOMRTBQXW3U0HXWUGGE4G3ZPSHV48 0HJMERAZB/FRPGFJPAJNGCQ6KWG =）X.Y.W.EXAMPLE。3600 NSEC xx.example。mx rrsig nsec x.y.w.example。3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519の例。Ove6Wuzn2ziiejcvkpwbcayxyp6ef8cr6csparvstzkunwbezmmku7e34o5lmb6cwssspg x xwssspg xwmb6cwssspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgpgmb6cwssspgfmbzsspm ubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =））"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional ai.example. 3600 IN A 192.0.2.9 ai.example. 3600 RRSIG A 5 2 3600 20040509183619 (",
-      "ja": ";;追加のai.example。192.0.2.9 ai.exampleで3600。3600 RRSIG A 5 2 3600 20040509183619（"
-    },
-    {
-      "indent": 3,
-      "text": " 20040409183619 38519 example. pAOtzLP2MU0tDJUwHOKE5FPIIHmdYsCgTb5B ERGgpnJluA9ixOyf6xxVCgrEJW0WNZSsJicd hBHXfDmAGKUajUUlYSAH8tS4ZnrhyymIvk3u ArDu2wfT130e9UHnumaHHMpUTosKe22PblOy 6zrTpg9FkS0XGVmYRvOTNYx2HvQ= ) ai.example. 3600 AAAA 2001:db8::f00:baa9 ai.example. 3600 RRSIG AAAA 5 2 3600 20040509183619 ( 20040409183619 38519 example. nLcpFuXdT35AcE+EoafOUkl69KB+/e56XmFK kewXG2IadYLKAOBIoR5+VoQV3XgTcofTJNsh 1rnF6Eav2zpZB3byI6yo2bwY8MNkr4A7cL9T cMmDwV/hWFKsbGBsj8xSCN/caEL2CWY/5XP2 sZM6QjBBLmukH30+w1z3h8PUP2o= )",
-      "ja": "20040409183619 38519例。paotzlp2mu0tdjuhoke5fpiihmdyscgtb5b erggpnjlua9ixoyf6xxvcgrejw0wnzssjicd hbhxfdmagkuajuulysah8ts4znrhymivk3u ardu2wft130e9uhnuumhmimyumimyumimimimimivk3u xgvmyrvotnyx2hvq =）ai.example。3600 AAAA 2001：db8 :: f00：baa9 ai.example。3600 RRSIG AAAA 5 2 3600 20040509183619（20040409183619 38519の例。NLCPFUXDT35ACEEOAFOUKL69KB /E56XMFK KEWXG2IADYLKAOBIOR5 VOQV3XGTCOFTJNSH 1MSHSSH 1MSHSSHSHNSHSHNSHSSH NKR4A7CL9T CMMDWV/HWFKSBGBSJ8XSCN/CAEL2CWY/5XP2 SZM6QJBBLMUKH30 W1Z3H8PUP2O =）"
     },
     {
       "indent": 0,
@@ -1976,24 +1867,7 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\na.z.w.example.      IN AAAA",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) x.y.w.example. 3600 NSEC xx.example. MX RRSIG NSEC x.y.w.example. 3600 RRSIG NSEC 5 4 3600 20040509183619 ( 20040409183619 38519 example. OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr QoKqJDCLnoAlcPOPKAm/jJkn3jk= ) *.w.example. 3600 NSEC x.w.example. MX RRSIG NSEC *.w.example. 3600 RRSIG NSEC 5 2 3600 20040509183619 ( 20040409183619 38519 example. r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9 HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU 5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx 91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8 s1InQ2UoIv6tJEaaKkP701j8OLA= )",
-      "ja": ";;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。onx0k36rcjaxytcngq6iqnpnv5 drqyasc9h 7tsjahcqbhe67sr6ah2xdugdug dug dug dug dug duguzuzdugdugdugdugduをM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）X.Y.W.EXAMPLE。3600 NSEC xx.example。mx rrsig nsec x.y.w.example。3600 RRSIG NSEC 5 4 3600 20040509183619（20040409183619 38519の例。Ove6Wuzn2ziiejcvkpwbcayxyp6ef8cr6csparvstzkunwbezmmku7e34o5lmb6cwssspg x xwssspg xwmb6cwssspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgfmhcsspgpgmb6cwssspgfmbzsspm ubrnqhjtidtx a0arunjqczpjoyq5t0sljm6qp6mcji1ap5vr qokqjdclnoalcpopkam/jjkn3jk =） *.w.example。3600 NSEC X.W.Example。mx rrsig nsec *.w.example。3600 RRSIG NSEC 5 2 3600 20040509183619（20040409183619 38519の例。R/MZNRC3I/VICRELGICTESXDHTSDLTDTDT8NG9 HSBLABOLZLXQTFGTNN8F AOWJIAFE1EE5PXFFCJN8FCJN8FCJN8FCHPXFFCJN8FCHPXFFCJN8F vfxSaxfahpyqtx 91GSMCV/1V9/BZAG55CEFP9CM4Z9Y9NT9XQ8 S1INQ2UOIV6TJEAAKKP701J8OLA =）"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional\n;; (empty)",
+      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\na.z.w.example.      IN AAAA\n\n;; Answer\n;; (empty)\n\n;; Authority\nexample.       3600 IN SOA ns1.example. bugs.x.w.example. (\n                           1081539377\n                           3600\n                           300\n                           3600000\n                           3600\n                           )\nexample.       3600 RRSIG  SOA 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h\n                           7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF\n                           vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW\n                           DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB\n                           jV7j86HyQgM5e7+miRAz8V01b0I= )\nx.y.w.example. 3600 NSEC   xx.example. MX RRSIG NSEC\nx.y.w.example. 3600 RRSIG  NSEC 5 4 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           OvE6WUzN2ziieJcvKPWbCAyXyP6ef8cr6Csp\n                           ArVSTzKSquNwbezZmkU7E34o5lmb6CWSSSpg\n                           xw098kNUFnHcQf/LzY2zqRomubrNQhJTiDTX\n                           a0ArunJQCzPjOYq5t0SLjm6qp6McJI1AP5Vr\n                           QoKqJDCLnoAlcPOPKAm/jJkn3jk= )\n*.w.example.   3600 NSEC   x.w.example. MX RRSIG NSEC\n*.w.example.   3600 RRSIG  NSEC 5 2 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           r/mZnRC3I/VIcrelgIcteSxDhtsdlTDt8ng9\n                           HSBlABOlzLxQtfgTnn8f+aOwJIAFe1Ee5RvU\n                           5cVhQJNP5XpXMJHfyps8tVvfxSAXfahpYqtx\n                           91gsmcV/1V9/bZAG55CefP9cM4Z9Y9NT9XQ8\n                           s1InQ2UoIv6tJEaaKkP701j8OLA= )\n\n;; Additional\n;; (empty)",
       "raw": true,
       "ja": ""
     },
@@ -2010,24 +1884,7 @@
     },
     {
       "indent": 3,
-      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nexample.            IN DS",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Answer\n;; (empty)",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": ";; Authority example. 3600 IN SOA ns1.example. bugs.x.w.example. ( 1081539377 3600 300 3600000 3600 ) example. 3600 RRSIG SOA 5 1 3600 20040509183619 ( 20040409183619 38519 example. ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h 7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB jV7j86HyQgM5e7+miRAz8V01b0I= ) example. 3600 NSEC a.example. NS SOA MX RRSIG NSEC DNSKEY example. 3600 RRSIG NSEC 5 1 3600 20040509183619 ( 20040409183619 38519 example. O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm jfFJ5arXf4nPxp/kEowGgBRzY/U= )",
-      "ja": ";;権限の例。soa ns1.exampleの3600。bugs.x.w.example。（1081539377 3600 300 3600000 3600）例。3600 RRSIG SOA 5 1 3600 20040509183619（20040409183619 38519の例。Anx0k36rcjaxytcngq6iqnpnv5drqyasc9h 7tsjahcqbhe67sr6ah2xdugdugqucwsufiduzuzufdugduをM6ENB5SIX2K74L5LWDA7S/UN/IBTDQ4AY8NMNLQI7DW7N4P8/RJKB JV7J86HYQGM5E7 MIRAZ8V01B0I =）例。3600 NSEC A.Example。NS SOA MX RRSIG NSEC DNSKEYの例。"
-    },
-    {
-      "indent": 3,
-      "text": ";; Additional\n;; (empty)",
+      "text": ";; Header: QR AA DO RCODE=0\n;;\n;; Question\nexample.            IN DS\n\n;; Answer\n;; (empty)\n\n;; Authority\nexample.       3600 IN SOA ns1.example. bugs.x.w.example. (\n                           1081539377\n                           3600\n                           300\n                           3600000\n                           3600\n                           )\nexample.       3600 RRSIG  SOA 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           ONx0k36rcjaxYtcNgq6iQnpNV5+drqYAsC9h\n                           7TSJaHCqbhE67Sr6aH2xDUGcqQWu/n0UVzrF\n                           vkgO9ebarZ0GWDKcuwlM6eNB5SiX2K74l5LW\n                           DA7S/Un/IbtDq4Ay8NMNLQI7Dw7n4p8/rjkB\n                           jV7j86HyQgM5e7+miRAz8V01b0I= )\nexample.       3600 NSEC   a.example. NS SOA MX RRSIG NSEC DNSKEY\nexample.       3600 RRSIG  NSEC 5 1 3600 20040509183619 (\n                           20040409183619 38519 example.\n                           O0k558jHhyrC97ISHnislm4kLMW48C7U7cBm\n                           FTfhke5iVqNRVTB1STLMpgpbDIC9hcryoO0V\n                           Z9ME5xPzUEhbvGnHd5sfzgFVeGxr5Nyyq4tW\n                           SDBgIBiLQUv1ivy29vhXy7WgR62dPrZ0PWvm\n                           jfFJ5arXf4nPxp/kEowGgBRzY/U= )\n\n;; Additional\n;; (empty)",
       "raw": true,
       "ja": ""
     },
@@ -2067,7 +1924,7 @@
     {
       "indent": 3,
       "text": "This example shows the logical authentication process that starts from the a configured root DNSKEY (or DS RR) and moves down the tree to authenticate the desired \"example\" DNSKEY RR. Note that the logical order is presented for clarity. An implementation may choose to construct the authentication as referrals are received or to construct the authentication chain only after all RRsets have been obtained, or in any other combination it sees fit. The example here demonstrates only the logical process and does not dictate any implementation rules.",
-      "ja": "この例は、設定されたルートDNSKEY（またはDS RR）から始まり、ツリーを下って目的の「例」DNSKEY RRを認証する論理認証プロセスを示しています。明確にするために論理順序が提示されることに注意してください。実装は、紹介が受信されたときに認証を構築するか、すべてのrrsetが取得された後、または適切と思われる他の組み合わせでのみ認証チェーンを構築することを選択できます。ここでの例は、論理プロセスのみを示しており、実装ルールを指示しません。"
+      "ja": "この例は、構成されたルートDNSKEY（またはDS RR）から始まり、ツリーを下って目的の \"example\" DNSKEY RRを認証する論理認証プロセスを示しています。明確にするために論理順序が提示されることに注意してください。実装は、参照が受信されたときに認証を構築するか、すべてのrrsetが取得された後、または適切と思われる他の組み合わせでのみ認証チェーンを構築することを選択できます。ここでの例は、論理プロセスのみを示しており、実装ルールを指示しません。"
     },
     {
       "indent": 3,
@@ -2115,7 +1972,7 @@
     {
       "indent": 3,
       "text": "The query in Appendix B.4 returned a referral to the signed \"a.example.\" zone. The DS RR is authenticated in a manner identical to that of the MX RRset discussed above. This DS RR is used to authenticate the \"a.example\" DNSKEY RRset.",
-      "ja": "付録B.4のクエリは、署名された「a.example」への紹介を返しました。ゾーン。DS RRは、上記で説明したMX RRSTと同じ方法で認証されています。このDS RRは、「a.example」dnskey rrsetを認証するために使用されます。"
+      "ja": "付録B.4のクエリは、署名された \"a.example.\" ゾーンへの参照を返しました。DS RRは、上記で説明したMX RRSTと同じ方法で認証されています。このDS RRは、「a.example」dnskey rrsetを認証するために使用されます。"
     },
     {
       "indent": 3,
@@ -2131,7 +1988,7 @@
     {
       "indent": 3,
       "text": "The query in Appendix B.5 returned a referral to an unsigned \"b.example.\" zone. The NSEC proves that no authentication leads from \"example\" to \"b.example\", and the NSEC RR is authenticated in a manner identical to that of the MX RRset discussed above.",
-      "ja": "付録B.5のクエリは、署名されていない「b.example」への紹介を返しました。ゾーン。NSECは、「例」から「b.example」に認証が導かれないことを証明し、NSEC RRは上記のMX RRSetと同一の方法で認証されています。"
+      "ja": "付録B.5のクエリは、署名されていない \"b.example.\" ゾーンへの参照を返しました。NSECは、\"example\" から \"b.example\" への認証がつながらないことを証明し、NSEC RRは上記のMX RRSetと同一の方法で認証されています。"
     },
     {
       "indent": 0,
@@ -2169,7 +2026,7 @@
     {
       "indent": 3,
       "text": "The query in Appendix B.8 returned NSEC RRs that shows the requested was answered by a child server (\"example\" server). The NSEC RR indicates the presence of an SOA RR, showing that the answer is from the child . Queries for the \"example\" DS RRset should be sent to the parent servers (\"root\" servers).",
-      "ja": "付録B.8のクエリは、要求されたものが子サーバー（「例」サーバー）によって回答されたことを示すNSEC RRSを返しました。NSEC RRは、SOA RRの存在を示し、答えは子供からのものであることを示しています。「例」DS RRSetのクエリは、親サーバー（「ルート」サーバー）に送信する必要があります。"
+      "ja": "付録B.8のクエリは、要求が子サーバー（\"example\" サーバー）によって回答されたことを示すNSEC RRを返しました。NSEC RRはSOA RRの存在を示しており、回答が子からのものであることを示しています。\"example\" DS RRsetのクエリは、親サーバー（\"root\" サーバー）に送信する必要があります。"
     },
     {
       "indent": 0,
