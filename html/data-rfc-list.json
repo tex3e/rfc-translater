@@ -35027,7 +35027,7 @@
     "wg": "sidr"
   },
   "6493": {
-    "st": "Proposed Standard",
+    "st": "Historic",
     "wg": "sidr"
   },
   "6494": {
@@ -41595,18 +41595,18 @@
     "st": "Informational"
   },
   "7755": {
-    "st": "Informational",
+    "st": "Proposed Standard",
     "wg": "v6ops"
   },
   "7756": {
-    "st": "Informational",
+    "st": "Proposed Standard",
     "wg": "v6ops"
   },
   "7757": {
     "upd": [
       "6145"
     ],
-    "st": "Proposed Standard",
+    "st": "Internet Standard",
     "wg": "v6ops"
   },
   "7758": {
@@ -42828,6 +42828,9 @@
     "st": "Informational"
   },
   "7996": {
+    "obs_by": [
+      "9896"
+    ],
     "st": "Informational"
   },
   "7997": {
@@ -45077,6 +45080,9 @@
       "7083",
       "7283",
       "7550"
+    ],
+    "obs_by": [
+      "9915"
     ],
     "st": "Proposed Standard",
     "wg": "dhc"
@@ -49952,7 +49958,8 @@
   },
   "9350": {
     "upd_by": [
-      "9843"
+      "9843",
+      "9917"
     ],
     "st": "Proposed Standard",
     "wg": "lsr"
@@ -52414,6 +52421,9 @@
     "upd": [
       "9350"
     ],
+    "upd_by": [
+      "9917"
+    ],
     "st": "Proposed Standard",
     "wg": "lsr"
   },
@@ -52572,6 +52582,10 @@
     "st": "Informational",
     "wg": "lamps"
   },
+  "9880": {
+    "st": "Proposed Standard",
+    "wg": "asdf"
+  },
   "9881": {
     "st": "Proposed Standard",
     "wg": "lamps"
@@ -52617,6 +52631,28 @@
   "9891": {
     "st": "Experimental",
     "wg": "acme"
+  },
+  "9892": {
+    "st": "Proposed Standard",
+    "wg": "manet"
+  },
+  "9893": {
+    "st": "Proposed Standard",
+    "wg": "manet"
+  },
+  "9894": {
+    "st": "Proposed Standard",
+    "wg": "manet"
+  },
+  "9895": {
+    "st": "Proposed Standard",
+    "wg": "manet"
+  },
+  "9896": {
+    "obs": [
+      "7996"
+    ],
+    "st": "Informational"
   },
   "9897": {
     "st": "Proposed Standard",
@@ -52690,6 +52726,21 @@
     ],
     "st": "Proposed Standard",
     "wg": "netmod"
+  },
+  "9915": {
+    "obs": [
+      "8415"
+    ],
+    "st": "Internet Standard",
+    "wg": "dhc"
+  },
+  "9917": {
+    "upd": [
+      "9350",
+      "9843"
+    ],
+    "st": "Proposed Standard",
+    "wg": "lsr"
   },
   "9937": {
     "obs": [

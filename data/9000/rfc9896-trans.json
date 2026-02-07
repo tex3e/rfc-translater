@@ -1,0 +1,274 @@
+{
+  "title": {
+    "text": "RFC 9896 - SVG in RFCs",
+    "ja": "RFC 9896 - RFC における SVG"
+  },
+  "number": 9896,
+  "created_at": "2026-02-02 23:24:34.649041+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Editorial Stream                                                A. Rossi\nRequest for Comments: 9896                  RFC Series Consulting Editor\nObsoletes: 7996                                              N. Brownlee\nCategory: Informational                                                 \nISSN: 2070-1721                                               J. Mahoney\n                                                   RFC Production Center\n                                                              M. Thomson\n                                                            January 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "SVG in RFCs",
+      "section_title": true,
+      "ja": "RFC における SVG"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines policy for the inclusion of Scalable Vector Graphics (SVG) in the definitive versions of RFCs and relevant publication formats. It contains policy requirements from RFC 7996 but removes all requirements related to using a specific SVG profile or implementation code. It also makes the RFC Production Center (RPC) responsible for decisions about SVG tooling and implementation.",
+      "ja": "この文書は、RFC および関連する出版形式の決定版にスケーラブル ベクター グラフィックス (SVG) を含めるためのポリシーを定義します。これには RFC 7996 のポリシー要件が含まれていますが、特定の SVG プロファイルまたは実装コードの使用に関連するすべての要件が削除されています。また、RFC Production Center (RPC) が SVG ツールと実装に関する決定を担当するようになります。"
+    },
+    {
+      "indent": 3,
+      "text": "This document obsoletes RFC 7996.",
+      "ja": "この文書は RFC 7996 を廃止します。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の位置付け"
+    },
+    {
+      "indent": 3,
+      "text": "This document is not an Internet Standards Track specification; it is published for informational purposes.",
+      "ja": "この文書は Internet Standards Track 仕様ではありません。情報提供を目的として公開されています。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the RFC Series Policy Definition Process. It represents the consensus of the RFC Series Working Group approved by the RFC Series Approval Board. Such documents are not candidates for any level of Internet Standard; see Section 2 of RFC 7841.",
+      "ja": "この文書は、RFC シリーズ ポリシー定義プロセスの成果物です。これは、RFC シリーズ承認委員会によって承認された RFC シリーズ ワーキング グループのコンセンサスを表しています。このような文書は、どのレベルのインターネット標準の候補にもなりません。RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9896.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9896 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Policy Requirements\n3.  Implementation Guidance\n4.  Security Considerations\n5.  IANA Considerations\n6.  Informative References\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines policy for the inclusion of Scalable Vector Graphics (SVG) in the definitive versions of RFCs and relevant publication formats defined in [RFC9720]. It contains policy requirements taken from [RFC7996] but removes all requirements related to using a specific SVG profile or implementation code.",
+      "ja": "この文書は、[RFC9720] で定義されている RFC および関連出版フォーマットの決定版に Scalable Vector Graphics (SVG) を含めるためのポリシーを定義します。これには [RFC7996] から取得したポリシー要件が含まれていますが、特定の SVG プロファイルまたは実装コードの使用に関連するすべての要件が削除されています。"
+    },
+    {
+      "indent": 3,
+      "text": "SVG has been developed by the World Wide Web Consortium (W3C); see [SVG].",
+      "ja": "SVG は World Wide Web Consortium (W3C) によって開発されました。[SVG]を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "The RFC Production Center (RPC) is responsible for making decisions about SVG tooling and implementation. The RPC may use the content of [RFC7996] as a starting point for those decisions, but they are not bound by [RFC7996]. In addition, the RPC may change elements of the implementation as needed to support the RFC authoring community as long as those changes are aligned with the policy requirements in this document.",
+      "ja": "RFC プロダクション センター (RPC) は、SVG ツールと実装に関する決定を行う責任があります。RPC は、それらの決定の出発点として [RFC7996] の内容を使用する可能性がありますが、それらは [RFC7996] に拘束されません。さらに、RPC は、その変更がこの文書のポリシー要件に沿っている限り、RFC オーサリング コミュニティをサポートするために必要に応じて実装の要素を変更することがあります。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Policy Requirements",
+      "section_title": true,
+      "ja": "2. ポリシー要件"
+    },
+    {
+      "indent": 3,
+      "text": "Decisions about SVG tooling and implementation are made by the RPC and must adhere to the policy requirements in this document:",
+      "ja": "SVG ツールと実装に関する決定は RPC によって行われ、このドキュメントのポリシー要件に従う必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* SVG drawings may be included in RFCs to help explain a concept more clearly, but they should not be the only representation of that concept. A good-faith effort should be made to ensure that descriptions of concepts -- which might include protocols, formats, or system architectures -- are fully represented in the text of the RFC. At minimum, SVG drawings should be consistent with the descriptions in the text of the RFC.",
+      "ja": "* 概念をより明確に説明するために SVG 図面が RFC に含まれる場合がありますが、それがその概念の唯一の表現であってはなりません。プロトコル、フォーマット、システム アーキテクチャなどの概念の説明が RFC の本文に完全に表現されていることを保証するために、誠意を持って努力する必要があります。少なくとも、SVG 図面は RFC 本文の説明と一致している必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* SVG drawings must not include animation or interactive features. SVG drawings should include only limited reactive design elements (scaling, dark/light mode, and perhaps minor adjustments to allow for variations in display technology). The intent of this is to ensure that the diagram's meaning is not altered.",
+      "ja": "* SVG 図面には、アニメーションやインタラクティブな機能を含めることはできません。SVG 図面には、限られたリアクティブ デザイン要素 (スケーリング、ダーク/ライト モード、および表示テクノロジの変化を考慮したわずかな調整) のみを含める必要があります。この目的は、図の意味が変更されないようにすることです。"
+    },
+    {
+      "indent": 6,
+      "text": "* Images and diagrams in RFCs should be successfully rendered and understood by the widest audience possible. To that end, the RPC may prohibit the use of SVG features that are known to lack support on common devices, that do not render on small or low-resolution screens, or that could make diagrams less comprehensible for any significant readership. In particular:",
+      "ja": "* RFC 内の画像と図は、可能な限り幅広い読者に適切に表示され、理解される必要があります。そのために、RPC は、一般的なデバイスでサポートされていないことが知られている SVG 機能、小さな画面や低解像度の画面ではレンダリングされない、または重要な読者にとって図が理解しにくくなる可能性がある SVG 機能の使用を禁止する場合があります。特に："
+    },
+    {
+      "indent": 12,
+      "text": "- SVG drawings must not contain pointers to external resources.",
+      "ja": "- SVG 図面には、外部リソースへのポインタが含まれていてはなりません。"
+    },
+    {
+      "indent": 12,
+      "text": "- SVG drawings must not contain executable script.",
+      "ja": "- SVG 図面には、実行可能なスクリプトを含めることはできません。"
+    },
+    {
+      "indent": 12,
+      "text": "- SVG drawings should be as accessible as possible to people with visual disabilities, including those who have color blindness, those who need to scale or change fonts, and those who use screen-reading software. The RPC will refer to the W3C Accessibility Guidelines [WAI] when making decisions regarding accessibility.",
+      "ja": "- SVG 図面は、色覚異常を持つ人、フォントの拡大縮小や変更が必要な人、画面読み上げソフトウェアを使用する人など、視覚障害を持つ人にとって可能な限りアクセシブルである必要があります。RPC は、アクセシビリティに関する決定を行う際に、W3C アクセシビリティ ガイドライン [WAI] を参照します。"
+    },
+    {
+      "indent": 6,
+      "text": "* Authors may include multiple versions of images or diagrams in RFCXML [RFC9720]. Publication formats should present the versions best suited to each format. In many cases, that will be an SVG.",
+      "ja": "* 作成者は、RFCXML [RFC9720] に複数のバージョンの画像または図を含めることができます。出版形式は、各形式に最適なバージョンを提示する必要があります。多くの場合、それは SVG になります。"
+    },
+    {
+      "indent": 6,
+      "text": "* SVG vocabulary and implementation may change over time. Changes are not required to remain backwards compatible, although maintaining compatibility where possible is encouraged.",
+      "ja": "* SVG の語彙と実装は時間の経過とともに変更される可能性があります。下位互換性を維持するために変更を行う必要はありませんが、可能な限り互換性を維持することが推奨されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The RPC is authorized to place constraints on SVG usage in RFCs for both technical and editorial reasons in order to ensure that published RFCs meet the above policy and to provide consistency across the RFC Series. The RPC must document the acceptable usage of SVG, and all changes to decisions about SVG tooling and implementation must be widely communicated to the RFC author community using mailing lists or other means.",
+      "ja": "RPC は、公開された RFC が上記のポリシーを満たしていることを確認し、RFC シリーズ全体で一貫性を提供するために、技術的および編集上の理由から、RFC での SVG の使用に制約を設ける権限を与えられています。RPC は SVG の許容可能な使用法を文書化する必要があり、SVG ツールと実装に関する決定に対するすべての変更は、メーリング リストまたはその他の手段を使用して RFC 作成者コミュニティに広く通知する必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Implementation Guidance",
+      "section_title": true,
+      "ja": "3. 実施ガイダンス"
+    },
+    {
+      "indent": 3,
+      "text": "The RPC is expected to solicit community input before making decisions and to publicly explain their reasoning.",
+      "ja": "RPC は決定を下す前にコミュニティからの意見を求め、その理由を公的に説明することが期待されています。"
+    },
+    {
+      "indent": 3,
+      "text": "Documentation produced by the RPC should describe the technical and editorial constraints that apply to SVG and provide RFC authors with guidance on how to produce diagrams that meet those constraints.",
+      "ja": "RPC によって作成されるドキュメントは、SVG に適用される技術的および編集上の制約を説明し、それらの制約を満たす図を作成する方法に関するガイダンスを RFC 作成者に提供する必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The RPC's implementation should strive to allow SVG drawings produced by widely used drawing tools. Where possible, implementation decisions should focus on specifying what is disallowed rather than attempting to specify exactly what is allowed.",
+      "ja": "RPC の実装では、広く使用されている描画ツールで作成された SVG 描画を許可するよう努める必要があります。可能な場合、実装の決定は、何が許可されるかを正確に指定するのではなく、何が禁止されるかを指定することに重点を置く必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The RPC should periodically review and revise their practices.",
+      "ja": "RPC は定期的にその実践を見直し、修正する必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "4. Security Considerations",
+      "section_title": true,
+      "ja": "4. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This document has no security considerations.",
+      "ja": "この文書にはセキュリティに関する考慮事項はありません。"
+    },
+    {
+      "indent": 0,
+      "text": "5. IANA Considerations",
+      "section_title": true,
+      "ja": "5. IANAの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This document has no IANA actions.",
+      "ja": "この文書には IANA のアクションはありません。"
+    },
+    {
+      "indent": 0,
+      "text": "6. Informative References",
+      "section_title": true,
+      "ja": "6. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC7996]  Brownlee, N., \"SVG Drawings for RFCs: SVG 1.2 RFC\",\n           RFC 7996, DOI 10.17487/RFC7996, December 2016,\n           <https://www.rfc-editor.org/info/rfc7996>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9720]  Hoffman, P. and H. Flanagan, \"RFC Formats and Versions\",\n           RFC 9720, DOI 10.17487/RFC9720, January 2025,\n           <https://www.rfc-editor.org/info/rfc9720>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[SVG]      W3C, \"Scalable Vector Graphics (SVG) 2\", 4 October 2018,\n           <https://www.w3.org/TR/2018/CR-SVG2-20181004/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[WAI]      W3C, \"W3C Accessibility Standards Overview\",\n           <https://www.w3.org/WAI/standards-guidelines/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Alexis Rossi\nRFC Series Consulting Editor\nEmail: rsce@rfc-editor.org",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Nevil Brownlee\nEmail: nevil.brownlee@gmail.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Jean Mahoney\nRFC Production Center\nEmail: jmahoney@staff.rfc-editor.org",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Martin Thomson\nEmail: mt@lowentropy.net",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}
