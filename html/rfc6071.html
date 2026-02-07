@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RFC 6071 - IP Security (IPsec) and Internet Key Exchange (IKE) Document Roadmap 日本語訳</title>
-  <meta name="description" content="RFC 6071は、IP Security (IPsec) と Internet Key Exchange (IKE) に関連する文書のロードマップを提供します。この文書の目的は、IPsecとIKEの実装と展開に関わる技術者や研究者が、関連する情報を簡単に見つけられるようにすることです。IPsecは、インターネットプロトコル（IP）通信のセキュリティを提供するための一連のプロトコルであり、IKEはIPsecで使用される鍵交換メカニズムです。利用場面には、VPNの構築、エンドツーエンドの通信の暗号化、認証などがあります。関連するRFCには、RFC 4301 (IPsecのセキュリティアーキテクチャ)、RFC 4302 (IP認証ヘッダ)、RFC 4303 (IP暗号化ペイロード)、RFC 7296 (IKEv2の仕様) などが含まれます。">
+  <meta name="description" content="RFC 6071は、IP Security (IPsec) と Internet Key Exchange (IKE) に関連する文書のロードマップを提供します。この文書の目的は、IPsecとIKEの実装と展開に関わる技術者や研究者が、関連する情報を簡単に見つけられるようにすることです。">
   
   <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -47,7 +47,7 @@
           </a>
         </span><br>
         <span class="title_ja">
-          タイトル : <strong>RFC 6071 - IPセキュリティ（IPSEC）およびインターネットキーエクスチェンジ（IKE）ドキュメントロードマップ</strong></span><br>
+          タイトル : <strong>RFC 6071 - IPセキュリティ（IPsec）およびインターネットキーエクスチェンジ（IKE）ドキュメントロードマップ</strong></span><br>
         <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
@@ -59,7 +59,7 @@
     <div id="rfc_summary">
       <div class="card mb-3">
         <div class="card-body">
-          <p class="card-text">[要約] RFC 6071は、IP Security (IPsec) と Internet Key Exchange (IKE) に関連する文書のロードマップを提供します。この文書の目的は、IPsecとIKEの実装と展開に関わる技術者や研究者が、関連する情報を簡単に見つけられるようにすることです。IPsecは、インターネットプロトコル（IP）通信のセキュリティを提供するための一連のプロトコルであり、IKEはIPsecで使用される鍵交換メカニズムです。利用場面には、VPNの構築、エンドツーエンドの通信の暗号化、認証などがあります。関連するRFCには、RFC 4301 (IPsecのセキュリティアーキテクチャ)、RFC 4302 (IP認証ヘッダ)、RFC 4303 (IP暗号化ペイロード)、RFC 7296 (IKEv2の仕様) などが含まれます。</p>
+          <p class="card-text">[要約] RFC 6071は、IP Security (IPsec) と Internet Key Exchange (IKE) に関連する文書のロードマップを提供します。この文書の目的は、IPsecとIKEの実装と展開に関わる技術者や研究者が、関連する情報を簡単に見つけられるようにすることです。</p>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ IP Security (IPsec) and Internet Key Exchange (IKE) Document Roadmap
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-2">
-IPセキュリティ（IPSEC）およびインターネットキーエクスチェンジ（IKE）ドキュメントロードマップ
+IPセキュリティ（IPsec）およびインターネットキーエクスチェンジ（IKE）ドキュメントロードマップ
         </p>
       </div>
     </div>
@@ -106,7 +106,7 @@ Over the past few years, the number of RFCs that define and use IPsec and Intern
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-過去数年にわたって、IPSECおよびInternet Key Exchange（IKE）を定義および使用するRFCの数は大幅に増殖しました。これは、これらのRFCが多数のIETFワーキンググループに由来するという事実によって複雑になっています。元のIPSEC WG、そのさまざまなスピンオフ、およびIPSECおよび/またはIKEを使用してプロトコルのトラフィックを保護する他のWG。
+過去数年にわたり、IPsecおよびInternet Key Exchange（IKE）を定義および使用するRFCの数は大幅に増加しました。これは、これらのRFCが多数のIETFワーキンググループ（元のIPsec WG、そのさまざまなスピンオフ、およびIPsecやIKEを使用してプロトコルのトラフィックを保護する他のWG）に由来するという事実によって複雑になっています。
         </p>
       </div>
     </div>
@@ -118,7 +118,7 @@ This document is a snapshot of IPsec- and IKE-related RFCs. It includes a brief 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、IPSECおよびIKE関連のRFCのスナップショットです。各RFCの簡単な説明と、IPSECの拡張と拡張の動機とコンテキストを説明する背景情報が含まれています。以前の「IPセキュリティドキュメントロードマップ」であるRFC 2411を廃止します。
+このドキュメントは、IPsecおよびIKE関連のRFCのスナップショットです。各RFCの簡単な説明と、IPsecの派生と拡張の動機とコンテキストを説明する背景情報が含まれています。これは、以前の「IPセキュリティドキュメントロードマップ」であるRFC 2411を廃止します。
         </p>
       </div>
     </div>
@@ -130,7 +130,7 @@ The obsoleted IPsec roadmap (RFC 2411) briefly described the interrelationship o
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-廃止されたIPSECロードマップ（RFC 2411）は、さまざまなクラスのベースIPSECドキュメントの相互関係を簡単に説明しました。RFC 2411の主な焦点は、追加の暗号化と認証アルゴリズムを指定するドキュメントの推奨コンテンツを指定することでした。
+廃止されたIPsecロードマップ（RFC 2411）は、さまざまなクラスのベースIPsecドキュメントの相互関係を簡単に説明しました。RFC 2411の主な焦点は、追加の暗号化と認証アルゴリズムを指定するドキュメントの推奨コンテンツを指定することでした。
         </p>
       </div>
     </div>
@@ -154,7 +154,7 @@ This document is not an Internet Standards Track specification; it is published 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、インターネット標準の追跡仕様ではありません。情報目的で公開されています。
+このドキュメントは、インターネット標準化過程の仕様ではありません。情報提供を目的として公開されています。
         </p>
       </div>
     </div>
@@ -166,7 +166,7 @@ This document is a product of the Internet Engineering Task Force (IETF). It rep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、インターネットエンジニアリングタスクフォース（IETF）の製品です。IETFコミュニティのコンセンサスを表しています。公開レビューを受けており、インターネットエンジニアリングステアリンググループ（IESG）からの出版が承認されています。IESGによって承認されたすべてのドキュメントが、あらゆるレベルのインターネット標準の候補者ではありません。RFC 5741のセクション2を参照してください。
+このドキュメントは、インターネットエンジニアリングタスクフォース（IETF）の製品です。IETFコミュニティのコンセンサスを表しています。公開レビューを受けており、インターネットエンジニアリングステアリンググループ（IESG）からの出版が承認されています。IESGによって承認されたすべてのドキュメントが、あらゆるレベルのインターネット標準の候補ではありません。RFC 5741のセクション2を参照してください。
         </p>
       </div>
     </div>
@@ -178,7 +178,7 @@ Information about the current status of this document, any errata, and how to pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの現在のステータス、任意のERRATA、およびそのフィードバックを提供する方法に関する情報は、http：//www.rfc-editor.org/info/rfc6071で取得できます。
+このドキュメントの現在のステータス、正誤表、およびそのフィードバックを提供する方法に関する情報は、http://www.rfc-editor.org/info/rfc6071で取得できます。
         </p>
       </div>
     </div>
@@ -202,7 +202,7 @@ Copyright (c) 2011 IETF Trust and the persons identified as the document authors
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Copyright（c）2011 IETF Trustおよび文書著者として特定された人。全著作権所有。
+Copyright (c) 2011 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。
         </p>
       </div>
     </div>
@@ -214,7 +214,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、BCP 78およびIETFドキュメント（http://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、セクション4.Eで説明されている法的規定のセクション4.Eで説明されており、単純化されたBSDライセンスで説明されているように保証なしで提供される簡略化されたBSDライセンステキストを含める必要があります。
+このドキュメントは、BCP 78およびIETFドキュメント（http://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseのテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。
         </p>
       </div>
     </div>
@@ -226,7 +226,7 @@ This document may contain material from IETF Documents or IETF Contributions pub
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントには、2008年11月10日までに公開または公開されたIETFドキュメントまたはIETFの寄付からの資料が含まれている場合があります。IETF標準プロセスの外。そのような資料の著作権を制御する人から適切なライセンスを取得せずに、このドキュメントはIETF標準プロセスの外側に変更されない場合があり、その派生作業は、ITF標準プロセスの外側で作成されない場合があります。RFCとしての出版またはそれを英語以外の言語に翻訳するため。
+このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。この素材の一部で著作権を管理している人物は、IETF標準化プロセス外で当該素材の変更を許可する権利をIETFトラストに付与していない可能性があります。このような資料の著作権を管理する人から適切なライセンスを取得せずに、このドキュメントをIETF標準化プロセス外で変更したり、その派生物をIETF標準化プロセス外で作成したりすることはできません。ただし、RFCとして公開するためにフォーマットする場合や、英語以外の言語に翻訳する場合を除きます。
         </p>
       </div>
     </div>
@@ -335,7 +335,7 @@ IPsec (Internet Protocol Security) is a suite of protocols that provides securit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSEC（インターネットプロトコルセキュリティ）は、IPレイヤーでのインターネット通信にセキュリティを提供するプロトコルスイートです。IPSECの最も一般的な現在の使用は、2つの場所（ゲートウェイツーゲートウェイ）の間、またはリモートユーザーとエンタープライズネットワーク（ホストツーゲートウェイ）の間の仮想プライベートネットワーク（VPN）を提供することです。また、エンドツーエンド、またはホストツーホストのセキュリティを提供することもできます。IPSECは、トラフィックの一部またはすべてを保護するために、他のインターネットプロトコル（モバイルIPバージョン6（MIPV6）など）でも使用されます。IKE（Internet Key Exchange）は、IPSECの動的にネゴシエートおよび更新されたキーイング資料を提供するために最も一般的に使用される主要な交渉および管理プロトコルです。IPSECとIKEは、IPv4とIPv6の両方と組み合わせて使用できます。
+IPsec（インターネットプロトコルセキュリティ）は、IPレイヤーでのインターネット通信にセキュリティを提供するプロトコルスイートです。IPsecの最も一般的な現在の使用は、2つの場所（ゲートウェイツーゲートウェイ）の間、またはリモートユーザーとエンタープライズネットワーク（ホストツーゲートウェイ）の間の仮想プライベートネットワーク（VPN）を提供することです。また、エンドツーエンド、またはホストツーホストのセキュリティを提供することもできます。IPsecは、トラフィックの一部またはすべてを保護するために、他のインターネットプロトコル（モバイルIPバージョン6（MIPv6）など）でも使用されます。IKE（Internet Key Exchange）は、IPsecの動的にネゴシエートおよび更新された鍵素材を提供するために最も一般的に使用される鍵交渉および管理プロトコルです。IPsecとIKEは、IPv4とIPv6の両方と組み合わせて使用できます。
         </p>
       </div>
     </div>
@@ -347,7 +347,7 @@ In addition to the base documents for IPsec and IKE, there are numerous RFCs tha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECおよびIKEのベースドキュメントに加えて、参照、拡張、および場合によってはコア仕様を変更する多数のRFCがあります。この文書は廃止[RFC2411]。これらのRFCをリストし、簡単に説明しようとし、示されている場合にコンテキストと理論的根拠を提供します。各RFCのタイトルの後に、次のように、RFCシリーズ[RFC2026]のカテゴリを示すレターが続きます。
+IPsecおよびIKEのベースドキュメントに加えて、参照、拡張、および場合によってはコア仕様を変更する多数のRFCがあります。このドキュメントは[RFC2411]を廃止します。これらのRFCをリストし、簡単に説明しようとし、示されている場合にコンテキストと理論的根拠を提供します。各RFCのタイトルの後には、[RFC2026]にあるRFCシリーズのカテゴリを示す文字が続きます。
         </p>
       </div>
     </div>
@@ -443,7 +443,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「必須」、「そうしない」、「必須」、「必要」、「しない」、「そうしない」、「そうではない」、「そうでない」、「推奨」、「5月」、および「オプション」は、[RFC2119]に記載されているように解釈される。
+この文書のキーワード &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL&#34;, &#34;SHALL NOT&#34;, &#34;SHOULD&#34;, &#34;SHOULD NOT&#34;, &#34;RECOMMENDED&#34;, &#34;MAY&#34;, および &#34;OPTIONAL&#34; は[RFC2119]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -455,7 +455,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-2. IPSEC/IKE背景情報
+2. IPsec/IKE背景情報
         </h5>
       </div>
     </div>
@@ -467,7 +467,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-2.1. IPSEC/IKEドキュメントの相互関係
+2.1. IPsec/IKEドキュメントの相互関係
         </h5>
       </div>
     </div>
@@ -479,7 +479,7 @@ The main documents describing the set of IPsec protocols are divided into seven 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECプロトコルのセットを説明する主なドキュメントは、7つのグループに分けられます。これを図1に示します。一般的な概念、セキュリティ要件、定義、およびIPSECテクノロジーを定義するメカニズムを広くカバーする主要なアーキテクチャドキュメントがあります。
+IPsecプロトコルのセットを説明する主なドキュメントは、7つのグループに分けられます。これを図1に示します。一般的な概念、セキュリティ要件、定義、およびIPsecテクノロジーを定義するメカニズムを広くカバーする主要なアーキテクチャドキュメントがあります。
         </p>
       </div>
     </div>
@@ -491,7 +491,7 @@ There are an Encapsulating Security Payload (ESP) Protocol document and an Authe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティペイロード（ESP）プロトコルドキュメントと、それぞれのプロトコルに関するパケット形式と一般的な問題をカバーする認証ヘッダー（AH）プロトコルドキュメントがあります。左に示されている「暗号化アルゴリズム」ドキュメントセットは、ESPにさまざまな暗号化アルゴリズムがどのように使用されるかを説明するドキュメントのセットです。中央に示されている「組み合わせたアルゴリズム」ドキュメントセットは、ESPの暗号化と整合性保護の両方を提供するためにさまざまな複合モードアルゴリズムを使用する方法を説明するドキュメントのセットです。右側に示されている「INTEG保護アルゴリズム」ドキュメントセットは、ESPとAHの両方でさまざまな整合性保護アルゴリズムがどのように使用されるかを説明するドキュメントのセットです。
+カプセル化セキュリティペイロード（ESP）プロトコルドキュメントと、それぞれのプロトコルに関するパケット形式と一般的な問題をカバーする認証ヘッダー（AH）プロトコルドキュメントがあります。左側に示されている「暗号化アルゴリズム」ドキュメントセットは、ESPにさまざまな暗号化アルゴリズムがどのように使用されるかを説明するドキュメントのセットです。中央に示されている「複合アルゴリズム」ドキュメントセットは、ESPの暗号化と整合性保護の両方を提供するためにさまざまな複合モードアルゴリズムを使用する方法を説明するドキュメントのセットです。右側に示されている「整合性保護アルゴリズム」ドキュメントセットは、ESPとAHの両方でさまざまな整合性保護アルゴリズムがどのように使用されるかを説明するドキュメントのセットです。
         </p>
       </div>
     </div>
@@ -549,7 +549,7 @@ Figure 1. IPsec/IKE Document Interrelationships
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-図1. IPSEC/IKEドキュメント相互関係
+図1. IPsec/IKEドキュメント相互関係
         </p>
       </div>
     </div>
@@ -561,7 +561,7 @@ Figure 1. IPsec/IKE Document Interrelationships
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-2.2. IPSECのバージョン
+2.2. IPsecのバージョン
         </h5>
       </div>
     </div>
@@ -573,20 +573,20 @@ Two versions of IPsec can currently be found in implementations. The &#34;new&#3
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECの2つのバージョンは現在、実装にあります。「新しい」IPSEC（このドキュメントではIPSEC-V3と呼ばれます。RFCの説明についてはセクション3.1.1を参照）は、「古い」IPSEC（このドキュメントでIPSEC-V2と呼ばれます。セクション3.1.2を参照してください。RFC説明）;ただし、IPSEC-V2は依然として運用上の使用で一般的に見られます。このドキュメントでは、資格のない用語IPSECを使用すると、IPSECの両方のバージョンに関係します。IPSEC-V2で廃止されたIPSECの以前のバージョン（RFCS 1825-1829で定義）は、このドキュメントではカバーされていません。
+IPsecの2つのバージョンは現在、実装にあります。「新しい」IPsec（このドキュメントではIPsec-v3と呼びます。RFCの説明についてはセクション3.1.2を参照）は、「古い」IPsec（このドキュメントではIPsec-v2と呼びます。RFCの説明についてはセクション3.1.1を参照）を廃止しました。ただし、IPsec-v2は依然として運用上の使用で一般的に見られます。このドキュメントでは、修飾子のない用語IPsecを使用すると、IPsecの両方のバージョンに関係します。IPsec-v2で廃止されたIPsecの以前のバージョン（RFC 1825-1829で定義）は、このドキュメントではカバーされていません。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="2-2-1--Differences-between-Old-IPsec-IPsec-v2-and-New-IPsec-IPsec-v3">
 2.2.1. Differences between &#34;Old&#34; IPsec (IPsec-v2) and &#34;New&#34; IPsec (IPsec-v3)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-2.2.1. 「古い」IPSEC（IPSEC-V2）と「新しい」IPSEC（IPSEC-V3）の違い
-        </p>
+        <h5 class="text mt-2">
+2.2.1. 「古い」IPsec（IPsec-v2）と「新しい」IPsec（IPsec-v3）の違い
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -597,7 +597,7 @@ IPsec-v3 incorporates &#34;lessons learned&#34; from implementation and operatio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSEC-V3には、IPSEC-V2およびその前身であるIPSEC-V1を使用した実装と運用経験から「学んだ教訓」が組み込まれています。
+IPsec-v3には、IPsec-v2およびその前身であるIPsec-v1を使用した実装と運用経験から「学んだ教訓」が組み込まれています。
         </p>
       </div>
     </div>
@@ -609,7 +609,7 @@ Knowledge was gained about the barriers to IPsec deployment, the scenarios in wh
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECの展開の障壁、IPSECが最も効果的であるシナリオ、および他のプロトコルでの使用を促進するためにIPSECに追加する必要がある要件について知識が得られました。さらに、IPSEC-V3のドキュメントは、IPSEC-V2で不十分なまたは曖昧な詳細を明確にし、拡張します。
+IPsecの展開に対する障壁、IPsecが最も効果的であるシナリオ、および他のプロトコルでの使用を促進するためにIPsecに追加する必要がある要件についての知見が得られました。さらに、IPsec-v3のドキュメントは、IPsec-v2で仕様が不十分であったり曖昧であった詳細を明確にし、拡張しています。
         </p>
       </div>
     </div>
@@ -633,7 +633,7 @@ o More detailed descriptions of IPsec processing, both unicast and multicast, an
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o ユニキャストとマルチキャストの両方のIPSEC処理のより詳細な説明、およびさまざまなIPSECデータベース間の相互作用
+o ユニキャストとマルチキャストの両方のIPsec処理のより詳細な説明、およびさまざまなIPsecデータベース間の相互作用
         </p>
       </div>
     </div>
@@ -645,7 +645,7 @@ o In IPsec-v2, an SA (Security Association) is uniquely identified by a combinat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o IPSEC-V2では、SA（セキュリティ協会）は、SPI（セキュリティパラメータインデックス）、プロトコル（ESPまたはAH）、および宛先アドレスの組み合わせによって一意に識別されます。IPSEC-V3では、ユニキャストSAはSPI、およびオプションではプロトコルによって一意に識別されます。マルチキャストSAは、SPIと宛先アドレス、およびオプションでソースアドレスの組み合わせによって識別されます。
+o IPsec-v2では、SA（セキュリティアソシエーション）は、SPI（セキュリティパラメータインデックス）、プロトコル（ESPまたはAH）、および宛先アドレスの組み合わせによって一意に識別されます。IPsec-v3では、ユニキャストSAはSPI、およびオプションではプロトコルによって一意に識別されます。マルチキャストSAは、SPIと宛先アドレス、およびオプションでソースアドレスの組み合わせによって識別されます。
         </p>
       </div>
     </div>
@@ -669,7 +669,7 @@ o Decorrelated (order-independent) SAD (Security Association Database) replaced 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o 脱線（注文に依存しない）SAD（セキュリティ協会データベース）が前者の注文SADを置き換えた
+o 非相関（順序に依存しない）SAD（セキュリティアソシエーションデータベース）が、以前の順序付きSADを置き換えました。
         </p>
       </div>
     </div>
@@ -705,7 +705,7 @@ o AH [RFC4302] is mandatory to implement (MUST) in IPsec-v2, optional (MAY) in I
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o AH [RFC4302]は、IPSEC-V2で実装（必須）、IPSEC-V3でオプション（5月）に実装することが必須です
+o AH [RFC4302]は、IPsec-v2では実装が必須（MUST）ですが、IPsec-v3ではオプション（MAY）です。
         </p>
       </div>
     </div>
@@ -729,7 +729,7 @@ o Combined mode algorithms were added, necessitating changes to packet format an
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o 組み合わせたモードアルゴリズムが追加されたため、パケット形式と処理の変更が必要です
+o 複合モードアルゴリズムが追加されたため、パケット形式と処理の変更が必要です
         </p>
       </div>
     </div>
@@ -741,7 +741,7 @@ o NULL authentication, mandatory (MUST) in ESP-v2, is optional (MAY) in ESP-v3
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o null認証、ESP-V2の必須（必須）は、ESP-V3のオプション（5月）です
+o NULL認証は、ESP-v2では必須（MUST）ですが、ESP-v3ではオプション（MAY）です。
         </p>
       </div>
     </div>
@@ -765,7 +765,7 @@ Two versions of IKE can currently be found in implementations. The &#34;new&#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEの2つのバージョンは現在、実装にあります。「新しい」IKE（一般にIKEV2と呼ばれる）は、「古い」IKE（一般にIKEV1と呼ばれる）を廃止しました。ただし、IKEV1は依然として運用上の使用で一般的に見られます。このドキュメントでは、資格のない用語IKEが使用される場合、IKEの両方のバージョンに関係します。
+IKEの2つのバージョンは現在、実装にあります。「新しい」IKE（一般にIKEV2と呼ばれる）は、「古い」IKE（一般にIKEV1と呼ばれる）を廃止しました。ただし、IKEV1は依然として運用上の使用で一般的に見られます。このドキュメントでは、修飾子のない用語IKEが使用される場合、IKEの両方のバージョンに関係します。
         </p>
       </div>
     </div>
@@ -801,7 +801,7 @@ Once an IKE negotiation is successfully completed, the peers have established tw
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEの交渉が正常に完了すると、ピアは2つのペアの一方向（インバウンドとアウトバウンド）SASを確立しました。Ikeは常にSAのペアを交渉するため、「SA」という用語は一般に、SASのペアを参照するために使用されます（例えば、「Ike SA」または「IPSEC SA」は実際には一方向SASのペアです）。最初のSAであるIKE SAは、IKEトラフィックを保護するために使用されます。2番目のSAは、ピアや他のデバイス間のデータトラフィックをIPSEC保護を提供します。IKEV1のIPSEC SAと呼ばれ、IKEV2 RFCSでは、Child_Sa、Child SA、およびIPSEC SAとさまざまに呼ばれます。このドキュメントでは、「IPSEC SA」という用語を使用しています。IKEV1はフェーズと呼ばれる2つの連続交渉で構成されているため、用語をさらに複雑にするために、IKE SAはフェーズ1 SAとも呼ばれ、IPSEC SAはフェーズ2 SAと呼ばれます。
+IKEのネゴシエーションが正常に完了すると、ピアは2つのペアの一方向（インバウンドとアウトバウンド）SAを確立しました。IKEは常にSAのペアを交渉するため、「SA」という用語は一般に、SAのペアを参照するために使用されます（例えば、「IKE SA」または「IPsec SA」は実際には一方向SAのペアです）。最初のSAであるIKE SAは、IKEトラフィックを保護するために使用されます。2番目のSAは、ピアや他のデバイス間のデータトラフィックをIPsec保護を提供します。IKEv1のIPsec SAと呼ばれ、IKEv2 RFCでは、CHILD_SA、Child SA、およびIPsec SAとさまざまに呼ばれます。このドキュメントでは、「IPsec SA」という用語を使用しています。IKEv1はフェーズと呼ばれる2つの連続したネゴシエーションで構成されているため、用語をさらに複雑にするために、IKE SAはフェーズ1 SAとも呼ばれ、IPsec SAはフェーズ2 SAと呼ばれます。
         </p>
       </div>
     </div>
@@ -837,7 +837,7 @@ o Streamlined negotiation format to avoid combinatorial bloat for multiple propo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o 複数の提案のための組み合わせ膨満を避けるための合理化されたネゴシエーション形式
+o 複数の提案による組み合わせ爆発を避けるための合理化されたネゴシエーション形式
         </p>
       </div>
     </div>
@@ -849,7 +849,7 @@ o Protect responder from committing significant resources to the exchange until 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o イニシエーターの存在とアイデンティティが確認されるまで、レスポンダーが取引所に重要なリソースをコミットするのを防ぐ
+o イニシエーターの存在とアイデンティティが確認されるまで、レスポンダーが交換に重要なリソースをコミットするのを防ぐ
         </p>
       </div>
     </div>
@@ -885,7 +885,7 @@ o Add traffic selectors: distinct from peer IDs and more flexible
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o トラフィックセレクターを追加：ピアIDとは異なる柔軟性とは異なります
+o トラフィックセレクターの追加：ピアIDとは異なり、より柔軟です
         </p>
       </div>
     </div>
@@ -909,7 +909,7 @@ o EAPベースの認証方法と非対称認証のサポート（つまり、イ
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-2.4. IPSECおよびIKE IANAレジストリ
+2.4. IPsecおよびIKE IANAレジストリ
         </h5>
       </div>
     </div>
@@ -933,7 +933,7 @@ o IKE Attributes (http://www.iana.org/assignments/ipsec-registry): values used d
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o IKE属性（http://www.iana.org/assignments/ipsec-registry）：[RFC2409]で定義されているIKEV1フェーズ1交換中に使用される値。
+o IKE属性（http://www.iana.org/assignments/ipsec-registry）：[RFC2409]で定義されているIKEv1フェーズ1交換中に使用される値。
         </p>
       </div>
     </div>
@@ -945,7 +945,7 @@ o &#34;Magic Numbers&#34; for Internet Security Association and Key Management P
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o インターネットセキュリティ協会および主要な管理プロトコル（ISAKMP）の「マジック番号」（http://www.iana.org/assignments/isakmp-registry）：[RFC2407]で定義されたIKEV1フェーズ2交換中に使用される値、[RFC2408]、および他の多くの暗号化アルゴリズムrfcs。
+o インターネットセキュリティアソシエーションおよび鍵管理プロトコル（ISAKMP）の「マジック番号」（http://www.iana.org/assignments/isakmp-registry）：[RFC2407]、[RFC2408]、および他の多くの暗号化アルゴリズムRFCで定義されたIKEv1フェーズ2交換中に使用される値。
         </p>
       </div>
     </div>
@@ -957,7 +957,7 @@ o IKEv2 Parameters (http://www.iana.org/assignments/ikev2-parameters): values us
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o IKEV2パラメーター（http://www.iana.org/assignments/ikev2-parameters）：[RFC5996]および他の多数の暗号化アルゴリズムRFCで定義されているIKEV2交換で使用される値。
+o IKEv2パラメーター（http://www.iana.org/assignments/ikev2-parameters）：[RFC5996]および他の多数の暗号化アルゴリズムRFCで定義されているIKEv2交換で使用される値。
         </p>
       </div>
     </div>
@@ -969,7 +969,7 @@ o Cryptographic Suites for IKEv1, IKEv2, and IPsec (http://www.iana.org/assignme
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-o IKEV1、IKEV2、およびIPSECの暗号スイート（http://www.iana.org/assignments/crypto-suites）：[RFC4308]および[RFC4869]の暗号化されたスイートの名前。
+o IKEv1、IKEv2、およびIPsecの暗号スイート（http://www.iana.org/assignments/crypto-suites）：[RFC4308]および[RFC4869]の暗号化されたスイートの名前。
         </p>
       </div>
     </div>
@@ -981,7 +981,7 @@ o IKEV1、IKEV2、およびIPSECの暗号スイート（http://www.iana.org/assi
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3. IPSECドキュメント
+3. IPsecドキュメント
         </h5>
       </div>
     </div>
@@ -1005,7 +1005,7 @@ IPsec protections are provided by two special headers: the Encapsulating Securit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSEC保護は、2つの特別なヘッダーによって提供されます。セキュリティペイロード（ESP）ヘッダーと認証ヘッダー（AH）です。IPv4では、これらのヘッダーはプロトコルヘッダーの形を取得します。IPv6では、それらは拡張ヘッダーとして分類されます。3つのベースIPSECドキュメントがあります。1つはIPセキュリティアーキテクチャを説明するもの、もう1つはIPSECヘッダーのそれぞれに1つです。
+IPsec保護は、2つの特別なヘッダーによって提供されます。カプセル化セキュリティペイロード（ESP）ヘッダーと認証ヘッダー（AH）です。IPv4では、これらのヘッダーはプロトコルヘッダーの形をとります。IPv6では、それらは拡張ヘッダーとして分類されます。3つのベースIPsecドキュメントがあります。1つはIPセキュリティアーキテクチャを説明するもの、もう1つはIPsecヘッダーのそれぞれに1つです。
         </p>
       </div>
     </div>
@@ -1017,20 +1017,20 @@ IPSEC保護は、2つの特別なヘッダーによって提供されます。�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.1.1. 「古い」ipsec（ipsec-v2）
+3.1.1. 「古い」IPsec（IPsec-v2）
         </h5>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-1-1-1--RFC-2401-Security-Architecture-for-the-Internet-Protocol-S-November-1998">
 3.1.1.1. RFC 2401, Security Architecture for the Internet Protocol (S, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.1.1.1. RFC 2401、インターネットプロトコルのセキュリティアーキテクチャ（S、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1041,7 +1041,7 @@ IPSEC保護は、2つの特別なヘッダーによって提供されます。�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2401]は、IPレイヤーでセキュリティサービスを提供するために必要なメカニズム、手順、およびコンポーネントを指定します。また、IPSEC保護をネットワークアーキテクチャに注入するために必要な相互関係と一般的な処理についても説明しています。
+[RFC2401]は、IPレイヤーでセキュリティサービスを提供するために必要なメカニズム、手順、およびコンポーネントを指定します。また、IPsec保護をネットワークアーキテクチャに注入するために必要な相互関係と一般的な処理についても説明しています。
         </p>
       </div>
     </div>
@@ -1065,7 +1065,7 @@ The components include:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-- SA（セキュリティ協会）：通信に提供されるIPSEC保護を指定する2つの通信ピア間の一方向（インバウンドまたはアウトバウンド）契約。これには、適用される特定のセキュリティ保護、暗号化アルゴリズム、および保護される特定のタイプのトラフィックが含まれます。
+- SA（セキュリティアソシエーション）：通信に提供されるIPsec保護を指定する2つの通信ピア間の一方向（インバウンドまたはアウトバウンド）契約。これには、適用される特定のセキュリティ保護、暗号化アルゴリズム、および保護される特定のタイプのトラフィックが含まれます。
         </p>
       </div>
     </div>
@@ -1077,7 +1077,7 @@ The components include:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-- SPI（セキュリティパラメーターインデックス）：宛先アドレスおよびセキュリティプロトコル（AHまたはESP）とともに、単一のSAを一意に識別する値。
+- SPI（セキュリティパラメータインデックス）：宛先アドレスおよびセキュリティプロトコル（AHまたはESP）とともに、単一のSAを一意に識別する値。
         </p>
       </div>
     </div>
@@ -1089,7 +1089,7 @@ The components include:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-- Sad（Security Association Database）：各ピアのSAリポジトリ。RFCは、このデータベースがどのように機能するか（SAルックアップなど）と、SA処理を促進するために含まれる必要がある情報の種類を説明します。データベースの形式やレイアウトは指示されません。SASは、輸送モードまたはトンネルモードのいずれかで確立できます（以下を参照）。
+- SAD（セキュリティアソシエーションデータベース）：各ピアのSAリポジトリ。RFCは、このデータベースがどのように機能するか（SAルックアップなど）と、SA処理を促進するために含まれる必要がある情報の種類を説明します。データベースの形式やレイアウトは指示されません。SAは、トランスポートモードまたはトンネルモードのいずれかで確立できます（以下を参照）。
         </p>
       </div>
     </div>
@@ -1101,7 +1101,7 @@ The components include:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-- SPD（セキュリティポリシーデータベース）：さまざまなタイプとクラスのトラフィックに提供されるセキュリティ保護を表す順序付けられたデータベース。トラフィックの3つの一般的なクラスは、廃棄されるトラフィック、IPSEC保護なしで許可されるトラフィック、およびIPSEC保護を必要とするトラフィックです。
+- SPD（セキュリティポリシーデータベース）：さまざまなタイプとクラスのトラフィックに提供されるセキュリティ保護を表す順序付けられたデータベース。トラフィックの3つの一般的なクラスは、廃棄されるトラフィック、IPsec保護なしで許可されるトラフィック、およびIPsec保護を必要とするトラフィックです。
         </p>
       </div>
     </div>
@@ -1113,7 +1113,7 @@ RFC 2401 describes general inbound and outbound IPsec processing; it also includ
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC処理について説明しています。また、パケットフラグメント、ICMPメッセージ、マルチキャストトラフィックのいくつかの特別なケースの詳細も含まれています。
+RFC 2401は、一般的なインバウンドおよびアウトバウンドIPsec処理について説明しています。また、パケットフラグメント、ICMPメッセージ、マルチキャストトラフィックのいくつかの特別なケースの詳細も含まれています。
         </p>
       </div>
     </div>
@@ -1137,20 +1137,20 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2402]は、整合性保護を提供する認証ヘッダー（AH）を定義します。また、データオリジン認証、アクセス制御、およびオプションでリプレイ保護も提供します。ピアツーピア通信を保護するために使用されるトランスポートモードAH SAは、上層層データと、パケット配信中に予測不可能に異なるIPヘッダーの部分を保護します。トンネルモードAH SAを使用して、ゲートウェイからゲートウェイまたはホストツーゲートウェイのトラフィックを保護できます。オプションでホストからホストへのトラフィックに使用できます。このクラスのAH SAは、内側（元の）ヘッダーと上層層データ、およびパケット配信中に予測不可能に異なる外側（トンネル）ヘッダーの部分を保護します。IPヘッダーの一部はAH計算に含まれていないため、AH処理はESP処理よりも複雑です。AHは、ネットワークアドレス変換（NAT）の存在下でも機能しません。IPSEC-V3とは異なり、IPSEC-V2はAHを実装に必須として分類します。
+[RFC2402]は、整合性保護を提供する認証ヘッダー（AH）を定義します。また、データオリジン認証、アクセス制御、およびオプションでリプレイ保護も提供します。ピアツーピア通信を保護するために使用されるトランスポートモードAH SAは、上層層データと、パケット配信中に予測不可能に異なるIPヘッダーの部分を保護します。トンネルモードAH SAを使用して、ゲートウェイからゲートウェイまたはホストツーゲートウェイのトラフィックを保護できます。オプションでホストからホストへのトラフィックに使用できます。このクラスのAH SAは、内側（元の）ヘッダーと上層層データ、およびパケット配信中に予測不可能に異なる外側（トンネル）ヘッダーの部分を保護します。IPヘッダーの一部はAH計算に含まれていないため、AH処理はESP処理よりも複雑です。AHは、ネットワークアドレス変換（NAT）の存在下でも機能しません。IPsec-v3とは異なり、IPsec-v2はAHを実装に必須として分類します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-1-1-3--RFC-2406-IP-Encapsulating-Security-Payload-ESP-S-November-1998">
 3.1.1.3. RFC 2406, IP Encapsulating Security Payload (ESP) (S, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.1.1.3. RFC 2406、IPカプセル化セキュリティペイロード（ESP）（S、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1161,7 +1161,7 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2406]は、セキュリティペイロード（ESP）をカプセル化するIPを定義します。これは、機密性（暗号化）および/または整合性保護を提供します。また、データオリジン認証、アクセス制御、およびオプションでリプレイおよび/またはトラフィック分析保護も提供します。トランスポートモードESP SAは、上層層データを保護しますが、IPヘッダーは保護しません。トンネルモードESP SAは、上層層データと内側のヘッダーを保護しますが、外側のヘッダーは保護しません。
+[RFC2406]は、IPカプセル化セキュリティペイロード（ESP）を定義します。これは、機密性（暗号化）および/または整合性保護を提供します。また、データオリジン認証、アクセス制御、およびオプションでリプレイおよび/またはトラフィック分析保護も提供します。トランスポートモードESP SAは、上層層データを保護しますが、IPヘッダーは保護しません。トンネルモードESP SAは、上層層データと内側のヘッダーを保護しますが、外側のヘッダーは保護しません。
         </p>
       </div>
     </div>
@@ -1173,20 +1173,20 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.1.2. 「新しい」IPSEC（IPSEC-V3）
+3.1.2. 「新しい」IPsec（IPsec-v3）
         </h5>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-1-2-1--RFC-4301-Security-Architecture-for-the-Internet-Protocol-S-December-2005">
 3.1.2.1. RFC 4301, Security Architecture for the Internet Protocol (S, December 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.1.2.1. RFC 4301、インターネットプロトコルのセキュリティアーキテクチャ（S、2005年12月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1197,7 +1197,7 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4301] Obtoletes [RFC2401]、およびより完全で詳細な処理モデルが含まれています。最も注目すべき変更は、上記のセクション2.2.1で詳しく説明されています。IPSEC-V3処理には、追加のデータベースが組み込まれています。
+[RFC4301]は[RFC2401]を廃止し、より完全で詳細な処理モデルが含まれています。最も注目すべき変更は、上記のセクション2.2.1で詳しく説明されています。IPsec-v3処理には、追加のデータベースが組み込まれています。
         </p>
       </div>
     </div>
@@ -1209,7 +1209,7 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-- PAD（ピア認証データベース）：ピア認証を実施するために必要な情報が含まれており、IPSECと主要な管理プロトコル（IKEなど）の間のリンクを提供します
+- PAD（ピア認証データベース）：ピア認証を実施するために必要な情報が含まれており、IPsecと鍵管理プロトコル（IKEなど）の間のリンクを提供します
         </p>
       </div>
     </div>
@@ -1233,20 +1233,20 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4302]廃止[RFC2402]。IPSEC-V2とは異なり、IPSEC-V3はAHをオプションとして分類します。
+[RFC4302]は[RFC2402]を廃止します。IPsec-v2とは異なり、IPsec-v3はAHをオプションとして分類します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-1-2-3--RFC-4303-IP-Encapsulating-Security-Payload-ESP-S-December-2005">
 3.1.2.3. RFC 4303, IP Encapsulating Security Payload (ESP) (S, December 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.1.2.3. RFC 4303、IPカプセル化セキュリティペイロード（ESP）（S、2005年12月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1257,7 +1257,7 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4303]廃止[RFC2406]。最も注目すべき変更は、上記のセクション2.2.1で詳しく説明されています。
+[RFC4303]は[RFC2406]を廃止します。最も注目すべき変更は、上記のセクション2.2.1で詳しく説明されています。
         </p>
       </div>
     </div>
@@ -1269,7 +1269,7 @@ RFC 2401は、一般的なインバウンドおよびアウトバウンドIPSEC�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.2. IPSECへの追加
+3.2. IPsecへの追加
         </h5>
       </div>
     </div>
@@ -1281,7 +1281,7 @@ Once the IKEv1 and IPsec-v2 RFCs were finalized, several additions were defined 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV1およびIPSEC-V2 RFCが最終決定されると、NATトラバーサルの交渉、拡張シーケンス番号、ESPパケットのUDPカプセル化、日和見的暗号化、IPSEC関連のICMPメッセージのいくつかの追加が定義されました。IPSEC輸送モードの追加の使用も説明されています。手動で構成されたIPv6-in-IPV4トンネルの保護とIP-in-IPトンネルの保護。これらのドキュメントは、IPSECトランスポートモードの非定型的な使用について説明しますが、新しいIPSEC機能は定義されていません。
+IKEv1およびIPsec-v2 RFCが最終決定されると、NATトラバーサルの交渉、拡張シーケンス番号、ESPパケットのUDPカプセル化、日和見的暗号化、IPsec関連のICMPメッセージのいくつかの追加が定義されました。IPsecトランスポートモードの追加の使用も説明されています。手動で構成されたIPv6-in-IPv4トンネルの保護とIP-in-IPトンネルの保護。これらのドキュメントは、IPsecトランスポートモードの非定型的な使用について説明しますが、新しいIPsec機能は定義されていません。
         </p>
       </div>
     </div>
@@ -1293,20 +1293,20 @@ Once the original IPsec Working Group concluded, additional IPsec-related issues
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-元のIPSECワーキンググループが締結されると、IPSECに関連する追加の問題がIPSECME（IPSECメンテナンスと拡張）ワーキンググループによって処理されました。そのような問題の1つは、暗号化されていないESPパケット（ESP-null）と暗号化されたパケットを高速かつ正確な方法で区別するためのミドルボックスの機能です。2つのソリューションについて説明します。IKEV2とIPSEC-V3の変更を必要とする新しいプロトコルと、新しい要件を課さないヒューリスティックな方法です。対処されたもう1つの問題は、高可用性環境でIKEとIPSECを使用する問題です。
+元のIPsecワーキンググループが締結されると、IPsecに関連する追加の問題がIPsecME（IPsecメンテナンスと拡張）ワーキンググループによって処理されました。そのような問題の1つは、暗号化されていないESPパケット（ESP-NULL）と暗号化されたパケットを高速かつ正確な方法で区別するためのミドルボックスの機能です。2つのソリューションについて説明します。IKEv2とIPsec-v3の変更を必要とする新しいプロトコルと、新しい要件を課さないヒューリスティックな方法です。対処されたもう1つの問題は、高可用性環境でIKEとIPsecを使用する問題です。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-1--RFC-3947-Negotiation-of-NAT-Traversal-in-the-IKE-S-January-2005">
 3.2.1. RFC 3947, Negotiation of NAT-Traversal in the IKE (S, January 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.2.1. RFC 3947、IKEでのNAT-Traversalの交渉（S、2005年1月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1317,20 +1317,20 @@ Once the original IPsec Working Group concluded, additional IPsec-related issues
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3947]は、IKEV1のオプションの拡張機能を定義します。IKEV1は、交渉の仲間と両方のピアがNATトラバーサルをサポートするかどうかを検出できます。また、IKEV1を使用して、IPSEC SAのESPパケットのUDPカプセル化の使用を交渉する方法についても説明しています。IKEV2の場合、この機能は[RFC5996]で説明されています。
+[RFC3947]は、IKEv1のオプションの拡張機能を定義します。IKEv1は、交渉の仲間と両方のピアがNATトラバーサルをサポートするかどうかを検出できます。また、IKEv1を使用して、IPsec SAのESPパケットのUDPカプセル化の使用を交渉する方法についても説明しています。IKEv2の場合、この機能は[RFC5996]で説明されています。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-2--RFC-3948-UDP-Encapsulation-of-IPsec-ESP-Packets-S-January-2005">
 3.2.2. RFC 3948, UDP Encapsulation of IPsec ESP Packets (S, January 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-3.2.2. RFC 3948、IPSEC ESPパケットのUDPカプセル化（S、2005年1月）
-        </p>
+        <h5 class="text mt-2">
+3.2.2. RFC 3948、IPsec ESPパケットのUDPカプセル化（S、2005年1月）
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1341,20 +1341,20 @@ Once the original IPsec Working Group concluded, additional IPsec-related issues
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3948]は、IPSEC-V2およびIPSEC-V3のオプションの拡張機能です。UDPパケットでESPパケットをカプセル化する方法を定義して、UDPまたはTCP以外のプロトコルでパケットを破棄するNATのトラバーサルを有効にします。これにより、ESPパケットはNATデバイス自体に変更を必要とせずにNATデバイスを通過できます。このソリューションの使用は、IKEV1の[RFC3947]およびIKEV2の[RFC5996]の[RFC3947]に記載されているように、IKEによって交渉されます。
+[RFC3948]は、IPsec-v2およびIPsec-v3のオプションの拡張機能です。UDPパケットでESPパケットをカプセル化する方法を定義して、UDPまたはTCP以外のプロトコルでパケットを破棄するNATのトラバーサルを有効にします。これにより、ESPパケットはNATデバイス自体に変更を必要とせずにNATデバイスを通過できます。このソリューションの使用は、IKEv1の[RFC3947]およびIKEv2の[RFC5996]に記載されているように、IKEによって交渉されます。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-3--RFC-4304-Extended-Sequence-Number-ESN-Addendum-to-IPsec-Domain-of-Interpretation-DOI-for-Internet-Security-Association-and-Key-Management-Protocol-ISAKMP-S-December-2005">
 3.2.3. RFC 4304, Extended Sequence Number (ESN) Addendum to IPsec Domain of Interpretation (DOI) for Internet Security Association and Key Management Protocol (ISAKMP) (S, December 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-3.2.3. RFC 4304、インターネットセキュリティ協会および主要な管理プロトコル（ISAKMP）のIPSEC解釈ドメイン（DOI）への拡張シーケンス番号（ESN）補遺（S、2005年12月）
-        </p>
+        <h5 class="text mt-2">
+3.2.3. RFC 4304、インターネットセキュリティアソシエーションおよび鍵管理プロトコル（ISAKMP）のIPsec解釈ドメイン（DOI）への拡張シーケンス番号（ESN）補遺（S、2005年12月）
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1365,7 +1365,7 @@ The use of ESNs allows IPsec to use 64-bit sequence numbers for replay protectio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ESNを使用すると、IPSECはリプレイ保護に64ビットシーケンス番号を使用できますが、パケットに32ビットのシーケンス番号のみを送信し、パケットの短縮を有効にし、パケット形式の再設計を回避できます。シーケンス番号が大きいほど、既存のIPSEC SAをより大きなデータに使用することができます。[RFC4304]は、IKEV1がIPSEC SASのESNの使用を交渉できるようにするIKEV1のオプションの拡張を説明しています。IKEV2の場合、この機能は[RFC5996]で説明されています。
+ESNを使用すると、IPsecはリプレイ保護に64ビットシーケンス番号を使用できますが、パケットに32ビットのシーケンス番号のみを送信し、パケットの短縮を有効にし、パケット形式の再設計を回避できます。シーケンス番号が大きいほど、既存のIPsec SAをより大きなデータに使用することができます。[RFC4304]は、IKEv1がIPsec SAのESNの使用を交渉できるようにするIKEv1のオプションの拡張を説明しています。IKEv2の場合、この機能は[RFC5996]で説明されています。
         </p>
       </div>
     </div>
@@ -1389,20 +1389,20 @@ Opportunistic encryption allows a pair of end systems to use encryption without 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-日和見暗号化により、一対のエンドシステムが特定の事前配置なしで暗号化を使用できます。[RFC4322]は、DNSを使用して関係する各システムのパブリックキーを配布し、DNSセキュリティ（DNSSEC）を使用してアクティブな攻撃者に対するメカニズムを保護するメカニズムを指定します。既存のIPSECおよびIKEの実装で必要な変更を指定します。IKEの実装では、変更の大部分が必要であり、これらの変更は、キー取得要求の処理、パブリックキーとTXTレコードの検索、および同じものの共同居住者であるファイアウォールやその他のセキュリティ施設とのやり取りに関連しています。ゲートウェイ。
+日和見暗号化により、一対のエンドシステムが特定の事前配置なしで暗号化を使用できます。[RFC4322]は、DNSを使用して関係する各システムのパブリックキーを配布し、DNSセキュリティ（DNSSEC）を使用してアクティブな攻撃者に対するメカニズムを保護するメカニズムを指定します。既存のIPsecおよびIKEの実装で必要な変更を指定します。IKEの実装では、変更の大部分が必要であり、これらの変更は、キー取得要求の処理、パブリックキーとTXTレコードの検索、および同じものの共同居住者であるファイアウォールやその他のセキュリティ施設とのやり取りに関連しています。ゲートウェイ。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-5--RFC-4891-Using-IPsec-to-Secure-IPv6-in-IPv4-Tunnels-I-May-2007">
 3.2.5. RFC 4891, Using IPsec to Secure IPv6-in-IPv4 Tunnels (I, May 2007)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-3.2.5. RFC 4891、IPSECを使用してIPv6-in-IPV4トンネルを保護する（I、2007年5月）
-        </p>
+        <h5 class="text mt-2">
+3.2.5. RFC 4891、IPsecを使用してIPv6-in-IPv4トンネルを保護する（I、2007年5月）
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1413,20 +1413,20 @@ Opportunistic encryption allows a pair of end systems to use encryption without 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4891]は、IKEおよびトランスポートモードIPSECを使用して、手動で構成されたIPv6-in-IPV4トンネルにセキュリティ保護を提供する方法について説明します。このドキュメントでは、新しい拡張機能なしで標準のIKEとIPSECを使用しています。自動化された方法で開始されるトンネルには適用されません（例：6to4トンネル[RFC3056]）。
+[RFC4891]は、IKEおよびトランスポートモードIPsecを使用して、手動で構成されたIPv6-in-IPv4トンネルにセキュリティ保護を提供する方法について説明します。このドキュメントでは、新しい拡張機能なしで標準のIKEとIPsecを使用しています。自動化された方法で開始されるトンネルには適用されません（例：6to4トンネル[RFC3056]）。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-6--RFC-3884-Use-of-IPsec-Transport-Mode-for-Dynamic-Routing-I-September-2004">
 3.2.6. RFC 3884, Use of IPsec Transport Mode for Dynamic Routing (I, September 2004)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-3.2.6. RFC 3884、動的ルーティングのためのIPSECトランスポートモードの使用（I、2004年9月）
-        </p>
+        <h5 class="text mt-2">
+3.2.6. RFC 3884、動的ルーティングのためのIPsecトランスポートモードの使用（I、2004年9月）
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1437,7 +1437,7 @@ Opportunistic encryption allows a pair of end systems to use encryption without 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3884]は、マルチホップの分散仮想ネットワーク（VN）のリンクを構成するIP-in-IPトンネルを保護するためのトランスポートモードIPSECの使用について説明しています。これにより、静的にルーティングされたIPSECトンネルを介してすべてのトラフィックをルーティングするのではなく、トラフィックをVNの信頼できるルーターを介して動的にルーティングできます。このRFCは広く採用されていません。
+[RFC3884]は、マルチホップの分散仮想ネットワーク（VN）のリンクを構成するIP-in-IPトンネルを保護するためのトランスポートモードIPsecの使用について説明しています。これにより、静的にルーティングされたIPsecトンネルを介してすべてのトラフィックをルーティングするのではなく、トラフィックをVNの信頼できるルーターを介して動的にルーティングできます。このRFCは広く採用されていません。
         </p>
       </div>
     </div>
@@ -1449,7 +1449,7 @@ Opportunistic encryption allows a pair of end systems to use encryption without 
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-3.2.7. RFC 5840、トラフィックの可視性のためのセキュリティペイロード（ESP）のラップ（S、2010年4月）
+3.2.7. RFC 5840、トラフィックの可視性のためのラップされたカプセル化セキュリティペイロード（ESP）（S、2010年4月）
         </h5>
       </div>
     </div>
@@ -1461,20 +1461,20 @@ ESP, as defined in [RFC4303], does not allow a network device to easily determin
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ESPは、[RFC4303]で定義されているように、ネットワークデバイスがデバイスを通過している保護されたトラフィックが暗号化されているか、整合性保護されているか（ESP-Nullパケットと呼ばれる）かどうかを簡単に判断することを許可しません。[RFC5840]はESPV3を拡張して整合性保護パケットの明示的な通知を提供し、IKEV2を拡張してIPSECピア間のこの機能を交渉します。
+ESPは、[RFC4303]で定義されているように、ネットワークデバイスがデバイスを通過している保護されたトラフィックが暗号化されているか、整合性保護のみされているか（ESP-NULLパケットと呼ばれる）かどうかを簡単に判断することを許可しません。[RFC5840]はESPv3を拡張して整合性保護パケットの明示的な通知を提供し、IKEv2を拡張してIPsecピア間のこの機能を交渉します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-2-8--RFC-5879-Heuristics-for-Detecting-ESP-NULL-packets-I-May-2010">
 3.2.8. RFC 5879, Heuristics for Detecting ESP-NULL packets (I, May 2010)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.2.8. RFC 5879、ESP-Nullパケットを検出するためのヒューリスティック（I、2010年5月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1527,14 +1527,14 @@ ESPは、[RFC4303]で定義されているように、ネットワークデバ�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="3-3-2--RFC-5406-Guidelines-for-Specifying-the-Use-of-IPsec-Version-2-B-February-2009">
 3.3.2. RFC 5406, Guidelines for Specifying the Use of IPsec Version 2 (B, February 2009)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 3.3.2. RFC 5406、IPSECバージョン2の使用を指定するためのガイドライン（B、2009年2月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1569,7 +1569,7 @@ ESPは、[RFC4303]で定義されているように、ネットワークデバ�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2521] IPSECプロトコル（AHおよびESP）の使用に関連する障害を示すためのICMPメッセージを指定します。指定されたICMPメッセージは、IPSECの一般的な障害モードを処理するためのいくつかのコードを定義します。このメッセージで合図される障害には、無効または期限切れのスピス、データグラムの信頼性または整合性チェックの障害、復号化および解凍エラーなどが含まれます。これらのメッセージは、自動化されたセッションキー管理をトリガーするか、オペレーターにニーズを通知するために使用できます。SASを手動で再構成する。このRFCは広く採用されていません。さらに、[RFC4301]は、保護されていないICMPメッセージに依存することの長所と短所について説明します。
+[RFC2521]は、IPSECプロトコル（AHおよびESP）の使用に関連する障害を示すためのICMPメッセージを指定します。指定されたICMPメッセージは、IPSECの一般的な障害モードを処理するためのいくつかのコードを定義します。このメッセージで合図される障害には、無効または期限切れのスピス、データグラムの信頼性または整合性チェックの障害、復号化および解凍エラーなどが含まれます。これらのメッセージは、自動化されたセッションキー管理をトリガーするか、オペレーターにニーズを通知するために使用できます。SASを手動で再構成する。このRFCは広く採用されていません。さらに、[RFC4301]は、保護されていないICMPメッセージに依存することの長所と短所について説明します。
         </p>
       </div>
     </div>
@@ -1641,7 +1641,7 @@ IKE is the preferred key management protocol for IPsec. It is used for peer auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEは、IPSECの優先キー管理プロトコルです。ピア認証に使用されます。SASを交渉、変更、削除する。そして、それらのSAS内で使用するための認証されたキーイング素材を交渉する。IKEV1（事前共有シークレットキーとデジタル証明書）が使用する標準のピア認証方法には、IKEV1の使用に関連するいくつかの欠点があり、企業VPNにリモートユーザー認証を有効にします。レガシー認証システムの使用を活用できませんでした（RADIUSデータベースなど）リモートユーザーをセキュリティゲートウェイに認証する。また、内部ネットワークにアクセスするために必要なネットワークアドレスまたはその他の情報を持つリモートユーザーを構成するために使用できませんでした。IPSEC-V2には自動キー分布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。
+IKEは、IPsecの優先キー管理プロトコルです。ピア認証に使用されます。SAを交渉、変更、削除する。そして、それらのSA内で使用するための認証された鍵素材を交渉する。IKEv1（事前共有シークレットキーとデジタル証明書）が使用する標準のピア認証方法には、IKEv1の使用に関連するいくつかの欠点があり、企業VPNにリモートユーザー認証を有効にします。レガシー認証システムの使用を活用できませんでした（RADIUSデータベースなど）リモートユーザーをセキュリティゲートウェイに認証する。また、内部ネットワークにアクセスするために必要なネットワークアドレスまたはその他の情報を持つリモートユーザーを構成するために使用できませんでした。IPsec-v2には自動鍵配布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。
         </p>
       </div>
     </div>
@@ -1677,7 +1677,7 @@ This document defines a key exchange protocol that can be used to negotiate auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、SASの認証されたキーイング素材をネゴシエートするために使用できるキーエクスチェンジプロトコルを定義します。このドキュメントでは、ISAKMPと組み合わせてOakleyプロトコルのサブセットを実装して、ISAKMPで使用するための認証されたキーイン材料を取得し、IETF IPSEC DOIのAHやESPなどの他のセキュリティ協会のために取得します。歴史的には、IKEV1は2つのセキュリティプロトコル、ISAKMPとOakleyを組み合わせて作成されましたが、実際には（IPSEC DOIとともに）組み合わせが1つのプロトコルIKEV1と見なされています。プロトコルの起源は、それを定義するドキュメントの編成で見ることができます。
+このドキュメントでは、SAの認証された鍵素材をネゴシエートするために使用できるキーエクスチェンジプロトコルを定義します。このドキュメントでは、ISAKMPと組み合わせてOakleyプロトコルのサブセットを実装して、ISAKMPで使用するための認証された鍵素材を取得し、IETF IPsec DOIのAHやESPなどの他のセキュリティアソシエーションのために取得します。歴史的には、IKEv1は2つのセキュリティプロトコル、ISAKMPとOakleyを組み合わせて作成されましたが、実際には（IPsec DOIとともに）組み合わせが1つのプロトコルIKEv1と見なされています。プロトコルの起源は、それを定義するドキュメントの編成で見ることができます。
         </p>
       </div>
     </div>
@@ -1701,7 +1701,7 @@ This document defines procedures and packet formats to establish, negotiate, mod
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、セキュリティ協会（SAS）を確立、交渉、変更、削除する手順とパケット形式を定義します。ネットワークスタックのすべてのレイヤーでのセキュリティプロトコルのSASの交渉をサポートすることを目的としています。ISAKMPは、それぞれ異なるセキュリティプロパティを持つ多くの異なるキーエクスチェンジプロトコルで動作できます。
+このドキュメントでは、セキュリティアソシエーション（SA）を確立、交渉、変更、削除する手順とパケット形式を定義します。ネットワークスタックのすべてのレイヤーでのセキュリティプロトコルのSAの交渉をサポートすることを目的としています。ISAKMPは、それぞれ異なるセキュリティプロパティを持つ多くの異なるキーエクスチェンジプロトコルで動作できます。
         </p>
       </div>
     </div>
@@ -1725,20 +1725,20 @@ Within ISAKMP, a Domain of Interpretation is used to group related protocols usi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ISAKMP内では、解釈の領域を使用して、ISAKMPを使用してセキュリティ協会を交渉する関連プロトコルをグループ化します。DOIを共有するセキュリティプロトコルは、共通の名前空間からセキュリティプロトコルと暗号化変換を選択し、キーエクスチェンジプロトコル識別子を共有します。このドキュメントでは、IPがISAKMPを使用してセキュリティ協会を交渉するときにIPで使用するためにISAKMPをインスタンス化するインターネットIPセキュリティDOI（IPSEC doi）を定義します。
+ISAKMP内では、解釈ドメイン（DOI）を使用して、ISAKMPを使用してセキュリティアソシエーションを交渉する関連プロトコルをグループ化します。DOIを共有するセキュリティプロトコルは、共通の名前空間からセキュリティプロトコルと暗号化変換を選択し、キーエクスチェンジプロトコル識別子を共有します。このドキュメントでは、IPがISAKMPを使用してセキュリティアソシエーションを交渉するときにIPで使用するためにISAKMPをインスタンス化するインターネットIPセキュリティDOI（IPsec DOI）を定義します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-1-1-4--RFC-2412-The-OAKLEY-Key-Determination-Protocol-I-November-1998">
 4.1.1.4. RFC 2412, The OAKLEY Key Determination Protocol (I, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.1.1.4. RFC 2412、オークリーキー決定プロトコル（I、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1749,7 +1749,7 @@ ISAKMP内では、解釈の領域を使用して、ISAKMPを使用してセキ�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2412]は、2つの認証された当事者が安全で秘密のキーイング資料に同意するために使用できる主要な確立プロトコルについて説明しています。Oakley Protocolは、「モード」と呼ばれる一連のキー交換を説明し、それぞれが提供するサービス（たとえば、キー、アイデンティティ保護、認証のための完全な前進秘密）を詳述しています。このドキュメントは、IKEおよびISAKMPの設計上の決定とセキュリティ機能のいくつかを説明するための追加の理論と背景を提供します。IKEV1の実装に必要な詳細は含まれていません。
+[RFC2412]は、2つの認証された当事者が安全で秘密の鍵素材に同意するために使用できる鍵確立プロトコルについて説明しています。Oakley Protocolは、「モード」と呼ばれる一連のキー交換を説明し、それぞれが提供するサービス（たとえば、キー、アイデンティティ保護、認証のための完全な前方秘匿性）を詳述しています。このドキュメントは、IKEおよびISAKMPの設計上の決定とセキュリティ機能のいくつかを説明するための追加の理論と背景を提供します。IKEv1の実装に必要な詳細は含まれていません。
         </p>
       </div>
     </div>
@@ -1767,14 +1767,14 @@ ISAKMP内では、解釈の領域を使用して、ISAKMPを使用してセキ�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-1-2-1--RFC-4306-Internet-Key-Exchange-IKEv2-Protocol-S-December-2005">
 4.1.2.1. RFC 4306, Internet Key Exchange (IKEv2) Protocol (S, December 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.1.2.1. RFC 4306、インターネットキーエクスチェンジ（IKEV2）プロトコル（S、2005年12月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1785,20 +1785,20 @@ This document contains the original description of version 2 of the Internet Key
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントには、インターネットキーエクスチェンジ（IKE）プロトコルのバージョン2の元の説明が含まれています。以前に別々のドキュメントでカバーされていたものをカバーしています：isakmp、ike、およびdoi。また、NATトラバーサル、レガシー認証、およびリモートアドレスの取得にも対応しています。IKEV2はIKEV1と相互運用できません。IPSEC-V3には自動キー分布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。この文書は[RFC5996]に取って代わられています。
+このドキュメントには、インターネットキーエクスチェンジ（IKE）プロトコルのバージョン2の元の説明が含まれています。以前に別々のドキュメントでカバーされていたものをカバーしています：ISAKMP、IKE、およびDOI。また、NATトラバーサル、レガシー認証、およびリモートアドレスの取得にも対応しています。IKEv2はIKEv1と相互運用できません。IPsec-v3には自動鍵配布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。この文書は[RFC5996]に取って代わられています。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-1-2-2--RFC-4718-IKEv2-Clarifications-and-Implementation-Guidelines-I-October-2006">
 4.1.2.2. RFC 4718, IKEv2 Clarifications and Implementation Guidelines (I, October 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.1.2.2. RFC 4718、IKEV2の明確化と実装ガイドライン（I、2006年10月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1815,14 +1815,14 @@ This document contains the original description of version 2 of the Internet Key
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-1-2-3--RFC-5996-Internet-Key-Exchange-Protocol-Version-2-IKEv2-S-September-2010">
 4.1.2.3. RFC 5996, Internet Key Exchange Protocol Version 2 (IKEv2) (S, September 2010)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.1.2.3. RFC 5996、インターネットキーエクスチェンジプロトコルバージョン2（IKEV2）（S、2010年9月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1833,7 +1833,7 @@ This document contains the original description of version 2 of the Internet Key
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5996]は、元のIKEV2 RFC [RFC4306]と明確化RFC [RFC4718]を組み合わせ、これら2つの文書の公開以来コミュニティによって発見された多くの実装の問題を解決します。このドキュメントは、元のIPSECワーキンググループの終了後、IPSECME（IPSECメンテナンスと拡張機能）ワーキンググループによって開発されました。IPSEC-V3には自動キー分布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。
+[RFC5996]は、元のIKEv2 RFC [RFC4306]と明確化RFC [RFC4718]を組み合わせ、これら2つの文書の公開以来コミュニティによって発見された多くの実装の問題を解決します。このドキュメントは、元のIPsecワーキンググループの終了後、IPsecME（IPsecメンテナンスと拡張機能）ワーキンググループによって開発されました。IPsec-v3には自動鍵配布が必要ですが、IKEの代替品を使用してその要件を満たすことができます。
         </p>
       </div>
     </div>
@@ -1863,14 +1863,14 @@ This document contains the original description of version 2 of the Internet Key
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-2-1-1--RFC-4478-Repeated-Authentication-in-Internet-Key-Exchange-IKEv2-Protocol-E-April-2006">
 4.2.1.1. RFC 4478, Repeated Authentication in Internet Key Exchange (IKEv2) Protocol (E, April 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.2.1.1. RFC 4478、インターネットキーエクスチェンジ（IKEV2）プロトコルでの繰り返し認証（E、2006年4月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1881,7 +1881,7 @@ This document contains the original description of version 2 of the Internet Key
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4478]は、リモートアクセスシナリオに固有の問題に対処します。ゲートウェイ（IKE Responder）は、リモートユーザー（IKEイニシエーター）に定期的に再認証するように強制し、不正なユーザーがリモートホストに物理的なアクセスを獲得する場合の損傷を制限することができますか？このドキュメントでは、応答者がイニシエーターに送信できる新しいステータス通知を定義します。これにより、指定者が指定された期間内に再認可されない限り、IPSEC SAが取り消されることをイニシエーターに通知します。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+[RFC4478]は、リモートアクセスシナリオに固有の問題に対処します。ゲートウェイ（IKE Responder）は、リモートユーザー（IKEイニシエーター）に定期的に再認証するように強制し、不正なユーザーがリモートホストに物理的なアクセスを獲得した場合の被害を制限することができますか？このドキュメントでは、応答者がイニシエーターに送信できる新しいステータス通知を定義します。これにより、指定者が指定された期間内に再認証されない限り、IPsec SAが取り消されることをイニシエーターに通知します。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -1905,7 +1905,7 @@ IKEv2 supports several mechanisms for authenticating the parties but each endpoi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2は、当事者を認証するためのいくつかのメカニズムをサポートしていますが、各エンドポイントはこれらのメカニズムの1つのみを使用して自らを認証します。[RFC4739]は、異なるメカニズムまたは同じメカニズムを使用して、複数の認証交換を使用できるIKEV2の拡張を指定します。この拡張機能により、たとえば、クライアントホストの証明書ベースの認証を実行し、それに続くユーザーのEAP認証を実行できます。これにより、必要に応じて複数の管理ドメインによる認証が可能になります。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+IKEv2は、当事者を認証するためのいくつかのメカニズムをサポートしていますが、各エンドポイントはこれらのメカニズムの1つのみを使用して自らを認証します。[RFC4739]は、異なるメカニズムまたは同じメカニズムを使用して、複数の認証交換を使用できるIKEv2の拡張を指定します。この拡張機能により、たとえば、クライアントホストの証明書ベースの認証を実行し、それに続くユーザーのEAP認証を実行できます。これにより、必要に応じて複数の管理ドメインによる認証が可能になります。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -1935,14 +1935,14 @@ IKEV2は、当事者を認証するためのいくつかのメカニズムをサ
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-2-1-4--RFC-5998-An-Extension-for-EAP-Only-Authentication-in-IKEv2-S-September-2010">
 4.2.1.4. RFC 5998, An Extension for EAP-Only Authentication in IKEv2 (S, September 2010)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.2.1.4. RFC 5998、IKEV2（S、2010年9月）でのEAPのみの認証の拡張
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -1953,7 +1953,7 @@ IKEv2 allows an initiator to use EAP for peer authentication, but requires the r
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2を使用すると、イニシエーターはPEER認証にEAPを使用できますが、デジタル署名を使用して応答者が認証する必要があります。[RFC5998]はIKEV2を拡張して、相互認証と主要な契約を提供するEAPメソッドを使用して、レスポンダーにピア認証を提供できるようにします。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+IKEv2を使用すると、イニシエーターはピア認証にEAPを使用できますが、デジタル署名を使用して応答者が認証する必要があります。[RFC5998]はIKEv2を拡張して、相互認証と鍵合意を提供するEAPメソッドを使用して、レスポンダーにピア認証を提供できるようにします。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -2049,7 +2049,7 @@ When certificates are used with IKEv2, the communicating peers need a mechanism 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2で証明書が使用される場合、通信ピアはピアの証明書の取消しステータスを決定するメカニズムが必要です。OCSPはそのようなメカニズムの1つです。[RFC4806]は、IKEV2の「OCSPコンテンツ」拡張を定義します。このドキュメントは、OCSPが望まれ、セキュリティポリシー（ファイアウォールポリシーなど）がIKEV2ピアの1つが関連するOCSP Responderに直接アクセスすることを防ぐ場合に適用されます。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+IKEv2で証明書が使用される場合、通信ピアはピアの証明書の取消しステータスを決定するメカニズムが必要です。OCSPはそのようなメカニズムの1つです。[RFC4806]は、IKEv2の「OCSPコンテンツ」拡張を定義します。このドキュメントは、OCSPが望まれ、セキュリティポリシー（ファイアウォールポリシーなど）がIKEv2ピアの1つが関連するOCSP Responderに直接アクセスすることを防ぐ場合に適用されます。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -2085,7 +2085,7 @@ When two peers communicate using IKE and IPsec, it is possible for the connectiv
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEとIPSECを使用して2人のピアが通信すると、2人のピア間の接続性が予期せずにドロップする可能性があります。しかし、SASは寿命が切れるまで依然として留まることができ、その結果、パケットが「ブラックホール」にトンネリングされます。[RFC3706]は、定期的にメッセージを送信する必要なく、ピアの活気を検出するアプローチを説明しています。このRFCは、IKEV1のオプションの拡張機能を定義します。Dead Peer Detection（DPD）は、IKEV2の不可欠な部分であり、この機能を「livension Check」または「livension test」と呼びます。
+IKEとIPsecを使用して2人のピアが通信すると、2人のピア間の接続性が予期せずにドロップする可能性があります。しかし、SAは寿命が切れるまで依然として留まることができ、その結果、パケットが「ブラックホール」にトンネリングされます。[RFC3706]は、定期的にメッセージを送信する必要なく、ピアの活気を検出するアプローチを説明しています。このRFCは、IKEv1のオプションの拡張機能を定義します。Dead Peer Detection（DPD）は、IKEv2の不可欠な部分であり、この機能を「liveness check」または「liveness test」と呼びます。
         </p>
       </div>
     </div>
@@ -2109,7 +2109,7 @@ The IKEv2 Mobility and Multihoming (MOBIKE) protocol enables two additional capa
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2モビリティとマルチホミング（MOBIKE）プロトコルは、IPSEC VPNユーザーに2つの追加機能を有効にします。1）既存のSASを再確立せずに、あるアドレスから別のアドレスに移動し、2）複数のインターフェイスを同時に使用します。これらのソリューションはIPSEC VPNに限定されています。それらは、より一般的なモビリティやマルチホーム機能を提供することを意図していません。
+IKEv2モビリティとマルチホミング（MOBIKE）プロトコルは、IPsec VPNユーザーに2つの追加機能を有効にします。1）既存のSAを再確立せずに、あるアドレスから別のアドレスに移動し、2）複数のインターフェイスを同時に使用します。これらのソリューションはIPsec VPNに限定されています。それらは、より一般的なモビリティやマルチホーム機能を提供することを意図していません。
         </p>
       </div>
     </div>
@@ -2127,14 +2127,14 @@ IPSECMEワーキンググループは、リモートアクセスクライアン�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-2-4-1--RFC-4555-IKEv2-Mobility-and-Multihoming-Protocol-MOBIKE-S-June-2006">
 4.2.4.1. RFC 4555, IKEv2 Mobility and Multihoming Protocol (MOBIKE) (S, June 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.2.4.1. RFC 4555、IKEV2モビリティおよびマルチホミングプロトコル（MOBIKE）（S、2006年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2145,20 +2145,20 @@ IKEv2 assumes that an IKE SA is created implicitly between the IP address pair t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2は、IKEV2 SAを確立する際にプロトコル実行中に使用されるIPアドレスペア間でIKE SAが暗黙的に作成されると想定しています。IPSEC関連のドキュメントには、IKE SAが作成された後、このペアを変更する規定はありませんでした。[RFC4555]は、ホストが複数のIPアドレスを所有している場合、および/またはIPSECホストのIPアドレスが時間の経過とともに変化する場合に、IKEおよびIPSECセキュリティ関連の関連性を有効にするIKEV2への拡張機能を定義します。
+IKEv2は、IKEv2 SAを確立する際にプロトコル実行中に使用されるIPアドレスペア間でIKE SAが暗黙的に作成されると想定しています。IPsec関連のドキュメントには、IKE SAが作成された後、このペアを変更する規定はありませんでした。[RFC4555]は、ホストが複数のIPアドレスを所有している場合、および/またはIPsecホストのIPアドレスが時間の経過とともに変化する場合に、IKEおよびIPsecセキュリティアソシエーションの効率的な管理を有効にするIKEv2への拡張機能を定義します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="4-2-4-2--RFC-4621-Design-of-the-IKEv2-Mobility-and-Multihoming-MOBIKE-Protocol-I-August-2006">
 4.2.4.2. RFC 4621, Design of the IKEv2 Mobility and Multihoming (MOBIKE) Protocol (I, August 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 4.2.4.2. RFC 4621、IKEV2モビリティとマルチホミング（Mobike）プロトコルの設計（I、2006年8月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2169,7 +2169,7 @@ IKEV2は、IKEV2 SAを確立する際にプロトコル実行中に使用され�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4621]関係するネットワークエンティティと、IKEV2シグナル伝達と他のプロトコルが提供する情報との関係について説明します。また、Mobikeプロトコル、背景情報、およびワーキンググループ内での記録の議論の設計上の決定を記録します。
+[RFC4621]は、関係するネットワークエンティティと、IKEV2シグナル伝達と他のプロトコルが提供する情報との関係について説明します。また、Mobikeプロトコル、背景情報、およびワーキンググループ内での記録の議論の設計上の決定を記録します。
         </p>
       </div>
     </div>
@@ -2217,7 +2217,7 @@ IKEV2は、IKEV2 SAを確立する際にプロトコル実行中に使用され�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5723]は、完全なIKEV2ネゴシエーションを繰り返すことなく、ゲートウェイから切断されたリモートクライアントを迅速な方法でゲートウェイで再確立できるようにします。この機能には、IKEV2の変更が必要です。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+[RFC5723]は、完全なIKEv2ネゴシエーションを繰り返すことなく、ゲートウェイから切断されたリモートクライアントを迅速な方法でゲートウェイでSAを再確立できるようにします。この機能には、IKEv2の変更が必要です。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -2241,7 +2241,7 @@ IKEV2は、IKEV2 SAを確立する際にプロトコル実行中に使用され�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5685]は、IKEV2交渉中または後に、VPNクライアントを別のVPNゲートウェイに安全にリダイレクトするゲートウェイを有効にします。考えられる理由には、過負荷のゲートウェイまたはシャットダウンする必要があるゲートウェイが含まれますが、これらに限定されません。これには、IKEV2の変更が必要です。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+[RFC5685]は、IKEv2交渉中または後に、VPNクライアントを別のVPNゲートウェイに安全にリダイレクトするゲートウェイを有効にします。考えられる理由には、過負荷のゲートウェイまたはシャットダウンする必要があるゲートウェイが含まれますが、これらに限定されません。これには、IKEv2の変更が必要です。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -2265,7 +2265,7 @@ In IKEv2, a VPN gateway can assign an internal network address to a remote VPN c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV2では、VPNゲートウェイは、内部ネットワークアドレスをリモートVPNクライアントに割り当てることができます。これは、構成ペイロードを使用して達成されます。IPv6クライアントの場合、単一のアドレスの割り当てでは、本格的なIPv6通信を有効にするには十分ではありません。[RFC5739]は、この制限を取り除く可能性のあるいくつかのソリューションを提案しています。このオプションの拡張機能は、IKEV1にのみIKEV1に適用されます。
+IKEv2では、VPNゲートウェイは、内部ネットワークアドレスをリモートVPNクライアントに割り当てることができます。これは、構成ペイロードを使用して達成されます。IPv6クライアントの場合、単一のアドレスの割り当てでは、本格的なIPv6通信を有効にするには十分ではありません。[RFC5739]は、この制限を取り除く可能性のあるいくつかのソリューションを提案しています。このオプションの拡張機能は、IKEv2にのみ適用され、IKEv1には適用されません。
         </p>
       </div>
     </div>
@@ -2301,7 +2301,7 @@ This document categorizes the requirement level of each algorithm for IKEv1, IKE
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、IKEV1、IKEV2、IPSEC-V2、およびIPSEC-V3の各アルゴリズムの要件レベルを分類します。アルゴリズムがIKEV1またはIKEV2内で使用することをお勧めする場合、IKE SAのトラフィック（暗号化と整合性保護アルゴリズム）を保護するか、キーイング材料（Diffie-HellmanまたはDHグループ、擬似ランダム機能またはPRF）を生成するために使用されます。IPSEC内での使用が推奨される場合は、IPSEC/Child SAのトラフィックを保護するために使用され、IKEはその目的のためにその使用を交渉することができます。これらの要件を表1（付録A）にまとめます。これらのレベルは2011年2月現在の時点です。その後のRFCは、要件レベルが変更される可能性があります。アルゴリズムの場合、これは新しいアルゴリズムの導入または現在のアルゴリズムの要件レベルのアップグレードまたはダウングレードを意味します。
+このドキュメントは、IKEv1、IKEv2、IPsec-v2、およびIPsec-v3の各アルゴリズムの要件レベルを分類します。アルゴリズムがIKEv1またはIKEv2内で使用することをお勧めする場合、IKE SAのトラフィック（暗号化と整合性保護アルゴリズム）を保護するか、鍵素材（Diffie-HellmanまたはDHグループ、擬似ランダム機能またはPRF）を生成するために使用されます。IPsec内での使用が推奨される場合は、IPsec/Child SAのトラフィックを保護するために使用され、IKEはその目的のためにその使用を交渉することができます。これらの要件を表1（付録A）にまとめます。これらのレベルは2011年2月現在の時点です。その後のRFCは、要件レベルが変更される可能性があります。アルゴリズムの場合、これは新しいアルゴリズムの導入または現在のアルゴリズムの要件レベルのアップグレードまたはダウングレードを意味します。
         </p>
       </div>
     </div>
@@ -2343,14 +2343,14 @@ Specifying a core set of mandatory algorithms for each protocol facilitates inte
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-1-1--RFC-4835-Cryptographic-Algorithm-Implementation-Requirements-for-Encapsulating-Security-Payload-ESP-and-Authentication-Header-AH-S-April-2007">
 5.1.1. RFC 4835, Cryptographic Algorithm Implementation Requirements for Encapsulating Security Payload (ESP) and Authentication Header (AH) (S, April 2007)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.1.1. RFC 4835、セキュリティペイロード（ESP）および認証ヘッダー（AH）（S、2007年4月）をカプセル化するための暗号化アルゴリズムの実装要件
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2361,7 +2361,7 @@ Specifying a core set of mandatory algorithms for each protocol facilitates inte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4835] IPSEC（両方のバージョン）の暗号化と整合性保護アルゴリズムを指定します。IPSEC-V2のアルゴリズムは、元々[RFC2402]および[RFC2406]で定義されていました。[RFC4305]これらの要件を廃止し、[RFC4835]によって順番に廃止されました。したがって、[RFC4835]はIPSEC-V2およびIPSEC-V3に適用されます。複合モードアルゴリズムが言及されていますが、要件レベルは割り当てられていません。
+[RFC4835]は、IPSEC（両方のバージョン）の暗号化と整合性保護アルゴリズムを指定します。IPSEC-V2のアルゴリズムは、元々[RFC2402]および[RFC2406]で定義されていました。[RFC4305]これらの要件を廃止し、[RFC4835]によって順番に廃止されました。したがって、[RFC4835]はIPSEC-V2およびIPSEC-V3に適用されます。複合モードアルゴリズムが言及されていますが、要件レベルは割り当てられていません。
         </p>
       </div>
     </div>
@@ -2391,14 +2391,14 @@ Specifying a core set of mandatory algorithms for each protocol facilitates inte
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-1-3--RFC-4109-Algorithms-for-Internet-Key-Exchange-version-1-IKEv1-S-May-2005">
 5.1.3. RFC 4109, Algorithms for Internet Key Exchange version 1 (IKEv1) (S, May 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.1.3. RFC 4109、インターネットキーエクスチェンジバージョン1（IKEV1）（S、2005年5月）のアルゴリズム
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2463,14 +2463,14 @@ DES, as described in [RFC2405], was originally a required algorithm for IKEv1 an
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-2-1--RFC-2410-The-NULL-Encryption-Algorithm-and-Its-Use-With-IPsec-S-November-1998">
 5.2.1. RFC 2410, The NULL Encryption Algorithm and Its Use With IPsec (S, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.2.1. RFC 2410、Null暗号化アルゴリズムとIPSECでのその使用（S、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2481,7 +2481,7 @@ DES, as described in [RFC2405], was originally a required algorithm for IKEv1 an
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2410]は、NO-OP暗号化アルゴリズムの舌の説明です（つまり、暗号化なしでESPを使用）。IKEがESP SAで使用するためのnull暗号化アルゴリズムの選択を交渉するためには、識別されるIANA番号が必要です。この数（ESP_NULLの値11）は、IKEV1とIKEV2の両方のIANAレジストリにありますが、[RFC2410]では言及されていません。
+[RFC2410]は、NO-OP暗号化アルゴリズムの冗談めかした説明です（つまり、暗号化なしでESPを使用）。IKEがESP SAで使用するためのnull暗号化アルゴリズムの選択を交渉するためには、識別されるIANA番号が必要です。この数（ESP_NULLの値11）は、IKEv1とIKEv2の両方のIANAレジストリにありますが、[RFC2410]では言及されていません。
         </p>
       </div>
     </div>
@@ -2505,7 +2505,7 @@ IKEv1 - N/A IKEv2 - N/A ESP-v2 - MUST [RFC4835] ESP-v3 - MUST [RFC4835]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -N/A IKEV2 -N/A ESP -V2 -Must [RFC4835] ESP -V3 -Must [RFC4835]
+IKEv1 - N/A IKEv2 - N/A ESP-v2 - MUST [RFC4835] ESP-v3 - MUST [RFC4835]
         </p>
       </div>
     </div>
@@ -2517,7 +2517,7 @@ NOTE: RFC 4307 erroneously classifies ESP-NULL as MAY for IKEv2; this has been c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：RFC 4307は、IKEV2の場合と誤ってESP-Nullを分類します。これは、RFC 4307のERRATA提出で修正されています。
+注：RFC 4307は、IKEv2に対してESP-NULLをMAYとして誤って分類しています。これは、RFC 4307の正誤表の提出で修正されています。
         </p>
       </div>
     </div>
@@ -2587,20 +2587,20 @@ IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプションIKEV2-オプションのESP -V2-オプションのESP -V3-オプション
+IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-2-3--RFC-3602-The-AES-CBC-Cipher-Algorithm-and-Its-Use-with-IPsec-S-September--2003">
 5.2.3. RFC 3602, The AES-CBC Cipher Algorithm and Its Use with IPsec (S, September. 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.2.3. RFC 3602、AES-CBC暗号アルゴリズムとIPSECでのその使用（S、9月。2003）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2611,7 +2611,7 @@ IKEV1-オプションIKEV2-オプションのESP -V2-オプションのESP -V3-�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3602]は、IKEとESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでAESを使用する方法について説明します。AESはDESの後継者です。AES-CBCは、128ビットブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128、192、および256ビットのキーのキーサイズです。AES-CBCが実装されている場合、128ビットキーが必要です。他のサイズは5月です。[RFC3602] IKEV1およびESP-V2で使用するIANA値が含まれています。AES-CBCに対して単一のIANA値が定義されているため、IKEの交渉はキーサイズを指定する必要があります。
+[RFC3602]は、IKEとESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでAESを使用する方法について説明します。AESはDESの後継者です。AES-CBCは、128ビットブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128、192、および256ビットのキーのキーサイズです。AES-CBCが実装されている場合、128ビットキーが必要です。他のサイズはMAYです。[RFC3602] IKEv1およびESP-v2で使用するIANA値が含まれています。AES-CBCに対して単一のIANA値が定義されているため、IKEの交渉はキーサイズを指定する必要があります。
         </p>
       </div>
     </div>
@@ -2657,7 +2657,7 @@ IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプションIKEV2-オプションのESP -V2-オプションのESP -V3-オプション
+IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
         </p>
       </div>
     </div>
@@ -2681,7 +2681,7 @@ IKEV1-オプションIKEV2-オプションのESP -V2-オプションのESP -V3-�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3686]は、ESPトラフィックを暗号化するためにカウンター（CTR）モードでAESを使用する方法について説明します。AES-CTRは、32ビットのランダムノンセ（1/SA）と64ビットIVを備えたストリーム暗号です。AES-CTRが実装されている場合、128ビットキーが必要です。192および256バイトのキーは5月です。IVを同じキーとNonceで再利用し、データのセキュリティが損なわれます。したがって、AES-CTRは手動キーイングで使用しないでください。AES-CTRは、パイプラインおよび並列化できます。暗号化と復号化の両方にAES暗号化操作のみを使用します。
+[RFC3686]は、ESPトラフィックを暗号化するためにカウンター（CTR）モードでAESを使用する方法について説明します。AES-CTRは、32ビットのランダムナンス（1/SA）と64ビットIVを備えたストリーム暗号です。AES-CTRが実装されている場合、128ビットキーが必要です。192および256バイトのキーはMAYです。IVを同じキーとナンスで再利用すると、データのセキュリティが損なわれます。したがって、AES-CTRは手動キーイングで使用しないでください。AES-CTRは、パイプラインおよび並列化できます。暗号化と復号化の両方にAES暗号化操作のみを使用します。
         </p>
       </div>
     </div>
@@ -2709,14 +2709,14 @@ AES-CTRの要件レベル：
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-2-5--RFC-5930-Using-Advanced-Encryption-Standard-Counter-Mode-AES-CTR-with-the-Internet-Key-Exchange-version-02-IKEv2-Protocol-I-July-210-">
 5.2.5. RFC 5930, Using Advanced Encryption Standard Counter Mode (AES-CTR) with the Internet Key Exchange version 02 (IKEv2) Protocol (I, July 210).
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
-5.2.5. RFC 5930、インターネットキーエクスチェンジバージョン02（IKEV2）プロトコル（I、7月210）を使用して、高度な暗号化標準カウンターモード（AES-CTR）を使用しています。
-        </p>
+        <h5 class="text mt-2">
+5.2.5. RFC 5930、インターネットキーエクスチェンジバージョン02（IKEV2）プロトコル（I、2010年7月）を使用して、高度な暗号化標準カウンターモード（AES-CTR）を使用しています。
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2751,7 +2751,7 @@ AES-CTRの要件レベル：
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4312]は、IKEとESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでCamelliaを使用する方法について説明しています。Camellia-CBCは、128ビットブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128、192、および256ビットのキーサイズです。Camellia-CBCが実装されている場合、128ビットキーが必要です。他のサイズは5月です。[RFC4312] IKEV1およびIPSEC-V2で使用するIANA値が含まれています。Camellia-CBCに対して単一のIANA値が定義されているため、IKEV1交渉はキーサイズを指定する必要があります。
+[RFC4312]は、IKEとESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでCamelliaを使用する方法について説明しています。Camellia-CBCは、128ビットブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128、192、および256ビットのキーサイズです。Camellia-CBCが実装されている場合、128ビットキーが必要です。他のサイズはMAYです。[RFC4312] IKEv1およびIPsec-v2で使用するIANA値が含まれています。Camellia-CBCに対して単一のIANA値が定義されているため、IKEv1交渉はキーサイズを指定する必要があります。
         </p>
       </div>
     </div>
@@ -2799,7 +2799,7 @@ IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプションIKEV2-オプションのESP -V2-オプションのESP -V3-オプション
+IKEv1 - optional IKEv2 - optional ESP-v2 - optional ESP-v3 - optional
         </p>
       </div>
     </div>
@@ -2845,20 +2845,20 @@ IKEv1 - N/A IKEv2 - undefined (no RFC) ESP-v2 - N/A ESP-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -N/A IKEV2-未定義（RFCなし）ESP -V2 -N/A ESP -V3-オプション
+IKEv1 - N/A IKEv2 - undefined (no RFC) ESP-v2 - N/A ESP-v3 - optional
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-2-8--RFC-4196-The-SEED-Cipher-Algorithm-and-Its-Use-with-IPsec-S-October-2005">
 5.2.8. RFC 4196, The SEED Cipher Algorithm and Its Use with IPsec (S, October 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.2.8. RFC 4196、シード暗号アルゴリズムとIPSECでのその使用（S、2005年10月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2869,7 +2869,7 @@ IKEV1 -N/A IKEV2-未定義（RFCなし）ESP -V2 -N/A ESP -V3-オプション
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4196]は、ESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでシードを使用する方法について説明しています。IKEV1を使用して種子SAを交渉する方法について説明しますが、IKEV1トラフィックを保護するための種子の使用を定義しません。Seed-CBCは、128ビットのブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128ビットのキーサイズです。[RFC4196] IKEV1およびIPSEC-V2で使用するIANA値が含まれています。[RFC4196]にはテストデータが含まれています。
+[RFC4196]は、ESPトラフィックを暗号化するために、暗号ブロックチェーン（CBC）モードでSEEDを使用する方法について説明しています。IKEv1を使用してSEED-ESP SAを交渉する方法について説明しますが、IKEv1トラフィックを保護するためのSEEDの使用を定義しません。SEED-CBCは、128ビットのブロックサイズを備えたブロックモード暗号、暗号化されたデータとともにパケットに送信されるランダムIV、および128ビットのキーサイズです。[RFC4196] IKEv1およびIPsec-v2で使用するIANA値が含まれています。[RFC4196]にはテストデータが含まれています。
         </p>
       </div>
     </div>
@@ -2927,7 +2927,7 @@ Some of these algorithms generate a fixed-length ICV, which is truncated when it
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらのアルゴリズムの一部は、固定長のICVを生成します。これは、IPSECで保護されたパケットに含まれると切り捨てられます。たとえば、標準のHMAC-SHA-1（Hashed Message Authentication Code）は160ビットICVを生成します。これは、ESPまたはAHパケットに整合性保護を提供するために使用されると96ビットに切り捨てられます。個々のRFCの説明は、切り捨てられたアルゴリズムに言及しています。これらのアルゴリズムがIKEV2 SASを保護するために使用される場合、それらも切り捨てられます。IKEV1の場合、HMAC-SHA-1とHMAC-MD5は、それぞれハッシュアルゴリズムSHA-1とMD5を要求することによりネゴシエートされます。これらのアルゴリズムは、IKEV1 SAを保護するために使用された場合に切り捨てられません。HMAC-SHA-1およびHMAC-MD5の場合、IKEV2 IANAレジストリには、切り捨てられたバージョンと標準の非切り抜きバージョンの両方の値が含まれています。したがって、IKEV2には、いずれかのバージョンのアルゴリズムをネゴシエートする機能があります。ただし、IKEV2 SASおよびIPSEC SASには、切り捨てられたバージョンのみが使用されます。不正なバージョンは、ファイバーチャネルプロトコル[RFC4595]で使用するために予約されています。他のアルゴリズム（AES-XCBC、HMAC-SHA-256/384/512、AES-CMAC、およびHMAC-RIPEMD）の場合、IKEV2とIPSEC-V3 SASの両方に切り捨てられたバージョンのみを使用できます。
+これらのアルゴリズムの一部は、固定長のICVを生成します。これは、IPsecで保護されたパケットに含まれると切り捨てられます。たとえば、標準のHMAC-SHA-1（Hashed Message Authentication Code）は160ビットICVを生成します。これは、ESPまたはAHパケットに整合性保護を提供するために使用されると96ビットに切り捨てられます。個々のRFCの説明は、切り捨てられたアルゴリズムに言及しています。これらのアルゴリズムがIKEv2 SAを保護するために使用される場合、それらも切り捨てられます。IKEv1の場合、HMAC-SHA-1とHMAC-MD5は、それぞれハッシュアルゴリズムSHA-1とMD5を要求することによりネゴシエートされます。これらのアルゴリズムは、IKEv1 SAを保護するために使用された場合に切り捨てられません。HMAC-SHA-1およびHMAC-MD5の場合、IKEv2 IANAレジストリには、切り捨てられたバージョンと標準の切り捨てられていないバージョンの両方の値が含まれています。したがって、IKEv2には、いずれかのバージョンのアルゴリズムをネゴシエートする機能があります。ただし、IKEv2 SAおよびIPsec SAには、切り捨てられたバージョンのみが使用されます。切り捨てられていないバージョンは、ファイバーチャネルプロトコル[RFC4595]で使用するために予約されています。他のアルゴリズム（AES-XCBC、HMAC-SHA-256/384/512、AES-CMAC、およびHMAC-RIPEMD）の場合、IKEv2とIPsec-v3 SAの両方に切り捨てられたバージョンのみを使用できます。
         </p>
       </div>
     </div>
@@ -2945,14 +2945,14 @@ One other algorithm, AES-GMAC [RFC4543], can also provide integrity protection. 
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-3-1--RFC-2404-The-Use-of-HMAC-SHA-1-96-within-ESP-and-AH-S-November-1998">
 5.3.1. RFC 2404, The Use of HMAC-SHA-1-96 within ESP and AH (S, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.3.1. RFC 2404、ESPおよびAH内でのHMAC-SHA-1-96の使用（S、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -2991,14 +2991,14 @@ HMAC-SHA-1の要件レベル：
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-3-2--RFC-3566-The-AES-XCBC-MAC-96-Algorithm-and-Its-Use-With-IPsec-S-September-2003">
 5.3.2. RFC 3566, The AES-XCBC-MAC-96 Algorithm and Its Use With IPsec (S, September 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.3.2. RFC 3566、AES-XCBC-MAC-96アルゴリズムとIPSECでのその使用（S、2003年9月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3091,20 +3091,20 @@ IKEv1 - optional IKEv2 - optional IPsec-v2 - optional IPsec-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプションIKEV2-オプションIPSEC -V2-オプションIPSEC -V3-オプション
+IKEv1 - optional IKEv2 - optional IPsec-v2 - optional IPsec-v3 - optional
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-3-4--RFC-2403-The-Use-of-HMAC-MD5-96-within-ESP-and-AH-S-November-1998">
 5.3.4. RFC 2403, The Use of HMAC-MD5-96 within ESP and AH (S, November 1998)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.3.4. RFC 2403、ESPおよびAH内でのHMAC-MD5-96の使用（S、1998年11月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3143,14 +3143,14 @@ HMAC-MD5の要件レベル：
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-3-5--RFC-4494-The-AES-CMAC-96-Algorithm-and-Its-Use-with-IPsec-S-June-2006">
 5.3.5. RFC 4494, The AES-CMAC-96 Algorithm and Its Use with IPsec (S, June 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.3.5. RFC 4494、AES-CMAC-96アルゴリズムとIPSECでのその使用（S、2006年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3189,14 +3189,14 @@ AES-CMACの要件レベル：
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-3-6--RFC-2857-The-Use-of-HMAC-RIPEMD-160-96-within-ESP-and-AH-S-June-2000">
 5.3.6. RFC 2857, The Use of HMAC-RIPEMD-160-96 within ESP and AH (S, June 2000)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.3.6. RFC 2857、ESPおよびAH内のHMAC-RIPEMD-160-96の使用（S、2000年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3277,7 +3277,7 @@ IKEv1 and ESP-v2 use separate algorithms to provide encryption and integrity pro
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKEV1とESP-V2は、個別のアルゴリズムを使用して暗号化と整合性保護を提供し、IKEV1はさまざまなSAのアルゴリズムの異なる組み合わせを交渉できます。ESP-V3では、新しいクラスのアルゴリズムが導入され、単一のアルゴリズムが暗号化と整合性保護の両方を提供できます。[RFC5996]は、IKEV2がESP-V3 SASで使用される複合モードアルゴリズムをネゴシエートする方法を説明しています。[RFC5282]は、IKEV2にその機能を追加し、IKEV2が独自のトラフィックに対して複合モードアルゴリズムを交渉および使用できるようにします。適切に設計されている場合、これらのアルゴリズムは、実装と実行の両方で効率を高めることができます。
+IKEv1とESP-v2は、個別のアルゴリズムを使用して暗号化と整合性保護を提供し、IKEv1はさまざまなSAのアルゴリズムの異なる組み合わせを交渉できます。ESP-v3では、新しいクラスのアルゴリズムが導入され、単一のアルゴリズムが暗号化と整合性保護の両方を提供できます。[RFC5996]は、IKEv2がESP-v3 SAで使用される複合モードアルゴリズムをネゴシエートする方法を説明しています。[RFC5282]は、IKEv2にその機能を追加し、IKEv2が独自のトラフィックに対して複合モードアルゴリズムを交渉および使用できるようにします。適切に設計されている場合、これらのアルゴリズムは、実装と実行の両方で効率を高めることができます。
         </p>
       </div>
     </div>
@@ -3289,7 +3289,7 @@ Although ESP-v2 did not originally include combined mode algorithms, some IKEv1 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ESP-V2にはもともと組み合わせモードアルゴリズムは含まれていませんでしたが、一部のIKEV1実装により、IPSEC SASで使用するための複合モードアルゴリズムをネゴシエートする機能が追加されています。これらの実装には、IKE SASを保護するために複合モードアルゴリズムを使用する機能は含まれていません。結合モードアルゴリズムのIANA番号がIKEV1レジストリに追加されました。
+ESP-v2にはもともと組み合わせモードアルゴリズムは含まれていませんでしたが、一部のIKEv1実装により、IPsec SAで使用するための複合モードアルゴリズムをネゴシエートする機能が追加されています。これらの実装には、IKE SAを保護するために複合モードアルゴリズムを使用する機能は含まれていません。結合モードアルゴリズムのIANA番号がIKEv1レジストリに追加されました。
         </p>
       </div>
     </div>
@@ -3313,7 +3313,7 @@ ESP-V2にはもともと組み合わせモードアルゴリズムは含まれ�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4309]は、CBC-MAC（CCM）モードを使用してカウンターでAESを使用する方法を説明し、ESPトラフィックを暗号化および整合性保護する方法について説明します。AES-CCMは、128ビットブロックサイズのブロックモード暗号です。暗号化されたデータとともにパケットに送信されるランダムIV。24ビットの塩値（1/sa）;128、192、および256ビットとICVサイズのキーサイズ64、96、および128ビット。AES-CCMが実装されている場合、128ビットキーが必要です。他のサイズは5月です。64ビットと128ビットのICVサイズが必須です。96ビットは5月です。塩値は、キージェネレーションプロセス中にIKEによって生成されます。同じ重要なキーでIVを再利用すると、データのセキュリティが損なわれます。したがって、AES-CCMは手動キーイングで使用しないでください。[RFC4309]には、IKEがESP-V3 SASの交渉に使用できるIANA値が含まれています。3つのICVの長さのそれぞれには独自のIANA値がありますが、IKEの交渉はキーサイズを指定する必要があります。[RFC4309]にはテストデータが含まれています。[RFC4309]は、IKEがES-CCMの使用をESP SAで使用する方法をどのように交渉できるかを説明しています。[RFC5282]は、これをAES-CCMの使用に拡張してIKEV2 SAを保護します。
+[RFC4309]は、CBC-MAC（CCM）モードを使用してカウンターでAESを使用する方法を説明し、ESPトラフィックを暗号化および整合性保護する方法について説明します。AES-CCMは、128ビットブロックサイズのブロックモード暗号です。暗号化されたデータとともにパケットに送信されるランダムIV。24ビットのソルト値（1/SA）;128、192、および256ビットとICVサイズのキーサイズ64、96、および128ビット。AES-CCMが実装されている場合、128ビットキーが必要です。他のサイズはMAYです。64ビットと128ビットのICVサイズが必須です。96ビットはMAYです。ソルト値は、キージェネレーションプロセス中にIKEによって生成されます。同じ重要なキーでIVを再利用すると、データのセキュリティが損なわれます。したがって、AES-CCMは手動キーイングで使用しないでください。[RFC4309]には、IKEがESP-v3 SAの交渉に使用できるIANA値が含まれています。3つのICVの長さのそれぞれには独自のIANA値がありますが、IKEの交渉はキーサイズを指定する必要があります。[RFC4309]にはテストデータが含まれています。[RFC4309]は、IKEがAES-CCMの使用をESP SAで使用する方法をどのように交渉できるかを説明しています。[RFC5282]は、これをAES-CCMの使用に拡張してIKEv2 SAを保護します。
         </p>
       </div>
     </div>
@@ -3337,7 +3337,7 @@ IKEv1 - N/A IKEv2 - optional ESP-v2 - N/A ESP-v3 - optional [RFC4835]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -N/A IKEV2-オプションESP -V2 -N/A ESP -V3-オプション[RFC4835]
+IKEv1 - N/A IKEv2 - optional ESP-v2 - N/A ESP-v3 - optional [RFC4835]
         </p>
       </div>
     </div>
@@ -3373,7 +3373,7 @@ NOTE: The IPsec-v2 IANA registry includes values for AES-CCM, but combined mode 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4106]は、ESPトラフィックを暗号化し、整合性を保護するために、組み合わせたアルゴリズムであるGalois/Counter（GCM）モードでAESを使用する方法について説明します。AES-GCMは、128ビットブロックサイズのブロックモード暗号です。暗号化されたデータとともにパケットに送信されるランダムIV。32ビットの塩値（1/sa）;128、192、および256ビットの鍵。64、96、および128ビットのICVサイズ。AES-GCMが実装されている場合、128ビットキーが必要です。他のサイズは5月です。128ビットのICVサイズは必須です。64および96ビットは5月です。塩値は、キージェネレーションプロセス中にIKEによって生成されます。同じ重要なキーでIVを再利用すると、データのセキュリティが損なわれます。したがって、AES-GCMは手動キーイングで使用しないでください。[RFC4106]には、IKEがESP-V3 SASのネゴシエーションに使用できるIANA値が含まれています。3つのICVの長さのそれぞれには独自のIANA値がありますが、IKEの交渉はキーサイズを指定する必要があります。
+[RFC4106]は、ESPトラフィックを暗号化し、整合性を保護するために、組み合わせたアルゴリズムであるGalois/Counter（GCM）モードでAESを使用する方法について説明します。AES-GCMは、128ビットブロックサイズのブロックモード暗号です。暗号化されたデータとともにパケットに送信されるランダムIV。32ビットのソルト値（1/SA）;128、192、および256ビットの鍵。64、96、および128ビットのICVサイズ。AES-GCMが実装されている場合、128ビットキーが必要です。他のサイズはMAYです。128ビットのICVサイズは必須です。64および96ビットはMAYです。ソルト値は、キージェネレーションプロセス中にIKEによって生成されます。同じ重要なキーでIVを再利用すると、データのセキュリティが損なわれます。したがって、AES-GCMは手動キーイングで使用しないでください。[RFC4106]には、IKEがESP-v3 SAのネゴシエーションに使用できるIANA値が含まれています。3つのICVの長さのそれぞれには独自のIANA値がありますが、IKEの交渉はキーサイズを指定する必要があります。
         </p>
       </div>
     </div>
@@ -3409,7 +3409,7 @@ IKEv1 - N/A IKEv2 - optional ESP-v2 - N/A ESP-v3 - optional [RFC4835]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -N/A IKEV2-オプションESP -V2 -N/A ESP -V3-オプション[RFC4835]
+IKEv1 - N/A IKEv2 - optional ESP-v2 - N/A ESP-v3 - optional [RFC4835]
         </p>
       </div>
     </div>
@@ -3445,7 +3445,7 @@ NOTE: The IPsec-v2 IANA registry includes values for AES-GCM, but combined mode 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4543]は、暗号化なしで整合性保護を提供するAES-GCM [RFC4106]のバリアントです。2つのバージョンがあります。AH内で使用する整合性保護アルゴリズムと、ESP内で使用するヌル暗号化を備えた複合モードアルゴリズム。128、192、または256ビットのキーを使用できます。ICVは常に128ビットであり、切り捨てられていません。AES-GMACは、64ビットIVと32ビット塩（1/SA）で構成されるNonCEを使用します。塩値は、キー生成プロセス中にIKEによって生成されます。同じ重要なキーで塩値を再利用すると、データのセキュリティが損なわれます。したがって、AES-GMACは手動キーイングで使用しないでください。AH内で使用するには、各キーサイズに独自のIANA値があるため、IKEはキーサイズをネゴシエートする必要はありません。ESP内で使用するには、IANA値が1つしかないため、IKEの交渉はキーイジーを指定する必要があります。IKEのトラフィックには暗号化が必要なため、AES-GMACはIKEが独自のSASを保護するために使用することはできません。
+[RFC4543]は、暗号化なしで整合性保護を提供するAES-GCM [RFC4106]のバリアントです。2つのバージョンがあります。AH内で使用する整合性保護アルゴリズムと、ESP内で使用するヌル暗号化を備えた複合モードアルゴリズム。128、192、または256ビットのキーを使用できます。ICVは常に128ビットであり、切り捨てられていません。AES-GMACは、64ビットIVと32ビットソルト（1/SA）で構成されるナンスを使用します。ソルト値は、キー生成プロセス中にIKEによって生成されます。同じ重要なキーでソルト値を再利用すると、データのセキュリティが損なわれます。したがって、AES-GMACは手動キーイングで使用しないでください。AH内で使用するには、各キーサイズに独自のIANA値があるため、IKEはキーサイズをネゴシエートする必要はありません。ESP内で使用するには、IANA値が1つしかないため、IKEの交渉はキーサイズを指定する必要があります。IKEのトラフィックには暗号化が必要なため、AES-GMACはIKEが独自のSAを保護するために使用することはできません。
         </p>
       </div>
     </div>
@@ -3469,7 +3469,7 @@ IKEv1 - N/A IKEv2 - N/A IPsec-v2 - N/A IPsec-v3 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -N/A IKEV2 -N/A IPSEC -V2 -N/A IPSEC -V3-オプション
+IKEv1 - N/A IKEv2 - N/A IPsec-v2 - N/A IPsec-v3 - optional
         </p>
       </div>
     </div>
@@ -3487,14 +3487,14 @@ NOTE: The IPsec-v2 IANA registry includes values for AES-GMAC, but combined mode
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-4-4--RFC-5282-Using-Authenticated-Encryption-Algorithms-with-the-Encrypted-Payload-of-the-Internet-Key-Exchange-version-2-IKEv2-Protocol-S-August-2008">
 5.4.4. RFC 5282, Using Authenticated Encryption Algorithms with the Encrypted Payload of the Internet Key Exchange version 2 (IKEv2) Protocol (S, August 2008)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.4.4. RFC 5282、インターネットキーエクスチェンジバージョン2（IKEV2）プロトコルの暗号化されたペイロードを使用した認証された暗号化アルゴリズムを使用しています（S、2008年8月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3529,7 +3529,7 @@ IKE uses pseudorandom functions (PRFs) to generate the secret keys that are used
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Ikeは、擬似ランダム関数（PRF）を使用して、IKE SASおよびIPSEC SASで使用される秘密キーを生成します。これらのPRFは一般に、整合性保護に使用されるアルゴリズムと同じですが、生成されたビットのすべてが一般的にキーに必要であるため、出力は切り捨てられません。PRFの出力が必要な数のキーイン材料を供給するのに十分な長さでない場合、PRFは必要な量のキーイン材料が生成されるまで繰り返し適用されます。
+IKEは、擬似ランダム関数（PRF）を使用して、IKE SAおよびIPsec SAで使用される秘密キーを生成します。これらのPRFは一般に、整合性保護に使用されるアルゴリズムと同じですが、生成されたビットのすべてが一般的にキーに必要であるため、出力は切り捨てられません。PRFの出力が必要な数の鍵素材を供給するのに十分な長さでない場合、PRFは必要な量の鍵素材が生成されるまで繰り返し適用されます。
         </p>
       </div>
     </div>
@@ -3601,7 +3601,7 @@ IKEv1 - optional [RFC4868] IKEv2 - optional [RFC4868]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプション[RFC4868] IKEV2-オプション[RFC4868]
+IKEv1 - optional [RFC4868] IKEv2 - optional [RFC4868]
         </p>
       </div>
     </div>
@@ -3649,7 +3649,7 @@ IKEv1 - undefined (no RFC) IKEv2 - SHOULD+ [RFC4307]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-未定義（RFCなし）IKEV2 -[RFC4307]
+IKEv1 - undefined (no RFC) IKEv2 - SHOULD+ [RFC4307]
         </p>
       </div>
     </div>
@@ -3667,14 +3667,14 @@ NOTE: RFC 4109 erroneously classifies AES-XCBC-PRF as SHOULD for IKEv1; this has
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="5-5-2--RFC-4615-The-Advanced-Encryption-Standard-Cipher-based-Message-Authentication-Code-Pseudorandom-Function-128-AES-CMAC-PRF-128-Algorithm-for-the-Internet-Key-Exchange-Protocol-IKE-S-August-2006">
 5.5.2. RFC 4615, The Advanced Encryption Standard-Cipher-based Message Authentication Code-Pseudorandom Function-128 (AES-CMAC-PRF-128) Algorithm for the Internet Key Exchange Protocol (IKE) (S, August 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 5.5.2. RFC 4615、Advanced Encryption Standard-Cipherベースのメッセージ認証Code-Pseudorandom Function-128（AES-CMAC-PRF-128）インターネットキーエクスチェンジプロトコル（IKE）（S、2006年8月）のアルゴリズム
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -3709,7 +3709,7 @@ IKEv1 - undefined (no IANA #) IKEv2 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-ikev1-未定義（no iana＃）ikev2-オプション
+IKEv1 - undefined (no IANA #) IKEv2 - optional
         </p>
       </div>
     </div>
@@ -3745,7 +3745,7 @@ An IKE negotiation consists of multiple cryptographic attributes, both for the I
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IKE交渉は、IKE SAとIPSEC SAの両方の複数の暗号化属性で構成されています。可能な組み合わせの数は、共通のポリシーを見つけようとするピアに挑戦する可能性があります。相互運用性を高めるために、[RFC4308]は、典型的なセキュリティポリシーを構成するアルゴリズムの組み合わせで構成される2つの事前定義されたスイートを定義します。IKE/ESPスイート「VPN-A」には、3DES、HMAC-SHA-1、および1024ビットモジュラーエクスポンゲーショングループ（MODP）Diffie-Hellman（DH）の使用が含まれます。IKE/ESPスイート &#34;VPN-B&#34;には、AES-CBC、AES-XCBC-MAC、および2048ビットMODP DHが含まれます。これらのスイートは、管理インターフェイスで「シングルボタン」の選択肢と名付けられることを目的としていますが、代替の組み合わせの使用を妨げません。
+IKEネゴシエーションは、IKE SAとIPSEC SAの両方の複数の暗号化属性で構成されています。可能な組み合わせの数は、共通のポリシーを見つけようとするピアに挑戦する可能性があります。相互運用性を高めるために、[RFC4308]は、典型的なセキュリティポリシーを構成するアルゴリズムの組み合わせで構成される2つの事前定義されたスイートを定義します。IKE/ESPスイート「VPN-A」には、3DES、HMAC-SHA-1、および1024ビットモジュラーエクスポンゲーショングループ（MODP）Diffie-Hellman（DH）の使用が含まれます。IKE/ESPスイート &#34;VPN-B&#34;には、AES-CBC、AES-XCBC-MAC、および2048ビットMODP DHが含まれます。これらのスイートは、管理インターフェイスで「シングルボタン」の選択肢と名付けられることを目的としていますが、代替の組み合わせの使用を妨げません。
         </p>
       </div>
     </div>
@@ -3793,7 +3793,7 @@ IKE negotiations include a Diffie-Hellman exchange, which establishes a shared s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Ikeの交渉には、Diffie-Hellman Exchangeが含まれます。これは、両当事者が貢献した共有秘密を確立します。この値は、IKE SAとIPSEC SAの両方を保護するためのキーイング材料を生成するために使用されます。
+IKEのネゴシエーションには、Diffie-Hellman Exchangeが含まれます。これは、両当事者が貢献した共有秘密を確立します。この値は、IKE SAとIPsec SAの両方を保護するための鍵素材を生成するために使用されます。
         </p>
       </div>
     </div>
@@ -3829,7 +3829,7 @@ IKEv1 - MAY [RFC4109] IKEv2 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -5月[RFC4109] IKEV2-オプション
+IKEv1 - MAY [RFC4109] IKEv2 - optional
         </p>
       </div>
     </div>
@@ -3877,7 +3877,7 @@ IKEv1 - MAY [RFC4109] IKEv2 - undefined (no IANA #)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1 -5月[RFC4109] IKEV2-未定義（IANA＃）
+IKEv1 - MAY [RFC4109] IKEv2 - undefined (no IANA #)
         </p>
       </div>
     </div>
@@ -3949,7 +3949,7 @@ IKEv1 - optional [RFC4109] IKEv2 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプション[RFC4109] IKEV2-オプション
+IKEv1 - optional [RFC4109] IKEv2 - optional
         </p>
       </div>
     </div>
@@ -4009,7 +4009,7 @@ IKEv1 - optional [RFC4109] IKEv2 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプション[RFC4109] IKEV2-オプション
+IKEv1 - optional [RFC4109] IKEv2 - optional
         </p>
       </div>
     </div>
@@ -4081,7 +4081,7 @@ IKEv1 - optional IKEv2 - optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-IKEV1-オプションIKEV2-オプション
+IKEv1 - optional IKEv2 - optional
         </p>
       </div>
     </div>
@@ -4105,7 +4105,7 @@ IKEV1-オプションIKEV2-オプション
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4301]は、ユニキャストおよびマルチキャストトラフィックのIPSEC処理について説明しています。ただし、古典的なIPSEC SASはポイントツーポイント保護を提供します。IPSECの暗号化アルゴリズムによって提供されるセキュリティは、SAが1対多または多くの場合、マルチキャストの場合は適用されません。マルチキャストセキュリティ（MSEC）ワーキンググループは、IKEの代替案と、マルチキャストトラフィックで使用するためにIPSECの拡張を定義しています。さまざまなマルチキャストグループには、特性と要件が異なります。送信者数（1対多または多数）、メンバーの数（少数、中程度、非常に大きい）、メンバーシップのボラティリティ、リアルタイム配達など。セキュリティ要件も異なります。MSECで定義された各ソリューションは、多種多様なマルチキャストグループのサブセットに適用されます。
+[RFC4301]は、ユニキャストおよびマルチキャストトラフィックのIPsec処理について説明しています。ただし、古典的なIPsec SAはポイントツーポイント保護を提供します。IPsecの暗号化アルゴリズムによって提供されるセキュリティは、SAが1対多または多対多の場合、マルチキャストの場合は適用されません。マルチキャストセキュリティ（msec）ワーキンググループは、IKEの代替案と、マルチキャストトラフィックで使用するためにIPsecの拡張を定義しています。さまざまなマルチキャストグループには、特性と要件が異なります。送信者数（1対多または多対多）、メンバーの数（少数、中程度、非常に大きい）、メンバーシップのボラティリティ、リアルタイム配達など。セキュリティ要件も異なります。msecで定義された各ソリューションは、多種多様なマルチキャストグループのサブセットに適用されます。
         </p>
       </div>
     </div>
@@ -4129,7 +4129,7 @@ IKEV1-オプションIKEV2-オプション
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3740]は、大規模なマルチキャストグループが交換するパケットのセキュリティを提供するために使用されるマルチキャストセキュリティアーキテクチャを定義します。アーキテクチャフレームワークのコンポーネントを定義します。グループセキュリティ協会（GSA）、主要な管理、データ処理、セキュリティポリシーについて説明します。グループDOI（GDOI）[RFC3547]、グループセキュアアソシエーションキー管理プロトコル（GSAKMP）[RFC4535]、およびマルチメディアインターネットキーイング（Mikey）[RFC3830]を含むいくつかの既存のプロトコルは、この文書で定義されたグループキー管理要件を満たしています。マルチキャストグループセキュリティのアーキテクチャとコンポーネントの両方がIPSECとは異なります。
+[RFC3740]は、大規模なマルチキャストグループが交換するパケットのセキュリティを提供するために使用されるマルチキャストセキュリティアーキテクチャを定義します。アーキテクチャフレームワークのコンポーネントを定義します。グループセキュリティアソシエーション（GSA）、鍵管理、データ処理、セキュリティポリシーについて説明します。グループDOI（GDOI）[RFC3547]、グループセキュアアソシエーションキー管理プロトコル（GSAKMP）[RFC4535]、およびマルチメディアインターネットキーイング（MIKEY）[RFC3830]を含むいくつかの既存のプロトコルは、この文書で定義されたグループ鍵管理要件を満たしています。マルチキャストグループセキュリティのアーキテクチャとコンポーネントの両方がIPsecとは異なります。
         </p>
       </div>
     </div>
@@ -4153,7 +4153,7 @@ IKEV1-オプションIKEV2-オプション
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5374]は、[RFC4301]で定義されたセキュリティアーキテクチャをマルチキャストトラフィックに適用するために拡張します。新しいクラスのSAS（GSAS -Group Security Associations）と、マルチキャストトラフィックにIPSEC保護を適用するために使用される追加のデータベースを定義します。また、[RFC4301]の処理アルゴリズムへの改訂と追加についても説明しています。
+[RFC5374]は、[RFC4301]で定義されたセキュリティアーキテクチャをマルチキャストトラフィックに適用するために拡張します。新しいクラスのSA（GSA - Group Security Associations）と、マルチキャストトラフィックにIPsec保護を適用するために使用される追加のデータベースを定義します。また、[RFC4301]の処理アルゴリズムへの改訂と追加についても説明しています。
         </p>
       </div>
     </div>
@@ -4177,7 +4177,7 @@ GDOI [RFC3547] extends IKEv1 so that it can be used to establish SAs to protect 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-GDOI [RFC3547]はIKEV1を拡張して、マルチキャストトラフィックを保護するためにSASを確立するために使用できるようにします。このドキュメントでは、その目的のために使用される追加の交換とペイロードを定義します。
+GDOI [RFC3547]はIKEv1を拡張して、マルチキャストトラフィックを保護するためにSAを確立するために使用できるようにします。このドキュメントでは、その目的のために使用される追加の交換とペイロードを定義します。
         </p>
       </div>
     </div>
@@ -4249,7 +4249,7 @@ Operational experience with IPsec revealed additional capabilities that could ma
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECでの運用エクスペリエンスにより、実際のシナリオでIPSECをより便利にする可能性のある追加の機能が明らかになりました。これらには、IPSECポリシーメカニズム、IPSEC MIBS、ペイロード圧縮（IPCOMP）、追加のピア認証方法（より良いもののないセキュリティ（BTN）を容易にするための拡張、Kerberizedインターネット交渉（キンク）、およびIPSECKEY）のサポートが含まれます。VPNクライアントの機能（IPSRA）。
+IPsecでの運用エクスペリエンスにより、実際のシナリオでIPsecをより便利にする可能性のある追加の機能が明らかになりました。これらには、IPsecポリシーメカニズム、IPsec MIB、ペイロード圧縮（IPComp）、追加のピア認証方法（Better-Than-Nothing Security (BTNS)、Kerberized Internet Negotiation of Keys (KINK)、およびIPSECKEY）を容易にするための拡張、およびVPNクライアントの追加機能（IPSRA）のサポートが含まれます。
         </p>
       </div>
     </div>
@@ -4279,14 +4279,14 @@ IPSECポリシー（IPSP）ワーキンググループは、当初、共通の�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-1-1--RFC-3586-IP-Security-Policy-IPSP-Requirements-S-August-2003">
 7.1.1. RFC 3586, IP Security Policy (IPSP) Requirements (S, August 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.1.1. RFC 3586、IPセキュリティポリシー（IPSP）要件（S、2003年8月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4303,14 +4303,14 @@ IPSECポリシー（IPSP）ワーキンググループは、当初、共通の�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-1-2--RFC-3585-IPsec-Configuration-Policy-Information-Model-S-August-2003">
 7.1.2. RFC 3585, IPsec Configuration Policy Information Model (S, August 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.1.2. RFC 3585、IPSEC構成ポリシー情報モデル（S、2003年8月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4375,14 +4375,14 @@ Over the years, several MIB-related Internet Drafts were proposed for IPsec and 
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-2-1--RFC-4807-IPsec-Security-Policy-Database-Configuration-MIB-S-March-2007">
 7.2.1. RFC 4807, IPsec Security Policy Database Configuration MIB (S, March 2007)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.2.1. RFC 4807、IPSECセキュリティポリシーデータベース構成MIB（S、2007年3月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4435,14 +4435,14 @@ IPCOMPプロトコルは、異なる圧縮アルゴリズムをサポートす�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-3-1--RFC-3173-IP-Payload-Compression-Protocol-IPComp-S-September-2001">
 7.3.1. RFC 3173, IP Payload Compression Protocol (IPComp) (S, September 2001)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.3.1. RFC 3173、IPペイロード圧縮プロトコル（IPComp）（S、2001年9月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4477,7 +4477,7 @@ One of the major obstacles to widespread implementation of IPsec is the lack of 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IPSECの広範な実装に対する主要な障害の1つは、ピア認証に使用できる既存の資格情報がないことです。より良いセキュリティ（BTNS）は、自己署名証明書や「ベア」パブリックキーなどの資格情報（接続されていないパブリックキーなどの資格情報を使用して、IKEが無認定（匿名）IPSEC SASを交渉できるようにすることにより、この問題を回避する試みです。ピア認証のための公開鍵証明書）。これにより、SAによって保護された後続のトラフィックが同じピアで行われ、パッシブ攻撃から通信を保護することが保証されます。これらのSASは、独自のピア認証を実行する高レベルのアプリケーションプロトコルに暗号化されて結合することができます。
+IPsecの広範な実装に対する主要な障害の1つは、ピア認証に使用できる既存の資格情報がないことです。Better-Than-Nothing Security (BTNS)は、自己署名証明書や「ベア」パブリックキーなどの資格情報（公開鍵証明書に接続されていない公開鍵）を使用して、IKEが未認証（匿名）IPsec SAを交渉できるようにすることにより、この問題を回避する試みです。これにより、SAによって保護された後続のトラフィックが同じピアで行われ、パッシブ攻撃から通信を保護することが保証されます。これらのSAは、独自のピア認証を実行する高レベルのアプリケーションプロトコルに暗号化されて結合することができます。
         </p>
       </div>
     </div>
@@ -4525,7 +4525,7 @@ IPSECの広範な実装に対する主要な障害の1つは、ピア認証に�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5386]は、IKEV2を使用して、IPSECをカプセル化するセキュリティペイロード（ESP）とIPSEC認証ヘッダー（AH）をカプセル化するための未認証のセキュリティ協会（SAS）を設定する方法を指定します。このドキュメントでは、ワイヤー上のビットの変更は必要ありませんが、Peer Authorizationデータベース（PAD）およびセキュリティポリシーデータベース（SPD）への拡張機能を指定します。
+[RFC5386]は、IKEv2を使用して、IPsecカプセル化セキュリティペイロード（ESP）とIPsec認証ヘッダー（AH）で使用するための未認証のセキュリティアソシエーション（SA）を設定する方法を指定します。このドキュメントでは、ワイヤー上のビットの変更は必要ありませんが、Peer Authorizationデータベース（PAD）およびセキュリティポリシーデータベース（SPD）への拡張機能を指定します。
         </p>
       </div>
     </div>
@@ -4573,7 +4573,7 @@ Kerberized Internet Negotiation of Keys (KINK) is an attempt to provide an alter
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Kerberized Internet Negatiation of Keys（Kink）は、IPSECピア認証のためのIKEの代替手段を提供する試みです。Ikeの代わりにKerberosを使用して、IPSEC SASを確立します。Kerberos集中化されたキー管理システムを既に展開している企業の場合、IPSECを追加のピア資格情報を必要とせずに実装できます。一部のベンダーは、キンクの使用に代わるものとして、IKEV1でKerberosを使用するための独自の拡張機能を実装しています。これらの拡張機能とKinkプロトコルは、IKEV1にのみ適用され、IKEV2には適用されません。
+Kerberized Internet Negotiation of Keys (KINK)は、IPsecピア認証のためのIKEの代替手段を提供する試みです。IKEの代わりにKerberosを使用して、IPsec SAを確立します。Kerberos集中化された鍵管理システムを既に展開している企業の場合、IPsecを追加のピア資格情報を必要とせずに実装できます。一部のベンダーは、KINKの使用に代わるものとして、IKEv1でKerberosを使用するための独自の拡張機能を実装しています。これらの拡張機能とKINKプロトコルは、IKEv1にのみ適用され、IKEv2には適用されません。
         </p>
       </div>
     </div>
@@ -4597,20 +4597,20 @@ Kerberized Internet Negatiation of Keys（Kink）は、IPSECピア認証のた�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3129]は、ピアツーピア認証とキーイングメカニズムには、計算の複雑さやセキュリティポリシーの実施の難しさなどの固有の欠点があると考えています。このドキュメントは、Kerberosの基本的な機能を使用するための要件を指定し、それらを有利に使用して、IPSECセキュリティ関連を確立および維持できるプロトコルを作成します（[RFC2401]）。
+[RFC3129]は、ピアツーピア認証とキーイングメカニズムには、計算の複雑さやセキュリティポリシーの実施の難しさなどの固有の欠点があると考えています。このドキュメントは、Kerberosの基本的な機能を使用するための要件を指定し、それらを有利に使用して、IPsecセキュリティアソシエーションを確立および維持できるプロトコルを作成します（[RFC2401]）。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-5-2--RFC-4430-Kerberized-Internet-Negotiation-of-Keys-KINK-S-March-2006">
 7.5.2. RFC 4430, Kerberized Internet Negotiation of Keys (KINK) (S, March 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.5.2. RFC 4430、Kerberized Internet Negotiation of Keys（Kink）（S、2006年3月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4621,7 +4621,7 @@ Kerberized Internet Negatiation of Keys（Kink）は、IPSECピア認証のた�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4430]は、Kerberos認証システムを使用してセキュリティ関連を確立および維持するために、低遅延、計算的に安価で簡単に管理され、暗号化されたサウンドプロトコルを定義します。このドキュメントでは、IKEV1の実装の実質的な再利用を促進するために、IKEV1のクイックモードペイロードを再利用します。このRFCは広く採用されていません。
+[RFC4430]は、Kerberos認証システムを使用してセキュリティアソシエーションを確立および維持するために、低遅延、計算的に安価で簡単に管理され、暗号化されたサウンドプロトコルを定義します。このドキュメントでは、IKEv1の実装の実質的な再利用を促進するために、IKEv1のクイックモードペイロードを再利用します。このRFCは広く採用されていません。
         </p>
       </div>
     </div>
@@ -4633,7 +4633,7 @@ Kerberized Internet Negatiation of Keys（Kink）は、IPSECピア認証のた�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-7.6. ipsecセキュアリモートアクセス（ipsra）
+7.6. IPsecセキュアリモートアクセス（IPSRA）
         </h5>
       </div>
     </div>
@@ -4651,14 +4651,14 @@ IPSEC Secure Remote Access（IPSRA）は、IPSEC保護を「ロードウォリ�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-6-1--RFC-3457-Requirements-for-IPsec-Remote-Access-Scenarios-I-January-2003">
 7.6.1. RFC 3457, Requirements for IPsec Remote Access Scenarios (I, January 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.6.1. RFC 3457、IPSECリモートアクセスシナリオの要件（i、2003年1月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4723,14 +4723,14 @@ IPSECキーイング情報リソースレコード（IPSECKEY）により、新�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="7-7-1--RFC-4025-A-method-for-storing-IPsec-keying-material-in-DNS-S-February-2005">
 7.7.1. RFC 4025, A method for storing IPsec keying material in DNS (S, February 2005)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 7.7.1. RFC 4025、DNSにIPSECキーイン素材を保存する方法（S、2005年2月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4807,14 +4807,14 @@ IPSECとIKEは、他のインターネットプロトコルのトラフィック
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-1-2--RFC-5265-Mobile-IPv4-Traversal-across-IPsec-Based-VPN-Gateways-S-June-2008">
 8.1.2. RFC 5265, Mobile IPv4 Traversal across IPsec-Based VPN Gateways (S, June 2008)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.1.2. RFC 5265、IPSECベースのVPNゲートウェイを横断するモバイルIPv4トラバーサル（S、2008年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4849,7 +4849,7 @@ This document specifies the use of IPsec in securing Mobile IPv6 traffic between
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、モバイルノードとホームエージェント間のモバイルIPv6トラフィックを保護する際のIPSECの使用を指定しています。保護されたパケットに必要なワイヤー形式を指定し、モバイルIPv6シグナル伝達メッセージを保護するために使用できるセキュリティポリシーデータベースおよびセキュリティアソシエーションデータベースエントリの例を示しています。また、SASを自動的に確立するために、手動でキー付きIPSECセキュリティアソシエーションまたはIKEV1を構成する方法についても説明します。モバイルIPv6では、IPSEC処理でホームアドレスの宛先オプションとルーティングヘッダーを考慮する必要があります。また、IPSECおよびIKEセキュリティ協会のアドレスは、モバイルIPv6シグナリングメッセージによって更新できます。
+このドキュメントは、モバイルノードとホームエージェント間のモバイルIPv6トラフィックを保護する際のIPsecの使用を指定しています。保護されたパケットに必要なワイヤー形式を指定し、モバイルIPv6シグナル伝達メッセージを保護するために使用できるセキュリティポリシーデータベースおよびセキュリティアソシエーションデータベースエントリの例を示しています。また、SAを自動的に確立するために、手動でキー付きIPsecセキュリティアソシエーションまたはIKEv1を構成する方法についても説明します。モバイルIPv6では、IPsec処理でホームアドレスの宛先オプションとルーティングヘッダーを考慮する必要があります。また、IPsecおよびIKEセキュリティアソシエーションのアドレスは、モバイルIPv6シグナリングメッセージによって更新できます。
         </p>
       </div>
     </div>
@@ -4873,20 +4873,20 @@ This document updates [RFC3776] in order to work with the revised IPsec architec
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、改訂されたIPSECアーキテクチャ[RFC4301]を使用するために[RFC3776]を更新します。改訂されたIPSECアーキテクチャは、モビリティヘッダーメッセージタイプを含めるようにセレクターのリストを拡張するため、異なるモビリティヘッダーメッセージを区別するのがはるかに簡単になります。ICMPメッセージの種類とコードもセレクターとして新しく追加されているため、このドキュメントではモバイルプレフィックスディスカバリーメッセージを保護するために使用します。このドキュメントは、動的ホームアドレス構成にIKEV2構成ペイロードの使用も指定しています。最後に、このドキュメントでは、モバイルIPv6のSASをセットアップするためのIKEV2の使用について説明します。
+このドキュメントは、改訂されたIPsecアーキテクチャ[RFC4301]を使用するために[RFC3776]を更新します。改訂されたIPsecアーキテクチャは、モビリティヘッダーメッセージタイプを含めるようにセレクターのリストを拡張するため、異なるモビリティヘッダーメッセージを区別するのがはるかに簡単になります。ICMPメッセージの種類とコードもセレクターとして新しく追加されているため、このドキュメントではモバイルプレフィックスディスカバリーメッセージを保護するために使用します。このドキュメントは、動的ホームアドレス構成にIKEv2構成ペイロードの使用も指定しています。最後に、このドキュメントでは、モバイルIPv6のSAをセットアップするためのIKEv2の使用について説明します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-1-5--RFC-5026-Mobile-IPv6-Bootstrapping-in-Split-Scenario-S-October-2007">
 8.1.5. RFC 5026, Mobile IPv6 Bootstrapping in Split Scenario (S, October 2007)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.1.5. RFC 5026、スプリットシナリオでのモバイルIPv6ブートストラップ（S、2007年10月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4897,7 +4897,7 @@ This document updates [RFC3776] in order to work with the revised IPsec architec
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5026]は[RFC4877]を拡張して、ホームエージェントとホームネットワークプレフィックスの動的な発見をサポートします。後者の目的のために、新しいIKEV2構成属性と通知を指定します。モバイルIPv6ノードがホームエージェントのアドレス、ホームアドレスのアドレスを取得し、モバイルノードで事前に設定されたDNSルックアップとセキュリティ資格情報を使用してホームエージェントとIPSECセキュリティ関連を作成する方法を説明します。これを行うには、モバイルノード（MN）がIKE_AUTH Exchangeの構成ペイロードを介してホームアドレスとホームプレフィックスを要求する方法と、CFG_REQUESTメッセージに存在する必要がある属性を定義します。また、ホームエージェントがIKEV2 Exchangeに使用される資格情報をどのように承認できるかを指定します。
+[RFC5026]は[RFC4877]を拡張して、ホームエージェントとホームネットワークプレフィックスの動的な発見をサポートします。後者の目的のために、新しいIKEv2構成属性と通知を指定します。モバイルIPv6ノードがホームエージェントのアドレス、ホームアドレスのアドレスを取得し、モバイルノードで事前に設定されたDNSルックアップとセキュリティ資格情報を使用してホームエージェントとIPsecセキュリティアソシエーションを作成する方法を説明します。これを行うには、モバイルノード（MN）がIKE_AUTH Exchangeの構成ペイロードを介してホームアドレスとホームプレフィックスを要求する方法と、CFG_REQUESTメッセージに存在する必要がある属性を定義します。また、ホームエージェントがIKEv2 Exchangeに使用される資格情報をどのように承認できるかを指定します。
         </p>
       </div>
     </div>
@@ -4921,7 +4921,7 @@ This document updates [RFC3776] in order to work with the revised IPsec architec
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5213]は、モビリティ関連のシグナル伝達への参加を必要とせずにホストにモビリティサービスを提供するために使用されるネットワークベースのモビリティ管理プロトコルを説明しています。IPSECを使用して、モバイルアクセスゲートウェイ（MAG）とローカルモビリティアンカー（LMA）と呼ばれる2つのネットワークエンティティ間のモビリティシグナリングメッセージを保護します。また、MAGとLMAの間にセキュリティ関連を設定するためにIKEV2を使用します。
+[RFC5213]は、モビリティ関連のシグナル伝達への参加を必要とせずにホストにモビリティサービスを提供するために使用されるネットワークベースのモビリティ管理プロトコルを説明しています。IPsecを使用して、モバイルアクセスゲートウェイ（MAG）とローカルモビリティアンカー（LMA）と呼ばれる2つのネットワークエンティティ間のモビリティシグナリングメッセージを保護します。また、MAGとLMAの間にセキュリティアソシエーションを設定するためにIKEv2を使用します。
         </p>
       </div>
     </div>
@@ -4945,20 +4945,20 @@ When Mobile IPv6 is used for a handover, there is a period during which the Mobi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-モバイルIPv6がハンドオーバーに使用される場合、リンクの切り替え遅延とIPプロトコル操作のために、モバイルノードがパケットを送信または受信できない期間があります。[RFC5568]は、モバイルIPv6手順によりハンドオーバーレイテンシを改善するために、以前のアクセスルーター（PAR）と新しいアクセスルーター（NAR）の間のプロトコルを指定します。PARとNARの間の信号メッセージを保護するために、整合性保護を備えたIPSEC ESPを輸送モードで使用します。また、IKEV2が必要なSASのセットアップに使用される場合のSPDエントリとパッドエントリについても説明します。
+モバイルIPv6がハンドオーバーに使用される場合、リンクの切り替え遅延とIPプロトコル操作のために、モバイルノードがパケットを送信または受信できない期間があります。[RFC5568]は、モバイルIPv6手順によりハンドオーバーレイテンシを改善するために、以前のアクセスルーター（PAR）と新しいアクセスルーター（NAR）の間のプロトコルを指定します。PARとNARの間の信号メッセージを保護するために、整合性保護を備えたIPsec ESPを輸送モードで使用します。また、IKEv2が必要なSAのセットアップに使用される場合のSPDエントリとパッドエントリについても説明します。
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-1-8--RFC-5380-Hierarchical-Mobile-IPv6-HMIPv6-Mobility-Management-S-October-2008">
 8.1.8. RFC 5380, Hierarchical Mobile IPv6 (HMIPv6) Mobility Management (S, October 2008)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.1.8. RFC 5380、階層モバイルIPv6（HMIPV6）モビリティ管理（S、2008年10月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -4987,14 +4987,14 @@ When Mobile IPv6 is used for a handover, there is a period during which the Mobi
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-2-1--RFC-4552-AuthenticationConfidentiality-for-OSPFv3-S-June-2006">
 8.2.1. RFC 4552, Authentication/Confidentiality for OSPFv3 (S, June 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.2.1. RFC 4552、OSPFV3の認証/機密性（S、2006年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5047,14 +5047,14 @@ IPアドレスは、ホスト識別子とロケーターの2つの異なる関�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-3-2--RFC-5202-Using-the-Encapsulating-Security-Payload-ESP-Transport-Format-with-the-Host-Identity-Protocol-HIP-E-April-2008">
 8.3.2. RFC 5202, Using the Encapsulating Security Payload (ESP) Transport Format with the Host Identity Protocol (HIP) (E, April 2008)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.3.2. RFC 5202、ホストIDプロトコル（E、2008年4月）を使用して、セキュリティペイロード（ESP）トランスポートフォーマットを使用して
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5065,7 +5065,7 @@ The HIP base exchange specification [RFC5201] does not describe any transport fo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-HIPベース交換仕様[RFC5201]は、実際の通信中に使用されるユーザーデータを保護するためにESPを使用する方法を説明するための輸送形式または方法を説明していません。[RFC5202]は、基本交換中にホスト間でESPセキュリティ協会（SAS）のペアを作成するための一連の股関節拡張機能を指定します。股関節関連と必要なESP SAがホスト間で確立された後、ユーザーデータ通信はESPを使用して保護されます。さらに、このドキュメントは、ESPセキュリティパラメーターインデックス（SPI）を使用して、正しいホストコンテキスト（ホストID）と既存のESPセキュリティ協会を更新する方法を示す方法を指定します。
+HIPベース交換仕様[RFC5201]は、実際の通信中に使用されるユーザーデータを保護するためにESPを使用する方法を説明するための輸送形式または方法を説明していません。[RFC5202]は、基本交換中にホスト間でESPセキュリティアソシエーション（SA）のペアを作成するための一連のHIP拡張機能を指定します。HIPアソシエーションと必要なESP SAがホスト間で確立された後、ユーザーデータ通信はESPを使用して保護されます。さらに、このドキュメントは、ESPセキュリティパラメーターインデックス（SPI）を使用して、正しいホストコンテキスト（ホストID）と既存のESPセキュリティアソシエーションを更新する方法を示す方法を指定します。
         </p>
       </div>
     </div>
@@ -5089,7 +5089,7 @@ When a host uses HIP, the overlying protocol sublayers (e.g., transport layer so
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ホストが股関節を使用すると、上にあるプロトコルサブレイヤー（輸送層ソケットなど）とセキュリティペイロード（ESP）セキュリティ協会（SAS）のカプセル化は、これらのホストIDの表現に拘束され、IPアドレスはパケット転送にのみ使用されます。[RFC5206]は、ヒップホストが到達可能な代替アドレスについてピアに通知できるヒップメッセージで使用する一般化されたロケーターパラメーターを定義します。また、ホストがIPアドレスを変更し、必ずしも再キーをかけずにピアにパケットを送信し続ける方法を指定します。
+ホストがHIPを使用すると、上にあるプロトコルサブレイヤー（輸送層ソケットなど）とセキュリティペイロード（ESP）セキュリティアソシエーション（SA）のカプセル化は、これらのホストIDの表現に拘束され、IPアドレスはパケット転送にのみ使用されます。[RFC5206]は、HIPホストが到達可能な代替アドレスについてピアに通知できるHIPメッセージで使用する一般化されたロケーターパラメーターを定義します。また、ホストがIPアドレスを変更し、必ずしも再キーをかけずにピアにパケットを送信し続ける方法を指定します。
         </p>
       </div>
     </div>
@@ -5113,7 +5113,7 @@ When a host uses HIP, the overlying protocol sublayers (e.g., transport layer so
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5207]は、ネットワークアドレスの翻訳者やファイアウォールを含むネットワークパスを越えた股関節通信に関連する問題について説明します。股関節ベース交換とESPデータ交換に対するNATとファイアウォールの影響を分析します。NATとファイアウォールのトラバーサルを改善しようとする股関節の変化の可能性について議論し、NATの後ろに股関節ノードを到達可能にするためのランデブーポイントを提案します。また、NATが股関節メッセージをより意識するメカニズムを示唆しています。
+[RFC5207]は、ネットワークアドレスの翻訳者やファイアウォールを含むネットワークパスを越えたHIP通信に関連する問題について説明します。HIPベース交換とESPデータ交換に対するNATとファイアウォールの影響を分析します。NATとファイアウォールのトラバーサルを改善しようとするHIPへの変更の可能性について議論し、NATの後ろにHIPノードを到達可能にするためのランデブーポイントを提案します。また、NATがHIPメッセージをより意識するメカニズムを示唆しています。
         </p>
       </div>
     </div>
@@ -5131,14 +5131,14 @@ When a host uses HIP, the overlying protocol sublayers (e.g., transport layer so
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-4-1--RFC-3554-On-the-Use-of-Stream-Control-Transmission-Protocol-SCTP-with-IPsec-S-July-2003">
 8.4.1. RFC 3554, On the Use of Stream Control Transmission Protocol (SCTP) with IPsec (S, July 2003)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.4.1. RFC 3554、IPSECを使用したストリーム制御伝送プロトコル（SCTP）の使用（S、2003年7月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5233,7 +5233,7 @@ ROHCは、リソースに制約のある環境で使用されることを目的�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5856]は、IPSECトンネルの入り口で内側のIPヘッダーを圧縮し、出口点でそれらを減圧するメカニズムを説明しています。堅牢なヘッダー圧縮（ROHC）仕様は、ホップごとの操作のみを記述するため、このドキュメントは複数のホップでROHCを有効にする拡張機能も指定しています。このドキュメントは、トンネルモードSASにのみ適用され、輸送モードSASをサポートしていません。
+[RFC5856]は、IPsecトンネルの入り口で内側のIPヘッダーを圧縮し、出口点でそれらを減圧するメカニズムを説明しています。堅牢なヘッダー圧縮（ROHC）仕様は、ホップごとの操作のみを記述するため、このドキュメントは複数のホップでROHCを有効にする拡張機能も指定しています。このドキュメントは、トンネルモードSAにのみ適用され、輸送モードSAをサポートしていません。
         </p>
       </div>
     </div>
@@ -5299,14 +5299,14 @@ ROHCには、コンプレッサーと減圧装置の終了時に初期構成が�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-6-1--RFC-5566-BGP-IPsec-Tunnel-Encapsulation-Attribute-S-June-2009">
 8.6.1. RFC 5566, BGP IPsec Tunnel Encapsulation Attribute (S, June 2009)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.6.1. RFC 5566、BGP IPSECトンネルカプセル化属性（S、2009年6月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5479,14 +5479,14 @@ NATデバイスは、IPとトランスポートヘッダーを途中で変更す
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="8-10-1--RFC-5570-Common-Architecture-Label-IPv6-Security-Option-CALIPSO-I-July-2009">
 8.10.1. RFC 5570, Common Architecture Label IPv6 Security Option (CALIPSO) (I, July 2009)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 8.10.1. RFC 5570、一般的なアーキテクチャラベルIPv6セキュリティオプション（Calipso）（i、2009年7月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5521,7 +5521,7 @@ Some protocols protect their traffic through mechanisms other than IPsec, but us
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-一部のプロトコルは、IPSEC以外のメカニズムを介してトラフィックを保護しますが、IKEV2を主要な交渉と主要な管理機能の基礎として使用します。
+一部のプロトコルは、IPsec以外のメカニズムを介してトラフィックを保護しますが、IKEv2を鍵交渉と鍵管理機能の基礎として使用します。
         </p>
       </div>
     </div>
@@ -5539,14 +5539,14 @@ Some protocols protect their traffic through mechanisms other than IPsec, but us
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="9-1-1--RFC-5106-The-Extensible-Authentication-Protocol-Internet-Key-Exchange-Protocol-version-2-EAP-IKEv2-Method-E-February-2008">
 9.1.1. RFC 5106, The Extensible Authentication Protocol-Internet Key Exchange Protocol version 2 (EAP-IKEv2) Method (E, February 2008)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 9.1.1. RFC 5106、拡張可能な認証プロトコルインターネットキーエクスチェンジプロトコルバージョン2（EAP-kikev2）メソッド（E、2008年2月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5557,7 +5557,7 @@ Some protocols protect their traffic through mechanisms other than IPsec, but us
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC5106]は、インターネットキーエクスチェンジバージョン2（IKEV2）プロトコルに基づいた拡張可能な認証プロトコル（EAP）メソッドを指定します。EAP-kikev2は、EAPピアとEAPサーバーの間で相互認証とセッションキーの確立を提供します。完全なEAP-kikev2メッセージ交換とプロトコルメッセージの構成について説明します。
+[RFC5106]は、インターネットキーエクスチェンジバージョン2（IKEv2）プロトコルに基づいた拡張可能な認証プロトコル（EAP）メソッドを指定します。EAP-IKEv2は、EAPピアとEAPサーバーの間で相互認証とセッションキーの確立を提供します。完全なEAP-IKEv2メッセージ交換とプロトコルメッセージの構成について説明します。
         </p>
       </div>
     </div>
@@ -5593,7 +5593,7 @@ Fibre Channel (FC) is a gigabit-speed network technology used for Storage Area N
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Fiber Channel（FC）は、ストレージエリアネットワーキングに使用されるギガビットスピードネットワークテクノロジーです。ファイバーチャネルセキュリティプロトコル（FC-SP）標準は、IKEV2プロトコル[RFC4306]を適応させ、ファイバーチャネルエンティティの認証とセキュリティ関連のセットアップを提供しました。IPはファイバーチャネルを介して輸送され、ファイバーチャネルはIPで輸送されるため、IKEV2がIPトラフィックとFCトラフィックの両方に使用される場合、混乱の可能性があります。[RFC4595]は、FCを介したIKEV2の識別子を、IPまたはIKEV2/IPを介したIKEV2/FCをFC上で誤って使用することで、許容可能な提案がないため交渉の失敗をもたらすことを保証する方法で指定します。
+Fiber Channel（FC）は、ストレージエリアネットワーキングに使用されるギガビットスピードネットワークテクノロジーです。ファイバーチャネルセキュリティプロトコル（FC-SP）標準は、IKEv2プロトコル[RFC4306]を適応させ、ファイバーチャネルエンティティの認証とセキュリティアソシエーションのセットアップを提供しました。IPはファイバーチャネルを介して輸送され、ファイバーチャネルはIPで輸送されるため、IKEv2がIPトラフィックとFCトラフィックの両方に使用される場合、混乱の可能性があります。[RFC4595]は、FCを介したIKEv2の識別子を、IPまたはIKEv2/IPを介したIKEv2/FCをFC上で誤って使用することで、許容可能な提案がないため交渉の失敗をもたらすことを保証する方法で指定します。
         </p>
       </div>
     </div>
@@ -5611,14 +5611,14 @@ Fiber Channel（FC）は、ストレージエリアネットワーキングに�
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2" id="9-3-1--RFC-4705-GigaBeam-High-Speed-Radio-Link-Encryption-I-October-2006">
 9.3.1. RFC 4705, GigaBeam High-Speed Radio Link Encryption (I, October 2006)
-        </p>
+        </h5>
       </div>
       <div class="col-sm-12 col-md-6">
-        <p class="text indent-0">
+        <h5 class="text mt-2">
 9.3.1. RFC 4705、Gigabeam高速無線リンク暗号化（I、2006年10月）
-        </p>
+        </h5>
       </div>
     </div>
     <div class="row">
@@ -5629,7 +5629,7 @@ Fiber Channel（FC）は、ストレージエリアネットワーキングに�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4705]は、GigabeamがWifiber（TM）ファミリーのラジオリンク製品の一部として使用する暗号化と主要な管理を説明しており、同様のワイヤレス製品開発努力のガイドラインとして、同等の機能を含めることを目的としています。サブスクライバーと管理トラフィックの両方の機密性と整合性保護を提供するために使用されるアルゴリズムを指定します。また、2つのGigabeam Radio Controlモジュール（RCM）の間で実行されるカスタムセキュリティプロトコルも指定します。
+[RFC4705]は、GigabeamがWifiber（TM）ファミリーのラジオリンク製品の一部として使用する暗号化と鍵管理を説明しており、同様のワイヤレス製品開発努力のガイドラインとして、同等の機能を含めることを目的としています。サブスクライバーと管理トラフィックの両方の機密性と整合性保護を提供するために使用されるアルゴリズムを指定します。また、2つのGigabeam Radio Controlモジュール（RCM）の間で実行されるカスタムセキュリティプロトコルも指定します。
         </p>
       </div>
     </div>
@@ -5653,7 +5653,7 @@ The authors would like to thank Yaron Sheffer, Paul Hoffman, Yoav Nir, Rajeshwar
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-著者は、ヤロン・シェファー、ポール・ホフマン、ヨーブ・ニール、ラジェシュワル・シン・ジェンワール、アルフレッド・ホーネス、アル・モートン、ガブリエル・モンテネグロ、ショーン・ターナー、ジュリエン・ラガニエ、グレイ・デイリー、スコット・ムーナン、リチャード・グレイヴェマン、テロ・キビネン、パシ・エロネン、ラン・ラン・キビネンに感謝したいこの文書をレビューし、変更を提案してくれたアトキンソン、デビッドブラック、ティムポーク。
+著者は、ヤロン・シェファー、ポール・ホフマン、ヨーブ・ニール、ラジェシュワル・シン・ジェンワール、アルフレッド・ホーネス、アル・モートン、ガブリエル・モンテネグロ、ショーン・ターナー、ジュリエン・ラガニエ、グレイ・デイリー、スコット・ムーナン、リチャード・グレイヴェマン、テロ・キビネン、パシ・エロネン、ラン・アトキンソン、デビッド・ブラック、ティム・ポークに感謝したいこの文書をレビューし、変更を提案してくれた。
         </p>
       </div>
     </div>
