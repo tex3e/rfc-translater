@@ -1,0 +1,862 @@
+{
+  "title": {
+    "text": "RFC 9917 - IGP Flexible Algorithms Reverse Affinity Constraint",
+    "ja": "RFC 9917 - IGP 柔軟なアルゴリズムの逆アフィニティ制約"
+  },
+  "number": 9917,
+  "created_at": "2026-01-28 23:24:35.046505+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)                         P. Psenak\nRequest for Comments: 9917                                       J. Horn\nUpdates: 9350, 9843                                        Cisco Systems\nCategory: Standards Track                                     A. Dhamija\nISSN: 2070-1721                                                   Arrcus\n                                                            January 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "IGP Flexible Algorithms Reverse Affinity Constraint",
+      "section_title": true,
+      "ja": "IGP 柔軟なアルゴリズムの逆アフィニティ制約"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "An IGP Flexible Algorithm (Flex-Algorithm) enables the computation of constraint-based paths within an IGP domain, allowing operators to influence path selection according to administrative policies. This document defines an extension to Flex-Algorithm that allows the inclusion or exclusion of links from path computation based on Administrative Groups (also known as link affinities) associated with the reverse direction of the path under computation.",
+      "ja": "IGP フレキシブル アルゴリズム (フレックス アルゴリズム) により、IGP ドメイン内の制約ベースのパスの計算が可能になり、オペレータが管理ポリシーに従ってパスの選択に影響を与えることができます。このドキュメントでは、計算中のパスの逆方向に関連付けられた管理グループ (リンク アフィニティとも呼ばれる) に基づいて、パス計算からリンクを含めたり除外したりできるようにするフレックス アルゴリズムの拡張機能を定義します。"
+    },
+    {
+      "indent": 3,
+      "text": "This document updates RFCs 9350 and 9843 by introducing the new IANA registry that specifies the ordered set of rules that are used to prune links from the topology during the Flex-Algorithm path computation.",
+      "ja": "この文書は、フレックス アルゴリズム パスの計算中にトポロジからリンクをプルーニングするために使用される規則の順序付きセットを指定する新しい IANA レジストリを導入することにより、RFC 9350 および 9843 を更新します。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の位置付け"
+    },
+    {
+      "indent": 3,
+      "text": "This is an Internet Standards Track document.",
+      "ja": "これはインターネット標準化トラックの文書です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
+      "ja": "このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9917.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9917 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Requirements Language\n3.  Use Case Example\n4.  Deployment Consideration\n5.  IS-IS Flexible Algorithm Exclude Reverse Admin Group Sub-TLV\n6.  IS-IS Flexible Algorithm Include-Any Reverse Admin Group\n        Sub-TLV\n7.  IS-IS Flexible Algorithm Include-All Reverse Admin Group\n        Sub-TLV\n8.  OSPF Flexible Algorithm Exclude Reverse Admin Group Sub-TLV\n9.  OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV\n10. OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV\n11. Calculation of Flexible Algorithm Paths\n12. IANA Considerations\n  12.1.  Sub-Sub-TLVs for Flexible Algorithm Definition Sub-TLV\n  12.2.  OSPF Flexible Algorithm Definition TLV Sub-TLV Registry\n  12.3.  IGP Flex-Algorithm Path Computation Rules Registry\n    12.3.1.  Guidance for Designated Experts\n13. Security Considerations\n14. References\n  14.1.  Normative References\n  14.2.  Informative References\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "IGP protocols historically computed the best paths over the network solely based on the IGP metric assigned to the links. An IGP Flex-Algorithm as specified in [RFC9350] allows IGPs to compute constraint-based paths. Several mechanisms to include or exclude the link during the Flex-Algorithm path calculation have been defined already:",
+      "ja": "IGP プロトコルはこれまで、リンクに割り当てられた IGP メトリックのみに基づいてネットワーク上の最適なパスを計算していました。[RFC9350] で規定されている IGP フレックス アルゴリズムにより、IGP は制約ベースのパスを計算できます。フレックス アルゴリズム パス計算中にリンクを含めたり除外したりするためのいくつかのメカニズムがすでに定義されています。"
+    },
+    {
+      "indent": 6,
+      "text": "* link inclusion or exclusion based on the presence of a specific Admin Group(s) [RFC9350]",
+      "ja": "* 特定の管理者グループの存在に基づくリンクの包含または除外 [RFC9350]"
+    },
+    {
+      "indent": 6,
+      "text": "* link exclusion based on the presence of a specific Shared Risk Link Group (SRLG) [RFC9350]",
+      "ja": "* 特定の共有リスク リンク グループ (SRLG) の存在に基づくリンクの除外 [RFC9350]"
+    },
+    {
+      "indent": 6,
+      "text": "* link exclusion based on minimum bandwidth [RFC9843]",
+      "ja": "* 最小帯域幅に基づくリンクの除外 [RFC9843]"
+    },
+    {
+      "indent": 6,
+      "text": "* link exclusion based on maximum delay [RFC9843]",
+      "ja": "* 最大遅延に基づくリンク除外 [RFC9843]"
+    },
+    {
+      "indent": 3,
+      "text": "This document extends IGP Flex-Algorithm with additional constraints for inclusion or exclusion of links in the path based on Admin Groups associated with the reverse direction of the Shortest Path First (SPF) computation.",
+      "ja": "このドキュメントは、Shortest Path First (SPF) 計算の逆方向に関連付けられた管理グループに基づいて、パス内のリンクの包含または除外に関する追加の制約を追加して IGP フレックス アルゴリズムを拡張します。"
+    },
+    {
+      "indent": 3,
+      "text": "This document updates [RFC9350] and [RFC9843] by creating the new IANA registry that specifies the ordered set of rules that are used to prune links from the topology during the Flex-Algorithm path computation (refer to Section 12.3.1).",
+      "ja": "この文書は、フレックス アルゴリズム パスの計算中にトポロジからリンクをプルーニングするために使用される規則の順序セットを指定する新しい IANA レジストリを作成することにより、[RFC9350] および [RFC9843] を更新します (セクション 12.3.1 を参照)。"
+    },
+    {
+      "indent": 3,
+      "text": "The term OSPF in this document is used to cover both OSPFv2 and OSPFv3 protocols.",
+      "ja": "このドキュメントでの OSPF という用語は、OSPFv2 プロトコルと OSPFv3 プロトコルの両方をカバーするために使用されます。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Requirements Language",
+      "section_title": true,
+      "ja": "2. 要件言語"
+    },
+    {
+      "indent": 3,
+      "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "ja": "このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Use Case Example",
+      "section_title": true,
+      "ja": "3. 使用例"
+    },
+    {
+      "indent": 3,
+      "text": "The Flexible Algorithm Definition (FAD) can specify Extended Administrative Groups that are used by the operator to include or exclude links during the Flex-Algorithm path computation [RFC9350]. These link Extended Administrative Groups are checked in the path direction of the SPF computation, e.g., in the direction from the root vertex toward vertices of increasing distance.",
+      "ja": "フレキシブル アルゴリズム定義 (FAD) では、フレックス アルゴリズム パスの計算中にリンクを含めたり除外したりするためにオペレータが使用する拡張管理グループを指定できます [RFC9350]。これらのリンク拡張管理グループは、SPF 計算のパス方向、たとえば、ルート頂点から距離が増加する頂点に向かう方向でチェックされます。"
+    },
+    {
+      "indent": 3,
+      "text": "In certain scenarios, it is beneficial to evaluate the Extended Administrative Groups associated with the reverse direction of a link, rather than solely those in the direction of path computation. Consider a point-to-point link represented as a pair of directed edges between two nodes, A and B. When computing a path from A to B, issues such as input errors on the link, detectable only at the receiving node B, may be operationally significant. An operator might monitor metrics like Cyclic Redundancy Check (CRC) errors or other input-related faults at node B and apply thresholds over a defined observation period. If such a threshold is exceeded, node B may locally assign specific Extended Administrative Groups to the link in the direction from B to A.",
+      "ja": "特定のシナリオでは、パス計算の方向の拡張管理グループのみを評価するのではなく、リンクの逆方向に関連付けられた拡張管理グループを評価することが有益です。2 つのノード A と B の間の有向エッジのペアとして表されるポイントツーポイント リンクを考えてみましょう。A から B へのパスを計算する場合、受信ノード B でのみ検出可能なリンク上の入力エラーなどの問題が運用上重要になる可能性があります。オペレーターは、ノード B で巡回冗長検査 (CRC) エラーやその他の入力関連の障害などのメトリックを監視し、定義された観察期間にわたってしきい値を適用する場合があります。このようなしきい値を超えると、ノード B は特定の拡張管理グループを B から A への方向のリンクにローカルに割り当てる可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "To accommodate this operational intent, the Flex-Algorithm can be extended to inspect the Extended Administrative Groups of the reverse-direction edge (from B to A) when evaluating the forward-direction edge (from A to B) during path computation. This enables the exclusion of links from the computed topology based on conditions detected at the far end of the link, improving network reliability and policy control.",
+      "ja": "この運用上の意図に対応するために、パス計算中に順方向エッジ (A から B) を評価するときに、逆方向エッジ (B から A) の拡張管理グループを検査するようにフレックス アルゴリズムを拡張できます。これにより、リンクの遠端で検出された条件に基づいて計算されたトポロジからリンクを除外できるようになり、ネットワークの信頼性とポリシー制御が向上します。"
+    },
+    {
+      "indent": 0,
+      "text": "4. Deployment Consideration",
+      "section_title": true,
+      "ja": "4. 導入に関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "Threshold-based setting of the link Extended Administrative Groups must be done with care to avoid excessive flooding and constant Flex-Algorithm path recalculation.",
+      "ja": "リンク拡張管理グループのしきい値ベースの設定は、過度のフラッディングや定期的なフレックス アルゴリズム パスの再計算を避けるために注意して行う必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "One possible approach is to use two different thresholds when setting and unsetting the Extended Administrative Group on the link. For example, when setting the Extended Administrative Group on the link based on the percentage of certain incoming errors, higher threshold is used for setting and lower threshold is used for unsetting the Extended Administrative Group on the link.",
+      "ja": "考えられるアプローチの 1 つは、リンク上で拡張管理グループを設定および設定解除するときに 2 つの異なるしきい値を使用することです。たとえば、特定の受信エラーの割合に基づいてリンク上の拡張管理グループを設定する場合、リンク上の拡張管理グループの設定には高いしきい値が使用され、設定解除には低いしきい値が使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Many implementations provide a throttling mechanism that limits the rate at which the Link State PDU (LSP) in case of IS-IS, or Link State Advertisement (LSA) in case of OSPFv2 and OSPFv3, is updated at the originator. Such mechanism is typically not specific to any particular link attribute, but rather considers any change in the LSP or LSA. Application of such throttling mechanism can also be used to avoid frequent changes in the setting of the Extended Administrative Group on a link to affect the stability of the receivers.",
+      "ja": "多くの実装では、IS-IS の場合はリンク ステート PDU (LSP)、OSPFv2 および OSPFv3 の場合はリンク ステート アドバタイズメント (LSA) が発信元で更新されるレートを制限するスロットリング メカニズムが提供されています。このようなメカニズムは通常、特定のリンク属性に固有のものではなく、LSP または LSA のあらゆる変更を考慮します。このようなスロットル メカニズムを適用すると、リンク上の拡張管理グループの設定が頻繁に変更されて受信機の安定性に影響を与えることを回避することもできます。"
+    },
+    {
+      "indent": 0,
+      "text": "5. IS-IS Flexible Algorithm Exclude Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "5. IS-IS 柔軟なアルゴリズムによるリバース管理グループのサブ TLV の除外"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Exclude Reverse Admin Group (FAERAG) Sub-TLV is used to advertise the exclude rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "IS-IS フレキシブル アルゴリズム除外リバース管理グループ (FAERAG) サブ TLV は、セクション 11 で指定されているように、フレックス アルゴリズム パス計算中に使用される除外ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS FAERAG Sub-TLV is a sub-TLV of the IS-IS FAD Sub-TLV. It has the following format:",
+      "ja": "IS-IS FAERAG サブ TLV は、IS-IS FAD サブ TLV のサブ TLV です。次の形式になります。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|      Type     |    Length     |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|                      Extended Admin Group                     |\n+-                                                             -+\n|                            ...                                |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "where:",
+      "ja": "ただし："
+    },
+    {
+      "indent": 3,
+      "text": "Type (1 octet):",
+      "ja": "タイプ (1 オクテット):"
+    },
+    {
+      "indent": 12,
+      "text": "10",
+      "ja": "10"
+    },
+    {
+      "indent": 3,
+      "text": "Length (1 octet):",
+      "ja": "長さ (1 オクテット):"
+    },
+    {
+      "indent": 12,
+      "text": "Variable, dependent on the size of the Extended Admin Group. The length MUST be a multiple of 4 octets. If the length is not a multiple of 4 octets, the entire sub-TLV MUST be ignored by the receiver.",
+      "ja": "拡張管理グループのサイズに応じて変化します。長さは 4 オクテットの倍数でなければなりません。長さが 4 オクテットの倍数でない場合、受信側はサブ TLV 全体を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Extended Administrative Group:",
+      "ja": "拡張管理グループ:"
+    },
+    {
+      "indent": 12,
+      "text": "Extended Administrative Group as defined in [RFC7308].",
+      "ja": "[RFC7308] で定義されている拡張管理グループ。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS FAERAG Sub-TLV MUST NOT appear more than once in a single IS-IS FAD Sub-TLV. If it appears more than once, the IS-IS FAD Sub-TLV MUST be ignored by the receiver.",
+      "ja": "IS-IS FAERAG サブ TLV は、単一の IS-IS FAD サブ TLV 内に複数回出現してはなりません。IS-IS FAD Sub-TLV が複数回出現する場合、受信側は IS-IS FAD Sub-TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS FAERAG Sub-TLV MUST NOT appear more than once in the set of FAD Sub-TLVs for a given Flex-Algorithm from a given IS. If it appears more than once in such set, the IS-IS FAERAG Sub-TLV in the first occurrence in the lowest-numbered LSP from a given IS MUST be used and any other occurrences MUST be ignored by the receiver.",
+      "ja": "IS-IS FAERAG サブ TLV は、特定の IS からの特定のフレックス アルゴリズムの FAD サブ TLV のセットに複数回出現してはなりません (MUST NOT)。そのようなセットに複数回出現する場合、特定の IS の最小番号の LSP で最初に出現する IS-IS FAERAG Sub-TLV を使用しなければならず (MUST)、その他の出現は受信機によって無視されなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "6. IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "6. IS-IS 柔軟なアルゴリズムには、任意のリバース管理グループのサブ TLV が含まれます"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV is used to advertise the include-any rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "IS-IS フレキシブル アルゴリズム Include-Any リバース管理グループ サブ TLV は、セクション 11 で指定されているフレックス アルゴリズム パス計算中に使用される include-any ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The format of the IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV is identical to the format of the FAERAG Sub-TLV in Section 5.",
+      "ja": "IS-IS フレキシブル アルゴリズム Include-Any Reverse Admin Group サブ TLV の形式は、セクション 5 の FAERAG サブ TLV の形式と同じです。"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has assigned Type value of 11 for the IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV.",
+      "ja": "IANA は、IS-IS フレキシブル アルゴリズム Include-Any Reverse Admin Group Sub-TLV に Type 値 11 を割り当てました。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV MUST NOT appear more than once in a single IS-IS FAD Sub-TLV. If it appears more than once, the IS-IS FAD Sub-TLV MUST be ignored by the receiver.",
+      "ja": "IS-IS フレキシブル アルゴリズムには、任意のリバース管理グループ サブ TLV が単一の IS-IS FAD サブ TLV 内に複数回出現してはなりません。IS-IS FAD Sub-TLV が複数回出現する場合、受信側は IS-IS FAD Sub-TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV MUST NOT appear more than once in the set of FAD Sub-TLVs for a given Flex-Algorithm from a given IS. If it appears more than once in such set, the IS-IS Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV in the first occurrence in the lowest-numbered LSP from a given IS MUST be used and any other occurrences MUST be ignored by the receiver.",
+      "ja": "IS-IS フレキシブル アルゴリズムに含まれるリバース管理グループのサブ TLV は、特定の IS からの特定のフレックス アルゴリズムの FAD サブ TLV のセットに複数回出現してはなりません。このようなセットに複数回出現する場合、特定の IS の最小番号の LSP で最初に出現する IS-IS フレキシブル アルゴリズム Include-Any Reverse Admin Group Sub-TLV を使用しなければならず (MUST)、その他の出現は受信側で無視されなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "7. IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "7. IS-IS 柔軟なアルゴリズム Include-All リバース管理グループ サブ TLV"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV is used to advertise the include-all rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "IS-IS フレキシブル アルゴリズム インクルードオール リバース管理グループ サブ TLV は、セクション 11 で指定されているフレックス アルゴリズム パス計算中に使用されるインクルードオール ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The format of the IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV is identical to the format of the FAERAG Sub-TLV in Section 5.",
+      "ja": "IS-IS フレキシブル アルゴリズム Include-All リバース管理グループ サブ TLV の形式は、セクション 5 の FAERAG サブ TLV の形式と同じです。"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has assigned Type value of 12 for the IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV.",
+      "ja": "IANA は、IS-IS フレキシブル アルゴリズム Include-All Reverse Admin Group Sub-TLV に Type 値 12 を割り当てました。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV MUST NOT appear more than once in a single IS-IS FAD Sub-TLV. If it appears more than once, the IS-IS FAD Sub-TLV MUST be ignored by the receiver.",
+      "ja": "IS-IS フレキシブル アルゴリズム Include-All リバース管理グループ サブ TLV は、単一の IS-IS FAD サブ TLV 内に複数回出現してはなりません。IS-IS FAD Sub-TLV が複数回出現する場合、受信側は IS-IS FAD Sub-TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "The IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV MUST NOT appear more than once in the set of FAD Sub-TLVs for a given Flex-Algorithm from a given IS. If it appears more than once in such set, the IS-IS Flexible Algorithm Include-All Reverse Admin Group Sub-TLV in the first occurrence in the lowest-numbered LSP from a given IS MUST be used and any other occurrences MUST be ignored by the receiver.",
+      "ja": "IS-IS フレキシブル アルゴリズム Include-All リバース管理グループ サブ TLV は、特定の IS の特定のフレックス アルゴリズムの FAD サブ TLV のセットに複数回出現してはなりません。このようなセットに複数回出現する場合、特定の IS の最小番号の LSP で最初に出現する IS-IS フレキシブル アルゴリズム Include-All Reverse Admin Group Sub-TLV が使用されなければならず (MUST)、その他の出現は受信側で無視されなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "8. OSPF Flexible Algorithm Exclude Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "8. OSPF 柔軟なアルゴリズムによるリバース管理グループのサブ TLV の除外"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF Flexible Algorithm Exclude Reverse Admin Group (FAERAG) Sub-TLV is used to advertise the exclude rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "OSPF フレキシブル アルゴリズム除外リバース管理グループ (FAERAG) サブ TLV は、セクション 11 で指定されているように、フレックス アルゴリズム パス計算中に使用される除外ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF FAERAG Sub-TLV is a sub-TLV of the OSPF FAD TLV. It has the following format:",
+      "ja": "OSPF FAERAG サブ TLV は、OSPF FAD TLV のサブ TLV です。次の形式になります。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|              Type             |             Length            |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|                      Extended Admin Group                     |\n+-                                                             -+\n|                            ...                                |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "where:",
+      "ja": "ただし："
+    },
+    {
+      "indent": 3,
+      "text": "Type (2 octets):",
+      "ja": "タイプ (2 オクテット):"
+    },
+    {
+      "indent": 12,
+      "text": "10",
+      "ja": "10"
+    },
+    {
+      "indent": 3,
+      "text": "Length (2 octets):",
+      "ja": "長さ (2 オクテット):"
+    },
+    {
+      "indent": 12,
+      "text": "Variable, dependent on the size of the Extended Admin Group. The length MUST be a multiple of 4 octets. If the length is not a multiple of 4 octets, the entire sub-TLV MUST be ignored by the receiver.",
+      "ja": "拡張管理グループのサイズに応じて変化します。長さは 4 オクテットの倍数でなければなりません。長さが 4 オクテットの倍数でない場合、受信側はサブ TLV 全体を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Extended Administrative Group:",
+      "ja": "拡張管理グループ:"
+    },
+    {
+      "indent": 12,
+      "text": "Extended Administrative Group as defined in [RFC7308].",
+      "ja": "[RFC7308] で定義されている拡張管理グループ。"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF FAERAG Sub-TLV MUST NOT appear more than once in an OSPF FAD TLV. If it appears more than once, the OSPF FAD TLV MUST be ignored by the receiver.",
+      "ja": "OSPF FAERAG Sub-TLV は、OSPF FAD TLV 内に複数回出現してはなりません (MUST NOT)。OSPF FAD TLV が複数回出現する場合、受信側は OSPF FAD TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "9. OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "9. OSPF 柔軟なアルゴリズムには、任意のリバース管理グループのサブ TLV が含まれます"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV is used to advertise the include-any rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "OSPF フレキシブル アルゴリズム Include-Any リバース管理グループ サブ TLV は、セクション 11 で指定されているフレックス アルゴリズム パス計算中に使用される include-Any ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The format of the OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV is identical to the format of the OSPF FAERAG Sub-TLV in Section 8.",
+      "ja": "OSPF 柔軟なアルゴリズム Include-Any Reverse Admin Group サブ TLV の形式は、セクション 8 の OSPF FAERAG サブ TLV の形式と同じです。"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has assigned Type value of 11 for the OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV.",
+      "ja": "IANA は、OSPF 柔軟なアルゴリズム Include-Any Reverse Admin Group Sub-TLV に Type 値 11 を割り当てました。"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF Flexible Algorithm Include-Any Reverse Admin Group Sub-TLV MUST NOT appear more than once in an OSPF FAD TLV. If it appears more than once, the OSPF FAD TLV MUST be ignored by the receiver.",
+      "ja": "OSPF フレキシブル アルゴリズム インクルード - 任意のリバース管理グループ サブ TLV は、OSPF FAD TLV 内に複数回出現してはなりません。OSPF FAD TLV が複数回出現する場合、受信側は OSPF FAD TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "10. OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV",
+      "section_title": true,
+      "ja": "10. OSPF 柔軟なアルゴリズム Include-All リバース管理グループ サブ TLV"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV is used to advertise the include-all rule that is used during the Flex-Algorithm path calculation as specified in Section 11.",
+      "ja": "OSPF フレキシブル アルゴリズム インクルードオール リバース管理グループ サブ TLV は、セクション 11 で指定されているフレックス アルゴリズム パス計算中に使用されるインクルード ルールをアドバタイズするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The format of the OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV is identical to the format of the OSPF FAERAG Sub-TLV in Section 8.",
+      "ja": "OSPF 柔軟なアルゴリズム Include-All リバース管理グループ サブ TLV の形式は、セクション 8 の OSPF FAERAG サブ TLV の形式と同じです。"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has assigned Type value of 12 for the OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV.",
+      "ja": "IANA は、OSPF 柔軟なアルゴリズム Include-All Reverse Admin Group Sub-TLV に Type 値 12 を割り当てました。"
+    },
+    {
+      "indent": 3,
+      "text": "The OSPF Flexible Algorithm Include-All Reverse Admin Group Sub-TLV MUST NOT appear more than once in an OSPF FAD TLV. If it appears more than once, the OSPF FAD TLV MUST be ignored by the receiver.",
+      "ja": "OSPF フレキシブル アルゴリズム Include-All Reverse Admin Group Sub-TLV は、OSPF FAD TLV 内に複数回出現してはなりません。OSPF FAD TLV が複数回出現する場合、受信側は OSPF FAD TLV を無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "11. Calculation of Flexible Algorithm Paths",
+      "section_title": true,
+      "ja": "11. 柔軟なアルゴリズム パスの計算"
+    },
+    {
+      "indent": 3,
+      "text": "The following procedures augment the rules defined in Section 13 of [RFC9350] by introducing additional constraints based on Administrative Groups (AGs) associated with the reverse direction of a link.",
+      "ja": "以下の手順は、リンクの逆方向に関連付けられた管理グループ (AG) に基づく追加の制約を導入することにより、[RFC9350] のセクション 13 で定義されたルールを強化します。"
+    },
+    {
+      "indent": 6,
+      "text": "* Check if any exclude reverse Admin Group rule is part of the Flex-Algorithm definition. If such exclude rule exists, check if any Admin Group that is part of the exclude rule is also set on the link in the reverse direction. If such Admin Group is set on the link in the reverse direction, the link MUST be pruned from the computation.",
+      "ja": "* 逆引き管理グループの除外ルールがフレックス アルゴリズム定義の一部であるかどうかを確認します。このような除外ルールが存在する場合は、除外ルールの一部である管理グループが逆方向のリンクにも設定されているかどうかを確認してください。このような管理グループがリンク上で逆方向に設定されている場合、そのリンクは計算から除外されなければなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* Check if any include-any reverse Admin Group rule is part of the Flex-Algorithm definition. If such include-any rule exists, check if any Admin Group that is part of the include-any rule is also set on the link in the reverse direction. If no such Admin Group is set on the link in the reverse direction, the link MUST be pruned from the computation.",
+      "ja": "* include-any 逆管理グループ ルールがフレックス アルゴリズム定義の一部であるかどうかを確認します。このような include-any ルールが存在する場合は、include-any ルールの一部である管理グループが逆方向のリンクにも設定されているかどうかを確認してください。そのような管理グループが逆方向のリンクに設定されていない場合、そのリンクは計算から除外されなければなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* Check if any include-all reverse Admin Group rule is part of the Flex-Algorithm definition. If such include-all rule exists, check if all Admin Groups that are part of the include-all rule are also set on the link in the reverse direction. If all such Admin Groups are not set on the link in the reverse direction, the link MUST be pruned from the computation.",
+      "ja": "* すべてを含むリバース管理グループ ルールがフレックス アルゴリズム定義の一部であるかどうかを確認します。このようなすべてを含めるルールが存在する場合は、すべてを含めるルールの一部であるすべての管理グループもリンク上で逆方向に設定されているかどうかを確認してください。このようなすべての管理グループがリンク上で逆方向に設定されていない場合、そのリンクは計算から除外されなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Please see rules 8, 9, and 10 in Section 12.3 for these added rules.",
+      "ja": "これらの追加ルールについては、セクション 12.3 のルール 8、9、および 10 を参照してください。"
+    },
+    {
+      "indent": 0,
+      "text": "12. IANA Considerations",
+      "section_title": true,
+      "ja": "12. IANAの考慮事項"
+    },
+    {
+      "indent": 0,
+      "text": "12.1. Sub-Sub-TLVs for Flexible Algorithm Definition Sub-TLV",
+      "section_title": true,
+      "ja": "12.1. 柔軟なアルゴリズム定義のためのサブサブTLV サブTLV"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following in the \"IS-IS Sub-Sub-TLVs for Flexible Algorithm Definition Sub-TLV\" registry under the \"IS-IS TLV Codepoints\" registry group:",
+      "ja": "IANA は、「IS-IS TLV Codepoints」レジストリ グループの下の「IS-IS Sub-Sub-TLVs for Flexible Algorithm Definition Sub-TLV」レジストリに以下を登録しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "10",
+      "ja": "10"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Exclude Reverse Admin Group",
+      "ja": "柔軟なアルゴリズムによる逆管理グループの除外"
+    },
+    {
+      "indent": 3,
+      "text": "MP:",
+      "ja": "MP:"
+    },
+    {
+      "indent": 12,
+      "text": "n",
+      "ja": "n"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 5",
+      "ja": "RFC 9917、セクション 5"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "11",
+      "ja": "11"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Include-Any Reverse Admin Group",
+      "ja": "柔軟なアルゴリズムには、任意の逆管理グループが含まれます"
+    },
+    {
+      "indent": 3,
+      "text": "MP:",
+      "ja": "MP:"
+    },
+    {
+      "indent": 12,
+      "text": "n",
+      "ja": "n"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 6",
+      "ja": "RFC 9917、セクション 6"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "12",
+      "ja": "12"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Include-All Reverse Admin Group",
+      "ja": "すべてのリバース管理グループを含む柔軟なアルゴリズム"
+    },
+    {
+      "indent": 3,
+      "text": "MP:",
+      "ja": "MP:"
+    },
+    {
+      "indent": 12,
+      "text": "n",
+      "ja": "n"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 7",
+      "ja": "RFC 9917、セクション 7"
+    },
+    {
+      "indent": 0,
+      "text": "12.2. OSPF Flexible Algorithm Definition TLV Sub-TLV Registry",
+      "section_title": true,
+      "ja": "12.2. OSPF 柔軟なアルゴリズム定義 TLV サブ TLV レジストリ"
+    },
+    {
+      "indent": 3,
+      "text": "This document makes the following registration in the \"OSPF Flexible Algorithm Definition TLV Sub-TLVs\" registry under the \"Open Shortest Path First (OSPF) Parameters\" registry group:",
+      "ja": "このドキュメントでは、「Open Shortest Path First (OSPF) Parameters」レジストリ グループの下の「OSPF Flexible Algorithm Definition TLV Sub-TLVs」レジストリに次の登録を行います。"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "10",
+      "ja": "10"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Exclude Reverse Admin Group",
+      "ja": "柔軟なアルゴリズムによる逆管理グループの除外"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 8",
+      "ja": "RFC 9917、セクション 8"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "11",
+      "ja": "11"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Include-Any Reverse Admin Group",
+      "ja": "柔軟なアルゴリズムには、任意の逆管理グループが含まれます"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 9",
+      "ja": "RFC 9917、セクション 9"
+    },
+    {
+      "indent": 3,
+      "text": "Type:",
+      "ja": "タイプ："
+    },
+    {
+      "indent": 12,
+      "text": "12",
+      "ja": "12"
+    },
+    {
+      "indent": 3,
+      "text": "Description:",
+      "ja": "説明："
+    },
+    {
+      "indent": 12,
+      "text": "Flexible Algorithm Include-All Reverse Admin Group",
+      "ja": "すべてのリバース管理グループを含む柔軟なアルゴリズム"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9917, Section 10",
+      "ja": "RFC 9917、セクション 10"
+    },
+    {
+      "indent": 0,
+      "text": "12.3. IGP Flex-Algorithm Path Computation Rules Registry",
+      "section_title": true,
+      "ja": "12.3. IGP フレックス アルゴリズム パス計算ルール レジストリ"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has created a new registry called \"IGP Flex-Algorithm Path Computation Rules\" within the \"Interior Gateway Protocol (IGP) Parameters\" registry group. The registration procedure for the new registry is Expert Review [RFC8126]. Section 12.3.1 provides guidance for designated experts.",
+      "ja": "IANA は、「Interior Gateway Protocol (IGP) Parameters」レジストリ グループ内に「IGP Flex-Algorithm Path Computation Rules」という新しいレジストリを作成しました。新しいレジストリの登録手順は、Expert Review [RFC8126] です。セクション 12.3.1 では、指定された専門家に対するガイダンスを提供します。"
+    },
+    {
+      "indent": 3,
+      "text": "The \"IGP Flex-Algorithm Path Computation Rules\" registry specifies the ordered set of rules that are used to prune links from the topology during the Flex-Algorithm path computation.",
+      "ja": "「IGP フレックス アルゴリズム パス計算ルール」レジストリは、フレックス アルゴリズム パス計算中にトポロジからリンクをプルーニングするために使用される規則の順序付けされたセットを指定します。"
+    },
+    {
+      "indent": 3,
+      "text": "There is no upper bound on the number of rules that the registry supports.",
+      "ja": "レジストリがサポートするルールの数に上限はありません。"
+    },
+    {
+      "indent": 3,
+      "text": "In Table 1, \"FAEMB\" means \"Flex-Algorithm Exclude Minimum Bandwidth\", and \"FAEMD\" means \"Flex-Algorithm Exclude Maximum Delay\".",
+      "ja": "表 1 では、「FAEMB」は「フレックス アルゴリズムによる最小帯域幅の除外」を意味し、「FAEMD」は「フレックス アルゴリズムによる最大遅延の除外」を意味します。"
+    },
+    {
+      "indent": 3,
+      "text": "+==========+===========================================+===========+\n| Sequence | Description                               | Reference |\n| Number   |                                           |           |\n+==========+===========================================+===========+\n| 1        | Check if any exclude Administrative Group | Section   |\n|          | rule is part of the Flex-Algorithm        | 13 of     |\n|          | Definition.  If such exclude rule exists, | [RFC9350] |\n|          | check if any color that is part of the    |           |\n|          | exclude rule is also set on the link.  If |           |\n|          | such a color is set, the link MUST be     |           |\n|          | pruned from the computation.              |           |\n+----------+-------------------------------------------+-----------+\n| 2        | Check if any exclude SRLG rule is part of | Section   |\n|          | the Flex-Algorithm Definition.  If such   | 13 of     |\n|          | exclude rule exists, check if the link is | [RFC9350] |\n|          | part of any SRLG that is also part of the |           |\n|          | SRLG exclude rule.  If the link is part   |           |\n|          | of such SRLG, the link MUST be pruned     |           |\n|          | from the computation.                     |           |\n+----------+-------------------------------------------+-----------+\n| 3        | Check if any include-any Administrative   | Section   |\n|          | Group rule is part of the Flex-Algorithm  | 13 of     |\n|          | Definition.  If such include-any rule     | [RFC9350] |\n|          | exists, check if any color that is part   |           |\n|          | of the include-any rule is also set on    |           |\n|          | the link.  If no such color is set, the   |           |\n|          | link MUST be pruned from the computation. |           |\n+----------+-------------------------------------------+-----------+\n| 4        | Check if any include-all Administrative   | Section   |\n|          | Group rule is part of the Flex-Algorithm  | 13 of     |\n|          | Definition.  If such include-all rule     | [RFC9350] |\n|          | exists, check if all colors that are part |           |\n|          | of the include-all rule are also set on   |           |\n|          | the link.  If all such colors are not set |           |\n|          | on the link, the link MUST be pruned from |           |\n|          | the computation.                          |           |\n+----------+-------------------------------------------+-----------+\n| 5        | If the Flex-Algorithm Definition uses     | Section   |\n|          | something other than the IGP metric       | 13 of     |\n|          | (Section 5 of [RFC9350]), and such metric | [RFC9350] |\n|          | is not advertised for the particular link |           |\n|          | in a topology for which the computation   |           |\n|          | is done, such link MUST be pruned from    |           |\n|          | the computation.  A metric of value 0     |           |\n|          | MUST NOT be assumed in such a case.       |           |\n+----------+-------------------------------------------+-----------+\n| 6        | Check if any exclude FAEMB rule is part   | Section 6 |\n|          | of the Flex-Algorithm definition.  If     | of        |\n|          | such exclude rule exists and the link has | [RFC9843] |\n|          | Maximum Link Bandwidth advertised, check  |           |\n|          | if the link bandwidth satisfies the FAEMB |           |\n|          | rule.  If the link does not satisfy the   |           |\n|          | FAEMB rule, the link MUST be pruned from  |           |\n|          | the Flex-Algorithm computation.           |           |\n+----------+-------------------------------------------+-----------+\n| 7        | Check if any exclude FAEMD rule is part   | Section 6 |\n|          | of the Flex-Algorithm definition.  If     | of        |\n|          | such exclude rule exists and the link has | [RFC9843] |\n|          | Min Unidirectional link delay advertised, |           |\n|          | check if the link delay satisfies the     |           |\n|          | FAEMD rule.  If the link does not satisfy |           |\n|          | the FAEMD rule, the link MUST be pruned   |           |\n|          | from the Flex-Algorithm computation.      |           |\n+----------+-------------------------------------------+-----------+\n| 8        | Check if any exclude reverse Admin Group  | Section   |\n|          | rule is part of the Flex-Algorithm        | 11 of RFC |\n|          | definition.  If such exclude rule exists, | 9917      |\n|          | check if any Admin Group that is part of  |           |\n|          | the exclude rule is also set on the link  |           |\n|          | in the reverse direction.  If such Admin  |           |\n|          | Group is set on the link in the reverse   |           |\n|          | direction, the link MUST be pruned from   |           |\n|          | the computation.                          |           |\n+----------+-------------------------------------------+-----------+\n| 9        | Check if any include-any reverse Admin    | Section   |\n|          | Group rule is part of the Flex-Algorithm  | 11 of RFC |\n|          | definition.  If such include-any rule     | 9917      |\n|          | exists, check if any Admin Group that is  |           |\n|          | part of the include-any rule is also set  |           |\n|          | on the link in the reverse direction.  If |           |\n|          | no such Admin Group is set on the link in |           |\n|          | the reverse direction, the link MUST be   |           |\n|          | pruned from the computation.              |           |\n+----------+-------------------------------------------+-----------+\n| 10       | Check if any include-all reverse Admin    | Section   |\n|          | Group rule is part of the Flex-Algorithm  | 11 of RFC |\n|          | definition.  If such include-all rule     | 9917      |\n|          | exists, check if all Admin Groups that    |           |\n|          | are part of the include-all rule are also |           |\n|          | set on the link in the reverse direction. |           |\n|          | If all such Admin Groups are not set on   |           |\n|          | the link in the reverse direction, the    |           |\n|          | link MUST be pruned from the computation. |           |\n+----------+-------------------------------------------+-----------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 12,
+      "text": "Table 1: IGP Flex-Algorithm Path Calculation Rules",
+      "ja": "表 1: IGP フレックス アルゴリズム パス計算ルール"
+    },
+    {
+      "indent": 0,
+      "text": "12.3.1. Guidance for Designated Experts",
+      "section_title": true,
+      "ja": "12.3.1. 指定専門家への指導"
+    },
+    {
+      "indent": 3,
+      "text": "Since the original Flex-Algorithm specification [RFC9350], many Flex-Algorithm extensions have been proposed and standardized. Many of them added additional rules to the Flex-Algorithm path computation. Maintaining an IANA registry for these rules allows specification across multiple documents progressing independently. The new \"IGP Flex-Algorithm Path Computation Rules\" registry has been created and is specified in Section 12.3.",
+      "ja": "オリジナルのフレックス アルゴリズム仕様 [RFC9350] 以来、多くのフレックス アルゴリズム拡張が提案され、標準化されてきました。その多くは、フレックス アルゴリズム パスの計算に追加のルールを追加しました。これらのルールの IANA レジストリを維持すると、複数の文書にわたる仕様を個別に進めることができます。新しい「IGP フレックス アルゴリズム パス計算ルール」レジストリが作成され、セクション 12.3 で指定されています。"
+    },
+    {
+      "indent": 3,
+      "text": "This section provides the guidance for designated experts on evaluating new registrations in the \"IGP Flex-Algorithm Path Computation Rules\" registry:",
+      "ja": "このセクションでは、指定された専門家向けに、「IGP フレックス アルゴリズム パス計算ルール」レジストリの新規登録を評価するためのガイダンスを提供します。"
+    },
+    {
+      "indent": 8,
+      "text": "1. When a new constraint is defined, the rule associated with that constraint MAY be inserted at any position. Backwards compatibility is guaranteed because nodes that don't support the new constraint will not participate in an algorithm where the FAD specifies a constraint they don't support.",
+      "ja": "1. 新しい制約が定義されると、その制約に関連付けられたルールを任意の位置に挿入できます(MAY)。新しい制約をサポートしないノードは、FAD がサポートしない制約を指定するアルゴリズムに参加しないため、下位互換性が保証されます。"
+    },
+    {
+      "indent": 8,
+      "text": "2. The relative ordering of existing rules MUST NOT be altered. Doing so has the potential to create backwards compatibility issues.",
+      "ja": "2. 既存のルールの相対的な順序を変更してはなりません。そうすると、下位互換性の問題が発生する可能性があります。"
+    },
+    {
+      "indent": 8,
+      "text": "3. Deletion of the rules MUST NOT be done. Given that the rules are only used conditionally based on the information carried in the winning FAD, deletion of the rule is not necessary.",
+      "ja": "3. ルールの削除は行ってはなりません。ルールは、勝った FAD に含まれる情報に基づいて条件付きでのみ使用されるため、ルールを削除する必要はありません。"
+    },
+    {
+      "indent": 8,
+      "text": "4. Merging or repeating of the rules MUST NOT be done.",
+      "ja": "4. ルールのマージや繰り返しは行ってはなりません。"
+    },
+    {
+      "indent": 0,
+      "text": "13. Security Considerations",
+      "section_title": true,
+      "ja": "13. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This document inherits security considerations from [RFC9350].",
+      "ja": "この文書は、[RFC9350] からセキュリティに関する考慮事項を継承しています。"
+    },
+    {
+      "indent": 0,
+      "text": "14. References",
+      "section_title": true,
+      "ja": "14. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "14.1. Normative References",
+      "section_title": true,
+      "ja": "14.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC2119]  Bradner, S., \"Key words for use in RFCs to Indicate\n           Requirement Levels\", BCP 14, RFC 2119,\n           DOI 10.17487/RFC2119, March 1997,\n           <https://www.rfc-editor.org/info/rfc2119>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC7308]  Osborne, E., \"Extended Administrative Groups in MPLS\n           Traffic Engineering (MPLS-TE)\", RFC 7308,\n           DOI 10.17487/RFC7308, July 2014,\n           <https://www.rfc-editor.org/info/rfc7308>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8174]  Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC\n           2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174,\n           May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9350]  Psenak, P., Ed., Hegde, S., Filsfils, C., Talaulikar, K.,\n           and A. Gulko, \"IGP Flexible Algorithm\", RFC 9350,\n           DOI 10.17487/RFC9350, February 2023,\n           <https://www.rfc-editor.org/info/rfc9350>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9843]  Hegde, S., Britto, W., Shetty, R., Decraene, B., Psenak,\n           P., and T. Li, \"IGP Flexible Algorithms: Bandwidth, Delay,\n           Metrics, and Constraints\", RFC 9843, DOI 10.17487/RFC9843,\n           September 2025, <https://www.rfc-editor.org/info/rfc9843>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "14.2. Informative References",
+      "section_title": true,
+      "ja": "14.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8126]  Cotton, M., Leiba, B., and T. Narten, \"Guidelines for\n           Writing an IANA Considerations Section in RFCs\", BCP 26,\n           RFC 8126, DOI 10.17487/RFC8126, June 2017,\n           <https://www.rfc-editor.org/info/rfc8126>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Peter Psenak\nCisco Systems\nApollo Business Center\nMlynske nivy 43\n82109 Bratislava\nSlovakia\nEmail: ppsenak@cisco.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Jakub Horn\nCisco Systems\nMilpitas, CA 95035\nUnited States of America\nEmail: jakuhorn@cisco.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Amit Dhamija\nArrcus\nEmail: amitd@arrcus.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}
