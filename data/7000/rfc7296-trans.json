@@ -5,7 +5,7 @@
   },
   "number": 7296,
   "created_at": "2020-08-21 18:34:37.959071+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -26,7 +26,7 @@
     {
       "indent": 3,
       "text": "This document describes version 2 of the Internet Key Exchange (IKE) protocol. IKE is a component of IPsec used for performing mutual authentication and establishing and maintaining Security Associations (SAs). This document obsoletes RFC 5996, and includes all of the errata for it. It advances IKEv2 to be an Internet Standard.",
-      "ja": "このドキュメントでは、インターネットキーエクスチェンジ（IKE）プロトコルのバージョン2について説明します。 IKEは、相互認証を実行し、セキュリティアソシエーション（SA）を確立および維持するために使用されるIPsecのコンポーネントです。このドキュメントはRFC 5996を廃止し、そのためのすべてのエラッタが含まれています。 IKEv2をインターネット標準に進化させます。"
+      "ja": "このドキュメントでは、インターネットキーエクスチェンジ（IKE）プロトコルのバージョン2について説明します。 IKEは、相互認証を実行し、セキュリティアソシエーション（SA）を確立および維持するために使用されるIPsecのコンポーネントです。このドキュメントはRFC 5996を廃止し、それに関するすべてのエラッタを含んでいます。これにより、IKEv2はインターネット標準になります。"
     },
     {
       "indent": 0,
@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at http://www.rfc-editor.org/info/rfc7296.",
-      "ja": "このドキュメントの現在のステータス、エラータ、およびフィードバックの提供方法に関する情報は、http：//www.rfc-editor.org/info/rfc7296で入手できます。"
+      "ja": "このドキュメントの現在のステータス、エラータ、およびフィードバックの提供方法に関する情報は、http://www.rfc-editor.org/info/rfc7296で入手できます。"
     },
     {
       "indent": 0,
@@ -66,7 +66,7 @@
     {
       "indent": 3,
       "text": "This document may contain material from IETF Documents or IETF Contributions published or made publicly available before November 10, 2008. The person(s) controlling the copyright in some of this material may not have granted the IETF Trust the right to allow modifications of such material outside the IETF Standards Process. Without obtaining an adequate license from the person(s) controlling the copyright in such materials, this document may not be modified outside the IETF Standards Process, and derivative works of it may not be created outside the IETF Standards Process, except to format it for publication as an RFC or to translate it into languages other than English.",
-      "ja": "このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。 IETF標準プロセス外。このような資料の著作権を管理する人から適切なライセンスを取得せずに、このドキュメントをIETF標準プロセス外で変更したり、その派生物をIETF標準プロセス外で作成したりすることはできません。 RFCとして、またはそれを英語以外の言語に翻訳するための出版物。"
+      "ja": "このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。この素材の一部で著作権を管理している人物は、IETF標準化プロセス外で当該素材の変更を許可する権利をIETFトラストに付与していない可能性があります。このような資料の著作権を管理する人から適切なライセンスを取得せずに、このドキュメントをIETF標準化プロセス外で変更したり、その派生物をIETF標準化プロセス外で作成したりすることはできません。ただし、RFCとして公開するためにフォーマットする場合や、英語以外の言語に翻訳する場合を除きます。"
     },
     {
       "indent": 0,
@@ -108,22 +108,22 @@
     {
       "indent": 3,
       "text": "Establishing this shared state in a manual fashion does not scale well. Therefore, a protocol to establish this state dynamically is needed. This document describes such a protocol -- the Internet Key Exchange (IKE). Version 1 of IKE was defined in RFCs 2407 [DOI], 2408 [ISAKMP], and 2409 [IKEV1]. IKEv2 replaced all of those RFCs. IKEv2 was defined in [IKEV2] (RFC 4306) and was clarified in [Clarif] (RFC 4718). [RFC5996] replaced and updated RFCs 4306 and 4718. This document replaces RFC 5996. IKEv2 as stated in RFC 4306 was a change to the IKE protocol that was not backward compatible. RFC 5996 revised RFC 4306 to provide a clarification of IKEv2, making minimal changes to the IKEv2 protocol. This document replaces RFC 5996, slightly revising it to make it suitable for progression to Internet Standard. A list of the significant differences between RFCs 4306 and 5996 is given in Section 1.7, and differences between RFC 5996 and this document are given in Section 1.8.",
-      "ja": "この共有状態を手動で確立することは、適切に拡張できません。したがって、この状態を動的に確立するプロトコルが必要です。このドキュメントでは、このようなプロトコル、つまりインターネットキーエクスチェンジ（IKE）について説明します。 IKEのバージョン1は、RFC 2407 [DOI]、2408 [ISAKMP]、および2409 [IKEV1]で定義されています。 IKEv2はこれらすべてのRFCを置き換えました。 IKEv2は[IKEV2]（RFC 4306）で定義され、[Clarif]（RFC 4718）で明確にされました。 [RFC5996]はRFC 4306および4718を置き換え、更新しました。このドキュメントはRFC 5996を置き換えます。RFC4306で述べられているIKEv2は、後方互換性のないIKEプロトコルへの変更でした。 RFC 5996はIKEv2の明確化を提供するためにRFC 4306を改訂し、IKEv2プロトコルに最小限の変更を加えました。このドキュメントはRFC 5996に代わるもので、インターネット標準への移行に適するように少し修正されています。 RFC 4306と5996の重要な違いのリストはセクション1.7にあり、RFC 5996とこのドキュメントの違いはセクション1.8にあります。"
+      "ja": "この共有状態を手動で確立することは、スケーラビリティがよくありません。したがって、この状態を動的に確立するプロトコルが必要です。このドキュメントでは、このようなプロトコル、つまりインターネットキーエクスチェンジ（IKE）について説明します。 IKEのバージョン1は、RFC 2407 [DOI]、2408 [ISAKMP]、および2409 [IKEV1]で定義されています。 IKEv2はこれらすべてのRFCを置き換えました。 IKEv2は[IKEV2]（RFC 4306）で定義され、[Clarif]（RFC 4718）で明確にされました。 [RFC5996]はRFC 4306および4718を置き換え、更新しました。このドキュメントはRFC 5996を置き換えます。RFC4306で述べられているIKEv2は、IKEプロトコルへの変更であり、後方互換性はありませんでした。 RFC 5996はIKEv2の明確化を提供するためにRFC 4306を改訂し、IKEv2プロトコルに最小限の変更を加えました。このドキュメントはRFC 5996に代わるもので、インターネット標準への昇格に適するように少し修正されています。 RFC 4306と5996の重要な違いのリストはセクション1.7にあり、RFC 5996とこのドキュメントの違いはセクション1.8にあります。"
     },
     {
       "indent": 3,
       "text": "IKE performs mutual authentication between two parties and establishes an IKE Security Association (SA) that includes shared secret information that can be used to efficiently establish SAs for Encapsulating Security Payload (ESP) [ESP] or Authentication Header (AH) [AH] and a set of cryptographic algorithms to be used by the SAs to protect the traffic that they carry. In this document, the term \"suite\" or \"cryptographic suite\" refers to a complete set of algorithms used to protect an SA. An initiator proposes one or more suites by listing supported algorithms that can be combined into suites in a mix-and-match fashion. IKE can also negotiate use of IP Compression (IPComp) [IP-COMP] in connection with an ESP or AH SA. The SAs for ESP or AH that get set up through that IKE SA we call \"Child SAs\".",
-      "ja": "IKEは2つのパーティ間で相互認証を実行し、カプセル化セキュリティペイロード（ESP）[ESP]または認証ヘッダー（AH）[AH]のSAを効率的に確立するために使用できる共有秘密情報を含むIKE Security Association（SA）を確立します。 SAが使用するトラフィックを保護するためにSAが使用する暗号化アルゴリズムのセット。このドキュメントでは、「スイート」または「暗号スイート」という用語は、SAを保護するために使用されるアルゴリズムの完全なセットを指します。イニシエーターは、組み合わせて組み合わせてスイートに組み合わせることができるサポートされているアルゴリズムをリストすることにより、1つ以上のスイートを提案します。 IKEは、ESPまたはAH SAに関連してIP圧縮（IPComp）[IP-COMP]の使用をネゴシエートすることもできます。そのIKE SAを通じてセットアップされるESPまたはAHのSAは、「子SA」と呼ばれます。"
+      "ja": "IKEは2つのパーティ間で相互認証を実行し、IKE Security Association（SA）を確立します。このSAには、カプセル化セキュリティペイロード（ESP）[ESP]または認証ヘッダー（AH）[AH]のSAを効率的に確立するために使用できる共有秘密情報と、それらのSAが伝送するトラフィックを保護するために使用する暗号化アルゴリズムのセットが含まれます。このドキュメントでは、「スイート」または「暗号スイート」という用語は、SAを保護するために使用されるアルゴリズムの完全なセットを指します。イニシエーターは、組み合わせてスイートにすることができるサポートされているアルゴリズムをリストすることにより、1つ以上のスイートを提案します。 IKEは、ESPまたはAH SAに関連してIP圧縮（IPComp）[IP-COMP]の使用をネゴシエートすることもできます。そのIKE SAを通じてセットアップされるESPまたはAHのSAを、我々は「子SA」と呼びます。"
     },
     {
       "indent": 3,
       "text": "All IKE communications consist of pairs of messages: a request and a response. The pair is called an \"exchange\", and is sometimes called a \"request/response pair\". The first two exchanges of messages establishing an IKE SA are called the IKE_SA_INIT exchange and the IKE_AUTH exchange; subsequent IKE exchanges are called either CREATE_CHILD_SA exchanges or INFORMATIONAL exchanges. In the common case, there is a single IKE_SA_INIT exchange and a single IKE_AUTH exchange (a total of four messages) to establish the IKE SA and the first Child SA. In exceptional cases, there may be more than one of each of these exchanges. In all cases, all IKE_SA_INIT exchanges MUST complete before any other exchange type, then all IKE_AUTH exchanges MUST complete, and following that, any number of CREATE_CHILD_SA and INFORMATIONAL exchanges may occur in any order. In some scenarios, only a single Child SA is needed between the IPsec endpoints, and therefore there would be no additional exchanges. Subsequent exchanges MAY be used to establish additional Child SAs between the same authenticated pair of endpoints and to perform housekeeping functions.",
-      "ja": "すべてのIKE通信は、メッセージのペア（要求と応答）で構成されています。このペアは「交換」と呼ばれ、「要求/応答ペア」と呼ばれることもあります。 IKE SAを確立するメッセージの最初の2つの交換は、IKE_SA_INIT交換およびIKE_AUTH交換と呼ばれます。後続のIKE交換は、CREATE_CHILD_SA交換またはINFORMATIONAL交換と呼ばれます。一般的なケースでは、IKE SAと最初の子SAを確立するために、単一のIKE_SA_INIT交換と単一のIKE_AUTH交換（合計4つのメッセージ）があります。例外的なケースでは、これらの交換のそれぞれが複数ある場合があります。すべての場合において、すべてのIKE_SA_INIT交換は他の交換タイプの前に完了する必要があり、すべてのIKE_AUTH交換は完了しなければなりません。その後、任意の数のCREATE_CHILD_SAおよびINFORMATIONAL交換が任意の順序で発生します。一部のシナリオでは、IPsecエンドポイント間で必要な子SAは1つだけなので、追加の交換はありません。後続の交換は、同じ認証されたエンドポイントのペア間に追加の子SAを確立し、ハウスキーピング機能を実行するために使用される場合があります。"
+      "ja": "すべてのIKE通信は、メッセージのペア（要求と応答）で構成されています。このペアは「交換」と呼ばれ、「要求/応答ペア」と呼ばれることもあります。 IKE SAを確立するメッセージの最初の2つの交換は、IKE_SA_INIT交換およびIKE_AUTH交換と呼ばれます。後続のIKE交換は、CREATE_CHILD_SA交換またはINFORMATIONAL交換と呼ばれます。一般的なケースでは、IKE SAと最初の子SAを確立するために、単一のIKE_SA_INIT交換と単一のIKE_AUTH交換（合計4つのメッセージ）があります。例外的なケースでは、これらの交換のそれぞれが複数ある場合があります。すべての場合において、すべてのIKE_SA_INIT交換は他の交換タイプの前に完了する必要があり、すべてのIKE_AUTH交換が完了しなければなりません。その後、任意の数のCREATE_CHILD_SAおよびINFORMATIONAL交換が任意の順序で発生します。一部のシナリオでは、IPsecエンドポイント間で必要な子SAは1つだけなので、追加の交換はありません。後続の交換は、同じ認証されたエンドポイントのペア間に追加の子SAを確立し、ハウスキーピング機能を実行するために使用される場合があります。"
     },
     {
       "indent": 3,
       "text": "An IKE message flow always consists of a request followed by a response. It is the responsibility of the requester to ensure reliability. If the response is not received within a timeout interval, the requester needs to retransmit the request (or abandon the connection).",
-      "ja": "IKEメッセージフローは常に、要求とそれに続く応答で構成されます。信頼性を確保するのは要求者の責任です。タイムアウト間隔内に応答が受信されない場合、リクエスタは要求を再送信する（または接続を破棄する）必要があります。"
+      "ja": "IKEメッセージフローは常に、要求とそれに続く応答で構成されます。信頼性を確保するのは要求者の責任です。タイムアウト間隔内に応答が受信されない場合、リクエスタは要求を再送信する（または接続を放棄する）必要があります。"
     },
     {
       "indent": 3,
@@ -133,12 +133,12 @@
     {
       "indent": 3,
       "text": "The second exchange, IKE_AUTH, transmits identities, proves knowledge of the secrets corresponding to the two identities, and sets up an SA for the first (and often only) AH or ESP Child SA (unless there is failure setting up the AH or ESP Child SA, in which case the IKE SA is still established without the Child SA).",
-      "ja": "2番目の交換IKE_AUTHは、IDを送信し、2つのIDに対応する秘密の知識を証明し、最初の（多くの場合のみ）AHまたはESP子SAのSAを設定します（AHまたはESP子の設定に失敗がない限り） SA。その場合、IKE SAはまだ子SAなしで確立されます。"
+      "ja": "2番目の交換IKE_AUTHは、IDを送信し、2つのIDに対応する秘密の知識を証明し、最初の（多くの場合のみ）AHまたはESP子SAのSAを設定します（AHまたはESP子SAの設定に失敗しない限り（その場合、IKE SAはまだ子SAなしで確立されます））。"
     },
     {
       "indent": 3,
       "text": "The types of subsequent exchanges are CREATE_CHILD_SA (which creates a Child SA) and INFORMATIONAL (which deletes an SA, reports error conditions, or does other housekeeping). Every request requires a response. An INFORMATIONAL request with no payloads (other than the empty Encrypted payload required by the syntax) is commonly used as a check for liveness. These subsequent exchanges cannot be used until the initial exchanges have completed.",
-      "ja": "後続の交換のタイプは、CREATE_CHILD_SA（子SAを作成する）とINFORMATIONAL（SAを削除する、エラー状態を報告する、またはその他のハウスキーピングを行う）です。すべてのリクエストには応答が必要です。ペイロードを持たないINFORMATIONALリクエスト（構文で必要な空の暗号化されたペイロード以外）は、一般的に活性のチェックとして使用されます。これらの後続の交換は、最初の交換が完了するまで使用できません。"
+      "ja": "後続の交換のタイプは、CREATE_CHILD_SA（子SAを作成する）とINFORMATIONAL（SAを削除する、エラー状態を報告する、またはその他のハウスキーピングを行う）です。すべてのリクエストには応答が必要です。ペイロードを持たないINFORMATIONALリクエスト（構文で必要な空の暗号化されたペイロード以外）は、一般的に生存確認として使用されます。これらの後続の交換は、最初の交換が完了するまで使用できません。"
     },
     {
       "indent": 3,
@@ -160,7 +160,7 @@
       "indent": 0,
       "text": "1.1.1. Security Gateway to Security Gateway in Tunnel Mode",
       "section_title": true,
-      "ja": "1.1.1. セキュリティゲートウェイからトンネルモードのセキュリティゲートウェイ"
+      "ja": "1.1.1. トンネルモードでのセキュリティゲートウェイ間"
     },
     {
       "indent": 3,
@@ -176,7 +176,7 @@
     {
       "indent": 3,
       "text": "In this scenario, neither endpoint of the IP connection implements IPsec, but network nodes between them protect traffic for part of the way. Protection is transparent to the endpoints, and depends on ordinary routing to send packets through the tunnel endpoints for processing. Each endpoint would announce the set of addresses \"behind\" it, and packets would be sent in tunnel mode where the inner IP header would contain the IP addresses of the actual endpoints.",
-      "ja": "このシナリオでは、IP接続のどちらのエンドポイントもIPsecを実装していませんが、それらの間のネットワークノードは途中でトラフィックを保護しています。保護はエンドポイントに対して透過的であり、処理のためにトンネルエンドポイントを介してパケットを送信する通常のルーティングに依存します。各エンドポイントは、その「背後」のアドレスのセットをアナウンスし、パケットはトンネルモードで送信され、内部IPヘッダーには実際のエンドポイントのIPアドレスが含まれます。"
+      "ja": "このシナリオでは、IP接続のどちらのエンドポイントもIPsecを実装していませんが、それらの間のネットワークノードは経路の一部でトラフィックを保護しています。保護はエンドポイントに対して透過的であり、処理のためにトンネルエンドポイントを介してパケットを送信する通常のルーティングに依存します。各エンドポイントは、その「背後」のアドレスのセットをアナウンスし、パケットはトンネルモードで送信され、内部IPヘッダーには実際のエンドポイントのIPアドレスが含まれます。"
     },
     {
       "indent": 0,
@@ -198,18 +198,18 @@
     {
       "indent": 3,
       "text": "In this scenario, both endpoints of the IP connection implement IPsec, as required of hosts in [IPSECARCH]. Transport mode will commonly be used with no inner IP header. A single pair of addresses will be negotiated for packets to be protected by this SA. These endpoints MAY implement application-layer access controls based on the IPsec authenticated identities of the participants. This scenario enables the end-to-end security that has been a guiding principle for the Internet since [ARCHPRINC], [TRANSPARENCY], and a method of limiting the inherent problems with complexity in networks noted by [ARCHGUIDEPHIL]. Although this scenario may not be fully applicable to the IPv4 Internet, it has been deployed successfully in specific scenarios within intranets using IKEv1. It should be more broadly enabled during the transition to IPv6 and with the adoption of IKEv2.",
-      "ja": "このシナリオでは、[IPSECARCH]のホストの必要に応じて、IP接続の両方のエンドポイントがIPsecを実装します。トランスポートモードは通常、内部IPヘッダーなしで使用されます。パケットがこのSAによって保護されるように、アドレスの単一のペアがネゴシエートされます。これらのエンドポイントは、参加者のIPsec認証済みIDに基づいて、アプリケーション層のアクセス制御を実装してもよい（MAY）。このシナリオでは、[ARCHPRINC]、[TRANSPARENCY]以降、インターネットの指針となっているエンドツーエンドのセキュリティ、および[ARCHGUIDEPHIL]によって指摘されたネットワークの複雑さに関する固有の問題を制限する方法が可能になります。このシナリオはIPv4インターネットに完全に適用できるわけではありませんが、IKEv1を使用するイントラネット内の特定のシナリオで正常に展開されています。 IPv6への移行中およびIKEv2の採用により、より広範囲に有効化する必要があります。"
+      "ja": "このシナリオでは、[IPSECARCH]でホストに要求されているように、IP接続の両方のエンドポイントがIPsecを実装します。トランスポートモードは通常、内部IPヘッダーなしで使用されます。このSAによって保護されるパケットのために、単一のアドレスペアがネゴシエートされます。これらのエンドポイントは、参加者のIPsec認証済みIDに基づいて、アプリケーション層のアクセス制御を実装してもよい（MAY）。このシナリオでは、[ARCHPRINC]、[TRANSPARENCY]以降、インターネットの指針となっているエンドツーエンドのセキュリティ、および[ARCHGUIDEPHIL]によって指摘されたネットワークの複雑さに関する固有の問題を制限する方法が可能になります。このシナリオはIPv4インターネットに完全に適用できるわけではありませんが、IKEv1を使用するイントラネット内の特定のシナリオで正常に展開されています。 IPv6への移行中およびIKEv2の採用により、より広範囲に有効化する必要があります。"
     },
     {
       "indent": 3,
       "text": "It is possible in this scenario that one or both of the protected endpoints will be behind a network address translation (NAT) node, in which case the tunneled packets will have to be UDP encapsulated so that port numbers in the UDP headers can be used to identify individual endpoints \"behind\" the NAT (see Section 2.23).",
-      "ja": "このシナリオでは、保護されたエンドポイントの一方または両方がネットワークアドレス変換（NAT）ノードの背後にある可能性があります。その場合、UDPヘッダーのポート番号を使用して、トンネルパケットをUDPカプセル化する必要があります。 NATの「背後」にある個々のエンドポイントを識別します（セクション2.23を参照）。"
+      "ja": "このシナリオでは、保護されたエンドポイントの一方または両方がネットワークアドレス変換（NAT）ノードの背後にある可能性があります。その場合、UDPヘッダーのポート番号を使用してNATの「背後」にある個々のエンドポイントを識別できるように、トンネルパケットをUDPカプセル化する必要があります（セクション2.23を参照）。"
     },
     {
       "indent": 0,
       "text": "1.1.3. Endpoint to Security Gateway in Tunnel Mode",
       "section_title": true,
-      "ja": "1.1.3. トンネルモードのエンドポイントからSecurity Gateway"
+      "ja": "1.1.3. トンネルモードでのエンドポイントとセキュリティゲートウェイ間"
     },
     {
       "indent": 3,
@@ -225,12 +225,12 @@
     {
       "indent": 0,
       "text": " In this scenario, a protected endpoint (typically a portable roaming computer) connects back to its corporate network through an IPsec-protected tunnel. It might use this tunnel only to access information on the corporate network, or it might tunnel all of its traffic back through the corporate network in order to take advantage of protection provided by a corporate firewall against Internet-based attacks. In either case, the protected endpoint will want an IP address associated with the security gateway so that packets returned to it will go to the security gateway and be tunneled back. This IP address may be static or may be dynamically allocated by the security gateway. In support of the latter case, IKEv2 includes a mechanism (namely, configuration payloads) for the initiator to request an IP address owned by the security gateway for use for the duration of its SA.",
-      "ja": "このシナリオでは、保護されたエンドポイント（通常はポータブルローミングコンピューター）が、IPsecで保護されたトンネルを介して企業ネットワークに接続します。このトンネルは、企業ネットワーク上の情報にアクセスするためだけに使用する場合もあれば、企業ファイアウォールを介してすべてのトラフィックをトンネルして、企業ファイアウォールによって提供されるインターネットベースの攻撃からの保護を利用する場合もあります。どちらの場合でも、保護されたエンドポイントは、セキュリティゲートウェイに関連付けられたIPアドレスを必要とするため、エンドポイントに返されたパケットはセキュリティゲートウェイに送られ、トンネリングされます。このIPアドレスは静的な場合もあれば、セキュリティゲートウェイによって動的に割り当てられる場合もあります。後者のケースをサポートするために、IKEv2には、イニシエーターがSAの期間中使用するためにセキュリティゲートウェイが所有するIPアドレスを要求するためのメカニズム（つまり、設定ペイロード）が含まれています。"
+      "ja": "このシナリオでは、保護されたエンドポイント（通常はポータブルローミングコンピューター）が、IPsecで保護されたトンネルを介して企業ネットワークに接続します。このトンネルは、企業ネットワーク上の情報にアクセスするためだけに使用する場合もあれば、企業ネットワークを介してすべてのトラフィックをトンネルして戻し、企業ファイアウォールによって提供されるインターネットベースの攻撃からの保護を利用する場合もあります。どちらの場合でも、保護されたエンドポイントは、セキュリティゲートウェイに関連付けられたIPアドレスを必要とするため、エンドポイントに返されたパケットはセキュリティゲートウェイに送られ、トンネリングされます。このIPアドレスは静的な場合もあれば、セキュリティゲートウェイによって動的に割り当てられる場合もあります。後者のケースをサポートするために、IKEv2には、イニシエーターがSAの期間中使用するためにセキュリティゲートウェイが所有するIPアドレスを要求するためのメカニズム（つまり、構成ペイロード）が含まれています。"
     },
     {
       "indent": 3,
       "text": "In this scenario, packets will use tunnel mode. On each packet from the protected endpoint, the outer IP header will contain the source IP address associated with its current location (i.e., the address that will get traffic routed to the endpoint directly), while the inner IP header will contain the source IP address assigned by the security gateway (i.e., the address that will get traffic routed to the security gateway for forwarding to the endpoint). The outer destination address will always be that of the security gateway, while the inner destination address will be the ultimate destination for the packet.",
-      "ja": "このシナリオでは、パケットはトンネルモードを使用します。保護されたエンドポイントからの各パケットで、外部IPヘッダーには現在の場所に関連付けられたソースIPアドレス（つまり、トラフィックがエンドポイントに直接ルーティングされるアドレス）が含まれ、内部IPヘッダーにはソースIPアドレスが含まれますセキュリティゲートウェイ（つまり、エンドポイントに転送するためにトラフィックをセキュリティゲートウェイにルーティングするアドレス）によって割り当てられます。外部の宛先アドレスは常にセキュリティゲートウェイのアドレスですが、内部の宛先アドレスはパケットの最終的な宛先です。"
+      "ja": "このシナリオでは、パケットはトンネルモードを使用します。保護されたエンドポイントからの各パケットで、外部IPヘッダーには現在の場所に関連付けられたソースIPアドレス（つまり、トラフィックがエンドポイントに直接ルーティングされるアドレス）が含まれ、内部IPヘッダーには、セキュリティゲートウェイによって割り当てられたソースIPアドレス（つまり、エンドポイントに転送するためにトラフィックをセキュリティゲートウェイにルーティングするアドレス）が含まれます。外部の宛先アドレスは常にセキュリティゲートウェイのアドレスですが、内部の宛先アドレスはパケットの最終的な宛先です。"
     },
     {
       "indent": 3,
@@ -262,12 +262,12 @@
     {
       "indent": 3,
       "text": "The second pair of messages (IKE_AUTH) authenticate the previous messages, exchange identities and certificates, and establish the first Child SA. Parts of these messages are encrypted and integrity protected with keys established through the IKE_SA_INIT exchange, so the identities are hidden from eavesdroppers and all fields in all the messages are authenticated. See Section 2.14 for information on how the encryption keys are generated. (A man-in-the-middle attacker who cannot complete the IKE_AUTH exchange can nonetheless see the identity of the initiator.)",
-      "ja": "2番目のメッセージのペア（IKE_AUTH）は、前のメッセージを認証し、IDと証明書を交換して、最初の子SAを確立します。これらのメッセージの一部は暗号化され、整合性はIKE_SA_INIT交換を通じて確立されたキーで保護されるため、IDは盗聴者から隠され、すべてのメッセージのすべてのフィールドが認証されます。暗号化キーの生成方法については、セクション2.14を参照してください。 （それでも、IKE_AUTH交換を完了できない中間者攻撃者は、開始者のIDを見ることができます。）"
+      "ja": "2番目のメッセージのペア（IKE_AUTH）は、前のメッセージを認証し、IDと証明書を交換して、最初の子SAを確立します。これらのメッセージの一部は暗号化され、整合性はIKE_SA_INIT交換を通じて確立されたキーで保護されるため、IDは盗聴者から隠され、すべてのメッセージのすべてのフィールドが認証されます。暗号化キーの生成方法については、セクション2.14を参照してください。 （それでも、IKE_AUTH交換を完了できない中間者攻撃者は、イニシエーターのIDを見ることができます。）"
     },
     {
       "indent": 3,
       "text": "All messages following the initial exchange are cryptographically protected using the cryptographic algorithms and keys negotiated in the IKE_SA_INIT exchange. These subsequent messages use the syntax of the Encrypted payload described in Section 3.14, encrypted with keys that are derived as described in Section 2.14. All subsequent messages include an Encrypted payload, even if they are referred to in the text as \"empty\". For the CREATE_CHILD_SA, IKE_AUTH, or INFORMATIONAL exchanges, the message following the header is encrypted and the message including the header is integrity protected using the cryptographic algorithms negotiated for the IKE SA.",
-      "ja": "最初の交換に続くすべてのメッセージは、IKE_SA_INIT交換でネゴシエートされた暗号化アルゴリズムとキーを使用して暗号化されて保護されます。これらの後続のメッセージは、セクション3.14で説明されている暗号化ペイロードの構文を使用し、セクション2.14で説明されているように導出されたキーで暗号化されています。以降のメッセージには、本文で「空」と呼ばれている場合でも、暗号化されたペイロードが含まれています。 CREATE_CHILD_SA、IKE_AUTH、またはINFORMATIONAL交換の場合、ヘッダーに続くメッセージは暗号化され、ヘッダーを含むメッセージは、IKE SAについてネゴシエートされた暗号化アルゴリズムを使用して整合性が保護されます。"
+      "ja": "最初の交換に続くすべてのメッセージは、IKE_SA_INIT交換でネゴシエートされた暗号化アルゴリズムとキーを使用して暗号的に保護されます。これらの後続のメッセージは、セクション3.14で説明されているEncryptedペイロードの構文を使用し、セクション2.14で説明されているように導出されたキーで暗号化されています。以降のメッセージには、本文で「空」と呼ばれている場合でも、Encryptedペイロードが含まれています。 CREATE_CHILD_SA、IKE_AUTH、またはINFORMATIONAL交換の場合、ヘッダーに続くメッセージは暗号化され、ヘッダーを含むメッセージは、IKE SAについてネゴシエートされた暗号化アルゴリズムを使用して整合性が保護されます。"
     },
     {
       "indent": 3,
@@ -308,28 +308,30 @@
     },
     {
       "indent": 32,
-      "text": "<-- HDR, SAr1, KEr, Nr, [CERTREQ]",
-      "ja": "<-HDR、SAr1、KEr、Nr、[CERTREQ]"
+      "text": "<--  HDR, SAr1, KEr, Nr, [CERTREQ]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "The responder chooses a cryptographic suite from the initiator's offered choices and expresses that choice in the SAr1 payload, completes the Diffie-Hellman exchange with the KEr payload, and sends its nonce in the Nr payload.",
-      "ja": "レスポンダは、イニシエータが提供する選択肢から暗号スイートを選択し、その選択をSAr1ペイロードで表現し、KErペイロードとのDiffie-Hellman交換を完了し、Noncペイロードでそのナンスを送信します。"
+      "ja": "レスポンダは、イニシエータが提供する選択肢から暗号スイートを選択し、その選択をSAr1ペイロードで表現し、KErペイロードとのDiffie-Hellman交換を完了し、Nrペイロードでそのナンスを送信します。"
     },
     {
       "indent": 3,
       "text": "At this point in the negotiation, each party can generate a quantity called SKEYSEED (see Section 2.14), from which all keys are derived for that IKE SA. The messages that follow are encrypted and integrity protected in their entirety, with the exception of the message headers. The keys used for the encryption and integrity protection are derived from SKEYSEED and are known as SK_e (encryption) and SK_a (authentication, a.k.a. integrity protection); see Sections 2.13 and 2.14 for details on the key derivation. A separate SK_e and SK_a is computed for each direction. In addition to the keys SK_e and SK_a derived from the Diffie-Hellman value for protection of the IKE SA, another quantity SK_d is derived and used for derivation of further keying material for Child SAs. The notation SK { ... } indicates that these payloads are encrypted and integrity protected using that direction's SK_e and SK_a.",
-      "ja": "ネゴシエーションのこの時点で、各パーティはSKEYSEED（セクション2.14を参照）と呼ばれる量を生成でき、そこからすべてのキーがそのIKE SA用に導出されます。続くメッセージは、メッセージヘッダーを除いて、暗号化され、完全性が完全に保護されています。暗号化と整合性保護に使用されるキーはSKEYSEEDから派生し、SK_e（暗号化）およびSK_a（認証、別名整合性保護）として知られています。キーの派生の詳細については、セクション2.13および2.14を参照してください。方向ごとに個別のSK_eおよびSK_aが計算されます。 IKE SAの保護のためにDiffie-Hellman値から導出されたキーSK_eおよびSK_aに加えて、別の数量SK_dが導出され、子SAのさらなるキーイングマテリアルの導出に使用されます。 SK {...}という表記は、これらのペイロードが暗号化され、その方向のSK_eおよびSK_aを使用して整合性が保護されていることを示しています。"
+      "ja": "ネゴシエーションのこの時点で、各パーティはSKEYSEED（セクション2.14を参照）と呼ばれる量を生成でき、そこからすべてのキーがそのIKE SA用に導出されます。続くメッセージは、メッセージヘッダーを除いて、暗号化され、整合性が完全に保護されています。暗号化と整合性保護に使用されるキーはSKEYSEEDから派生し、SK_e（暗号化）およびSK_a（認証、別名整合性保護）として知られています。キーの派生の詳細については、セクション2.13および2.14を参照してください。方向ごとに個別のSK_eおよびSK_aが計算されます。 IKE SAの保護のためにDiffie-Hellman値から導出されたキーSK_eおよびSK_aに加えて、別の数量SK_dが導出され、子SAのさらなる鍵素材の導出に使用されます。 SK {...}という表記は、これらのペイロードが暗号化され、その方向のSK_eおよびSK_aを使用して整合性が保護されていることを示しています。"
     },
     {
       "indent": 3,
-      "text": "HDR, SK {IDi, [CERT,] [CERTREQ,] [IDr,] AUTH, SAi2, TSi, TSr} -->",
-      "ja": "HDR、SK {IDi、[CERT、] [CERTREQ、] [IDr、] AUTH、SAi2、TSi、TSr}->"
+      "text": "HDR, SK {IDi, [CERT,] [CERTREQ,]\n    [IDr,] AUTH, SAi2,\n    TSi, TSr}  -->",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "The initiator asserts its identity with the IDi payload, proves knowledge of the secret corresponding to IDi and integrity protects the contents of the first message using the AUTH payload (see Section 2.15). It might also send its certificate(s) in CERT payload(s) and a list of its trust anchors in CERTREQ payload(s). If any CERT payloads are included, the first certificate provided MUST contain the public key used to verify the AUTH field.",
-      "ja": "イニシエーターは、IDiペイロードを使用してIDをアサートし、IDiに対応する秘密の知識を証明し、整合性はAUTHペイロードを使用して最初のメッセージのコンテンツを保護します（セクション2.15を参照）。また、証明書をCERTペイロードで送信し、トラストアンカーのリストをCERTREQペイロードで送信する場合もあります。 CERTペイロードが含まれている場合、提供される最初の証明書には、AUTHフィールドの確認に使用される公開鍵が含まれている必要があります。"
+      "ja": "イニシエーターは、IDiペイロードを使用してIDをアサートし、IDiに対応する秘密の知識を証明し、AUTHペイロードを使用して最初のメッセージのコンテンツの整合性を保護します（セクション2.15を参照）。また、証明書をCERTペイロードで送信し、トラストアンカーのリストをCERTREQペイロードで送信する場合もあります。 CERTペイロードが含まれている場合、提供される最初の証明書には、AUTHフィールドの確認に使用される公開鍵が含まれている必要があります。"
     },
     {
       "indent": 3,
@@ -348,18 +350,19 @@
     },
     {
       "indent": 32,
-      "text": "<-- HDR, SK {IDr, [CERT,] AUTH, SAr2, TSi, TSr}",
-      "ja": "<-HDR、SK {IDr、[CERT、] AUTH、SAr2、TSi、TSr}"
+      "text": "<--  HDR, SK {IDr, [CERT,] AUTH,\n         SAr2, TSi, TSr}",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "The responder asserts its identity with the IDr payload, optionally sends one or more certificates (again with the certificate containing the public key used to verify AUTH listed first), authenticates its identity and protects the integrity of the second message with the AUTH payload, and completes negotiation of a Child SA with the additional fields described below in the CREATE_CHILD_SA exchange. Both parties in the IKE_AUTH exchange MUST verify that all signatures and Message Authentication Codes (MACs) are computed correctly. If either side uses a shared secret for authentication, the names in the ID payload MUST correspond to the key used to generate the AUTH payload.",
-      "ja": "レスポンダはIDrペイロードでそのアイデンティティをアサートし、オプションで1つ以上の証明書を送信し（これも最初にリストされたAUTHを検証するために使用される公開鍵を含む証明書で）、アイデンティティを認証し、AUTHペイロードで2番目のメッセージの整合性を保護します。 CREATE_CHILD_SA交換で以下に説明する追加フ​​ィールドを使用して、子SAのネゴシエーションを完了します。 IKE_AUTH交換の両当事者は、すべての署名とメッセージ認証コード（MAC）が正しく計算されていることを確認する必要があります。どちらかの側が認証に共有シークレットを使用する場合、IDペイロードの名前は、AUTHペイロードの生成に使用されるキーに対応する必要があります。"
+      "ja": "レスポンダはIDrペイロードでそのアイデンティティをアサートし、オプションで1つ以上の証明書を送信し（これも最初にリストされたAUTHを検証するために使用される公開鍵を含む証明書で）、アイデンティティを認証し、AUTHペイロードで2番目のメッセージの整合性を保護します。 CREATE_CHILD_SA交換で以下に説明する追加フィールドを使用して、子SAのネゴシエーションを完了します。 IKE_AUTH交換の両当事者は、すべての署名とメッセージ認証コード（MAC）が正しく計算されていることを確認する必要があります。どちらかの側が認証に共有シークレットを使用する場合、IDペイロードの名前は、AUTHペイロードの生成に使用されるキーに対応する必要があります。"
     },
     {
       "indent": 0,
       "text": " Because the initiator sends its Diffie-Hellman value in the IKE_SA_INIT, it must guess the Diffie-Hellman group that the responder will select from its list of supported groups. If the initiator guesses wrong, the responder will respond with a Notify payload of type INVALID_KE_PAYLOAD indicating the selected group. In this case, the initiator MUST retry the IKE_SA_INIT with the corrected Diffie-Hellman group. The initiator MUST again propose its full set of acceptable cryptographic suites because the rejection message was unauthenticated and otherwise an active attacker could trick the endpoints into negotiating a weaker suite than a stronger one that they both prefer.",
-      "ja": "イニシエーターはIKE_SA_INITでDiffie-Hellman値を送信するため、サポートされているグループのリストからレスポンダーが選択するDiffie-Hellmanグループを推測する必要があります。イニシエーターが間違って推測した場合、レスポンダーは、選択されたグループを示すINVALID_KE_PAYLOADタイプのNotifyペイロードで応答します。この場合、イニシエーターは、修正されたDiffie-Hellmanグループを使用してIKE_SA_INITを再試行する必要があります。拒否メッセージは認証されておらず、アクティブな攻撃者はエンドポイントをだまして、両方が好む強力なスイートよりも弱いスイートをネゴシエートする可能性があるため、イニシエーターは許容可能な暗号スイートの完全なセットを再度提案する必要があります。"
+      "ja": "イニシエーターはIKE_SA_INITでDiffie-Hellman値を送信するため、サポートされているグループのリストからレスポンダーが選択するDiffie-Hellmanグループを推測する必要があります。イニシエーターが間違って推測した場合、レスポンダーは、選択されたグループを示すINVALID_KE_PAYLOADタイプのNotifyペイロードで応答します。この場合、イニシエーターは、修正されたDiffie-Hellmanグループを使用してIKE_SA_INITを再試行する必要があります。拒否メッセージは認証されておらず、アクティブな攻撃者がエンドポイントをだまして、両方が好む強力なスイートよりも弱いスイートをネゴシエートさせる可能性があるため、イニシエーターは許容可能な暗号スイートの完全なセットを再度提案する必要があります。"
     },
     {
       "indent": 3,
@@ -369,7 +372,7 @@
     {
       "indent": 3,
       "text": "If the failure is related to creating the IKE SA (for example, an AUTHENTICATION_FAILED Notify error message is returned), the IKE SA is not created. Note that although the IKE_AUTH messages are encrypted and integrity protected, if the peer receiving this Notify error message has not yet authenticated the other end (or if the peer fails to authenticate the other end for some reason), the information needs to be treated with caution. More precisely, assuming that the MAC verifies correctly, the sender of the error Notify message is known to be the responder of the IKE_SA_INIT exchange, but the sender's identity cannot be assured.",
-      "ja": "失敗がIKE SAの作成に関連している場合（たとえば、AUTHENTICATION_FAILED Notifyエラーメッセージが返される）、IKE SAは作成されません。 IKE_AUTHメッセージは暗号化されて整合性が保護されていますが、このNotifyエラーメッセージを受信するピアがもう一方の端をまだ認証していない場合（またはピアが何らかの理由でもう一方の端を認証できない場合）は、情報を注意。より正確には、MACが正しく検証されると仮定すると、エラー通知メッセージの送信者はIKE_SA_INIT交換の応答者であることがわかっていますが、送信者のIDは保証されません。"
+      "ja": "失敗がIKE SAの作成に関連している場合（たとえば、AUTHENTICATION_FAILED Notifyエラーメッセージが返される）、IKE SAは作成されません。 IKE_AUTHメッセージは暗号化されて整合性が保護されていますが、この通知エラーメッセージを受信するピアがもう一方の端をまだ認証していない場合（またはピアが何らかの理由でもう一方の端を認証できない場合）は、情報を注意して扱う必要があります。より正確には、MACが正しく検証されると仮定すると、エラー通知メッセージの送信者はIKE_SA_INIT交換の応答者であることがわかっていますが、送信者のIDは保証されません。"
     },
     {
       "indent": 3,
@@ -385,12 +388,12 @@
     {
       "indent": 3,
       "text": "The CREATE_CHILD_SA exchange is used to create new Child SAs and to rekey both IKE SAs and Child SAs. This exchange consists of a single request/response pair, and some of its function was referred to as a Phase 2 exchange in IKEv1. It MAY be initiated by either end of the IKE SA after the initial exchanges are completed.",
-      "ja": "CREATE_CHILD_SA交換を使用して、新しい子SAを作成し、IKE SAと子SAの両方を再生成します。この交換は単一の要求/応答ペアで構成され、その機能の一部はIKEv1ではフェーズ2交換と呼ばれていました。最初の交換が完了した後、IKE SAのどちらかの端によって開始される場合があります。"
+      "ja": "CREATE_CHILD_SA交換を使用して、新しい子SAを作成し、IKE SAと子SAの両方をリキーします。この交換は単一の要求/応答ペアで構成され、その機能の一部はIKEv1ではフェーズ2交換と呼ばれていました。最初の交換が完了した後、IKE SAのどちらかの端によって開始される場合があります。"
     },
     {
       "indent": 3,
       "text": "An SA is rekeyed by creating a new SA and then deleting the old one. This section describes the first part of rekeying, the creation of new SAs; Section 2.8 covers the mechanics of rekeying, including moving traffic from old to new SAs and the deletion of the old SAs. The two sections must be read together to understand the entire process of rekeying.",
-      "ja": "SAは、新しいSAを作成してから古いSAを削除することにより、鍵が再生成されます。このセクションでは、鍵の再作成の最初の部分である新しいSAの作成について説明します。セクション2.8は、古いSAから新しいSAへのトラフィックの移動や古いSAの削除など、鍵の再生成の仕組みをカバーしています。キー再生成のプロセス全体を理解するには、2つのセクションを一緒に読む必要があります。"
+      "ja": "SAは、新しいSAを作成してから古いSAを削除することにより、リキーされます。このセクションでは、リキーの最初の部分である新しいSAの作成について説明します。セクション2.8は、古いSAから新しいSAへのトラフィックの移動や古いSAの削除など、リキーの仕組みをカバーしています。リキーのプロセス全体を理解するには、2つのセクションを一緒に読む必要があります。"
     },
     {
       "indent": 3,
@@ -400,7 +403,7 @@
     {
       "indent": 3,
       "text": "The CREATE_CHILD_SA request MAY optionally contain a KE payload for an additional Diffie-Hellman exchange to enable stronger guarantees of forward secrecy for the Child SA. The keying material for the Child SA is a function of SK_d established during the establishment of the IKE SA, the nonces exchanged during the CREATE_CHILD_SA exchange, and the Diffie-Hellman value (if KE payloads are included in the CREATE_CHILD_SA exchange).",
-      "ja": "CREATE_CHILD_SA要求には、オプションで、追加のDiffie-Hellman交換用のKEペイロードを含めて、子SAの転送秘密のより強力な保証を可能にすることができます（MAY）。子SAのキー情報は、IKE SAの確立中に確立されたSK_d、CREATE_CHILD_SA交換中に交換されたナンス、およびDiffie-Hellman値（KEペイロードがCREATE_CHILD_SA交換に含まれている場合）の関数です。"
+      "ja": "CREATE_CHILD_SA要求には、オプションで、追加のDiffie-Hellman交換用のKEペイロードを含めて、子SAの前方秘匿性のより強力な保証を可能にすることができます（MAY）。子SAの鍵素材は、IKE SAの確立中に確立されたSK_d、CREATE_CHILD_SA交換中に交換されたナンス、およびDiffie-Hellman値（KEペイロードがCREATE_CHILD_SA交換に含まれている場合）の関数です。"
     },
     {
       "indent": 3,
@@ -441,13 +444,9 @@
     },
     {
       "indent": 32,
-      "text": "<-- HDR, SK {SA, Nr, [KEr,]",
-      "ja": "<-HDR、SK {SA、Nr、[KEr、]"
-    },
-    {
-      "indent": 41,
-      "text": "TSi, TSr}",
-      "ja": "TSi、TSr}"
+      "text": "<--  HDR, SK {SA, Nr, [KEr,]\n         TSi, TSr}",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -488,7 +487,7 @@
       "indent": 0,
       "text": "1.3.2. Rekeying IKE SAs with the CREATE_CHILD_SA Exchange",
       "section_title": true,
-      "ja": "1.3.2. CREATE_CHILD_SA Exchangeを使用したIKE SAの鍵の再生成"
+      "ja": "1.3.2. CREATE_CHILD_SA交換を使用したIKE SAのリキー"
     },
     {
       "indent": 3,
@@ -504,7 +503,7 @@
     {
       "indent": 3,
       "text": "The initiator sends SA offer(s) in the SA payload, a nonce in the Ni payload, and a Diffie-Hellman value in the KEi payload. The KEi payload MUST be included. A new initiator SPI is supplied in the SPI field of the SA payload. Once a peer receives a request to rekey an IKE SA or sends a request to rekey an IKE SA, it SHOULD NOT start any new CREATE_CHILD_SA exchanges on the IKE SA that is being rekeyed.",
-      "ja": "イニシエーターは、SAペイロードでSAオファーを送信し、Niペイロードでナンスを送信し、KEiペイロードでDiffie-Hellman値を送信します。 KEiペイロードを含める必要があります。 SAペイロードのSPIフィールドに新しいイニシエーターSPIが提供されます。ピアがIKE SAのキー再生成の要求を受信するか、IKE SAのキー再生成の要求を送信すると、キー再生成されているIKE SAで新しいCREATE_CHILD_SA交換を開始しないでください。"
+      "ja": "イニシエーターは、SAペイロードでSAオファーを送信し、Niペイロードでナンスを送信し、KEiペイロードでDiffie-Hellman値を送信します。 KEiペイロードを含める必要があります。 SAペイロードのSPIフィールドに新しいイニシエーターSPIが提供されます。ピアがIKE SAのキー再生成の要求を受信するか、IKE SAのキー再生成の要求を送信すると、リキー中のIKE SAで新しいCREATE_CHILD_SA交換を開始すべきではありません（SHOULD NOT）。"
     },
     {
       "indent": 3,
@@ -520,7 +519,7 @@
     {
       "indent": 3,
       "text": "The responder replies (using the same Message ID to respond) with the accepted offer in an SA payload, a nonce in the Nr payload, and a Diffie-Hellman value in the KEr payload if the selected cryptographic suite includes that group. A new responder SPI is supplied in the SPI field of the SA payload.",
-      "ja": "応答者は、SAペイロードで受け入れられたオファー、Nrペイロードでナンス、選択した暗号スイートにそのグループが含まれている場合はKErペイロードでDiffie-Hellman値を使用して（同じメッセージIDを使用して応答します）応答します。 SAペイロードのSPIフィールドに新しいレスポンダーSPIが提供されます。"
+      "ja": "応答者は、SAペイロードで受け入れられたオファー、Nrペイロードでナンス、選択した暗号スイートにそのグループが含まれている場合、KErペイロードでDiffie-Hellman値を使用して（同じメッセージIDを使用して応答します）応答します。 SAペイロードのSPIフィールドに新しいレスポンダーSPIが提供されます。"
     },
     {
       "indent": 3,
@@ -536,7 +535,7 @@
       "indent": 0,
       "text": "1.3.3. Rekeying Child SAs with the CREATE_CHILD_SA Exchange",
       "section_title": true,
-      "ja": "1.3.3. CREATE_CHILD_SA交換による子SAの鍵の再生成"
+      "ja": "1.3.3. CREATE_CHILD_SA交換による子SAのリキー"
     },
     {
       "indent": 3,
@@ -562,7 +561,7 @@
     {
       "indent": 3,
       "text": "The REKEY_SA notification MUST be included in a CREATE_CHILD_SA exchange if the purpose of the exchange is to replace an existing ESP or AH SA. The SA being rekeyed is identified by the SPI field in the Notify payload; this is the SPI the exchange initiator would expect in inbound ESP or AH packets. There is no data associated with this Notify message type. The Protocol ID field of the REKEY_SA notification is set to match the protocol of the SA we are rekeying, for example, 3 for ESP and 2 for AH.",
-      "ja": "交換の目的が既存のESPまたはAH SAを置き換えることである場合、REKEY_SA通知をCREATE_CHILD_SA交換に含める必要があります。キーが再生成されるSAは、通知ペイロードのSPIフィールドによって識別されます。これは、交換の開始側がインバウンドESPまたはAHパケットで期待するSPIです。この通知メッセージタイプに関連付けられたデータはありません。 REKEY_SA通知のプロトコルIDフィールドは、キーを再生成するSAのプロトコルと一致するように設定されています。たとえば、ESPの場合は3、AHの場合は2です。"
+      "ja": "交換の目的が既存のESPまたはAH SAを置き換えることである場合、REKEY_SA通知をCREATE_CHILD_SA交換に含める必要があります。リキーされるSAは、通知ペイロードのSPIフィールドによって識別されます。これは、交換の開始側がインバウンドESPまたはAHパケットで期待するSPIです。この通知メッセージタイプに関連付けられたデータはありません。 REKEY_SA通知のプロトコルIDフィールドは、リキーするSAのプロトコルと一致するように設定されています。たとえば、ESPの場合は3、AHの場合は2です。"
     },
     {
       "indent": 3,
@@ -571,8 +570,9 @@
     },
     {
       "indent": 32,
-      "text": "<-- HDR, SK {SA, Nr, [KEr,] TSi, TSr}",
-      "ja": "<-HDR、SK {SA、Nr、[KEr、] TSi、TSr}"
+      "text": "<--  HDR, SK {SA, Nr, [KEr,]\n         TSi, TSr}",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -625,7 +625,7 @@
       "indent": 0,
       "text": "1.4.1. Deleting an SA with INFORMATIONAL Exchanges",
       "section_title": true,
-      "ja": "1.4.1. 情報交換を伴うSAの削除"
+      "ja": "1.4.1. INFORMATIONAL交換によるSAの削除"
     },
     {
       "indent": 3,
@@ -645,13 +645,13 @@
     {
       "indent": 3,
       "text": "Half-closed ESP or AH connections are anomalous, and a node with auditing capability should probably audit their existence if they persist. Note that this specification does not specify time periods, so it is up to individual endpoints to decide how long to wait. A node MAY refuse to accept incoming data on half-closed connections but MUST NOT unilaterally close them and reuse the SPIs. If connection state becomes sufficiently messed up, a node MAY close the IKE SA, as described above. It can then rebuild the SAs it needs on a clean base under a new IKE SA.",
-      "ja": "ハーフクローズのESPまたはAH接続は異常であり、監査機能を備えたノードは、それらが存続する場合、おそらくそれらの存在を監査する必要があります。この仕様では期間を指定していないため、待機時間を決定するのは個々のエンドポイント次第です。ノードは、ハーフクローズ接続で着信データの受け入れを拒否してもよいが、一方的にそれらをクローズしてSPIを再利用してはならない（MUST NOT）。接続状態が十分にめちゃくちゃになると、ノードは上記のようにIKE SAを閉じてもよい（MAY）。その後、必要なSAを新しいIKE SAの下のクリーンベースで再構築できます。"
+      "ja": "ハーフクローズのESPまたはAH接続は異常であり、監査機能を備えたノードは、それらが存続する場合、おそらくそれらの存在を監査する必要があります。この仕様では期間を指定していないため、待機時間を決定するのは個々のエンドポイント次第です。ノードは、ハーフクローズ接続で着信データの受け入れを拒否してもよいが、一方的にそれらをクローズしてSPIを再利用してはならない（MUST NOT）。接続状態が十分に混乱した場合、ノードは上記のようにIKE SAを閉じてもよい（MAY）。その後、必要なSAを新しいIKE SAの下のクリーンベースで再構築できます。"
     },
     {
       "indent": 0,
       "text": "1.5. Informational Messages outside of an IKE SA",
       "section_title": true,
-      "ja": "1.5. IKE SA外の情報メッセージ"
+      "ja": "1.5. IKE SA外のINFORMATIONALメッセージ"
     },
     {
       "indent": 3,
@@ -676,7 +676,7 @@
     {
       "indent": 3,
       "text": "In the first case, if the receiving node has an active IKE SA to the IP address from whence the packet came, it MAY send an INVALID_SPI notification of the wayward packet over that IKE SA in an INFORMATIONAL exchange. The Notification Data contains the SPI of the invalid packet. The recipient of this notification cannot tell whether the SPI is for AH or ESP, but this is not important because in many cases the SPIs will be different for the two. If no suitable IKE SA exists, the node MAY send an informational message without cryptographic protection to the source IP address, using the source UDP port as the destination port if the packet was UDP (UDP-encapsulated ESP or AH). In this case, it should only be used by the recipient as a hint that something might be wrong (because it could easily be forged). This message is not part of an INFORMATIONAL exchange, and the receiving node MUST NOT respond to it because doing so could cause a message loop. The message is constructed as follows: there are no IKE SPI values that would be meaningful to the recipient of such a notification; using zero values or random values are both acceptable, this being the exception to the rule in Section 3.1 that prohibits zero IKE Initiator SPIs. The Initiator",
-      "ja": "最初のケースでは、受信ノードが、パケットが来たときからIPアドレスへのアクティブなIKE SAを持っている場合、情報交換でそのIKE SAを介して、送信パケットのINVALID_SPI通知を送信できます（MAY）。通知データには、無効なパケットのSPIが含まれています。この通知の受信者は、SPIがAH用かESP用かを判別できませんが、多くの場合、SPIは2つで異なるため、これは重要ではありません。適切なIKE SAが存在しない場合、パケットがUDP（UDPカプセル化ESPまたはAH）の場合、送信元UDPポートを宛先ポートとして使用して、ノードは暗号化保護なしで情報メッセージを送信元IPアドレスに送信できます（MAY）。この場合、受信者は、何かが間違っている可能性があることを示すヒントとしてのみ使用する必要があります（簡単に偽造できるため）。このメッセージは情報交換の一部ではなく、メッセージループを引き起こす可能性があるため、受信ノードはそれに応答してはなりません。メッセージは次のように構成されます。そのような通知の受信者にとって意味のあるIKE SPI値はありません。ゼロ値またはランダム値のどちらも使用できますが、これは、IKEイニシエーターSPIをゼロにすることを禁止するセクション3.1の規則の例外です。イニシエーター"
+      "ja": "最初のケースでは、受信ノードが、パケットの送信元IPアドレスへのアクティブなIKE SAを持っている場合、情報交換でそのIKE SAを介して、不正なパケットのINVALID_SPI通知を送信できます（MAY）。通知データには、無効なパケットのSPIが含まれています。この通知の受信者は、SPIがAH用かESP用かを判別できませんが、多くの場合、SPIは2つで異なるため、これは重要ではありません。適切なIKE SAが存在しない場合、パケットがUDP（UDPカプセル化ESPまたはAH）の場合、送信元UDPポートを宛先ポートとして使用して、ノードは暗号化保護なしで情報メッセージを送信元IPアドレスに送信できます（MAY）。この場合、受信者は、何かが間違っている可能性があることを示すヒントとしてのみ使用する必要があります（簡単に偽造できるため）。このメッセージは情報交換の一部ではなく、メッセージループを引き起こす可能性があるため、受信ノードはそれに応答してはなりません。メッセージは次のように構成されます。そのような通知の受信者にとって意味のあるIKE SPI値はありません。ゼロ値またはランダム値のどちらも使用できますが、これは、IKEイニシエーターSPIをゼロにすることを禁止するセクション3.1の規則の例外です。イニシエーター"
     },
     {
       "indent": 3,
@@ -686,7 +686,7 @@
     {
       "indent": 3,
       "text": "In the second and third cases, the message is always sent without cryptographic protection (outside of an IKE SA), and includes either an INVALID_IKE_SPI or an INVALID_MAJOR_VERSION notification (with no notification data). The message is a response message, and thus it is sent to the IP address and port from whence it came with the same IKE SPIs and the Message ID and Exchange Type are copied from the request. The Response flag is set to 1, and the version flags are set in the normal fashion.",
-      "ja": "2番目と3番目のケースでは、メッセージは常に暗号保護なしで送信され（IKE SAの外部）、INVALID_IKE_SPIまたはINVALID_MAJOR_VERSION通知が含まれます（通知データなし）。メッセージは応答メッセージであるため、同じIKE SPIが付属しているIPアドレスとポートに送信され、メッセージIDと交換タイプが要求からコピーされます。応答フラグは1に設定され、バージョンフラグは通常の方法で設定されます。"
+      "ja": "2番目と3番目のケースでは、メッセージは常に暗号保護なしで送信され（IKE SAの外部）、INVALID_IKE_SPIまたはINVALID_MAJOR_VERSION通知が含まれます（通知データなし）。メッセージは応答メッセージであるため、それが来たIPアドレスとポートに、同じIKE SPIで送信され、メッセージIDと交換タイプが要求からコピーされます。応答フラグは1に設定され、バージョンフラグは通常の方法で設定されます。"
     },
     {
       "indent": 0,
@@ -728,7 +728,7 @@
     {
       "indent": 0,
       "text": " IKEv2 developers have noted that the SHOULD-level requirements in RFC 4306 are often unclear in that they don't say when it is OK to not obey the requirements. They also have noted that there are MUST-level requirements that are not related to interoperability. This document has more explanation of some of these requirements. All non-capitalized uses of the words SHOULD and MUST now mean their normal English sense, not the interoperability sense of [MUSTSHOULD].",
-      "ja": "IKEv2開発者は、RFC 4306のSHOULDレベルの要件は、要件に従わないことをいつ許可するかについては明言しないため、しばしば不明確であると指摘しています。彼らはまた、相互運用性に関連しないMUSTレベルの要件があることに注意しました。このドキュメントでは、これらの要件のいくつかについて詳しく説明しています。大文字で表記されていないすべての単語の使用は、[MUSTSHOULD]の相互運用性の意味ではなく、通常の英語の意味を意味する必要があります。"
+      "ja": "IKEv2開発者は、RFC 4306のSHOULDレベルの要件は、要件に従わなくてもよい場合について述べていないため、しばしば不明確であると指摘しています。彼らはまた、相互運用性に関連しないMUSTレベルの要件があることに注意しました。このドキュメントでは、これらの要件のいくつかについて詳しく説明しています。大文字で表記されていない単語 SHOULD および MUST の使用はすべて、[MUSTSHOULD]の相互運用性の意味ではなく、通常の英語の意味を意味します。"
     },
     {
       "indent": 3,
@@ -783,7 +783,7 @@
     {
       "indent": 3,
       "text": "In Section 2.8, \"Note that, when rekeying, the new Child SA MAY have different Traffic Selectors and algorithms than the old one\" was changed to \"Note that, when rekeying, the new Child SA SHOULD NOT have different Traffic Selectors and algorithms than the old one\".",
-      "ja": "セクション2.8で、「キーを再生成するときに、新しい子SAは古いものとは異なるトラフィックセレクターとアルゴリズムを持っている場合があることに注意してください」が「キーを再生成するとき、新しい子SAは古いもの\"。"
+      "ja": "セクション2.8で、「キーを再生成するときに、新しい子SAは古いものとは異なるトラフィックセレクターとアルゴリズムを持っている場合があることに注意してください」が「キーを再生成するとき、新しい子SAは古いものとは異なるトラフィックセレクターとアルゴリズムを持つべきではないことに注意してください」に変更されました。"
     },
     {
       "indent": 3,
@@ -793,7 +793,7 @@
     {
       "indent": 3,
       "text": "This document adds the restriction in Section 2.13 that all pseudorandom functions (PRFs) used with IKEv2 MUST take variable-sized keys. This should not affect any implementations because there were no standardized PRFs that have fixed-size keys.",
-      "ja": "このドキュメントでは、セクション2.13に、IKEv2で使用されるすべての疑似ランダム関数（PRF）が可変サイズのキーを使用する必要があるという制限を追加しています。固定サイズのキーを持つ標準化されたPRFがなかったため、これは実装に影響を与えません。"
+      "ja": "このドキュメントでは、セクション2.13に、IKEv2で使用されるすべての疑似ランダム関数（PRF）が可変サイズのキーを受け入れなければならないという制限を追加しています。固定サイズのキーを持つ標準化されたPRFがなかったため、これは実装に影響を与えません。"
     },
     {
       "indent": 3,
@@ -895,12 +895,12 @@
     {
       "indent": 0,
       "text": " IKE normally listens and sends on UDP port 500, though IKE messages may also be received on UDP port 4500 with a slightly different format (see Section 2.23). Since UDP is a datagram (unreliable) protocol, IKE includes in its definition recovery from transmission errors, including packet loss, packet replay, and packet forgery. IKE is designed to function so long as (1) at least one of a series of retransmitted packets reaches its destination before timing out; and (2) the channel is not so full of forged and replayed packets so as to exhaust the network or CPU capacities of either endpoint. Even in the absence of those minimum performance requirements, IKE is designed to fail cleanly (as though the network were broken).",
-      "ja": "IKEは通常、UDPポート500でリッスンして送信しますが、IKEメッセージはUDPポート4500でもわずかに異なる形式で受信される場合があります（セクション2.23を参照）。 UDPはデータグラム（信頼性の低い）プロトコルであるため、IKEの定義には、パケット損失、パケットの再生、パケットの偽造などの伝送エラーからの回復が含まれます。 IKEは、（1）一連の再送信されたパケットの少なくとも1つがタイムアウトする前に宛先に到達する限り機能するように設計されています。 （2）チャネルが偽造および再生されたパケットでいっぱいではないため、いずれかのエンドポイントのネットワークまたはCPU容量を使い果たしてしまう。これらの最小パフォーマンス要件がない場合でも、IKEは（ネットワークが切断されたかのように）完全に失敗するように設計されています。"
+      "ja": "IKEは通常、UDPポート500でリッスンして送信しますが、IKEメッセージはUDPポート4500でもわずかに異なる形式で受信される場合があります（セクション2.23を参照）。 UDPはデータグラム（信頼性の低い）プロトコルであるため、IKEの定義には、パケット損失、パケットの再生、パケットの偽造などの伝送エラーからの回復が含まれます。 IKEは、（1）一連の再送信されたパケットの少なくとも1つがタイムアウトする前に宛先に到達する限り機能するように設計されています。 （2）チャネルが偽造および再生されたパケットでいっぱいになり、いずれかのエンドポイントのネットワークまたはCPU容量を使い果たしてしまうほどではない限り。これらの最小パフォーマンス要件がない場合でも、IKEは（ネットワークが切断されたかのように）完全に失敗するように設計されています。"
     },
     {
       "indent": 3,
       "text": "Although IKEv2 messages are intended to be short, they contain structures with no hard upper bound on size (in particular, digital certificates), and IKEv2 itself does not have a mechanism for fragmenting large messages. IP defines a mechanism for fragmentation of oversized UDP messages, but implementations vary in the maximum message size supported. Furthermore, use of IP fragmentation opens an implementation to denial-of-service (DoS) attacks [DOSUDPPROT]. Finally, some NAT and/or firewall implementations may block IP fragments.",
-      "ja": "IKEv2メッセージは短くすることを目的としていますが、サイズにハード上限のない構造（特にデジタル証明書）が含まれており、IKEv2自体には大きなメッセージをフラグメント化するメカニズムがありません。 IPは、特大のUDPメッセージを断片化するメカニズムを定義していますが、サポートされる最大メッセージサイズは実装によって異なります。さらに、IPフラグメンテーションを使用すると、サービス拒否（DoS）攻撃の実装が開かれます[DOSUDPPROT]。最後に、NATやファイアウォールの実装によっては、IPフラグメントがブロックされる場合があります。"
+      "ja": "IKEv2メッセージは短くすることを目的としていますが、サイズにハード上限のない構造（特にデジタル証明書）が含まれており、IKEv2自体には大きなメッセージをフラグメント化するメカニズムがありません。 IPは、特大のUDPメッセージを断片化するメカニズムを定義していますが、サポートされる最大メッセージサイズは実装によって異なります。さらに、IPフラグメンテーションを使用すると、実装がサービス拒否（DoS）攻撃にさらされます[DOSUDPPROT]。最後に、NATやファイアウォールの実装によっては、IPフラグメントがブロックされる場合があります。"
     },
     {
       "indent": 3,
@@ -926,7 +926,7 @@
     {
       "indent": 0,
       "text": " For every pair of IKE messages, the initiator is responsible for retransmission in the event of a timeout. The responder MUST never retransmit a response unless it receives a retransmission of the request. In that event, the responder MUST ignore the retransmitted request except insofar as it causes a retransmission of the response. The initiator MUST remember each request until it receives the corresponding response. The responder MUST remember each response until it receives a request whose sequence number is larger than or equal to the sequence number in the response plus its window size (see Section 2.3). In order to allow saving memory, responders are allowed to forget the response after a timeout of several minutes. If the responder receives a retransmitted request for which it has already forgotten the response, it MUST ignore the request (and not, for example, attempt constructing a new response).",
-      "ja": "IKEメッセージのすべてのペアについて、タイムアウトの発生時にイニシエーターが再送信を担当します。応答側は、要求の再送信を受信しない限り、応答を再送信してはなりません（MUST）。その場合、レスポンダは、応答の再送信が発生する場合を除いて、再送信された要求を無視する必要があります。イニシエーターは、対応する応答を受信するまで、各要求を記憶する必要があります。レスポンダは、シーケンス番号が応答のシーケンス番号にウィンドウサイズを加えた値以上であるリクエストを受信するまで、各応答を記憶しなければなりません（セクション2.3を参照）。メモリを節約できるようにするため、レスポンダは数分のタイムアウト後に応答を忘れることができます。レスポンダが、すでに応答を忘れている再送信された要求を受信した場合、その要求を無視する必要があります（たとえば、新しい応答の構築を試みないでください）。"
+      "ja": "IKEメッセージのすべてのペアについて、タイムアウトの発生時にイニシエーターが再送信を担当します。応答側は、要求の再送信を受信しない限り、応答を再送信してはなりません（MUST）。その場合、レスポンダは、応答の再送信を引き起こす限りにおいてを除いて、再送信された要求を無視する必要があります。イニシエーターは、対応する応答を受信するまで、各要求を記憶する必要があります。レスポンダは、シーケンス番号が応答のシーケンス番号にウィンドウサイズを加えた値以上であるリクエストを受信するまで、各応答を記憶しなければなりません（セクション2.3を参照）。メモリを節約できるようにするため、レスポンダは数分のタイムアウト後に応答を忘れることができます。レスポンダが、すでに応答を忘れている再送信された要求を受信した場合、その要求を無視する必要があります（たとえば、新しい応答の構築を試みないでください）。"
     },
     {
       "indent": 3,
@@ -967,7 +967,7 @@
     {
       "indent": 3,
       "text": "Each endpoint in the IKE Security Association maintains two \"current\" Message IDs: the next one to be used for a request it initiates and the next one it expects to see in a request from the other end. These counters increment as requests are generated and received. Responses always contain the same Message ID as the corresponding request. That means that after the initial exchange, each integer n may appear as the Message ID in four distinct messages: the nth request from the original IKE initiator, the corresponding response, the nth request from the original IKE responder, and the corresponding response. If the two ends make a very different number of requests, the Message IDs in the two directions can be very different. There is no ambiguity in the messages, however, because the Initiator and Response flags in the message header specify which of the four messages a particular one is.",
-      "ja": "IKE Security Associationの各エンドポイントは、2つの「現在の」メッセージIDを保持します。次のメッセージIDは、開始するリクエストに使用され、次のエンドポイントは、他の端からのリクエストで表示されることを期待しています。これらのカウンタは、要求が生成されて受信されると増加します。応答には常に、対応する要求と同じメッセージIDが含まれます。つまり、最初の交換後、各整数nは4つの異なるメッセージのメッセージIDとして表示される可能性があります。元のIKEイニシエーターからのn番目の要求、対応する応答、元のIKEレスポンダーからのn番目の要求、および対応する応答です。両端が非常に異なる数のリクエストを行う場合、2つの方向のメッセージIDは非常に異なる可能性があります。ただし、メッセージヘッダーのInitiatorフラグとResponseフラグは、特定のメッセージが4つのメッセージのどれであるかを指定するため、メッセージに曖昧さはありません。"
+      "ja": "IKE Security Associationの各エンドポイントは、2つの「現在の」メッセージIDを保持します。次のメッセージIDは、開始するリクエストに使用され、次のものは、他の端からのリクエストで表示されることを期待しているものです。これらのカウンタは、要求が生成されて受信されると増加します。応答には常に、対応する要求と同じメッセージIDが含まれます。つまり、最初の交換後、各整数nは4つの異なるメッセージのメッセージIDとして表示される可能性があります。元のIKEイニシエーターからのn番目の要求、対応する応答、元のIKEレスポンダーからのn番目の要求、および対応する応答です。両端が非常に異なる数のリクエストを行う場合、2つの方向のメッセージIDは非常に異なる可能性があります。ただし、メッセージヘッダーのInitiatorフラグとResponseフラグは、特定のメッセージが4つのメッセージのどれであるかを指定するため、メッセージに曖昧さはありません。"
     },
     {
       "indent": 3,
@@ -1003,7 +1003,7 @@
     {
       "indent": 3,
       "text": "An IKE endpoint MUST NOT exceed the peer's stated window size for transmitted IKE requests. In other words, if the responder stated its window size is N, then when the initiator needs to make a request X, it MUST wait until it has received responses to all requests up through request X-N. An IKE endpoint MUST keep a copy of (or be able to regenerate exactly) each request it has sent until it receives the corresponding response. An IKE endpoint MUST keep a copy of (or be able to regenerate exactly) the number of previous responses equal to its declared window size in case its response was lost and the initiator requests its retransmission by retransmitting the request.",
-      "ja": "IKEエンドポイントは、送信されたIKE要求に対してピアが指定したウィンドウサイズを超えてはなりません（MUST NOT）。言い換えると、レスポンダがウィンドウサイズがNであると述べた場合、イニシエータが要求Xを行う必要がある場合、要求X-Nまでのすべての要求に対する応答を受信するまで待機する必要があります。 IKEエンドポイントは、対応する応答を受信するまで、送信した各要求のコピーを保持する（または正確に再生成できる）必要があります。 IKEエンドポイントは、応答が失われ、イニシエーターが要求を再送信することによって再送信を要求した場合に備えて、以前の応答のコピーを宣言されたウィンドウサイズと同じに保つ（または正確に再生成できる）必要があります。"
+      "ja": "IKEエンドポイントは、送信するIKE要求について、ピアが指定したウィンドウサイズを超えてはなりません（MUST NOT）。言い換えると、レスポンダがウィンドウサイズがNであると述べた場合、イニシエータが要求Xを行う必要がある場合、要求X-Nまでのすべての要求に対する応答を受信するまで待機する必要があります。 IKEエンドポイントは、対応する応答を受信するまで、送信した各要求のコピーを保持する（または正確に再生成できる）必要があります。 IKEエンドポイントは、応答が失われ、イニシエーターが要求を再送信することによって再送信を要求した場合に備えて、以前の応答のコピーを宣言されたウィンドウサイズと同じ数だけ保つ（または正確に再生成できる）必要があります。"
     },
     {
       "indent": 3,
@@ -1039,17 +1039,17 @@
     {
       "indent": 3,
       "text": "Since IKE is designed to operate in spite of DoS attacks from the network, an endpoint MUST NOT conclude that the other endpoint has failed based on any routing information (e.g., ICMP messages) or IKE messages that arrive without cryptographic protection (e.g., Notify messages complaining about unknown SPIs). An endpoint MUST conclude that the other endpoint has failed only when repeated attempts to contact it have gone unanswered for a timeout period or when a cryptographically protected INITIAL_CONTACT notification is received on a different IKE SA to the same authenticated identity. An endpoint should suspect that the other endpoint has failed based on routing information and initiate a request to see whether the other endpoint is alive. To check whether the other side is alive, IKE specifies an empty INFORMATIONAL request that (like all IKE requests) requires an acknowledgement (note that within the context of an IKE SA, an \"empty\" message consists of an IKE header followed by an Encrypted payload that contains no payloads). If a cryptographically protected (fresh, i.e., not retransmitted) message has been received from the other side recently, unprotected Notify messages MAY be ignored. Implementations MUST limit the rate at which they take actions based on unprotected messages.",
-      "ja": "IKEはネットワークからのDoS攻撃にも関わらず動作するように設計されているため、エンドポイントは、ルーティング情報（ICMPメッセージなど）または暗号保護なしで到着したIKEメッセージ（通知メッセージなど）に基づいて、他のエンドポイントが失敗したと結論付けてはなりません（MUST NOT）。不明なSPIについての不満）。エンドポイントは、他のエンドポイントへの接続試行がタイムアウト期間中に無応答になった場合、または暗号で保護されたINITIAL_CONTACT通知が同じ認証済みIDに対する別のIKE SAで受信された場合にのみ、他のエンドポイントが失敗したと結論付ける必要があります。エンドポイントは、他のエンドポイントがルーティング情報に基づいて失敗したことを疑い、他のエンドポイントが生きているかどうかを確認する要求を開始する必要があります。反対側が生きているかどうかを確認するために、IKEは空のINFORMATIONAL要求を指定します（すべてのIKE要求と同様に）確認が必要です（IKE SAのコンテキスト内では、「空の」メッセージはIKEヘッダーとそれに続く暗号化ペイロードを含まないペイロード）。暗号で保護された（新鮮な、つまり再送信されていない）メッセージが相手側から最近受信された場合、保護されていない通知メッセージは無視される場合があります。実装は、保護されていないメッセージに基づいてアクションを実行する速度を制限する必要があります。"
+      "ja": "IKEはネットワークからのDoS攻撃にも関わらず動作するように設計されているため、エンドポイントは、ルーティング情報（ICMPメッセージなど）または暗号保護なしで到着したIKEメッセージ（不明なSPIについて不平を言う通知メッセージなど）に基づいて、他のエンドポイントが失敗したと結論付けてはなりません（MUST NOT）。エンドポイントは、他のエンドポイントへの接続試行がタイムアウト期間中に無応答になった場合、または暗号で保護されたINITIAL_CONTACT通知が同じ認証済みIDに対する別のIKE SAで受信された場合にのみ、他のエンドポイントが失敗したと結論付ける必要があります。エンドポイントは、他のエンドポイントがルーティング情報に基づいて失敗したことを疑い、他のエンドポイントが生きているかどうかを確認する要求を開始する必要があります。反対側が生きているかどうかを確認するために、IKEは空のINFORMATIONAL要求を指定します（すべてのIKE要求と同様に）確認が必要です（IKE SAのコンテキスト内では、「空の」メッセージはIKEヘッダーとそれに続くペイロードを含まないEncryptedペイロード）。暗号で保護された（新鮮な、つまり再送信されていない）メッセージが相手側から最近受信された場合、保護されていない通知メッセージは無視される場合があります。実装は、保護されていないメッセージに基づいてアクションを実行する速度を制限する必要があります。"
     },
     {
       "indent": 0,
       "text": " The number of retries and length of timeouts are not covered in this specification because they do not affect interoperability. It is suggested that messages be retransmitted at least a dozen times over a period of at least several minutes before giving up on an SA, but different environments may require different rules. To be a good network citizen, retransmission times MUST increase exponentially to avoid flooding the network and making an existing congestion situation worse. If there has only been outgoing traffic on all of the SAs associated with an IKE SA, it is essential to confirm liveness of the other endpoint to avoid black holes. If no cryptographically protected messages have been received on an IKE SA or any of its Child SAs recently, the system needs to perform a liveness check in order to prevent sending messages to a dead peer. (This is sometimes called \"dead peer detection\" or \"DPD\", although it is really detecting live peers, not dead ones.) Receipt of a fresh cryptographically protected message on an IKE SA or any of its Child SAs ensures liveness of the IKE SA and all of its Child SAs. Note that this places requirements on the failure modes of an IKE endpoint. An implementation needs to stop sending over any SA if some failure prevents it from receiving on all of the associated SAs. If a system creates Child SAs that can fail independently from one another without the associated IKE SA being able to send a delete message, then the system MUST negotiate such Child SAs using separate IKE SAs.",
-      "ja": "再試行の回数とタイムアウトの長さは相互運用性に影響を与えないため、この仕様では取り上げません。 SAをあきらめる前に、メッセージを少なくとも数分間にわたって少なくとも12回再送信することをお勧めしますが、環境によっては異なるルールが必要になる場合があります。優れたネットワーク市民になるには、ネットワークのフラッディングと既存の輻輳状況の悪化を回避するために、再送信時間が指数関数的に増加する必要があります。 IKE SAに関連付けられたすべてのSAで発信トラフィックしかなかった場合、ブラックホールを回避するために、他のエンドポイントの活性を確認することが不可欠です。暗号で保護されたメッセージがIKE SAまたはその子SAのいずれかで最近受信されていない場合、システムは、死んだピアへのメッセージの送信を防ぐために活性チェックを実行する必要があります。 （これは、「デッドピア検出」または「DPD」と呼ばれることもありますが、実際にはデッドピアではなく、ライブピアを検出しています。）IKE SAまたはそのいずれかの子SAで新しい暗号で保護されたメッセージを受信すると、IKEの活性が保証されます。 SAおよびそのすべての子SA。これは、IKEエンドポイントの障害モードに要件を課すことに注意してください。何らかの障害が原因で、関連付けられているすべてのSAで受信できない場合は、実装でSAの送信を停止する必要があります。システムが、関連するIKE SAが削除メッセージを送信できない状態で互いに独立して失敗する可能性のある子SAを作成する場合、システムは個別のIKE SAを使用してそのような子SAをネゴシエートする必要があります。"
+      "ja": "再試行の回数とタイムアウトの長さは相互運用性に影響を与えないため、この仕様では取り上げません。 SAをあきらめる前に、メッセージを少なくとも数分間にわたって少なくとも12回再送信することをお勧めしますが、環境によっては異なるルールが必要になる場合があります。優れたネットワーク市民になるには、ネットワークのフラッディングと既存の輻輳状況の悪化を回避するために、再送信時間が指数関数的に増加する必要があります。 IKE SAに関連付けられたすべてのSAで発信トラフィックしかなかった場合、ブラックホールを回避するために、他のエンドポイントの活性を確認することが不可欠です。暗号で保護されたメッセージがIKE SAまたはその子SAのいずれかで最近受信されていない場合、システムは、死んだピアへのメッセージの送信を防ぐために活性チェックを実行する必要があります。 （これは、「デッドピア検出」または「DPD」と呼ばれることもありますが、実際にはデッドピアではなく、ライブピアを検出しています。）IKE SAまたはそのいずれかの子SAで新しい暗号で保護されたメッセージを受信すると、IKEの活性が保証されます。 SAおよびそのすべての子SA。これは、IKEエンドポイントの障害モードに要件を課すことに注意してください。何らかの障害が原因で、関連付けられているすべてのSAで受信できない場合は、実装は、任意のSAでの送信を停止する必要があります。システムが、関連するIKE SAが削除メッセージを送信できない状態で互いに独立して失敗する可能性のある子SAを作成する場合、システムは個別のIKE SAを使用してそのような子SAをネゴシエートする必要があります。"
     },
     {
       "indent": 3,
       "text": "One type of DoS attack on the initiator of an IKE SA can be avoided if the initiator takes proper care: since the first two messages of an SA setup are not cryptographically protected, an attacker could respond to the initiator's message before the genuine responder and poison the connection setup attempt. To prevent this, the initiator MAY be willing to accept multiple responses to its first message, treat each response as potentially legitimate, respond to each one, and then discard all the invalid half-open connections when it receives a valid cryptographically protected response to any one of its requests. Once a cryptographically valid response is received, all subsequent responses should be ignored whether or not they are cryptographically valid.",
-      "ja": "IKE SAのイニシエーターに対するDoS攻撃の1つのタイプは、イニシエーターが適切な注意を払えば回避できます。SAセットアップの最初の2つのメッセージは暗号的に保護されていないため、攻撃者は本物のレスポンダーと毒の前にイニシエーターのメッセージに応答できます。接続セットアップの試行。これを防ぐために、イニシエーターは最初のメッセージへの複数の応答を受け入れ、各応答を正当なものとして扱い、それぞれに応答し、暗号化で保護された有効な応答を受信すると、無効なハーフオープン接続をすべて破棄することができます（MAY）。その要求の1つ。暗号的に有効な応答が受信されると、その後のすべての応答は、それらが暗号的に有効であるかどうかに関係なく無視されます。"
+      "ja": "IKE SAのイニシエーターに対するDoS攻撃の1つのタイプは、イニシエーターが適切な注意を払えば回避できます。SAセットアップの最初の2つのメッセージは暗号的に保護されていないため、攻撃者は本物のレスポンダーの前にイニシエーターのメッセージに応答し、接続セットアップの試行を汚染する可能性があります。これを防ぐために、イニシエーターは最初のメッセージへの複数の応答を受け入れ、各応答を正当なものとして扱い、それぞれに応答し、暗号化で保護された有効な応答を受信すると、無効なハーフオープン接続をすべて破棄することができます（MAY）。その要求の1つ。暗号的に有効な応答が受信されると、その後のすべての応答は、それらが暗号的に有効であるかどうかに関係なく無視されます。"
     },
     {
       "indent": 3,
@@ -1065,7 +1065,7 @@
       "indent": 0,
       "text": "2.5. Version Numbers and Forward Compatibility",
       "section_title": true,
-      "ja": "2.5. バージョン番号と上位互換性"
+      "ja": "2.5. バージョン番号と前方互換性"
     },
     {
       "indent": 3,
@@ -1080,12 +1080,12 @@
     {
       "indent": 3,
       "text": "If an endpoint receives a message with a higher major version number, it MUST drop the message and SHOULD send an unauthenticated Notify message of type INVALID_MAJOR_VERSION containing the highest (closest) version number it supports. If an endpoint supports major version n, and major version m, it MUST support all versions between n and m. If it receives a message with a major version that it supports, it MUST respond with that version number. In order to prevent two nodes from being tricked into corresponding with a lower major version number than the maximum that they both support, IKE has a flag that indicates that the node is capable of speaking a higher major version number.",
-      "ja": "エンドポイントがより高いメジャーバージョン番号のメッセージを受信した場合、そのメッセージをドロップし、サポートする最も高い（最も近い）バージョン番号を含む、タイプINVALID_MAJOR_VERSIONの未認証のNotifyメッセージを送信する必要があります（SHOULD）。エンドポイントがメジャーバージョンnおよびメジャーバージョンmをサポートしている場合、nとmの間のすべてのバージョンをサポートする必要があります。サポートするメジャーバージョンのメッセージを受信した場合は、そのバージョン番号で応答する必要があります。 2つのノードがだまされて、両方がサポートする最大よりも小さいメジャーバージョン番号に対応するのを防ぐために、IKEには、ノードがより高いメジャーバージョン番号を読み込めることを示すフラグがあります。"
+      "ja": "エンドポイントがより高いメジャーバージョン番号のメッセージを受信した場合、そのメッセージをドロップし、サポートする最も高い（最も近い）バージョン番号を含む、タイプINVALID_MAJOR_VERSIONの未認証のNotifyメッセージを送信する必要があります（SHOULD）。エンドポイントがメジャーバージョンnおよびメジャーバージョンmをサポートしている場合、nとmの間のすべてのバージョンをサポートする必要があります。サポートするメジャーバージョンのメッセージを受信した場合は、そのバージョン番号で応答する必要があります。 2つのノードがだまされて、両方がサポートする最大よりも小さいメジャーバージョン番号に対応するのを防ぐために、IKEには、ノードがより高いメジャーバージョン番号を話せることを示すフラグがあります。"
     },
     {
       "indent": 3,
       "text": "Thus, the major version number in the IKE header indicates the version number of the message, not the highest version number that the transmitter supports. If the initiator is capable of speaking versions n, n+1, and n+2, and the responder is capable of speaking versions n and n+1, then they will negotiate speaking n+1, where the initiator will set a flag indicating its ability to speak a higher version. If they mistakenly (perhaps through an active attacker sending error messages) negotiate to version n, then both will notice that the other side can support a higher version number, and they MUST break the connection and reconnect using version n+1.",
-      "ja": "したがって、IKEヘッダーのメジャーバージョン番号は、メッセージのバージョン番号を示すものであり、トランスミッターがサポートする最大のバージョン番号ではありません。イニシエーターがバージョンn、n + 1、およびn + 2を話すことができ、レスポンダーがバージョンnおよびn + 1を話すことができる場合、それらはn + 1を話すようにネゴシエートし、イニシエーターはフラグを設定しますより高いバージョンを話す能力。誤って（おそらくアクティブな攻撃者がエラーメッセージを送信することにより）バージョンnにネゴシエートすると、どちらも相手側がより高いバージョン番号をサポートできることに気づき、接続を切断してバージョンn + 1を使用して再接続する必要があります。"
+      "ja": "したがって、IKEヘッダーのメジャーバージョン番号は、メッセージのバージョン番号を示すものであり、送信者がサポートする最大のバージョン番号ではありません。イニシエーターがバージョンn、n + 1、およびn + 2を話すことができ、レスポンダーがバージョンnおよびn + 1を話すことができる場合、それらはn + 1を話すようにネゴシエートし、イニシエーターは、より高いバージョンを話す能力を示すフラグを設定します。誤って（おそらくアクティブな攻撃者がエラーメッセージを送信することにより）バージョンnにネゴシエートすると、どちらも相手側がより高いバージョン番号をサポートできることに気づき、接続を切断してバージョンn + 1を使用して再接続する必要があります。"
     },
     {
       "indent": 3,
@@ -1126,7 +1126,7 @@
     {
       "indent": 3,
       "text": "Unlike ESP and AH where only the recipient's SPI appears in the header of a message, in IKE the sender's SPI is also sent in every message. Since the SPI chosen by the original initiator of the IKE SA is always sent first, an endpoint with multiple IKE SAs open that wants to find the appropriate IKE SA using the SPI it assigned must look at the Initiator flag in the header to determine whether it assigned the first or the second eight octets.",
-      "ja": "受信者のSPIのみがメッセージのヘッダーに表示されるESPやAHとは異なり、IKEでは送信者のSPIもすべてのメッセージで送信されます。 IKE SAの元のイニシエーターによって選択されたSPIは常に最初に送信されるため、割り当てられたSPIを使用して適切なIKE SAを見つけたい複数のIKE SAが開いているエンドポイントは、ヘッダーのイニシエーターフラグを調べて、最初または2番目の8オクテットを割り当てた。"
+      "ja": "受信者のSPIのみがメッセージのヘッダーに表示されるESPやAHとは異なり、IKEでは送信者のSPIもすべてのメッセージで送信されます。 IKE SAの元のイニシエーターによって選択されたSPIは常に最初に送信されるため、割り当てられたSPIを使用して適切なIKE SAを見つけたい複数のIKE SAが開いているエンドポイントは、ヘッダーのイニシエーターフラグを調べて、最初または2番目の8オクテットを割り当てたかどうかを判断する必要があります。"
     },
     {
       "indent": 3,
@@ -1173,7 +1173,7 @@
     {
       "indent": 0,
       "text": " where <secret> is a randomly generated secret known only to the responder and periodically changed and | indicates concatenation. <VersionIDofSecret> should be changed whenever <secret> is regenerated. The cookie can be recomputed when the IKE_SA_INIT arrives the second time and compared to the cookie in the received message. If it matches, the responder knows that the cookie was generated since the last change to <secret> and that IPi must be the same as the source address it saw the first time. Incorporating SPIi into the calculation ensures that if multiple IKE SAs are being set up in parallel they will all get different cookies (assuming the initiator chooses unique SPIi's). Incorporating Ni in the hash ensures that an attacker who sees only message 2 can't successfully forge a message 3. Also, incorporating SPIi in the hash prevents an attacker from fetching one cookie from the other end, and then initiating many IKE_SA_INIT exchanges all with different initiator SPIs (and perhaps port numbers) so that the responder thinks that there are a lot of machines behind one NAT box that are all trying to connect.",
-      "ja": "ここで、<secret>はランダムに生成されたシークレットであり、レスポンダだけが知っており、定期的に変更されます。連結を示します。 <secret>が再生成されるたびに、<VersionIDofSecret>を変更する必要があります。 Cookieは、IKE_SA_INITが2回目に到着したときに再計算され、受信メッセージのCookieと比較されます。一致する場合、レスポンダは、<secret>への最後の変更以降にCookieが生成されたこと、およびIPiが最初に確認したソースアドレスと同じである必要があることを認識しています。 SPIiを計算に組み込むことにより、複数のIKE SAが並行してセットアップされている場合、それらすべてが異なるCookieを取得することが保証されます（イニシエーターが固有のSPIiを選択すると想定）。ハッシュにNiを組み込むことで、メッセージ2のみを表示する攻撃者がメッセージ3を正常に偽造できないようにします。また、ハッシュにSPIiを組み込むことで、攻撃者が一方のCookieをもう一方の端からフェッチして、多くのIKE_SA_INIT交換を開始することを防ぎます。異なるイニシエーターSPI（およびおそらくポート番号）。これにより、レスポンダーは、1つのNATボックスの背後に、すべて接続しようとしているマシンがたくさんあると考えます。"
+      "ja": "ここで、<secret>はランダムに生成されたシークレットであり、レスポンダだけが知っており、定期的に変更されます。| は連結を示します。 <secret>が再生成されるたびに、<VersionIDofSecret>を変更する必要があります。 Cookieは、IKE_SA_INITが2回目に到着したときに再計算され、受信メッセージのCookieと比較されます。一致する場合、レスポンダは、<secret>への最後の変更以降にCookieが生成されたこと、およびIPiが最初に確認したソースアドレスと同じである必要があることを認識しています。 SPIiを計算に組み込むことにより、複数のIKE SAが並行してセットアップされている場合、それらすべてが異なるCookieを取得することが保証されます（イニシエーターが固有のSPIiを選択すると想定）。ハッシュにNiを組み込むことで、メッセージ2のみを表示する攻撃者がメッセージ3を正常に偽造できないようにします。また、ハッシュにSPIiを組み込むことで、攻撃者が一方のCookieをもう一方の端からフェッチして、多くのIKE_SA_INIT交換を開始することを防ぎます。異なるイニシエーターSPI（およびおそらくポート番号）。これにより、レスポンダーは、1つのNATボックスの背後に、すべて接続しようとしているマシンがたくさんあると考えます。"
     },
     {
       "indent": 3,
@@ -1183,12 +1183,12 @@
     {
       "indent": 3,
       "text": "When one party receives an IKE_SA_INIT request containing a cookie whose contents do not match the value expected, that party MUST ignore the cookie and process the message as if no cookie had been included; usually this means sending a response containing a new cookie. The initiator should limit the number of cookie exchanges it tries before giving up, possibly using exponential back-off. An attacker can forge multiple cookie responses to the initiator's IKE_SA_INIT message, and each of those forged cookie replies will cause two packets to be sent: one packet from the initiator to the responder (which will reject those cookies), and one response from responder to initiator that includes the correct cookie.",
-      "ja": "ある当事者が、内容が期待される値と一致しないCookieを含むIKE_SA_INIT要求を受信した場合、その当事者はCookieを無視し、Cookieが含まれていないかのようにメッセージを処理する必要があります。通常、これは新しいCookieを含む応答を送信することを意味します。イニシエーターは、指数バックオフを使用して、あきらめる前に試行するCookie交換の数を制限する必要があります。攻撃者はイニシエーターのIKE_SA_INITメッセージへの複数のCookie応答を偽造でき、偽造されたそれらのCookie応答ごとに2つのパケットが送信されます。正しいcookieを含むイニシエーター。"
+      "ja": "ある当事者が、内容が期待される値と一致しないCookieを含むIKE_SA_INIT要求を受信した場合、その当事者はCookieを無視し、Cookieが含まれていないかのようにメッセージを処理する必要があります。通常、これは新しいCookieを含む応答を送信することを意味します。イニシエーターは、指数バックオフを使用して、あきらめる前に試行するCookie交換の数を制限する必要があります。攻撃者はイニシエーターのIKE_SA_INITメッセージへの複数のCookie応答を偽造でき、偽造されたそれらのCookie応答ごとに2つのパケットが送信されます：イニシエーターからレスポンダーへの1つのパケット（それらのCookieを拒否します）、およびレスポンダーからイニシエーターへの正しいCookieを含む1つの応答です。"
     },
     {
       "indent": 3,
       "text": "A note on terminology: the term \"cookies\" originates with Karn and Simpson [PHOTURIS] in Photuris, an early proposal for key management with IPsec, and it has persisted. The Internet Security Association and Key Management Protocol (ISAKMP) [ISAKMP] fixed message header includes two eight-octet fields called \"cookies\", and that syntax is used by both IKEv1 and IKEv2, although in IKEv2 they are referred to as the \"IKE SPI\" and there is a new separate field in a Notify payload holding the cookie.",
-      "ja": "用語に関する注記：「クッキー」という用語は、IPsecによる鍵管理の初期の提案であるPhoturisのKarn and Simpson [PHOTURIS]に由来し、現在も存続しています。インターネットセキュリティアソシエーションおよびキー管理プロトコル（ISAKMP）[ISAKMP]固定メッセージヘッダーには、「クッキー」と呼ばれる2つの8オクテットフィールドが含まれ、その構文はIKEv1とIKEv2の両方で使用されますが、IKEv2では「IKE」と呼ばれます。 SPI」、およびCookieを保持するNotifyペイロードに新しい個別のフィールドがあります。"
+      "ja": "用語に関する注記：「クッキー」という用語は、IPsecによる鍵管理の初期の提案であるPhoturisのKarn and Simpson [PHOTURIS]に由来し、現在も存続しています。インターネットセキュリティアソシエーションおよびキー管理プロトコル（ISAKMP）[ISAKMP]固定メッセージヘッダーには、「クッキー」と呼ばれる2つの8オクテットフィールドが含まれ、その構文はIKEv1とIKEv2の両方で使用されますが、IKEv2では「IKE SPI」と呼ばれ、Cookieを保持するNotifyペイロードに新しい個別のフィールドがあります。"
     },
     {
       "indent": 0,
@@ -1262,12 +1262,12 @@
       "indent": 0,
       "text": "2.8. Rekeying",
       "section_title": true,
-      "ja": "2.8. 鍵の再生成"
+      "ja": "2.8. リキー"
     },
     {
       "indent": 3,
       "text": "IKE, ESP, and AH Security Associations use secret keys that should be used only for a limited amount of time and to protect a limited amount of data. This limits the lifetime of the entire Security Association. When the lifetime of a Security Association expires, the Security Association MUST NOT be used. If there is demand, new Security Associations MAY be established. Reestablishment of Security Associations to take the place of ones that expire is referred to as \"rekeying\".",
-      "ja": "IKE、ESP、およびAHのセキュリティアソシエーションは、限られた時間だけ使用し、限られた量のデータを保護するために使用する必要がある秘密鍵を使用します。これにより、セキュリティアソシエーション全体の寿命が制限されます。セキュリティアソシエーションの有効期限が切れると、セキュリティアソシエーションを使用してはなりません（MUST NOT）。需要があれば、新しいセキュリティアソシエーションが設立されるかもしれません。期限切れになったセキュリティアソシエーションの代わりとなるセキュリティアソシエーションの再確立は、「キーの再生成」と呼ばれます。"
+      "ja": "IKE、ESP、およびAHのセキュリティアソシエーションは、限られた時間だけ使用し、限られた量のデータを保護するために使用する必要がある秘密鍵を使用します。これにより、セキュリティアソシエーション全体の寿命が制限されます。セキュリティアソシエーションの有効期限が切れると、セキュリティアソシエーションを使用してはなりません（MUST NOT）。需要があれば、新しいセキュリティアソシエーションが設立されるかもしれません。期限切れになったセキュリティアソシエーションの代わりとなるセキュリティアソシエーションの再確立は、「リキー」と呼ばれます。"
     },
     {
       "indent": 3,
@@ -1277,22 +1277,22 @@
     {
       "indent": 3,
       "text": "To rekey a Child SA within an existing IKE SA, create a new, equivalent SA (see Section 2.17 below), and when the new one is established, delete the old one. Note that, when rekeying, the new Child SA SHOULD NOT have different Traffic Selectors and algorithms than the old one.",
-      "ja": "既存のIKE SA内の子SAのキーを再設定するには、同等の新しいSAを作成し（セクション2.17を参照）、新しいSAが確立されたら、古いSAを削除します。キーを再生成する場合、新しい子SAは古いものとは異なるトラフィックセレクターとアルゴリズムを使用してはならないことに注意してください。"
+      "ja": "既存のIKE SA内の子SAをリキーするには、同等の新しいSAを作成し（セクション2.17を参照）、新しいSAが確立されたら、古いSAを削除します。リキーする場合、新しい子SAは古いものとは異なるトラフィックセレクターとアルゴリズムを使用してはならないことに注意してください。"
     },
     {
       "indent": 3,
       "text": "To rekey an IKE SA, establish a new equivalent IKE SA (see Section 2.18 below) with the peer to whom the old IKE SA is shared using a CREATE_CHILD_SA within the existing IKE SA. An IKE SA so created inherits all of the original IKE SA's Child SAs, and the new IKE SA is used for all control messages needed to maintain those Child SAs. After the new equivalent IKE SA is created, the initiator deletes the old IKE SA, and the Delete payload to delete itself MUST be the last request sent over the old IKE SA.",
-      "ja": "IKE SAのキーを再生成するには、既存のIKE SA内のCREATE_CHILD_SAを使用して、古いIKE SAが共有されているピアと同等の新しいIKE SA（以下のセクション2.18を参照）を確立します。このように作成されたIKE SAは、元のIKE SAの子SAをすべて継承し、新しいIKE SAは、それらの子SAを維持するために必要なすべての制御メッセージに使用されます。新しい同等のIKE SAが作成された後、イニシエーターは古いIKE SAを削除し、それ自体を削除するための削除ペイロードは、古いIKE SA経由で送信された最後の要求でなければなりません。"
+      "ja": "IKE SAをリキーするには、既存のIKE SA内のCREATE_CHILD_SAを使用して、古いIKE SAが共有されているピアと同等の新しいIKE SA（以下のセクション2.18を参照）を確立します。このように作成されたIKE SAは、元のIKE SAの子SAをすべて継承し、新しいIKE SAは、それらの子SAを維持するために必要なすべての制御メッセージに使用されます。新しい同等のIKE SAが作成された後、イニシエーターは古いIKE SAを削除し、それ自体を削除するための削除ペイロードは、古いIKE SA経由で送信された最後の要求でなければなりません。"
     },
     {
       "indent": 3,
       "text": "SAs should be rekeyed proactively, i.e., the new SA should be established before the old one expires and becomes unusable. Enough time should elapse between the time the new SA is established and the old one becomes unusable so that traffic can be switched over to the new SA.",
-      "ja": "SAは事前にキーを再生成する必要があります。つまり、古いSAの有効期限が切れて使用できなくなる前に、新しいSAを確立する必要があります。新しいSAが確立されてから古いSAが使用できなくなるまでに十分な時間が経過するため、トラフィックを新しいSAに切り替えることができます。"
+      "ja": "SAは事前にキーを再生成する必要があります。つまり、古いSAの有効期限が切れて使用できなくなる前に、新しいSAを確立する必要があります。新しいSAが確立されてから古いSAが使用できなくなるまでに十分な時間を確保し、トラフィックを新しいSAに切り替えられるようにすべきです。"
     },
     {
       "indent": 3,
       "text": "A difference between IKEv1 and IKEv2 is that in IKEv1 SA lifetimes were negotiated. In IKEv2, each end of the SA is responsible for enforcing its own lifetime policy on the SA and rekeying the SA when necessary. If the two ends have different lifetime policies, the end with the shorter lifetime will end up always being the one to request the rekeying. If an SA has been inactive for a long time and if an endpoint would not initiate the SA in the absence of traffic, the endpoint MAY choose to close the SA instead of rekeying it when its lifetime expires. It can also do so if there has been no traffic since the last time the SA was rekeyed.",
-      "ja": "IKEv1とIKEv2の違いは、IKEv1ではSAライフタイムがネゴシエートされたことです。 IKEv2では、SAの両端が独自のライフタイムポリシーをSAに適用し、必要に応じてSAのキーを再生成します。両端のライフタイムポリシーが異なる場合、ライフタイムが短い方の端が常に鍵の再生成を要求するものになります。 SAが長期間非アクティブであり、トラフィックがない場合にエンドポイントがSAを開始しない場合、エンドポイントは、ライフタイムの期限が切れたときにSAを再キー化する代わりにSAを閉じることを選択できます（MAY）。前回SAの鍵が再設定されてからトラフィックがなかった場合にも、これを行うことができます。"
+      "ja": "IKEv1とIKEv2の違いは、IKEv1ではSAライフタイムがネゴシエートされたことです。 IKEv2では、SAの両端が独自のライフタイムポリシーをSAに適用し、必要に応じてSAをリキーします。両端のライフタイムポリシーが異なる場合、ライフタイムが短い方の端が常にリキーを要求するものになります。 SAが長期間非アクティブであり、トラフィックがない場合にエンドポイントがSAを開始しない場合、エンドポイントは、ライフタイムの期限が切れたときにSAをリキーする代わりにSAを閉じることを選択できます（MAY）。前回SAがリキーされてからトラフィックがなかった場合にも、これを行うことができます。"
     },
     {
       "indent": 3,
@@ -1312,13 +1312,13 @@
     {
       "indent": 3,
       "text": "The responder can be assured that the initiator is prepared to receive messages on an SA if either (1) it has received a cryptographically valid message on the other half of the SA pair, or (2) the new SA rekeys an existing SA and it receives an IKE request to close the replaced SA. When rekeying an SA, the responder continues to send traffic on the old SA until one of those events occurs. When establishing a new SA, the responder MAY defer sending messages on a new SA until either it receives one or a timeout has occurred. If an initiator receives a message on an SA for which it has not received a response to its CREATE_CHILD_SA request, it interprets that as a likely packet loss and retransmits the CREATE_CHILD_SA request. An initiator MAY send a dummy ESP message on a newly created ESP SA if it has no messages queued in order to assure the responder that the initiator is ready to receive messages.",
-      "ja": "レスポンダは、（1）SAペアのもう一方の半分で暗号的に有効なメッセージを受信した場合、または（2）新しいSAが既存のSAとそのキーを再生成した場合に、SAでメッセージを受信する準備ができていることを保証できます。置き換えられたSAを閉じるためのIKE要求を受け取ります。 SAのキーを再生成すると、レスポンダは、これらのイベントの1つが発生するまで、古いSAでトラフィックを送信し続けます。新しいSAを確立するとき、レスポンダは、それを受信するか、タイムアウトが発生するまで、新しいSAでのメッセージの送信を延期できます（MAY）。イニシエーターがCREATE_CHILD_SA要求への応答を受信して​​いないSAでメッセージを受信した場合、イニシエーターはそれをパケット損失の可能性があると解釈し、CREATE_CHILD_SA要求を再送信します。イニシエータがメッセージを受信する準備ができていることをレスポンダに保証するためにキューにメッセージがキューにない場合、イニシエータは新しく作成されたESP SAにダミーのESPメッセージを送信してもよい（MAY）。"
+      "ja": "レスポンダは、（1）SAペアのもう一方の半分で暗号的に有効なメッセージを受信した場合、または（2）新しいSAが既存のSAのキーを再生成し、置き換えられたSAを閉じるためのIKE要求を受け取った場合に、SAでメッセージを受信する準備ができていることを保証できます。 SAのキーを再生成すると、レスポンダは、これらのイベントの1つが発生するまで、古いSAでトラフィックを送信し続けます。新しいSAを確立するとき、レスポンダは、それを受信するか、タイムアウトが発生するまで、新しいSAでのメッセージの送信を延期できます（MAY）。イニシエーターがCREATE_CHILD_SA要求への応答を受信して​​いないSAでメッセージを受信した場合、イニシエーターはそれをパケット損失の可能性があると解釈し、CREATE_CHILD_SA要求を再送信します。イニシエータがメッセージを受信する準備ができていることをレスポンダに保証するためにキューにメッセージがキューにない場合、イニシエータは新しく作成されたESP SAにダミーのESPメッセージを送信してもよい（MAY）。"
     },
     {
       "indent": 0,
       "text": "2.8.1. Simultaneous Child SA Rekeying",
       "section_title": true,
-      "ja": "2.8.1. 子供のSAの同時更新"
+      "ja": "2.8.1. 子SAの同時リキー"
     },
     {
       "indent": 3,
@@ -1421,7 +1421,7 @@
       "indent": 0,
       "text": "2.8.2. Simultaneous IKE SA Rekeying",
       "section_title": true,
-      "ja": "2.8.2. IKE SAの同時更新"
+      "ja": "2.8.2. IKE SAの同時リキー"
     },
     {
       "indent": 3,
@@ -1463,7 +1463,7 @@
       "indent": 0,
       "text": "2.8.3. Rekeying the IKE SA versus Reauthentication",
       "section_title": true,
-      "ja": "2.8.3. IKE SAのキー再生成と再認証"
+      "ja": "2.8.3. IKE SAのリキーと再認証"
     },
     {
       "indent": 3,
@@ -1534,7 +1534,7 @@
     {
       "indent": 0,
       "text": " To enable the responder to choose the appropriate range in this case, if the initiator has requested the SA due to a data packet, the initiator SHOULD include as the first Traffic Selector in each of TSi and TSr a very specific Traffic Selector including the addresses in the packet triggering the request. In the example, the initiator would include in TSi two Traffic Selectors: the first containing the address range (198.51.100.43 - 198.51.100.43) and the source port and IP protocol from the packet and the second containing (198.51.100.0 - 198.51.100.255) with all ports and IP protocols. The initiator would similarly include two Traffic Selectors in TSr. If the initiator creates the Child SA pair not in response to an arriving packet, but rather, say, upon startup, then there may be no specific addresses the initiator prefers for the initial tunnel over any other. In that case, the first values in TSi and TSr can be ranges rather than specific values.",
-      "ja": "この場合にレスポンダが適切な範囲を選択できるようにするには、データパケットが原因でイニシエーターがSAを要求した場合、イニシエーターはTSiとTSrのそれぞれに最初のトラフィックセレクターとして、アドレスを含む非常に特定のトラフィックセレクターを含める必要があります（SHOULD）。リクエストをトリガーするパケット。この例では、イニシエーターはTSiに2つのトラフィックセレクターを含めます。1つ目はアドレス範囲（198.51.100.43-198.51.100.43）を含み、2つ目はパケットからのソースポートとIPプロトコル、2つ目は（198.51.100.0-198.51。 100.255）すべてのポートとIPプロトコル。イニシエーターは、TSrに2つのトラフィックセレクターを同様に含めます。イニシエーターが、到着したパケットに応答してではなく、たとえば、起動時に子SAペアを作成する場合、イニシエーターが他のものよりも最初のトンネルに優先する特定のアドレスがない可能性があります。その場合、TSiとTSrの最初の値は特定の値ではなく範囲にすることができます。"
+      "ja": "この場合にレスポンダが適切な範囲を選択できるようにするには、データパケットが原因でイニシエーターがSAを要求した場合、イニシエーターはTSiとTSrのそれぞれに最初のトラフィックセレクターとして、アドレスを含む非常に特定のトラフィックセレクターを含める必要があります（SHOULD）。リクエストをトリガーするパケット。この例では、イニシエーターはTSiに2つのトラフィックセレクターを含めます。1つ目はアドレス範囲（198.51.100.43-198.51.100.43）を含み、1つ目はパケットからのソースポートとIPプロトコル、2つ目は（198.51.100.0-198.51。 100.255）すべてのポートとIPプロトコル。イニシエーターは、TSrに2つのトラフィックセレクターを同様に含めます。イニシエーターが、到着したパケットに応答してではなく、たとえば、起動時に子SAペアを作成する場合、イニシエーターが他のものよりも最初のトンネルに優先する特定のアドレスがない可能性があります。その場合、TSiとTSrの最初の値は特定の値ではなく範囲にすることができます。"
     },
     {
       "indent": 3,
@@ -1611,7 +1611,7 @@
       "indent": 0,
       "text": "2.9.2. Traffic Selectors in Rekeying",
       "section_title": true,
-      "ja": "2.9.2. 鍵の再生成におけるトラフィックセレクター"
+      "ja": "2.9.2. リキーにおけるトラフィックセレクター"
     },
     {
       "indent": 3,
@@ -1685,7 +1685,7 @@
       "indent": 0,
       "text": "2.13. Generating Keying Material",
       "section_title": true,
-      "ja": "2.13. キーイングマテリアルの生成"
+      "ja": "2.13. 鍵素材の生成"
     },
     {
       "indent": 3,
@@ -1736,7 +1736,7 @@
       "indent": 0,
       "text": "2.14. Generating Keying Material for the IKE SA",
       "section_title": true,
-      "ja": "2.14. IKE SAのキー情報の生成"
+      "ja": "2.14. IKE SAの鍵素材の生成"
     },
     {
       "indent": 3,
@@ -1779,7 +1779,7 @@
     {
       "indent": 3,
       "text": "When not using extensible authentication (see Section 2.16), the peers are authenticated by having each sign (or MAC using a padded shared secret as the key, as described later in this section) a block of data. In these calculations, IDi' and IDr' are the entire ID payloads excluding the fixed header. For the responder, the octets to be signed start with the first octet of the first SPI in the header of the second message (IKE_SA_INIT response) and end with the last octet of the last payload in the second message. Appended to this (for the purposes of computing the signature) are the initiator's nonce Ni (just the value, not the payload containing it), and the value prf(SK_pr, IDr'). Note that neither the nonce Ni nor the value prf(SK_pr, IDr') are transmitted. Similarly, the initiator signs the first message (IKE_SA_INIT request), starting with the first octet of the first SPI in the header and ending with the last octet of the last payload. Appended to this (for purposes of computing the signature) are the responder's nonce Nr, and the value prf(SK_pi, IDi'). It is critical to the security of the exchange that each side sign the other side's nonce.",
-      "ja": "拡張認証（セクション2.16を参照）を使用しない場合、ピアは、各署名（またはこのセクションで後述するように、埋め込み共有秘密をキーとして使用するMAC）にデータブロックを持たせることで認証されます。これらの計算では、IDi 'およびIDr'は、固定ヘッダーを除くIDペイロード全体です。レスポンダの場合、署名されるオクテットは、2番目のメッセージのヘッダーの最初のSPIの最初のオクテット（IKE_SA_INIT応答）で始まり、2番目のメッセージの最後のペイロードの最後のオクテットで終わります。これに（署名を計算する目的で）追加されるのは、イニシエーターのノンスNi（値を含み、ペイロードを含まないペイロード）と値prf（SK_pr、IDr '）です。ノンスNiも値prf（SK_pr、IDr '）も送信されないことに注意してください。同様に、イニシエーターは、ヘッダーの最初のSPIの最初のオクテットで始まり、最後のペイロードの最後のオクテットで終わる最初のメッセージ（IKE_SA_INIT要求）に署名します。これに（署名を計算する目的で）追加されるのは、レスポンダーのノンスNrと値prf（SK_pi、IDi '）です。両サイドが相手サイドのナンスに署名することは、交換のセキュリティにとって重要です。"
+      "ja": "拡張認証（セクション2.16を参照）を使用しない場合、ピアは、それぞれがデータブロックに署名する（またはこのセクションで後述するように、パディングされた共有秘密をキーとして使用してMACを計算する）ことによって認証されます。これらの計算では、IDi 'およびIDr'は、固定ヘッダーを除くIDペイロード全体です。レスポンダの場合、署名されるオクテットは、2番目のメッセージのヘッダーの最初のSPIの最初のオクテット（IKE_SA_INIT応答）で始まり、2番目のメッセージの最後のペイロードの最後のオクテットで終わります。これに（署名を計算する目的で）追加されるのは、イニシエーターのノンスNi（値を含み、ペイロードを含まないペイロード）と値prf（SK_pr, IDr'）です。ノンスNiも値prf（SK_pr, IDr'）も送信されないことに注意してください。同様に、イニシエーターは、ヘッダーの最初のSPIの最初のオクテットで始まり、最後のペイロードの最後のオクテットで終わる最初のメッセージ（IKE_SA_INIT要求）に署名します。これに（署名を計算する目的で）追加されるのは、レスポンダーのノンスNrと値prf（SK_pi, IDi'）です。両サイドが相手サイドのナンスに署名することは、交換のセキュリティにとって重要です。"
     },
     {
       "indent": 3,
@@ -1896,7 +1896,7 @@
       "indent": 0,
       "text": "2.17. Generating Keying Material for Child SAs",
       "section_title": true,
-      "ja": "2.17. 子SAのキー生成情報の生成"
+      "ja": "2.17. 子SAの鍵素材の生成"
     },
     {
       "indent": 3,
@@ -1932,7 +1932,7 @@
     {
       "indent": 3,
       "text": "A single CREATE_CHILD_SA negotiation may result in multiple Security Associations. ESP and AH SAs exist in pairs (one in each direction), so two SAs are created in a single Child SA negotiation for them. Furthermore, Child SA negotiation may include some future IPsec protocol(s) in addition to, or instead of, ESP or AH (for example, ROHC_INTEG as described in [ROHCV2]). In any case, keying material for each Child SA MUST be taken from the expanded KEYMAT using the following rules:",
-      "ja": "単一のCREATE_CHILD_SAネゴシエーションでは、複数のセキュリティアソシエーションが発生する可能性があります。 ESP SAとAH SAはペアで（各方向に1つずつ）存在するため、2つのSAが1つの子SAネゴシエーションで作成されます。さらに、チャイルドSAネゴシエーションには、ESPまたはAH（たとえば、[ROHCV2]で説明されているROHC_INTEG）に加えて、またはその代わりに、いくつかの将来のIPsecプロトコルが含まれる場合があります。いずれの場合も、次のルールを使用して、各子SAのキー情報を拡張KEYMATから取得する必要があります。"
+      "ja": "単一のCREATE_CHILD_SAネゴシエーションでは、複数のセキュリティアソシエーションが発生する可能性があります。 ESP SAとAH SAはペアで（各方向に1つずつ）存在するため、2つのSAが1つの子SAネゴシエーションで作成されます。さらに、チャイルドSAネゴシエーションには、ESPまたはAH（たとえば、[ROHCV2]で説明されているROHC_INTEG）に加えて、またはその代わりに、いくつかの将来のIPsecプロトコルが含まれる場合があります。いずれの場合も、次のルールを使用して、各子SAの鍵素材を拡張KEYMATから取得する必要があります。"
     },
     {
       "indent": 3,
@@ -1942,12 +1942,12 @@
     {
       "indent": 3,
       "text": "o If multiple IPsec protocols are negotiated, keying material for each Child SA is taken in the order in which the protocol headers will appear in the encapsulated packet.",
-      "ja": "o 複数のIPsecプロトコルがネゴシエートされる場合、各子SAのキー情報は、プロトコルヘッダーがカプセル化されたパケットに表示される順序で取得されます。"
+      "ja": "o 複数のIPsecプロトコルがネゴシエートされる場合、各子SAの鍵素材は、プロトコルヘッダーがカプセル化されたパケットに表示される順序で取得されます。"
     },
     {
       "indent": 3,
       "text": "o If an IPsec protocol requires multiple keys, the order in which they are taken from the SA's keying material needs to be described in the protocol's specification. For ESP and AH, [IPSECARCH] defines the order, namely: the encryption key (if any) MUST be taken from the first bits and the integrity key (if any) MUST be taken from the remaining bits.",
-      "ja": "o IPsecプロトコルが複数のキーを必要とする場合、SAのキー情報からキーを取得する順序をプロトコルの仕様に記述する必要があります。 ESPおよびAHの場合、[IPSECARCH]は順序を定義します。つまり、暗号化キー（存在する場合）は最初のビットから取得する必要があり、整合性キー（存在する場合）は残りのビットから取得する必要があります。"
+      "ja": "o IPsecプロトコルが複数のキーを必要とする場合、SAの鍵素材からキーを取得する順序をプロトコルの仕様に記述する必要があります。 ESPおよびAHの場合、[IPSECARCH]は順序を定義します。つまり、暗号化キー（存在する場合）は最初のビットから取得する必要があり、整合性キー（存在する場合）は残りのビットから取得する必要があります。"
     },
     {
       "indent": 3,
@@ -1958,7 +1958,7 @@
       "indent": 0,
       "text": "2.18. Rekeying IKE SAs Using a CREATE_CHILD_SA Exchange",
       "section_title": true,
-      "ja": "2.18. CREATE_CHILD_SA交換を使用したIKE SAの鍵の再生成"
+      "ja": "2.18. CREATE_CHILD_SA交換を使用したIKE SAのリキー"
     },
     {
       "indent": 3,
@@ -2578,7 +2578,7 @@
       "indent": 0,
       "text": "2.25.1. Collisions while Rekeying or Closing Child SAs",
       "section_title": true,
-      "ja": "2.25.1. 子SAの再キーイングまたはクローズ時の衝突"
+      "ja": "2.25.1. 子SAのリキーまたはクローズ時の衝突"
     },
     {
       "indent": 3,
@@ -2599,7 +2599,7 @@
       "indent": 0,
       "text": "2.25.2. Collisions while Rekeying or Closing IKE SAs",
       "section_title": true,
-      "ja": "2.25.2. IKE SAのキー再生成またはクローズ時の衝突"
+      "ja": "2.25.2. IKE SAのリキーまたはクローズ時の衝突"
     },
     {
       "indent": 3,
@@ -2827,8 +2827,8 @@
     },
     {
       "indent": 0,
-      "text": " The Proposal structure contains within it a Proposal Num and an IPsec protocol ID. Each structure MUST have a proposal number one (1) greater than the previous structure. The first Proposal in the initiator's SA payload MUST have a Proposal Num of one (1). One reason to use multiple proposals is to propose both standard crypto ciphers and combined-mode ciphers. Combined-mode ciphers include both integrity and encryption in a single encryption algorithm, and MUST either offer no integrity algorithm or a single integrity algorithm of \"NONE\", with no integrity algorithm being the RECOMMENDED method. If an initiator wants to propose both combined-mode ciphers and normal ciphers, it must include two proposals: one will have all the combined-mode ciphers, and the other will have all the normal ciphers with the integrity algorithms. For example, one such proposal would have two proposal structures. Proposal 1 is ESP with AES-128, AES-192, and AES-256 bits in Cipher Block Chaining (CBC) mode, with either HMAC-SHA1-96 or XCBC-96 as the integrity algorithm; Proposal 2 is AES-128 or AES-256 in GCM mode with an 8-octet Integrity Check Value (ICV). Both proposals allow but do not require the use of ESNs (Extended Sequence Numbers). This can be illustrated as:",
-      "ja": "Proposal構造には、Proposal NumとIPsecプロトコルIDが含まれています。各構造は、前の構造よりも1大きい提案番号を持つ必要があります。イニシエータのSAペイロードの最初のプロポーザルは、プロポーザル番号が1である必要があります。複数の提案を使用する理由の1つは、標準の暗号と複合モードの暗号の両方を提案することです。結合モードの暗号は、単一の暗号化アルゴリズムに整合性と暗号化の両方を含み、整合性アルゴリズムを提供しないか、または「NONE」の単一の整合性アルゴリズムを提供する必要があります。整合性アルゴリズムはRECOMMENDEDメソッドではありません。イニシエーターが結合モード暗号と通常の暗号の両方を提案する場合、2つの提案を含める必要があります。1つはすべての複合モード暗号を持ち、もう1つは整合性アルゴリズムを備えたすべての通常暗号を持ちます。たとえば、そのような1つの提案には2つの提案構造があります。提案1は、暗号化ブロックチェーン（CBC）モードでAES-128、AES-192、およびAES-256ビットを使用するESPであり、整合性アルゴリズムとしてHMAC-SHA1-96またはXCBC-96を使用します。プロポーザル2は、GCMモードのAES-128またはAES-256で、8オクテットの整合性チェック値（ICV）を使用します。どちらの提案でも、ESN（拡張シーケンス番号）の使用は許可されていますが、必須ではありません。これは次のように説明できます。"
+      "text": "The Proposal structure contains within it a Proposal Num and an IPsec protocol ID. Each structure MUST have a proposal number one (1) greater than the previous structure. The first Proposal in the initiator's SA payload MUST have a Proposal Num of one (1). One reason to use multiple proposals is to propose both standard crypto ciphers and combined-mode ciphers. Combined-mode ciphers include both integrity and encryption in a single encryption algorithm, and MUST either offer no integrity algorithm or a single integrity algorithm of \"NONE\", with no integrity algorithm being the RECOMMENDED method. If an initiator wants to propose both combined-mode ciphers and normal ciphers, it must include two proposals: one will have all the combined-mode ciphers, and the other will have all the normal ciphers with the integrity algorithms. For example, one such proposal would have two proposal structures. Proposal 1 is ESP with AES-128, AES-192, and AES-256 bits in Cipher Block Chaining (CBC) mode, with either HMAC-SHA1-96 or XCBC-96 as the integrity algorithm; Proposal 2 is AES-128 or AES-256 in GCM mode with an 8-octet Integrity Check Value (ICV). Both proposals allow but do not require the use of ESNs (Extended Sequence Numbers). This can be illustrated as:",
+      "ja": "Proposal構造には、Proposal NumとIPsecプロトコルIDが含まれています。各構造は、前の構造よりも1大きい提案番号を持つ必要があります。イニシエータのSAペイロードの最初のプロポーザルは、プロポーザル番号が1である必要があります。複数の提案を使用する理由の1つは、標準の暗号と複合モードの暗号の両方を提案することです。結合モードの暗号は、単一の暗号化アルゴリズムに整合性と暗号化の両方を含み、整合性アルゴリズムを提供しないか、または「NONE」の単一の整合性アルゴリズムを提供する必要があります。整合性アルゴリズムなしとすることが推奨される方法です。イニシエーターが結合モード暗号と通常の暗号の両方を提案する場合、2つの提案を含める必要があります。1つはすべての複合モード暗号を持ち、もう1つは整合性アルゴリズムを備えたすべての通常暗号を持ちます。たとえば、そのような1つの提案には2つの提案構造があります。提案1は、暗号化ブロックチェーン（CBC）モードでAES-128、AES-192、およびAES-256ビットを使用するESPであり、整合性アルゴリズムとしてHMAC-SHA1-96またはXCBC-96を使用します。プロポーザル2は、GCMモードのAES-128またはAES-256で、8オクテットの整合性チェック値（ICV）を使用します。どちらの提案でも、ESN（拡張シーケンス番号）の使用は許可されていますが、必須ではありません。これは次のように説明できます。"
     },
     {
       "indent": 3,
@@ -3709,7 +3709,7 @@
       "indent": 0,
       "text": "3.10. Notify Payload",
       "section_title": true,
-      "ja": "3.10. ペイロードに通知"
+      "ja": "3.10. 通知ペイロード"
     },
     {
       "indent": 3,
@@ -3949,7 +3949,7 @@
       "indent": 0,
       "text": "3.11. Delete Payload",
       "section_title": true,
-      "ja": "3.11. ペイロードを削除"
+      "ja": "3.11. 削除ペイロード"
     },
     {
       "indent": 3,
@@ -4224,7 +4224,7 @@
       "indent": 0,
       "text": "3.14. Encrypted Payload",
       "section_title": true,
-      "ja": "3.14. 暗号化されたペイロード"
+      "ja": "3.14. 暗号化ペイロード"
     },
     {
       "indent": 3,
@@ -4301,7 +4301,7 @@
       "indent": 0,
       "text": "3.15. Configuration Payload",
       "section_title": true,
-      "ja": "3.15. 設定ペイロード"
+      "ja": "3.15. 構成ペイロード"
     },
     {
       "indent": 3,
@@ -4632,7 +4632,7 @@
     {
       "indent": 3,
       "text": "If the initiator does not receive the IP address(es) required by its policy, it MAY keep the IKE SA up and retry the Configuration payload as separate INFORMATIONAL exchange after suitable timeout, or it MAY tear down the IKE SA by sending a Delete payload inside a separate INFORMATIONAL exchange and later retry IKE SA from the beginning after some timeout. Such a timeout should not be too short (especially if the IKE SA is started from the beginning) because these error situations may not be able to be fixed quickly; the timeout should likely be several minutes. For example, an address shortage problem on the responder will probably only be fixed when more entries are returned to the address pool when other clients disconnect or when responder is reconfigured with larger address pool.",
-      "ja": "イニシエーターがポリシーで必要なIPアドレスを受信しない場合、IKE SAをアップに保ち、適切なタイムアウト後に個別の情報交換として構成ペイロードを再試行するか、削除ペイロードを送信してIKE SAを破棄する場合があります。別個のINFORMATIONAL交換の内部で、後でタイムアウト後にIKE SAを最初から再試行します。このようなタイムアウトは短すぎないようにしてください（特にIKE SAが最初から開始されている場合）。これらのエラー状況を迅速に修正できない場合があるためです。タイムアウトはおそらく数分になるはずです。たとえば、レスポンダのアドレス不足の問題は、他のクライアントが切断したとき、またはより大きなアドレスプールでレスポンダが再構成されたときに、より多くのエントリがアドレスプールに返されたときにのみ修正される可能性があります。"
+      "ja": "イニシエーターがポリシーで必要なIPアドレスを受信しない場合、IKE SAを維持し、適切なタイムアウト後に個別の情報交換として構成ペイロードを再試行するか、削除ペイロードを送信してIKE SAを破棄する場合があります。別個のINFORMATIONAL交換の内部で、後でタイムアウト後にIKE SAを最初から再試行します。このようなタイムアウトは短すぎないようにしてください（特にIKE SAが最初から開始されている場合）。これらのエラー状況を迅速に修正できない場合があるためです。タイムアウトはおそらく数分になるはずです。たとえば、レスポンダのアドレス不足の問題は、他のクライアントが切断したとき、またはより大きなアドレスプールでレスポンダが再構成されたときに、より多くのエントリがアドレスプールに返されたときにのみ修正される可能性があります。"
     },
     {
       "indent": 0,
@@ -4746,7 +4746,7 @@
     {
       "indent": 3,
       "text": "o Ability to rekey SAs.",
-      "ja": "o Aviliti、それはあなたに流れます。"
+      "ja": "o SAをリキーする機能。"
     },
     {
       "indent": 3,
@@ -5385,12 +5385,13 @@
     {
       "indent": 3,
       "text": "The prime is: 2^768 - 2 ^704 - 1 + 2^64 * { [2^638 pi] + 149686 } Its hexadecimal value is:",
-      "ja": "素数は次のとおりです：2 ^ 768-2 ^ 704-1 + 2 ^ 64 * {[2 ^ 638 pi] + 149686}その16進値は次のとおりです："
+      "ja": "素数は次のとおりです：2^768 - 2^704 - 1 + 2^64 * { [2^638 pi] + 149686} その16進値は次のとおりです："
     },
     {
       "indent": 3,
-      "text": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9 A63A3620 FFFFFFFF FFFFFFFF",
-      "ja": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B 302B0A6D F25FFF3437 4FE1356D 6D51FFFFA43E6AFFE63C42E63B6AFFE63A42E6400C6E6AFFE63C6E61AFF6A6E6C6E7AFF6C6E61E6E6E6E6C7E64E6"
+      "text": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1\n29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD\nEF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245\nE485B576 625E7EC6 F44C42E9 A63A3620 FFFFFFFF FFFFFFFF",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -5411,12 +5412,13 @@
     {
       "indent": 3,
       "text": "The prime is 2^1024 - 2^960 - 1 + 2^64 * { [2^894 pi] + 129093 }. Its hexadecimal value is:",
-      "ja": "素数は2 ^ 1024-2 ^ 960-1 + 2 ^ 64 * {[2 ^ 894 pi] + 129093}です。その16進値は次のとおりです。"
+      "ja": "素数は 2^1024 - 2^960 - 1 + 2^64 * { [2^894 pi] + 129093} です。その16進値は次のとおりです。"
     },
     {
       "indent": 3,
-      "text": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE65381 FFFFFFFF FFFFFFFF",
-      "ja": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE65381 FFFFFFFF FFFFFFFF"
+      "text": "FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1\n29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD\nEF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245\nE485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED\nEE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE65381\nFFFFFFFF FFFFFFFF",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -5447,26 +5449,9 @@
     },
     {
       "indent": 3,
-      "text": "request             --> [N(COOKIE),]\n                        SA, KE, Ni,\n                        [N(NAT_DETECTION_SOURCE_IP)+,\n                         N(NAT_DETECTION_DESTINATION_IP),]\n                        [V+][N+]",
+      "text": "request             --> [N(COOKIE),]\n                        SA, KE, Ni,\n                        [N(NAT_DETECTION_SOURCE_IP)+,\n                         N(NAT_DETECTION_DESTINATION_IP),]\n                        [V+][N+]\n\nnormal response     <-- SA, KE, Nr,\n(no cookie)             [N(NAT_DETECTION_SOURCE_IP),\n                         N(NAT_DETECTION_DESTINATION_IP),]\n                        [[N(HTTP_CERT_LOOKUP_SUPPORTED),] CERTREQ+,]\n                        [V+][N+]\n\ncookie response     <-- N(COOKIE),\n                        [V+][N+]\n\ndifferent Diffie-   <-- N(INVALID_KE_PAYLOAD),\nHellman group           [V+][N+]\nwanted",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "normal response     <-- SA, KE, Nr,\n(no cookie)             [N(NAT_DETECTION_SOURCE_IP),\n                         N(NAT_DETECTION_DESTINATION_IP),]\n                        [[N(HTTP_CERT_LOOKUP_SUPPORTED),] CERTREQ+,]\n                        [V+][N+]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "cookie response     <-- N(COOKIE),\n                        [V+][N+]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "different Diffie- <-- N(INVALID_KE_PAYLOAD), Hellman group [V+][N+] wanted",
-      "ja": "異なるDiffie- <-N（INVALID_KE_PAYLOAD）、Hellmanグループ[V +] [N +]が必要"
     },
     {
       "indent": 0,
@@ -5482,14 +5467,9 @@
     },
     {
       "indent": 3,
-      "text": "response            <-- IDr, [CERT+,]\n                        AUTH,\n                        [CP(CFG_REPLY),]\n                        [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]",
+      "text": "response            <-- IDr, [CERT+,]\n                        AUTH,\n                        [CP(CFG_REPLY),]\n                        [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]\n\nerror in Child SA  <--  IDr, [CERT+,]\ncreation                AUTH,\n                        N(error),\n                        [V+][N+]",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "error in Child SA <-- IDr, [CERT+,] creation AUTH, N(error), [V+][N+]",
-      "ja": "子SAのエラー<-IDr、[CERT +、]作成AUTH、N（エラー）、[V +] [N +]"
     },
     {
       "indent": 0,
@@ -5499,28 +5479,7 @@
     },
     {
       "indent": 3,
-      "text": "first request       --> IDi,\n                        [N(INITIAL_CONTACT),]\n                        [[N(HTTP_CERT_LOOKUP_SUPPORTED),] CERTREQ+,]\n                        [IDr,]\n                        [CP(CFG_REQUEST),]\n                        [N(IPCOMP_SUPPORTED)+,]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [V+][N+]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "first response <-- IDr, [CERT+,] AUTH, EAP, [V+][N+]",
-      "ja": "最初の応答<-IDr、[CERT +、] AUTH、EAP、[V +] [N +]"
-    },
-    {
-      "indent": 3,
-      "text": " / --> EAP repeat 1..N times | \\ <-- EAP",
-      "ja": "/-> EAP繰り返し1..N回| \\ <-EAP"
-    },
-    {
-      "indent": 3,
-      "text": "last request --> AUTH",
-      "ja": "最後のリクエスト-> AUTH"
-    },
-    {
-      "indent": 3,
-      "text": "last response       <-- AUTH,\n                        [CP(CFG_REPLY),]\n                        [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]",
+      "text": "first request       --> IDi,\n                        [N(INITIAL_CONTACT),]\n                        [[N(HTTP_CERT_LOOKUP_SUPPORTED),] CERTREQ+,]\n                        [IDr,]\n                        [CP(CFG_REQUEST),]\n                        [N(IPCOMP_SUPPORTED)+,]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [V+][N+]\n\nfirst response      <-- IDr, [CERT+,] AUTH,\n                        EAP,\n                        [V+][N+]\n\n                  / --> EAP\nrepeat 1..N times |\n                  \\ <-- EAP\n\nlast request        --> AUTH\n\nlast response       <-- AUTH,\n                        [CP(CFG_REPLY),]\n                        [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]",
       "raw": true,
       "ja": ""
     },
@@ -5532,25 +5491,9 @@
     },
     {
       "indent": 3,
-      "text": "request             --> [N(REKEY_SA),]\n                        [CP(CFG_REQUEST),]\n                        [N(IPCOMP_SUPPORTED)+,]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, Ni, [KEi,] TSi, TSr,\n                        [V+][N+]",
+      "text": "request             --> [N(REKEY_SA),]\n                        [CP(CFG_REQUEST),]\n                        [N(IPCOMP_SUPPORTED)+,]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, Ni, [KEi,] TSi, TSr,\n                        [V+][N+]\n\nnormal              <-- [CP(CFG_REPLY),]\nresponse                [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, Nr, [KEr,] TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]\n\nerror case          <-- N(error)\n\ndifferent Diffie-   <-- N(INVALID_KE_PAYLOAD),\nHellman group           [V+][N+]\nwanted",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "normal              <-- [CP(CFG_REPLY),]\nresponse                [N(IPCOMP_SUPPORTED),]\n                        [N(USE_TRANSPORT_MODE),]\n                        [N(ESP_TFC_PADDING_NOT_SUPPORTED),]\n                        [N(NON_FIRST_FRAGMENTS_ALSO),]\n                        SA, Nr, [KEr,] TSi, TSr,\n                        [N(ADDITIONAL_TS_POSSIBLE),]\n                        [V+][N+]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "error case <-- N(error)",
-      "ja": "エラーケース<-N（エラー）"
-    },
-    {
-      "indent": 3,
-      "text": "different Diffie- <-- N(INVALID_KE_PAYLOAD), Hellman group [V+][N+] wanted",
-      "ja": "異なるDiffie- <-N（INVALID_KE_PAYLOAD）、Hellmanグループ[V +] [N +]が必要"
     },
     {
       "indent": 0,
@@ -5560,14 +5503,9 @@
     },
     {
       "indent": 3,
-      "text": "request             --> SA, Ni, KEi,\n                        [V+][N+]",
+      "text": "request             --> SA, Ni, KEi,\n                        [V+][N+]\n\nresponse            <-- SA, Nr, KEr,\n                        [V+][N+]",
       "raw": true,
       "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "response <-- SA, Nr, KEr, [V+][N+]",
-      "ja": "レスポンス<-СА、Нр、Кер、ШВ+ЩШН+щ"
     },
     {
       "indent": 0,
@@ -5577,13 +5515,7 @@
     },
     {
       "indent": 3,
-      "text": "request             --> [N+,]\n                        [D+,]\n                        [CP(CFG_REQUEST)]",
-      "raw": true,
-      "ja": ""
-    },
-    {
-      "indent": 3,
-      "text": "response            <-- [N+,]\n                        [D+,]\n                        [CP(CFG_REPLY)]",
+      "text": "request             --> [N+,]\n                        [D+,]\n                        [CP(CFG_REQUEST)]\n\nresponse            <-- [N+,]\n                        [D+,]\n                        [CP(CFG_REPLY)]",
       "raw": true,
       "ja": ""
     },

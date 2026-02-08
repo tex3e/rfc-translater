@@ -5,7 +5,7 @@
   },
   "number": 4302,
   "created_at": "2023-07-20 09:17:36.754884+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -36,7 +36,7 @@
     {
       "indent": 3,
       "text": "Copyright (C) The Internet Society (2005).",
-      "ja": "Copyright（c）The Internet Society（2005）。"
+      "ja": "Copyright (C) The Internet Society (2005)."
     },
     {
       "indent": 0,
@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "This document describes an updated version of the IP Authentication Header (AH), which is designed to provide authentication services in IPv4 and IPv6. This document obsoletes RFC 2402 (November 1998).",
-      "ja": "このドキュメントでは、IPv4およびIPv6で認証サービスを提供するように設計されたIP認証ヘッダー（AH）の更新バージョンについて説明します。このドキュメントは、RFC 2402を廃止します（1998年11月）。"
+      "ja": "このドキュメントでは、IPv4およびIPv6で認証サービスを提供するように設計されたIP認証ヘッダー（AH）の更新バージョンについて説明します。このドキュメントは、RFC 2402（1998年11月）を廃止します。"
     },
     {
       "indent": 0,
@@ -76,27 +76,27 @@
     {
       "indent": 3,
       "text": "This document assumes that the reader is familiar with the terms and concepts described in the \"Security Architecture for the Internet Protocol\" [Ken-Arch], hereafter referred to as the Security Architecture document. In particular, the reader should be familiar with the definitions of security services offered by the Encapsulating Security Payload (ESP) [Ken-ESP] and the IP Authentication Header (AH), the concept of Security Associations, the ways in which ESP can be used in conjunction with the Authentication Header (AH), and the different key management options available for ESP and AH.",
-      "ja": "このドキュメントは、読者が「インターネットプロトコルのセキュリティアーキテクチャ」[Ken-Arch]に記載されている用語と概念に精通していることを前提としています。特に、読者は、セキュリティペイロード（ESP）[KEN-ESP]とIP認証ヘッダー（AH）によって提供されるセキュリティサービスの定義に精通している必要があります。Authentication Header（AH）と組み合わせて使用され、ESPおよびAHで利用可能なさまざまな主要な管理オプション。"
+      "ja": "このドキュメントは、読者が「インターネットプロトコルのセキュリティアーキテクチャ」[Ken-Arch]（以下、セキュリティアーキテクチャドキュメントと呼ぶ）に記載されている用語と概念に精通していることを前提としています。特に、読者は、カプセル化セキュリティペイロード（ESP）[Ken-ESP]とIP認証ヘッダー（AH）によって提供されるセキュリティサービスの定義、セキュリティアソシエーションの概念、ESPを認証ヘッダー（AH）と組み合わせて使用する方法、およびESPとAHで利用可能なさまざまな鍵管理オプションに精通している必要があります。"
     },
     {
       "indent": 3,
       "text": "The keywords MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL, when they appear in this document, are to be interpreted as described in RFC 2119 [Bra97].",
-      "ja": "キーワードは、このドキュメントに表示される場合、RFC 2119 [bra97]に記載されているように解釈される場合、必要な、必須、必要は、推奨、推奨、勧めてはいけません。"
+      "ja": "本書に記載されているキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」は、RFC 2119 [Bra97]で説明されているように解釈されるものとします。"
     },
     {
       "indent": 3,
       "text": "The IP Authentication Header (AH) is used to provide connectionless integrity and data origin authentication for IP datagrams (hereafter referred to as just \"integrity\") and to provide protection against replays. This latter, optional service may be selected, by the receiver, when a Security Association (SA) is established. (The protocol default requires the sender to increment the sequence number used for anti-replay, but the service is effective only if the receiver checks the sequence number.) However, to make use of the Extended Sequence Number feature in an interoperable fashion, AH does impose a requirement on SA management protocols to be able to negotiate this new feature (see Section 2.5.1 below).",
-      "ja": "IP認証ヘッダー（AH）は、IPデータグラムのコネクションレスの整合性とデータオリジン認証を提供するために使用されます（以下、単なる「整合性」と呼ばれます）、リプレイに対する保護を提供します。セキュリティ協会（SA）が確立されると、この後者のオプションサービスが受信者によって選択される場合があります。（プロトコルのデフォルトでは、送信者がアンチレプレイに使用されるシーケンス番号をインクリメントする必要がありますが、レシーバーがシーケンス番号をチェックする場合にのみサービスは効果的です。）ただし、相互運用可能な方法で拡張シーケンス番号機能を使用するために、AHこの新しい機能を交渉できるように、SA管理プロトコルに要件を課しています（以下のセクション2.5.1を参照）。"
+      "ja": "IP認証ヘッダー（AH）は、IPデータグラムのコネクションレスの完全性とデータ送信元認証（以下、単に「完全性」と呼びます）を提供し、リプレイに対する保護を提供するために使用されます。この後者のオプションサービスは、セキュリティアソシエーション（SA）が確立されるときに、受信側によって選択される場合があります。（プロトコルのデフォルトでは、送信者がアンチリプレイに使用されるシーケンス番号をインクリメントする必要がありますが、サービスは受信側がシーケンス番号をチェックする場合にのみ有効です。）ただし、相互運用可能な方法で拡張シーケンス番号機能を使用するために、AHはこの新しい機能をネゴシエートできるように、SA管理プロトコルに要件を課しています（以下のセクション2.5.1を参照）。"
     },
     {
       "indent": 3,
       "text": "AH provides authentication for as much of the IP header as possible, as well as for next level protocol data. However, some IP header fields may change in transit and the value of these fields, when the packet arrives at the receiver, may not be predictable by the sender. The values of such fields cannot be protected by AH. Thus, the protection provided to the IP header by AH is piecemeal. (See Appendix A.)",
-      "ja": "AHは、できるだけ多くのIPヘッダーに、および次のレベルのプロトコルデータに認証を提供します。ただし、一部のIPヘッダーフィールドは輸送が変化する場合があり、これらのフィールドの値は、パケットが受信機に到着すると、送信者が予測できない場合があります。そのようなフィールドの値は、AHで保護することはできません。したがって、AHによってIPヘッダーに提供される保護は断片的です。（付録Aを参照）"
+      "ja": "AHは、可能な限り多くのIPヘッダーと、次のレベルのプロトコルデータに対して認証を提供します。ただし、一部のIPヘッダーフィールドは転送中に変更される場合があり、パケットが受信側に到着したときのこれらのフィールドの値は、送信者が予測できない場合があります。そのようなフィールドの値は、AHで保護することはできません。したがって、AHによってIPヘッダーに提供される保護は断片的です。（付録Aを参照）"
     },
     {
       "indent": 3,
       "text": "AH may be applied alone, in combination with the IP Encapsulating Security Payload (ESP) [Ken-ESP], or in a nested fashion (see Security Architecture document [Ken-Arch]). Security services can be provided between a pair of communicating hosts, between a pair of communicating security gateways, or between a security gateway and a host. ESP may be used to provide the same anti-replay and similar integrity services, and it also provides a confidentiality (encryption) service. The primary difference between the integrity provided by ESP and AH is the extent of the coverage. Specifically, ESP does not protect any IP header fields unless those fields are encapsulated by ESP (e.g., via use of tunnel mode). For more details on how to use AH and ESP in various network environments, see the Security Architecture document [Ken-Arch].",
-      "ja": "AHは、セキュリティペイロード（ESP）[Ken-esp]をカプセル化するIPと組み合わせて、またはネストされた方法で単独で適用できます（セキュリティアーキテクチャドキュメント[Ken-Arch]を参照）。セキュリティサービスは、通信ホストのペア間、セキュリティゲートウェイの通信のペア、またはセキュリティゲートウェイとホストの間で提供できます。ESPは、同じアンチレプレイと同様の整合性サービスを提供するために使用される場合があり、機密性（暗号化）サービスも提供します。ESPとAHによって提供される整合性の主な違いは、カバレッジの範囲です。具体的には、ESPは、これらのフィールドがESPによってカプセル化されない限り（たとえば、トンネルモードの使用による）IPヘッダーフィールドを保護しません。さまざまなネットワーク環境でAHとESPを使用する方法の詳細については、セキュリティアーキテクチャドキュメント[Ken-Arch]を参照してください。"
+      "ja": "AHは、単独で、あるいはIPカプセル化セキュリティペイロード（ESP）[Ken-ESP]と組み合わせて、またはネストされた方法で適用できます（セキュリティアーキテクチャドキュメント[Ken-Arch]を参照）。セキュリティサービスは、通信ホストのペア間、通信するセキュリティゲートウェイのペア間、またはセキュリティゲートウェイとホストの間で提供できます。ESPは、同じアンチリプレイと同様の完全性サービスを提供するために使用される場合があり、機密性（暗号化）サービスも提供します。ESPとAHによって提供される完全性の主な違いは、カバレッジの範囲です。具体的には、ESPは、これらのフィールドがESPによってカプセル化されない限り（たとえば、トンネルモードの使用による）IPヘッダーフィールドを保護しません。さまざまなネットワーク環境でAHとESPを使用する方法の詳細については、セキュリティアーキテクチャドキュメント[Ken-Arch]を参照してください。"
     },
     {
       "indent": 3,
@@ -112,7 +112,7 @@
     {
       "indent": 3,
       "text": "The protocol header (IPv4, IPv6, or IPv6 Extension) immediately preceding the AH header SHALL contain the value 51 in its Protocol (IPv4) or Next Header (IPv6, Extension) fields [DH98]. Figure 1 illustrates the format for AH.",
-      "ja": "AHヘッダーの直前のプロトコルヘッダー（IPv4、IPv6、またはIPv6拡張）には、そのプロトコル（IPv4）または次のヘッダー（IPv6、拡張）フィールドに値51が含まれます[DH98]。図1は、AHの形式を示しています。"
+      "ja": "AHヘッダーの直前のプロトコルヘッダー（IPv4、IPv6、またはIPv6拡張）には、そのプロトコル（IPv4）または次のヘッダー（IPv6、拡張）フィールドに値51が含まれなければなりません（SHALL）[DH98]。図1は、AHの形式を示しています。"
     },
     {
       "indent": 3,
@@ -140,17 +140,17 @@
     {
       "indent": 3,
       "text": "The following subsections define the fields that comprise the AH format. All the fields described here are mandatory; i.e., they are always present in the AH format and are included in the Integrity Check Value (ICV) computation (see Sections 2.6 and 3.3.3).",
-      "ja": "次のサブセクションでは、AH形式を構成するフィールドを定義します。ここで説明するすべてのフィールドは必須です。つまり、それらは常にAH形式に存在し、整合性チェック値（ICV）計算に含まれています（セクション2.6および3.3.3を参照）。"
+      "ja": "次のサブセクションでは、AH形式を構成するフィールドを定義します。ここで説明するすべてのフィールドは必須です。つまり、それらは常にAH形式に存在し、完全性検査値（ICV）計算に含まれています（セクション2.6および3.3.3を参照）。"
     },
     {
       "indent": 3,
       "text": "Note: All of the cryptographic algorithms used in IPsec expect their input in canonical network byte order (see Appendix of RFC 791 [RFC791]) and generate their output in canonical network byte order. IP packets are also transmitted in network byte order.",
-      "ja": "注：IPSECで使用されるすべての暗号化アルゴリズムは、標準的なネットワークバイト順序での入力を期待しています（RFC 791 [RFC791]の付録を参照））。IPパケットもネットワークバイトの順序で送信されます。"
+      "ja": "注：IPsecで使用されるすべての暗号化アルゴリズムは、標準的なネットワークバイト順序での入力を期待しています（RFC 791 [RFC791]の付録を参照）。IPパケットもネットワークバイトの順序で送信されます。"
     },
     {
       "indent": 3,
       "text": "AH does not contain a version number, therefore if there are concerns about backward compatibility, they MUST be addressed by using a signaling mechanism between the two IPsec peers to ensure compatible versions of AH, e.g., IKE [IKEv2] or an out-of-band configuration mechanism.",
-      "ja": "AHにはバージョン番号が含まれていないため、後方互換性について懸念がある場合は、2つのIPSECピア間のシグナル伝達メカニズムを使用して、互換性のあるバージョン、たとえばIKE [IKEV2]またはOut-Of-of-Of-Of-Of-Of-Of-Ofを確保することで対処する必要があります。バンド構成メカニズム。"
+      "ja": "AHにはバージョン番号が含まれていないため、後方互換性について懸念がある場合は、2つのIPsecピア間のシグナル伝達メカニズムを使用して、互換性のあるバージョン、たとえばIKE [IKEv2]またはアウトオブバンド構成メカニズムを確保することで対処する必要があります。"
     },
     {
       "indent": 0,
@@ -172,7 +172,7 @@
     {
       "indent": 3,
       "text": "This 8-bit field specifies the length of AH in 32-bit words (4-byte units), minus \"2\". Thus, for example, if an integrity algorithm yields a 96-bit authentication value, this length field will be \"4\" (3 32-bit word fixed fields plus 3 32-bit words for the ICV, minus 2). For IPv6, the total length of the header must be a multiple of 8-octet units. (Note that although IPv6 [DH98] characterizes AH as an extension header, its length is measured in 32-bit words, not the 64-bit words used by other IPv6 extension headers.) See Section 2.6, \"Integrity Check Value (ICV)\", for comments on padding of this field, and Section 3.3.3.2.1, \"ICV Padding\".",
-      "ja": "この8ビットフィールドは、32ビット単語（4バイト単位）、マイナス「2」でAHの長さを指定します。したがって、たとえば、整合性アルゴリズムが96ビット認証値を生成する場合、この長さフィールドは「4」（3 32ビット単語固定フィールドとICVの3 32ビット単語、マイナス2）になります。IPv6の場合、ヘッダーの全長は8オクテットのユニットの倍数でなければなりません。（IPv6 [DH98]はAHを拡張ヘッダーとして特徴づけているが、その長さは他のIPv6拡張ヘッダーで使用される64ビット語ではなく、32ビット語で測定されることに注意してください。）セクション2.6、「Integrity Check値（ICV）「このフィールドのパディングに関するコメント、およびセクション3.3.3.2.1、「ICVパディング」。"
+      "ja": "この8ビットフィールドは、32ビットワード（4バイト単位）でAHの長さを指定し、「2」を引いたものです。したがって、たとえば、完全性アルゴリズムが96ビット認証値を生成する場合、この長さフィールドは「4」（3つの32ビットワード固定フィールドとICVの3つの32ビットワード、マイナス2）になります。IPv6の場合、ヘッダーの全長は8オクテット単位の倍数でなければなりません。（IPv6 [DH98]はAHを拡張ヘッダーとして特徴づけていますが、その長さは他のIPv6拡張ヘッダーで使用される64ビットワードではなく、32ビットワードで測定されることに注意してください。）このフィールドのパディングに関するコメントについてはセクション2.6「完全性検査値（ICV）」を、およびセクション3.3.3.2.1「ICVパディング」を参照してください。"
     },
     {
       "indent": 0,
@@ -194,52 +194,52 @@
     {
       "indent": 3,
       "text": "The SPI is an arbitrary 32-bit value that is used by a receiver to identify the SA to which an incoming packet is bound. For a unicast SA, the SPI can be used by itself to specify an SA, or it may be used in conjunction with the IPsec protocol type (in this case AH). Because for unicast SAs the SPI value is generated by the receiver, whether the value is sufficient to identify an SA by itself or whether it must be used in conjunction with the IPsec protocol value is a local matter. The SPI field is mandatory, and this mechanism for mapping inbound traffic to unicast SAs described above MUST be supported by all AH implementations.",
-      "ja": "SPIは、受信機が使用する任意の32ビット値であり、着信パケットがバインドされるSAを識別します。ユニキャストSAの場合、SPIはSAを指定するために単独で使用できます。または、IPSECプロトコルタイプ（この場合はAH）と組み合わせて使用できます。ユニキャストSASの場合、SPI値はレシーバーによって生成されるため、値がSAを単独で識別するのに十分であるかどうか、またはIPSECプロトコル値と併用する必要があるかどうかはローカルな問題です。SPIフィールドは必須であり、上記のユニキャストSASへのインバウンドトラフィックをマッピングするためのこのメカニズムは、すべてのAH実装によってサポートされなければなりません。"
+      "ja": "SPIは、受信側が着信パケットがバインドされるSAを識別するために使用する任意の32ビット値です。ユニキャストSAの場合、SPIはSAを指定するために単独で使用することも、IPsecプロトコルタイプ（この場合はAH）と組み合わせて使用することもできます。ユニキャストSAの場合、SPI値は受信側によって生成されるため、値がSAを単独で識別するのに十分であるかどうか、またはIPsecプロトコル値と併用する必要があるかどうかはローカルな問題です。SPIフィールドは必須であり、上記のユニキャストSAへのインバウンドトラフィックをマッピングするためのこのメカニズムは、すべてのAH実装によってサポートされなければなりません（MUST）。"
     },
     {
       "indent": 3,
       "text": "If an IPsec implementation supports multicast, then it MUST support multicast SAs using the algorithm below for mapping inbound IPsec datagrams to SAs. Implementations that support only unicast traffic need not implement this de-multiplexing algorithm.",
-      "ja": "IPSECの実装がマルチキャストをサポートする場合、インバウンドIPSECデータグラムをSASにマッピングするために、以下のアルゴリズムを使用してマルチキャストSASをサポートする必要があります。ユニキャストトラフィックのみをサポートする実装では、この脱倍化アルゴリズムを実装する必要はありません。"
+      "ja": "IPsecの実装がマルチキャストをサポートする場合、インバウンドIPsecデータグラムをSAにマッピングするために、以下のアルゴリズムを使用してマルチキャストSAをサポートしなければなりません（MUST）。ユニキャストトラフィックのみをサポートする実装では、この逆多重化アルゴリズムを実装する必要はありません。"
     },
     {
       "indent": 3,
       "text": "In many secure multicast architectures, e.g., [RFC3740], a central Group Controller/Key Server unilaterally assigns the group security association's SPI. This SPI assignment is not negotiated or coordinated with the key management (e.g., IKE) subsystems that reside in the individual end systems that comprise the group. Consequently, it is possible that a group security association and a unicast security association can simultaneously use the same SPI. A multicast-capable IPsec implementation MUST correctly de-multiplex inbound traffic even in the context of SPI collisions.",
-      "ja": "多くの安全なマルチキャストアーキテクチャなど、[RFC3740]、中央グループコントローラー/キーサーバーがグループセキュリティ協会のSPIを一方的に割り当てます。このSPIの割り当ては、グループを構成する個々のエンドシステムに存在する主要な管理（IKE）サブシステムと交渉または調整されていません。その結果、グループセキュリティ協会とユニキャストセキュリティ協会が同時に同じSPIを使用できる可能性があります。マルチキャスト利用可能なIPSECの実装は、SPI衝突のコンテキストでも、インバウンドトラフィックを正しく脱化する必要があります。"
+      "ja": "多くの安全なマルチキャストアーキテクチャ（例：[RFC3740]）では、中央グループコントローラー/キーサーバーがグループセキュリティアソシエーションのSPIを一方的に割り当てます。このSPIの割り当ては、グループを構成する個々のエンドシステムに存在する鍵管理（例：IKE）サブシステムと交渉または調整されていません。その結果、グループセキュリティアソシエーションとユニキャストセキュリティアソシエーションが同時に同じSPIを使用できる可能性があります。マルチキャスト対応のIPsec実装は、SPI衝突のコンテキストでも、インバウンドトラフィックを正しく逆多重化しなければなりません（MUST）。"
     },
     {
       "indent": 3,
       "text": "Each entry in the Security Association Database (SAD) [Ken-Arch] must indicate whether the SA lookup makes use of the destination, or destination and source, IP addresses, in addition to the SPI. For multicast SAs, the protocol field is not employed for SA lookups. For each inbound, IPsec-protected packet, an implementation must conduct its search of the SAD such that it finds the entry that matches the \"longest\" SA identifier. In this context, if two or more SAD entries match based on the SPI value, then the entry that also matches based on destination, or destination and source, address comparison (as indicated in the SAD entry) is the \"longest\" match. This implies a logical ordering of the SAD search as follows:",
-      "ja": "Security Association Database（SAD）[Ken-Arch]の各エントリは、SAルックアップがSPIに加えて宛先または宛先とソースのIPアドレスを利用するかどうかを示す必要があります。マルチキャストSASの場合、SAルックアップにはプロトコルフィールドが使用されていません。IPSECで保護された各パケットについて、実装は、「最も長い」SA識別子と一致するエントリを見つけるように、SADの検索を実施する必要があります。これに関連して、SPI値に基づいて2つ以上のSADエントリが一致する場合、宛先または宛先とソースに基づいて一致するエントリ（SADエントリに示されているように）が「最長」の一致です。これは、次のように悲しい検索の論理的な順序を意味します。"
+      "ja": "Security Association Database（SAD）[Ken-Arch]の各エントリは、SAルックアップがSPIに加えて宛先、または宛先とソースのIPアドレスを利用するかどうかを示す必要があります。マルチキャストSAの場合、SAルックアップにはプロトコルフィールドが使用されません。IPsecで保護された各着信パケットについて、実装は、「最も長い」SA識別子と一致するエントリを見つけるように、SADの検索を実施する必要があります。これに関連して、SPI値に基づいて2つ以上のSADエントリが一致する場合、宛先、または宛先とソースに基づいて一致するエントリ（SADエントリに示されているように）が「最長」の一致です。これは、次のようなSAD検索の論理的な順序を意味します。"
     },
     {
       "indent": 11,
       "text": "1. Search the SAD for a match on {SPI, destination address, source address}. If an SAD entry matches, then process the inbound AH packet with that matching SAD entry. Otherwise, proceed to step 2.",
-      "ja": "1. {spi、宛先アドレス、ソースアドレス}の一致を悲しみを検索します。悲しいエントリが一致する場合は、その一致する悲しいエントリでインバウンドAHパケットを処理します。それ以外の場合は、ステップ2に進みます。"
+      "ja": "1. {SPI、宛先アドレス、ソースアドレス}の一致をSADで検索します。SADエントリが一致する場合は、その一致するSADエントリでインバウンドAHパケットを処理します。それ以外の場合は、ステップ2に進みます。"
     },
     {
       "indent": 11,
       "text": "2. Search the SAD for a match on {SPI, destination address}. If an SAD entry matches, then process the inbound AH packet with that matching SAD entry. Otherwise, proceed to step 3.",
-      "ja": "2. {spi、宛先アドレス}の試合を悲しみを検索します。悲しいエントリが一致する場合は、その一致する悲しいエントリでインバウンドAHパケットを処理します。それ以外の場合は、ステップ3に進みます。"
+      "ja": "2. {SPI、宛先アドレス}の一致をSADで検索します。SADエントリが一致する場合は、その一致するSADエントリでインバウンドAHパケットを処理します。それ以外の場合は、ステップ3に進みます。"
     },
     {
       "indent": 11,
       "text": "3. Search the SAD for a match on only {SPI} if the receiver has chosen to maintain a single SPI space for AH and ESP, or on {SPI, protocol} otherwise. If an SAD entry matches, then process the inbound AH packet with that matching SAD entry. Otherwise, discard the packet and log an auditable event.",
-      "ja": "3. ReceiverがAHとESPの単一のSPIスペースを維持するか、{SPI、プロトコル}で維持することを選択した場合、{SPI}のみの試合を検索してください。悲しいエントリが一致する場合は、その一致する悲しいエントリでインバウンドAHパケットを処理します。それ以外の場合は、パケットを破棄し、監査可能なイベントを記録します。"
+      "ja": "3. 受信側がAHとESPの単一のSPIスペースを維持することを選択した場合は{SPI}のみ、そうでない場合は{SPI、プロトコル}の一致をSADで検索します。SADエントリが一致する場合は、その一致するSADエントリでインバウンドAHパケットを処理します。それ以外の場合は、パケットを破棄し、監査可能なイベントを記録します。"
     },
     {
       "indent": 3,
       "text": "In practice, an implementation MAY choose any method to accelerate this search, although its externally visible behavior MUST be functionally equivalent to having searched the SAD in the above order. For example, a software-based implementation could index into a hash table by the SPI. The SAD entries in each hash table bucket's linked list are kept sorted to have those SAD entries with the longest SA identifiers first in that linked list. Those SAD entries having the shortest SA identifiers are sorted so that they are the last entries in the linked list. A hardware-based implementation may be able to effect the longest match search intrinsically, using commonly available Ternary Content-Addressable Memory (TCAM) features.",
-      "ja": "実際には、実装はこの検索を加速する方法を選択する場合がありますが、その外部的に表示される動作は、上記の順序でSADを検索することと機能的に同等でなければなりません。たとえば、ソフトウェアベースの実装は、SPIによってハッシュテーブルにインデックスを付けることができます。各ハッシュテーブルバケットのリンクリストの悲しいエントリは、そのリンクリストで最初に最初に最も長いSA識別子を持つこれらの悲しいエントリを持つように並べ替えられます。最短のSA識別子を持つこれらの悲しいエントリは、リンクリストの最後のエントリであるようにソートされます。ハードウェアベースの実装は、一般的に利用可能な3成分アドレス可能なメモリ（TCAM）機能を使用して、本質的に最長の一致検索に影響を与えることができる場合があります。"
+      "ja": "実際には、実装はこの検索を加速する方法を選択してもかまいませんが（MAY）、その外部的に見える動作は、上記の順序でSADを検索することと機能的に同等でなければなりません（MUST）。たとえば、ソフトウェアベースの実装は、SPIによってハッシュテーブルにインデックスを付けることができます。各ハッシュテーブルバケットのリンクリストのSADエントリは、そのリンクリストで最初に最も長いSA識別子を持つSADエントリを持つように並べ替えられます。最短のSA識別子を持つSADエントリは、リンクリストの最後のエントリになるようにソートされます。ハードウェアベースの実装は、一般的に利用可能な3値連想メモリ（TCAM）機能を使用して、本質的に最長一致検索を実行できる場合があります。"
     },
     {
       "indent": 3,
       "text": "The indication of whether source and destination address matching is required to map inbound IPsec traffic to SAs MUST be set either as a side effect of manual SA configuration or via negotiation using an SA management protocol, e.g., IKE or Group Domain of Interpretation (GDOI) [RFC3547]. Typically, Source-Specific Multicast (SSM) [HC03] groups use a 3-tuple SA identifier composed of an SPI, a destination multicast address, and source address. An Any-Source Multicast group SA requires only an SPI and a destination multicast address as an identifier.",
-      "ja": "INBOUND IPSECトラフィックをSASにマッピングするためにソースと宛先アドレスのマッチングが必要かどうかを示すことは、SAマネジメントプロトコルなど、IKEまたはグループドメインの解釈（GDOI）を使用したネゴシエーションを使用して、マニュアルSA構成の副作用として設定する必要があります。[RFC3547]。通常、ソース固有のマルチキャスト（SSM）[HC03]グループは、SPI、宛先マルチキャストアドレス、およびソースアドレスで構成される3タプルSA識別子を使用します。任意のソースマルチキャストグループSAには、識別子としてSPIと宛先マルチキャストアドレスのみが必要です。"
+      "ja": "インバウンドIPsecトラフィックをSAにマッピングするためにソースと宛先アドレスのマッチングが必要かどうかを示すことは、手動SA構成の副作用として、またはSA管理プロトコル（例：IKEまたはGroup Domain of Interpretation (GDOI) [RFC3547]）を使用したネゴシエーションを介して設定されなければなりません（MUST）。通常、ソース固有マルチキャスト（SSM）[HC03]グループは、SPI、宛先マルチキャストアドレス、およびソースアドレスで構成される3タプルSA識別子を使用します。Any-SourceマルチキャストグループSAには、識別子としてSPIと宛先マルチキャストアドレスのみが必要です。"
     },
     {
       "indent": 3,
       "text": "The set of SPI values in the range 1 through 255 is reserved by the Internet Assigned Numbers Authority (IANA) for future use; a reserved SPI value will not normally be assigned by IANA unless the use of the assigned SPI value is specified in an RFC. The SPI value of zero (0) is reserved for local, implementation-specific use and MUST NOT be sent on the wire. (For example, a key management implementation might use the zero SPI value to mean \"No Security Association Exists\" during the period when the IPsec implementation has requested that its key management entity establish a new SA, but the SA has not yet been established.)",
-      "ja": "範囲1〜255のSPI値のセットは、将来の使用のためにインターネットに割り当てられた数字の権限（IANA）によって予約されています。割り当てられたSPI値の使用がRFCで指定されていない限り、予約されたSPI値は通常IANAによって割り当てられません。ゼロ（0）のSPI値は、ローカルの実装固有の使用のために予約されており、ワイヤーに送信してはなりません。（たとえば、主要な管理実装では、ゼロSPI値を使用して、IPSECの実装が主要な管理エンティティが新しいSAを確立するように要求したが、SAはまだ確立されていない期間中に「セキュリティ協会が存在しない」ことを意味する場合があります。））"
+      "ja": "範囲1〜255のSPI値のセットは、将来の使用のためにInternet Assigned Numbers Authority（IANA）によって予約されています。割り当てられたSPI値の使用がRFCで指定されていない限り、予約されたSPI値は通常IANAによって割り当てられません。ゼロ（0）のSPI値は、ローカルの実装固有の使用のために予約されており、ワイヤー上で送信してはなりません（MUST NOT）。（たとえば、鍵管理実装では、IPsecの実装が鍵管理エンティティに新しいSAを確立するように要求したが、SAがまだ確立されていない期間中に「セキュリティアソシエーションが存在しない」ことを意味するためにゼロSPI値を使用する場合があります。）"
     },
     {
       "indent": 0,
@@ -250,17 +250,17 @@
     {
       "indent": 3,
       "text": "This unsigned 32-bit field contains a counter value that increases by one for each packet sent, i.e., a per-SA packet sequence number. For a unicast SA or a single-sender multicast SA, the sender MUST increment this field for every transmitted packet. Sharing an SA among multiple senders is permitted, though generally not recommended. AH provides no means of synchronizing packet counters among multiple senders or meaningfully managing a receiver packet counter and window in the context of multiple senders. Thus, for a multi-sender SA, the anti-reply features of AH are not available (see Sections 3.3.2 and 3.4.3).",
-      "ja": "この署名されていない32ビットフィールドには、送信されるパケットごとに1つずつ増加するカウンター値、つまりSAあたりのパケットシーケンス番号が含まれています。ユニキャストSAまたはシングルセンダーマルチキャストSAの場合、送信者は、送信されたパケットごとにこのフィールドを増やす必要があります。複数の送信者間でSAを共有することは許可されていますが、一般的には推奨されません。AHは、複数の送信者の間でパケットカウンターを同期させたり、複数の送信者のコンテキストで受信機パケットカウンターとウィンドウを有意義に管理したりする手段を提供しません。したがって、マルチセンダーSAの場合、AHの反復機能は利用できません（セクション3.3.2および3.4.3を参照）。"
+      "ja": "この符号なし32ビットフィールドには、送信されるパケットごとに1つずつ増加するカウンター値、つまりSAごとのパケットシーケンス番号が含まれています。ユニキャストSAまたはシングルセンダーマルチキャストSAの場合、送信者は、送信されたパケットごとにこのフィールドをインクリメントしなければなりません（MUST）。複数の送信者間でSAを共有することは許可されていますが、一般的には推奨されません。AHは、複数の送信者の間でパケットカウンターを同期させたり、複数の送信者のコンテキストで受信側パケットカウンターとウィンドウを有意義に管理したりする手段を提供しません。したがって、マルチセンダーSAの場合、AHのアンチリプレイ機能は利用できません（セクション3.3.2および3.4.3を参照）。"
     },
     {
       "indent": 3,
       "text": "The field is mandatory and MUST always be present even if the receiver does not elect to enable the anti-replay service for a specific SA. Processing of the Sequence Number field is at the discretion of the receiver, but all AH implementations MUST be capable of performing the processing described in Section 3.3.2, \"Sequence Number Generation\", and Section 3.4.3, \"Sequence Number Verification\". Thus, the sender MUST always transmit this field, but the receiver need not act upon it.",
-      "ja": "フィールドは必須であり、受信者が特定のSAのアンチレプレイサービスを有効にすることを選択していなくても、常に存在する必要があります。シーケンス番号フィールドの処理は受信機の裁量にありますが、すべてのAH実装は、セクション3.3.2、「シーケンス番号生成」、およびセクション3.4.3、「シーケンス番号検証」で説明されている処理を実行できなければなりません。したがって、送信者は常にこのフィールドを送信する必要がありますが、受信機はそれに基づいて動作する必要はありません。"
+      "ja": "このフィールドは必須であり、受信側が特定のSAのアンチリプレイサービスを有効にすることを選択していなくても、常に存在しなければなりません（MUST）。シーケンス番号フィールドの処理は受信側の裁量にありますが、すべてのAH実装は、セクション3.3.2「シーケンス番号生成」およびセクション3.4.3「シーケンス番号検証」で説明されている処理を実行できなければなりません（MUST）。したがって、送信者は常にこのフィールドを送信しなければなりませんが（MUST）、受信側はそれに基づいて動作する必要はありません。"
     },
     {
       "indent": 3,
       "text": "The sender's counter and the receiver's counter are initialized to 0 when an SA is established. (The first packet sent using a given SA will have a sequence number of 1; see Section 3.3.2 for more details on how the sequence number is generated.) If anti-replay is enabled (the default), the transmitted sequence number must never be allowed to cycle. Thus, the sender's counter and the receiver's counter MUST be reset (by establishing a new SA and thus a new key) prior to the transmission of the 2^32nd packet on an SA.",
-      "ja": "送信者のカウンターとレシーバーのカウンターは、SAが確立されたときに0に初期化されます。（特定のSAを使用して送信された最初のパケットには1のシーケンス番号があります。シーケンス番号の生成方法の詳細については、セクション3.3.2を参照してください。）アンチレプレイが有効になっている場合（デフォルト）、送信されたシーケンス番号は必要です。自転車に乗ることを許可されないでください。したがって、送信者のカウンターとレシーバーのカウンターは、SAで2^32ndパケットを送信する前に（新しいSAと新しいキーを確立することにより）リセットする必要があります。"
+      "ja": "送信者のカウンターと受信者のカウンターは、SAが確立されたときに0に初期化されます。（特定のSAを使用して送信された最初のパケットには1のシーケンス番号があります。シーケンス番号の生成方法の詳細については、セクション3.3.2を参照してください。）アンチリプレイが有効になっている場合（デフォルト）、送信されたシーケンス番号は決して循環することを許可されてはなりません。したがって、送信者のカウンターと受信者のカウンターは、SAで2^32番目のパケットを送信する前に（新しいSAと新しいキーを確立することにより）リセットされなければなりません（MUST）。"
     },
     {
       "indent": 0,
@@ -271,23 +271,23 @@
     {
       "indent": 3,
       "text": "To support high-speed IPsec implementations, a new option for sequence numbers SHOULD be offered, as an extension to the current, 32-bit sequence number field. Use of an Extended Sequence Number (ESN) MUST be negotiated by an SA management protocol. Note that in IKEv2, this negotiation is implicit; the default is ESN unless 32-bit sequence numbers are explicitly negotiated. (The ESN feature is applicable to multicast as well as unicast SAs.)",
-      "ja": "高速IPSEC実装をサポートするには、現在の32ビットシーケンス番号フィールドへの拡張として、シーケンス番号の新しいオプションを提供する必要があります。拡張シーケンス番号（ESN）の使用は、SA管理プロトコルによって交渉する必要があります。IKEV2では、この交渉は暗黙的であることに注意してください。32ビットシーケンス番号が明示的にネゴシエートされない限り、デフォルトはESNです。（ESN機能は、マルチキャストおよびユニキャストSASに適用できます。）"
+      "ja": "高速IPsec実装をサポートするには、現在の32ビットシーケンス番号フィールドへの拡張として、シーケンス番号の新しいオプションを提供すべきです（SHOULD）。拡張シーケンス番号（ESN）の使用は、SA管理プロトコルによって交渉されなければなりません（MUST）。IKEv2では、この交渉は暗黙的であることに注意してください。32ビットシーケンス番号が明示的にネゴシエートされない限り、デフォルトはESNです。（ESN機能は、マルチキャストおよびユニキャストSAに適用できます。）"
     },
     {
       "indent": 3,
       "text": "The ESN facility allows use of a 64-bit sequence number for an SA. (See Appendix B, \"Extended (64-bit) Sequence Numbers\", for details.) Only the low-order 32 bits of the sequence number are transmitted in the AH header of each packet, thus minimizing packet overhead. The high-order 32 bits are maintained as part of the sequence number counter by both transmitter and receiver and are included in the computation of the ICV, but are not transmitted.",
-      "ja": "ESN施設では、SAに64ビットシーケンス番号を使用できます。（詳細については、付録B、「拡張（64ビット）シーケンス番号」を参照してください。）各パケットのAHヘッダーには、低次の32ビットのシーケンス番号のみが送信されるため、パケットオーバーヘッドを最小限に抑えます。高次の32ビットは、送信機と受信機の両方によってシーケンス番号カウンターの一部として維持され、ICVの計算に含まれていますが、送信されません。"
+      "ja": "ESN機能では、SAに64ビットシーケンス番号を使用できます。（詳細については、付録B、「拡張（64ビット）シーケンス番号」を参照してください。）各パケットのAHヘッダーには、下位32ビットのシーケンス番号のみが送信されるため、パケットオーバーヘッドを最小限に抑えます。上位32ビットは、送信側と受信側の両方によってシーケンス番号カウンターの一部として維持され、ICVの計算に含まれていますが、送信されません。"
     },
     {
       "indent": 0,
       "text": "2.6. Integrity Check Value (ICV)",
       "section_title": true,
-      "ja": "2.6. 整合性チェック値（ICV）"
+      "ja": "2.6. 完全性検査値（ICV）"
     },
     {
       "indent": 3,
       "text": "This is a variable-length field that contains the Integrity Check Value (ICV) for this packet. The field must be an integral multiple of 32 bits (IPv4 or IPv6) in length. The details of ICV processing are described in Section 3.3.3, \"Integrity Check Value Calculation\", and Section 3.4.4, \"Integrity Check Value Verification\". This field may include explicit padding, if required to ensure that the length of the AH header is an integral multiple of 32 bits (IPv4) or 64 bits (IPv6). All implementations MUST support such padding and MUST insert only enough padding to satisfy the IPv4/IPv6 alignment requirements. Details of how to compute the required padding length are provided below in Section 3.3.3.2, \"Padding\". The integrity algorithm specification MUST specify the length of the ICV and the comparison rules and processing steps for validation.",
-      "ja": "これは、このパケットの整合性チェック値（ICV）を含む可変長さのフィールドです。フィールドは、長さが32ビット（IPv4またはIPv6）の積分倍でなければなりません。ICV処理の詳細は、セクション3.3.3、「整合性チェック値の計算」、およびセクション3.4.4、「整合性チェック値の検証」で説明されています。このフィールドには、AHヘッダーの長さが32ビット（IPv4）または64ビット（IPv6）の積分倍であることを確認するために必要な場合、明示的なパディングが含まれる場合があります。すべての実装は、そのようなパディングをサポートする必要があり、IPv4/IPv6アライメント要件を満たすのに十分なパディングのみを挿入する必要があります。必要なパディングの長さを計算する方法の詳細は、セクション3.3.3.2「パディング」に以下に示されています。整合性アルゴリズムの仕様は、ICVの長さと、検証のための比較ルールと処理手順を指定する必要があります。"
+      "ja": "これは、このパケットの完全性検査値（ICV）を含む可変長のフィールドです。フィールドは、長さが32ビット（IPv4またはIPv6）の整数倍でなければなりません。ICV処理の詳細は、セクション3.3.3、「完全性検査値の計算」、およびセクション3.4.4、「完全性検査値の検証」で説明されています。このフィールドには、AHヘッダーの長さが32ビット（IPv4）または64ビット（IPv6）の整数倍であることを確認するために必要な場合、明示的なパディングが含まれる場合があります。すべての実装は、そのようなパディングをサポートしなければならず（MUST）、IPv4/IPv6アライメント要件を満たすのに十分なパディングのみを挿入しなければなりません（MUST）。必要なパディングの長さを計算する方法の詳細は、セクション3.3.3.2「パディング」に以下に示されています。整合性アルゴリズムの仕様は、ICVの長さと、検証のための比較ルールと処理手順を指定しなければなりません（MUST）。"
     },
     {
       "indent": 0,
@@ -304,18 +304,18 @@
     {
       "indent": 3,
       "text": "AH may be employed in two ways: transport mode or tunnel mode. (See the Security Architecture document for a description of when each should be used.)",
-      "ja": "AHは、輸送モードまたはトンネルモードの2つの方法で採用される場合があります。（それぞれを使用する時期の説明については、セキュリティアーキテクチャドキュメントを参照してください。）"
+      "ja": "AHは、トランスポートモードまたはトンネルモードの2つの方法で採用される場合があります。（それぞれを使用する時期の説明については、セキュリティアーキテクチャドキュメントを参照してください。）"
     },
     {
       "indent": 0,
       "text": "3.1.1. Transport Mode",
       "section_title": true,
-      "ja": "3.1.1. 輸送モード"
+      "ja": "3.1.1. トランスポートモード"
     },
     {
       "indent": 3,
       "text": "In transport mode, AH is inserted after the IP header and before a next layer protocol (e.g., TCP, UDP, ICMP, etc.) or before any other IPsec headers that have already been inserted. In the context of IPv4, this calls for placing AH after the IP header (and any options that it contains), but before the next layer protocol. (Note that the term \"transport\" mode should not be misconstrued as restricting its use to TCP and UDP.) The following diagram illustrates AH transport mode positioning for a typical IPv4 packet, on a \"before and after\" basis.",
-      "ja": "トランスポートモードでは、AHはIPヘッダーの後、次のレイヤープロトコル（TCP、UDP、ICMPなど）の前、または既に挿入されている他のIPSECヘッダーの前に挿入されます。IPv4のコンテキストでは、これはIPヘッダー（および含まれるオプション）の後にAHを配置する必要がありますが、次のレイヤープロトコルの前にあります。（「輸送」モードという用語は、その使用をTCPとUDPに制限するものとして誤解されるべきではないことに注意してください。）次の図は、「前後」に基づいて、典型的なIPv4パケットのAH輸送モードの位置付けを示しています。"
+      "ja": "トランスポートモードでは、AHはIPヘッダーの後、次のレイヤープロトコル（TCP、UDP、ICMPなど）の前、またはすでに挿入されている他のIPsecヘッダーの前に挿入されます。IPv4のコンテキストでは、これはIPヘッダー（およびそれに含まれるオプション）の後、次のレイヤープロトコルの前にAHを配置することを要求します。（「トランスポート」モードという用語は、その使用をTCPとUDPに制限するものとして誤解されるべきではないことに注意してください。）次の図は、典型的なIPv4パケットのAHトランスポートモードの位置を「前後」ベースで示しています。"
     },
     {
       "indent": 7,
@@ -332,7 +332,7 @@
     {
       "indent": 3,
       "text": "In the IPv6 context, AH is viewed as an end-to-end payload, and thus should appear after hop-by-hop, routing, and fragmentation extension headers. The destination options extension header(s) could appear before or after or both before and after the AH header depending on the semantics desired. The following diagram illustrates AH transport mode positioning for a typical IPv6 packet.",
-      "ja": "IPv6コンテキストでは、AHはエンドツーエンドのペイロードと見なされるため、ホップバイホップ、ルーティング、およびフラグメンテーションエクステンションヘッダーの後に表示されるはずです。目的地のオプション拡張ヘッダーは、目的のセマンティクスに応じて、AHヘッダーの前後またはその前後に表示される可能性があります。次の図は、典型的なIPv6パケットのAH輸送モードの位置を示しています。"
+      "ja": "IPv6コンテキストでは、AHはエンドツーエンドのペイロードと見なされるため、ホップバイホップ、ルーティング、およびフラグメンテーションエクステンションヘッダーの後に表示されるはずです。目的地のオプション拡張ヘッダーは、目的のセマンティクスに応じて、AHヘッダーの前後またはその前後に表示される可能性があります。次の図は、典型的なIPv6パケットのAHトランスポートモードの位置を示しています。"
     },
     {
       "indent": 7,
@@ -359,7 +359,7 @@
     {
       "indent": 3,
       "text": "Note that in transport mode, for \"bump-in-the-stack\" or \"bump-in-the-wire\" implementations, as defined in the Security Architecture document, inbound and outbound IP fragments may require an IPsec implementation to perform extra IP reassembly/fragmentation in order to both conform to this specification and provide transparent IPsec support. Special care is required to perform such operations within these implementations when multiple interfaces are in use.",
-      "ja": "トランスポートモードでは、セキュリティアーキテクチャドキュメントで定義されているように、「バンプインザスタック」または「バンプインザワイヤ」実装の場合、インバウンドおよびアウトバウンドIPフラグメントが必要になる場合があることに注意してください。この仕様に適合し、透明なIPSECサポートを提供するために、再組み立て/断片化。複数のインターフェイスが使用されている場合、これらの実装内でそのような操作を実行するには、特別な注意が必要です。"
+      "ja": "トランスポートモードでは、セキュリティアーキテクチャドキュメントで定義されているように、「バンプインザスタック」または「バンプインザワイヤ」実装の場合、インバウンドおよびアウトバウンドIPフラグメントは、この仕様に適合し、かつ透過的なIPsecサポートを提供するために、IPsec実装に追加のIP再構成/断片化を実行することを要求する場合があることに注意してください。複数のインターフェイスが使用されている場合、これらの実装内でそのような操作を実行するには、特別な注意が必要です。"
     },
     {
       "indent": 0,
@@ -370,7 +370,7 @@
     {
       "indent": 3,
       "text": "In tunnel mode, the \"inner\" IP header carries the ultimate (IP) source and destination addresses, while an \"outer\" IP header contains the addresses of the IPsec \"peers,\" e.g., addresses of security gateways. Mixed inner and outer IP versions are allowed, i.e., IPv6 over IPv4 and IPv4 over IPv6. In tunnel mode, AH protects the entire inner IP packet, including the entire inner IP header. The position of AH in tunnel mode, relative to the outer IP header, is the same as for AH in transport mode. The following diagram illustrates AH tunnel mode positioning for typical IPv4 and IPv6 packets.",
-      "ja": "トンネルモードでは、「内側」のIPヘッダーには究極の（IP）ソースと宛先アドレスが搭載されていますが、「外側」IPヘッダーには、IPSECの「ピア」のアドレス（セキュリティゲートウェイのアドレス」が含まれています。混合内のIPバージョン、つまりIPv4を介したIPv6およびIPv6を介してIPv6を混合しています。トンネルモードでは、AHは内側のIPヘッダー全体を含む内側のIPパケット全体を保護します。外側のIPヘッダーと比較して、トンネルモードでのAHの位置は、輸送モードのAHの場合と同じです。次の図は、典型的なIPv4およびIPv6パケットのAHトンネルモードの位置を示しています。"
+      "ja": "トンネルモードでは、「内側」のIPヘッダーには究極の（IP）ソースと宛先アドレスが搭載されていますが、「外側」IPヘッダーには、IPsecの「ピア」のアドレス（セキュリティゲートウェイのアドレスなど）が含まれています。混合された内部および外部IPバージョン、つまりIPv4上のIPv6およびIPv6上のIPv4が許可されています。トンネルモードでは、AHは内側のIPヘッダー全体を含む内側のIPパケット全体を保護します。外側のIPヘッダーと比較して、トンネルモードでのAHの位置は、トランスポートモードのAHの場合と同じです。次の図は、典型的なIPv4およびIPv6パケットのAHトンネルモードの位置を示しています。"
     },
     {
       "indent": 3,
@@ -393,12 +393,12 @@
       "indent": 0,
       "text": "3.2. Integrity Algorithms",
       "section_title": true,
-      "ja": "3.2. 整合性アルゴリズム"
+      "ja": "3.2. 完全性アルゴリズム"
     },
     {
       "indent": 3,
       "text": "The integrity algorithm employed for the ICV computation is specified by the SA. For point-to-point communication, suitable integrity algorithms include keyed Message Authentication Codes (MACs) based on symmetric encryption algorithms (e.g., AES [AES]) or on one-way hash functions (e.g., MD5, SHA-1, SHA-256, etc.). For multicast communication, a variety of cryptographic strategies for providing integrity have been developed and research continues in this area.",
-      "ja": "ICV計算に使用される整合性アルゴリズムは、SAによって指定されています。ポイントツーポイント通信の場合、適切な整合性アルゴリズムには、対称暗号化アルゴリズム（AES [AES]）または一方向ハッシュ関数（MD5、SHA-1、SHA-に基づくキー付きメッセージ認証コード（MAC）が含まれます。256など）。マルチキャストコミュニケーションのために、整合性を提供するためのさまざまな暗号化戦略が開発され、この分野では研究が継続されています。"
+      "ja": "ICV計算に使用される完全性アルゴリズムは、SAによって指定されています。ポイントツーポイント通信の場合、適切な完全性アルゴリズムには、対称暗号化アルゴリズム（AES [AES]）または一方向ハッシュ関数（MD5、SHA-1、SHA-256など）に基づくキー付きメッセージ認証コード（MAC）が含まれます。マルチキャスト通信のために、完全性を提供するためのさまざまな暗号化戦略が開発され、この分野では研究が継続されています。"
     },
     {
       "indent": 0,
@@ -409,7 +409,7 @@
     {
       "indent": 3,
       "text": "In transport mode, the sender inserts the AH header after the IP header and before a next layer protocol header, as described above. In tunnel mode, the outer and inner IP header/extensions can be interrelated in a variety of ways. The construction of the outer IP header/extensions during the encapsulation process is described in the Security Architecture document.",
-      "ja": "トランスポートモードでは、送信者は、上記のように、IPヘッダーの後、次のレイヤープロトコルヘッダーの前にAHヘッダーを挿入します。トンネルモードでは、外側および内側のIPヘッダー/拡張機能をさまざまな方法で相互に関連付けることができます。カプセル化プロセス中の外側IPヘッダー/拡張機能の構築については、セキュリティアーキテクチャドキュメントで説明します。"
+      "ja": "トランスポートモードでは、送信者は、上記のように、IPヘッダーの後、次のレイヤープロトコルヘッダーの前にAHヘッダーを挿入します。トンネルモードでは、外側および内側のIPヘッダー/拡張機能をさまざまな方法で相互に関連付けることができます。カプセル化プロセス中の外側IPヘッダー/拡張機能の構築については、セキュリティアーキテクチャドキュメントで説明されています。"
     },
     {
       "indent": 0,
@@ -420,7 +420,7 @@
     {
       "indent": 3,
       "text": "AH is applied to an outbound packet only after an IPsec implementation determines that the packet is associated with an SA that calls for AH processing. The process of determining what, if any, IPsec processing is applied to outbound traffic is described in the Security Architecture document.",
-      "ja": "AHは、IPSECの実装により、パケットがAH処理を必要とするSAに関連付けられていると判断した後にのみ、アウトバウンドパケットに適用されます。IPSEC処理がアウトバウンドトラフィックに適用されるものを決定するプロセスは、セキュリティアーキテクチャドキュメントで説明されています。"
+      "ja": "AHは、IPsecの実装により、パケットがAH処理を必要とするSAに関連付けられていると判断した後にのみ、アウトバウンドパケットに適用されます。IPsec処理がアウトバウンドトラフィックに適用されるものを決定するプロセスは、セキュリティアーキテクチャドキュメントで説明されています。"
     },
     {
       "indent": 0,
@@ -431,22 +431,22 @@
     {
       "indent": 3,
       "text": "The sender's counter is initialized to 0 when an SA is established. The sender increments the sequence number (or ESN) counter for this SA and inserts the low-order 32 bits of the value into the Sequence Number field. Thus, the first packet sent using a given SA will contain a sequence number of 1.",
-      "ja": "送信者のカウンターは、SAが確立されたときに0に初期化されます。送信者は、このSAのシーケンス番号（またはESN）カウンターを増分し、値の32ビットをシーケンス番号フィールドに挿入します。したがって、特定のSAを使用して送信された最初のパケットには、1のシーケンス番号が含まれます。"
+      "ja": "送信者のカウンターは、SAが確立されたときに0に初期化されます。（特定のSAを使用して送信された最初のパケットには1のシーケンス番号があります。シーケンス番号の生成方法の詳細については、セクション3.3.2を参照してください。）アンチリプレイが有効になっている場合（デフォルト）、送信されたシーケンス番号は決して循環することを許可されてはなりません。したがって、送信者のカウンターと受信者のカウンターは、SAで2^32番目のパケットを送信する前に（新しいSAと新しいキーを確立することにより）リセットされなければなりません（MUST）。"
     },
     {
       "indent": 3,
       "text": "If anti-replay is enabled (the default), the sender checks to ensure that the counter has not cycled before inserting the new value in the Sequence Number field. In other words, the sender MUST NOT send a packet on an SA if doing so would cause the sequence number to cycle. An attempt to transmit a packet that would result in sequence number overflow is an auditable event. The audit log entry for this event SHOULD include the SPI value, current date/time, Source Address, Destination Address, and (in IPv6) the cleartext Flow ID.",
-      "ja": "アンチレプレイが有効になっている場合（デフォルト）、送信者はシーケンス番号フィールドに新しい値を挿入する前にカウンターが循環していないことを確認します。言い換えれば、送信者は、SAにパケットを送信してはなりません。シーケンス数のオーバーフローをもたらすパケットを送信しようとする試みは、監査可能なイベントです。このイベントの監査ログエントリには、SPI値、現在の日付/時間、ソースアドレス、宛先アドレス、および（IPv6で）クリアテキストフローIDを含める必要があります。"
+      "ja": "アンチリプレイが有効になっている場合（デフォルト）、送信者はシーケンス番号フィールドに新しい値を挿入する前にカウンターが循環していないことを確認します。言い換えれば、送信者は、そうすることでシーケンス番号が循環する場合、SAでパケットを送信してはなりません（MUST NOT）。シーケンス番号のオーバーフローをもたらすパケットを送信しようとする試みは、監査可能なイベントです。このイベントの監査ログエントリには、SPI値、現在の日付/時間、ソースアドレス、宛先アドレス、および（IPv6で）クリアテキストフローIDを含めるべきです（SHOULD）。"
     },
     {
       "indent": 3,
       "text": "The sender assumes anti-replay is enabled as a default, unless otherwise notified by the receiver (see Section 3.4.3) or if the SA was configured using manual key management. Thus, typical behavior of an AH implementation calls for the sender to establish a new SA when the Sequence Number (or ESN) cycles, or in anticipation of this value cycling.",
-      "ja": "送信者は、レシーバーから特に通知されない限り（セクション3.4.3を参照）、またはManual Key Managementを使用してSAが構成されている場合を除き、アンチレプレイがデフォルトとして有効になることを想定します。したがって、AH実装の典型的な動作では、シーケンス番号（またはESN）サイクルのときに新しいSAを確立するために、またはこの値サイクリングを予想して送信者が新しいSAを確立する必要があります。"
+      "ja": "送信者は、受信側から特に通知されない限り（セクション3.4.3を参照）、または手動鍵管理を使用してSAが構成されている場合を除き、アンチリプレイがデフォルトとして有効になることを想定します。したがって、AH実装の典型的な動作では、シーケンス番号（またはESN）が循環するとき、またはこの値の循環を予想して、送信者が新しいSAを確立する必要があります。"
     },
     {
       "indent": 3,
       "text": "If anti-replay is disabled (as noted above), the sender does not need to monitor or reset the counter, e.g., in the case of manual key management (see Section 5). However, the sender still increments the counter and when it reaches the maximum value, the counter rolls over back to zero. (This behavior is recommended for multi-sender, multicast SAs, unless anti-replay mechanisms outside the scope of this standard are negotiated between the sender and receiver.)",
-      "ja": "アンチレプレイが無効になっている場合（上記のように）、送信者はカウンターを監視またはリセットする必要はありません。たとえば、手動キー管理の場合（セクション5を参照）。ただし、送信者は引き続きカウンターを増分し、最大値に達すると、カウンターはゼロに戻ります。（この標準の範囲外のアンチレプレイメカニズムが送信者と受信機の間で交渉されない限り、この動作はマルチセンダー、マルチキャストSASに推奨されます。）"
+      "ja": "アンチリプレイが無効になっている場合（上記のように）、送信者はカウンターを監視またはリセットする必要はありません。たとえば、手動鍵管理の場合（セクション5を参照）。ただし、送信者は引き続きカウンターをインクリメントし、最大値に達すると、カウンターはゼロに戻ります。（この標準の範囲外のアンチリプレイメカニズムが送信者と受信側の間で交渉されない限り、この動作はマルチセンダー、マルチキャストSAに推奨されます。）"
     },
     {
       "indent": 3,
@@ -456,13 +456,13 @@
     {
       "indent": 3,
       "text": "Note: If a receiver chooses not to enable anti-replay for an SA, then the receiver SHOULD NOT negotiate ESN in an SA management protocol. Use of ESN creates a need for the receiver to manage the anti-replay window (in order to determine the correct value for the high-order bits of the ESN, which are employed in the ICV computation), which is generally contrary to the notion of disabling anti-replay for an SA.",
-      "ja": "注：レシーバーがSAのアンチレプレイを有効にしないことを選択した場合、レシーバーはSA管理プロトコルでESNをネゴシエートしてはなりません。ESNを使用すると、受信者がアンチレプレイウィンドウを管理する必要があります（ICV計算で使用されているESNの高次ビットの正しい値を決定するため）。これは一般に概念に反しています。SAのアンチレプレイを無効にする。"
+      "ja": "注：レシーバーがSAのアンチレプレイを有効にしないことを選択した場合、レシーバーはSA管理プロトコルでESNをネゴシエートすべきではありません。ESNを使用すると、受信者がアンチレプレイウィンドウを管理する必要があります（ICV計算で使用されているESNの高次ビットの正しい値を決定するため）。これは一般に、SAのアンチレプレイを無効にするという考えに反します。"
     },
     {
       "indent": 0,
       "text": "3.3.3. Integrity Check Value Calculation",
       "section_title": true,
-      "ja": "3.3.3. 整合性チェック値の計算"
+      "ja": "3.3.3. 完全性検査値の計算"
     },
     {
       "indent": 3,
@@ -483,12 +483,12 @@
     {
       "indent": 3,
       "text": "If a field may be modified during transit, the value of the field is set to zero for purposes of the ICV computation. If a field is mutable, but its value at the (IPsec) receiver is predictable, then that value is inserted into the field for purposes of the ICV calculation. The Integrity Check Value field is also set to zero in preparation for this computation. Note that by replacing each field's value with zero, rather than omitting the field, alignment is preserved for the ICV calculation. Also, the zero-fill approach ensures that the length of the fields that are so handled cannot be changed during transit, even though their contents are not explicitly covered by the ICV.",
-      "ja": "輸送中にフィールドが変更される可能性がある場合、ICV計算の目的でフィールドの値はゼロに設定されます。フィールドが可変であるが、（IPSEC）レシーバーでの値が予測可能である場合、その値はICV計算の目的でフィールドに挿入されます。この計算に備えて、整合性チェック値フィールドもゼロに設定されています。フィールドを省略するのではなく、各フィールドの値をゼロに置き換えることにより、ICV計算のためにアラインメントが保持されることに注意してください。また、ゼロフィルアプローチは、その内容がICVで明示的にカバーされていなくても、輸送中に処理されるフィールドの長さを変更できないことを保証します。"
+      "ja": "輸送中にフィールドが変更される可能性がある場合、ICV計算の目的でフィールドの値はゼロに設定されます。フィールドが可変であるが、（IPsec）レシーバーでの値が予測可能である場合、その値はICV計算の目的でフィールドに挿入されます。この計算に備えて、完全性検査値フィールドもゼロに設定されています。フィールドを省略するのではなく、各フィールドの値をゼロに置き換えることにより、ICV計算のためにアラインメントが保持されることに注意してください。また、ゼロフィルアプローチは、その内容がICVで明示的にカバーされていなくても、輸送中に処理されるフィールドの長さを変更できないことを保証します。"
     },
     {
       "indent": 3,
       "text": "As a new extension header or IPv4 option is created, it will be defined in its own RFC and SHOULD include (in the Security Considerations section) directions for how it should be handled when calculating the AH ICV. If the IP (v4 or v6) implementation encounters an extension header that it does not recognize, it will discard the packet and send an ICMP message. IPsec will never see the packet. If the IPsec implementation encounters an IPv4 option that it does not recognize, it should zero the whole option, using the second byte of the option as the length. IPv6 options (in Destination Extension Headers or the Hop-by-Hop Extension Header) contain a flag indicating mutability, which determines appropriate processing for such options.",
-      "ja": "新しいエクステンションヘッダーまたはIPv4オプションが作成されると、独自のRFCで定義され、AH ICVの計算時にどのように処理するかについての（セキュリティに関する考慮事項セクション）指示を含める必要があります。IP（V4またはV6）の実装が認識されない拡張ヘッダーに遭遇した場合、パケットを破棄してICMPメッセージを送信します。IPSECはパケットを表示しません。IPSEC実装が認識されないIPv4オプションに遭遇した場合、オプションの2番目のバイトを長さとして使用して、オプション全体をゼロにする必要があります。IPv6オプション（宛先拡張ヘッダーまたはホップバイホップ拡張ヘッダー）には、そのようなオプションの適切な処理を決定する変動を示すフラグが含まれています。"
+      "ja": "新しいエクステンションヘッダーまたはIPv4オプションが作成されると、独自のRFCで定義され、AH ICVの計算時にどのように処理するかについての（セキュリティに関する考慮事項セクション）指示を含める必要があります。IP（V4またはV6）の実装が認識されない拡張ヘッダーに遭遇した場合、パケットを破棄してICMPメッセージを送信します。IPsecはパケットを表示しません。IPsec実装が認識されないIPv4オプションに遭遇した場合、オプションの2番目のバイトを長さとして使用して、オプション全体をゼロにする必要があります。IPv6オプション（宛先拡張ヘッダーまたはホップバイホップ拡張ヘッダー）には、そのようなオプションの適切な処理を決定する可変性を示すフラグが含まれています。"
     },
     {
       "indent": 0,
@@ -520,17 +520,17 @@
     {
       "indent": 3,
       "text": "Mutable (zeroed prior to ICV calculation) Differentiated Services Code Point (DSCP) (6 bits, see RFC 2474 [NBBB98]) Explicit Congestion Notification (ECN) (2 bits, see RFC 3168 [RFB01]) Flags Fragment Offset Time to Live (TTL) Header Checksum",
-      "ja": "可変（ICV計算前にゼロ）分化サービスコードポイント（DSCP）（6ビット、RFC 2474 [NBBB98]を参照）明示的な混雑通知（ECN）（2ビット、RFC 3168 [RFB01]を参照）フラグフラグメントオフセット時間（TTL）ヘッダーチェックサム"
+      "ja": "可変（ICV計算前にゼロ）Differentiated Services Code Point（DSCP）（6ビット、RFC 2474 [NBBB98]を参照）明示的輻輳通知（ECN）（2ビット、RFC 3168 [RFB01]を参照）フラグフラグメントオフセットTime to Live（TTL）ヘッダーチェックサム"
     },
     {
       "indent": 3,
       "text": "DSCP - Routers may rewrite the DS field as needed to provide a desired local or end-to-end service, thus its value upon reception cannot be predicted by the sender.",
-      "ja": "DSCP-ルーターは、必要に応じてDSフィールドを書き換えて、目的のローカルまたはエンドツーエンドサービスを提供するため、受信時の値は送信者が予測することはできません。"
+      "ja": "DSCP - ルーターは、必要に応じてDSフィールドを書き換えて、目的のローカルまたはエンドツーエンドサービスを提供するため、受信時の値は送信者が予測することはできません。"
     },
     {
       "indent": 3,
       "text": "ECN - This will change if a router along the route experiences congestion, and thus its value upon reception cannot be predicted by the sender.",
-      "ja": "ECN-これは、ルートに沿ったルーターが混雑を発生させると変化します。したがって、受信時の値は送信者によって予測できません。"
+      "ja": "ECN - これは、ルートに沿ったルーターが混雑を発生させると変化します。したがって、受信時の値は送信者によって予測できません。"
     },
     {
       "indent": 3,
@@ -545,7 +545,7 @@
     {
       "indent": 3,
       "text": "TTL - This is changed en route as a normal course of processing by routers, and thus its value at the receiver is not predictable by the sender.",
-      "ja": "TTL-これは、ルーターによる通常の処理コースとして途中で変更されるため、受信機での値は送信者が予測できません。"
+      "ja": "TTL - これは、ルーターによる通常の処理コースとして途中で変更されるため、受信機での値は送信者が予測できません。"
     },
     {
       "indent": 3,
@@ -593,7 +593,7 @@
     {
       "indent": 3,
       "text": "Mutable (zeroed prior to ICV calculation) DSCP (6 bits, see RFC2474 [NBBB98]) ECN (2 bits, see RFC3168 [RFB01]) Flow Label (*) Hop Limit",
-      "ja": "Mutable（ICV計算前にゼロ）DSCP（6ビット、RFC2474 [NBBB98]を参照）ECN（2ビット、RFC3168 [RFB01]）フローラベル（*）ホップ制限"
+      "ja": "可変（ICV計算前にゼロ）DSCP（6ビット、RFC2474 [NBBB98]を参照）明示的輻輳通知（ECN）（2ビット、RFC3168 [RFB01]を参照）フローラベル（*）ホップ制限"
     },
     {
       "indent": 8,
@@ -608,8 +608,8 @@
     },
     {
       "indent": 3,
-      "text": "IPv6 options in the Hop-by-Hop and Destination Extension Headers contain a bit that indicates whether the option might change (unpredictably) during transit. For any option for which contents may change en-route, the entire \"Option Data\" field must be treated as zero-valued octets when computing or verifying the ICV. The Option Type and Opt Data Len are included in the ICV calculation. All options for which the bit indicates immutability are included in the ICV calculation. See the IPv6 specification [DH98] for more information.",
-      "ja": "ホップバイホップおよび宛先拡張ヘッダーのIPv6オプションには、トランジット中にオプションが（予測不可能に）変更される可能性があるかどうかを示すビットが含まれています。内容がen-routeを変更する可能性のあるオプションの場合、ICVを計算または検証する際に、「オプションデータ」フィールド全体をゼロ値のオクテットとして扱う必要があります。オプションタイプとOPTデータレンは、ICV計算に含まれています。ビットが不変性を示しているすべてのオプションは、ICV計算に含まれています。詳細については、IPv6仕様[DH98]を参照してください。"
+      "text": "IPv6 options in the Hop-by-Hop and Destination Extension Headers contain a bit that indicates whether the option might change (unpredictably) during transit. For any option for which contents may change en route, the entire \"Option Data\" field must be treated as zero-valued octets when computing or verifying the ICV. The Option Type and Opt Data Len are included in the ICV calculation. All options for which the bit indicates immutability are included in the ICV calculation. See the IPv6 specification [DH98] for more information.",
+      "ja": "ホップバイホップおよび宛先拡張ヘッダーのIPv6オプションには、トランジット中にオプションが（予測不可能に）変更される可能性があるかどうかを示すビットが含まれています。途中でコンテンツが変更される可能性のあるオプションの場合、ICVを計算または検証する際に、「オプションデータ」フィールド全体をゼロ値のオクテットとして扱う必要があります。オプションタイプとOPTデータレンは、ICV計算に含まれています。ビットが不変性を示しているすべてのオプションは、ICV計算に含まれています。詳細については、IPv6仕様[DH98]を参照してください。"
     },
     {
       "indent": 0,
@@ -620,7 +620,7 @@
     {
       "indent": 3,
       "text": "The IPv6 extension headers that do not contain options are explicitly listed in Appendix A and classified as immutable, mutable but predictable, or mutable.",
-      "ja": "オプションが含まれていないIPv6エクステンションヘッダーは、付録Aに明示的にリストされ、不変、可変性が予測可能、または変動可能であると分類されます。"
+      "ja": "オプションが含まれていないIPv6拡張ヘッダーは、付録Aに明示的にリストされ、不変、可変だが予測可能、または可変であると分類されます。"
     },
     {
       "indent": 0,
@@ -663,7 +663,7 @@
     {
       "indent": 3,
       "text": "For some integrity algorithms, the byte string over which the ICV computation is performed must be a multiple of a blocksize specified by the algorithm. If the IP packet length (including AH and the 32 high-order bits of the ESN, if enabled) does not match the blocksize requirements for the algorithm, implicit padding MUST be appended to the end of the packet, prior to ICV computation. The padding octets MUST have a value of zero. The blocksize (and hence the length of the padding) is specified by the algorithm specification. This padding is not transmitted with the packet. The document that defines an integrity algorithm MUST be consulted to determine if implicit padding is required as described above. If the document does not specify an answer to this, then the default is to assume that implicit padding is required (as needed to match the packet length to the algorithm's blocksize.) If padding bytes are needed but the algorithm does not specify the padding contents, then the padding octets MUST have a value of zero.",
-      "ja": "一部の整合性アルゴリズムの場合、ICV計算が実行されるバイト文字列は、アルゴリズムによって指定されたブロックサイズの倍数でなければなりません。IPパケットの長さ（AHおよびESNの32の高次ビットを含む、有効にする場合）がアルゴリズムのブロックサイズ要件と一致しない場合、ICV計算の前に、暗黙のパディングをパケットの最後に追加する必要があります。パディングオクテットの値はゼロです。ブロックサイズ（したがって、パディングの長さ）は、アルゴリズムの仕様によって指定されます。このパディングはパケットで送信されません。整合性アルゴリズムを定義するドキュメントを参照して、暗黙のパディングが必要かどうかを判断するために相談する必要があります。ドキュメントがこれへの回答を指定していない場合、デフォルトは、パッキングバイトが必要な場合、アルゴリズムがパディングの内容を指定していない場合、パケットの長さをアルゴリズムのブロックサイズに一致させるために必要な場合に必要なパディングが必要であると仮定することです。、次に、パディングオクテットにはゼロの値が必要です。"
+      "ja": "一部の完全性アルゴリズムの場合、ICV計算が実行されるバイト文字列は、アルゴリズムによって指定されたブロックサイズの倍数でなければなりません。IPパケットの長さ（AHおよびESNの32の高次ビットを含む、有効な場合）がアルゴリズムのブロックサイズ要件と一致しない場合、ICV計算の前に、暗黙のパディングをパケットの最後に追加する必要があります。パディングオクテットの値はゼロです。ブロックサイズ（したがって、パディングの長さ）は、アルゴリズムの仕様によって指定されます。このパディングはパケットで送信されません。完全性アルゴリズムを定義するドキュメントを参照して、暗黙のパディングが必要かどうかを判断するために相談する必要があります。ドキュメントがこれへの回答を指定していない場合、デフォルトでは、暗黙のパディングが必要である（パケット長をアルゴリズムのブロックサイズに一致させるために必要な場合）と仮定します。パディングバイトが必要であるが、アルゴリズムがパディングの内容を指定していない場合、パディングオクテットの値はゼロでなければなりません（MUST）。"
     },
     {
       "indent": 0,
@@ -679,17 +679,17 @@
     {
       "indent": 3,
       "text": "NOTE: For transport mode -- As mentioned at the end of Section 3.1.1, bump-in-the-stack and bump-in-the-wire implementations may have to first reassemble a packet fragmented by the local IP layer, then apply IPsec, and then fragment the resulting packet.",
-      "ja": "注：輸送モードの場合 - セクション3.1.1の最後に述べたように、スタックの隆起と衝突の実装は、最初にローカルIPレイヤーによって断片化されたパケットを再組み立てし、次に適用する必要がある場合があります。IPSEC、そして結果のパケットをフラグメントします。"
+      "ja": "注：トランスポートモードの場合 - セクション3.1.1の最後に述べたように、バンプインザスタックおよびバンプインザワイヤ実装は、最初にローカルIPレイヤーによって断片化されたパケットを再組み立てし、次にIPsecを適用し、その結果のパケットを断片化する必要がある場合があります。"
     },
     {
       "indent": 3,
       "text": "NOTE: For IPv6 -- For bump-in-the-stack and bump-in-the-wire implementations, it will be necessary to examine all the extension headers to determine if there is a fragmentation header and hence that the packet needs reassembling prior to IPsec processing.",
-      "ja": "注：IPv6の場合 - バンプインスタックとワイヤーの実装の実装の場合、すべての拡張ヘッダーを調べて、フラグメンテーションヘッダーがあるかどうかを判断する必要があります。IPSEC処理に。"
+      "ja": "注：IPv6の場合 - バンプインザスタックおよびバンプインザワイヤ実装の場合、すべての拡張ヘッダーを調べて、フラグメンテーションヘッダーがあるかどうか、したがってIPsec処理の前にパケットを再組み立てする必要があるかどうかを判断する必要があります。"
     },
     {
       "indent": 3,
       "text": "Fragmentation, whether performed by an IPsec implementation or by routers along the path between IPsec peers, significantly reduces performance. Moreover, the requirement for an AH receiver to accept fragments for reassembly creates denial of service vulnerabilities. Thus, an AH implementation MAY choose to not support fragmentation and may mark transmitted packets with the DF bit, to facilitate Path MTU (PMTU) discovery. In any case, an AH implementation MUST support generation of ICMP PMTU messages (or equivalent internal signaling for native host implementations) to minimize the likelihood of fragmentation. Details of the support required for MTU management are contained in the Security Architecture document.",
-      "ja": "IPSECの実装によって実行されるか、IPSECピア間のパスに沿ったルーターによって実行されるかどうかにかかわらず、断片化はパフォーマンスを大幅に低下させます。さらに、AHレシーバーが再組み立てのためにフラグメントを受け入れるための要件は、サービスの脆弱性を拒否します。したがって、AHの実装は、断片化をサポートしないことを選択し、PATH MTU（PMTU）の発見を促進するために、送信されたパケットをDFビットでマークする場合があります。いずれにせよ、AHの実装は、断片化の可能性を最小限に抑えるために、ICMP PMTUメッセージ（またはネイティブホスト実装の同等の内部信号）の生成をサポートする必要があります。MTU管理に必要なサポートの詳細は、セキュリティアーキテクチャドキュメントに含まれています。"
+      "ja": "IPsecの実装によって実行されるか、IPsecピア間のパスに沿ったルーターによって実行されるかどうかにかかわらず、断片化はパフォーマンスを大幅に低下させます。さらに、AHレシーバーが再組み立てのためにフラグメントを受け入れる要件は、サービス拒否の脆弱性を生み出します。したがって、AHの実装は、断片化をサポートしないことを選択し、PATH MTU（PMTU）の発見を促進するために、送信されたパケットをDFビットでマークする場合があります。いずれにせよ、AHの実装は、断片化の可能性を最小限に抑えるために、ICMP PMTUメッセージ（またはネイティブホスト実装の同等の内部信号）の生成をサポートする必要があります。MTU管理に必要なサポートの詳細は、セキュリティアーキテクチャドキュメントに含まれています。"
     },
     {
       "indent": 0,
@@ -711,7 +711,7 @@
     {
       "indent": 3,
       "text": "If required, reassembly is performed prior to AH processing. If a packet offered to AH for processing appears to be an IP fragment, i.e., the OFFSET field is nonzero or the MORE FRAGMENTS flag is set, the receiver MUST discard the packet; this is an auditable event. The audit log entry for this event SHOULD include the SPI value, date/time, Source Address, Destination Address, and (in IPv6) the Flow ID.",
-      "ja": "必要に応じて、AH処理の前に再組み立てが実行されます。処理のためにAHに提供されるパケットがIPフラグメントのように見える場合、つまりオフセットフィールドがゼロではないか、フラグメントフラグが設定されている場合、受信機はパケットを廃棄する必要があります。これは監査可能なイベントです。このイベントの監査ログエントリには、SPI値、日付/時刻、ソースアドレス、宛先アドレス、および（IPv6で）フローIDを含める必要があります。"
+      "ja": "必要に応じて、AH処理の前に再組み立てが実行されます。処理のためにAHに提供されるパケットがIPフラグメントのように見える場合、つまりオフセットフィールドがゼロではないか、MORE FRAGMENTSフラグが設定されている場合、受信機はパケットを廃棄する必要があります。これは監査可能なイベントです。このイベントの監査ログエントリには、SPI値、日付/時刻、ソースアドレス、宛先アドレス、および（IPv6で）フローIDを含める必要があります。"
     },
     {
       "indent": 3,
@@ -748,17 +748,17 @@
     {
       "indent": 3,
       "text": "All AH implementations MUST support the anti-replay service, though its use may be enabled or disabled by the receiver on a per-SA basis. Anti-replay is applicable to unicast as well as multicast SAs. However, this standard specifies no mechanisms for providing anti-replay for a multi-sender SA (unicast or multicast). In the absence of negotiation (or manual configuration) of an anti-replay mechanism for such an SA, it is recommended that sender and receiver checking of the Sequence Number for the SA be disabled (via negotiation or manual configuration), as noted below.",
-      "ja": "すべてのAH実装は、Anti Replayサービスをサポートする必要がありますが、その使用は、SAごとにレシーバーによって有効または無効にされる場合があります。アンチレプレイは、マルチキャストSASと同様にユニキャストに適用できます。ただし、この標準は、マルチセンダーSA（ユニキャストまたはマルチキャスト）にアンチレプレイを提供するためのメカニズムを指定していません。以下に示すように、このようなSAのアンチレプレイメカニズムのネゴシエーション（または手動構成）がない場合、SA BEのシーケンス番号を（交渉または手動構成を介して）送信者と受信者チェックすることをお勧めします。"
+      "ja": "すべてのAH実装は、アンチリプレイサービスをサポートする必要がありますが、その使用は、SAごとに受信者によって有効または無効にされる場合があります。アンチリプレイは、マルチキャストSAと同様にユニキャストに適用できます。ただし、この標準は、マルチセンダーSA（ユニキャストまたはマルチキャスト）にアンチリプレイを提供するためのメカニズムを指定していません。以下に示すように、このようなSAのアンチリプレイメカニズムのネゴシエーション（または手動構成）がない場合、SAのシーケンス番号の送信者と受信者によるチェックを（交渉または手動構成を介して）無効にすることをお勧めします。"
     },
     {
       "indent": 3,
       "text": "If the receiver does not enable anti-replay for an SA, no inbound checks are performed on the Sequence Number. However, from the perspective of the sender, the default is to assume that anti-replay is enabled at the receiver. To avoid having the sender do unnecessary sequence number monitoring and SA setup (see Section 3.3.2, \"Sequence Number Generation\"), if an SA establishment protocol such as IKE is employed, the receiver SHOULD notify the sender, during SA establishment, if the receiver will not provide anti-replay protection.",
-      "ja": "受信機がSAのアンチレプレイを有効にしない場合、シーケンス番号にインバウンドチェックは実行されません。ただし、送信者の観点から見ると、デフォルトはレシーバーでアンチレプレイが有効になっていると仮定することです。送信者に不必要なシーケンス番号の監視とSAセットアップを行わせることを避けるため（セクション3.3.2、「シーケンス番号の生成」を参照）、IKEなどのSA施設プロトコルが使用されている場合、受信者はSA施設中に送信者に通知する必要があります。受信機は、レプレイ防止保護を提供しません。"
+      "ja": "受信者がSAのアンチリプレイを有効にしない場合、シーケンス番号にインバウンドチェックは実行されません。ただし、送信者の観点から見ると、デフォルトは受信者でアンチリプレイが有効になっていると仮定することです。送信者に不必要なシーケンス番号の監視とSAセットアップを行わせることを避けるため（セクション3.3.2、「シーケンス番号の生成」を参照）、IKEなどのSA確立プロトコルが使用されている場合、受信者はSA確立中に送信者に通知する必要があります（SHOULD）。受信者がアンチリプレイ保護を提供しない場合。"
     },
     {
       "indent": 3,
       "text": "If the receiver has enabled the anti-replay service for this SA, the receive packet counter for the SA MUST be initialized to zero when the SA is established. For each received packet, the receiver MUST verify that the packet contains a Sequence Number that does not duplicate the Sequence Number of any other packets received during the life of this SA. This SHOULD be the first AH check applied to a packet after it has been matched to an SA, to speed rejection of duplicate packets.",
-      "ja": "受信者がこのSAのアンチレプレイサービスを有効にした場合、SAの受信パケットカウンターは、SAが確立されたときにゼロに初期化する必要があります。受信した各パケットについて、受信機は、このSAの存続期間中に受信した他のパケットのシーケンス番号を複製しないシーケンス番号が含まれていることを確認する必要があります。これは、重複パケットの拒否を速めるために、SAに一致した後にパケットに適用される最初のAHチェックである必要があります。"
+      "ja": "受信者がこのSAのアンチリプレイサービスを有効にした場合、SAの受信パケットカウンターは、SAが確立されたときにゼロに初期化する必要があります。受信した各パケットについて、受信者は、このSAの存続期間中に受信した他のパケットのシーケンス番号を複製しないシーケンス番号が含まれていることを確認する必要があります。これは、重複パケットの拒否を速めるために、SAに一致した後にパケットに適用される最初のAHチェックである必要があります。"
     },
     {
       "indent": 3,
@@ -773,7 +773,7 @@
     {
       "indent": 3,
       "text": "If the ESN option is selected for an SA, only the low-order 32 bits of the sequence number are explicitly transmitted, but the receiver employs the full sequence number computed using the high-order 32 bits for the indicated SA (from his local counter) when checking the received Sequence Number against the receive window. In constructing the full sequence number, if the low-order 32 bits carried in the packet are lower in value than the low-order 32 bits of the receiver's sequence number counter, the receiver assumes that the high-order 32 bits have been incremented, moving to a new sequence number subspace. (This algorithm accommodates gaps in reception for a single SA as large as 2**32-1 packets. If a larger gap occurs, additional, heuristic checks for re-synchronization of the receiver's sequence number counter MAY be employed, as described in Appendix B.)",
-      "ja": "SAに対してESNオプションが選択されている場合、シーケンス番号の低次の32ビットのみが明示的に送信されますが、受信機は、指定されたSAの高次32ビットを使用して計算された完全なシーケンス番号を使用します（ローカルカウンターから）受信したシーケンス番号を受信ウィンドウに対してチェックするとき。完全なシーケンス番号の構築において、パケットに運ばれる低次の32ビットの値がレシーバーのシーケンス番号カウンターの低次の32ビットよりも値が低い場合、レシーバーは高次の32ビットが増加していると想定しています。新しいシーケンス番号サブスペースに移動します。（このアルゴリズムは、2 ** 32-1パケットの大きな単一のSAの受信のギャップに対応します。大きなギャップが発生した場合、付録で説明されているように、レシーバーのシーケンス番号カウンターの再同期のための追加のヒューリスティックチェックが使用される場合があります。B.）"
+      "ja": "SAに対してESNオプションが選択されている場合、シーケンス番号の低次の32ビットのみが明示的に送信されますが、受信者は、指定されたSAの高次32ビットを使用して計算された完全なシーケンス番号を使用します（ローカルカウンターから）受信したシーケンス番号を受信ウィンドウに対してチェックするとき。完全なシーケンス番号の構築において、パケットに運ばれる低次の32ビットの値が受信者のシーケンス番号カウンターの低次の32ビットよりも値が低い場合、受信者は高次の32ビットが増加していると想定しています。新しいシーケンス番号サブスペースに移動します。（このアルゴリズムは、2 ** 32-1パケットの大きな単一のSAの受信のギャップに対応します。大きなギャップが発生した場合、付録で説明されているように、受信者のシーケンス番号カウンターの再同期のための追加のヒューリスティックチェックが使用される場合があります。B.）"
     },
     {
       "indent": 3,
@@ -783,23 +783,23 @@
     {
       "indent": 3,
       "text": "A MINIMUM window size of 32 packets MUST be supported, but a window size of 64 is preferred and SHOULD be employed as the default. Another window size (larger than the MINIMUM) MAY be chosen by the receiver. (The receiver does NOT notify the sender of the window size.) The receive window size should be increased for higher-speed environments, irrespective of assurance issues. Values for minimum and recommended receive window sizes for very high-speed (e.g., multi-gigabit/second) devices are not specified by this standard.",
-      "ja": "32パケットの最小ウィンドウサイズをサポートする必要がありますが、64のウィンドウサイズが優先され、デフォルトとして使用する必要があります。別のウィンドウサイズ（最小よりも大きい）は、受信機によって選択される場合があります。（受信者は、ウィンドウサイズを送信者に通知しません。）保証の問題に関係なく、より高いスピード環境では、受信ウィンドウサイズを増やす必要があります。最小値と推奨される値は、非常に高速（マルチギガビット/秒）デバイスのウィンドウサイズを受信します。この標準では指定されていません。"
+      "ja": "32パケットの最小ウィンドウサイズをサポートする必要がありますが、64のウィンドウサイズが優先され、デフォルトとして使用する必要があります。別のウィンドウサイズ（最小よりも大きい）は、受信者によって選択される場合があります。（受信者は、ウィンドウサイズを送信者に通知しません。）保証の問題に関係なく、より高いスピード環境では、受信ウィンドウサイズを増やす必要があります。最小値と推奨される値は、非常に高速（マルチギガビット/秒）デバイスのウィンドウサイズを受信します。この標準では指定されていません。"
     },
     {
       "indent": 0,
       "text": "3.4.4. Integrity Check Value Verification",
       "section_title": true,
-      "ja": "3.4.4. 整合性チェック値の確認"
+      "ja": "3.4.4. 完全性検査値の検証"
     },
     {
       "indent": 3,
       "text": "The receiver computes the ICV over the appropriate fields of the packet, using the specified integrity algorithm, and verifies that it is the same as the ICV included in the ICV field of the packet. Details of the computation are provided below.",
-      "ja": "受信機は、指定された整合性アルゴリズムを使用して、パケットの適切なフィールドでICVを計算し、パケットのICVフィールドに含まれるICVと同じであることを確認します。計算の詳細を以下に示します。"
+      "ja": "受信者は、指定された完全性アルゴリズムを使用して、パケットの適切なフィールドでICVを計算し、パケットのICVフィールドに含まれるICVと同じであることを確認します。計算の詳細を以下に示します。"
     },
     {
       "indent": 3,
       "text": "If the computed and received ICVs match, then the datagram is valid, and it is accepted. If the test fails, then the receiver MUST discard the received IP datagram as invalid. This is an auditable event. The audit log entry SHOULD include the SPI value, date/time received, Source Address, Destination Address, and (in IPv6) the Flow ID.",
-      "ja": "計算されたICVSと受信したICVが一致する場合、データグラムは有効であり、受け入れられます。テストが失敗した場合、受信者は受信したIPデータグラムを無効として破棄する必要があります。これは監査可能なイベントです。監査ログエントリには、SPI値、受信した日付/時刻、ソースアドレス、宛先アドレス、および（IPv6で）フローIDを含める必要があります。"
+      "ja": "計算されたICVと受信したICVが一致する場合、データグラムは有効であり、受け入れられます。テストが失敗した場合、受信者は受信したIPデータグラムを無効として破棄する必要があります。これは監査可能なイベントです。監査ログエントリには、SPI値、受信した日付/時刻、ソースアドレス、宛先アドレス、および（IPv6で）フローIDを含める必要があります。"
     },
     {
       "indent": 3,
@@ -809,7 +809,7 @@
     {
       "indent": 6,
       "text": "Implementations can use any set of steps that results in the same result as the following set of steps. Begin by saving the ICV value and replacing it (but not any ICV field padding) with zero. Zero all other fields that may have been modified during transit. (See Section 3.3.3.1, \"Handling Mutable Fields\", for a discussion of which fields are zeroed before performing the ICV calculation.) If the ESN option is elected for this SA, append the high-order 32 bits of the ESN after the end of the packet. Check the overall length of the packet (as described above), and if it requires implicit padding based on the requirements of the integrity algorithm, append zero-filled bytes to the end of the packet (after the ESN if present) as required. Perform the ICV computation and compare the result with the saved value, using the comparison rules defined by the algorithm specification. (For example, if a digital signature and one-way hash are used for the ICV computation, the matching process is more complex.)",
-      "ja": "実装は、次の一連のステップと同じ結果をもたらす一連のステップを使用できます。ICV値を保存し、それをゼロに置き換える（ただし、ICVフィールドパディングではない）ことから始めます。輸送中に変更された可能性のある他のすべてのフィールドをゼロ。（ICV計算を実行する前にどのフィールドがゼロになっているかについての議論については、セクション3.3.3.1、「可変フィールドの取り扱い」を参照してください。）このSAに対してESNオプションが選出されている場合、ESNの高次32ビットを追加します。パケットの終わり。パケットの全長（上記のように）を確認し、整合性アルゴリズムの要件に基づいて暗黙のパディングが必要な場合は、必要に応じて（存在する場合はESNの後）パケットの最後にゼロで充填されたバイトを追加します。ICV計算を実行し、アルゴリズムの仕様で定義された比較ルールを使用して、結果を保存された値と比較します。（たとえば、ICV計算にデジタル署名と一方向ハッシュが使用される場合、一致するプロセスはより複雑です。）"
+      "ja": "実装は、次の一連のステップと同じ結果をもたらす一連のステップを使用できます。ICV値を保存し、それをゼロに置き換える（ただし、ICVフィールドパディングではない）ことから始めます。輸送中に変更された可能性のある他のすべてのフィールドをゼロにします。（ICV計算を実行する前にどのフィールドがゼロになっているかについての議論については、セクション3.3.3.1、「可変フィールドの取り扱い」を参照してください。）このSAに対してESNオプションが選出されている場合、ESNの高次32ビットをパケットの終わりに追加します。パケットの全長（上記のように）を確認し、完全性アルゴリズムの要件に基づいて暗黙のパディングが必要な場合は、必要に応じて（存在する場合はESNの後）パケットの最後にゼロで充填されたバイトを追加します。ICV計算を実行し、アルゴリズムの仕様で定義された比較ルールを使用して、結果を保存された値と比較します。（たとえば、ICV計算にデジタル署名と一方向ハッシュが使用される場合、一致するプロセスはより複雑です。）"
     },
     {
       "indent": 0,
@@ -820,7 +820,7 @@
     {
       "indent": 3,
       "text": "Not all systems that implement AH will implement auditing. However, if AH is incorporated into a system that supports auditing, then the AH implementation MUST also support auditing and MUST allow a system administrator to enable or disable auditing for AH. For the most part, the granularity of auditing is a local matter. However, several auditable events are identified in this specification, and for each of these events a minimum set of information that SHOULD be included in an audit log is defined. Additional information also MAY be included in the audit log for each of these events, and additional events, not explicitly called out in this specification, also MAY result in audit log entries. There is no requirement for the receiver to transmit any message to the purported sender in response to the detection of an auditable event, because of the potential to induce denial of service via such action.",
-      "ja": "AHを実装するすべてのシステムが監査を実装するわけではありません。ただし、AHが監査をサポートするシステムに組み込まれている場合、AHの実装も監査をサポートする必要があり、システム管理者がAHの監査を有効または無効にすることを許可する必要があります。ほとんどの場合、監査の粒度は地元の問題です。ただし、この仕様でいくつかの監査可能なイベントが特定されており、これらの各イベントについて、監査ログに含める必要がある最小の情報セットが定義されています。追加情報は、これらの各イベントの監査ログにも含まれる場合があり、この仕様で明示的に呼び出されない追加のイベントは、監査ログエントリになる可能性があります。受信者が、そのようなアクションを介してサービスの拒否を誘導する可能性があるため、監査可能なイベントの検出に応じて、監視可能な送信者にメッセージを送信する必要はありません。"
+      "ja": "AHを実装するすべてのシステムが監査を実装するわけではありません。ただし、AHが監査をサポートするシステムに組み込まれている場合、AHの実装も監査をサポートする必要があり、システム管理者がAHの監査を有効または無効にすることを許可する必要があります。ほとんどの場合、監査の粒度は地元の問題です。ただし、この仕様でいくつかの監査可能なイベントが特定されており、これらの各イベントについて、監査ログに含める必要がある最小の情報セットが定義されています。追加情報は、これらの各イベントの監査ログにも含まれる場合があり、この仕様で明示的に呼び出されない追加のイベントは、監査ログエントリになる可能性があります。受信者が、そのようなアクションを介してサービスの拒否を誘導する可能性があるため、監査可能なイベントの検出に応じて、送信者とされるものにメッセージを送信する必要はありません。"
     },
     {
       "indent": 0,
@@ -863,7 +863,7 @@
     {
       "indent": 8,
       "text": "o SPI -- modified to specify a uniform algorithm for SAD lookup for unicast and multicast SAs, covering a wider range of multicast technologies. For unicast, the SPI may be used alone to select an SA, or may be combined with the protocol, at the option of the receiver. For multicast SAs, the SPI is combined with the destination address, and optionally the source address, to select an SA. o Extended Sequence Number -- added a new option for a 64-bit sequence number for very high-speed communications. Clarified sender and receiver processing requirements for multicast SAs and multi-sender SAs. o Moved references to mandatory algorithms to a separate document [Eas04].",
-      "ja": "o SPI -UnicastおよびマルチキャストSASのSADルックアップのための均一なアルゴリズムを指定するように変更され、より広範なマルチキャストテクノロジーをカバーしています。ユニキャストの場合、SPIはSAを選択するために単独で使用されるか、レシーバーのオプションでプロトコルと組み合わせることができます。マルチキャストSASの場合、SPIは宛先アドレス、およびオプションでソースアドレスと組み合わされて、SAを選択します。o拡張シーケンス番号 - 非常に高速通信のために64ビットシーケンス番号の新しいオプションを追加しました。マルチキャストSASおよびマルチセンダーSASの送信者と受信機処理要件を明確にしました。o必須アルゴリズムへの参照を別のドキュメント[EAS04]に移動しました。"
+      "ja": "o SPI -- ユニキャストおよびマルチキャストSAのSADルックアップのための均一なアルゴリズムを指定するように変更され、より広範なマルチキャストテクノロジーをカバーしています。ユニキャストの場合、SPIはSAを選択するために単独で使用されるか、レシーバーのオプションでプロトコルと組み合わせることができます。マルチキャストSAの場合、SPIは宛先アドレス、およびオプションでソースアドレスと組み合わされて、SAを選択します。o 拡張シーケンス番号 -- 非常に高速な通信のために64ビットシーケンス番号の新しいオプションを追加しました。マルチキャストSAおよびマルチセンダーSAの送信者と受信機の処理要件を明確にしました。o 必須アルゴリズムへの参照を別のドキュメント[Eas04]に移動しました。"
     },
     {
       "indent": 0,
@@ -874,7 +874,7 @@
     {
       "indent": 3,
       "text": "The author would like to acknowledge the contributions of Ran Atkinson, who played a critical role in initial IPsec activities, and who authored the first series of IPsec standards: RFCs 1825-1827. Karen Seo deserves special thanks for providing help in the editing of this and the previous version of this specification. The author also would like to thank the members of the IPsec and MSEC working groups who have contributed to the development of this protocol specification.",
-      "ja": "著者は、最初のIPSECアクティビティで重要な役割を果たし、IPSEC標準の最初のシリーズであるRFCS 1825-1827を執筆したRan Atkinsonの貢献を認めたいと思います。Karen Seoは、この仕様の以前のバージョンの編集に支援を提供してくれたことに特に感謝します。著者はまた、このプロトコル仕様の開発に貢献したIPSECおよびMSECワーキンググループのメンバーにも感謝したいと思います。"
+      "ja": "著者は、最初のIPsecアクティビティで重要な役割を果たし、IPsec標準の最初のシリーズであるRFC 1825-1827を執筆したRan Atkinsonの貢献を認めたいと思います。Karen Seoは、この仕様の以前のバージョンの編集に支援を提供してくれたことに特に感謝します。著者はまた、このプロトコル仕様の開発に貢献したIPsecおよびMSECワーキンググループのメンバーにも感謝したいと思います。"
     },
     {
       "indent": 0,
@@ -1080,7 +1080,7 @@
     {
       "indent": 3,
       "text": " Routing (Type 0) -- The IPv6 Routing Header \"Type 0\" will rearrange the address fields within the packet during transit from source to destination. However, the contents of the packet as it will appear at the receiver are known to the sender and to all intermediate hops. Hence, the IPv6 Routing Header \"Type 0\" is included in the Integrity Check Value calculation as mutable but predictable. The sender must order the field so that it appears as it will at the receiver, prior to performing the ICV computation.",
-      "ja": "ルーティング（タイプ0） -  IPv6ルーティングヘッダー「タイプ0」は、ソースから宛先へのトランジット中にパケット内のアドレスフィールドを再配置します。ただし、受信機に表示されるパケットの内容は、送信者とすべての中間ホップに知られています。したがって、IPv6ルーティングヘッダー「タイプ0」は、整合性チェック値の計算に変換可能であるが予測可能なものに含まれています。送信者は、ICV計算を実行する前に、受信機に表示されるようにフィールドを注文する必要があります。"
+      "ja": "ルーティング（タイプ0） -  IPv6ルーティングヘッダー「タイプ0」は、ソースから宛先へのトランジット中にパケット内のアドレスフィールドを再配置します。ただし、受信者に表示されるパケットの内容は、送信者とすべての中間ホップに知られています。したがって、IPv6ルーティングヘッダー「タイプ0」は、完全性検査値の計算に可変であるが予測可能なものとして含まれています。送信者は、ICV計算を実行する前に、受信者に表示されるようにフィールドを注文する必要があります。"
     },
     {
       "indent": 3,
@@ -1115,12 +1115,12 @@
     {
       "indent": 0,
       "text": "B2. Anti-Replay Window",
-      "ja": "B2。アンチレプレイウィンドウ"
+      "ja": "B2。アンチリプレイウィンドウ"
     },
     {
       "indent": 3,
       "text": "The receiver will maintain an anti-replay window of size W. This window will limit how far out of order a packet can be, relative to the packet with the highest sequence number that has been authenticated so far. (No requirement is established for minimum or recommended sizes for this window, beyond the 32- and 64-packet values already established for 32-bit sequence number windows. However, it is suggested that an implementer scale these values consistent with the interface speed supported by an implementation that makes use of the ESN option. Also, the algorithm described below assumes that the window is no greater than 2^31 packets in width.) All 2^32 sequence numbers associated with any fixed value for the high-order 32 bits (Seqh) will hereafter be called a sequence number subspace. The following table lists pertinent variables and their definitions.",
-      "ja": "受信機は、サイズWのアンチレプレイウィンドウを維持します。このウィンドウは、これまでに認証されている最高のシーケンス番号を持つパケットと比較して、パケットの距離を制限します。（このウィンドウの最小または推奨サイズの要件は、32ビットシーケンス番号ウィンドウに対して既に確立されている32パケットと64パケットの値を超えて確立されています。ただし、実装者は、サポートされているインターフェイス速度と一致するこれらの値をスケーリングすることをお勧めします。また、ESNオプションを使用する実装により。また、以下に説明するアルゴリズムは、ウィンドウが幅の2^31パケットに大きくないことを前提としています。）高次の32の固定値に関連付けられたすべての2^32シーケンス番号ビット（SEQH）は、今後シーケンス番号サブスペースと呼ばれます。次の表には、適切な変数とその定義を示します。"
+      "ja": "受信者は、サイズWのアンチリプレイウィンドウを維持します。このウィンドウは、これまでに認証されている最高のシーケンス番号を持つパケットと比較して、パケットがどれだけ順序が狂っているかを制限します。（32ビットシーケンス番号ウィンドウに対して既に確立されている32パケットと64パケットの値を超えて、このウィンドウの最小または推奨サイズの要件は確立されていません。ただし、実装者は、ESNオプションを使用する実装によってサポートされているインターフェイス速度と一致するようにこれらの値をスケーリングすることをお勧めします。また、以下に説明するアルゴリズムは、ウィンドウが幅の2^31パケットに大きくないことを前提としています。）高次の32ビット（Seqh）の固定値に関連付けられたすべての2^32シーケンス番号は、今後シーケンス番号サブスペースと呼ばれます。次の表には、適切な変数とその定義を示します。"
     },
     {
       "indent": 8,
@@ -1131,7 +1131,7 @@
     {
       "indent": 3,
       "text": "When performing the anti-replay check, or when determining which high-order bits to use to authenticate an incoming packet, there are two cases:",
-      "ja": "アンチレプレイチェックを実行する場合、または着信パケットを認証するために使用する高次のビットを決定するとき、2つのケースがあります。"
+      "ja": "アンチリプレイチェックを実行する場合、または着信パケットを認証するために使用する高次のビットを決定するとき、2つのケースがあります。"
     },
     {
       "indent": 5,
@@ -1193,22 +1193,22 @@
     {
       "indent": 0,
       "text": "B2.1. Managing and Using the Anti-Replay Window",
-      "ja": "B2.1。レプレイ防止ウィンドウの管理と使用"
+      "ja": "B2.1。アンチリプレイウィンドウの管理と使用"
     },
     {
       "indent": 3,
       "text": "The anti-replay window can be thought of as a string of bits where `W' defines the length of the string. W = T - B + 1 and cannot exceed 2^32 - 1 in value. The bottom-most bit corresponds to B and the top-most bit corresponds to T, and each sequence number from Bl through Tl is represented by a corresponding bit. The value of the bit indicates whether or not a packet with that sequence number has been received and authenticated, so that replays can be detected and rejected.",
-      "ja": "アンチレプレイウィンドウは、「w」が文字列の長さを定義する一連のビットと考えることができます。w = t -b 1で、値が2^32-1を超えることはできません。一番下のビットはbに対応し、最上部ビットはtに対応し、BLからTLからの各シーケンス番号は対応するビットで表されます。ビットの値は、そのシーケンス番号を含むパケットが受信および認証されたかどうかを示しているため、リプレイを検出して拒否することができます。"
+      "ja": "アンチリプレイウィンドウは、「W」が文字列の長さを定義する一連のビットと考えることができます。W = T - B + 1で、値が2^32-1を超えることはできません。一番下のビットはBに対応し、最上部ビットはTに対応し、BlからTlまでの各シーケンス番号は対応するビットで表されます。ビットの値は、そのシーケンス番号を含むパケットが受信および認証されたかどうかを示しているため、リプレイを検出して拒否することができます。"
     },
     {
       "indent": 3,
       "text": "When a packet with a 64-bit sequence number (Seq) greater than T is received and validated,",
-      "ja": "Tより大きい64ビットシーケンス番号（seq）を持つパケットが受信および検証された場合、"
+      "ja": "Tより大きい64ビットシーケンス番号（Seq）を持つパケットが受信および検証された場合、"
     },
     {
       "indent": 6,
       "text": "+ B is increased by (Seq - T) + (Seq - T) bits are dropped from the low end of the window + (Seq - T) bits are added to the high end of the window + The top bit is set to indicate that a packet with that sequence number has been received and authenticated + The new bits between T and the top bit are set to indicate that no packets with those sequence numbers have been received yet. + T is set to the new sequence number",
-      "ja": "+ bは（seq -t）（seq -t）ビットをウィンドウのローエンド（seq -t）ビットから窓のハイエンドに追加します。そのシーケンス番号が受信され、Tと上部ビットの間の新しいビットが設定されており、これらのシーケンス番号がまだ受信されていないことを示すように設定されています。Tは新しいシーケンス番号に設定されています"
+      "ja": "+ Bは (Seq - T) だけ増加します + (Seq - T) ビットがウィンドウのローエンドからドロップされます + (Seq - T) ビットがウィンドウのハイエンドに追加されます + 最上位ビットは、そのシーケンス番号を持つパケットが受信および認証されたことを示すように設定されます + Tと最上位ビットの間の新しいビットは、それらのシーケンス番号を持つパケットがまだ受信されていないことを示すように設定されます + Tは新しいシーケンス番号に設定されます"
     },
     {
       "indent": 3,
@@ -1218,62 +1218,63 @@
     {
       "indent": 6,
       "text": "+ Under Case A: If Seql >= Bl (where Bl = Tl - W + 1) AND Seql <= Tl, then check the corresponding bit in the window to see if this Seql has already been seen. If yes, reject the packet. If no, perform integrity check (see Appendix B2.2 below for determination of SeqH).",
-      "ja": "+ ケースa：seql> = bl（bl = tl -w 1）およびseql <= tlの場合、ウィンドウの対応するビットをチェックして、このseqlがすでに見られているかどうかを確認します。はいの場合、パケットを拒否します。いいえの場合は、整合性チェックを実行します（SEQHの決定については、以下の付録B2.2を参照）。"
+      "ja": "+ ケースA：Seql >= Bl（Bl = Tl - W + 1）AND Seql <= Tlの場合、ウィンドウの対応するビットをチェックして、このSeqlがすでに見られているかどうかを確認します。はいの場合、パケットを拒否します。いいえの場合は、整合性チェックを実行します（Seqhの決定については、以下の付録B2.2を参照）。"
     },
     {
       "indent": 6,
       "text": "+ Under Case B: If Seql >= Bl (where Bl = Tl - W + 1) OR Seql <= Tl, then check the corresponding bit in the window to see if this Seql has already been seen. If yes, reject the packet. If no, perform integrity check (see Appendix B2.2 below for determination of Seqh).",
-      "ja": "+ ケースB：seql> = bl（bl = tl -w 1）またはseql <= tlの場合、ウィンドウの対応するビットを確認して、このseqlがすでに見られているかどうかを確認します。はいの場合、パケットを拒否します。いいえの場合は、整合性チェックを実行します（SEQHの決定については、以下の付録B2.2を参照）。"
+      "ja": "+ ケースB：Seql >= Bl（Bl = Tl - W + 1）OR Seql <= Tlの場合、ウィンドウの対応するビットを確認して、このSeqlがすでに見られているかどうかを確認します。はいの場合、パケットを拒否します。いいえの場合は、整合性チェックを実行します（Seqhの決定については、以下の付録B2.2を参照）。"
     },
     {
       "indent": 0,
       "text": "B2.2. Determining the Higher-Order Bits (Seqh) of the Sequence Number",
-      "ja": "B2.2。シーケンス番号の高次ビット（SEQH）を決定する"
+      "ja": "B2.2. シーケンス番号の高次ビット（Seqh）を決定する"
     },
     {
       "indent": 3,
       "text": "Because only `Seql' will be transmitted with the packet, the receiver must deduce and track the sequence number subspace into which each packet falls, i.e., determine the value of Seqh. The following equations define how to select Seqh under \"normal\" conditions; see Appendix B3 for a discussion of how to recover from extreme packet loss.",
-      "ja": "パケットで「seql」のみが送信されるため、受信者は各パケットが落ちるシーケンス番号サブスペースを推定して追跡する必要があります。つまり、seqhの値を決定する必要があります。次の方程式は、「通常の」条件下でSEQHを選択する方法を定義します。極端なパケット損失から回復する方法についての議論については、付録B3を参照してください。"
+      "ja": "パケットで「Seql」のみが送信されるため、受信者は各パケットが落ちるシーケンス番号サブスペースを推定して追跡する必要があります。つまり、Seqhの値を決定する必要があります。次の方程式は、「通常の」条件下でSeqhを選択する方法を定義します。極端なパケット損失から回復する方法についての議論については、付録B3を参照してください。"
     },
     {
       "indent": 6,
       "text": "+ Under Case A (Figure 1): If Seql >= Bl (where Bl = Tl - W + 1), then Seqh = Th If Seql < Bl (where Bl = Tl - W + 1), then Seqh = Th + 1",
-      "ja": "+ ケースa（図1）：seql> = bl（bl = tl -w 1）の場合、seqh = thの場合はseql <bl（bl = tl -w 1）、seqh = th 1"
+      "ja": "+ ケースA（図1）：Seql >= Bl（Bl = Tl - W + 1）の場合、Seqh = Th。Seql < Bl（Bl = Tl - W + 1）の場合、Seqh = Th + 1"
     },
     {
       "indent": 6,
       "text": "+ Under Case B (Figure 2): If Seql >= Bl (where Bl = Tl - W + 1), then Seqh = Th - 1 If Seql < Bl (where Bl = Tl - W + 1), then Seqh = Th",
-      "ja": "+ ケースB（図2）：seql> = bl（bl = tl -w 1）の場合、seqh = th -1 seql <bl（bl = tl -w 1）、seqh = th"
+      "ja": "+ ケースB（図2）：Seql >= Bl（Bl = Tl - W + 1）の場合、Seqh = Th - 1。Seql < Bl（Bl = Tl - W + 1）の場合、Seqh = Th"
     },
     {
       "indent": 0,
       "text": "B2.3. Pseudo-Code Example",
-      "ja": "B2.3。擬似コードの例"
+      "ja": "B2.3. 擬似コードの例"
     },
     {
       "indent": 3,
       "text": "The following pseudo-code illustrates the above algorithms for anti-replay and integrity checks. The values for `Seql', `Tl', `Th', and `W' are 32-bit unsigned integers. Arithmetic is mod 2^32.",
-      "ja": "次の擬似コードは、アンチレプレイと整合性チェックの上記のアルゴリズムを示しています。「seql」、 `tl '、` th'、および `w 'の値は、32ビットの符号なし整数です。算術はmod 2^32です。"
+      "ja": "次の擬似コードは、アンチリプレイと完全性チェックの上記のアルゴリズムを示しています。「Seql」、「Tl」、「Th」、および「W」の値は、32ビットの符号なし整数です。算術はmod 2^32です。"
     },
     {
       "indent": 8,
       "text": "If (Tl >= W - 1) Case A If (Seql >= Tl - W + 1) Seqh = Th If (Seql <= Tl) If (pass replay check) If (pass integrity check) Set bit corresponding to Seql Pass the packet on Else reject packet Else reject packet Else If (pass integrity check) Tl = Seql (shift bits) Set bit corresponding to Seql Pass the packet on Else reject packet Else Seqh = Th + 1 If (pass integrity check) Tl = Seql (shift bits) Th = Th + 1 Set bit corresponding to Seql Pass the packet on Else reject packet Else Case B If (Seql >= Tl - W + 1) Seqh = Th - 1 If (pass replay check) If (pass integrity check) Set the bit corresponding to Seql Pass packet on Else reject packet Else reject packet Else Seqh = Th If (Seql <= Tl) If (pass replay check) If (pass integrity check) Set the bit corresponding to Seql Pass packet on Else reject packet Else reject packet",
-      "ja": "if（tl> = w -1）case a if（seql> = tl -w 1）seqh = th if（seql <= tl）if（pass repray check）if（pass Integrity check）set set bitにseqlパスに対応するelseのパケット拒否パケットelse redject packet else else（パス整合性チェック）tl = seql（shift bits）set set set seet seql ass elsed packet else seqh = th 1 if（pass intecrity check）tl = seql（shift（shift（shift）bits）th = th = th 1 set seqlに対応するビット他のパケット拒否パケットのパケットパッケージelseケースb（seql> = tl -w 1）seqh = th -1 if（pass repray check）if（pass Integrity check）Setを設定しますseql passパケットに対応するビットelsejed packet else else redject packet packet else else seqh = th if（seql <= tl）if（pass repray check）if（pass Integrity check）はパケット"
+      "ja": "if（Tl >= W - 1）ケースA if（Seql >= Tl - W + 1）Seqh = Th if（Seql <= Tl）if（リプレイチェック合格）if（完全性チェック合格）Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否 Else パケットを拒否 Else if（完全性チェック合格）Tl = Seql（ビットシフト）Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否 Else Seqh = Th + 1 if（完全性チェック合格）Tl = Seql（ビットシフト）Th = Th + 1 Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否 Else ケースB if（Seql >= Tl - W + 1）Seqh = Th - 1 if（リプレイチェック合格）if（完全性チェック合格）Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否 Else パケットを拒否 Else Seqh = Th if（Seql <= Tl）if（リプレイチェック合格）if（完全性チェック合格）Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否 Else パケットを拒否"
     },
     {
       "indent": 16,
       "text": "Else If (pass integrity check) Tl = Seql (shift bits) Set the bit corresponding to Seql Pass packet on Else reject packet",
-      "ja": "else（パス整合性チェック）tl =続編（シフトビット）elseのシールパスパケットに対応するビットを設定します"
+      "ja": "Else if（完全性チェック合格）Tl = Seql（ビットシフト）Seqlに対応するビットを設定 パケットを通過 Else パケットを拒否"
     },
     {
       "indent": 0,
       "text": "B3. Handling Loss of Synchronization due to Significant Packet Loss",
-      "ja": "B3。重大なパケット損失による同期の損失"
+      "section_title": true,
+      "ja": "B3. 重大なパケット損失による同期損失の処理"
     },
     {
       "indent": 3,
       "text": "If there is an undetected packet loss of 2^32 or more consecutive packets on a single SA, then the transmitter and receiver will lose synchronization of the high-order bits, i.e., the equations in Appendix B2.2. will fail to yield the correct value. Unless this problem is detected and addressed, subsequent packets on this SA will fail authentication checks and be discarded. The following procedure SHOULD be implemented by any IPsec (ESP or AH) implementation that supports the ESN option.",
-      "ja": "単一のSAで2^32以上の連続したパケットの検出されないパケット損失がある場合、トランスミッターとレシーバーは高次ビットの同期、つまり付録B2.2の方程式を失います。正しい値をもたらすことができません。この問題が検出され、対処されない限り、このSAの後続のパケットは認証チェックに失敗し、破棄されます。以下の手順は、ESNオプションをサポートするIPSEC（ESPまたはAH）実装によって実装する必要があります。"
+      "ja": "単一のSAで2^32以上の連続したパケットの検出されないパケット損失がある場合、送信者と受信者は高次ビットの同期、つまり付録B2.2の方程式を失い、正しい値が得られなくなります。この問題が検出され、対処されない限り、このSAの後続のパケットは認証チェックに失敗し、破棄されます。以下の手順は、ESNオプションをサポートするIPsec（ESPまたはAH）実装によって実装する必要があります（SHOULD）。"
     },
     {
       "indent": 3,
@@ -1293,32 +1294,32 @@
     {
       "indent": 5,
       "text": "+ avoid creating an opportunity for a new denial of service attack such as might occur by allowing an attacker to force diversion of resources to a re-synchronization process. + limit the recovery mechanism to the receiver because anti-replay is a service only for the receiver, and the transmitter generally is not aware of whether the receiver is using sequence numbers in support of this optional service. It is preferable for recovery mechanisms to be local to the receiver. This also allows for backward compatibility.",
-      "ja": "+ 攻撃者が再同期プロセスへのリソースの迂回を強制することにより、発生する可能性など、新しいサービス攻撃の機会を作成しないでください。アンチレプレイは受信機のみのサービスであり、送信機は一般に、このオプションのサービスをサポートするためにレシーバーがシーケンス番号を使用しているかどうかを一般に認識していないため、受信機に制限されます。回復メカニズムが受信機にローカルになることをお勧めします。これにより、後方互換性も可能になります。"
+      "ja": "+ 攻撃者が再同期プロセスへのリソースの迂回を強制する可能性のある、新たなサービス拒否攻撃の機会を生み出すことを避ける。+ アンチリプレイは受信者専用のサービスであり、送信者は通常、受信者がこのオプションサービスをサポートするためにシーケンス番号を使用しているかどうかを認識していないため、リカバリメカニズムを受信者に限定する。リカバリメカニズムは受信者側でローカルであることが望ましい。これにより、下位互換性も可能となる。"
     },
     {
       "indent": 0,
       "text": "B3.1. Triggering Re-synchronization",
-      "ja": "B3.1。再同期のトリガー"
+      "ja": "B3.1. 再同期のトリガー"
     },
     {
       "indent": 3,
       "text": "For each SA, the receiver records the number of consecutive packets that fail authentication. This count is used to trigger the re-synchronization process, which should be performed in the background or using a separate processor. Receipt of a valid packet on the SA resets the counter to zero. The value used to trigger the re-synchronization process is a local parameter. There is no requirement to support distinct trigger values for different SAs, although an implementer may choose to do so.",
-      "ja": "各SAについて、受信機は認証に失敗する連続したパケットの数を記録します。このカウントは、再同期プロセスをトリガーするために使用されます。これは、バックグラウンドで実行するか、別のプロセッサを使用する必要があります。SAで有効なパケットを受信して、カウンターをゼロにリセットします。再同期プロセスをトリガーするために使用される値は、ローカルパラメーターです。実装者がそうすることを選択する場合は、異なるSAの異なるトリガー値をサポートする要件はありません。"
+      "ja": "各SAについて、受信機は認証に失敗する連続したパケットの数を記録します。このカウントは、再同期プロセスをトリガーするために使用されます。これは、バックグラウンドで実行するか、別のプロセッサを使用する必要があります。SAで有効なパケットを受信すると、カウンターをゼロにリセットします。再同期プロセスをトリガーするために使用される値は、ローカルパラメーターです。実装者がそうすることを選択する場合は、異なるSAの異なるトリガー値をサポートする要件はありません。"
     },
     {
       "indent": 0,
       "text": "B3.2. Re-synchronization Process",
-      "ja": "B3.2。再同期プロセス"
+      "ja": "B3.2. 再同期プロセス"
     },
     {
       "indent": 3,
       "text": "When the above trigger point is reached, a \"bad\" packet is selected for which authentication is retried using successively larger values for the upper half of the sequence number (Seqh). These values are generated by incrementing by one for each retry. The number of retries should be limited, in case this is a packet from the \"past\" or a bogus packet. The limit value is a local parameter. (Because the Seqh value is implicitly placed after the AH (or ESP) payload, it may be possible to optimize this procedure by executing the integrity algorithm over the packet up to the endpoint of the payload, then compute different candidate ICVs by varying the value of Seqh.) Successful authentication of a packet via this procedure resets the consecutive failure count and sets the value of T to that of the received packet.",
-      "ja": "上記のトリガーポイントに到達すると、シーケンス番号（SEQH）の上半分の上半分の値がより大きな値を使用して認証が再試行される「悪い」パケットが選択されます。これらの値は、再試行ごとに1つずつ増加することによって生成されます。これが「過去」または偽のパケットからのパケットである場合、レトリの数を制限する必要があります。制限値はローカルパラメーターです。（SEQH値はAH（またはESP）ペイロードの後に暗黙的に配置されるため、パケットを介してペイロードのエンドポイントまで整合性アルゴリズムを実行して、この手順を最適化することができる場合があります。SEQHの。）この手順を介してパケットの認証を成功させると、連続障害カウントをリセットし、Tの値を受信パケットの値に設定します。"
+      "ja": "上記のトリガーポイントに到達すると、シーケンス番号（Seqh）の上位半分に対して、順次大きくなる値を使用して認証が再試行される「悪い」パケットが選択されます。これらの値は、リトライごとに1つずつ増加することによって生成されます。これが「過去」または偽のパケットからのパケットである場合、リトライの数を制限する必要があります。制限値はローカルパラメーターです。（Seqh値はAH（またはESP）ペイロードの後に暗黙的に配置されるため、パケットを介してペイロードのエンドポイントまで整合性アルゴリズムを実行し、Seqhの値を変化させることで異なる候補ICVを計算することにより、この手順を最適化できる場合があります。）この手順を介してパケットの認証を成功させると、連続障害カウントをリセットし、Tの値を受信パケットの値に設定します。"
     },
     {
       "indent": 3,
       "text": "This solution requires support only on the part of the receiver, thereby allowing for backward compatibility. Also, because re-synchronization efforts would either occur in the background or utilize an additional processor, this solution does not impact traffic processing and a denial of service attack cannot divert resources away from traffic processing.",
-      "ja": "このソリューションでは、レシーバーの側でのみサポートが必要であり、それにより、後方互換性が可能になります。また、再同期の取り組みはバックグラウンドで発生するか、追加のプロセッサを利用するため、このソリューションはトラフィック処理に影響を与えず、サービス拒否攻撃はトラフィック処理から離れてリソースをそらすことはできません。"
+      "ja": "このソリューションは受信者側でのみサポートが必要であり、後方互換性を可能にします。また、再同期の取り組みはバックグラウンドで発生するか、追加のプロセッサを利用するため、このソリューションはトラフィック処理に影響を与えず、サービス拒否攻撃はトラフィック処理から離れてリソースをそらすことはできません。"
     },
     {
       "indent": 0,
@@ -1344,7 +1345,7 @@
     {
       "indent": 3,
       "text": "Copyright (C) The Internet Society (2005).",
-      "ja": "Copyright（c）The Internet Society（2005）。"
+      "ja": "Copyright (C) The Internet Society (2005)."
     },
     {
       "indent": 3,

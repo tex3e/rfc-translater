@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RFC 5652 - Cryptographic Message Syntax (CMS) 日本語訳</title>
-  <meta name="description" content="RFC 5652は、Cryptographic Message Syntax (CMS)に関する文書で、デジタル署名、暗号化、その他のメッセージ認証機能を提供するための標準化された方法を定義しています。この標準は、電子メールのセキュリティ拡張、デジタル証明書の管理、電子商取引トランザクションの保護など、さまざまなセキュリティ要件を満たすために広く利用されています。CMSは、S/MIME (Secure/Multipurpose Internet Mail Extensions) の基盤としても機能し、RFC 3852から更新されました。関連するRFCには、RFC 5280 (X.509証明書とCRLのプロファイル) やRFC 5751 (S/MIME Version 3.2 Message Specification) などがあります。">
+  <meta name="description" content="RFC 5652は、Cryptographic Message Syntax (CMS) を定義する規格です。この構文は、任意のメッセージ内容に対してデジタル署名、メッセージダイジェスト、認証、暗号化などの機能を提供するために使用されます。CMSはRFC 3852を置き換えるものであり、S/MIMEの基盤としても広く利用されています。">
   
   <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -48,7 +48,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 5652 - 暗号化メッセージ構文（CMS）</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -59,7 +59,7 @@
     <div id="rfc_summary">
       <div class="card mb-3">
         <div class="card-body">
-          <p class="card-text">[要約] RFC 5652は、Cryptographic Message Syntax (CMS)に関する文書で、デジタル署名、暗号化、その他のメッセージ認証機能を提供するための標準化された方法を定義しています。この標準は、電子メールのセキュリティ拡張、デジタル証明書の管理、電子商取引トランザクションの保護など、さまざまなセキュリティ要件を満たすために広く利用されています。CMSは、S/MIME (Secure/Multipurpose Internet Mail Extensions) の基盤としても機能し、RFC 3852から更新されました。関連するRFCには、RFC 5280 (X.509証明書とCRLのプロファイル) やRFC 5751 (S/MIME Version 3.2 Message Specification) などがあります。</p>
+          <p class="card-text">[要約] RFC 5652は、Cryptographic Message Syntax (CMS) を定義する規格です。この構文は、任意のメッセージ内容に対してデジタル署名、メッセージダイジェスト、認証、暗号化などの機能を提供するために使用されます。CMSはRFC 3852を置き換えるものであり、S/MIMEの基盤としても広く利用されています。</p>
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@ This document may contain material from IETF Documents or IETF Contributions pub
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントには、2008年11月10日より前に公開または公開されたIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。この素材の一部で著作権を管理している人が、IETFトラストにそのような素材の変更を許可する権利を付与していない可能性がありますIETF標準プロセス外。このような資料の著作権を管理する人から適切なライセンスを取得せずに、このドキュメントをIETF標準プロセス外で変更したり、その派生物をIETF標準プロセス外で作成したりすることはできません。 RFCとして、またはそれを英語以外の言語に翻訳するための出版物。
+このドキュメントには、2008年11月10日より前に公開または公に利用可能になったIETFドキュメントまたはIETFコントリビューションの素材が含まれている場合があります。これらの素材の一部で著作権を管理する個人は、IETF標準プロセス外での当該素材の変更をIETFトラストに許可していない可能性があります。このような素材の著作権を管理する個人から適切なライセンスを取得することなく、本ドキュメントをIETF標準プロセス外で変更すること、およびその派生著作物をIETF標準プロセス外で作成することはできません。ただし、RFCとして公開するためにフォーマットする場合、または英語以外の言語に翻訳する場合は除きます。
         </p>
       </div>
     </div>
@@ -349,7 +349,7 @@ The CMS is derived from PKCS #7 version 1.5, which is documented in RFC 2315 [PK
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CMSは、RFC 2315 [PKCS＃7]で文書化されているPKCS＃7バージョン1.5から派生しています。 PKCS＃7バージョン1.5は、IETFの外部で開発されました。これは、1993年11月にRSA Laboratories Technical Noteとして最初に公開されました。それ以来、IETFはCMSの開発と保守を担当しています。今日、いくつかの重要なIETF Standards-TrackプロトコルがCMSを利用しています。
+CMSは、RFC 2315 [PKCS#7]で文書化されているPKCS#7バージョン1.5から派生しています。 PKCS#7バージョン1.5は、IETFの外部で開発されました。これは、1993年11月にRSA Laboratories Technical Noteとして最初に公開されました。それ以来、IETFはCMSの開発と保守を担当しています。今日、いくつかの重要なIETF Standards-TrackプロトコルがCMSを利用しています。
         </p>
       </div>
     </div>
@@ -373,7 +373,7 @@ This section describes that changes that the IETF has made to the CMS in each of
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-1.1.1. PKCS＃7バージョン1.5以降の変更
+1.1.1. PKCS#7バージョン1.5以降の変更
         </h5>
       </div>
     </div>
@@ -385,7 +385,7 @@ RFC 2630 [CMS1] was the first version of the CMS on the IETF Standards Track. Wh
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RFC 2630 [CMS1]は、IETF標準トラックのCMSの最初のバージョンでした。可能な限り、PKCS＃7バージョン1.5との下位互換性は維持されます。ただし、バージョン1の属性証明書の転送に対応し、アルゴリズムに依存しないキー管理をサポートするために変更が加えられました。 PKCS＃7バージョン1.5には、キー転送のみのサポートが含まれていました。 RFC 2630は、鍵合意および以前に配布された対称鍵暗号鍵技術のサポートを追加します。
+RFC 2630 [CMS1]は、IETF標準トラックのCMSの最初のバージョンでした。可能な限り、PKCS#7バージョン1.5との下位互換性は維持されます。ただし、バージョン1の属性証明書の転送に対応し、アルゴリズムに依存しないキー管理をサポートするために変更が加えられました。 PKCS#7バージョン1.5には、キー転送のみのサポートが含まれていました。 RFC 2630は、鍵合意および以前に配布された対称鍵暗号鍵技術のサポートを追加します。
         </p>
       </div>
     </div>
@@ -421,7 +421,7 @@ Secure/Multipurpose Internet Mail Extensions (S/MIME) v2 signatures [MSG2], whic
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Secure / Multipurpose Internet Mail Extensions（S / MIME）v2署名[MSG2]はPKCS＃7バージョン1.5に基づいており、S / MIME v3署名[MSG3]およびS / MIME v3.1署名[MSG3.1]と互換性があります。 ]。ただし、PKCS＃7バージョン1.5に基づくシグネチャには、いくつかの微妙な互換性の問題があります。これらの問題については、セクション5.2.1で説明します。これらの問題は、CMSの現在のバージョンに残っています。
+Secure / Multipurpose Internet Mail Extensions（S/MIME）v2署名[MSG2]はPKCS#7バージョン1.5に基づいており、S/MIME v3署名[MSG3]およびS/MIME v3.1署名[MSG3.1]と互換性があります。 ]。ただし、PKCS#7バージョン1.5に基づくシグネチャには、いくつかの微妙な互換性の問題があります。これらの問題については、セクション5.2.1で説明します。これらの問題は、CMSの現在のバージョンに残っています。
         </p>
       </div>
     </div>
@@ -565,7 +565,7 @@ In this document, the key words MUST, MUST NOT, REQUIRED, SHOULD, SHOULD NOT, RE
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、キーワード「必須」、「必須」、「必須」、「必須」、「必須」、「推奨」、「必須」、および「オプション」は、[STDWORDS]で説明されているように解釈されます。
+このドキュメントでは、キーワード MUST, MUST NOT, REQUIRED, SHOULD, SHOULD NOT, RECOMMENDED, MAY, および OPTIONAL は、[STDWORDS] で記述されているように解釈されます。
         </p>
       </div>
     </div>
@@ -589,7 +589,7 @@ Each of the major data structures includes a version number as the first item in
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-主要なデータ構造のそれぞれには、データ構造の最初の項目としてバージョン番号が含まれています。バージョン番号は、ASN.1デコードエラーを回避するためのものです。一部の実装は、デコードを試みる前にバージョン番号をチェックしません。デコードエラーが発生した場合、エラー処理ルーチンの一部としてバージョン番号がチェックされます。これは合理的なアプローチです。エラー処理を高速パスの外に置きます。このアプローチは、送信者が誤ったバージョン番号を使用した場合にも許容されます。
+主要なデータ構造のそれぞれには、データ構造の最初の項目としてバージョン番号が含まれています。バージョン番号はASN.1デコードエラーを回避することを目的としています。一部の実装ではデコードを試みる前にバージョン番号をチェックしませんが、デコードエラーが発生した場合は、エラー処理ルーチンの一部としてバージョン番号がチェックされます。これは合理的なアプローチであり、エラー処理を高速パスから分離します。また、送信者が不正確なバージョン番号を使用した場合でも、このアプローチは対応できます。
         </p>
       </div>
     </div>
@@ -601,7 +601,7 @@ Most of the initial version numbers were assigned in PKCS #7 version 1.5. Others
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-初期バージョン番号のほとんどは、PKCS＃7バージョン1.5で割り当てられました。その他は、構造が最初に作成されたときに割り当てられました。構造が更新されるたびに、より高いバージョン番号が割り当てられます。ただし、最大の相互運用性を確保するために、新しい構文機能が採用されている場合にのみ、より高いバージョン番号が使用されます。つまり、生成された構文をサポートする最も低いバージョン番号が使用されます。
+初期バージョン番号のほとんどはPKCS #7バージョン1.5で割り当てられました。その他のバージョン番号は、構造が最初に作成されたときに割り当てられました。構造が更新されるたびに、より新しいバージョン番号が割り当てられます。ただし、最大限の相互運用性を確保するため、新しい構文機能が使用される場合にのみ、より新しいバージョン番号が用いられます。つまり、生成された構文をサポートする最も低いバージョン番号が適用されます。
         </p>
       </div>
     </div>
@@ -625,7 +625,7 @@ The CMS is general enough to support many different content types. This document
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CMSは、多くの異なるコンテンツタイプをサポートするのに十分一般的です。このドキュメントでは、1つの保護コンテンツであるContentInfoを定義しています。 ContentInfoは単一の識別されたコンテンツタイプをカプセル化し、識別されたタイプはさらにカプセル化を提供する場合があります。このドキュメントでは、データ、署名済みデータ、エンベロープデータ、ダイジェストデータ、暗号化データ、および認証データの6つのコンテンツタイプを定義しています。このドキュメントの外部で追加のコンテンツタイプを定義できます。
+CMSは、多種多様なコンテンツタイプをサポートできるほど汎用的です。本ドキュメントでは、保護コンテンツの一種であるContentInfoを定義しています。ContentInfoは単一の識別されたコンテンツタイプをカプセル化し、その識別されたタイプはさらなるカプセル化を提供する場合があります。本ドキュメントでは、データ、署名済みデータ、エンベロープデータ、ダイジェストデータ、暗号化データ、認証データの6つのコンテンツタイプを定義しています。追加のコンテンツタイプは本ドキュメントの範囲外で定義することも可能です。
         </p>
       </div>
     </div>
@@ -637,7 +637,7 @@ An implementation that conforms to this specification MUST implement the protect
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様に準拠する実装は、保護コンテンツContentInfoを実装する必要があり、データ、署名済みデータ、およびエンベロープデータコンテンツタイプを実装する必要があります。他のコンテンツタイプが実装される場合があります。
+この仕様に準拠する実装は、保護コンテンツであるContentInfoを実装しなければならず、データ、署名済みデータ、およびエンベロープデータコンテンツタイプも実装しなければなりません。その他のコンテンツタイプは実装してもよい（MAY）。
         </p>
       </div>
     </div>
@@ -649,7 +649,7 @@ As a general design philosophy, each content type permits single pass processing
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-一般的な設計哲学として、各コンテンツタイプは、不定長のBasic Encoding Rules（BER）エンコーディングを使用したシングルパス処理を許可します。シングルパス操作は、コンテンツが大きい、テープに保存されている、または別のプロセスから「パイプ」されている場合に特に役立ちます。シングルパス操作には大きな欠点が1つあります。さまざまなコンポーネントの長さが事前にわからない場合があるため、シングルパスでDistinguished Encoding Rules（DER）[X.509-88]エンコーディングを使用してエンコード操作を実行することは困難です。ただし、signed-dataコンテンツタイプ内の署名済み属性とauthentication-dataコンテンツタイプ内の認証済み属性をDER形式で送信して、受信者が1つ以上の認識されない属性を含むコンテンツを確認できるようにする必要があります。署名された属性と認証された属性は、DERエンコードを必要とするCMSで使用される唯一のデータ型です。
+一般的な設計思想として、各コンテンツタイプは可変長の基本符号化規則（BER）エンコーディングを用いたシングルパス処理を可能にします。シングルパス処理は、コンテンツが大容量である場合、テープに格納されている場合、または別のプロセスから「パイプ」される場合に特に有用です。シングルパス処理には一つ大きな欠点があります。それは、様々な構成要素の長さが事前に不明な場合があるため、識別符号化規則（DER）[X.509-88]エンコーディングを用いたシングルパスでの符号化操作は困難であることです。しかし、SignedDataコンテンツタイプ内の署名済み属性およびAuthenticatedDataコンテンツタイプ内の認証済み属性は、受信者が一つ以上の未認識属性を含むコンテンツを検証できるように、DER形式で伝送される必要があります。署名済み属性および認証済み属性は、CMSにおいてDERエンコーディングを要求される唯一のデータ型です。
         </p>
       </div>
     </div>
@@ -693,7 +693,7 @@ The CMS associates a content type identifier with a content. The syntax MUST hav
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CMSは、コンテンツタイプ識別子をコンテンツに関連付けます。構文は、ASN.1タイプのContentInfoを持つ必要があります。
+CMSは、コンテンツタイプ識別子をコンテンツに関連付けます。この構文は、ASN.1タイプContentInfoを持たなければなりません。
         </p>
       </div>
     </div>
@@ -745,7 +745,7 @@ content is the associated content. The type of content can be determined uniquel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-contentは関連するコンテンツです。コンテンツのタイプは、contentTypeによって一意に決定できます。このドキュメントでは、データ、署名付きデータ、エンベロープデータ、ダイジェストデータ、暗号化データ、および認証済みデータのコンテンツタイプを定義します。他のドキュメントで追加のコンテンツタイプが定義されている場合、定義されたASN.1タイプは選択タイプであるべきではありません（SHOULD NOT）。
+contentは関連するコンテンツです。コンテンツのタイプは、contentTypeによって一意に決定できます。本ドキュメントでは、データ、署名済みデータ、エンベロープデータ、ダイジェストデータ、暗号化データ、および認証済みデータのコンテンツタイプを定義しています。他のドキュメントで追加のコンテンツタイプが定義される場合、定義されるASN.1タイプはCHOICEタイプであるべきではありません（SHOULD NOT）。
         </p>
       </div>
     </div>
@@ -789,7 +789,7 @@ The data content type is intended to refer to arbitrary octet strings, such as A
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-データコンテンツタイプは、ASCIIテキストファイルなどの任意のオクテット文字列を参照することを目的としています。解釈はアプリケーションに委ねられます。このような文字列は、内部構造を持つ必要はありません（独自のASN.1定義または他の構造を持つこともできます）。
+データコンテンツタイプは、ASCIIテキストファイルなどの任意のオクテット文字列を参照するものです。その解釈はアプリケーションに委ねられます。このような文字列は内部構造を持つ必要はありません（ただし、独自のASN.1定義や他の構造を持つことも可能です）。
         </p>
       </div>
     </div>
@@ -801,7 +801,7 @@ S/MIME uses id-data to identify MIME-encoded content. The use of this content id
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-S / MIMEは、id-dataを使用してMIMEエンコードされたコンテンツを識別します。このコンテンツ識別子の使用は、S / MIME v2 [MSG2]のRFC 2311、S / MIME v3 [MSG3]のRFC 2633、およびS / MIME v3.1 [MSG3.1]のRFC 3851で指定されています。
+S/MIMEは、id-dataを使用してMIMEエンコードされたコンテンツを識別します。このコンテンツ識別子の使用は、S/MIME v2 [MSG2]のRFC 2311、S/MIME v3 [MSG3]のRFC 2633、およびS/MIME v3.1 [MSG3.1]のRFC 3851で指定されています。
         </p>
       </div>
     </div>
@@ -989,7 +989,7 @@ The signed-data content type shall have ASN.1 type SignedData:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名済みデータのコンテンツタイプは、ASN.1タイプSignedDataを持つ必要があります。
+署名済みデータのコンテンツタイプは、ASN.1タイプSignedDataを持つものとします。
         </p>
       </div>
     </div>
@@ -1045,15 +1045,25 @@ versionは構文のバージョン番号です。適切な値は、証明書、e
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-9">
-IF ((certificates is present) AND (any certificates with a type of other are present)) OR ((crls is present) AND (any crls with a type of other are present)) THEN version MUST be 5 ELSE IF (certificates is present) AND (any version 2 attribute certificates are present) THEN version MUST be 4 ELSE IF ((certificates is present) AND (any version 1 attribute certificates are present)) OR (any SignerInfo structures are version 3) OR (encapContentInfo eContentType is other than id-data) THEN version MUST be 3 ELSE version MUST be 1
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-9">
-IF（（証明書が存在する）AND（その他のタイプの証明書が存在する））OR（（crlsが存在する）AND（その他のタイプの証明書が存在する））THEN version is 5 ELSE IF（certificates is存在）AND（任意のバージョン2属性証明書が存在する）THENバージョンは4 ELSE IF（（証明書が存在する）AND（任意のバージョン1属性証明書が存在する））OR（任意のSignerInfo構造はバージョン3）OR（encapContentInfo eContentType is id-data以外）バージョンは3でなければならず、バージョンは1でなければなりません
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+         IF ((certificates is present) AND
+            (any certificates with a type of other are present)) OR
+            ((crls is present) AND
+            (any crls with a type of other are present))
+         THEN version MUST be 5
+         ELSE
+            IF (certificates is present) AND
+               (any version 2 attribute certificates are present)
+            THEN version MUST be 4
+            ELSE
+               IF ((certificates is present) AND
+                  (any version 1 attribute certificates are present)) OR
+                  (any SignerInfo structures are version 3) OR
+                  (encapContentInfo eContentType is other than id-data)
+               THEN version MUST be 3
+               ELSE version MUST be 1
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1064,7 +1074,7 @@ digestAlgorithms is a collection of message digest algorithm identifiers. There 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-digestAlgorithmsは、メッセージダイジェストアルゴリズム識別子のコレクションです。ゼロを含め、コレクションには任意の数の要素があります。各要素は、1つ以上の署名者が使用する、関連するパラメーターとともにメッセージダイジェストアルゴリズムを識別します。このコレクションは、すべての署名者が使用するメッセージダイジェストアルゴリズムを任意の順序でリストして、ワンパス署名検証を容易にすることを目的としています。実装は、このセットに含まれていないダイジェストアルゴリズムを使用する署名の検証に失敗する場合があります。メッセージダイジェストプロセスについては、セクション5.4で説明します。
+digestAlgorithmsは、メッセージダイジェストアルゴリズム識別子のコレクションです。このコレクションには、ゼロ個以上の任意の数の要素を含めることができます（MAY）。各要素は、1人以上の署名者が使用するメッセージダイジェストアルゴリズムと、それに関連するパラメータを識別します。このコレクションは、ワンパスでの署名検証を容易にするために、すべての署名者が使用するメッセージダイジェストアルゴリズムを任意の順序でリストすることを目的としています。実装は、このセットに含まれていないダイジェストアルゴリズムを使用する署名の検証に失敗してもよい（MAY）。メッセージダイジェスト処理のプロセスは、5.4節で説明されています。
         </p>
       </div>
     </div>
@@ -1088,7 +1098,7 @@ certificates is a collection of certificates. It is intended that the set of cer
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-証明書は証明書のコレクションです。一連の証明書は、認識された「ルート」または「トップレベルの証明機関」からすべての署名者への署名パスをsignerInfosフィールドに含めるのに十分であることを意図しています。必要以上の証明書が存在する可能性があり、2つ以上の独立したトップレベルの証明機関からの証明書パスを含めるのに十分な証明書が存在する可能性があります。また、受信者が必要な証明書を取得する別の手段を持っていることが予想される場合（たとえば、以前の証明書のセットから）、証明書の数が必要よりも少ない場合もあります。署名者の証明書が含まれる場合があります。バージョン1の属性証明書の使用は強くお勧めしません。
+certificatesは証明書のコレクションです。この証明書のセットは、認識されている「ルート」または「トップレベル認証局」から、signerInfosフィールド内のすべての署名者に至るまでの証明書パスを含むのに十分であることが意図されています。必要以上に多くの証明書が含まれることもありますし、2つ以上の独立したトップレベル認証局からの証明書パスを含むのに十分な証明書が含まれることもあります。また、受信者が（例えば、以前の証明書セットから）必要な証明書を取得する代替手段を持つと期待される場合には、必要な数より少ない証明書しか含まれない場合もあります。署名者の証明書を含めてもよい（MAY）。バージョン1の属性証明書の使用は、強く非推奨とします。
         </p>
       </div>
     </div>
@@ -1100,7 +1110,7 @@ crls is a collection of revocation status information. It is intended that the c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-crlsは失効ステータス情報のコレクションです。コレクションには、証明書フィールドの証明書が有効かどうかを判断するのに十分な情報が含まれていますが、このような対応は必要ありません。証明書失効リスト（CRL）は、失効ステータス情報の主要なソースです。必要以上に多くのCRLが存在する可能性があり、必要以上に少ないCRLも存在する可能性があります。
+crlsは失効ステータス情報のコレクションです。このコレクションには、certificatesフィールド内の証明書が有効であるかどうかを判断するのに十分な情報を含むことが意図されていますが、その情報がcertificatesと完全に対応している必要はありません。証明書失効リスト（CRL）が、失効ステータス情報の主要な情報源です。必要以上に多くのCRLが含まれることもありますし（MAY）、また必要以上に少ないCRLしか含まれないこともあります（MAY）。
         </p>
       </div>
     </div>
@@ -1112,7 +1122,7 @@ signerInfos is a collection of per-signer information. There MAY be any number o
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-signerInfosは、署名者ごとの情報のコレクションです。ゼロを含め、コレクションには任意の数の要素があります。コレクションが複数の署名を表す場合、特定の署名者からの署名の1つが正常に検証された場合、その署名者は成功した署名として扱う必要があります。ただし、他のルールが必要なアプリケーション環境もあります。 SignerInfoタイプの詳細については、セクション5.3で説明します。各署名者は異なるデジタル署名技術を使用でき、将来の仕様で構文が更新される可能性があるため、すべての実装は、実装されていないバージョンのSignerInfoを適切に処理する必要があります。さらに、すべての実装がすべての可能な署名アルゴリズムをサポートするわけではないため、すべての実装は、実装されていない署名アルゴリズムに遭遇したときに適切に処理する必要があります。
+signerInfosは、署名者ごとの情報のコレクションです。このコレクションには、ゼロ個以上の任意の数の要素を含めることができます（MAY）。コレクションが複数の署名を表す場合、ある特定の署名者からの署名のうち1つが正常に検証されれば、その署名者による有効な署名として扱われるべきです。ただし、他のルールが必要となるアプリケーション環境も存在します。SignerInfoタイプの詳細については、5.3節で説明します。各署名者は異なるデジタル署名技術を利用でき、将来の仕様で構文が更新される可能性があるため、すべての実装は、実装されていないバージョンのSignerInfoを適切に処理しなければなりません（MUST）。さらに、すべての実装がすべての可能な署名アルゴリズムをサポートするわけではないため、すべての実装は、実装されていない署名アルゴリズムに遭遇した際に、それを適切に処理しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1200,7 +1210,7 @@ The optional omission of the eContent within the EncapsulatedContentInfo field m
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-EncapsulatedContentInfoフィールド内のeContentの省略可能なオプションにより、「外部署名」を構築することが可能になります。外部署名の場合、署名されるコンテンツは、signed-dataコンテンツタイプに含まれるEncapsulatedContentInfo値に含まれません。 EncapsulatedContentInfo内のeContent値が存在しない場合、signatureValueが計算され、eContent値が存在するかのようにeContentTypeが割り当てられます。
+EncapsulatedContentInfoフィールド内のeContentを任意で省略することにより、「外部署名」を構築することが可能になります。外部署名の場合、署名対象のコンテンツは、signed-dataコンテンツタイプに含まれるEncapsulatedContentInfo値には存在しません。EncapsulatedContentInfo内のeContent値が存在しない場合でも、eContent値が存在する場合と同様にsignatureValueが計算され、eContentTypeが割り当てられます。
         </p>
       </div>
     </div>
@@ -1212,7 +1222,7 @@ In the degenerate case where there are no signers, the EncapsulatedContentInfo v
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名者がいない縮退した場合、「署名」されているEncapsulatedContentInfo値は無関係です。この場合、「署名」されているEncapsulatedContentInfo値内のコンテンツタイプはid-data（セクション4で定義）である必要があり、EncapsulatedContentInfo値のコンテンツフィールドは省略しなければなりません（MUST）。
+署名者がいない縮退したケースでは、「署名」されるEncapsulatedContentInfo値は意味を持ちません。この場合、「署名」されるEncapsulatedContentInfo値内のコンテンツタイプはid-data（4節で定義）でなければならず（MUST）、かつEncapsulatedContentInfo値のcontentフィールドは省略しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1224,7 +1234,7 @@ In the degenerate case where there are no signers, the EncapsulatedContentInfo v
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-5.2.1. PKCS＃7との互換性
+5.2.1. PKCS#7との互換性
         </h5>
       </div>
     </div>
@@ -1236,7 +1246,7 @@ This section contains a word of warning to implementers that wish to support bot
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このセクションには、CMSとPKCS＃7 [PKCS＃7] SignedDataコンテンツタイプの両方をサポートすることを希望する実装者への警告が含まれています。 CMSとPKCS＃7はどちらもオブジェクト識別子でカプセル化されたコンテンツのタイプを識別しますが、コンテンツ自体のASN.1タイプはPKCS＃7 SignedDataコンテンツタイプで可変です。
+このセクションには、CMSとPKCS#7 [PKCS#7] SignedDataコンテンツタイプの両方をサポートすることを希望する実装者への警告が含まれています。 CMSとPKCS#7はどちらもオブジェクト識別子でカプセル化されたコンテンツのタイプを識別しますが、コンテンツ自体のASN.1タイプはPKCS#7 SignedDataコンテンツタイプで可変です。
         </p>
       </div>
     </div>
@@ -1248,20 +1258,15 @@ PKCS #7 defines content as:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-PKCS＃7はコンテンツを次のように定義しています。
+PKCS#7はコンテンツを次のように定義しています。
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-content [0] EXPLICIT ANY DEFINED BY contentType OPTIONAL
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-content [0] contentTypeによって定義された明示的なオプション
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      content [0] EXPLICIT ANY DEFINED BY contentType OPTIONAL
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1277,15 +1282,10 @@ CMSはeContentを次のように定義しています。
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-eContent [0] EXPLICIT OCTET STRING OPTIONAL
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-eContent [0]明示的なオクテット文字列はオプションです
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      eContent [0] EXPLICIT OCTET STRING OPTIONAL
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1296,7 +1296,7 @@ The CMS definition is much easier to use in most applications, and it is compati
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CMS定義はほとんどのアプリケーションではるかに使いやすく、S / MIME v2とS / MIME v3の両方と互換性があります。 S / MIME v2 [MSG2]のRFC 2311、S / MIME v3 [MSG3]のRFC 2633、S /のRFC 3851で同じ署名付きメッセージ形式が指定されているため、CMSおよびPKCS＃7を使用したS / MIME署名付きメッセージには互換性がありますMIME v3.1 [MSG3.1]。 S / MIME v2は、MIMEコンテンツをSignedData contentInfo content ANYフィールドで運ばれるデータタイプ（つまり、OCTET STRING）にカプセル化し、S / MIME v3は、MIMEコンテンツをSignedData encapContentInfo eContent OCTET STRINGで運びます。したがって、S / MIME v2、S / MIME v3、およびS / MIME v3.1では、MIMEコンテンツはOCTET STRINGに配置され、メッセージダイジェストはコンテンツの同一部分で計算されます。つまり、メッセージダイジェストは、OCTET STRINGの値を構成するオクテットに対して計算され、タグや長さのオクテットは含まれません。
+CMSの定義は、ほとんどのアプリケーションでより簡単に利用でき、S/MIME v2とS/MIME v3の両方と互換性があります。CMSとPKCS #7を使用するS/MIME署名付きメッセージに互換性があるのは、S/MIME v2 [MSG2] のRFC 2311、S/MIME v3 [MSG3] のRFC 2633、およびS/MIME v3.1 [MSG3.1] のRFC 3851で、同一の署名付きメッセージフォーマットが指定されているためです。S/MIME v2は、MIMEコンテンツをSignedDataのcontentInfoのcontent ANYフィールドに格納されるData型（すなわちOCTET STRING）にカプセル化し、S/MIME v3はMIMEコンテンツをSignedDataのencapContentInfoのeContent OCTET STRINGに格納します。したがって、S/MIME v2、S/MIME v3、およびS/MIME v3.1では、MIMEコンテンツはOCTET STRINGに配置され、メッセージダイジェストはコンテンツの同一の部分に対して計算されます。つまり、メッセージダイジェストはOCTET STRINGの値を構成するオクテットに対して計算され、タグや長さのオクテットは計算に含まれません。
         </p>
       </div>
     </div>
@@ -1308,7 +1308,7 @@ There are incompatibilities between the CMS and PKCS #7 SignedData types when th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-カプセル化されたコンテンツがデータ型を使用してフォーマットされていない場合、CMSとPKCS＃7のSignedData型の間には非互換性があります。たとえば、RFC 2634署名付き受信[ESS]がCMS SignedDataタイプにカプセル化されている場合、Receipt SEQUENCEはSignedData encapContentInfo eContent OCTET STRINGでエンコードされ、メッセージダイジェストはReceipt SEQUENCEエンコーディング全体（タグ、長さを含む）を使用して計算されます。および値オクテット）。ただし、RFC 2634で署名された受信がPKCS＃7 SignedDataタイプにカプセル化されている場合、Receipt SEQUENCEは、SignedData contentInfo content ANYフィールド（OCTET STRINGではなくSEQUENCE）でDERエンコード[X.509-88]されます。したがって、メッセージダイジェストは、Receipt SEQUENCEエンコーディングの値オクテットのみを使用して計算されます。
+カプセル化されたコンテンツがData型を用いてフォーマットされていない場合、CMSとPKCS #7のSignedData型の間には非互換性が存在します。例えば、RFC 2634の署名付きレシート[ESS]がCMSのSignedData型にカプセル化される場合、そのReceipt SEQUENCEはSignedDataのencapContentInfoのeContent OCTET STRINGの中にエンコードされ、メッセージダイジェストはReceipt SEQUENCEのエンコーディング全体（タグ、長さ、および値のオクテットを含む）を用いて計算されます。しかし、RFC 2634の署名付きレシートがPKCS #7のSignedData型にカプセル化される場合、そのReceipt SEQUENCEはSignedDataのcontentInfoのcontent ANYフィールド（OCTET STRINGではなくSEQUENCE）内にDERエンコード[X.509-88]されます。そのため、メッセージダイジェストはReceipt SEQUENCEエンコーディングの値オクテットのみを用いて計算されます。
         </p>
       </div>
     </div>
@@ -1320,7 +1320,7 @@ The following strategy can be used to achieve backward compatibility with PKCS #
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次の戦略を使用して、SignedDataコンテンツタイプを処理するときにPKCS＃7との下位互換性を実現できます。実装がCMS SignedData encapContentInfo eContent OCTET STRING構文を使用してSignedDataタイプをASN.1でデコードできない場合、実装はPKCS＃7 SignedData contentInfo content ANY構文を使用してSignedDataタイプをデコードし、それに応じてメッセージダイジェストを計算できます。
+SignedDataコンテンツタイプを処理する際にPKCS #7との下位互換性を実現するためには、次の戦略を使用することができます。実装が、CMSのSignedDataのencapContentInfo eContent OCTET STRING構文を使用してSignedDataタイプをASN.1デコードできない場合、その実装はPKCS #7のSignedDataのcontentInfo content ANY構文を使用してSignedDataタイプをデコードし、それに応じてメッセージダイジェストを計算してもよい（MAY）。
         </p>
       </div>
     </div>
@@ -1332,7 +1332,7 @@ The following strategy can be used to achieve backward compatibility with PKCS #
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-カプセル化されたコンテンツがDataタイプを使用してフォーマットされていないSignedDataコンテンツタイプを作成する場合、次の戦略を使用してPKCS＃7との下位互換性を実現できます。実装は、eContentTypeの値を調べてから、オブジェクト識別子の値に基づいて、eContentの予想されるDERエンコーディングを調整できます。たとえば、Microsoft Authenticode [MSAC]をサポートするには、次の情報を含めることができます（MAY）。
+カプセル化されたコンテンツがData型を用いてフォーマットされていないSignedDataコンテンツタイプを作成する際には、次の戦略を使用してPKCS #7との下位互換性を実現することができます。実装は、eContentTypeの値を調べ、そのオブジェクト識別子の値に基づいてeContentに期待されるDERエンコーディングを調整してもよい（MAY）。例えば、Microsoft Authenticode [MSAC]をサポートするためには、次の情報を含めてもよい（MAY）：
         </p>
       </div>
     </div>
@@ -1464,7 +1464,7 @@ version is the syntax version number. If the SignerIdentifier is the CHOICE issu
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-versionは構文のバージョン番号です。 SignerIdentifierがCHOICE issuerAndSerialNumberの場合、バージョンは1でなければなりません。SignerIdentifierがsubjectKeyIdentifierの場合、バージョンは3でなければなりません。
+versionは構文のバージョン番号です。SignerIdentifierがCHOICE issuerAndSerialNumberである場合、versionは1でなければなりません（MUST）。SignerIdentifierがsubjectKeyIdentifierである場合、versionは3でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1476,7 +1476,7 @@ sid specifies the signer&#39;s certificate (and thereby the signer&#39;s public 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-sidは、署名者の証明書（および署名者の公開鍵）を指定します。署名者の公開鍵は、受信者が署名を検証するために必要です。 SignerIdentifierは、署名者の公開鍵を指定するための2つの選択肢を提供します。 issuerAndSerialNumber代替は、発行者の識別名と証明書のシリアル番号によって署名者の証明書を識別します。 subjectKeyIdentifierは、キー識別子によって署名者の証明書を識別します。 X.509証明書が参照されると、キー識別子はX.509 subjectKeyIdentifier拡張値と一致します。他の証明書形式を参照する場合、証明書形式とCMSでの使用を指定するドキュメントには、キー識別子と適切な証明書フィールドの照合に関する詳細を含める必要があります。実装は、SignerIdentifierのissuerAndSerialNumberおよびsubjectKeyIdentifier形式の受信をサポートする必要があります。 SignerIdentifierを生成するとき、実装はいずれかの形式（issuerAndSerialNumberまたはsubjectKeyIdentifier）をサポートして常に使用するか、または実装が2つの形式を任意に混合してもよい（MAY）。ただし、非X.509証明書に含まれる公開鍵を参照するには、subjectKeyIdentifierを使用する必要があります。
+sidは、署名者の証明書（ひいては署名者の公開鍵）を特定します。受信者は署名を検証するために署名者の公開鍵を必要とします。SignerIdentifierは、署名者の公開鍵を特定するために2つの方式を提供します。issuerAndSerialNumber方式は、発行者の識別名と証明書シリアル番号によって署名者の証明書を特定します。subjectKeyIdentifier方式は、鍵識別子によって署名者の証明書を特定します。X.509証明書が参照される場合、鍵識別子はX.509のsubjectKeyIdentifier拡張の値と一致します。他の証明書形式が参照される場合、その証明書形式とCMSでの使用法を規定する文書には、鍵識別子を適切な証明書フィールドに対応させるための詳細を含めなければなりません。実装は、SignerIdentifierのissuerAndSerialNumber形式とsubjectKeyIdentifier形式の受信をサポートしなければなりません（MUST）。SignerIdentifierを生成する際、実装は、いずれか一方の形式（issuerAndSerialNumberまたはsubjectKeyIdentifierのどちらか）をサポートして常にそれを使用してもよいし（MAY）、あるいは2つの形式を任意に混在させてもよい（MAY）。ただし、X.509ではない証明書に含まれる公開鍵を参照する場合は、subjectKeyIdentifierを使用しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1488,7 +1488,7 @@ digestAlgorithm identifies the message digest algorithm, and any associated para
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-digestAlgorithmは、メッセージダイジェストアルゴリズム、および署名者が使用する関連パラメータを識別します。メッセージダイジェストは、セクション5.4で説明されているプロセスを使用して、署名されているコンテンツまたは署名された属性と一緒にコンテンツのいずれかで計算されます。メッセージダイジェストアルゴリズムは、関連するSignerDataのdigestAlgorithmsフィールドにリストされているものでなければなりません（SHOULD）。実装は、SignedData digestAlgorithmsセットに含まれていないダイジェストアルゴリズムを使用する署名の検証に失敗する場合があります。
+digestAlgorithmは、メッセージダイジェストアルゴリズムと、署名者が使用した関連パラメータを識別します。メッセージダイジェストは、5.4節で説明されているプロセスを用いて、署名対象のコンテンツ、またはそのコンテンツと署名付き属性とを合わせたものの、いずれかに対して計算されます。メッセージダイジェストアルゴリズムは、関連するSignedDataのdigestAlgorithmsフィールドにリストされているものであるべきです（SHOULD）。実装は、SignedDataのdigestAlgorithmsセットに含まれていないダイジェストアルゴリズムを使用する署名の検証に失敗してもよい（MAY）。
         </p>
       </div>
     </div>
@@ -1500,7 +1500,7 @@ signedAttrs is a collection of attributes that are signed. The field is optional
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-signedAttrsは、署名された属性のコレクションです。このフィールドはオプションですが、署名されているEncapsulatedContentInfo値のコンテンツタイプがid-dataでない場合は存在する必要があります。 SignedAttributesは、構造の残りがBERエンコードされている場合でも、DERエンコードされている必要があります。署名時刻などの有用な属性タイプは、セクション11で定義されています。フィールドが存在する場合、少なくとも次の2つの属性を含める必要があります。
+signedAttrsは、署名される属性のコレクションです。このフィールドは任意ですが、署名対象のEncapsulatedContentInfo値のコンテントタイプがid-dataでない場合は、存在しなければなりません（MUST）。SignedAttributesは、構造の他の部分がBERエンコードされていても、DERエンコードされなければなりません（MUST）。署名時刻などの有用な属性タイプは、11節で定義されています。このフィールドが存在する場合、最低限、次の2つの属性を含まなければなりません（MUST）：
         </p>
       </div>
     </div>
@@ -1512,7 +1512,7 @@ A content-type attribute having as its value the content type of the Encapsulate
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-値として、署名されるEncapsulatedContentInfo値のコンテンツタイプを持つコンテンツタイプ属性。セクション11.1はcontent-type属性を定義しています。ただし、コンテンツタイプ属性は、セクション11.4で定義されているように、副署名未署名属性の一部として使用してはなりません（MUST NOT）。
+署名対象のEncapsulatedContentInfo値のコンテントタイプを、自身の値として持つcontent-type属性。11.1節でcontent-type属性が定義されています。ただし、content-type属性は、11.4節で定義されている副署名のunsigned属性の一部として使用してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -1524,7 +1524,7 @@ A message-digest attribute, having as its value the message digest of the conten
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-コンテンツのメッセージダイジェストを値として持つメッセージダイジェスト属性。セクション11.2は、message-digest属性を定義しています。
+コンテンツのメッセージダイジェストを、自身の値として持つmessage-digest属性。11.2節でmessage-digest属性が定義されています。
         </p>
       </div>
     </div>
@@ -1548,7 +1548,7 @@ signature is the result of digital signature generation, using the message diges
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-署名は、メッセージダイジェストと署名者の秘密鍵を使用してデジタル署名を生成した結果です。署名の詳細は、使用される署名アルゴリズムによって異なります。
+signatureは、メッセージダイジェストと署名者の秘密鍵を使用してデジタル署名を生成した結果です。署名の詳細は、使用される署名アルゴリズムによって異なります。
         </p>
       </div>
     </div>
@@ -1620,7 +1620,7 @@ The message digest calculation process computes a message digest on either the c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メッセージダイジェスト計算プロセスは、署名されているコンテンツ、または署名された属性と一緒にコンテンツのいずれかでメッセージダイジェストを計算します。どちらの場合でも、メッセージダイジェスト計算プロセスへの最初の入力は、署名されているカプセル化されたコンテンツの「値」です。具体的には、初期入力は、署名プロセスが適用されるencapContentInfo eContent OCTET STRINGです。 eContent OCTET STRINGの値を構成するオクテットのみがメッセージダイジェストアルゴリズムに入力され、タグや長さオクテットは入力されません。
+メッセージダイジェスト計算プロセスは、署名対象のコンテンツ、またはそのコンテンツと署名付き属性を合わせたもの、のいずれかに対してメッセージダイジェストを計算します。どちらの場合でも、メッセージダイジェスト計算プロセスの初期入力は、署名対象のカプセル化されたコンテンツの「値」となります。具体的には、初期入力は、署名プロセスが適用されるencapContentInfo eContent OCTET STRINGです。メッセージダイジェストアルゴリズムには、eContent OCTET STRINGの値を構成するオクテットのみが入力され、タグや長さのオクテットは入力されません。
         </p>
       </div>
     </div>
@@ -1632,7 +1632,7 @@ The result of the message digest calculation process depends on whether the sign
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メッセージダイジェスト計算プロセスの結果は、signedAttrsフィールドが存在するかどうかによって異なります。フィールドが存在しない場合、結果は上記のコンテンツのメッセージダイジェストのみになります。ただし、フィールドが存在する場合、結果は、signedAttrsフィールドに含まれるSignedAttrs値の完全なDERエンコードのメッセージダイジェストになります。 SignedAttrs値は、存在する場合、content-typeおよびmessage-digest属性を含む必要があるため、これらの値は間接的に結果に含まれます。セクション11.4で定義されているように、content-type属性を副署名の未署名属性に含めてはなりません（MUST NOT）。メッセージダイジェストの計算のために、signedAttrsフィールドの個別のエンコーディングが実行されます。 signedAttrsのIMPLICIT [0]タグはDERエンコードに使用されず、EXPLICIT SET OFタグが使用されます。つまり、IMPLICIT [0]タグではなく、EXPLICIT SET OFタグのDERエンコードを、SignedAttributes値の長さとコンテンツのオクテットとともにメッセージダイジェスト計算に含める必要があります。
+メッセージダイジェスト計算プロセスの結果は、signedAttrsフィールドが存在するか否かに依存します。フィールドが存在しない場合、結果は前述のコンテンツに対するメッセージダイジェストそのものになります。しかしフィールドが存在する場合、結果はsignedAttrsフィールドに含まれるSignedAttrs値の完全なDERエンコーディングに対するメッセージダイジェストとなります。SignedAttrs値は、存在する場合、content-typeおよびmessage-digest属性を含んでいなければならないため、これらの値も間接的にダイジェスト計算の結果に含まれることになります。11.4節で定義されているように、content-type属性は副署名のunsigned属性に含めてはなりません（MUST NOT）。メッセージダイジェストの計算のためには、signedAttrsフィールドの別途のエンコーディングが実行されます。その際、signedAttrsのIMPLICIT [0]タグはDERエンコーディングには使用されず、代わりにEXPLICIT SET OFタグが使用されます。つまり、IMPLICIT [0]タグのDERエンコーディングではなく、EXPLICIT SET OFタグのDERエンコーディングが、SignedAttributes値の長さおよびコンテントオクテットと共に、メッセージダイジェスト計算に含められなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1680,7 +1680,7 @@ The input to the signature generation process includes the result of the message
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名生成プロセスへの入力には、メッセージダイジェスト計算プロセスの結果と署名者の秘密鍵が含まれます。署名生成の詳細は、使用される署名アルゴリズムによって異なります。署名者が使用する署名アルゴリズムを指定するオブジェクト識別子とパラメーターは、signatureAlgorithmフィールドに格納されます。署名者によって生成された署名値は、OCTET STRINGとしてエンコードされ、署名フィールドに含まれる必要があります。
+署名生成プロセスへの入力には、メッセージダイジェスト計算プロセスの結果と署名者の秘密鍵が含まれます。署名生成の詳細は、使用される署名アルゴリズムによって異なります。署名者が使用する署名アルゴリズムを指定するオブジェクト識別子とパラメーターは、signatureAlgorithmフィールドに格納されます。署名者によって生成された署名値は、OCTET STRINGとしてエンコードされ、signatureフィールドに含まれなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1704,7 +1704,7 @@ The input to the signature verification process includes the result of the messa
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名検証プロセスへの入力には、メッセージダイジェスト計算プロセスの結果と署名者の公開鍵が含まれます。受信者は何らかの方法で署名者の正しい公開鍵を取得できますが、推奨される方法は、SignedData証明書フィールドから取得した証明書からです。署名者の公開鍵の選択と検証は、証明書パスの検証（[PROFILE]を参照）やその他の外部コンテキストに基づく場合がありますが、このドキュメントの範囲外です。署名検証の詳細は、使用される署名アルゴリズムによって異なります。
+署名検証プロセスへの入力には、メッセージダイジェスト計算プロセスの結果と署名者の公開鍵が含まれます。受信者は、いかなる方法で署名者の正しい公開鍵を取得してもよいですが（MAY）、推奨される方法はSignedDataのcertificatesフィールドから証明書を取得することです。署名者の公開鍵の選択と検証は、証明書パスの検証（[PROFILE]参照）や他の外部コンテキストに基づいて行われてもよいですが（MAY）、本ドキュメントの範囲外です。署名検証の詳細は、使用される署名アルゴリズムに依存して異なります。
         </p>
       </div>
     </div>
@@ -1716,7 +1716,7 @@ The recipient MUST NOT rely on any message digest values computed by the origina
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-受信者は、発信者が計算したメッセージダイジェスト値に依存してはなりません（MUST NOT）。 SignedData signerInfoにsignedAttributesが含まれている場合は、コンテンツメッセージダイジェストをセクション5.4の説明に従って計算する必要があります。署名が有効であるためには、受信者が計算するメッセージダイジェスト値は、SignedData signerInfoのsignedAttributesに含まれるmessageDigest属性の値と同じである必要があります。
+受信者は、発信者が計算したメッセージダイジェスト値に依存してはなりません（MUST NOT）。SignedDataのsignerInfoにsignedAttributesが含まれている場合、コンテンツメッセージダイジェストは5.4節で説明されているように計算しなければなりません（MUST）。署名が有効であるためには、受信者が計算したメッセージダイジェスト値は、SignedDataのsignerInfoのsignedAttributesに含まれるmessageDigest属性の値と同じでなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -1728,7 +1728,7 @@ If the SignedData signerInfo includes signedAttributes, then the content-type at
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SignedData signerInfoにsignedAttributesが含まれている場合、content-type属性値はSignedData encapContentInfo eContentType値と一致する必要があります。
+SignedDataのsignerInfoにsignedAttributesが含まれている場合、content-type属性値はSignedDataのencapContentInfo eContentType値と一致しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2040,7 +2040,7 @@ IF (originatorInfo is present) AND ((any certificates with a type of other are p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-IF（originatorInfoが存在する）AND（（他のタイプの証明書が存在する）OR（他のタイプの証明書が存在する））THENバージョンは4 ELSE IF（（ori​​ginatorInfoが存在する）AND（任意のバージョン2属性）証明書が存在する））OR（任意のRecipientInfo構造にpwriが含まれる）OR（任意のRecipientInfo構造にoriが含まれる）THENバージョンは3 ELSE IF（originatorInfoが存在しない）AND（unprotectedAttrsが存在しない）AND（すべてのRecipientInfo構造はバージョン0である）THENバージョンは0 ELSEバージョンは2
+IF (originatorInfoが存在し) AND ((その他のタイプの証明書が存在する) OR (その他のタイプのcrlsが存在する)) THEN versionは4でなければなりません（MUST）。 ELSE IF ((originatorInfoが存在し) AND (任意のバージョン2属性証明書が存在する)) OR (任意のRecipientInfo構造がpwriを含む) OR (任意のRecipientInfo構造がoriを含む) THEN versionは3でなければなりません（MUST）。 ELSE IF (originatorInfoが存在せず) AND (unprotectedAttrsが存在せず) AND (すべてのRecipientInfo構造がバージョン0である) THEN versionは0でなければなりません（MUST）。 ELSE versionは2でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2076,7 +2076,7 @@ crls is a collection of CRLs. It is intended that the set contain information su
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-crlsはCRLのコレクションです。セットには、certsフィールドの証明書が有効かどうかを判断するのに十分な情報が含まれていますが、このような対応は必要ありません。必要以上に多くのCRLが存在する可能性があり、必要以上に少ないCRLも存在する可能性があります。
+crlsはCRLのコレクションです。このセットには、certsフィールド内の証明書が有効であるかどうかを判断するのに十分な情報を含むことが意図されていますが、その情報がcertsと完全に対応している必要はありません。必要以上に多くのCRLが含まれることもありますし（MAY）、また必要以上に少ないCRLしか含まれないこともあります（MAY）。
         </p>
       </div>
     </div>
@@ -2160,7 +2160,7 @@ encryptedContent is the result of encrypting the content. The field is optional,
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-encryptedContentは、コンテンツを暗号化した結果です。このフィールドはオプションであり、フィールドが存在しない場合は、その意図された値を他の方法で提供する必要があります。
+encryptedContentは、コンテンツを暗号化した結果です。このフィールドは任意であり、フィールドが存在しない場合は、その意図された値は他の方法で提供されなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2208,7 +2208,7 @@ Since all implementations will not support every possible key management algorit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-すべての実装がすべての可能な鍵管理アルゴリズムをサポートするわけではないため、すべての実装は、実装されていないアルゴリズムに遭遇したときに、適切に処理する必要があります。たとえば、受信者がRSA-OAEP（Optimal Asymmetric Encryption Padding）を使用してRSA公開鍵で暗号化されたコンテンツ暗号化鍵を受信し、実装がRSA PKCS＃1 v1.5のみをサポートしている場合、適切な障害を実装する必要があります。
+すべての実装がすべての可能な鍵管理アルゴリズムをサポートするわけではないため、すべての実装は、実装されていないアルゴリズムに遭遇したときに、適切に処理しなければなりません（MUST）。たとえば、受信者がRSA-OAEP（Optimal Asymmetric Encryption Padding）を使用してRSA公開鍵で暗号化されたコンテンツ暗号化鍵を受信し、実装がRSA PKCS #1 v1.5のみをサポートしている場合、適切な障害を実装しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2220,7 +2220,7 @@ Implementations MUST support key transport, key agreement, and previously distri
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装は、それぞれktri、kari、およびkekriで表されるように、キー転送、キー合意、および以前に配布された対称キー暗号化キーをサポートする必要があります。実装は、pwriに代表されるように、パスワードベースのキー管理をサポートしてもよい（MAY）。実装は、oriに代表されるその他の鍵管理技術をサポートしてもよい（MAY）。各受信者は異なるキー管理手法を使用でき、将来の仕様では追加のキー管理手法を定義できるため、すべての実装はRecipientInfo CHOICE内の実装されていない代替手段を適切に処理しなければならず、すべての実装は、RecipientInfo CHOICE内でサポートされていない代替手段の非実装バージョンを適切に処理しなければなりません。実装は、実装されていない、または不明なoriの代替を適切に処理する必要があります。
+実装は、それぞれktri、kari、およびkekriで表されるように、キー転送、キー合意、および以前に配布された対称キー暗号化キーをサポートしなければなりません（MUST）。実装は、pwriに代表されるように、パスワードベースのキー管理をサポートしてもよい（MAY）。実装は、oriに代表されるその他の鍵管理技術をサポートしてもよい（MAY）。各受信者は異なるキー管理手法を使用でき、将来の仕様では追加のキー管理手法を定義できるため、すべての実装はRecipientInfo CHOICE内の実装されていない代替手段を適切に処理しなければならず、すべての実装は、RecipientInfo CHOICE内でサポートされていない代替手段の非実装バージョンを適切に処理しなければなりません。実装は、実装されていない、または不明なoriの代替を適切に処理しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2307,7 +2307,7 @@ version is the syntax version number. If the RecipientIdentifier is the CHOICE i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-versionは構文のバージョン番号です。 RecipientIdentifierがCHOICE issuerAndSerialNumberの場合、バージョンは0でなければなりません。RecipientIdentifierがsubjectKeyIdentifierの場合、バージョンは2でなければなりません。
+versionは構文のバージョン番号です。RecipientIdentifierがCHOICE issuerAndSerialNumberである場合、versionは0でなければなりません（MUST）。RecipientIdentifierがsubjectKeyIdentifierである場合、versionは2でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2319,7 +2319,7 @@ rid specifies the recipient&#39;s certificate or key that was used by the sender
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-ridは、コンテンツ暗号化キーを保護するために送信者が使用した受信者の証明書またはキーを指定します。コンテンツ暗号化キーは、受信者の公開キーで暗号化されます。 RecipientIdentifierは、受信者の証明書を指定するための2つの代替手段を提供し、それによって受信者の公開鍵を指定します。受信者の証明書には、キートランスポートの公開キーが含まれている必要があります。したがって、キー使用拡張を含む受信者X.509バージョン3証明書は、keyEnciphermentビットをアサートする必要があります。 issuerAndSerialNumber代替では、発行者の識別名と証明書のシリアル番号によって受信者の証明書を識別します。 subjectKeyIdentifierは、キー識別子によって受信者の証明書を識別します。 X.509証明書が参照されると、キー識別子はX.509 subjectKeyIdentifier拡張値と一致します。他の証明書形式を参照する場合、証明書形式とCMSでの使用を指定するドキュメントには、キー識別子と適切な証明書フィールドの照合に関する詳細を含める必要があります。受信者の処理の場合、実装は、受信者の証明書を指定するためのこれらの代替手段の両方をサポートする必要があります。送信者処理の場合、実装はこれらの代替の少なくとも1つをサポートする必要があります。
+ridは、コンテンツ暗号化キーを保護するために送信者が使用した受信者の証明書または鍵を指定します。コンテンツ暗号化キーは受信者の公開鍵で暗号化されます。RecipientIdentifierは、受信者の証明書、ひいては受信者の公開鍵を指定するための2つの方式を提供します。受信者の証明書には、キートランスポート公開鍵が含まれていなければなりません（MUST）。したがって、鍵用途拡張を含む受信者X.509バージョン3証明書は、keyEnciphermentビットをアサートしなければなりません（MUST）。issuerAndSerialNumber方式は、発行者の識別名と証明書シリアル番号によって受信者の証明書を識別します。subjectKeyIdentifier方式は、鍵識別子によって受信者の証明書を識別します。X.509証明書が参照される場合、鍵識別子はX.509のsubjectKeyIdentifier拡張の値と一致します。他の証明書形式が参照される場合、その証明書形式とCMSでの使用法を規定する文書には、鍵識別子と適切な証明書フィールドとの対応付けに関する詳細を含めなければなりません。受信者の処理においては、実装は受信者の証明書を指定するためのこれら両方の方式をサポートしなければなりません（MUST）。送信者の処理においては、実装はこれらの方式の少なくとも1つをサポートしなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2476,7 +2476,7 @@ originator is a CHOICE with three alternatives specifying the sender&#39;s key a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-オリジネーターは、送信者の鍵合意公開鍵を指定する3つの選択肢を持つ選択肢です。送信者は、対応する秘密キーと受信者の公開キーを使用して、ペアワイズキーを生成します。コンテンツ暗号化キーはペアワイズキーで暗号化されます。 issuerAndSerialNumber代替は、発行者の識別名と証明書のシリアル番号によって、送信者の証明書を識別し、それによって送信者の公開鍵を識別します。 subjectKeyIdentifier代替は、送信者の証明書を識別し、それによって送信者の公開鍵を鍵識別子によって識別します。 X.509証明書が参照されると、キー識別子はX.509 subjectKeyIdentifier拡張値と一致します。他の証明書形式を参照する場合、証明書形式とCMSでの使用を指定するドキュメントには、キー識別子と適切な証明書フィールドの照合に関する詳細を含める必要があります。 originatorKey代替には、アルゴリズム識別子と送信者の鍵合意公開鍵が含まれます。公開鍵が認証されていないため、この代替手段は発信者の匿名性を許可します。実装は、送信者の公開鍵を指定するための3つの選択肢すべてをサポートする必要があります。
+originatorは、送信者の鍵合意公開鍵を指定する3つの方式を持つCHOICEです。送信者は、対応する秘密鍵と受信者の公開鍵を使用してペアワイズ鍵を生成し、コンテンツ暗号化鍵はこのペアワイズ鍵で暗号化されます。issuerAndSerialNumber方式は、発行者の識別名と証明書シリアル番号によって送信者の証明書を、ひいては送信者の公開鍵を識別します。subjectKeyIdentifier方式は、鍵識別子によって送信者の証明書を、ひいては送信者の公開鍵を識別します。X.509証明書が参照される場合、鍵識別子はX.509のsubjectKeyIdentifier拡張の値と一致します。他の証明書形式が参照される場合、その証明書形式とCMSでの使用法を規定する文書には、鍵識別子を適切な証明書フィールドに対応させるための詳細を含めなければなりません。originatorKey方式には、アルゴリズム識別子と送信者の鍵合意公開鍵が含まれます。この方式は、公開鍵が認証されていないため、発信者の匿名性を可能にします。実装は、送信者の公開鍵を指定するためのこれら3つの方式すべてをサポートしなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2488,7 +2488,7 @@ ukm is optional. With some key agreement algorithms, the sender provides a User 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-ukmはオプションです。一部の鍵合意アルゴリズムでは、送信者はユーザーキーイングマテリアル（UKM）を提供して、同じ2つのパーティがペアワイズキーを生成するたびに異なるキーが生成されるようにします。実装は、ukmフィールドを含むKeyAgreeRecipientInfo SEQUENCEを受け入れる必要があります。 UKMを使用する鍵合意アルゴリズムをサポートしない実装は、UKMの存在を適切に処理する必要があります。
+ukmは任意です。一部の鍵合意アルゴリズムでは、送信者はユーザーキーイングマテリアル（UKM）を提供して、同じ2つのパーティがペアワイズ鍵を生成するたびに異なる鍵が生成されるようにします。実装は、ukmフィールドを含むKeyAgreeRecipientInfo SEQUENCEを受け入れなければなりません（MUST）。UKMを使用する鍵合意アルゴリズムをサポートしない実装は、UKMの存在を適切に処理しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -2512,7 +2512,7 @@ recipientEncryptedKeys includes a recipient identifier and encrypted key for one
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-recipientEncryptedKeysには、1人以上の受信者の受信者識別子と暗号化キーが含まれています。 KeyAgreeRecipientIdentifierは、受信者の証明書を指定する2つの選択肢のある選択肢であり、これにより、ペアワイズキー暗号化キーを生成するために送信者が使用した受信者の公開キーを指定します。受信者の証明書には、鍵合意公開鍵が含まれている必要があります。したがって、キー使用拡張を含む受信者X.509バージョン3証明書は、keyAgreementビットをアサートする必要があります。コンテンツ暗号化キーは、ペアワイズキー暗号化キーで暗号化されます。 issuerAndSerialNumber代替では、発行者の識別名と証明書のシリアル番号によって受信者の証明書を識別します。 RecipientKeyIdentifierについては以下で説明します。 encryptedKeyは、キー合意アルゴリズムを使用して生成されたペアワイズキー暗号化キーのコンテンツ暗号化キーを暗号化した結果です。実装は、受信者の証明書を指定するための両方の選択肢をサポートする必要があります。
+recipientEncryptedKeysには、1人以上の受信者の受信者識別子と暗号化鍵が含まれます。KeyAgreeRecipientIdentifierは、受信者の証明書、ひいては受信者の公開鍵を指定するための2つの方式を持つCHOICEであり、これらは送信者がペアワイズ鍵暗号化鍵を生成するために使用したものです。受信者の証明書には、鍵合意公開鍵が含まれていなければなりません（MUST）。したがって、鍵用途拡張を含む受信者X.509バージョン3証明書は、keyAgreementビットをアサートしなければなりません（MUST）。コンテンツ暗号化鍵は、ペアワイズ鍵暗号化鍵で暗号化されます。issuerAndSerialNumber方式は、発行者の識別名と証明書シリアル番号によって受信者の証明書を識別します。RecipientKeyIdentifierについては以下で説明します。encryptedKeyは、鍵合意アルゴリズムを使用して生成されたペアワイズ鍵暗号化鍵でコンテンツ暗号化鍵を暗号化した結果です。実装は、受信者の証明書を指定するための両方の方式をサポートしなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3144,7 +3144,7 @@ version is the syntax version number. If the encapsulated content type is id-dat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-versionは構文のバージョン番号です。カプセル化されたコンテンツタイプがid-dataの場合、versionの値は0でなければなりません。ただし、カプセル化されたコンテンツタイプがid-data以外の場合、versionの値は2でなければなりません。
+versionは構文のバージョン番号です。カプセル化されたコンテンツタイプがid-dataの場合、versionの値は0でなければなりません（MUST）。ただし、カプセル化されたコンテンツタイプがid-data以外の場合、versionの値は2でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3216,7 +3216,7 @@ The encrypted-data content type consists of encrypted content of any type. Unlik
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-暗号化されたデータのコンテンツタイプは、任意のタイプの暗号化されたコンテンツで構成されます。エンベロープデータコンテンツタイプとは異なり、暗号化データコンテンツタイプには、受信者も暗号化コンテンツ暗号化キーもありません。キーは他の方法で管理する必要があります。
+暗号化されたデータのコンテンツタイプは、任意のタイプの暗号化されたコンテンツで構成されます。エンベロープデータコンテンツタイプとは異なり、暗号化データコンテンツタイプには、受信者も暗号化コンテンツ暗号化鍵もありません。鍵は他の方法で管理されなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3294,7 +3294,7 @@ version is the syntax version number. If unprotectedAttrs is present, then the v
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-versionは構文のバージョン番号です。 unprotectedAttrsが存在する場合、バージョンは2でなければなりません。unprotectedAttrsが存在しない場合、バージョンは0でなければなりません。
+versionは構文のバージョン番号です。unprotectedAttrsが存在する場合、versionは2でなければなりません（MUST）。unprotectedAttrsが存在しない場合、versionは0でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3520,7 +3520,7 @@ IF (originatorInfo is present) AND ((any certificates with a type of other are p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-IF（originatorInfoが存在する）AND（（その他のタイプの証明書が存在する）OR（その他のタイプの証明書が存在する））THENバージョンは3 ELSE IF（（ori​​ginatorInfoが存在する）AND（任意のバージョン2属性）証明書が存在する））THENバージョンは1 ELSEバージョンは0
+IF (originatorInfoが存在し) AND ((その他のタイプの証明書が存在する) OR (その他のタイプのcrlsが存在する)) THEN versionは3でなければなりません（MUST）。 ELSE IF ((originatorInfoが存在し) AND (任意のバージョン2属性証明書が存在する)) THEN versionは1でなければなりません（MUST）。 ELSE versionは0でなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3532,7 +3532,7 @@ originatorInfo optionally provides information about the originator. It is prese
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-originatorInfoは、オプションで発信者に関する情報を提供します。これは、鍵管理アルゴリズムで必要な場合にのみ存在します。セクション6.1で定義されているように、証明書、属性証明書、およびCRLを含めることができます。
+originatorInfoは、オプションで発信者に関する情報を提供します。これは、鍵管理アルゴリズムで必要な場合にのみ存在します。6.1節で定義されているように、証明書、属性証明書、およびCRLを含めてもよい（MAY）。
         </p>
       </div>
     </div>
@@ -3544,7 +3544,7 @@ recipientInfos is a collection of per-recipient information, as defined in Secti
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-recipientInfosは、セクション6.1で定義されている、受信者ごとの情報のコレクションです。コレクションには少なくとも1つの要素が必要です。
+recipientInfosは、6.1節で定義されている、受信者ごとの情報のコレクションです。コレクションには少なくとも1つの要素がなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3568,7 +3568,7 @@ digestAlgorithm identifies the message digest algorithm, and any associated para
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-digestAlgorithmは、認証された属性が存在する場合に、カプセル化されたコンテンツのメッセージダイジェストを計算するために使用されるメッセージダイジェストアルゴリズムおよび関連するパラメーターを識別します。メッセージダイジェストプロセスについては、セクション9.2で説明します。 digestAlgorithmフィールドを配置すると、受信者によるワンパス処理が容易になります。 digestAlgorithmフィールドが存在する場合、authAttrsフィールドも存在する必要があります。
+digestAlgorithmは、認証された属性が存在する場合に、カプセル化されたコンテンツのメッセージダイジェストを計算するために使用されるメッセージダイジェストアルゴリズムおよび関連するパラメーターを識別します。メッセージダイジェストプロセスについては、9.2節で説明します。digestAlgorithmフィールドを配置すると、受信者によるワンパス処理が容易になります。digestAlgorithmフィールドが存在する場合、authAttrsフィールドも存在しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3592,7 +3592,7 @@ authAttrs is a collection of authenticated attributes. The authAttrs structure i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-authAttrsは、認証された属性のコレクションです。 authAttrs構造はオプションですが、認証されるEncapsulatedContentInfo値のコンテンツタイプがid-dataでない場合は、存在する必要があります。 authAttrsフィールドが存在する場合は、digestAlgorithmフィールドも存在する必要があります。 AuthAttributes構造は、構造の残りがBERエンコードされている場合でも、DERエンコードされている必要があります。有用な属性タイプはセクション11で定義されています。authAttrsフィールドが存在する場合、少なくとも次の2つの属性が含まれている必要があります。
+authAttrsは、認証される属性のコレクションです。authAttrs構造は任意ですが、認証対象のEncapsulatedContentInfo値のコンテンツタイプがid-dataでない場合は、存在しなければなりません（MUST）。authAttrsフィールドが存在する場合は、digestAlgorithmフィールドも存在しなければなりません（MUST）。AuthAttributes構造は、構造の他の部分がBERエンコードされていても、DERエンコードされなければなりません（MUST）。有用な属性タイプは11節で定義されています。authAttrsフィールドが存在する場合、最低限、次の2つの属性を含まなければなりません（MUST）：
         </p>
       </div>
     </div>
@@ -3604,7 +3604,7 @@ A content-type attribute having as its value the content type of the Encapsulate
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-認証されるEncapsulatedContentInfo値のコンテンツタイプを値として持つコンテンツタイプ属性。セクション11.1はcontent-type属性を定義しています。
+認証されるEncapsulatedContentInfo値のコンテンツタイプを、自身の値として持つcontent-type属性。11.1節でcontent-type属性が定義されています。
         </p>
       </div>
     </div>
@@ -3616,7 +3616,7 @@ A message-digest attribute, having as its value the message digest of the conten
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-コンテンツのメッセージダイジェストを値として持つメッセージダイジェスト属性。セクション11.2は、message-digest属性を定義しています。
+コンテンツのメッセージダイジェストを、自身の値として持つmessage-digest属性。11.2節でmessage-digest属性が定義されています。
         </p>
       </div>
     </div>
@@ -3688,7 +3688,7 @@ If the authAttrs field is present, the content-type attribute (as described in S
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-authAttrsフィールドが存在する場合、コンテンツタイプ属性（セクション11.1で説明）とメッセージダイジェスト属性（セクション11.2で説明）が含まれている必要があり、MAC計算プロセスへの入力は、authAttrsのDERエンコーディングです。 。 authAttrsフィールドの個別のエンコードが、メッセージダイジェストの計算のために実行されます。 authAttrsフィールドのIMPLICIT [2]タグはDERエンコーディングには使用されず、EXPLICIT SET OFタグが使用されます。つまり、IMPLICIT [2]タグではなく、SET OFタグのDERエンコードが、authAttrs値の長さとコンテンツのオクテットとともにメッセージダイジェストの計算に含まれます。
+authAttrsフィールドが存在する場合、コンテンツタイプ属性（11.1節で説明）とメッセージダイジェスト属性（11.2節で説明）が含まれていなければならず（MUST）、MAC計算プロセスへの入力はauthAttrsのDERエンコーディングです。メッセージダイジェストの計算のためには、authAttrsフィールドの個別のエンコーディングが実行されます。authAttrsフィールドのIMPLICIT [2]タグはDERエンコーディングには使用されず、EXPLICIT SET OFタグが使用されます。つまり、IMPLICIT [2]タグのDERエンコーディングではなく、SET OFタグのDERエンコーディングが、authAttrs値の長さとコンテンツのオクテットと共にメッセージダイジェスト計算に含められなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -3760,7 +3760,7 @@ If the AuthenticatedData includes authAttrs, then the content-type attribute val
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-AuthenticatedDataにauthAttrsが含まれる場合、content-type属性値はAuthenticatedData encapContentInfo eContentType値と一致する必要があります。
+AuthenticatedDataにauthAttrsが含まれる場合、content-type属性値はAuthenticatedDataのencapContentInfo eContentType値と一致しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4078,7 +4078,7 @@ The RevocationInfoChoices type gives a set of revocation status information alte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RevocationInfoChoicesタイプは、一連の失効ステータス情報を提供します。セットには、セットが関連付けられている証明書および属性証明書が取り消されているかどうかを判断するのに十分な情報が含まれていることが意図されています。ただし、失効ステータス情報が必要以上にある場合や、失効ステータス情報が必要以上に少ない場合があります。 X.509証明書失効リスト（CRL）[X.509-97]は
+RevocationInfoChoicesタイプは、一連の失効ステータス情報を提供します。このセットには、セットが関連付けられている証明書および属性証明書が取り消されているかどうかを判断するのに十分な情報を含むことが意図されています。ただし、必要以上に多くの失効ステータス情報が含まれることもありますし（MAY）、また必要以上に少ない失効ステータス情報しか含まれないこともあります（MAY）。X.509証明書失効リスト（CRL）[X.509-97]は、
         </p>
       </div>
     </div>
@@ -4175,7 +4175,7 @@ The CertificateChoices type gives either a PKCS #6 extended certificate [PKCS#6]
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CertificateChoicesタイプは、PKCS＃6拡張証明書[PKCS＃6]、X.509証明書、バージョン1 X.509属性証明書（ACv1）[X.509-97]、バージョン2 X.509属性証明書のいずれかを提供します（ACv2）[X.509-00]、またはその他の証明書形式。 PKCS＃6拡張証明書は廃止されました。 PKCS＃6証明書は下位互換性のために含まれており、PKCS＃6証明書は使用しないでください。 ACv1も廃止されました。 ACv1は下位互換性のために含まれており、ACv1は使用しないでください。 X.509証明書のインターネットプロファイルは、「インターネットX.509公開鍵インフラストラクチャ：証明書とCRLプロファイル」[プロファイル]で指定されています。 ACv2のインターネットプロファイルは、「承認用のインターネット属性証明書プロファイル」[ACPROFILE]で指定されています。 OtherCertificateFormat代替は、CMSをさらに変更することなく他の証明書形式をサポートするために提供されています。
+CertificateChoicesタイプは、PKCS #6拡張証明書[PKCS#6]、X.509証明書、バージョン1 X.509属性証明書（ACv1）[X.509-97]、バージョン2 X.509属性証明書（ACv2）[X.509-00]、またはその他の証明書形式のいずれかを提供します。PKCS #6拡張証明書は廃止されています。PKCS #6証明書は下位互換性のために含まれていますが、PKCS #6証明書は使用すべきではありません（SHOULD NOT）。ACv1も同様に廃止されています。ACv1は下位互換性のために含まれていますが、ACv1は使用すべきではありません（SHOULD NOT）。X.509証明書のインターネットプロファイルは、「インターネットX.509公開鍵インフラストラクチャ：証明書とCRLプロファイル」[PROFILE]で指定されています。ACv2のインターネットプロファイルは、「承認用のインターネット属性証明書プロファイル」[ACPROFILE]で指定されています。OtherCertificateFormat代替は、CMSをさらに変更することなく他の証明書形式をサポートするために提供されています。
         </p>
       </div>
     </div>
@@ -4402,7 +4402,7 @@ The OtherKeyAttribute type gives a syntax for the inclusion of other key attribu
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-OtherKeyAttributeタイプは、受信者が送信者が使用するキーを選択できるようにする他のキー属性を含めるための構文を提供します。属性オブジェクト識別子は、属性自体の構文とともに登録する必要があります。この構造は相互運用性を妨げる可能性があるため、使用しないでください。
+OtherKeyAttributeタイプは、受信者が送信者が使用する鍵を選択できるようにする他の鍵属性を含めるための構文を提供します。属性オブジェクト識別子は、属性自体の構文とともに登録されなければなりません（MUST）。この構造は相互運用性を妨げる可能性があるため、使用すべきではありません（SHOULD NOT）。
         </p>
       </div>
     </div>
@@ -4435,7 +4435,7 @@ This section defines attributes that may be used with signed-data, enveloped-dat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このセクションでは、signed-data、enveloped-data、encrypted-data、またはauthentication-dataで使用できる属性を定義します。属性の構文は、X.501 [X.501-88]およびRFC 5280 [PROFILE]と互換性があります。このセクションで定義されている属性の一部は、もともとPKCS＃9 [PKCS＃9]で定義されていました。その他は、この仕様の以前のバージョン[CMS1]で最初に定義されました。属性は特定の順序でリストされていません。
+このセクションでは、signed-data、enveloped-data、encrypted-data、またはauthentication-dataで使用できる属性を定義します。属性の構文は、X.501 [X.501-88]およびRFC 5280 [PROFILE]と互換性があります。このセクションで定義されている属性の一部は、もともとPKCS#9 [PKCS#9]で定義されていました。その他は、この仕様の以前のバージョン[CMS1]で最初に定義されました。属性は特定の順序でリストされていません。
         </p>
       </div>
     </div>
@@ -4447,7 +4447,7 @@ Additional attributes are defined in many places, notably the S/MIME Version 3.1
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-追加の属性、特にS / MIMEバージョン3.1メッセージ仕様[MSG3.1]とS / MIMEの拡張セキュリティサービス[ESS]が多くの場所で定義されており、これらの属性の配置に関する推奨事項も含まれています。
+追加の属性、特にS/MIMEバージョン3.1メッセージ仕様[MSG3.1]とS/MIMEの拡張セキュリティサービス[ESS]が多くの場所で定義されており、これらの属性の配置に関する推奨事項も含まれています。
         </p>
       </div>
     </div>
@@ -4471,7 +4471,7 @@ The content-type attribute type specifies the content type of the ContentInfo wi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-content-type属性タイプは、signed-dataまたはauthentication-data内のContentInfoのコンテンツタイプを指定します。署名された属性がsigned-dataに存在する場合、またはauthentication-dataに存在する認証済みの属性が存在する場合は常に、content-type属性タイプが存在する必要があります。 content-type属性値は、signed-dataまたはauthentication-dataのencapContentInfo eContentType値と一致する必要があります。
+content-type属性タイプは、signed-dataまたはauthenticated-data内のContentInfoのコンテンツタイプを指定します。署名された属性がsigned-dataに存在する場合、またはauthenticated-dataに認証済み属性が存在する場合は常に、content-type属性タイプは存在しなければなりません（MUST）。content-type属性値は、signed-dataまたはauthenticated-dataのencapContentInfo eContentType値と一致しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4534,7 +4534,7 @@ Even though the syntax is defined as a SET OF AttributeValue, a content-type att
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-構文がSET OF AttributeValueとして定義されている場合でも、コンテンツタイプの属性は単一の属性値を持つ必要があります。ゼロまたは複数のAttributeValueのインスタンスは許可されていません。
+構文がSET OF AttributeValueとして定義されている場合でも、content-type属性は単一の属性値を持たなければなりません（MUST）。AttributeValueのゼロまたは複数のインスタンスが存在してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4546,7 +4546,7 @@ The SignedAttributes and AuthAttributes syntaxes are each defined as a SET OF At
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SignedAttributesおよびAuthAttributes構文はそれぞれ、SET OF属性として定義されます。 signerInfoのSignedAttributesには、content-type属性の複数のインスタンスを含めることはできません。同様に、AuthenticatedDataのAuthAttributesには、content-type属性の複数のインスタンスを含めてはなりません（MUST NOT）。
+SignedAttributesおよびAuthAttributes構文はそれぞれ、SET OF Attributesとして定義されます。signerInfoのSignedAttributesには、content-type属性の複数のインスタンスを含めてはなりません（MUST NOT）。同様に、AuthenticatedDataのAuthAttributesには、content-type属性の複数のインスタンスを含めてはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4582,7 +4582,7 @@ Within signed-data, the message-digest signed attribute type MUST be present whe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-signed-data内では、署名された属性が存在する場合、メッセージダイジェストの署名された属性タイプが存在する必要があります。 authentication-data内で、メッセージダイジェスト認証属性タイプは、認証属性が存在する場合に存在する必要があります。
+signed-data内では、署名された属性が存在する場合、message-digestの署名された属性タイプは存在しなければなりません（MUST）。authenticated-data内では、認証属性が存在する場合、message-digest認証属性タイプは存在しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4645,7 +4645,7 @@ A message-digest attribute MUST have a single attribute value, even though the s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-構文がSET OF AttributeValueとして定義されている場合でも、メッセージダイジェスト属性は単一の属性値を持つ必要があります。ゼロまたは複数のAttributeValueのインスタンスが存在してはなりません（MUST NOT）。
+構文がSET OF AttributeValueとして定義されている場合でも、message-digest属性は単一の属性値を持たなければなりません（MUST）。AttributeValueのゼロまたは複数のインスタンスが存在してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4657,7 +4657,7 @@ The SignedAttributes syntax and AuthAttributes syntax are each defined as a SET 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SignedAttributes構文とAuthAttributes構文はそれぞれ、SET OF属性として定義されます。 signerInfoのSignedAttributesには、メッセージダイジェスト属性のインスタンスを1つだけ含める必要があります。同様に、AuthenticatedDataのAuthAttributesには、メッセージダイジェスト属性のインスタンスを1つだけ含める必要があります。
+SignedAttributes構文とAuthAttributes構文はそれぞれ、SET OF Attributesとして定義されます。signerInfoのSignedAttributesには、message-digest属性のインスタンスを1つだけ含めなければなりません（MUST）。同様に、AuthenticatedDataのAuthAttributesには、message-digest属性のインスタンスを1つだけ含めなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4765,7 +4765,7 @@ Dates between 1 January 1950 and 31 December 2049 (inclusive) MUST be encoded as
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-1950年1月1日から2049年12月31日までの日付（両端を含む）は、UTCTimeとしてエンコードする必要があります。 1950年より前または2049年より後の年の値を持つ日付は、GeneralizedTimeとしてエンコードする必要があります。
+1950年1月1日から2049年12月31日までの日付（両端を含む）は、UTCTimeとしてエンコードしなければなりません（MUST）。1950年より前または2049年より後の年の値を持つ日付は、GeneralizedTimeとしてエンコードしなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4813,7 +4813,7 @@ GeneralizedTime values MUST be expressed in Coordinated Universal Time and MUST 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-GeneralizedTimeの値は協定世界時で表現する必要があり、秒数がゼロの場合でも秒を含める必要があります（つまり、時間はYYYYMMDDHHMMSSZです）。 GeneralizedTime値に小数秒を含めることはできません。
+GeneralizedTime値は協定世界時で表現されなければならず（MUST）、秒数がゼロの場合でも秒を含まなければなりません（MUST）（つまり、時間はYYYYMMDDHHMMSSZです）。GeneralizedTime値に小数秒を含めてはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4825,7 +4825,7 @@ A signing-time attribute MUST have a single attribute value, even though the syn
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-構文がSET OF AttributeValueとして定義されている場合でも、署名時属性には単一の属性値が必要です。ゼロまたは複数のAttributeValueのインスタンスが存在してはなりません（MUST NOT）。
+構文がSET OF AttributeValueとして定義されている場合でも、signing-time属性は単一の属性値を持たなければなりません（MUST）。AttributeValueのゼロまたは複数のインスタンスが存在してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4837,7 +4837,7 @@ The SignedAttributes syntax and the AuthAttributes syntax are each defined as a 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SignedAttributes構文とAuthAttributes構文はそれぞれ、SET OF属性として定義されます。 signerInfoのSignedAttributesには、signing-time属性の複数のインスタンスを含めることはできません。同様に、AuthenticatedDataのAuthAttributesには、署名時属性の複数のインスタンスを含めてはなりません（MUST NOT）。
+SignedAttributes構文とAuthAttributes構文はそれぞれ、SET OF Attributesとして定義されます。signerInfoのSignedAttributesには、signing-time属性の複数のインスタンスを含めてはなりません（MUST NOT）。同様に、AuthenticatedDataのAuthAttributesには、signing-time属性の複数のインスタンスを含めてはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -4948,7 +4948,7 @@ Countersignature values have the same meaning as SignerInfo values for ordinary 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-1. signedAttributesフィールドにcontent-type属性を含めることはできません。副署名のコンテンツタイプはありません。
+1. signedAttributesフィールドにcontent-type属性を含めてはなりません（MUST NOT）。副署名のコンテンツタイプはありません。
         </p>
       </div>
     </div>
@@ -4960,7 +4960,7 @@ Countersignature values have the same meaning as SignerInfo values for ordinary 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-2. signedAttributesフィールドには、他の属性が含まれている場合、message-digest属性が含まれている必要があります。
+2. signedAttributesフィールドには、他の属性が含まれている場合、message-digest属性が含まれていなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -4984,7 +4984,7 @@ A countersignature attribute can have multiple attribute values. The syntax is d
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-副署名属性は、複数の属性値を持つことができます。構文はSET OF AttributeValueとして定義され、AttributeValueの1つ以上のインスタンスが存在する必要があります。
+副署名属性は、複数の属性値を持つことができます。構文はSET OF AttributeValueとして定義され、AttributeValueの1つ以上のインスタンスが存在しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -5810,7 +5810,7 @@ IMPORTS
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
--PKCS＃6から廃止された拡張証明書構文
+-PKCS#6から廃止された拡張証明書構文
         </p>
       </div>
     </div>
@@ -6057,7 +6057,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[プロフィール] Cooper、D.、Santesson、S.、Farrell、S.、Boeyen、S.、Housley、R。、およびW. Polk、「Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List（CRL）Profile &#34;、RFC 5280、2008年5月。
+[プロフィール] Cooper、D., Santesson、S., Farrell、S., Boeyen、S., Housley、R., およびW. Polk、「Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List（CRL）Profile &#34;、RFC 5280、2008年5月。
         </p>
       </div>
     </div>
@@ -6069,7 +6069,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[STDWORDS] Bradner、S。、「RFCで使用して要件レベルを示すためのキーワード」、BCP 14、RFC 2119、1997年3月。
+[STDWORDS] Bradner、S., 「RFCで使用して要件レベルを示すためのキーワード」、BCP 14、RFC 2119、1997年3月。
         </p>
       </div>
     </div>
@@ -6165,7 +6165,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[CMS1] Housley、R。、「Cryptographic Message Syntax」、RFC 2630、1999年6月。
+[CMS1] Housley、R., 「Cryptographic Message Syntax」、RFC 2630、1999年6月。
         </p>
       </div>
     </div>
@@ -6177,7 +6177,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[CMS2] Housley、R。、「Cryptographic Message Syntax（CMS）」、RFC 3369、2002年8月。
+[CMS2] Housley、R., 「Cryptographic Message Syntax（CMS）」、RFC 3369、2002年8月。
         </p>
       </div>
     </div>
@@ -6189,7 +6189,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[CMS3] Housley、R。、「Cryptographic Message Syntax（CMS）」、RFC 3852、2004年7月。
+[CMS3] Housley、R., 「Cryptographic Message Syntax（CMS）」、RFC 3852、2004年7月。
         </p>
       </div>
     </div>
@@ -6201,7 +6201,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[CMSALG] Housley、R。、「Cryptographic Message Syntax（CMS）Algorithms」、RFC 3370、2002年8月。
+[CMSALG] Housley、R., 「Cryptographic Message Syntax（CMS）Algorithms」、RFC 3370、2002年8月。
         </p>
       </div>
     </div>
@@ -6213,7 +6213,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[CMSMSIG] Housley、R。、「Cryptographic Message Syntax（CMS）Multiple Signer Clarification」、RFC 4853、2007年4月。
+[CMSMSIG] Housley、R., 「Cryptographic Message Syntax（CMS）Multiple Signer Clarification」、RFC 4853、2007年4月。
         </p>
       </div>
     </div>
@@ -6225,7 +6225,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[DH-X9.42] Rescorla、E。、「Diffie-Hellman Key Agreement Method」、RFC 2631、1999年6月。
+[DH-X9.42] Rescorla、E., 「Diffie-Hellman Key Agreement Method」、RFC 2631、1999年6月。
         </p>
       </div>
     </div>
@@ -6237,7 +6237,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[ESS] Hoffman、P.、Ed。、「Enhanced Security Services for S / MIME」、RFC 2634、1999年6月。
+[ESS] Hoffman、P., Ed., 「Enhanced Security Services for S/MIME」、RFC 2634、1999年6月。
         </p>
       </div>
     </div>
@@ -6261,7 +6261,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[MSG2] Dusse、S.、Hoffman、P.、Ramsdell、B.、Lundblade、L。、およびL. Repka、「S / MIMEバージョン2メッセージ仕様」、RFC 2311、1998年3月。
+[MSG2] Dusse、S., Hoffman、P., Ramsdell、B., Lundblade、L., およびL. Repka、「S/MIMEバージョン2メッセージ仕様」、RFC 2311、1998年3月。
         </p>
       </div>
     </div>
@@ -6273,7 +6273,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[MSG3] Ramsdell、B。、編、「S / MIMEバージョン3メッセージ仕様」、RFC 2633、1999年6月。
+[MSG3] Ramsdell、B., 編、「S/MIMEバージョン3メッセージ仕様」、RFC 2633、1999年6月。
         </p>
       </div>
     </div>
@@ -6285,7 +6285,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[MSG3.1] Ramsdell、B。、編、「Secure / Multipurpose Internet Mail Extensions（S / MIME）Version 3.1 Message Specification」、RFC 3851、2004年7月。
+[MSG3.1] Ramsdell、B., 編、「Secure / Multipurpose Internet Mail Extensions（S/MIME）Version 3.1 Message Specification」、RFC 3851、2004年7月。
         </p>
       </div>
     </div>
@@ -6297,7 +6297,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[NEWPKCS＃1] Kaliski、B。およびJ. Staddon、「PKCS＃1：RSA Cryptography Specifications Version 2.0」、RFC 2437、1998年10月。
+[NEWPKCS#1] Kaliski、B。およびJ. Staddon、「PKCS#1：RSA Cryptography Specifications Version 2.0」、RFC 2437、1998年10月。
         </p>
       </div>
     </div>
@@ -6309,7 +6309,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[OCSP]マイヤーズ、M。、アンクニー、R。、マルパニ、A。、ガルペリン、S。、およびC.アダムス、「X.509インターネット公開鍵インフラストラクチャオンライン証明書ステータスプロトコル-OCSP」、RFC 2560、1999年6月。
+[OCSP]マイヤーズ、M., アンクニー、R., マルパニ、A., ガルペリン、S., およびC.アダムス、「X.509インターネット公開鍵インフラストラクチャオンライン証明書ステータスプロトコル-OCSP」、RFC 2560、1999年6月。
         </p>
       </div>
     </div>
@@ -6321,7 +6321,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[PKCS＃1] Kaliski、B。、「PKCS＃1：RSA Encryption Version 1.5」、RFC 2313、1998年3月。
+[PKCS#1] Kaliski、B., 「PKCS#1：RSA Encryption Version 1.5」、RFC 2313、1998年3月。
         </p>
       </div>
     </div>
@@ -6333,7 +6333,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[PKCS＃6] RSA Laboratories。 PKCS＃6：Extended-Certificate Syntax Standard、バージョン1.5。 1993年11月。
+[PKCS#6] RSA Laboratories。 PKCS#6：Extended-Certificate Syntax Standard、バージョン1.5。 1993年11月。
         </p>
       </div>
     </div>
@@ -6345,7 +6345,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[PKCS＃7] Kaliski、B。、「PKCS＃7：Cryptographic Message Syntax Version 1.5」、RFC 2315、1998年3月。
+[PKCS#7] Kaliski、B., 「PKCS#7：Cryptographic Message Syntax Version 1.5」、RFC 2315、1998年3月。
         </p>
       </div>
     </div>
@@ -6357,7 +6357,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[PKCS＃9] RSA Laboratories。 PKCS＃9：選択された属性タイプ、バージョン1.1。 1993年11月。
+[PKCS#9] RSA Laboratories。 PKCS#9：選択された属性タイプ、バージョン1.1。 1993年11月。
         </p>
       </div>
     </div>
@@ -6369,7 +6369,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[PWRI] Gutmann、P。、「CMSのパスワードベースの暗号化」、RFC 3211、2001年12月。
+[PWRI] Gutmann、P., 「CMSのパスワードベースの暗号化」、RFC 3211、2001年12月。
         </p>
       </div>
     </div>
@@ -6381,7 +6381,7 @@ END-AttributeCertificateVersion1の
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[ランダム] Eastlake、D.、3rd、Schiller、J。、およびS. Crocker、「Randomness Requirements for Security」、BCP 106、RFC 4086、2005年6月。
+[ランダム] Eastlake、D., 3rd、Schiller、J., およびS. Crocker、「Randomness Requirements for Security」、BCP 106、RFC 4086、2005年6月。
         </p>
       </div>
     </div>
@@ -6417,7 +6417,7 @@ Implementations must protect the signer&#39;s private key. Compromise of the sig
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装では、署名者の秘密鍵を保護する必要があります。署名者の秘密鍵の侵害により、なりすましが許可されます。
+実装では、署名者の秘密鍵を保護しなければなりません（MUST）。署名者の秘密鍵の侵害により、なりすましが許可されます。
         </p>
       </div>
     </div>
@@ -6429,7 +6429,7 @@ Implementations must protect the key management private key, the key-encryption 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装では、キー管理秘密キー、キー暗号化キー、およびコンテンツ暗号化キーを保護する必要があります。鍵管理の秘​​密鍵または鍵暗号化鍵が侵害されると、その鍵で保護されているすべてのコンテンツが漏洩する可能性があります。同様に、コンテンツ暗号化キーの侵害により、関連する暗号化コンテンツが開示される可能性があります。
+実装では、鍵管理秘密鍵、鍵暗号化鍵、およびコンテンツ暗号化鍵を保護しなければなりません（MUST）。鍵管理秘密鍵または鍵暗号化鍵が侵害されると、その鍵で保護されているすべてのコンテンツが漏洩する可能性があります。同様に、コンテンツ暗号化鍵の侵害により、関連する暗号化コンテンツが開示される可能性があります。
         </p>
       </div>
     </div>
@@ -6441,7 +6441,7 @@ Implementations must protect the key management private key and the message-auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装では、鍵管理の秘​​密鍵とメッセージ認証鍵を保護する必要があります。鍵管理の秘​​密鍵の侵害により、認証されたデータのなりすましが許可されます。同様に、メッセージ認証キーの侵害は、認証されたコンテンツの検出不可能な変更をもたらす可能性があります。
+実装では、鍵管理秘密鍵とメッセージ認証鍵を保護しなければなりません（MUST）。鍵管理秘密鍵の侵害により、認証されたデータのなりすましが許可されます。同様に、メッセージ認証鍵の侵害は、認証されたコンテンツの検出不可能な変更をもたらす可能性があります。
         </p>
       </div>
     </div>
@@ -6453,7 +6453,7 @@ The key management technique employed to distribute message-authentication keys 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メッセージ認証キーの配布に使用されるキー管理技術は、それ自体がデータ発信元認証を提供する必要があります。それ以外の場合、コンテンツは不明なソースから完全に配信されます。 RSA [PKCS＃1] [NEWPKCS＃1]もEphemeral-Static Diffie-Hellman [DH-X9.42]も、必要なデータオリジン認証を提供しません。 Static-Static Diffie-Hellman [DH-X9.42]は、発信者と受信者の両方の公開鍵がX.509証明書の適切なIDにバインドされている場合に、必要なデータ発信元認証を提供します。
+メッセージ認証鍵の配布に使用される鍵管理技術は、それ自体がデータ発信元認証を提供しなければなりません（MUST）。それ以外の場合、コンテンツは不明なソースから完全な状態で配信されます。RSA [PKCS#1] [NEWPKCS#1]もEphemeral-Static Diffie-Hellman [DH-X9.42]も、必要なデータ発信元認証を提供しません。Static-Static Diffie-Hellman [DH-X9.42]は、発信者と受信者の両方の公開鍵がX.509証明書内の適切な識別子にバインドされている場合に、必要なデータ発信元認証を提供します。
         </p>
       </div>
     </div>
@@ -6477,7 +6477,7 @@ Implementations must randomly generate content-encryption keys, message-authenti
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装では、コンテンツ暗号化キー、メッセージ認証キー、初期化ベクトル（IV）、およびパディングをランダムに生成する必要があります。また、公開鍵と秘密鍵のペアの生成は、乱数に依存しています。不十分な疑似乱数ジェネレーター（PRNG）を使用して暗号化キーを生成すると、セキュリティがほとんどまたはまったくなくなる可能性があります。攻撃者は、キースペース全体をブルートフォースで検索するよりも、キーを生成したPRNG環境を再現し、結果として生じる可能性の小さなセットを検索する方がはるかに簡単であることに気付く場合があります。高品質の乱数の生成は困難です。 RFC 4086 [ランダム]は、この分野で重要なガイダンスを提供しています。
+実装では、コンテンツ暗号化鍵、メッセージ認証鍵、初期化ベクトル（IV）、およびパディングをランダムに生成しなければなりません（MUST）。また、公開鍵と秘密鍵のペアの生成は、乱数に依存しています。不十分な疑似乱数ジェネレーター（PRNG）を使用して暗号化鍵を生成すると、セキュリティがほとんどまたはまったくなくなる可能性があります。攻撃者は、鍵空間全体をブルートフォースで探索するよりも、鍵を生成したPRNG環境を再現し、結果として生じる可能性の小さなセットを探索する方がはるかに容易であると判断する場合があります。高品質の乱数の生成は困難です。RFC 4086 [RANDOM]は、この分野で重要なガイダンスを提供しています。
         </p>
       </div>
     </div>
@@ -6489,7 +6489,7 @@ When using key-agreement algorithms or previously distributed symmetric key-encr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-キー合意アルゴリズムまたは以前に配布された対称キー暗号化キーを使用する場合、コンテンツ暗号化キーを暗号化するためにキー暗号化キーが使用されます。キー暗号化アルゴリズムとコンテンツ暗号化アルゴリズムが異なる場合、効果的なセキュリティは2つのアルゴリズムのうち弱い方によって決定されます。たとえば、コンテンツが168ビットTriple-DESコンテンツ暗号化キーを使用してTriple-DESで暗号化され、コンテンツ暗号化キーが40ビットRC2キー暗号化キーを使用してRC2でラップされている場合、最大40保護のビットが提供されます。 40ビットのRC2鍵の値を判別するための簡単な検索で、Triple-DES鍵をリカバリーできます。次に、Triple-DES鍵を使用して、コンテンツを復号化できます。したがって、実装者は、キー暗号化アルゴリズムがコンテンツ暗号化アルゴリズムと同じかそれよりも強力であることを確認する必要があります。
+鍵合意アルゴリズムまたは以前に配布された対称鍵暗号化鍵を使用する場合、コンテンツ暗号化鍵を暗号化するために鍵暗号化鍵が使用されます。鍵暗号化アルゴリズムとコンテンツ暗号化アルゴリズムが異なる場合、効果的なセキュリティは2つのアルゴリズムのうち弱い方によって決定されます。たとえば、コンテンツが168ビットTriple-DESコンテンツ暗号化鍵を使用してTriple-DESで暗号化され、コンテンツ暗号化鍵が40ビットRC2鍵暗号化鍵を使用してRC2でラップされている場合、提供される保護は最大40ビットになります。40ビットRC2鍵の値を判別するための簡単な探索でTriple-DES鍵を回復でき、その後Triple-DES鍵を使用してコンテンツを復号できます。したがって、実装者は、鍵暗号化アルゴリズムがコンテンツ暗号化アルゴリズムと同じか、それよりも強力であることを確認しなければなりません（MUST）。
         </p>
       </div>
     </div>
@@ -6513,7 +6513,7 @@ The countersignature unsigned attribute includes a digital signature that is com
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-副署名無署名属性には、コンテンツ署名値で計算されるデジタル署名が含まれます。したがって、副署名プロセスは、元の署名されたコンテンツを知る必要はありません。この構造により、実装効率が向上します。ただし、この構造では、不適切な署名値の副署名も許可される場合があります。したがって、副署名を実行する実装では、元の署名値を副署名する前に検証する必要があります（この検証では元のコンテンツの処理が必要です）、または適切な署名値のみが副署名されることを保証するコンテキストで実装を実行する必要があります。
+副署名無署名属性には、コンテンツ署名値で計算されるデジタル署名が含まれます。したがって、副署名プロセスは、元の署名されたコンテンツを知る必要はありません。この構造により、実装効率が向上します。ただし、この構造では、不適切な署名値の副署名も許可される場合があります。したがって、副署名を実行する実装では、元の署名値を副署名する前に検証すべきです（SHOULD）（この検証では元のコンテンツの処理が必要です）、または適切な署名値のみが副署名されることを保証するコンテキストで実装を実行すべきです（SHOULD）。
         </p>
       </div>
     </div>
@@ -6537,7 +6537,7 @@ This document is the result of contributions from many professionals. I apprecia
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、多くの専門家からの寄稿の結果です。 IETF S / MIMEワーキンググループのすべてのメンバーのハードワークに感謝します。 Rich Ankney、Simon Blake-Wilson、Tim Dean、Steve Dusse、Carl Ellison、Peter Gutmann、Bob Jueneman、Stephen Henson、Paul Hoffman、Scott Hollenbeck、Don Johnson、Burt Kaliski、John Linn、John Pawling、 Blake Ramsdell、Francois Rousseau、Jim Schaad、Dave Solo、Paul Timmel、およびSean Turnerの努力とサポートに感謝します。
+このドキュメントは、多くの専門家からの寄稿の結果です。 IETF S/MIMEワーキンググループのすべてのメンバーのハードワークに感謝します。 Rich Ankney、Simon Blake-Wilson、Tim Dean、Steve Dusse、Carl Ellison、Peter Gutmann、Bob Jueneman、Stephen Henson、Paul Hoffman、Scott Hollenbeck、Don Johnson、Burt Kaliski、John Linn、John Pawling、 Blake Ramsdell、Francois Rousseau、Jim Schaad、Dave Solo、Paul Timmel、およびSean Turnerの努力とサポートに感謝します。
         </p>
       </div>
     </div>

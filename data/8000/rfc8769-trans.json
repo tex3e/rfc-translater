@@ -5,7 +5,7 @@
   },
   "number": 8769,
   "created_at": "2020-08-16 22:01:23.815507+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -26,7 +26,7 @@
     {
       "indent": 3,
       "text": "Concise Binary Object Representation (CBOR) is becoming a widely used method of doing content encoding. The Cryptographic Message Syntax (CMS) is still a widely used method of doing message-based security. This document defines a set of content types for CMS that hold CBOR content.",
-      "ja": "簡潔なバイナリオブジェクト表現（CBOR）は、コンテンツのエンコーディングを行うために広く使用される方法になりつつあります。暗号化メッセージ構文（CMS）は、依然としてメッセージベースのセキュリティを行うために広く使用されている方法です。このドキュメントは、CBORコンテンツを保持するCMSのコンテンツタイプのセットを定義します。"
+      "ja": "簡潔なバイナリオブジェクト表現（CBOR）は、コンテンツのエンコーディングに広く用いられる方法になりつつあります。暗号化メッセージ構文（CMS）は、メッセージベースのセキュリティを実現するための依然として広く使われている方法です。本ドキュメントでは、CBORコンテンツを保持するCMSのコンテンツタイプのセットを定義します。"
     },
     {
       "indent": 0,
@@ -41,7 +41,7 @@
     {
       "indent": 3,
       "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Not all documents approved by the IESG are candidates for any level of Internet Standard; see Section 2 of RFC 7841.",
-      "ja": "このドキュメントは、IETF（Internet Engineering Task Force）の製品です。これは、IETFコミュニティのコンセンサスを表しています。公開レビューを受け、インターネットエンジニアリングステアリンググループ（IESG）による公開が承認されました。 IESGによって承認されたすべてのドキュメントが、あらゆるレベルのインターネット標準の候補であるとは限りません。 RFC 7841のセクション2をご覧ください。"
+      "ja": "本ドキュメントは、Internet Engineering Task Force（IETF）の成果物であり、IETFコミュニティの合意を反映しています。公開レビューを経て、Internet Engineering Steering Group（IESG）による公開が承認されました。IESGによって承認されたすべてのドキュメントが、必ずしもインターネット標準の候補となるわけではありません。詳細についてはRFC 7841のセクション2を参照してください。"
     },
     {
       "indent": 3,
@@ -56,12 +56,12 @@
     {
       "indent": 3,
       "text": "Copyright (c) 2020 IETF Trust and the persons identified as the document authors. All rights reserved.",
-      "ja": "著作権（c）2020 IETFトラストおよびドキュメントの作成者として識別された人物。全著作権所有。"
+      "ja": "Copyright (c) 2020 IETF Trust および本ドキュメントの著者として特定された個人。すべての権利は留保されています。"
     },
     {
       "indent": 3,
       "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.",
-      "ja": "この文書は、BCP 78およびIETF文書に関するIETFトラストの法的規定（https://trustee.ietf.org/license-info）の対象であり、この文書の発行日に有効です。これらのドキュメントは、このドキュメントに関するあなたの権利と制限を説明しているため、注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseのテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。"
+      "ja": "本ドキュメントは、BCP 78 および本ドキュメントの発行日において有効な IETF Trust の IETF ドキュメントに関する法的規定（https://trustee.ietf.org/license-info）の対象となります。これらのドキュメントは、本ドキュメントに関するお客様の権利と制限を記述しているため、慎重にご確認ください。本ドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisions のセクション 4.e に記載されている Simplified BSD License のテキストを含める必要があり、Simplified BSD License に記載されている通り、無保証で提供されます。"
     },
     {
       "indent": 0,
@@ -84,7 +84,7 @@
     {
       "indent": 3,
       "text": "Concise Binary Object Representation (CBOR) [CBOR] is a compact self-describing binary encoding formation that is starting to be used in many different applications. One of the primary uses of CBOR is in the Internet of Things, the constrained nature of which means that having minimal size of encodings becomes very important. The Cryptographic Message Syntax (CMS) [CMS] is still one of the most common methods for providing message-based security, although in many cases, the CBOR Object Signing and Encryption (COSE) [COSE] message-based security system is starting to be used. Given that CBOR is going to be transported using CMS, it makes sense to define CMS content types for the purpose of denoting that the embedded content is CBOR. This document defines two new content types: CBOR content type and CBOR Sequence content type [CBOR-SEQ].",
-      "ja": "簡潔なバイナリオブジェクト表現（CBOR）[CBOR]は、さまざまなアプリケーションで使用され始めているコンパクトな自己記述型バイナリエンコーディング形式です。 CBORの主な用途の1つは、モノのインターネットです。その制約された性質は、最小サイズのエンコーディングを持つことが非常に重要になることを意味します。暗号化メッセージ構文（CMS）[CMS]は、メッセージベースのセキュリティを提供する最も一般的な方法の1つですが、多くの場合、CBORオブジェクトの署名と暗号化（COSE）[COSE]メッセージベースのセキュリティシステムは、利用される。 CBORはCMSを使用して転送されるため、埋め込みコンテンツがCBORであることを示す目的でCMSコンテンツタイプを定義することは理にかなっています。このドキュメントでは、CBORコンテンツタイプとCBORシーケンスコンテンツタイプ[CBOR-SEQ]の2つの新しいコンテンツタイプを定義しています。"
+      "ja": "簡潔なバイナリオブジェクト表現（CBOR）[CBOR] は、様々なアプリケーションで利用され始めている、コンパクトな自己記述型バイナリエンコーディング形式です。CBORの主な用途の一つはIoT（モノのインターネット）であり、その制約された性質からエンコーディングサイズの最小化が非常に重要となります。暗号化メッセージ構文（CMS）[CMS] は、メッセージベースのセキュリティを提供する最も一般的な方法の一つですが、多くの場合、CBORオブジェクト署名と暗号化（COSE）[COSE] メッセージベースのセキュリティシステムが利用され始めています。CBORがCMSを使用して転送されることを考えると、埋め込みコンテンツがCBORであることを示すためにCMSコンテンツタイプを定義することは妥当です。本ドキュメントでは、CBORコンテンツタイプとCBORシーケンスコンテンツタイプ [CBOR-SEQ] の2つの新しいコンテンツタイプを定義します。"
     },
     {
       "indent": 0,
@@ -111,17 +111,17 @@
     {
       "indent": 3,
       "text": "The CBOR content type is intended to refer to a single object encoded using the CBOR encoding format [CBOR]. Nothing is stated about the specific CBOR object that is included. CBOR can always be decoded to a tree, as the encoding is self descriptive.",
-      "ja": "CBORコンテンツタイプは、CBORエンコード形式[CBOR]を使用してエンコードされた単一のオブジェクトを参照することを目的としています。含まれている特定のCBORオブジェクトについては何も述べられていません。エンコーディングは自己記述的であるため、CBORは常にツリーにデコードできます。"
+      "ja": "CBORコンテンツタイプは、CBORエンコード形式[CBOR]を使用してエンコードされた単一のオブジェクトを参照することを目的とします。含まれる特定のCBORオブジェクトについては何も言及されていません。エンコーディングは自己記述型であるため、CBORは常にツリーにデコード可能です。"
     },
     {
       "indent": 3,
       "text": "The CBOR content type is intended to be encapsulated in the signed data and auth-enveloped data, but it can be included in any CMS wrapper. It cannot be predicted whether the compressed CMS encapsulation will provide compression, because the content may be binary rather than text.",
-      "ja": "CBORコンテンツタイプは、署名付きデータと認証エンベロープデータにカプセル化されることを意図していますが、任意のCMSラッパーに含めることができます。コンテンツがテキストではなくバイナリである可能性があるため、圧縮されたCMSカプセル化が圧縮を提供するかどうかは予測できません。"
+      "ja": "CBORコンテンツタイプは、署名付きデータおよび認証エンベロープデータにカプセル化されることを意図されていますが、任意のCMSラッパーに含めることが可能です。コンテンツがテキストではなくバイナリである可能性があるため、圧縮されたCMSカプセル化が圧縮を提供するかどうかは予測できません。"
     },
     {
       "indent": 3,
       "text": "[RFC7193] defined an optional parameter, \"innerContent\", to allow for identification of what the inner content is for an application/cms media type. This document defines the string \"cbor\" as a new value that can be placed in this parameter when a CBOR content type is used.",
-      "ja": "[RFC7193]は、アプリケーション/ cmsメディアタイプの内部コンテンツが何であるかを識別できるように、オプションパラメータ「innerContent」を定義しました。このドキュメントでは、CBORコンテンツタイプが使用されている場合に、このパラメーターに配置できる新しい値として文字列「cbor」を定義しています。"
+      "ja": "[RFC7193] は、application/cmsメディアタイプの内部コンテンツが何であるかを識別できるよう、オプションパラメータ「innerContent」を定義しました。本ドキュメントでは、CBORコンテンツタイプが使用される際にこのパラメータに配置できる新しい値として、文字列「cbor」を定義します。"
     },
     {
       "indent": 0,
@@ -132,7 +132,7 @@
     {
       "indent": 3,
       "text": "[CBOR-SEQ] defines a CBOR Sequence as a concatenation of zero or more CBOR objects. This section defines a new content type for wrapping a CBOR Sequence in a CMS object.",
-      "ja": "[CBOR-SEQ]は、CBORシーケンスを0個以上のCBORオブジェクトの連結として定義します。このセクションでは、CBORシーケンスをCMSオブジェクトにラップするための新しいコンテンツタイプを定義します。"
+      "ja": "[CBOR-SEQ] は、CBORシーケンスを0個以上のCBORオブジェクトの連結として定義します。本セクションでは、CBORシーケンスをCMSオブジェクトにラップするための新しいコンテンツタイプを定義します。"
     },
     {
       "indent": 3,
@@ -148,17 +148,17 @@
     {
       "indent": 3,
       "text": "The CBOR Sequence content type is intended to refer to a sequence of objects encoded using the CBOR encoding format. The objects are concatenated without any markers delimiting the individual CBOR objects. Nothing is stated about the specific CBOR objects that are included. CBOR can always be decoded to a tree, because the encoding is self descriptive.",
-      "ja": "CBORシーケンスコンテンツタイプは、CBORエンコード形式を使用してエンコードされたオブジェクトのシーケンスを参照することを目的としています。オブジェクトは、個々のCBORオブジェクトを区切るマーカーなしで連結されます。含まれている特定のCBORオブジェクトについては何も述べられていません。エンコーディングは自己記述的であるため、CBORは常にツリーにデコードできます。"
+      "ja": "CBORシーケンスコンテンツタイプは、CBORエンコード形式を使用してエンコードされたオブジェクトのシーケンスを参照することを目的とします。オブジェクトは、個々のCBORオブジェクトを区切るマーカーなしで連結されます。含まれる特定のCBORオブジェクトについては何も言及されていません。エンコーディングは自己記述型であるため、CBORは常にツリーにデコード可能です。"
     },
     {
       "indent": 3,
       "text": "The CBOR Sequence content type is intended to be encapsulated in the signed data and auth-enveloped data, but it can be included in any CMS wrapper. It cannot be predicted whether the compressed CMS encapsulation will provide compression, because the content may be binary rather than text.",
-      "ja": "CBORシーケンスコンテンツタイプは、署名付きデータと認証エンベロープデータにカプセル化されることを目的としていますが、任意のCMSラッパーに含めることができます。コンテンツがテキストではなくバイナリである可能性があるため、圧縮されたCMSカプセル化が圧縮を提供するかどうかは予測できません。"
+      "ja": "CBORシーケンスコンテンツタイプは、署名付きデータおよび認証エンベロープデータにカプセル化されることを目的としますが、任意のCMSラッパーに含めることが可能です。コンテンツがテキストではなくバイナリである可能性があるため、圧縮されたCMSカプセル化が圧縮を提供するかどうかは予測できません。"
     },
     {
       "indent": 3,
       "text": "[RFC7193] defined an optional parameter, \"innerContent\", to allow for identification of what the inner content is for an application/cms media type. This document defines the string \"cborSequence\" as a new value that can be placed in this parameter when a CBOR Sequence content type is used.",
-      "ja": "[RFC7193]は、アプリケーション/ cmsメディアタイプの内部コンテンツが何であるかを識別できるように、オプションパラメータ「innerContent」を定義しました。このドキュメントでは、文字列 \"cborSequence\"を、CBORシーケンスコンテンツタイプが使用されるときにこのパラメーターに配置できる新しい値として定義しています。"
+      "ja": "[RFC7193] は、application/cmsメディアタイプの内部コンテンツが何であるかを識別できるよう、オプションパラメータ「innerContent」を定義しました。本ドキュメントでは、CBORシーケンスコンテンツタイプが使用される際にこのパラメータに配置できる新しい値として、文字列「cborSequence」を定義します。"
     },
     {
       "indent": 0,
@@ -205,7 +205,7 @@
     {
       "indent": 3,
       "text": "END",
-      "ja": "終わり"
+      "ja": "END"
     },
     {
       "indent": 0,
@@ -216,7 +216,7 @@
     {
       "indent": 3,
       "text": "IANA has registered the following in the \"SMI Security for S/MIME Module Identifier (1.2.840.113549.1.9.16.0)\" subregistry within the SMI Numbers registry:",
-      "ja": "IANAは、SMI番号レジストリ内の「SMI Security for S / MIME Module Identifier（1.2.840.113549.1.9.16.0）」サブレジストリに以下を登録しています。"
+      "ja": "IANAは、SMI番号レジストリ内の「SMI Security for S/MIME Module Identifier（1.2.840.113549.1.9.16.0）」サブレジストリに以下を登録しました。"
     },
     {
       "indent": 16,
@@ -232,7 +232,7 @@
     {
       "indent": 3,
       "text": "IANA has registered the following in the \"SMI Security for S/MIME CMS Content Type (1.2.840.113549.1.9.16.1)\" subregistry within the SMI Numbers registry:",
-      "ja": "IANAは、SMI番号レジストリ内の「SMI Security for S / MIME CMS Content Type（1.2.840.113549.1.9.16.1）」サブレジストリに以下を登録しています。"
+      "ja": "IANAは、SMI番号レジストリ内の「SMI Security for S/MIME CMS Content Type（1.2.840.113549.1.9.16.1）」サブレジストリに以下を登録しました。"
     },
     {
       "indent": 15,
@@ -270,7 +270,7 @@
     {
       "indent": 3,
       "text": "This document only provides identification for content types; it does not introduce any new security issues by itself. The new content types mean that id-data does not need to be used to identify these content types; they can therefore reduce confusion.",
-      "ja": "このドキュメントはコンテンツタイプの識別のみを提供します。それ自体は新しいセキュリティ問題を引き起こしません。新しいコンテンツタイプは、これらのコンテンツタイプを識別するためにid-dataを使用する必要がないことを意味します。したがって、混乱を減らすことができます。"
+      "ja": "本ドキュメントはコンテンツタイプの識別のみを提供し、それ自体で新たなセキュリティ問題を引き起こすことはありません。新しいコンテンツタイプにより、これらのコンテンツタイプを識別するためにid-dataを使用する必要がなくなり、その結果、混乱を軽減できます。"
     },
     {
       "indent": 0,
@@ -311,7 +311,7 @@
     {
       "indent": 3,
       "text": "Jim Schaad August Cellars",
-      "ja": "ジムシャードアウグストセラーズ"
+      "ja": "ジム・シャード オーガスト・セラーズ"
     },
     {
       "indent": 3,

@@ -5,7 +5,7 @@
   },
   "number": 8221,
   "created_at": "2020-08-22 20:03:36.928360+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc8221.",
-      "ja": "このドキュメントの現在のステータス、エラッタ、およびフィードバックの提供方法に関する情報は、https：//www.rfc-editor.org/info/rfc8221で入手できます。"
+      "ja": "このドキュメントの現在のステータス、エラッタ、およびフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc8221で入手できます。"
     },
     {
       "indent": 0,
@@ -131,7 +131,7 @@
     {
       "indent": 3,
       "text": "It is expected that deprecation of an algorithm be performed gradually. This provides time for various implementations to update their implemented algorithms while remaining interoperable. Unless there are strong security reasons, an algorithm is expected to be downgraded from MUST to MUST- or SHOULD, instead of MUST NOT (see Section 2). Similarly, an algorithm that has not been mentioned as mandatory-to-implement is expected to be introduced with a SHOULD instead of a MUST.",
-      "ja": "アルゴリズムの廃止は徐々に行われることが期待されています。これにより、さまざまな実装が、相互運用性を維持しながら、実装されたアルゴリズムを更新する時間が提供されます。強力なセキュリティ上の理由がない限り、アルゴリズムは、MUST NOTではなく、MUST NOTからMUST-またはSHOULDにダウングレードされることが期待されます（セクション2を参照）。同様に、実装が必須として言及されていないアルゴリズムは、MUSTの代わりにSHOULDで導入されることが期待されています。"
+      "ja": "アルゴリズムの廃止は徐々に行われることが期待されています。これにより、さまざまな実装が、相互運用性を維持しながら、実装されたアルゴリズムを更新する時間が提供されます。強力なセキュリティ上の理由がない限り、アルゴリズムは、MUST NOTではなく、MUSTからMUST-またはSHOULDにダウングレードされることが期待されます（セクション2を参照）。同様に、実装が必須として言及されていないアルゴリズムは、MUSTの代わりにSHOULDで導入されることが期待されています。"
     },
     {
       "indent": 3,
@@ -173,7 +173,7 @@
     {
       "indent": 3,
       "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
-      "ja": "キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONALこのドキュメントの「」は、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。"
+      "ja": "このドキュメントのキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示されているようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。"
     },
     {
       "indent": 3,
@@ -199,7 +199,7 @@
     {
       "indent": 3,
       "text": "If manual keying is used regardless, Counter Mode algorithms such as ENCR_AES_CTR, ENCR_AES_CCM, ENCR_AES_GCM, and ENCR_CHACHA20_POLY1305 MUST NOT be used, as it is incompatible with a secure and persistent handling of the counter (as explained in the Security Considerations section of [RFC3686]). This particularly applies to IoT devices that have no state across reboots. At the time of writing, ENCR_AES_CBC is the only mandatory-to-implement encryption algorithm suitable for manual keying.",
-      "ja": "手動のキーイングを使用する場合は、ENCR_AES_CTR、ENCR_AES_CCM、ENCR_AES_GCM、ENCR_CHACHA20_POLY1305などのカウンターモードアルゴリズムを使用しないでください。これは、カウンターの安全で永続的な処理と互換性がないためです（[RFC3686]のセキュリティに関する考慮事項セクションで説明）。 ）。これは特に、再起動しても状態が変化しないIoTデバイスに当てはまります。執筆時点では、ENCR_AES_CBCは、手動キーイングに適した唯一の必須から実装までの暗号化アルゴリズムです。"
+      "ja": "手動のキーイングを使用する場合は、ENCR_AES_CTR、ENCR_AES_CCM、ENCR_AES_GCM、ENCR_CHACHA20_POLY1305などのカウンターモードアルゴリズムを使用してはなりません。これは、カウンターの安全で永続的な処理と互換性がないためです（[RFC3686]のセキュリティに関する考慮事項セクションで説明）。これは特に、再起動しても状態が変化しないIoTデバイスに当てはまります。執筆時点では、ENCR_AES_CBCは、手動キーイングに適した唯一の必須から実装までの暗号化アルゴリズムです。"
     },
     {
       "indent": 0,
@@ -282,17 +282,17 @@
     {
       "indent": 3,
       "text": "Various ciphers that are older, not well tested, and never widely implemented have been changed to MUST NOT.",
-      "ja": "古く、十分にテストされておらず、広く実装されていないさまざまな暗号は、変更してはならない（MUST NOT）。"
+      "ja": "古く、十分にテストされておらず、広く実装されていないさまざまな暗号は、MUST NOTに変更されました。"
     },
     {
       "indent": 3,
       "text": "ENCR_3DES status has been downgraded from MAY in [RFC7321] to SHOULD NOT. ENCR_CHACHA20_POLY1305 is a more modern approach and alternative for ENCR_3DES than ENCR_AES_CBC, and so it is expected to be favored to replace ENCR_3DES.",
-      "ja": "ENCR_3DESステータスは[RFC7321]のMAYからダウンしてはいけません（SHOULD NOT）。 ENCR_CHACHA20_POLY1305は、ENCR_AES_CBCよりもENCR_3DESの最新のアプローチおよび代替手段であるため、ENCR_3DESを置き換えることが推奨されます。"
+      "ja": "ENCR_3DESステータスは[RFC7321]のMAYからSHOULD NOTにダウングレードされました。 ENCR_CHACHA20_POLY1305は、ENCR_AES_CBCよりもENCR_3DESの最新のアプローチおよび代替手段であるため、ENCR_3DESを置き換えることが推奨されます。"
     },
     {
       "indent": 3,
       "text": "ENCR_BLOWFISH has been downgraded to MUST NOT as it has been deprecated for years by TWOFISH, which is not standardized for ESP and therefore not listed in this document. Some implementations support TWOFISH using a private range number.",
-      "ja": "ENCR_BLOWFISHはTWOFISHによって何年もの間非推奨になっているため、MUST NOTにダウングレードされました。ESW用に標準化されていないため、このドキュメントには記載されていません。一部の実装では、プライベート範囲番号を使用したTWOFISHがサポートされています。"
+      "ja": "ENCR_BLOWFISHはTWOFISHによって何年もの間非推奨になっているため、MUST NOTにダウングレードされました。ESP用に標準化されていないため、このドキュメントには記載されていません。一部の実装では、プライベート範囲番号を使用したTWOFISHがサポートされています。"
     },
     {
       "indent": 3,
@@ -354,7 +354,7 @@
     {
       "indent": 3,
       "text": "AUTH_NONE has been downgraded from MAY in [RFC7321] to MUST NOT. The only case where AUTH_NONE is acceptable is when authenticated encryption algorithms are selected from Section 5. In all other cases, AUTH_NONE MUST NOT be selected. As ESP and AH both provide authentication, one may be tempted to combine these protocols to provide authentication. As mentioned by [RFC7321], it is NOT RECOMMENDED to use ESP with NULL authentication (with non-authenticated encryption) in conjunction with AH; some configurations of this combination of services have been shown to be insecure [PD10]. In addition, AUTH_NONE authentication cannot be combined with ESP NULL encryption.",
-      "ja": "AUTH_NONEは[RFC7321]の5月からダウンしてはならない（MUST NOT）。 AUTH_NONEが受け入れられる唯一のケースは、セクション5から認証済み暗号化アルゴリズムが選択されている場合です。その他の場合は、AUTH_NONEを選択してはなりません（MUST NOT）。 ESPとAHはどちらも認証を提供するので、これらのプロトコルを組み合わせて認証を提供したくなるかもしれません。 [RFC7321]で述べられているように、AHと組み合わせてNULL認証（非認証暗号化）でESPを使用することは推奨されません。このサービスの組み合わせの一部の構成は、安全でないことが示されています[PD10]。さらに、AUTH_NONE認証をESP NULL暗号化と組み合わせることはできません。"
+      "ja": "AUTH_NONEは[RFC7321]のMAYからMUST NOTに格下げされました。 AUTH_NONEが受け入れられる唯一のケースは、セクション5から認証済み暗号化アルゴリズムが選択されている場合です。その他の場合は、AUTH_NONEを選択してはなりません（MUST NOT）。 ESPとAHはどちらも認証を提供するので、これらのプロトコルを組み合わせて認証を提供したくなるかもしれません。 [RFC7321]で述べられているように、AHと組み合わせてNULL認証（非認証暗号化）でESPを使用することは推奨されません。このサービスの組み合わせの一部の構成は、安全でないことが示されています[PD10]。さらに、AUTH_NONE認証をESP NULL暗号化と組み合わせることはできません。"
     },
     {
       "indent": 3,
@@ -364,7 +364,7 @@
     {
       "indent": 3,
       "text": "AUTH_HMAC_SHA1_96 has been downgraded from MUST in [RFC7321] to MUST-as there is an industry-wide trend to deprecate its usage.",
-      "ja": "AUTH_HMAC_SHA1_96は、[RFC7321]のMUSTからMUSTにダウングレードされました。これは、その使用を廃止する業界全体の傾向があるためです。"
+      "ja": "AUTH_HMAC_SHA1_96は、[RFC7321]のMUSTからMUST-にダウングレードされました。これは、その使用を廃止する業界全体の傾向があるためです。"
     },
     {
       "indent": 3,
@@ -374,12 +374,12 @@
     {
       "indent": 3,
       "text": "AUTH_AES_XCBC_96 is set as SHOULD only in the scope of IoT, as IoT deployments tend to prefer AES-based Hashed Message Authentication Code (HMAC) functions in order to avoid implementing SHA2. For the wide VPN deployment, as it has not been widely adopted, it has been downgraded from SHOULD to MAY.",
-      "ja": "AUTH_AES_XCBC_96は、IoTの展開ではSHA2の実装を回避するためにAESベースのハッシュメッセージ認証コード（HMAC）機能を好む傾向があるため、IoTの範囲でのみ設定する必要があります（SHOULD）。ワイドVPN展開では、広く採用されていないため、SHOULDからMAYにダウングレードされました。"
+      "ja": "AUTH_AES_XCBC_96は、IoTの展開ではSHA2の実装を回避するためにAESベースのハッシュメッセージ認証コード（HMAC）機能を好む傾向があるため、IoTの範囲でのみSHOULDとされています。ワイドVPN展開では、広く採用されていないため、SHOULDからMAYにダウングレードされました。"
     },
     {
       "indent": 3,
       "text": "AUTH_AES_128_GMAC status has been downgraded from SHOULD+ to MAY. Along with AUTH_AES_192_GMAC and AUTH_AES_256_GMAC, these algorithms should only be used for AH and not for ESP. If using ENCR_NULL, AUTH_HMAC_SHA2_256_128 is recommended for integrity. If using AES-GMAC in ESP without authentication, ENCR_NULL_AUTH_AES_GMAC is recommended. Therefore, these algorithms are kept at MAY.",
-      "ja": "AUTH_AES_128_GMACステータスがSHOULD +からMAYに格下げされました。 AUTH_AES_192_GMACおよびAUTH_AES_256_GMACとともに、これらのアルゴリズムはAHにのみ使用し、ESPには使用しないでください。 ENCR_NULLを使用する場合、整合性を保つためにAUTH_HMAC_SHA2_256_128をお勧めします。認証なしでESPでAES-GMACを使用する場合は、ENCR_NULL_AUTH_AES_GMACをお勧めします。したがって、これらのアルゴリズムは5月に保持されます。"
+      "ja": "AUTH_AES_128_GMACステータスがSHOULD+からMAYに格下げされました。 AUTH_AES_192_GMACおよびAUTH_AES_256_GMACとともに、これらのアルゴリズムはAHにのみ使用し、ESPには使用しないでください。 ENCR_NULLを使用する場合、整合性を保つためにAUTH_HMAC_SHA2_256_128をお勧めします。認証なしでESPでAES-GMACを使用する場合は、ENCR_NULL_AUTH_AES_GMACをお勧めします。したがって、これらのアルゴリズムはMAYレベルに保持されます。"
     },
     {
       "indent": 3,
@@ -389,7 +389,7 @@
     {
       "indent": 3,
       "text": "AUTH_HMAC_SHA2_512_256 SHOULD be implemented as a future replacement of AUTH_HMAC_SHA2_256_128 or when stronger security is required. This value has been preferred to AUTH_HMAC_SHA2_384, as the additional overhead of AUTH_HMAC_SHA2_512 is negligible.",
-      "ja": "AUTH_HMAC_SHA2_512_256は、AUTH_HMAC_SHA2_256_128の将来の置き換えとして、またはより強力なセキュリティが必要な場合に実装する必要があります（SHOULD）。 AUTH_HMAC_SHA2_512の追加のオーバーヘッドは無視できるため、この値はAUTH_HMAC_SHA2_384よりも優先されています。"
+      "ja": "AUTH_HMAC_SHA2_512_256は、AUTH_HMAC_SHA2_256_128の将来の置き換えとして、またはより強力なセキュリティが必要な場合にSHOULDとされています。 AUTH_HMAC_SHA2_512の追加のオーバーヘッドは無視できるため、この値はAUTH_HMAC_SHA2_384よりも優先されています。"
     },
     {
       "indent": 0,
@@ -472,7 +472,7 @@
     {
       "indent": 3,
       "text": "[RFC2119] Bradner, S., \"Key words for use in RFCs to Indicate Requirement Levels\", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <https://www.rfc-editor.org/info/rfc2119>.",
-      "ja": "[RFC2119] Bradner、S。、「要件レベルを示すためにRFCで使用するキーワード」、BCP 14、RFC 2119、DOI 10.17487 / RFC2119、1997年3月、<https://www.rfc-editor.org/info/ rfc2119>。"
+      "ja": "[RFC2119] Bradner、S。、「要件レベルを示すためにRFCで使用するキーワード」、BCP 14、RFC 2119、DOI 10.17487 / RFC2119、1997年3月、<https://www.rfc-editor.org/info/rfc2119>。"
     },
     {
       "indent": 3,
@@ -492,12 +492,12 @@
     {
       "indent": 3,
       "text": "[RFC7321] McGrew, D. and P. Hoffman, \"Cryptographic Algorithm Implementation Requirements and Usage Guidance for Encapsulating Security Payload (ESP) and Authentication Header (AH)\", RFC 7321, DOI 10.17487/RFC7321, August 2014, <https://www.rfc-editor.org/info/rfc7321>.",
-      "ja": "[RFC7321] McGrew、D。およびP. Hoffman、「暗号化アルゴリズムの実装要件とカプセル化セキュリティペイロード（ESP）および認証ヘッダー（AH）の使用ガイダンス」、RFC 7321、DOI 10.17487 / RFC7321、2014年8月、<https：/ /www.rfc-editor.org/info/rfc7321>。"
+      "ja": "[RFC7321] McGrew、D。およびP. Hoffman、「暗号化アルゴリズムの実装要件とカプセル化セキュリティペイロード（ESP）および認証ヘッダー（AH）の使用ガイダンス」、RFC 7321、DOI 10.17487 / RFC7321、2014年8月、<https:/ /www.rfc-editor.org/info/rfc7321>。"
     },
     {
       "indent": 3,
       "text": "[RFC8174] Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
-      "ja": "[RFC8174] Leiba、B。、「RFC 2119キーワードの大文字と小文字のあいまいさ」、BCP 14、RFC 8174、DOI 10.17487 / RFC8174、2017年5月、<https://www.rfc-editor.org/info/ rfc8174>。"
+      "ja": "[RFC8174] Leiba、B。、「RFC 2119キーワードの大文字と小文字のあいまいさ」、BCP 14、RFC 8174、DOI 10.17487 / RFC8174、2017年5月、<https://www.rfc-editor.org/info/rfc8174>。"
     },
     {
       "indent": 0,
@@ -518,22 +518,22 @@
     {
       "indent": 3,
       "text": "[RFC2403] Madson, C. and R. Glenn, \"The Use of HMAC-MD5-96 within ESP and AH\", RFC 2403, DOI 10.17487/RFC2403, November 1998, <https://www.rfc-editor.org/info/rfc2403>.",
-      "ja": "[RFC2403] Madson、C。およびR. Glenn、「The Use of HMAC-MD5-96 within ESP and AH」、RFC 2403、DOI 10.17487 / RFC2403、1998年11月、<https://www.rfc-editor.org / info / rfc2403>。"
+      "ja": "[RFC2403] Madson、C。およびR. Glenn、「The Use of HMAC-MD5-96 within ESP and AH」、RFC 2403、DOI 10.17487 / RFC2403、1998年11月、<https://www.rfc-editor.org/info/rfc2403>。"
     },
     {
       "indent": 3,
       "text": "[RFC2404] Madson, C. and R. Glenn, \"The Use of HMAC-SHA-1-96 within ESP and AH\", RFC 2404, DOI 10.17487/RFC2404, November 1998, <https://www.rfc-editor.org/info/rfc2404>.",
-      "ja": "[RFC2404] Madson、C。およびR. Glenn、「The Use of HMAC-SHA-1-96 within ESP and AH」、RFC 2404、DOI 10.17487 / RFC2404、1998年11月、<https：//www.rfc-editor .org / info / rfc2404>。"
+      "ja": "[RFC2404] Madson、C。およびR. Glenn、「The Use of HMAC-SHA-1-96 within ESP and AH」、RFC 2404、DOI 10.17487 / RFC2404、1998年11月、<https://www.rfc-editor.org/info/rfc2404>。"
     },
     {
       "indent": 3,
       "text": "[RFC2405] Madson, C. and N. Doraswamy, \"The ESP DES-CBC Cipher Algorithm With Explicit IV\", RFC 2405, DOI 10.17487/RFC2405, November 1998, <https://www.rfc-editor.org/info/rfc2405>.",
-      "ja": "[RFC2405] Madson、C。およびN. Doraswamy、「明示的なIVを使用したESP DES-CBC暗号アルゴリズム」、RFC 2405、DOI 10.17487 / RFC2405、1998年11月、<https://www.rfc-editor.org/info / rfc2405>。"
+      "ja": "[RFC2405] Madson、C。およびN. Doraswamy、「明示的なIVを使用したESP DES-CBC暗号アルゴリズム」、RFC 2405、DOI 10.17487 / RFC2405、1998年11月、<https://www.rfc-editor.org/info/rfc2405>。"
     },
     {
       "indent": 3,
       "text": "[RFC2410] Glenn, R. and S. Kent, \"The NULL Encryption Algorithm and Its Use With IPsec\", RFC 2410, DOI 10.17487/RFC2410, November 1998, <https://www.rfc-editor.org/info/rfc2410>.",
-      "ja": "[RFC2410] Glenn、R。およびS. Kent、「NULL暗号化アルゴリズムとIPsecでのその使用」、RFC 2410、DOI 10.17487 / RFC2410、1998年11月、<https://www.rfc-editor.org/info/ rfc2410>。"
+      "ja": "[RFC2410] Glenn、R。およびS. Kent、「NULL暗号化アルゴリズムとIPsecでのその使用」、RFC 2410、DOI 10.17487 / RFC2410、1998年11月、<https://www.rfc-editor.org/info/rfc2410>。"
     },
     {
       "indent": 3,
@@ -543,52 +543,52 @@
     {
       "indent": 3,
       "text": "[RFC3051] Heath, J. and J. Border, \"IP Payload Compression Using ITU-T V.44 Packet Method\", RFC 3051, DOI 10.17487/RFC3051, January 2001, <https://www.rfc-editor.org/info/rfc3051>.",
-      "ja": "[RFC3051]ヒースJ.およびJ.ボーダー、「ITU-T V.44パケット方式を使用したIPペイロード圧縮」、RFC 3051、DOI 10.17487 / RFC3051、2001年1月、<https://www.rfc-editor.org / info / rfc3051>。"
+      "ja": "[RFC3051]ヒースJ.およびJ.ボーダー、「ITU-T V.44パケット方式を使用したIPペイロード圧縮」、RFC 3051、DOI 10.17487 / RFC3051、2001年1月、<https://www.rfc-editor.org/info/rfc3051>。"
     },
     {
       "indent": 3,
       "text": "[RFC3173] Shacham, A., Monsour, B., Pereira, R., and M. Thomas, \"IP Payload Compression Protocol (IPComp)\", RFC 3173, DOI 10.17487/RFC3173, September 2001, <https://www.rfc-editor.org/info/rfc3173>.",
-      "ja": "[RFC3173] Shacham、A.、Monsour、B.、Pereira、R。、およびM. Thomas、「IP Payload Compression Protocol（IPComp）」、RFC 3173、DOI 10.17487 / RFC3173、2001年9月、<https：// www .rfc-editor.org / info / rfc3173>。"
+      "ja": "[RFC3173] Shacham、A.、Monsour、B.、Pereira、R。、およびM. Thomas、「IP Payload Compression Protocol（IPComp）」、RFC 3173、DOI 10.17487 / RFC3173、2001年9月、<https://www.rfc-editor.org/info/rfc3173>。"
     },
     {
       "indent": 3,
       "text": "[RFC3566] Frankel, S. and H. Herbert, \"The AES-XCBC-MAC-96 Algorithm and Its Use With IPsec\", RFC 3566, DOI 10.17487/RFC3566, September 2003, <https://www.rfc-editor.org/info/rfc3566>.",
-      "ja": "[RFC3566]フランケルS.およびH.ハーバート、「AES-XCBC-MAC-96アルゴリズムとIPsecでのその使用」、RFC 3566、DOI 10.17487 / RFC3566、2003年9月、<https：//www.rfc-editor .org / info / rfc3566>。"
+      "ja": "[RFC3566]フランケルS.およびH.ハーバート、「AES-XCBC-MAC-96アルゴリズムとIPsecでのその使用」、RFC 3566、DOI 10.17487 / RFC3566、2003年9月、<https://www.rfc-editor.org/info/rfc3566>。"
     },
     {
       "indent": 3,
       "text": "[RFC3602] Frankel, S., Glenn, R., and S. Kelly, \"The AES-CBC Cipher Algorithm and Its Use with IPsec\", RFC 3602, DOI 10.17487/RFC3602, September 2003, <https://www.rfc-editor.org/info/rfc3602>.",
-      "ja": "[RFC3602]フランケルS.、グレンR.、およびS.ケリー、「AES-CBC暗号アルゴリズムとIPsecでのその使用」、RFC 3602、DOI 10.17487 / RFC3602、2003年9月、<https：// www。 rfc-editor.org/info/rfc3602>。"
+      "ja": "[RFC3602]フランケルS.、グレンR.、およびS.ケリー、「AES-CBC暗号アルゴリズムとIPsecでのその使用」、RFC 3602、DOI 10.17487 / RFC3602、2003年9月、<https://www.rfc-editor.org/info/rfc3602>。"
     },
     {
       "indent": 3,
       "text": "[RFC3686] Housley, R., \"Using Advanced Encryption Standard (AES) Counter Mode With IPsec Encapsulating Security Payload (ESP)\", RFC 3686, DOI 10.17487/RFC3686, January 2004, <https://www.rfc-editor.org/info/rfc3686>.",
-      "ja": "[RFC3686] Housley、R。、「IPsecカプセル化セキュリティペイロード（ESP）でのAdvanced Encryption Standard（AES）カウンターモードの使用」、RFC 3686、DOI 10.17487 / RFC3686、2004年1月、<https：//www.rfc-editor。 org / info / rfc3686>。"
+      "ja": "[RFC3686] Housley, R., 「IPsecカプセル化セキュリティペイロード（ESP）でのAdvanced Encryption Standard（AES）カウンターモードの使用」、RFC 3686、DOI 10.17487 / RFC3686、2004年1月、<https://www.rfc-editor.org/info/rfc3686>。"
     },
     {
       "indent": 3,
       "text": "[RFC4106] Viega, J. and D. McGrew, \"The Use of Galois/Counter Mode (GCM) in IPsec Encapsulating Security Payload (ESP)\", RFC 4106, DOI 10.17487/RFC4106, June 2005, <https://www.rfc-editor.org/info/rfc4106>.",
-      "ja": "[RFC4106] Viega、J。およびD. McGrew、「The Use of Galois / Counter Mode（GCM）in IPsec Encapsulating Security Payload（ESP）」、RFC 4106、DOI 10.17487 / RFC4106、2005年6月、<https：// www .rfc-editor.org / info / rfc4106>。"
+      "ja": "[RFC4106] Viega、J。およびD. McGrew、「The Use of Galois / Counter Mode（GCM）in IPsec Encapsulating Security Payload（ESP）」、RFC 4106、DOI 10.17487 / RFC4106、2005年6月、<https://www.rfc-editor.org/info/rfc4106>。"
     },
     {
       "indent": 3,
       "text": "[RFC4309] Housley, R., \"Using Advanced Encryption Standard (AES) CCM Mode with IPsec Encapsulating Security Payload (ESP)\", RFC 4309, DOI 10.17487/RFC4309, December 2005, <https://www.rfc-editor.org/info/rfc4309>.",
-      "ja": "[RFC4309] Housley、R。、「IPsecカプセル化セキュリティペイロード（ESP）でのAdvanced Encryption Standard（AES）CCMモードの使用」、RFC 4309、DOI 10.17487 / RFC4309、2005年12月、<https：//www.rfc-editor。 org / info / rfc4309>。"
+      "ja": "[RFC4309] Housley, R., 「IPsecカプセル化セキュリティペイロード（ESP）でのAdvanced Encryption Standard（AES）CCMモードの使用」、RFC 4309、DOI 10.17487 / RFC4309、2005年12月、<https://www.rfc-editor.org/info/rfc4309>。"
     },
     {
       "indent": 3,
       "text": "[RFC4543] McGrew, D. and J. Viega, \"The Use of Galois Message Authentication Code (GMAC) in IPsec ESP and AH\", RFC 4543, DOI 10.17487/RFC4543, May 2006, <https://www.rfc-editor.org/info/rfc4543>.",
-      "ja": "[RFC4543] McGrew、D.、J。Viega、「The Use of Galois Message Authentication Code（GMAC）in IPsec ESP and AH」、RFC 4543、DOI 10.17487 / RFC4543、2006年5月、<https：//www.rfc- editor.org/info/rfc4543>。"
+      "ja": "[RFC4543] McGrew、D.、J。Viega、「The Use of Galois Message Authentication Code（GMAC）in IPsec ESP and AH」、RFC 4543、DOI 10.17487 / RFC4543、2006年5月、<https://www.rfc-editor.org/info/rfc4543>。"
     },
     {
       "indent": 3,
       "text": "[RFC4868] Kelly, S. and S. Frankel, \"Using HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512 with IPsec\", RFC 4868, DOI 10.17487/RFC4868, May 2007, <https://www.rfc-editor.org/info/rfc4868>.",
-      "ja": "[RFC4868]ケリー、S.、S。フランケル、「IPsecでのHMAC-SHA-256、HMAC-SHA-384、およびHMAC-SHA-512の使用」、RFC 4868、DOI 10.17487 / RFC4868、2007年5月、<https： //www.rfc-editor.org/info/rfc4868>。"
+      "ja": "[RFC4868]ケリー、S.、S。フランケル、「IPsecでのHMAC-SHA-256、HMAC-SHA-384、およびHMAC-SHA-512の使用」、RFC 4868、DOI 10.17487 / RFC4868、2007年5月、<https://www.rfc-editor.org/info/rfc4868>。"
     },
     {
       "indent": 3,
       "text": "[RFC5282] Black, D. and D. McGrew, \"Using Authenticated Encryption Algorithms with the Encrypted Payload of the Internet Key Exchange version 2 (IKEv2) Protocol\", RFC 5282, DOI 10.17487/RFC5282, August 2008, <https://www.rfc-editor.org/info/rfc5282>.",
-      "ja": "[RFC5282] Black、D。、およびD. McGrew、「Authenticated Encryption Algorithms with the Encrypted Payload of the Internet Key Exchange version 2（IKEv2）Protocol」、RFC 5282、DOI 10.17487 / RFC5282、2008年8月、<https：// www.rfc-editor.org/info/rfc5282>。"
+      "ja": "[RFC5282] Black、D。、およびD. McGrew、「Authenticated Encryption Algorithms with the Encrypted Payload of the Internet Key Exchange version 2（IKEv2）Protocol」、RFC 5282、DOI 10.17487 / RFC5282、2008年8月、<https://www.rfc-editor.org/info/rfc5282>。"
     },
     {
       "indent": 3,
@@ -598,7 +598,7 @@
     {
       "indent": 3,
       "text": "[RFC7634] Nir, Y., \"ChaCha20, Poly1305, and Their Use in the Internet Key Exchange Protocol (IKE) and IPsec\", RFC 7634, DOI 10.17487/RFC7634, August 2015, <https://www.rfc-editor.org/info/rfc7634>.",
-      "ja": "[RFC7634] Nir、Y。、「ChaCha20、Poly1305、およびインターネットキー交換プロトコル（IKE）とIPsecでのそれらの使用」、RFC 7634、DOI 10.17487 / RFC7634、2015年8月、<https：//www.rfc-editor .org / info / rfc7634>。"
+      "ja": "[RFC7634] Nir、Y。、「ChaCha20、Poly1305、およびインターネットキー交換プロトコル（IKE）とIPsecでのそれらの使用」、RFC 7634、DOI 10.17487 / RFC7634、2015年8月、<https://www.rfc-editor.org/info/rfc7634>。"
     },
     {
       "indent": 0,

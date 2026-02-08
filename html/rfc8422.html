@@ -47,8 +47,8 @@
           </a>
         </span><br>
         <span class="title_ja">
-          タイトル : <strong>RFC 8422 - Elliptic Curve Cryptography（ECC）Cipher Suites for Transport Layer Security（TLS）バージョン1.2以前</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+          タイトル : <strong>RFC 8422 - Transport Layer Security (TLS) バージョン1.2以前のための楕円曲線暗号 (ECC) 暗号スイート</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -84,7 +84,7 @@ ISSN: 2070-1721                                      M. Pegourie-Gonnard
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-Elliptic Curve Cryptography（ECC）Cipher Suites for Transport Layer Security（TLS）バージョン1.2以前
+Transport Layer Security (TLS) バージョン1.2以前のための楕円曲線暗号 (ECC) 暗号スイート
         </p>
       </div>
     </div>
@@ -156,7 +156,7 @@ This document is a product of the Internet Engineering Task Force (IETF). It rep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、IETF（Internet Engineering Task Force）の製品です。これは、IETFコミュニティのコンセンサスを表しています。公開レビューを受け、インターネットエンジニアリングステアリンググループ（IESG）による公開が承認されました。インターネット標準の詳細については、RFC 7841のセクション2をご覧ください。
+このドキュメントは、IETF（Internet Engineering Task Force）の成果物です。これは、IETFコミュニティのコンセンサスを表しています。パブリックレビューを受け、インターネットエンジニアリングステアリンググループ（IESG）による公開が承認されました。Internet Standardsの詳細については、RFC 7841のセクション2をご覧ください。
         </p>
       </div>
     </div>
@@ -204,7 +204,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この文書は、BCP 78およびIETF文書に関するIETFトラストの法的規定（https://trustee.ietf.org/license-info）の対象であり、この文書の発行日に有効です。これらのドキュメントは、このドキュメントに関するあなたの権利と制限を説明しているため、注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseのテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。
+この文書は、BCP 78およびIETF文書に関するIETFトラストの法的規定（https://trustee.ietf.org/license-info）の対象であり、この文書の発行日に有効です。これらのドキュメントは、このドキュメントに関する権利と制限を説明しているため、よく確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseのテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。
         </p>
       </div>
     </div>
@@ -283,7 +283,7 @@ This document describes additions to TLS to support ECC that are applicable to T
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、TLSバージョン1.0 [RFC2246]、1.1 [RFC4346]、および1.2 [RFC5246]に適用可能なECCをサポートするためのTLSへの追加について説明します。 TLS 1.3でのECCの使用は[TLS1.3]で定義されており、このドキュメントの範囲外であることは明白です。特に、このドキュメントでは次のことを定義しています。
+このドキュメントでは、TLSバージョン1.0 [RFC2246]、1.1 [RFC4346]、および1.2 [RFC5246]に適用可能なECCをサポートするためのTLSへの追加について説明します。 TLS 1.3でのECCの使用は[TLS1.3]で定義されており、このドキュメントでは明示的に範囲外です。特に、このドキュメントでは次のことを定義しています。
         </p>
       </div>
     </div>
@@ -295,7 +295,7 @@ o the use of the ECDHE key agreement scheme with ephemeral keys to establish the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o TLSプリマスターシークレットを確立するための一時鍵を含むECDHE鍵合意スキームの使用、および
+o TLSプリマスターシークレットを確立するための一時鍵を使用したECDHE鍵合意スキームの使用、および
         </p>
       </div>
     </div>
@@ -319,7 +319,7 @@ The remainder of this document is organized as follows. Section 2 provides an ov
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの残りの部分は、次のように構成されています。セクション2では、TLSのECCベースのキー交換アルゴリズムの概要を説明します。セクション3では、クライアント認証のためのECC証明書の使用について説明します。クライアントが特定の曲線とポイント形式の使用をネゴシエートできるようにするTLS拡張については、セクション4で説明します。セクション5では、ECCベースのハンドシェイクに必要なさまざまなデータ構造、TLSメッセージでのエンコード、およびそれらのメッセージの処理を指定します。セクション6では、ECCベースの暗号スイートを定義し、この仕様のすべての実装に推奨されるこれらの小さなサブセットを識別します。セクション8では、セキュリティの考慮事項について説明します。セクション9では、このドキュメントの前身によって作成された名前空間に関するIANAの考慮事項について説明します。付録Bは、これが置き換えるドキュメント[RFC4492]との違いを提供します。
+このドキュメントの残りの部分は、次のように構成されています。セクション2では、TLSのECCベースの鍵交換アルゴリズムの概要を説明します。セクション3では、クライアント認証のためのECC証明書の使用について説明します。クライアントが特定の曲線とポイントフォーマットの使用をネゴシエートできるようにするTLS拡張については、セクション4で説明します。セクション5では、ECCベースのハンドシェイクに必要なさまざまなデータ構造、TLSメッセージでのエンコード、およびそれらのメッセージの処理を指定します。セクション6では、ECCベースの暗号スイートを定義し、この仕様のすべての実装に推奨されるこれらの小さなサブセットを識別します。セクション8では、セキュリティの考慮事項について説明します。セクション9では、このドキュメントの前身によって作成された名前空間に関するIANAの考慮事項について説明します。付録Bは、本ドキュメントが置き換えるドキュメント[RFC4492]との違いを提供します。
         </p>
       </div>
     </div>
@@ -331,7 +331,7 @@ Implementation of this specification requires familiarity with TLS, TLS extensio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様の実装には、TLS、TLS拡張[RFC4366]、およびECCの知識が必要です。
+この仕様の実装には、TLS、TLS拡張[RFC4366]、およびECCに精通していることが必要です。
         </p>
       </div>
     </div>
@@ -355,7 +355,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONALこのドキュメントの「」は、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。
+このドキュメントのキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONAL」は、ここに示すようにすべて大文字で表示される場合にのみ、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -379,7 +379,7 @@ This document defines three new ECC-based key exchange algorithms for TLS. All o
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、TLS用の3つの新しいECCベースのキー交換アルゴリズムを定義しています。それらはすべて、Ephemeral ECDH（ECDHE）を使用してTLSプレマスターシークレットを計算し、それらを認証するために使用されるメカニズム（存在する場合）のみが異なります。プリマスターシークレットからのTLSマスターシークレットの派生、およびその後のバルク暗号化/ MACキーと初期化ベクトルの生成は、キー交換アルゴリズムに依存せず、ECCの導入による影響を受けません。
+このドキュメントでは、TLS用の3つの新しいECCベースの鍵交換アルゴリズムを定義しています。それらはすべて、Ephemeral ECDH（ECDHE）を使用してTLSプレマスターシークレットを計算し、それらを認証するために使用されるメカニズム（存在する場合）のみが異なります。プリマスターシークレットからのTLSマスターシークレットの導出、およびその後のバルク暗号化/ MAC鍵と初期化ベクトルの生成は、鍵交換アルゴリズムに依存せず、ECCの導入による影響を受けません。
         </p>
       </div>
     </div>
@@ -391,7 +391,7 @@ Table 1 summarizes the new key exchange algorithms. All of these key exchange al
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-表1は、新しい鍵交換アルゴリズムの要約です。これらのすべての鍵交換アルゴリズムは、新しい一時鍵が生成されて使用され、使用後に破棄された場合にのみ、前方機密を提供します。
+表1は、新しい鍵交換アルゴリズムの要約です。これらのすべての鍵交換アルゴリズムは、新しい一時鍵が生成されて使用され、使用後に破棄された場合にのみ、前方秘匿性を提供します。
         </p>
       </div>
     </div>
@@ -428,7 +428,7 @@ These key exchanges are analogous to DHE_DSS, DHE_RSA, and DH_anon, respectively
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの鍵交換は、それぞれDHE_DSS、DHE_RSA、およびDH_anonに類似しています。
+これらの鍵交換は、それぞれDHE_DSS、DHE_RSA、およびDH_anonに対応しています。
         </p>
       </div>
     </div>
@@ -440,7 +440,7 @@ With ECDHE_RSA, a server can reuse its existing RSA certificate and easily compl
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ECDHE_RSAを使用すると、サーバーは既存のRSA証明書を再利用し、制約されたクライアントの楕円曲線の設定に簡単に準拠できます（セクション4を参照）。ただし、サーバーが負担する計算コストは​​、転送秘密を提供しない従来のRSA鍵交換よりもECDHE_RSAの方が高くなります。
+ECDHE_RSAを使用すると、サーバーは既存のRSA証明書を再利用し、リソース制約のあるクライアントの楕円曲線の選好に簡単に準拠できます（セクション4を参照）。ただし、サーバーが負担する計算コストは、前方秘匿性を提供しない従来のRSA鍵交換よりもECDHE_RSAの方が高くなります。
         </p>
       </div>
     </div>
@@ -452,7 +452,7 @@ The anonymous key exchange algorithm does not provide authentication of the serv
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-匿名キー交換アルゴリズムは、サーバーまたはクライアントの認証を提供しません。他の匿名TLS鍵交換と同様に、中間者攻撃の対象になります。このアルゴリズムでTLSを使用するアプリケーションは、他の方法で認証を提供する必要があります（SHOULD）。
+匿名鍵交換アルゴリズムは、サーバーまたはクライアントの認証を提供しません。他の匿名TLS鍵交換と同様に、中間者攻撃に対して脆弱です。このアルゴリズムでTLSを使用するアプリケーションは、他の方法で認証を提供する必要があります（SHOULD）。
         </p>
       </div>
     </div>
@@ -510,7 +510,7 @@ Figure 1 shows all messages involved in the TLS key establishment protocol (aka 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図1は、TLSキー確立プロトコル（フルハンドシェイク）に関係するすべてのメッセージを示しています。 ECCの追加は、ClientHello、ServerHello、サーバーの証明書メッセージ、ServerKeyExchange、ClientKeyExchange、CertificateRequest、クライアントの証明書メッセージ、およびCertificateVerifyにのみ直接影響します。次に、これらのメッセージの内容と処理の観点から、ECC鍵交換アルゴリズムについて詳しく説明します。説明を簡単にするために、セクション3まではクライアント認証と関連メッセージ（図1で「+」で識別）の説明を、セクション4まではオプションのECC固有の拡張（Helloメッセージに影響を与える）の説明を延期します。
+図1は、TLS鍵確立プロトコル（フルハンドシェイク）に関係するすべてのメッセージを示しています。ECCの追加は、ClientHello、ServerHello、Server Certificateメッセージ、ServerKeyExchange、ClientKeyExchange、CertificateRequest、Client Certificateメッセージ、およびCertificateVerifyにのみ直接影響します。次に、これらのメッセージの内容と処理の観点から、ECC鍵交換アルゴリズムについて詳しく説明します。説明の便宜上、セクション3までクライアント認証と関連メッセージ（図1で「+」で識別）の説明を後回しにし、セクション4までオプションのECC固有の拡張（Helloメッセージに影響を与える）の説明を後回しにします。
         </p>
       </div>
     </div>
@@ -546,7 +546,7 @@ The server sends its ephemeral ECDH public key and a specification of the corres
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーは、短命ECDH公開鍵と、ServerKeyExchangeメッセージ内の対応する曲線の仕様を送信します。これらのパラメーターは、サーバーの証明書の公開鍵に対応する秘密鍵を使用して、ECDSAまたはEdDSAで署名する必要があります。
+サーバーは、一時的なECDH公開鍵と、ServerKeyExchangeメッセージ内の対応する曲線の指定を送信します。これらのパラメーターは、サーバーの証明書の公開鍵に対応する秘密鍵を使用して、ECDSAまたはEdDSAで署名する必要があります。
         </p>
       </div>
     </div>
@@ -558,7 +558,7 @@ The client generates an ECDH key pair on the same curve as the server&#39;s ephe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントは、サーバーの一時的なECDHキーと同じ曲線でECDHキーペアを生成し、その公開キーをClientKeyExchangeメッセージで送信します。
+クライアントは、サーバーの一時的なECDH鍵と同じ曲線でECDH鍵ペアを生成し、その公開鍵をClientKeyExchangeメッセージで送信します。
         </p>
       </div>
     </div>
@@ -570,7 +570,7 @@ Both client and server perform an ECDH operation (see Section 5.10) and use the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントとサーバーの両方がECDH操作（セクション5.10を参照）を実行し、結果の共有シークレットをプリマスターシークレットとして使用します。
+クライアントとサーバーの両方がECDH操作（セクション5.10を参照）を実行し、結果の共有秘密をプリマスターシークレットとして使用します。
         </p>
       </div>
     </div>
@@ -594,7 +594,7 @@ This key exchange algorithm is the same as ECDHE_ECDSA except that the server&#3
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この鍵交換アルゴリズムはECDHE_ECDSAと同じですが、サーバーの証明書には署名が許可されたRSA公開鍵が含まれている必要があり、ServerKeyExchangeメッセージの署名は対応するRSA秘密鍵で計算する必要があります。
+この鍵交換アルゴリズムはECDHE_ECDSAと同じですが、サーバーの証明書には署名用に認可されたRSA公開鍵が含まれている必要があり、ServerKeyExchangeメッセージの署名は対応するRSA秘密鍵で計算する必要があります。
         </p>
       </div>
     </div>
@@ -618,7 +618,7 @@ NOTE: Despite the name beginning with &#34;ECDH_&#34; (no E), the key used in EC
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注： &#34;ECDH_&#34;（Eなし）で始まる名前にもかかわらず、ECDH_anonで使用されるキーは、ECDHE_RSAおよびECDHE_ECDSAのキーと同様に一時的なものです。名前はDH_anonの例に従っています。キーも一時的なものですが、名前はそれを反映していません。
+注： &#34;ECDH_&#34;（Eなし）で始まる名前にもかかわらず、ECDH_anonで使用される鍵は、ECDHE_RSAおよびECDHE_ECDSAの鍵と同様に一時的なものです。名前はDH_anonの例に従っています。鍵も一時的なものですが、名前はそれを反映していません。
         </p>
       </div>
     </div>
@@ -630,7 +630,7 @@ In ECDH_anon, the server&#39;s Certificate, the CertificateRequest, the client&#
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ECDH_anonでは、サーバーの証明書、CertificateRequest、クライアントの証明書、およびCertificateVerifyメッセージを送信してはなりません（MUST NOT）。
+ECDH_anonでは、Server Certificate、CertificateRequest、Client Certificate、およびCertificateVerifyメッセージを送信してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -642,7 +642,7 @@ The server MUST send an ephemeral ECDH public key and a specification of the cor
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーは、短命ECDH公開鍵と、ServerKeyExchangeメッセージ内の対応する曲線の仕様を送信する必要があります。これらのパラメータは署名してはいけません。
+サーバーは、一時的なECDH公開鍵と、ServerKeyExchangeメッセージ内の対応する曲線の指定を送信する必要があります。これらのパラメータは署名してはいけません。
         </p>
       </div>
     </div>
@@ -654,7 +654,7 @@ The client generates an ECDH key pair on the same curve as the server&#39;s ephe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントは、サーバーの一時的なECDHキーと同じ曲線でECDHキーペアを生成し、その公開キーをClientKeyExchangeメッセージで送信します。
+クライアントは、サーバーの一時的なECDH鍵と同じ曲線でECDH鍵ペアを生成し、その公開鍵をClientKeyExchangeメッセージで送信します。
         </p>
       </div>
     </div>
@@ -666,7 +666,7 @@ Both client and server perform an ECDH operation and use the resultant shared se
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントとサーバーの両方がECDH操作を実行し、結果の共有シークレットをプリマスターシークレットとして使用します。すべてのECDH計算は、セクション5.10で指定されているように実行されます。
+クライアントとサーバーの両方がECDH操作を実行し、結果の共有秘密をプリマスターシークレットとして使用します。すべてのECDH計算は、セクション5.10で指定されているように実行されます。
         </p>
       </div>
     </div>
@@ -690,7 +690,7 @@ This specification does not impose restrictions on signature schemes used anywhe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様は、証明書チェーンのどこかで使用される署名方式に制限を課しません。このドキュメントの以前のバージョンでは、署名を一致させる必要がありましたが、以前のTLSバージョンで発生していたこの制限は、RFC 5246にあったため、ここで解除されます。
+この仕様は、証明書チェーンのどこかで使用される署名方式に制限を課しません。このドキュメントの以前のバージョンでは、署名が一致することを要求していましたが、以前のTLSバージョンに由来するこの制限は、RFC 5246と同様に、ここでは解除されています。
         </p>
       </div>
     </div>
@@ -714,7 +714,7 @@ This document defines a client authentication mechanism named after the type of 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、関係するクライアント証明書のタイプにちなんで名付けられたクライアント認証メカニズムを定義します：ECDSA_sign。 ECDSA_signメカニズムは、セクション2で説明する非匿名のECC鍵交換アルゴリズム、およびTLSで定義されている他の非匿名（非ECC）鍵交換アルゴリズムで使用できます。
+このドキュメントでは、関与するクライアント証明書のタイプにちなんで名付けられたクライアント認証メカニズムを定義します：ECDSA_sign。ECDSA_signメカニズムは、セクション2で説明する非匿名のECC鍵交換アルゴリズム、およびTLSで定義されている他の非匿名（非ECC）鍵交換アルゴリズムで使用できます。
         </p>
       </div>
     </div>
@@ -738,7 +738,7 @@ The server can request ECC-based client authentication by including this certifi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーは、CertificateRequestメッセージにこの証明書タイプを含めることにより、ECCベースのクライアント認証を要求できます。クライアントは、サーバーが提案した方法に適した証明書を所有しており、それを認証に使用する意思があるかどうかを確認する必要があります。
+サーバーは、CertificateRequestメッセージにこの証明書タイプを含めることにより、ECCベースのクライアント認証を要求できます。クライアントは、サーバーによって提案された方法に適した証明書を所有しており、それを認証に使用する意思があるかどうかを確認する必要があります。
         </p>
       </div>
     </div>
@@ -750,7 +750,7 @@ If these conditions are not met, the client SHOULD send a client Certificate mes
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの条件が満たされない場合、クライアントは証明書を含まないクライアント証明書メッセージを送信する必要があります（SHOULD）。この場合、セクション2の説明に従ってClientKeyExchangeを送信する必要があり、CertificateVerifyを送信してはなりません（MUST NOT）。サーバーがクライアント認証を必要とする場合、致命的なハンドシェイク失敗アラートで応答することがあります。
+これらの条件が満たされない場合、クライアントは証明書を含まないClient Certificateメッセージを送信する必要があります（SHOULD）。この場合、セクション2の説明に従ってClientKeyExchangeを送信する必要があり、CertificateVerifyを送信してはなりません（MUST NOT）。サーバーがクライアント認証を必要とする場合、致命的なハンドシェイク失敗アラートで応答することがあります。
         </p>
       </div>
     </div>
@@ -762,7 +762,7 @@ If the client has an appropriate certificate and is willing to use it for authen
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントに適切な証明書があり、それを認証に使用する場合は、その証明書をクライアントの証明書メッセージで送信し（セクション5.6に従って）、認証されたキーに対応する秘密キーの所有を証明する必要があります。適切な証明書を決定して所持を証明するプロセスは、認証メカニズムごとに異なり、以下で説明します。
+クライアントに適切な証明書があり、それを認証に使用する意思がある場合は、その証明書をClient Certificateメッセージで送信し（セクション5.6に従って）、証明書内の鍵に対応する秘密鍵の所有を証明する必要があります。適切な証明書を決定して所持を証明するプロセスは、認証メカニズムごとに異なり、以下で説明します。
         </p>
       </div>
     </div>
@@ -798,7 +798,7 @@ To use this authentication mechanism, the client MUST possess a certificate cont
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この認証メカニズムを使用するには、クライアントはECDSAまたはEdDSA対応の公開鍵を含む証明書を所有している必要があります。
+この認証メカニズムを使用するには、クライアントはECDSAまたはEdDSAが可能な公開鍵を含む証明書を所有している必要があります。
         </p>
       </div>
     </div>
@@ -810,7 +810,7 @@ The client proves possession of the private key corresponding to the certified k
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントは、セクション5.8で説明されているように、CertificateVerifyメッセージに署名を含めることにより、認証されたキーに対応する秘密キーの所有を証明します。
+クライアントは、セクション5.8で説明されているように、CertificateVerifyメッセージに署名を含めることにより、証明されたキーに対応する秘密キーの所有を証明します。
         </p>
       </div>
     </div>
@@ -834,7 +834,7 @@ Two TLS extensions are defined in this specification: (i) the Supported Elliptic
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、2つのTLS拡張が定義されています。（i）サポートされる楕円曲線拡張と（ii）サポートされるポイント形式拡張です。これらにより、新しいセッションを開始するハンドシェイク中に、特定の曲線とポイント形式（たとえば、それぞれ圧縮と非圧縮）の使用について交渉できます。これらの拡張機能は、限られた数の曲線またはポイント形式のみをサポートする可能性がある制約のあるクライアントに特に関連しています。それらは[RFC4366]で概説されている一般的なアプローチに従います。メッセージの詳細はセクション5で指定されています。クライアントは、ClientHelloメッセージに適切な拡張機能を含めることにより、サポートする曲線と解析できるポイント形式を列挙します。サーバーも同様に、ServerHelloメッセージに拡張機能を含めることで、解析できるポイント形式を列挙します。
+この仕様では、2つのTLS拡張が定義されています。（i）Supported Elliptic Curves拡張と（ii）Supported Point Formats拡張です。これらにより、新しいセッションを開始するハンドシェイク中に、特定の曲線とポイント形式（たとえば、それぞれ圧縮と非圧縮）の使用について交渉できます。これらの拡張機能は、限られた数の曲線またはポイント形式のみをサポートする可能性があるリソース制約のあるクライアントに特に関連しています。それらは[RFC4366]で概説されている一般的なアプローチに従います。メッセージの詳細はセクション5で指定されています。クライアントは、ClientHelloメッセージに適切な拡張機能を含めることにより、サポートする曲線と解析できるポイント形式を列挙します。サーバーも同様に、ServerHelloメッセージに拡張機能を含めることで、解析できるポイント形式を列挙します。
         </p>
       </div>
     </div>
@@ -846,7 +846,7 @@ A TLS client that proposes ECC cipher suites in its ClientHello message SHOULD i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ClientHelloメッセージでECC暗号スイートを提案するTLSクライアントには、これらの拡張を含める必要があります（SHOULD）。 ECC暗号スイートを実装するサーバーはこれらの拡張をサポートする必要があり、クライアントがこれらの拡張を使用する場合、サーバーは、クライアントが指定した曲線の選択を尊重しながらハンドシェイクを完了できない限り、ECC暗号スイートの使用をネゴシエートしてはなりません。これにより、クライアントがサーバーのECキーを処理できないために、ネゴシエートされたECCハンドシェイクが後で中止される可能性がなくなります。
+ClientHelloメッセージでECC暗号スイートを提案するTLSクライアントには、これらの拡張を含めるべきです（SHOULD）。ECC暗号スイートを実装するサーバーはこれらの拡張をサポートする必要があり、クライアントがこれらの拡張を使用する場合、サーバーは、クライアントが指定した曲線の選択を尊重しながらハンドシェイクを完了できない限り、ECC暗号スイートの使用をネゴシエートしてはなりません。これにより、クライアントがサーバーのEC鍵を処理できないために、ネゴシエートされたECCハンドシェイクが後で中止される可能性がなくなります。
         </p>
       </div>
     </div>
@@ -858,7 +858,7 @@ The client MUST NOT include these extensions in the ClientHello message if it do
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントは、ECC暗号スイートを提案しない場合、ClientHelloメッセージにこれらの拡張を含めてはなりません（MUST NOT）。 ECC暗号スイートを提案するクライアントは、これらの拡張を含めないことを選択できます。この場合、サーバーはセクション5にリストされている楕円曲線またはポイント形式のいずれかを自由に選択できます。このセクションでは、これらの拡張の構造と処理についても詳しく説明しています。
+クライアントは、ECC暗号スイートを提案しない場合、ClientHelloメッセージにこれらの拡張を含めてはなりません（MUST NOT）。 ECC暗号スイートを提案するクライアントは、これらの拡張を含めないことを選択できます。この場合、サーバーはセクション5にリストされている楕円曲線またはポイントフォーマットのいずれかを自由に選択できます。そのセクション（セクション5）では、これらの拡張の構造と処理についても詳しく説明しています。
         </p>
       </div>
     </div>
@@ -870,7 +870,7 @@ In the case of session resumption, the server simply ignores the Supported Ellip
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セッション再開の場合、サーバーは、現在のClientHelloメッセージに表示されるサポートされる楕円曲線拡張とサポートされるポイント形式拡張を単に無視します。これらの拡張機能は、新しいセッションをネゴシエートするハンドシェイク中にのみ役割を果たします。
+セッション再開の場合、サーバーは、現在のClientHelloメッセージに表示されるSupported Elliptic Curves拡張とSupported Point Formats拡張を単に無視します。これらの拡張機能は、新しいセッションをネゴシエートするハンドシェイク中にのみ役割を果たします。
         </p>
       </div>
     </div>
@@ -894,7 +894,7 @@ This section specifies the data structures and computations used by ECC-based ke
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このセクションでは、前の3つのセクションで指定したECCベースのキーメカニズムで使用されるデータ構造と計算を指定します。ここで使用されるプレゼンテーション言語は、TLSで使用されるものと同じです。この仕様はTLSを拡張しているため、これらの説明は、TLS仕様やTLSを拡張するその他の説明とマージする必要があります。これは、列挙型がすべての可能な値を指定するわけではなく、select()句で選択された複数の形式の構造がすべての可能なケースを示すとは限らないことを意味します。
+このセクションでは、前の3つのセクションで指定したECCベースの鍵メカニズムで使用されるデータ構造と計算を指定します。ここで使用されるプレゼンテーション言語は、TLSで使用されるものと同じです。この仕様はTLSを拡張しているため、これらの説明は、TLS仕様やTLSを拡張するその他の説明とマージする必要があります。これは、列挙型がすべての可能な値を指定するわけではなく、select()句で選択された複数の形式の構造がすべての可能なケースを示すとは限らないことを意味します。
         </p>
       </div>
     </div>
@@ -918,7 +918,7 @@ This section specifies two TLS extensions that can be included with the ClientHe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このセクションでは、[RFC4366]で説明されているように、ClientHelloメッセージに含めることができる2つのTLS拡張を指定します。サポートされる楕円曲線拡張とサポートされるポイント形式拡張です。
+このセクションでは、[RFC4366]で説明されているように、ClientHelloメッセージに含めることができる2つのTLS拡張を指定します。Supported Elliptic Curves拡張とSupported Point Formats拡張です。
         </p>
       </div>
     </div>
@@ -930,7 +930,7 @@ When these extensions are sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの拡張機能が送信されると：
+これらの拡張が送信される場合：
         </p>
       </div>
     </div>
@@ -1072,7 +1072,7 @@ A server that receives a ClientHello containing one or both of these extensions 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの拡張の1つまたは両方を含むClientHelloを受信するサーバーは、クライアントの列挙された機能を使用して、適切な暗号スイートの選択をガイドする必要があります。提案されたECC暗号スイートの1つは、サーバーがクライアントがサポートする曲線と点の形式を使用してハンドシェイクを正常に完了できる場合にのみネゴシエートする必要があります（セクション5.3および5.4を参照）。
+これらの拡張の1つまたは両方を含むClientHelloを受信するサーバーは、クライアントの列挙された機能を使用して、適切な暗号スイートの選択をガイドする必要があります。提案されたECC暗号スイートの1つは、サーバーがクライアントによって指定された曲線の選択を尊重しながらハンドシェイクを正常に完了できる場合にのみネゴシエートする必要があります（セクション5.3および5.4を参照）。
         </p>
       </div>
     </div>
@@ -1096,7 +1096,7 @@ If a server does not understand the Supported Elliptic Curves Extension, does no
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーがサポートされている楕円曲線拡張を理解していない、サポートされているポイント形式拡張を理解していない、または列挙された曲線とポイント形式に制限されているときにECCハンドシェイクを完了できない場合は、ECC暗号の使用について交渉してはなりませんスイート。クライアントによって提案され、サーバーによってサポートされる他の暗号スイートによっては、一般的な暗号スイートがないために、致命的なハンドシェイク失敗アラートが発生する場合があります。
+サーバーがサポートされている楕円曲線拡張を理解していない、サポートされているポイント形式拡張を理解していない、または列挙された曲線とポイント形式に制限されているときにECCハンドシェイクを完了できない場合は、ECC暗号スイートの使用をネゴシエートしてはなりません。クライアントによって提案され、サーバーによってサポートされる他の暗号スイートによっては、一般的な暗号スイートがないために、致命的なハンドシェイク失敗アラートが発生する場合があります。
         </p>
       </div>
     </div>
@@ -1120,7 +1120,7 @@ If a server does not understand the Supported Elliptic Curves Extension, does no
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-RFC 4492は、TLSで使用するためにNamedCurveレジストリに25の異なる曲線を定義しました（現在の名前は「TLSでサポートされるグループ」レジストリに名前が変更されましたが、以下の列挙はまだNamedCurveです）たった3つしか使用されていません。この仕様は、残りを廃止します（番号1〜22）。この仕様では、識別子0xFF01および0xFF02の明示的な曲線も非推奨になりました。また、[RFC7748]で定義された新しい曲線を追加します。最終結果は次のとおりです。
+RFC 4492は、TLSで使用するためにNamedCurveレジストリに25の異なる曲線を定義しました（以下の列挙は依然としてNamedCurveという名前ですが、現在は「TLS Supported Groups」レジストリに名前が変更されています）。広く使用されているのは3つだけです。本仕様では、残りを非推奨とします（番号1〜22）。本仕様では、識別子0xFF01および0xFF02の明示的な曲線も非推奨とします。また、[RFC7748]で定義された新しい曲線を追加します。最終結果は次のとおりです。
         </p>
       </div>
     </div>
@@ -1146,7 +1146,7 @@ Note that other specifications have since added other values to this enumeration
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-他の仕様では、この列挙に他の値が追加されていることに注意してください。これらの値の一部は、まったく曲線ではなく、有限のフィールドグループです。 [RFC7919]を参照してください。
+他の仕様では、この列挙に他の値が追加されていることに注意してください。これらの値の一部は、まったく曲線ではなく、有限体群です。 [RFC7919]を参照してください。
         </p>
       </div>
     </div>
@@ -1158,7 +1158,7 @@ secp256r1, etc: Indicates support of the corresponding named curve or groups. Th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-secp256r1など：対応する名前付き曲線またはグループのサポートを示します。名前付き曲線secp256r1、secp384r1、およびsecp521r1は、SEC 2 [SECG-SEC2]で指定されています。これらの曲線は、ANSI X9.62 [ANSI.X9-62.2005]およびFIPS 186-4 [FIPS.186-4]でも推奨されています。この文書の残りの部分では、これらの3つの曲線を「NIST曲線」と呼びます。これは、国立標準技術研究所によって最初に標準化されたためです。曲線x25519とx448は[RFC7748]で定義されています。 0xFE00〜0xFEFFの値は、私的使用のために予約されています。
+secp256r1など：対応する名前付き曲線またはグループのサポートを示します。名前付き曲線secp256r1、secp384r1、およびsecp521r1は、SEC 2 [SECG-SEC2]で指定されています。これらの曲線は、ANSI X9.62 [ANSI.X9-62.2005]およびFIPS 186-4 [FIPS.186-4]でも推奨されています。この文書の残りの部分では、これらの3つの曲線を「NIST曲線」と呼びます。これは、国立標準技術研究所によって最初に標準化されたためです。曲線x25519とx448は[RFC7748]で定義されています。 0xFE00〜0xFEFFの値は、プライベート使用のために予約されています。
         </p>
       </div>
     </div>
@@ -1170,7 +1170,7 @@ The predecessor of this document also supported explicitly defined prime and cha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの前身は、明示的に定義された素数曲線とchar2曲線もサポートしていましたが、これらはこの仕様では非推奨です。
+このドキュメントの前身は、明示的に定義された素体上の曲線と標数2の体上の曲線もサポートしていましたが、これらはこの仕様では非推奨です。
         </p>
       </div>
     </div>
@@ -1215,7 +1215,7 @@ As an example, a client that only supports secp256r1 (aka NIST P-256; value 23 =
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-例として、secp256r1（別名NIST P-256;値23 = 0x0017）およびsecp384r1（別名NIST P-384;値24 = 0x0018）のみをサポートし、secp256r1を使用することを好むクライアントは、以下で構成されるTLS拡張を含みますオクテット。最初の2つのオクテットは拡張タイプ（サポートされる楕円曲線拡張）を示すことに注意してください。
+例として、secp256r1（別名NIST P-256;値23 = 0x0017）およびsecp384r1（別名NIST P-384;値24 = 0x0018）のみをサポートし、secp256r1を使用することを好むクライアントは、以下のオクテットで構成されるTLS拡張を含みます。最初の2つのオクテットは拡張タイプ（サポートされる楕円曲線拡張）を示すことに注意してください。
         </p>
       </div>
     </div>
@@ -1265,7 +1265,7 @@ Three point formats were included in the definition of ECPointFormat above. This
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-上記のECPointFormatの定義には、3つのポイント形式が含まれていました。この仕様では、非圧縮ポイント形式を除くすべてが廃止されます。このドキュメントの実装は、サポートされているすべての曲線の非圧縮形式をサポートする必要があり、この仕様で定義されている曲線の他の形式をサポートしてはなりません。下位互換性を保つために、ポイント形式リストの拡張機能は引き続き含まれている場合があり、値を1つだけ含めることができます：非圧縮ポイント形式（0）。 RFC 4492は、この拡張子が欠落している場合、非圧縮ポイント形式のみがサポートされることを意味しているため、非圧縮形式をサポートする実装との相互運用性は、拡張子の有無に関係なく機能するはずです。
+上記のECPointFormatの定義には、3つのポイント形式が含まれていました。この仕様では、非圧縮ポイント形式を除くすべてが非推奨となります。本ドキュメントに準拠する実装は、サポートされているすべての曲線の非圧縮形式をサポートする必要があり、この仕様で定義されている曲線の他の形式をサポートしてはなりません。下位互換性を保つために、ポイント形式リストの拡張機能は引き続き含まれている場合があり、値を1つだけ含めることができます：非圧縮ポイント形式（0）。 RFC 4492は、この拡張子が欠落している場合、非圧縮ポイント形式のみがサポートされることを意味しているため、非圧縮形式をサポートする実装との相互運用性は、拡張子の有無に関係なく機能するはずです。
         </p>
       </div>
     </div>
@@ -1277,7 +1277,7 @@ If the client sends the extension and the extension does not contain the uncompr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントが拡張を送信し、拡張に非圧縮ポイント形式が含まれておらず、クライアントがサポートグループ拡張を使用して、この仕様で定義されている曲線のサポートを示している場合、サーバーはハンドシェイクを中止し、illegal_parameterを返す必要があります。警告。
+クライアントが拡張を送信し、拡張に非圧縮ポイント形式が含まれておらず、クライアントがサポートグループ拡張を使用して、この仕様で定義されている曲線のサポートを示している場合、サーバーはハンドシェイクを中止し、illegal_parameterアラートを返す必要があります。
         </p>
       </div>
     </div>
@@ -1301,7 +1301,7 @@ A client compliant with this specification that supports no other curves MUST se
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-他の曲線をサポートしないこの仕様に準拠するクライアントは、次のオクテットを送信する必要があります。最初の2つのオクテットは拡張タイプ（サポートされているポイント形式の拡張）を示しています。
+この仕様で定義されている以外の曲線をサポートしないこの仕様に準拠するクライアントは、次のオクテットを送信する必要があります。最初の2つのオクテットは拡張タイプ（サポートされるポイント形式拡張）を示していることに注意してください。
         </p>
       </div>
     </div>
@@ -1349,7 +1349,7 @@ For bits-on-the-wire compatibility with TLS 1.3, we define a new dummy value in 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-TLS 1.3とのビット・オン・ザ・ワイヤー互換性のために、「TLS HashAlgorithm」レジストリーに新しいダミー値を定義します。これは、「組み込み」（値8）と呼ばれ、ハッシュは署名アルゴリズムに固有のものです。
+TLS 1.3とのワイヤ上のビットの互換性のために、「TLS HashAlgorithm」レジストリーに新しいダミー値を定義します。これは、「Intrinsic」（値8）と呼ばれ、ハッシュは署名アルゴリズムに固有のものです。
         </p>
       </div>
     </div>
@@ -1397,7 +1397,7 @@ When this extension is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この拡張子が送信されると：
+この拡張が送信される場合：
         </p>
       </div>
     </div>
@@ -1457,7 +1457,7 @@ The server&#39;s Supported Point Formats Extension has the same structure as the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーのサポートされるポイント形式の拡張機能は、クライアントのサポートされるポイント形式の拡張機能と同じ構造です（セクション5.1.2を参照）。ここのec_point_format_listの項目は、サーバーの設定に従って並べられます（最初にお気に入りの選択）。サーバーには、クライアントのリストにないアイテムが含まれる場合があります。ただし、拡張機能がない場合、この仕様では正確に1つのポイント形式が許可されるため、実際に不一致が発生する可能性はありません。
+サーバーのサポートされるポイント形式の拡張機能は、クライアントのサポートされるポイント形式の拡張機能と同じ構造です（セクション5.1.2を参照）。ここのec_point_format_listの項目は、サーバーの設定に従って並べられます（最初にお気に入りの選択）。サーバーには、クライアントのリストにないアイテムが含まれる場合があります。ただし、拡張なしでは、この仕様では正確に1つのポイント形式が許可されるため、実際に不一致が発生する可能性はありません。
         </p>
       </div>
     </div>
@@ -1529,7 +1529,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -1565,7 +1565,7 @@ This message is used to authentically convey the server&#39;s static public key 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージは、サーバーの静的公開鍵をクライアントに認証するために使用されます。次の表は、各鍵交換アルゴリズムに適したサーバー証明書のタイプを示しています。セクション5.9で説明するように、ECC公開鍵は証明書にエンコードする必要があります。
+このメッセージは、サーバーの静的公開鍵をクライアントに真正に伝えるために使用されます。次の表は、各鍵交換アルゴリズムに適したサーバー証明書のタイプを示しています。セクション5.9で説明するように、ECC公開鍵は証明書にエンコードする必要があります。
         </p>
       </div>
     </div>
@@ -1645,7 +1645,7 @@ Actions of the sender:
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
- The server constructs an appropriate certificate chain and conveys it to the client in the Certificate message. If the client has used a Supported Elliptic Curves Extension, the public key in the server&#39;s certificate MUST respect the client&#39;s choice of elliptic curves. A server that cannot satisfy this requirement MUST NOT choose an ECC cipher suite in its ServerHello message.)
+The server constructs an appropriate certificate chain and conveys it to the client in the Certificate message. If the client has used a Supported Elliptic Curves Extension, the public key in the server&#39;s certificate MUST respect the client&#39;s choice of elliptic curves. A server that cannot satisfy this requirement MUST NOT choose an ECC cipher suite in its ServerHello message.)
         </p>
       </div>
       <div class="col-sm-12 col-md-6">
@@ -1698,7 +1698,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -1746,7 +1746,7 @@ The ECCurveType enum used to have values for explicit prime and for explicit cha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ECCurveType列挙型は、明示的な素数と明示的なchar2曲線の値を持つために使用されていました。これらの値は廃止されたため、残りの値は1つだけです。
+ECCurveType列挙型は、明示的な素体と明示的な標数2の体上の曲線の値を持っていました。これらの値は非推奨とされたため、残りの値は1つだけです。
         </p>
       </div>
     </div>
@@ -1817,7 +1817,7 @@ RFC 4492 had a specification for an ECCurve structure and an ECBasisType structu
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RFC 4492には、ECCurve構造とECBasisType構造の仕様がありました。これらは、現在非推奨の明示的なカーブでのみ使用されていたため、ここでは省略されています。
+RFC 4492には、ECCurve構造とECBasisType構造の仕様がありました。これらは、現在非推奨の明示的な曲線でのみ使用されていたため、ここでは省略されています。
         </p>
       </div>
     </div>
@@ -1838,7 +1838,7 @@ point: This is the byte string representation of an elliptic curve point followi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-point：これは、[ANSI.X9-62.2005]のセクション4.3.6の変換ルーチンに従う楕円曲線ポイントのバイト文字列表現です。このバイト文字列は、非圧縮、圧縮、またはハイブリッド形式の楕円曲線ポイントを表す場合がありますが、この仕様では非圧縮形式を除くすべてが非推奨になっています。 NIST曲線の場合、形式はセクション5.4.1でも繰り返されています。 X25519およびX448曲線の場合、唯一の有効な表現は、[RFC7748]で指定されているもの、つまりポイントのu値の32または56オクテット表現です。この構造は、Ed25519およびEd448公開鍵で使用してはなりません（MUST NOT）。
+point：これは、[ANSI.X9-62.2005]のセクション4.3.6の変換ルーチンに従う楕円曲線上の点のバイト文字列表現です。このバイト文字列は、非圧縮、圧縮、またはハイブリッド形式の楕円曲線上の点を表す場合がありますが、この仕様では非圧縮形式を除くすべてが非推奨になっています。 NIST曲線の場合、形式はセクション5.4.1でも再掲されています。 X25519およびX448曲線の場合、唯一の有効な表現は、[RFC7748]で指定されているもの、つまりポイントのu値の32または56オクテット表現です。この構造は、Ed25519およびEd448公開鍵で使用してはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -1875,7 +1875,7 @@ namedCurve: Specifies a recommended set of elliptic curve domain parameters. All
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-namedCurve：楕円曲線領域パラメーターの推奨されるセットを指定します。 Diffie-Hellmanが可能な曲線を参照するNamedCurveのすべての値が許可されます。明示的な曲線の廃止により、これにはすべてのNamedCurve値が含まれるようになりました。
+namedCurve：楕円曲線ドメインパラメータの推奨されるセットを指定します。 Diffie-Hellmanが可能な曲線を参照するNamedCurveのすべての値が許可されます。明示的な曲線の廃止により、これにはすべてのNamedCurve値が含まれるようになりました。
         </p>
       </div>
     </div>
@@ -1909,7 +1909,7 @@ public: The ephemeral ECDH public key.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-public：エフェメラルECDH公開キー。
+public：一時的なECDH公開鍵。
         </p>
       </div>
     </div>
@@ -1977,7 +1977,7 @@ o signed_params: A hash of the params, with the signature appropriate to that ha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o signed_pa​​rams：paramsのハッシュ。そのハッシュに適した署名が適用されます。サーバーの証明書メッセージで認証された公開鍵に対応する秘密鍵が署名に使用されます。
+o signed_params：paramsのハッシュであり、そのハッシュに適した署名が適用されたもの。サーバーのCertificateメッセージ内の証明書に含まれる公開鍵に対応する秘密鍵が署名に使用されます。
         </p>
       </div>
     </div>
@@ -2050,7 +2050,7 @@ EdDSA signatures in both the protocol and in certificates that conform to [RFC84
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-プロトコルと証明書の[RFC8410]に準拠するEdDSA署名は、[RFC8032]に従って生成および検証されます。デジタル署名された要素は、不透明なベクトル&lt;0..2 ^ 16-1&gt;としてエンコードされます。その内容には、EdDSA署名アルゴリズムのオクテット文字列出力が含まれます。
+プロトコルおよび[RFC8410]に準拠する証明書の両方におけるEdDSA署名は、[RFC8032]に従って生成および検証されます。デジタル署名された要素は、不透明なベクトル&lt;0..2 ^ 16-1&gt;としてエンコードされます。その内容には、EdDSA署名アルゴリズムのオクテット文字列出力が含まれます。
         </p>
       </div>
     </div>
@@ -2074,7 +2074,7 @@ The server selects elliptic curve domain parameters and an ephemeral ECDH public
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーは、IEEE 1363 [IEEE.P1363]のECKAS-DH1スキームに従って、楕円曲線ドメインパラメータと、これらのパラメータに対応する一時ECDH公開鍵を選択します。上記で定義されたフォーマットを使用して、ServerKeyExchangeメッセージでこの情報をクライアントに伝えます。
+サーバーは、IEEE 1363 [IEEE.P1363]のECKAS-DH1スキームに従って、楕円曲線ドメインパラメータと、これらのパラメータに対応する一時的なECDH公開鍵を選択します。上記で定義されたフォーマットを使用して、ServerKeyExchangeメッセージでこの情報をクライアントに伝えます。
         </p>
       </div>
     </div>
@@ -2117,12 +2117,12 @@ The client verifies the signature (when present) and retrieves the server&#39;s 
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
- The following represents the wire format for representing ECPoint in ServerKeyExchange records. The first octet of the representation indicates the form, which may be compressed, uncompressed, or hybrid. This specification supports only the uncompressed format for these curves. This is followed by the binary representation of the X value in &#34;big-endian&#34; or &#34;network&#34; format, followed by the binary representation of the Y value in &#34;big-endian&#34; or &#34;network&#34; format. There are no internal length markers, so each number representation occupies as many octets as implied by the curve parameters. For P-256 this means that each of X and Y use 32 octets, padded on the left by zeros if necessary. For P-384, they take 48 octets each, and for P-521, they take 66 octets each.
+The following represents the wire format for representing ECPoint in ServerKeyExchange records. The first octet of the representation indicates the form, which may be compressed, uncompressed, or hybrid. This specification supports only the uncompressed format for these curves. This is followed by the binary representation of the X value in &#34;big-endian&#34; or &#34;network&#34; format, followed by the binary representation of the Y value in &#34;big-endian&#34; or &#34;network&#34; format. There are no internal length markers, so each number representation occupies as many octets as implied by the curve parameters. For P-256 this means that each of X and Y use 32 octets, padded on the left by zeros if necessary. For P-384, they take 48 octets each, and for P-521, they take 66 octets each.
         </p>
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-以下は、ServerKeyExchangeレコードでECPointを表すためのワイヤー形式を表しています。表現の最初のオクテットは、圧縮、非圧縮、またはハイブリッドの形式を示します。この仕様は、これらの曲線の非圧縮形式のみをサポートしています。この後に、「ビッグエンディアン」または「ネットワーク」形式のX値のバイナリ表現が続き、その後に「ビッグエンディアン」または「ネットワーク」形式のY値のバイナリ表現が続きます。内部長さマーカーはないため、各数値表現は、曲線パラメーターによって暗示されるのと同じ数のオクテットを占有します。 P-256の場合、これはXとYのそれぞれが32オクテットを使用し、必要に応じて左側にゼロが埋め込まれることを意味します。 P-384の場合は、それぞれ48オクテットを使用し、P-521の場合は、それぞれ66オクテットを使用します。
+以下は、ServerKeyExchangeレコードでECPointを表すためのワイヤ形式を示しています。表現の最初のオクテットは、圧縮、非圧縮、またはハイブリッドの形式を示します。この仕様は、これらの曲線の非圧縮形式のみをサポートしています。この後に、「ビッグエンディアン」または「ネットワーク」形式のX値のバイナリ表現が続き、その後に「ビッグエンディアン」または「ネットワーク」形式のY値のバイナリ表現が続きます。内部長さマーカーはないため、各数値表現は、曲線パラメーターによって暗示されるのと同じ数のオクテットを占有します。 P-256の場合、これはXとYのそれぞれが32オクテットを使用し、必要に応じて左側がゼロでパディングされることを意味します。 P-384の場合は、それぞれ48オクテットを使用し、P-521の場合は、それぞれ66オクテットを使用します。
         </p>
       </div>
     </div>
@@ -2179,7 +2179,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -2347,7 +2347,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -2359,7 +2359,7 @@ This message is sent in response to a CertificateRequest when a client has a sui
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージは、クライアントに適切な証明書があり、クライアント認証を続行することを決定したときに、CertificateRequestへの応答として送信されます。 （サーバーがサポートされているポイントフォーマット拡張機能を使用している場合、証明書がECDSA_sign認証方法での使用に適していると見なされるのは、サーバーで指定されている公開キーポイントが圧縮されていない場合のみです。
+このメッセージは、クライアントに適切な証明書があり、クライアント認証を続行することを決定したときに、CertificateRequestへの応答として送信されます。 （サーバーがサポートされているポイント形式拡張機能を使用している場合、証明書がECDSA_sign認証方法での使用に適していると見なされるのは、証明書で指定されている公開鍵のポイントが非圧縮である場合のみです。これは、現在もサポートされている唯一のポイント形式であるためです。）
         </p>
       </div>
     </div>
@@ -2383,7 +2383,7 @@ This message is used to authentically convey the client&#39;s static public key 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージは、クライアントの静的公開鍵をサーバーに確実に伝えるために使用されます。セクション5.9で説明されているように、ECC公開鍵は証明書にエンコードする必要があります。証明書には、ECDSAまたはEdDSA対応の公開鍵が含まれている必要があります。
+このメッセージは、クライアントの静的公開鍵をサーバーに真正に伝えるために使用されます。セクション5.9で説明されているように、ECC公開鍵は証明書にエンコードする必要があります。証明書には、ECDSAまたはEdDSAに対応した公開鍵が含まれている必要があります。
         </p>
       </div>
     </div>
@@ -2491,7 +2491,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -2573,7 +2573,7 @@ o implicit, explicit: For ECC cipher suites, this indicates whether the client&#
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 暗黙的、明示的：ECC暗号スイートの場合、これは、クライアントのECDH公開鍵がクライアントの証明書にある（「暗黙的」）か、一時的なECDH公開鍵としてClientKeyExchangeメッセージで提供される（「明示的」）かを示します。暗黙的なエンコーディングは非推奨であり、下位互換性のためにのみここに保持されています。
+o implicit, explicit：ECC暗号スイートの場合、これは、クライアントのECDH公開鍵がクライアントの証明書にある（「implicit」）か、一時的なECDH公開鍵としてClientKeyExchangeメッセージで提供される（「explicit」）かを示します。暗黙的なエンコーディングは非推奨であり、下位互換性のためにのみここに保持されています。
         </p>
       </div>
     </div>
@@ -2594,7 +2594,7 @@ ecdh_Yc: Contains the client&#39;s ephemeral ECDH public key as a byte string EC
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ecdh_Yc：クライアントのエフェメラルECDH公開キーをバイト文字列ECPoint.pointとして含みます。これは、圧縮されていない形式で楕円曲線ポイントを表す場合があります。
+ecdh_Yc：クライアントの一時的なECDH公開鍵をバイト文字列ECPoint.pointとして含みます。これは、非圧縮形式で楕円曲線上の点を表す場合があります。
         </p>
       </div>
     </div>
@@ -2677,7 +2677,7 @@ When this message is sent:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメッセージが送信されると：
+このメッセージが送信される場合：
         </p>
       </div>
     </div>
@@ -2805,7 +2805,7 @@ The client computes its signature over all handshake messages sent or received s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントは、クライアントhelloからこのメッセージまで（ただしこのメッセージを含まない）に送受信されたすべてのハンドシェイクメッセージの署名を計算します。認定された公開鍵に対応する秘密鍵を使用して署名を計算します。署名は上記で定義された形式で伝達されます。
+クライアントは、クライアントhelloからこのメッセージまで（ただしこのメッセージを含まない）に送受信されたすべてのハンドシェイクメッセージの署名を計算します。証明書内の公開鍵に対応する秘密鍵を使用して署名を計算します。署名は上記で定義された形式で伝達されます。
         </p>
       </div>
     </div>
@@ -2884,12 +2884,12 @@ Ed25519アルゴリズムを使用するEdDSAキーはed25519署名アルゴリ�
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
- All ECDH calculations for the NIST curves (including parameter and key generation as well as the shared secret calculation) are performed according to [IEEE.P1363] using the ECKAS-DH1 scheme with the identity map as the Key Derivation Function (KDF) so that the premaster secret is the x-coordinate of the ECDH shared secret elliptic curve point represented as an octet string. Note that this octet string (Z in IEEE 1363 terminology), as output by FE2OSP (Field Element to Octet String Conversion Primitive), has constant length for any given field; leading zeros found in this octet string MUST NOT be truncated.
+All ECDH calculations for the NIST curves (including parameter and key generation as well as the shared secret calculation) are performed according to [IEEE.P1363] using the ECKAS-DH1 scheme with the identity map as the Key Derivation Function (KDF) so that the premaster secret is the x-coordinate of the ECDH shared secret elliptic curve point represented as an octet string. Note that this octet string (Z in IEEE 1363 terminology), as output by FE2OSP (Field Element to Octet String Conversion Primitive), has constant length for any given field; leading zeros found in this octet string MUST NOT be truncated.
         </p>
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-NIST曲線のすべてのECDH計算（パラメーターとキーの生成、および共有秘密計算を含む）は、[IEEE.P1363]に従ってECKAS-DH1スキームを使用し、アイデンティティマップをキー導出関数（KDF）として使用して、プリマスターシークレットは、オクテット文字列として表されるECDH共有シークレット楕円曲線ポイントのx座標です。このオクテット文字列（IEEE 1363用語ではZ）は、FE2OSP（フィールド要素からオクテット文字列への変換プリミティブ）の出力として、指定されたフィールドに対して一定の長さを持つことに注意してください。このオクテット文字列で見つかった先行ゼロは切り詰めてはいけません。
+NIST曲線のすべてのECDH計算（パラメーターと鍵の生成、および共有秘密計算を含む）は、[IEEE.P1363]に従い、恒等写像を鍵導出関数（KDF）とするECKAS-DH1スキームを使用して実行されます。これにより、プリマスターシークレットは、オクテット文字列として表されるECDH共有秘密楕円曲線上の点のx座標となります。このオクテット文字列（IEEE 1363用語ではZ）は、FE2OSP（体要素からオクテット文字列への変換プリミティブ）の出力として、指定された体に対して一定の長さを持つことに注意してください。このオクテット文字列内の先行ゼロは切り捨ててはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -2901,7 +2901,7 @@ NIST曲線のすべてのECDH計算（パラメーターとキーの生成、お
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-（ID KDFのこの使用は技術的であることに注意してください。完全な状況は、TLSがマスターシークレットの計算以外の目的でプリマスターシークレットを直接使用しないため、ECDHが重要なKDFと共に使用されることです。TLS1.0および1.1、これは、MD5-およびSHA-1ベースのTLS擬似ランダム機能（PRF）がKDFとして機能することを意味します。TLS1.2では、KDFは暗号スイートによって決定され、将来のTLSバージョンまたはに導入された新しいTLS拡張が考えられます将来はこの計算が変わる可能性があります。）
+（恒等KDFのこの使用は専門的な詳細です。完全な状況は、TLSがマスターシークレットの計算以外の目的でプリマスターシークレットを直接使用しないため、ECDHが自明でないKDFと共に使用されることです。TLS1.0および1.1では、これは、MD5-およびSHA-1ベースのTLS擬似ランダム関数（PRF）がKDFとして機能することを意味します。TLS1.2では、KDFは暗号スイートによって決定され、将来のTLSバージョンや将来導入される新しいTLS拡張では、この計算が変わる可能性があります。）
         </p>
       </div>
     </div>
@@ -2913,7 +2913,7 @@ An ECDHE key exchange using X25519 (curve x25519) goes as follows: (1) each part
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-X25519（曲線x25519）を使用するECDHE鍵交換は次のようになります。（1）各当事者が秘密鍵dをランダムに一様に選び、対応する公開鍵x = X25519（d、G）を計算します。 （2）当事者は公開鍵を交換し、x_S = X25519（d、x_peer）;として共有秘密を計算します。 （3）いずれかのパーティがすべてゼロのx_Sを取得した場合、ハンドシェイクを中止する必要があります（X25519およびX448の定義で要求されているとおり）。 X448のECDHEも同様に機能し、X25519をX448に、x25519をx448に置き換えます。派生した共有シークレットは、プリマスターシークレットとして直接使用されます。これは、X25519でECDHEを使用する場合は常に正確に32バイト、X448でECDHEを使用する場合は56バイトです。
+X25519（曲線x25519）を使用するECDHE鍵交換は次のようになります。（1）各当事者が秘密鍵dをランダムに一様に選び、対応する公開鍵x = X25519（d、G）を計算します。 （2）当事者は公開鍵を交換し、x_S = X25519（d、x_peer）;として共有秘密を計算します。 （3）いずれかのパーティがすべてゼロのx_Sを取得した場合、ハンドシェイクを中止する必要があります（X25519およびX448の定義で要求されているとおり）。 X448のECDHEも同様に機能し、X25519をX448に、x25519をx448に置き換えます。導出された共有秘密は、プリマスターシークレットとして直接使用されます。これは、X25519でECDHEを使用する場合は常に正確に32バイト、X448でECDHEを使用する場合は56バイトです。
         </p>
       </div>
     </div>
@@ -2925,7 +2925,7 @@ All ECDSA computations MUST be performed according to ANSI X9.62 or its successo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-すべてのECDSA計算は、ANSI X9.62またはその後継に従って実行する必要があります。署名/検証されるデータはハッシュされ、結果は追加のハッシュなしでECDSAアルゴリズムを介して直接実行されます。 [FIPS.180-4]のSHA-256、SHA-384、SHA-512などの安全なハッシュ関数を使用する必要があります。
+すべてのECDSA計算は、ANSI X9.62またはその後継に従って実行する必要があります。署名/検証されるデータはハッシュされ、その結果は追加のハッシュなしでECDSAアルゴリズムによって直接処理されます。 [FIPS.180-4]のSHA-256、SHA-384、SHA-512などの安全なハッシュ関数を使用する必要があります。
         </p>
       </div>
     </div>
@@ -2937,7 +2937,7 @@ All EdDSA computations MUST be performed according to [RFC8032] or its successor
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-すべてのEdDSA計算は、[RFC8032]またはその後継に従って実行する必要があります。署名/検証されるデータは、ハッシュなしのEdDSAアルゴリズムを介して実行されます（EdDSAは、「プリハッシュ」関数PHを介して内部的にデータを実行します）。 Ed448のコンテキストパラメータは空の文字列に設定する必要があります。
+すべてのEdDSA計算は、[RFC8032]またはその後継に従って実行する必要があります。署名/検証されるデータは、ハッシュなしのEdDSAアルゴリズムによって処理されます（EdDSAは、「プリハッシュ」関数PHを介して内部的にデータを処理します）。 Ed448のコンテキストパラメータは空の文字列に設定する必要があります。
         </p>
       </div>
     </div>
@@ -2949,7 +2949,7 @@ RFC 4492 anticipated the standardization of a mechanism for specifying the requi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RFC 4492は、おそらくsubjectPublicKeyInfoのパラメータフィールドで、証明書に必要なハッシュ関数を指定するためのメカニズムの標準化を予想していました。このような標準化は行われなかったため、TLS 1.1以前ではSHA-1が使用されています（ID関数を使用するEdDSAを除く）。 TLS 1.2は、SignatureAndHashAlgorithmパラメーターをDigitallySigned構造体に追加しました。これにより、署名ハッシュを選択する際の俊敏性が可能になります。 EdDSA署名は、8（組み込み）のHashAlgorithmを持つ必要があります。
+RFC 4492は、おそらくsubjectPublicKeyInfoのパラメータフィールドで、証明書に必要なハッシュ関数を指定するためのメカニズムの標準化を予想していました。このような標準化は行われなかったため、TLS 1.1以前ではSHA-1が使用されています（恒等関数を使用するEdDSAを除く）。 TLS 1.2は、SignatureAndHashAlgorithmパラメーターをDigitallySigned構造体に追加しました。これにより、署名ハッシュを選択する際の俊敏性が可能になります。 EdDSA署名は、8（Intrinsic）のHashAlgorithmを持つ必要があります。
         </p>
       </div>
     </div>
@@ -2985,7 +2985,7 @@ With the NIST curves, each party MUST validate the public key sent by its peer i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-NISTカーブでは、各当事者は、ClientKeyExchangeおよびServerKeyExchangeメッセージでピアが送信した公開鍵を検証する必要があります。受信側は、ピアの公開値からのxおよびyパラメータが曲線方程式y ^ 2 = x ^ 3 + ax + b mod pを満たすことを確認する必要があります。詳細については、[Menezes]のセクション2.3を参照してください。そうしないと、攻撃者が秘密鍵に関する情報を取得して、秘密鍵が実際に短命でない場合、いくつかの要求で秘密鍵全体を回復できる可能性があります。
+NIST曲線では、各当事者は、ClientKeyExchangeおよびServerKeyExchangeメッセージでピアが送信した公開鍵を検証する必要があります。受信側は、ピアの公開値からのxおよびyパラメータが曲線方程式 y^2 = x^3 + ax + b mod pを満たすことを確認する必要があります。詳細については、[Menezes]のセクション2.3を参照してください。そうしないと、攻撃者が秘密鍵に関する情報を取得して、秘密鍵が実際に一時的でない場合、いくつかの要求で秘密鍵全体を復元できる可能性があります。
         </p>
       </div>
     </div>
@@ -3097,7 +3097,7 @@ Server implementations SHOULD support all of the following cipher suites, and cl
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバー実装は、以下のすべての暗号スイートをサポートする必要があり（SHOULD）、クライアント実装は、それらの少なくとも1つをサポートする必要があります（SHOULD）。
+サーバー実装は、以下のすべての暗号スイートをサポートすべきであり（SHOULD）、クライアント実装は、それらの少なくとも1つをサポートすべきです（SHOULD）。
         </p>
       </div>
     </div>
@@ -3169,7 +3169,7 @@ Both ECDHE and ECDSA with the NIST curves are widely implemented and supported i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-EISTHEとECDSAとNIST曲線の両方が広く実装され、すべての主要なブラウザーと広く使用されているすべてのTLSライブラリーでサポートされています。 Curve25519を使用したECDHEは、OpenSSLを含むいくつかのブラウザーといくつかのTLSライブラリに実装されています。 Curve448とEdDSAには相互運用可能な実装が機能していますが、まだ広く展開されていません。
+NIST曲線を使用したECDHEとECDSAの両方が広く実装され、すべての主要なブラウザーと広く使用されているすべてのTLSライブラリでサポートされています。 Curve25519を使用したECDHEは、OpenSSLを含むいくつかのブラウザーといくつかのTLSライブラリに実装されています。 Curve448とEdDSAには相互運用可能な実装が機能していますが、まだ広く展開されていません。
         </p>
       </div>
     </div>
@@ -3224,12 +3224,12 @@ ECCに固有のセキュリティに関する議論は、[IEEE.P1363]と[ANSI.X9
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
- Beyond elliptic curve size, the main issue is elliptic curve structure. As a general principle, it is more conservative to use elliptic curves with as little algebraic structure as possible. Thus, random curves are more conservative than special curves such as Koblitz curves, and curves over F_p with p random are more conservative than curves over F_p with p of a special form, and curves over F_p with p random are considered more conservative than curves over F_2^m as there is no choice between multiple fields of similar size for characteristic 2.
+Beyond elliptic curve size, the main issue is elliptic curve structure. As a general principle, it is more conservative to use elliptic curves with as little algebraic structure as possible. Thus, random curves are more conservative than special curves such as Koblitz curves, and curves over F_p with p random are more conservative than curves over F_p with p of a special form, and curves over F_p with p random are considered more conservative than curves over F_2^m as there is no choice between multiple fields of similar size for characteristic 2.
         </p>
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-楕円曲線のサイズを超えて、主な問題は楕円曲線の構造です。一般的な原則として、代数的構造ができるだけ少ない楕円曲線を使用するほうが保守的です。したがって、ランダムカーブはKoblitzカーブなどの特別なカーブよりも保守的であり、pランダムなF_p上のカーブは、特別な形式のpを持つF_p上のカーブよりも保守的であり、pランダムなF_p上のカーブは、カーブ上のカーブよりも保守的であると見なされます。 F_2 ^ mは、特性2の類似したサイズの複数のフィールド間の選択肢がないためです。
+楕円曲線のサイズ以外に、主な問題は楕円曲線の構造です。一般的な原則として、代数的構造ができるだけ少ない楕円曲線を使用するほうが保守的です。したがって、ランダム曲線はKoblitz曲線などの特別な曲線よりも保守的であり、pがランダムなF_p上の曲線は、特別な形式のpを持つF_p上の曲線よりも保守的であり、pがランダムなF_p上の曲線は、F_2^m上の曲線よりも保守的であると見なされます。標数2の場合、類似したサイズの複数の体から選択する余地がないためです。
         </p>
       </div>
     </div>
@@ -3265,7 +3265,7 @@ All of the key exchange algorithms defined in this document provide forward secr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントで定義されているすべてのキー交換アルゴリズムは、前方秘密性を提供します。廃止された鍵交換アルゴリズムの一部ではサポートされていません。
+このドキュメントで定義されているすべての鍵交換アルゴリズムは、前方秘匿性を提供します。廃止された鍵交換アルゴリズムの一部ではサポートされていません。
         </p>
       </div>
     </div>
@@ -3337,7 +3337,7 @@ IANA has prepended &#34;TLS&#34; to the names of these three registries.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAはこれら3つのレジストリの名前に「TLS」を付加しました。
+IANAはこれら3つのレジストリの名前に「TLS」を前置しました。
         </p>
       </div>
     </div>
@@ -3349,7 +3349,7 @@ For each name space, this document defines the initial value assignments and def
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、名前空間ごとに初期値の割り当てを定義し、個人用に予約された256の値（NamedCurve）または8つの値（ECPointFormatおよびECCurveType）の範囲を定義します。追加の割り当てのポリシーは「指定が必要」です。 （RFC 4492はIETFレビューを必要としました。）
+このドキュメントでは、名前空間ごとに初期値の割り当てを定義し、プライベート使用のために予約された256の値（NamedCurve）または8つの値（ECPointFormatおよびECCurveType）の範囲を定義します。追加の割り当てのポリシーは「Specification Required」です。 （RFC 4492はIETFレビューを必要としました。）
         </p>
       </div>
     </div>
@@ -3397,7 +3397,7 @@ IANA has assigned one value from the &#34;TLS HashAlgorithm&#34; registry for In
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、DTLS-OKをtrue（Y）に設定した組み込み（8）の「TLS HashAlgorithm」レジストリから1つの値を割り当て、このドキュメントを参照として割り当てました。これにより、TLS 1.3との互換性が維持されます。
+IANAは、DTLS-OKをtrue（Y）に設定したIntrinsic（8）の「TLS HashAlgorithm」レジストリから1つの値を割り当て、このドキュメントを参照としました。これにより、TLS 1.3との互換性が維持されます。
         </p>
       </div>
     </div>
@@ -3840,7 +3840,7 @@ o Removed the ECDH key exchange algorithms: ECDH_RSA and ECDH_ECDSA
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o ECDHキー交換アルゴリズムを削除：ECDH_RSAおよびECDH_ECDSA
+o ECDH鍵交換アルゴリズムを削除：ECDH_RSAおよびECDH_ECDSA
         </p>
       </div>
     </div>
@@ -3996,7 +3996,7 @@ o Removed unused curves and all but the uncompressed point format.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 未使用の曲線と、圧縮されていないポイント形式以外のすべてを削除しました。
+o 未使用の曲線と、非圧縮ポイント形式以外のすべてを削除しました。
         </p>
       </div>
     </div>
@@ -4068,7 +4068,7 @@ o Simon Blake-Wilson o Nelson Bolyard o Vipul Gupta o Chris Hawk o Bodo Moeller
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o サイモンブラック-ウィルソン＆ネルソンブルバード＆ビプルグプタ＆クリスホーク＆バートモール
+o Simon Blake-Wilson o Nelson Bolyard o Vipul Gupta o Chris Hawk o Bodo Moeller
         </p>
       </div>
     </div>
@@ -4116,7 +4116,7 @@ Yoav Nir Check Point Software Technologies Ltd. 5 Hasolelim st. Tel Aviv 6789735
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Yoav Nir ​​Check Point Software Technologies Ltd. 5 Hasolelim st。テルアビブ6789735イスラエル
+Yoav Nir Check Point Software Technologies Ltd. 5 Hasolelim st. Tel Aviv 6789735 Israel
         </p>
       </div>
     </div>
@@ -4135,7 +4135,7 @@ Simon Josefsson SJD AB
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サイモン・ジョセフソンSJD AB
+Simon Josefsson SJD AB
         </p>
       </div>
     </div>
@@ -4154,7 +4154,7 @@ Manuel Pegourie-Gonnard ARM
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-マヌエルペゴリーゴナードアーム
+Manuel Pegourie-Gonnard ARM
         </p>
       </div>
     </div>
