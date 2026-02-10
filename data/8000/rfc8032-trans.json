@@ -247,7 +247,7 @@
     {
       "indent": 3,
       "text": "OLEN(x) : The number of octets in string x",
-      "ja": "OLEN（x）: 文字列xのオクテット数です"
+      "ja": "OLEN(x) : 文字列xのオクテット数です"
     },
       {
       "indent": 3,
@@ -465,7 +465,7 @@
       "indent": 0,
       "text": "3.4. Verify",
       "section_title": true,
-      "ja": "3.4. 確認"
+      "ja": "3.4. 検証"
     },
     {
       "indent": 3,
@@ -779,7 +779,7 @@
       "indent": 0,
       "text": "5.1.7. Verify",
       "section_title": true,
-      "ja": "5.1.7. 確認"
+      "ja": "5.1.7. 検証"
     },
     {
       "indent": 3,
@@ -1021,7 +1021,7 @@
       "indent": 0,
       "text": "5.2.7. Verify",
       "section_title": true,
-      "ja": "5.2.7. 確認"
+      "ja": "5.2.7. 検証"
     },
     {
       "indent": 3,
