@@ -5,7 +5,7 @@
   },
   "number": 8709,
   "created_at": "2020-08-17 18:34:00.807699+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -41,12 +41,12 @@
     {
       "indent": 3,
       "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
-      "ja": "このドキュメントは、IETF（Internet Engineering Task Force）の製品です。これは、IETFコミュニティのコンセンサスを表しています。公開レビューを受け、インターネットエンジニアリングステアリンググループ（IESG）による公開が承認されました。インターネット標準の詳細については、RFC 7841のセクション2をご覧ください。"
+      "ja": "この文書は、Internet Engineering Task Force（IETF）の成果物です。IETFコミュニティの合意を反映しており、一般公開によるレビューを経て、Internet Engineering Steering Group（IESG）による公開が承認されました。インターネット標準に関する詳細は、RFC 7841のセクション2で確認できます。"
     },
     {
       "indent": 3,
       "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc8709.",
-      "ja": "このドキュメントの現在のステータス、正誤表、およびフィードバックの提供方法に関する情報は、https：//www.rfc-editor.org/info/rfc8709で入手できます。"
+      "ja": "この文書の現在の状況、エラッタ、およびフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc8709にて入手可能です。"
     },
     {
       "indent": 0,
@@ -56,12 +56,12 @@
     {
       "indent": 3,
       "text": "Copyright (c) 2020 IETF Trust and the persons identified as the document authors. All rights reserved.",
-      "ja": "著作権（c）2020 IETFトラストおよびドキュメントの作成者として識別された人物。全著作権所有。"
+      "ja": "Copyright (c) 2020 IETF Trustおよび本ドキュメントの著者として特定された個人。すべての権利は留保されています。"
     },
     {
       "indent": 3,
       "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.",
-      "ja": "この文書は、BCP 78およびIETF文書に関するIETFトラストの法的規定（https://trustee.ietf.org/license-info）の対象であり、この文書の発行日に有効です。これらのドキュメントは、このドキュメントに関するあなたの権利と制限を説明しているため、注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。"
+      "ja": "この文書は、発行日において有効なBCP 78およびIETF TrustによるIETF文書に関する法的規定（https://trustee.ietf.org/license-info）に従います。これらの文書は、本文書に関するあなたの権利と制限を規定していますので、注意深くご確認ください。本文書から抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseの条項を含める必要があり、Simplified BSD Licenseに記述されている通り無保証で提供されます。"
     },
     {
       "indent": 0,
@@ -84,12 +84,12 @@
     {
       "indent": 3,
       "text": "Secure Shell (SSH) [RFC4251] is a secure remote-login protocol. It provides for an extensible variety of public key algorithms for identifying servers and users to one another. Ed25519 [RFC8032] is a digital signature system. OpenSSH 6.5 [OpenSSH-6.5] introduced support for using Ed25519 for server and user authentication and was then followed by other SSH implementations.",
-      "ja": "セキュアシェル（SSH）[RFC4251]は、セキュアなリモートログインプロトコルです。サーバーとユーザーを相互に識別するための拡張可能なさまざまな公開鍵アルゴリズムを提供します。 Ed25519 [RFC8032]はデジタル署名システムです。 OpenSSH 6.5 [OpenSSH-6.5]では、サーバーとユーザーの認証にEd25519を使用するためのサポートが導入され、その後、他のSSH実装が続きました。"
+      "ja": "Secure Shell（SSH）[RFC4251]は、セキュアなリモートログインプロトコルです。これは、サーバーとユーザーを相互に識別するための、拡張可能な様々な公開鍵アルゴリズムを提供します。Ed25519 [RFC8032]はデジタル署名システムです。OpenSSH 6.5 [OpenSSH-6.5]でサーバーおよびユーザー認証にEd25519を使用するためのサポートが導入され、その後他のSSH実装もそれに続きました。"
     },
     {
       "indent": 3,
       "text": "This document describes the method implemented by OpenSSH and others and formalizes the use of the name \"ssh-ed25519\". Additionally, this document describes the use of Ed448 and formalizes the use of the name \"ssh-ed448\".",
-      "ja": "このドキュメントでは、OpenSSHやその他によって実装された方法について説明し、「ssh-ed25519」という名前の使用を形式化します。さらに、このドキュメントではEd448の使用について説明し、「ssh-ed448」という名前の使用を形式化しています。"
+      "ja": "この文書では、OpenSSHなどによって実装された方式を記述し、「ssh-ed25519」という名称の使用を正式なものとします。さらに、この文書ではEd448の使用についても記述し、「ssh-ed448」という名称の使用を正式なものとします。"
     },
     {
       "indent": 0,
@@ -100,7 +100,7 @@
     {
       "indent": 3,
       "text": "The descriptions of key and signature formats use the notation introduced in [RFC4251], Section 3 and the string data type from [RFC4251], Section 5.",
-      "ja": "鍵と署名の形式の説明では、[RFC4251]のセクション3で導入された表記法と、[RFC4251]のセクション5の文字列データ型を使用します。"
+      "ja": "鍵と署名のフォーマットの記述では、[RFC4251]のセクション3で導入された表記法と、[RFC4251]のセクション5で定義されている文字列データ型を使用します。"
     },
     {
       "indent": 0,
@@ -111,7 +111,7 @@
     {
       "indent": 3,
       "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
-      "ja": "キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONALこのドキュメントの「」は、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。"
+      "ja": "この文書中のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、本書で示されているように、すべて大文字で記述されている場合にのみ、BCP 14 [RFC2119] [RFC8174]で記述されている通りに解釈されます。"
     },
     {
       "indent": 0,
@@ -122,17 +122,17 @@
     {
       "indent": 3,
       "text": "This document describes a public key algorithm for use with SSH, as per [RFC4253], Section 6.6. The name of the algorithm is \"ssh-ed25519\". This algorithm only supports signing and not encryption.",
-      "ja": "このドキュメントでは、[RFC4253]のセクション6.6に従って、SSHで使用する公開鍵アルゴリズムについて説明します。アルゴリズムの名前は「ssh-ed25519」です。このアルゴリズムは署名のみをサポートし、暗号化はサポートしません。"
+      "ja": "この文書では、[RFC4253]のセクション6.6に従い、SSHで使用する公開鍵アルゴリズムについて記述します。このアルゴリズムの名称は「ssh-ed25519」です。本アルゴリズムは署名のみをサポートし、暗号化はサポートしません。"
     },
     {
       "indent": 3,
       "text": "Additionally, this document describes another public key algorithm. The name of the algorithm is \"ssh-ed448\". This algorithm only supports signing and not encryption.",
-      "ja": "さらに、このドキュメントでは、別の公開鍵アルゴリズムについて説明します。アルゴリズムの名前は「ssh-ed448」です。このアルゴリズムは署名のみをサポートし、暗号化はサポートしません。"
+      "ja": "さらに、この文書では別の公開鍵アルゴリズムについても記述します。このアルゴリズムの名称は「ssh-ed448」です。本アルゴリズムは署名のみをサポートし、暗号化はサポートしません。"
     },
     {
       "indent": 3,
       "text": "Standard implementations of SSH SHOULD implement these signature algorithms.",
-      "ja": "SSHの標準実装は、これらの署名アルゴリズムを実装する必要があります（SHOULD）。"
+      "ja": "SSHの標準実装は、これらの署名アルゴリズムを実装すべきです。"
     },
     {
       "indent": 0,
@@ -143,17 +143,13 @@
     {
       "indent": 3,
       "text": "The \"ssh-ed25519\" key format has the following encoding:",
-      "ja": "「ssh-ed25519」キー形式には、次のエンコードがあります。"
+      "ja": "「ssh-ed25519」鍵フォーマットには、以下のエンコーディングがあります。"
     },
     {
       "indent": 3,
-      "text": "string \"ssh-ed25519\"",
-      "ja": "文字列「ssh-ed25519」"
-    },
-    {
-      "indent": 3,
-      "text": "string key",
-      "ja": "文字列キー"
+      "text": "string  \"ssh-ed25519\"\n\nstring  key",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -163,17 +159,13 @@
     {
       "indent": 3,
       "text": "The \"ssh-ed448\" key format has the following encoding:",
-      "ja": "「ssh-ed448」キー形式には、次のエンコードがあります。"
+      "ja": "「ssh-ed448」鍵フォーマットには、以下のエンコーディングがあります。"
     },
     {
       "indent": 3,
-      "text": "string \"ssh-ed448\"",
-      "ja": "文字列「ssh-ed448」"
-    },
-    {
-      "indent": 3,
-      "text": "string key",
-      "ja": "文字列キー"
+      "text": "string  \"ssh-ed448\"\n\nstring  key",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -204,13 +196,9 @@
     },
     {
       "indent": 3,
-      "text": "string \"ssh-ed25519\"",
-      "ja": "文字列「ssh-ed25519」"
-    },
-    {
-      "indent": 3,
-      "text": "string signature",
-      "ja": "文字列署名"
+      "text": "string  \"ssh-ed25519\"\n\nstring  signature",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -224,13 +212,9 @@
     },
     {
       "indent": 3,
-      "text": "string \"ssh-ed448\"",
-      "ja": "文字列「ssh-ed448」"
-    },
-    {
-      "indent": 3,
-      "text": "string signature",
-      "ja": "文字列署名"
+      "text": "string  \"ssh-ed448\"\n\nstring  signature",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -281,8 +265,9 @@
     },
     {
       "indent": 3,
-      "text": "example.com. IN SSHFP 6 2 ( a87f1b687ac0e57d2a081a2f2826723 34d90ed316d2b818ca9580ea384d924 01 )",
-      "ja": "example.com。 IN SSHFP 6 2（a87f1b687ac0e57d2a081a2f2826723 34d90ed316d2b818ca9580ea384d924 01）"
+      "text": "example.com. IN SSHFP 6 2 ( a87f1b687ac0e57d2a081a2f2826723\n                            34d90ed316d2b818ca9580ea384d924\n                            01 )",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,

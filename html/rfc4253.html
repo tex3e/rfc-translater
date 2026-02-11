@@ -1376,7 +1376,7 @@ The &#34;hmac-*&#34; algorithms are described in [RFC2104]. The &#34;*-n&#34; MA
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「hmac- *」アルゴリズムは[RFC2104]で説明されています。 &#34;*-n&#34; MACは、結果の値の最初のnビットのみを使用します。
+「hmac-*」アルゴリズムは[RFC2104]で説明されています。 &#34;*-n&#34; MACは、結果の値の最初のnビットのみを使用します。
         </p>
       </div>
     </div>
@@ -1557,15 +1557,13 @@ The following public key and/or certificate formats are currently defined:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-ssh-dss REQUIRED sign Raw DSS Key ssh-rsa RECOMMENDED sign Raw RSA Key pgp-sign-rsa OPTIONAL sign OpenPGP certificates (RSA key) pgp-sign-dss OPTIONAL sign OpenPGP certificates (DSS key)
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-ssh-dss必須の署名未加工のDSS鍵ssh-rsa推奨の署名未加工のRSA鍵pgp-sign-rsaオプションの署名OpenPGP証明書（RSA鍵）pgp-sign-dss省略可能な署名OpenPGP証明書（DSS鍵）
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   ssh-dss           REQUIRED     sign   Raw DSS Key
+   ssh-rsa           RECOMMENDED  sign   Raw RSA Key
+   pgp-sign-rsa      OPTIONAL     sign   OpenPGP certificates (RSA key)
+   pgp-sign-dss      OPTIONAL     sign   OpenPGP certificates (DSS key)
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1605,15 +1603,11 @@ Certificates and public keys are encoded as follows:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string certificate or public key format identifier byte[n] key/certificate data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列証明書または公開鍵形式識別子バイト[n]鍵/証明書データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    certificate or public key format identifier
+      byte[n]   key/certificate data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1653,15 +1647,12 @@ Signatures are encoded as follows:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string signature format identifier (as specified by the public key/certificate format) byte[n] signature blob in format specific encoding.
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列署名形式識別子（公開鍵/証明書形式で指定）バイト[n]形式固有のエンコードの署名blob。
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    signature format identifier (as specified by the
+                public key/certificate format)
+      byte[n]   signature blob in format specific encoding.
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1677,15 +1668,14 @@ The &#34;ssh-dss&#34; key format has the following specific encoding:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string &#34;ssh-dss&#34; mpint p mpint q mpint g mpint y
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列 &#34;ssh-dss&#34; mpint p mpint q mpint g mpint y
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    &#34;ssh-dss&#34;
+      mpint     p
+      mpint     q
+      mpint     g
+      mpint     y
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1725,15 +1715,11 @@ The resulting signature is encoded as follows:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string &#34;ssh-dss&#34; string dss_signature_blob
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列 &#34;ssh-dss&#34;文字列dss_signature_blob
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    &#34;ssh-dss&#34;
+      string    dss_signature_blob
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1761,15 +1747,12 @@ The &#34;ssh-rsa&#34; key format has the following specific encoding:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string &#34;ssh-rsa&#34; mpint e mpint n
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列 &#34;ssh-rsa&#34; mpint e mpint n
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    &#34;ssh-rsa&#34;
+      mpint     e
+      mpint     n
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1809,15 +1792,11 @@ The resulting signature is encoded as follows:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string &#34;ssh-rsa&#34; string rsa_signature_blob
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列 &#34;ssh-rsa&#34;文字列rsa_signature_blob
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    &#34;ssh-rsa&#34;
+      string    rsa_signature_blob
+        </pre>
       </div>
     </div>
     <div class="row">

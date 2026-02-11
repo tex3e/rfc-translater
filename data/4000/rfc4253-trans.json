@@ -565,7 +565,7 @@
     {
       "indent": 3,
       "text": "The \"hmac-*\" algorithms are described in [RFC2104]. The \"*-n\" MACs use only the first n bits of the resulting value.",
-      "ja": "「hmac- *」アルゴリズムは[RFC2104]で説明されています。 \"*-n\" MACは、結果の値の最初のnビットのみを使用します。"
+      "ja": "「hmac-*」アルゴリズムは[RFC2104]で説明されています。 \"*-n\" MACは、結果の値の最初のnビットのみを使用します。"
     },
     {
       "indent": 3,
@@ -647,8 +647,9 @@
     },
     {
       "indent": 3,
-      "text": "ssh-dss REQUIRED sign Raw DSS Key ssh-rsa RECOMMENDED sign Raw RSA Key pgp-sign-rsa OPTIONAL sign OpenPGP certificates (RSA key) pgp-sign-dss OPTIONAL sign OpenPGP certificates (DSS key)",
-      "ja": "ssh-dss必須の署名未加工のDSS鍵ssh-rsa推奨の署名未加工のRSA鍵pgp-sign-rsaオプションの署名OpenPGP証明書（RSA鍵）pgp-sign-dss省略可能な署名OpenPGP証明書（DSS鍵）"
+      "text": "ssh-dss           REQUIRED     sign   Raw DSS Key\nssh-rsa           RECOMMENDED  sign   Raw RSA Key\npgp-sign-rsa      OPTIONAL     sign   OpenPGP certificates (RSA key)\npgp-sign-dss      OPTIONAL     sign   OpenPGP certificates (DSS key)",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -667,8 +668,9 @@
     },
     {
       "indent": 6,
-      "text": "string certificate or public key format identifier byte[n] key/certificate data",
-      "ja": "文字列証明書または公開鍵形式識別子バイト[n]鍵/証明書データ"
+      "text": "string    certificate or public key format identifier\nbyte[n]   key/certificate data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -687,8 +689,9 @@
     },
     {
       "indent": 6,
-      "text": "string signature format identifier (as specified by the public key/certificate format) byte[n] signature blob in format specific encoding.",
-      "ja": "文字列署名形式識別子（公開鍵/証明書形式で指定）バイト[n]形式固有のエンコードの署名blob。"
+      "text": "string    signature format identifier (as specified by the\n          public key/certificate format)\nbyte[n]   signature blob in format specific encoding.",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -697,8 +700,9 @@
     },
     {
       "indent": 6,
-      "text": "string \"ssh-dss\" mpint p mpint q mpint g mpint y",
-      "ja": "文字列 \"ssh-dss\" mpint p mpint q mpint g mpint y"
+      "text": "string    \"ssh-dss\"\nmpint     p\nmpint     q\nmpint     g\nmpint     y",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -717,8 +721,9 @@
     },
     {
       "indent": 6,
-      "text": "string \"ssh-dss\" string dss_signature_blob",
-      "ja": "文字列 \"ssh-dss\"文字列dss_signature_blob"
+      "text": "string    \"ssh-dss\"\nstring    dss_signature_blob",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -732,8 +737,9 @@
     },
     {
       "indent": 6,
-      "text": "string \"ssh-rsa\" mpint e mpint n",
-      "ja": "文字列 \"ssh-rsa\" mpint e mpint n"
+      "text": "string    \"ssh-rsa\"\nmpint     e\nmpint     n",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -752,8 +758,9 @@
     },
     {
       "indent": 6,
-      "text": "string \"ssh-rsa\" string rsa_signature_blob",
-      "ja": "文字列 \"ssh-rsa\"文字列rsa_signature_blob"
+      "text": "string    \"ssh-rsa\"\nstring    rsa_signature_blob",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,

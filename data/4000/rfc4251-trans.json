@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "The Secure Shell (SSH) Protocol is a protocol for secure remote login and other secure network services over an insecure network. This document describes the architecture of the SSH protocol, as well as the notation and terminology used in SSH protocol documents. It also discusses the SSH algorithm naming system that allows local extensions. The SSH protocol consists of three major components: The Transport Layer Protocol provides server authentication, confidentiality, and integrity with perfect forward secrecy. The User Authentication Protocol authenticates the client to the server. The Connection Protocol multiplexes the encrypted tunnel into several logical channels. Details of these protocols are described in separate documents.",
-      "ja": "Secure Shell（SSH）プロトコルは、安全でないネットワーク上での安全なリモートログインやその他の安全なネットワークサービスのためのプロトコルです。このドキュメントでは、SSHプロトコルのアーキテクチャと、SSHプロトコルドキュメントで使用されている表記法および用語について説明します。また、ローカル拡張を可能にするSSHアルゴリズムの命名システムについても説明します。 SSHプロトコルは、次の3つの主要コンポーネントで構成されています。トランスポート層プロトコルは、サーバー認証、機密性、および完全性転送完全性を備えた整合性を提供します。ユーザー認証プロトコルは、サーバーに対してクライアントを認証します。接続プロトコルは、暗号化されたトンネルをいくつかの論理チャネルに多重化します。これらのプロトコルの詳細は、別のドキュメントで説明されています。"
+      "ja": "Secure Shell（SSH）プロトコルは、安全でないネットワーク上での安全なリモートログインやその他の安全なネットワークサービスのためのプロトコルです。このドキュメントでは、SSHプロトコルのアーキテクチャと、SSHプロトコルドキュメントで使用されている表記法および用語について説明します。また、ローカル拡張を可能にするSSHアルゴリズムの命名システムについても説明します。 SSHプロトコルは、次の3つの主要コンポーネントで構成されています。トランスポート層プロトコルは、サーバー認証、機密性、整合性、および完全前方秘匿性を提供します。ユーザー認証プロトコルは、サーバーに対してクライアントを認証します。接続プロトコルは、暗号化されたトンネルをいくつかの論理チャネルに多重化します。これらのプロトコルの詳細は、別のドキュメントで説明されています。"
     },
     {
       "indent": 0,
@@ -110,7 +110,7 @@
     {
       "indent": 3,
       "text": "Many people contributed to the development of this document over the years. People who should be acknowledged include Mats Andersson, Ben Harris, Bill Sommerfeld, Brent McClure, Niels Moller, Damien Miller, Derek Fawcus, Frank Cusack, Heikki Nousiainen, Jakob Schlyter, Jeff Van Dyke, Jeffrey Altman, Jeffrey Hutzelman, Jon Bright, Joseph Galbraith, Ken Hornstein, Markus Friedl, Martin Forssen, Nicolas Williams, Niels Provos, Perry Metzger, Peter Gutmann, Simon Josefsson, Simon Tatham, Wei Dai, Denis Bider, der Mouse, and Tadayoshi Kohno. Listing their names here does not mean that they endorse this document, but that they have contributed to it.",
-      "ja": "このドキュメントの開発には、長年にわたって多くの人々が貢献してくれました。認められるべき人には、マット・アンダーソン、ベン・ハリス、ビル・ソマーフェルト、ブレント・マクルーア、ニールス・モラー、ダミアン・ミラー、デレク・フォーカス、フランク・カザック、ヘイッキ・ノイシャイネン、ジェイコブ・シュリター、ジェフ・ヴァン・ダイク、ジェフリー・アルトマン、ジェフリー・ハッツェルマン、ジョン・ブライト、ジョセフガルブレイス、ケンホーンスタイン、マーカスフリードル、マーティンフォーセン、ニコラスウィリアムズ、ニールスプロボス、ペリーメッツガー、ピーターグトマン、サイモンジョセフソン、サイモンタサム、ウェイダイ、デニスビダー、マウス、デアマウス、河野忠義。ここに彼らの名前をリストすることは、彼らがこの文書を支持することを意味するのではなく、彼らがそれに貢献したことを意味します。"
+      "ja": "このドキュメントの開発には、長年にわたって多くの人々が貢献してくれました。認められるべき人には、マット・アンダーソン、ベン・ハリス、ビル・ソマーフェルト、ブレント・マクルーア、ニールス・モラー、ダミアン・ミラー、デレク・フォーカス、フランク・カザック、ヘイッキ・ノイシャイネン、ジェイコブ・シュリター、ジェフ・ヴァン・ダイク、ジェフリー・アルトマン、ジェフリー・ハッツェルマン、ジョン・ブライト、ジョセフガルブレイス、ケンホーンスタイン、マーカスフリードル、マーティンフォーセン、ニコラスウィリアムズ、ニールスプロボス、ペリーメッツガー、ピーターグトマン、サイモンジョセフソン、サイモンタサム、ウェイダイ、デニスビダー、ダーマウス、河野忠義。ここに彼らの名前をリストすることは、彼らがこの文書を支持することを意味するのではなく、彼らがそれに貢献したことを意味します。"
     },
     {
       "indent": 0,
@@ -121,12 +121,12 @@
     {
       "indent": 3,
       "text": "All documents related to the SSH protocols shall use the keywords \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", and \"OPTIONAL\" to describe requirements. These keywords are to be interpreted as described in [RFC2119].",
-      "ja": "SSHプロトコルに関連するすべてのドキュメントは、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」を使用するものとします。要件を説明する「オプション」。これらのキーワードは、[RFC2119]で説明されているように解釈されます。"
+      "ja": "SSHプロトコルに関連するすべてのドキュメントは、「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」のキーワードを使用して要件を記述するものとします。これらのキーワードは、[RFC2119]で説明されているように解釈されます。"
     },
     {
       "indent": 3,
       "text": "The keywords \"PRIVATE USE\", \"HIERARCHICAL ALLOCATION\", \"FIRST COME FIRST SERVED\", \"EXPERT REVIEW\", \"SPECIFICATION REQUIRED\", \"IESG APPROVAL\", \"IETF CONSENSUS\", and \"STANDARDS ACTION\" that appear in this document when used to describe namespace allocation are to be interpreted as described in [RFC2434].",
-      "ja": "このドキュメントに表示されるキーワード「PRIVATE USE」、「HIERARCHICAL ALLOCATION」、「FIRST COME FIRST SERVED」、「EXPERT REVIEW」、「SPECIFICATION REQUIRED」、「IESG APPROVAL」、「IETF CONSENSUS」、および「STANDARDS ACTION」は、名前空間の割り当てを記述するために使用される場合、[RFC2434]で説明されているように解釈されます。"
+      "ja": "このドキュメントに登場するキーワード「PRIVATE USE」、「HIERARCHICAL ALLOCATION」、「FIRST COME FIRST SERVED」、「EXPERT REVIEW」、「SPECIFICATION REQUIRED」、「IESG APPROVAL」、「IETF CONSENSUS」、「STANDARDS ACTION」は、名前空間の割り当てを記述する際に[RFC2434]で定義されている通りに解釈されるものとします。"
     },
     {
       "indent": 3,
@@ -135,19 +135,20 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data",
-      "ja": "バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ"
+      "text": "byte      SSH_MSG_CHANNEL_DATA\nuint32    recipient channel\nstring    data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
       "text": "Throughout these documents, when the fields are referenced, they will appear within single quotes. When values to fill those fields are referenced, they will appear within double quotes. Using the above example, possible values for 'data' are \"foo\" and \"bar\".",
-      "ja": "これらのドキュメント全体で、フィールドが参照されている場合、フィールドは一重引用符で囲まれています。それらのフィールドを満たす値が参照される場合、それらは二重引用符で囲まれて表示されます。上記の例を使用すると、「data」の可能な値は「foo」と「bar」です。"
+      "ja": "これらのドキュメント全体を通して、フィールドが参照される場合は単一引用符で、それらのフィールドを埋める値が参照される場合は二重引用符で示されます。上記の例を用いると、「'data'」の取り得る値は「\"foo\"」と「\"bar\"」です。"
     },
     {
       "indent": 0,
       "text": "4. Architecture",
       "section_title": true,
-      "ja": "4. 建築"
+      "ja": "4. アーキテクチャ"
     },
     {
       "indent": 0,
@@ -343,7 +344,7 @@
     {
       "indent": 3,
       "text": "byte",
-      "ja": "バイト"
+      "ja": "byte"
     },
     {
       "indent": 6,
@@ -383,7 +384,7 @@
     {
       "indent": 3,
       "text": "string",
-      "ja": "ストリング"
+      "ja": "string"
     },
     {
       "indent": 6,
@@ -492,7 +493,7 @@
     {
       "indent": 6,
       "text": "1 to 19 Transport layer generic (e.g., disconnect, ignore, debug, etc.) 20 to 29 Algorithm negotiation 30 to 49 Key exchange method specific (numbers can be reused for different authentication methods)",
-      "ja": "1から19トランスポート層の汎用（切断、無視、デバッグなど）20から29アルゴリズムのネゴシエーション30から49鍵交換方法固有（番号はさまざまな認証方法に再利用できます）"
+      "ja": "1から19: トランスポート層汎用 (例: 切断、無視、デバッグなど) 20から29: アルゴリズムネゴシエーション 30から49: 鍵交換メソッド固有 (番号は異なる認証メソッドで再利用可能)"
     },
     {
       "indent": 3,
@@ -502,7 +503,7 @@
     {
       "indent": 6,
       "text": "50 to 59 User authentication generic 60 to 79 User authentication method specific (numbers can be reused for different authentication methods)",
-      "ja": "50から59ユーザー認証汎用60から79ユーザー認証方法固有（数値は異なる認証方法に再利用できます）"
+      "ja": "50から59: ユーザー認証汎用 60から79: ユーザー認証メソッド固有 (数値は異なる認証方法に再利用可能)"
     },
     {
       "indent": 3,
@@ -512,7 +513,7 @@
     {
       "indent": 6,
       "text": "80 to 89 Connection protocol generic 90 to 127 Channel related messages",
-      "ja": "80〜89接続プロトコルの一般的な90〜127チャネル関連のメッセージ"
+      "ja": "80から89: 接続プロトコル汎用 90から127: チャネル関連メッセージ"
     },
     {
       "indent": 3,
@@ -543,7 +544,7 @@
     {
       "indent": 3,
       "text": "This document is part of a set. The instructions for the IANA for the SSH protocol, as defined in this document, [SSH-USERAUTH], [SSH-TRANS], and [SSH-CONNECT], are detailed in [SSH-NUMBERS]. The following is a brief summary for convenience, but note well that [SSH-NUMBERS] contains the actual instructions to the IANA, which may be superseded in the future.",
-      "ja": "このドキュメントはセットの一部です。このドキュメントで定義されている、SSHプロトコルのIANAの手順[SSH-USERAUTH]、[SSH-TRANS]、および[SSH-CONNECT]については、[SSH-NUMBERS]で詳しく説明しています。以下は便宜上の簡単な要約ですが、[SSH-NUMBERS]にはIANAへの実際の指示が含まれていることに注意してください。"
+      "ja": "このドキュメントはセットの一部です。このドキュメントで定義されている、SSHプロトコルのIANAの手順[SSH-USERAUTH]、[SSH-TRANS]、および[SSH-CONNECT]については、[SSH-NUMBERS]で詳しく説明しています。以下は便宜上の簡単な要約ですが、[SSH-NUMBERS]にはIANAへの実際の指示が含まれており、これらは将来的に置き換えられる可能性があることに注意してください。"
     },
     {
       "indent": 3,
@@ -553,7 +554,7 @@
     {
       "indent": 3,
       "text": "o Service Names * Authentication Methods * Connection Protocol Channel Names * Connection Protocol Global Request Names * Connection Protocol Channel Request Names",
-      "ja": "o サービス名*認証方法*接続プロトコルのチャネル名*接続プロトコルのグローバル要求名*接続プロトコルのチャネル要求名"
+      "ja": "o サービス名 * 認証方法 * 接続プロトコルのチャネル名 * 接続プロトコルのグローバル要求名 * 接続プロトコルのチャネル要求名"
     },
     {
       "indent": 3,
@@ -563,12 +564,12 @@
     {
       "indent": 3,
       "text": "o Assigned Algorithm Names * Encryption Algorithm Names * MAC Algorithm Names * Public Key Algorithm Names * Compression Algorithm Names",
-      "ja": "o 割り当てられたアルゴリズム名*暗号化アルゴリズム名* MACアルゴリズム名*公開鍵アルゴリズム名*圧縮アルゴリズム名"
+      "ja": "o 割り当てられたアルゴリズム名 * 暗号化アルゴリズム名 * MACアルゴリズム名 * 公開鍵アルゴリズム名 * 圧縮アルゴリズム名"
     },
     {
       "indent": 3,
       "text": "These names MUST be printable US-ASCII strings, and MUST NOT contain the characters at-sign (\"@\"), comma (\",\"), whitespace, control characters (ASCII codes 32 or less), or the ASCII code 127 (DEL). Names are case-sensitive, and MUST NOT be longer than 64 characters.",
-      "ja": "これらの名前は印刷可能なUS-ASCII文字列である必要があり、アットマーク（\"@\"）、コンマ（\",\"）、空白、制御文字（ASCIIコード32以下）、またはASCIIコード127（ DEL）。名前は大文字と小文字が区別され、64文字以下にする必要があります。"
+      "ja": "これらの名前は印刷可能なUS-ASCII文字列である必要があり、アットマーク（\"@\"）、コンマ（\",\"）、空白、制御文字（ASCIIコード32以下）、またはASCIIコード127 (DEL) を含んではなりません。名前は大文字と小文字が区別され、64文字を超えてはなりません（MUST NOT）。"
     },
     {
       "indent": 3,
@@ -620,7 +621,7 @@
     {
       "indent": 3,
       "text": "This protocol binds each session key to the session by including random, session specific data in the hash used to produce session keys. Special care should be taken to ensure that all of the random numbers are of good quality. If the random data here (e.g., Diffie-Hellman (DH) parameters) are pseudo-random, then the pseudo-random number generator should be cryptographically secure (i.e., its next output not easily guessed even when knowing all previous outputs) and, furthermore, proper entropy needs to be added to the pseudo-random number generator. [RFC4086] offers suggestions for sources of random numbers and entropy. Implementers should note the importance of entropy and the well-meant, anecdotal warning about the difficulty in properly implementing pseudo-random number generating functions.",
-      "ja": "このプロトコルは、セッションキーの生成に使用されるハッシュにランダムなセッション固有のデータを含めることにより、各セッションキーをセッションにバインドします。すべての乱数が高品質になるように、特別な注意を払う必要があります。ここのランダムデータ（Diffie-Hellman（DH）パラメーターなど）が疑似ランダムである場合、疑似乱数ジェネレーターは暗号的に安全でなければなりません（つまり、次の出力は以前のすべての出力を知っていても簡単に推測できません）。さらに、疑似乱数ジェネレータに適切なエントロピーを追加する必要があります。 [RFC4086]は、乱数とエントロピーのソースの提案を提供します。実装者は、エントロピーの重要性と、疑似乱数生成関数を適切に実装することの難しさについての意味のある逸話的な警告に注意する必要があります。"
+      "ja": "このプロトコルは、セッションキーの生成に使用されるハッシュにランダムなセッション固有のデータを含めることにより、各セッションキーをセッションにバインドします。すべての乱数が高品質になるように、特別な注意を払う必要があります。ここのランダムデータ（Diffie-Hellman（DH）パラメーターなど）が疑似ランダムである場合、疑似乱数ジェネレーターは暗号的に安全でなければなりません（つまり、以前のすべての出力を知っていても、次の出力を容易に推測できない）。さらに、疑似乱数ジェネレータに適切なエントロピーを追加する必要があります。 [RFC4086]は、乱数とエントロピーのソースの提案を提供します。実装者は、エントロピーの重要性と、疑似乱数生成関数を適切に実装することの難しさについての意味のある逸話的な警告に注意する必要があります。"
     },
     {
       "indent": 3,
@@ -642,13 +643,13 @@
       "indent": 0,
       "text": "9.3. Transport",
       "section_title": true,
-      "ja": "9.3. 輸送"
+      "ja": "9.3. トランスポート"
     },
     {
       "indent": 0,
       "text": "9.3.1. Confidentiality",
       "section_title": true,
-      "ja": "9.3.1. 守秘義務"
+      "ja": "9.3.1. 機密性"
     },
     {
       "indent": 3,
@@ -658,7 +659,7 @@
     {
       "indent": 3,
       "text": "The \"none\" cipher is provided for debugging and SHOULD NOT be used except for that purpose. Its cryptographic properties are sufficiently described in [RFC2410], which will show that its use does not meet the intent of this protocol.",
-      "ja": "「なし」の暗号はデバッグ用に提供されており、その目的以外では使用しないでください。その暗号特性は[RFC2410]で十分に説明されています、それはその使用がこのプロトコルの意図を満たさないことを示します。"
+      "ja": "「なし」の暗号はデバッグ用に提供されており、その目的以外では使用しないでください。その暗号特性は[RFC2410]で十分に説明されており、その使用がこのプロトコルの意図を満たさないことを示しています。"
     },
     {
       "indent": 3,
@@ -689,7 +690,7 @@
     {
       "indent": 26,
       "text": "[500 ms passes, no ACK]",
-      "ja": "「５００ ｍｓ ぱっせｓ、 の あＣＫ」"
+      "ja": "500ミリ秒経過、ACKなし"
     },
     {
       "indent": 6,
@@ -700,7 +701,7 @@
     {
       "indent": 64,
       "text": "ACK",
-      "ja": "アラス"
+      "ja": "ACK"
     },
     {
       "indent": 3,
@@ -742,12 +743,12 @@
     {
       "indent": 6,
       "text": "Provided that the IV for the second SSH Record is fixed after the data for the Data packet is determined, then the following should be performed:",
-      "ja": "データパケットのデータが決定された後、2番目のSSHレコードのIVが修正された場合、以下を実行する必要があります。"
+      "ja": "データパケットのデータが決定された後、2番目のSSHレコードのIVが固定された場合、以下を実行する必要があります。"
     },
     {
       "indent": 9,
       "text": "read from user encrypt null packet encrypt data packet",
-      "ja": "ユーザーからの読み取りnullパケットの暗号化データパケットの暗号化"
+      "ja": "ユーザーからの読み取り、nullパケットの暗号化、データパケットの暗号化"
     },
     {
       "indent": 0,
@@ -795,7 +796,7 @@
       "indent": 0,
       "text": "9.3.4. Man-in-the-middle",
       "section_title": true,
-      "ja": "9.3.4. 真ん中の男"
+      "ja": "9.3.4. 中間者攻撃"
     },
     {
       "indent": 3,
@@ -853,12 +854,12 @@
       "indent": 0,
       "text": "9.3.7. Forward Secrecy",
       "section_title": true,
-      "ja": "9.3.7. 秘密の転送"
+      "ja": "9.3.7. 前方秘匿性"
     },
     {
       "indent": 3,
       "text": "It should be noted that the Diffie-Hellman key exchanges may provide perfect forward secrecy (PFS). PFS is essentially defined as the cryptographic property of a key-establishment protocol in which the compromise of a session key or long-term private key after a given session does not cause the compromise of any earlier session [ANSI-T1.523-2001]. SSH sessions resulting from a key exchange using the diffie-hellman methods described in the section Diffie-Hellman Key Exchange of [SSH-TRANS] (including \"diffie-hellman-group1-sha1\" and \"diffie-hellman-group14-sha1\") are secure even if private keying/authentication material is later revealed, but not if the session keys are revealed. So, given this definition of PFS, SSH does have PFS. However, this property is not commuted to any of the applications or protocols using SSH as a transport. The transport layer of SSH provides confidentiality for password authentication and other methods that rely on secret data.",
-      "ja": "Diffie-Hellman鍵交換は、Perfect Forward Secrecy（PFS）を提供する場合があることに注意してください。 PFSは基本的に、キー確立プロトコルの暗号化プロパティとして定義されています。このプロトコルでは、特定のセッション後のセッションキーまたは長期的な秘密キーの侵害が、以前のセッションの侵害を引き起こさない[ANSI-T1.523-2001] 。 [SSH-TRANS]のDiffie-Hellman鍵交換セクションで説明されているdiffie-hellman方式を使用した鍵交換から生じるSSHセッション（ \"diffie-hellman-group1-sha1\"と \"diffie-hellman-group14-sha1\"を含む）秘密鍵/認証情報が後で明らかになったとしても安全ですが、セッション鍵が明らかにされた場合はそうではありません。したがって、このPFSの定義を考えると、SSHにはPFSがあります。ただし、このプロパティは、SSHをトランスポートとして使用するアプリケーションやプロトコルには通用しません。 SSHのトランスポート層は、パスワード認証および秘密データに依存するその他の方法に機密性を提供します。"
+      "ja": "Diffie-Hellman鍵交換は、Perfect Forward Secrecy（PFS）を提供する場合があることに注意してください。 PFSは基本的に、キー確立プロトコルにおいて、特定のセッション後のセッションキーまたは長期的な秘密キーの侵害が、以前のセッションの侵害を引き起こさないという暗号化プロパティとして定義されています[ANSI-T1.523-2001] 。 [SSH-TRANS]のDiffie-Hellman鍵交換セクションで説明されているdiffie-hellman方式を使用した鍵交換から生じるSSHセッション（ \"diffie-hellman-group1-sha1\"と \"diffie-hellman-group14-sha1\"を含む）秘密鍵/認証情報が後で明らかになったとしても安全ですが、セッション鍵が明らかにされた場合はそうではありません。したがって、このPFSの定義を考えると、SSHにはPFSがあります。ただし、このプロパティは、SSHをトランスポートとして使用するアプリケーションやプロトコルには通用しません。 SSHのトランスポート層は、パスワード認証および秘密データに依存するその他の方法に機密性を提供します。"
     },
     {
       "indent": 3,
@@ -912,7 +913,7 @@
       "indent": 0,
       "text": "9.4.1. Weak Transport",
       "section_title": true,
-      "ja": "9.4.1. 弱い輸送"
+      "ja": "9.4.1. 弱いトランスポート"
     },
     {
       "indent": 3,
@@ -1144,7 +1145,7 @@
     {
       "indent": 3,
       "text": "[RFC1282] Kantor, B., \"BSD Rlogin\", RFC 1282, December 1991.",
-      "ja": "[RFC1282] Office、B。、「BSD Rlogin」、RFC 1282、1991年12月。"
+      "ja": "[RFC1282] Kantor、B。、「BSD Rlogin」、RFC 1282、1991年12月。"
     },
     {
       "indent": 3,
@@ -1244,7 +1245,7 @@
     {
       "indent": 3,
       "text": "[ROGAWAY] Rogaway, P., \"Problems with Proposed IP Cryptography\", Unpublished paper http://www.cs.ucdavis.edu/~rogaway/ papers/draft-rogaway-ipsec-comments-00.txt, 1996.",
-      "ja": "[ROGAWAY] Rogaway、P。、「Proposeds with Proposed IP Cryptography」、未公開の論文http://www.cs.ucdavis.edu/~rogaway/papers/draft-rogaway-ipsec-comments-00.txt、1996。"
+      "ja": "[ROGAWAY] Rogaway、P。、「Problems with Proposed IP Cryptography」、未公開の論文http://www.cs.ucdavis.edu/~rogaway/papers/draft-rogaway-ipsec-comments-00.txt、1996。"
     },
     {
       "indent": 3,
@@ -1341,7 +1342,7 @@
     {
       "indent": 3,
       "text": "The IETF invites any interested party to bring to its attention any copyrights, patents or patent applications, or other proprietary rights that may cover technology that may be required to implement this standard. Please address the information to the IETF at ietf-ipr@ietf.org.",
-      "ja": "IETFは、この規格を実装するために必要となる可能性のある技術をカバーする可能性のある著作権、特許、特許出願、またはその他の所有権に注意を向けるよう、関係者に呼びかけます。 IEETのietf-ipr@ietf.orgに情報を送信してください。"
+      "ja": "IETFは、この規格を実装するために必要となる可能性のある技術をカバーする可能性のある著作権、特許、特許出願、またはその他の所有権に注意を向けるよう、関係者に呼びかけます。 IETFのietf-ipr@ietf.orgに情報を送信してください。"
     },
     {
       "indent": 0,

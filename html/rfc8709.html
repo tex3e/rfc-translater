@@ -48,7 +48,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 8709 - Secure Shell（SSH）プロトコル用のEd25519およびEd448公開鍵アルゴリズム</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -142,7 +142,7 @@ This document is a product of the Internet Engineering Task Force (IETF). It rep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、IETF（Internet Engineering Task Force）の製品です。これは、IETFコミュニティのコンセンサスを表しています。公開レビューを受け、インターネットエンジニアリングステアリンググループ（IESG）による公開が承認されました。インターネット標準の詳細については、RFC 7841のセクション2をご覧ください。
+この文書は、Internet Engineering Task Force（IETF）の成果物です。IETFコミュニティの合意を反映しており、一般公開によるレビューを経て、Internet Engineering Steering Group（IESG）による公開が承認されました。インターネット標準に関する詳細は、RFC 7841のセクション2で確認できます。
         </p>
       </div>
     </div>
@@ -154,7 +154,7 @@ Information about the current status of this document, any errata, and how to pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの現在のステータス、正誤表、およびフィードバックの提供方法に関する情報は、https：//www.rfc-editor.org/info/rfc8709で入手できます。
+この文書の現在の状況、エラッタ、およびフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc8709にて入手可能です。
         </p>
       </div>
     </div>
@@ -178,7 +178,7 @@ Copyright (c) 2020 IETF Trust and the persons identified as the document authors
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-著作権（c）2020 IETFトラストおよびドキュメントの作成者として識別された人物。全著作権所有。
+Copyright (c) 2020 IETF Trustおよび本ドキュメントの著者として特定された個人。すべての権利は留保されています。
         </p>
       </div>
     </div>
@@ -190,7 +190,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この文書は、BCP 78およびIETF文書に関するIETFトラストの法的規定（https://trustee.ietf.org/license-info）の対象であり、この文書の発行日に有効です。これらのドキュメントは、このドキュメントに関するあなたの権利と制限を説明しているため、注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseテキストが含まれている必要があり、Simplified BSD Licenseに記載されているように保証なしで提供されます。
+この文書は、発行日において有効なBCP 78およびIETF TrustによるIETF文書に関する法的規定（https://trustee.ietf.org/license-info）に従います。これらの文書は、本文書に関するあなたの権利と制限を規定していますので、注意深くご確認ください。本文書から抽出されたコードコンポーネントには、Trust Legal Provisionsのセクション4.eに記載されているSimplified BSD Licenseの条項を含める必要があり、Simplified BSD Licenseに記述されている通り無保証で提供されます。
         </p>
       </div>
     </div>
@@ -248,7 +248,7 @@ Secure Shell (SSH) [RFC4251] is a secure remote-login protocol. It provides for 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュアシェル（SSH）[RFC4251]は、セキュアなリモートログインプロトコルです。サーバーとユーザーを相互に識別するための拡張可能なさまざまな公開鍵アルゴリズムを提供します。 Ed25519 [RFC8032]はデジタル署名システムです。 OpenSSH 6.5 [OpenSSH-6.5]では、サーバーとユーザーの認証にEd25519を使用するためのサポートが導入され、その後、他のSSH実装が続きました。
+Secure Shell（SSH）[RFC4251]は、セキュアなリモートログインプロトコルです。これは、サーバーとユーザーを相互に識別するための、拡張可能な様々な公開鍵アルゴリズムを提供します。Ed25519 [RFC8032]はデジタル署名システムです。OpenSSH 6.5 [OpenSSH-6.5]でサーバーおよびユーザー認証にEd25519を使用するためのサポートが導入され、その後他のSSH実装もそれに続きました。
         </p>
       </div>
     </div>
@@ -260,7 +260,7 @@ This document describes the method implemented by OpenSSH and others and formali
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、OpenSSHやその他によって実装された方法について説明し、「ssh-ed25519」という名前の使用を形式化します。さらに、このドキュメントではEd448の使用について説明し、「ssh-ed448」という名前の使用を形式化しています。
+この文書では、OpenSSHなどによって実装された方式を記述し、「ssh-ed25519」という名称の使用を正式なものとします。さらに、この文書ではEd448の使用についても記述し、「ssh-ed448」という名称の使用を正式なものとします。
         </p>
       </div>
     </div>
@@ -284,7 +284,7 @@ The descriptions of key and signature formats use the notation introduced in [RF
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-鍵と署名の形式の説明では、[RFC4251]のセクション3で導入された表記法と、[RFC4251]のセクション5の文字列データ型を使用します。
+鍵と署名のフォーマットの記述では、[RFC4251]のセクション3で導入された表記法と、[RFC4251]のセクション5で定義されている文字列データ型を使用します。
         </p>
       </div>
     </div>
@@ -308,7 +308,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONALこのドキュメントの「」は、BCP 14 [RFC2119] [RFC8174]で説明されているように解釈されます。
+この文書中のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、本書で示されているように、すべて大文字で記述されている場合にのみ、BCP 14 [RFC2119] [RFC8174]で記述されている通りに解釈されます。
         </p>
       </div>
     </div>
@@ -332,7 +332,7 @@ This document describes a public key algorithm for use with SSH, as per [RFC4253
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、[RFC4253]のセクション6.6に従って、SSHで使用する公開鍵アルゴリズムについて説明します。アルゴリズムの名前は「ssh-ed25519」です。このアルゴリズムは署名のみをサポートし、暗号化はサポートしません。
+この文書では、[RFC4253]のセクション6.6に従い、SSHで使用する公開鍵アルゴリズムについて記述します。このアルゴリズムの名称は「ssh-ed25519」です。本アルゴリズムは署名のみをサポートし、暗号化はサポートしません。
         </p>
       </div>
     </div>
@@ -344,7 +344,7 @@ Additionally, this document describes another public key algorithm. The name of 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-さらに、このドキュメントでは、別の公開鍵アルゴリズムについて説明します。アルゴリズムの名前は「ssh-ed448」です。このアルゴリズムは署名のみをサポートし、暗号化はサポートしません。
+さらに、この文書では別の公開鍵アルゴリズムについても記述します。このアルゴリズムの名称は「ssh-ed448」です。本アルゴリズムは署名のみをサポートし、暗号化はサポートしません。
         </p>
       </div>
     </div>
@@ -356,7 +356,7 @@ Standard implementations of SSH SHOULD implement these signature algorithms.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SSHの標準実装は、これらの署名アルゴリズムを実装する必要があります（SHOULD）。
+SSHの標準実装は、これらの署名アルゴリズムを実装すべきです。
         </p>
       </div>
     </div>
@@ -380,32 +380,17 @@ The &#34;ssh-ed25519&#34; key format has the following encoding:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「ssh-ed25519」キー形式には、次のエンコードがあります。
+「ssh-ed25519」鍵フォーマットには、以下のエンコーディングがあります。
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string &#34;ssh-ed25519&#34;
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列「ssh-ed25519」
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string key
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列キー
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   string  &#34;ssh-ed25519&#34;
+
+   string  key
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -428,32 +413,17 @@ The &#34;ssh-ed448&#34; key format has the following encoding:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「ssh-ed448」キー形式には、次のエンコードがあります。
+「ssh-ed448」鍵フォーマットには、以下のエンコーディングがあります。
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string &#34;ssh-ed448&#34;
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列「ssh-ed448」
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string key
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列キー
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   string  &#34;ssh-ed448&#34;
+
+   string  key
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -517,27 +487,12 @@ The &#34;ssh-ed25519&#34; key format has the following encoding:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string &#34;ssh-ed25519&#34;
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列「ssh-ed25519」
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string signature
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列署名
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   string  &#34;ssh-ed25519&#34;
+
+   string  signature
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -565,27 +520,12 @@ The &#34;ssh-ed448&#34; key format has the following encoding:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string &#34;ssh-ed448&#34;
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列「ssh-ed448」
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-string signature
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-文字列署名
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   string  &#34;ssh-ed448&#34;
+
+   string  signature
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -697,15 +637,12 @@ The SSHFP Resource Record for the Ed448 public key with SHA-256 fingerprint woul
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-example.com. IN SSHFP 6 2 ( a87f1b687ac0e57d2a081a2f2826723 34d90ed316d2b818ca9580ea384d924 01 )
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-3">
-example.com。 IN SSHFP 6 2（a87f1b687ac0e57d2a081a2f2826723 34d90ed316d2b818ca9580ea384d924 01）
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   example.com. IN SSHFP 6 2 ( a87f1b687ac0e57d2a081a2f2826723
+                               34d90ed316d2b818ca9580ea384d924
+                               01 )
+        </pre>
       </div>
     </div>
     <div class="row">

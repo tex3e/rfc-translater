@@ -154,7 +154,7 @@ The Secure Shell (SSH) Protocol is a protocol for secure remote login and other 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Secure Shell（SSH）プロトコルは、安全でないネットワーク上での安全なリモートログインやその他の安全なネットワークサービスのためのプロトコルです。このドキュメントでは、SSHプロトコルのアーキテクチャと、SSHプロトコルドキュメントで使用されている表記法および用語について説明します。また、ローカル拡張を可能にするSSHアルゴリズムの命名システムについても説明します。 SSHプロトコルは、次の3つの主要コンポーネントで構成されています。トランスポート層プロトコルは、サーバー認証、機密性、および完全性転送完全性を備えた整合性を提供します。ユーザー認証プロトコルは、サーバーに対してクライアントを認証します。接続プロトコルは、暗号化されたトンネルをいくつかの論理チャネルに多重化します。これらのプロトコルの詳細は、別のドキュメントで説明されています。
+Secure Shell（SSH）プロトコルは、安全でないネットワーク上での安全なリモートログインやその他の安全なネットワークサービスのためのプロトコルです。このドキュメントでは、SSHプロトコルのアーキテクチャと、SSHプロトコルドキュメントで使用されている表記法および用語について説明します。また、ローカル拡張を可能にするSSHアルゴリズムの命名システムについても説明します。 SSHプロトコルは、次の3つの主要コンポーネントで構成されています。トランスポート層プロトコルは、サーバー認証、機密性、整合性、および完全前方秘匿性を提供します。ユーザー認証プロトコルは、サーバーに対してクライアントを認証します。接続プロトコルは、暗号化されたトンネルをいくつかの論理チャネルに多重化します。これらのプロトコルの詳細は、別のドキュメントで説明されています。
         </p>
       </div>
     </div>
@@ -334,7 +334,7 @@ Many people contributed to the development of this document over the years. Peop
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの開発には、長年にわたって多くの人々が貢献してくれました。認められるべき人には、マット・アンダーソン、ベン・ハリス、ビル・ソマーフェルト、ブレント・マクルーア、ニールス・モラー、ダミアン・ミラー、デレク・フォーカス、フランク・カザック、ヘイッキ・ノイシャイネン、ジェイコブ・シュリター、ジェフ・ヴァン・ダイク、ジェフリー・アルトマン、ジェフリー・ハッツェルマン、ジョン・ブライト、ジョセフガルブレイス、ケンホーンスタイン、マーカスフリードル、マーティンフォーセン、ニコラスウィリアムズ、ニールスプロボス、ペリーメッツガー、ピーターグトマン、サイモンジョセフソン、サイモンタサム、ウェイダイ、デニスビダー、マウス、デアマウス、河野忠義。ここに彼らの名前をリストすることは、彼らがこの文書を支持することを意味するのではなく、彼らがそれに貢献したことを意味します。
+このドキュメントの開発には、長年にわたって多くの人々が貢献してくれました。認められるべき人には、マット・アンダーソン、ベン・ハリス、ビル・ソマーフェルト、ブレント・マクルーア、ニールス・モラー、ダミアン・ミラー、デレク・フォーカス、フランク・カザック、ヘイッキ・ノイシャイネン、ジェイコブ・シュリター、ジェフ・ヴァン・ダイク、ジェフリー・アルトマン、ジェフリー・ハッツェルマン、ジョン・ブライト、ジョセフガルブレイス、ケンホーンスタイン、マーカスフリードル、マーティンフォーセン、ニコラスウィリアムズ、ニールスプロボス、ペリーメッツガー、ピーターグトマン、サイモンジョセフソン、サイモンタサム、ウェイダイ、デニスビダー、ダーマウス、河野忠義。ここに彼らの名前をリストすることは、彼らがこの文書を支持することを意味するのではなく、彼らがそれに貢献したことを意味します。
         </p>
       </div>
     </div>
@@ -358,7 +358,7 @@ All documents related to the SSH protocols shall use the keywords &#34;MUST&#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SSHプロトコルに関連するすべてのドキュメントは、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」を使用するものとします。要件を説明する「オプション」。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
+SSHプロトコルに関連するすべてのドキュメントは、「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」のキーワードを使用して要件を記述するものとします。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -370,7 +370,7 @@ The keywords &#34;PRIVATE USE&#34;, &#34;HIERARCHICAL ALLOCATION&#34;, &#34;FIRS
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントに表示されるキーワード「PRIVATE USE」、「HIERARCHICAL ALLOCATION」、「FIRST COME FIRST SERVED」、「EXPERT REVIEW」、「SPECIFICATION REQUIRED」、「IESG APPROVAL」、「IETF CONSENSUS」、および「STANDARDS ACTION」は、名前空間の割り当てを記述するために使用される場合、[RFC2434]で説明されているように解釈されます。
+このドキュメントに登場するキーワード「PRIVATE USE」、「HIERARCHICAL ALLOCATION」、「FIRST COME FIRST SERVED」、「EXPERT REVIEW」、「SPECIFICATION REQUIRED」、「IESG APPROVAL」、「IETF CONSENSUS」、「STANDARDS ACTION」は、名前空間の割り当てを記述する際に[RFC2434]で定義されている通りに解釈されるものとします。
         </p>
       </div>
     </div>
@@ -387,15 +387,12 @@ Protocol fields and possible values to fill them are defined in this set of docu
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_DATA
+      uint32    recipient channel
+      string    data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -406,7 +403,7 @@ Throughout these documents, when the fields are referenced, they will appear wit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらのドキュメント全体で、フィールドが参照されている場合、フィールドは一重引用符で囲まれています。それらのフィールドを満たす値が参照される場合、それらは二重引用符で囲まれて表示されます。上記の例を使用すると、「data」の可能な値は「foo」と「bar」です。
+これらのドキュメント全体を通して、フィールドが参照される場合は単一引用符で、それらのフィールドを埋める値が参照される場合は二重引用符で示されます。上記の例を用いると、「&#39;data&#39;」の取り得る値は「&#34;foo&#34;」と「&#34;bar&#34;」です。
         </p>
       </div>
     </div>
@@ -418,7 +415,7 @@ Throughout these documents, when the fields are referenced, they will appear wit
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4. 建築
+4. アーキテクチャ
         </h5>
       </div>
     </div>
@@ -874,7 +871,7 @@ byte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-バイト
+byte
         </p>
       </div>
     </div>
@@ -970,7 +967,7 @@ string
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ストリング
+string
         </p>
       </div>
     </div>
@@ -1222,7 +1219,7 @@ Transport layer protocol:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-1から19トランスポート層の汎用（切断、無視、デバッグなど）20から29アルゴリズムのネゴシエーション30から49鍵交換方法固有（番号はさまざまな認証方法に再利用できます）
+1から19: トランスポート層汎用 (例: 切断、無視、デバッグなど) 20から29: アルゴリズムネゴシエーション 30から49: 鍵交換メソッド固有 (番号は異なる認証メソッドで再利用可能)
         </p>
       </div>
     </div>
@@ -1246,7 +1243,7 @@ User authentication protocol:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-50から59ユーザー認証汎用60から79ユーザー認証方法固有（数値は異なる認証方法に再利用できます）
+50から59: ユーザー認証汎用 60から79: ユーザー認証メソッド固有 (数値は異なる認証方法に再利用可能)
         </p>
       </div>
     </div>
@@ -1270,7 +1267,7 @@ Connection protocol:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-80〜89接続プロトコルの一般的な90〜127チャネル関連のメッセージ
+80から89: 接続プロトコル汎用 90から127: チャネル関連メッセージ
         </p>
       </div>
     </div>
@@ -1342,7 +1339,7 @@ This document is part of a set. The instructions for the IANA for the SSH protoc
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントはセットの一部です。このドキュメントで定義されている、SSHプロトコルのIANAの手順[SSH-USERAUTH]、[SSH-TRANS]、および[SSH-CONNECT]については、[SSH-NUMBERS]で詳しく説明しています。以下は便宜上の簡単な要約ですが、[SSH-NUMBERS]にはIANAへの実際の指示が含まれていることに注意してください。
+このドキュメントはセットの一部です。このドキュメントで定義されている、SSHプロトコルのIANAの手順[SSH-USERAUTH]、[SSH-TRANS]、および[SSH-CONNECT]については、[SSH-NUMBERS]で詳しく説明しています。以下は便宜上の簡単な要約ですが、[SSH-NUMBERS]にはIANAへの実際の指示が含まれており、これらは将来的に置き換えられる可能性があることに注意してください。
         </p>
       </div>
     </div>
@@ -1366,7 +1363,7 @@ o Service Names * Authentication Methods * Connection Protocol Channel Names * C
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o サービス名*認証方法*接続プロトコルのチャネル名*接続プロトコルのグローバル要求名*接続プロトコルのチャネル要求名
+o サービス名 * 認証方法 * 接続プロトコルのチャネル名 * 接続プロトコルのグローバル要求名 * 接続プロトコルのチャネル要求名
         </p>
       </div>
     </div>
@@ -1390,7 +1387,7 @@ o Assigned Algorithm Names * Encryption Algorithm Names * MAC Algorithm Names * 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 割り当てられたアルゴリズム名*暗号化アルゴリズム名* MACアルゴリズム名*公開鍵アルゴリズム名*圧縮アルゴリズム名
+o 割り当てられたアルゴリズム名 * 暗号化アルゴリズム名 * MACアルゴリズム名 * 公開鍵アルゴリズム名 * 圧縮アルゴリズム名
         </p>
       </div>
     </div>
@@ -1402,7 +1399,7 @@ These names MUST be printable US-ASCII strings, and MUST NOT contain the charact
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの名前は印刷可能なUS-ASCII文字列である必要があり、アットマーク（&#34;@&#34;）、コンマ（&#34;,&#34;）、空白、制御文字（ASCIIコード32以下）、またはASCIIコード127（ DEL）。名前は大文字と小文字が区別され、64文字以下にする必要があります。
+これらの名前は印刷可能なUS-ASCII文字列である必要があり、アットマーク（&#34;@&#34;）、コンマ（&#34;,&#34;）、空白、制御文字（ASCIIコード32以下）、またはASCIIコード127 (DEL) を含んではなりません。名前は大文字と小文字が区別され、64文字を超えてはなりません（MUST NOT）。
         </p>
       </div>
     </div>
@@ -1522,7 +1519,7 @@ This protocol binds each session key to the session by including random, session
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このプロトコルは、セッションキーの生成に使用されるハッシュにランダムなセッション固有のデータを含めることにより、各セッションキーをセッションにバインドします。すべての乱数が高品質になるように、特別な注意を払う必要があります。ここのランダムデータ（Diffie-Hellman（DH）パラメーターなど）が疑似ランダムである場合、疑似乱数ジェネレーターは暗号的に安全でなければなりません（つまり、次の出力は以前のすべての出力を知っていても簡単に推測できません）。さらに、疑似乱数ジェネレータに適切なエントロピーを追加する必要があります。 [RFC4086]は、乱数とエントロピーのソースの提案を提供します。実装者は、エントロピーの重要性と、疑似乱数生成関数を適切に実装することの難しさについての意味のある逸話的な警告に注意する必要があります。
+このプロトコルは、セッションキーの生成に使用されるハッシュにランダムなセッション固有のデータを含めることにより、各セッションキーをセッションにバインドします。すべての乱数が高品質になるように、特別な注意を払う必要があります。ここのランダムデータ（Diffie-Hellman（DH）パラメーターなど）が疑似ランダムである場合、疑似乱数ジェネレーターは暗号的に安全でなければなりません（つまり、以前のすべての出力を知っていても、次の出力を容易に推測できない）。さらに、疑似乱数ジェネレータに適切なエントロピーを追加する必要があります。 [RFC4086]は、乱数とエントロピーのソースの提案を提供します。実装者は、エントロピーの重要性と、疑似乱数生成関数を適切に実装することの難しさについての意味のある逸話的な警告に注意する必要があります。
         </p>
       </div>
     </div>
@@ -1570,7 +1567,7 @@ When displaying text to a user, such as error or debug messages, the client soft
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9.3. 輸送
+9.3. トランスポート
         </h5>
       </div>
     </div>
@@ -1582,7 +1579,7 @@ When displaying text to a user, such as error or debug messages, the client soft
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9.3.1. 守秘義務
+9.3.1. 機密性
         </h5>
       </div>
     </div>
@@ -1606,7 +1603,7 @@ The &#34;none&#34; cipher is provided for debugging and SHOULD NOT be used excep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「なし」の暗号はデバッグ用に提供されており、その目的以外では使用しないでください。その暗号特性は[RFC2410]で十分に説明されています、それはその使用がこのプロトコルの意図を満たさないことを示します。
+「なし」の暗号はデバッグ用に提供されており、その目的以外では使用しないでください。その暗号特性は[RFC2410]で十分に説明されており、その使用がこのプロトコルの意図を満たさないことを示しています。
         </p>
       </div>
     </div>
@@ -1676,7 +1673,7 @@ As an example, consider the following case:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-26">
-「５００ ｍｓ ぱっせｓ、 の あＣＫ」
+500ミリ秒経過、ACKなし
         </p>
       </div>
     </div>
@@ -1696,7 +1693,7 @@ ACK
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-64">
-アラス
+ACK
         </p>
       </div>
     </div>
@@ -1786,7 +1783,7 @@ Provided that the IV for the second SSH Record is fixed after the data for the D
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-データパケットのデータが決定された後、2番目のSSHレコードのIVが修正された場合、以下を実行する必要があります。
+データパケットのデータが決定された後、2番目のSSHレコードのIVが固定された場合、以下を実行する必要があります。
         </p>
       </div>
     </div>
@@ -1798,7 +1795,7 @@ read from user encrypt null packet encrypt data packet
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-9">
-ユーザーからの読み取りnullパケットの暗号化データパケットの暗号化
+ユーザーからの読み取り、nullパケットの暗号化、データパケットの暗号化
         </p>
       </div>
     </div>
@@ -1906,7 +1903,7 @@ MAC、または場合によってはHMACへの入力として単調に増加す�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9.3.4. 真ん中の男
+9.3.4. 中間者攻撃
         </h5>
       </div>
     </div>
@@ -2038,7 +2035,7 @@ The protocol was not designed to eliminate covert channels. For example, the pad
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9.3.7. 秘密の転送
+9.3.7. 前方秘匿性
         </h5>
       </div>
     </div>
@@ -2050,7 +2047,7 @@ It should be noted that the Diffie-Hellman key exchanges may provide perfect for
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Diffie-Hellman鍵交換は、Perfect Forward Secrecy（PFS）を提供する場合があることに注意してください。 PFSは基本的に、キー確立プロトコルの暗号化プロパティとして定義されています。このプロトコルでは、特定のセッション後のセッションキーまたは長期的な秘密キーの侵害が、以前のセッションの侵害を引き起こさない[ANSI-T1.523-2001] 。 [SSH-TRANS]のDiffie-Hellman鍵交換セクションで説明されているdiffie-hellman方式を使用した鍵交換から生じるSSHセッション（ &#34;diffie-hellman-group1-sha1&#34;と &#34;diffie-hellman-group14-sha1&#34;を含む）秘密鍵/認証情報が後で明らかになったとしても安全ですが、セッション鍵が明らかにされた場合はそうではありません。したがって、このPFSの定義を考えると、SSHにはPFSがあります。ただし、このプロパティは、SSHをトランスポートとして使用するアプリケーションやプロトコルには通用しません。 SSHのトランスポート層は、パスワード認証および秘密データに依存するその他の方法に機密性を提供します。
+Diffie-Hellman鍵交換は、Perfect Forward Secrecy（PFS）を提供する場合があることに注意してください。 PFSは基本的に、キー確立プロトコルにおいて、特定のセッション後のセッションキーまたは長期的な秘密キーの侵害が、以前のセッションの侵害を引き起こさないという暗号化プロパティとして定義されています[ANSI-T1.523-2001] 。 [SSH-TRANS]のDiffie-Hellman鍵交換セクションで説明されているdiffie-hellman方式を使用した鍵交換から生じるSSHセッション（ &#34;diffie-hellman-group1-sha1&#34;と &#34;diffie-hellman-group14-sha1&#34;を含む）秘密鍵/認証情報が後で明らかになったとしても安全ですが、セッション鍵が明らかにされた場合はそうではありません。したがって、このPFSの定義を考えると、SSHにはPFSがあります。ただし、このプロパティは、SSHをトランスポートとして使用するアプリケーションやプロトコルには通用しません。 SSHのトランスポート層は、パスワード認証および秘密データに依存するその他の方法に機密性を提供します。
         </p>
       </div>
     </div>
@@ -2170,7 +2167,7 @@ The server may go into a sleep period after repeated unsuccessful authentication
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9.4.1. 弱い輸送
+9.4.1. 弱いトランスポート
         </h5>
       </div>
     </div>
@@ -2698,7 +2695,7 @@ X11転送プロトコルの実装者は、[SSH-CONNECT]で説明されている�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC1282] Office、B。、「BSD Rlogin」、RFC 1282、1991年12月。
+[RFC1282] Kantor、B。、「BSD Rlogin」、RFC 1282、1991年12月。
         </p>
       </div>
     </div>
@@ -2938,7 +2935,7 @@ X11転送プロトコルの実装者は、[SSH-CONNECT]で説明されている�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[ROGAWAY] Rogaway、P。、「Proposeds with Proposed IP Cryptography」、未公開の論文http://www.cs.ucdavis.edu/~rogaway/papers/draft-rogaway-ipsec-comments-00.txt、1996。
+[ROGAWAY] Rogaway、P。、「Problems with Proposed IP Cryptography」、未公開の論文http://www.cs.ucdavis.edu/~rogaway/papers/draft-rogaway-ipsec-comments-00.txt、1996。
         </p>
       </div>
     </div>
@@ -3156,7 +3153,7 @@ The IETF invites any interested party to bring to its attention any copyrights, 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IETFは、この規格を実装するために必要となる可能性のある技術をカバーする可能性のある著作権、特許、特許出願、またはその他の所有権に注意を向けるよう、関係者に呼びかけます。 IEETのietf-ipr@ietf.orgに情報を送信してください。
+IETFは、この規格を実装するために必要となる可能性のある技術をカバーする可能性のある著作権、特許、特許出願、またはその他の所有権に注意を向けるよう、関係者に呼びかけます。 IETFのietf-ipr@ietf.orgに情報を送信してください。
         </p>
       </div>
     </div>
