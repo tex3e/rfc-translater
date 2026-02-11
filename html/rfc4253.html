@@ -48,7 +48,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 4253 - Secure Shell（SSH）トランスポート層プロトコル</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -355,7 +355,7 @@ All documents related to the SSH protocols shall use the keywords &#34;MUST&#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SSHプロトコルに関連するすべてのドキュメントは、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」を使用するものとします。要件を説明する「オプション」。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
+SSHプロトコルに関連するすべてのドキュメントは、要件を記述するために、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、および「OPTIONAL」を使用するものとします。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -367,7 +367,7 @@ The keywords &#34;PRIVATE USE&#34;, &#34;HIERARCHICAL ALLOCATION&#34;, &#34;FIRS
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントに表示されるキーワード「プライベート使用」、「階層割り当て」、「ファーストカムファーストサーブド」、「エキスパートレビュー」、「仕様が必要」、「IESG承認」、「IETFコンセンサス」、および「標準アクション」名前空間の割り当てを説明するために使用されるものは、[RFC2434]で説明されているように解釈されます。
+名前空間の割り当てを記述するために使用される場合、このドキュメントに表示されるキーワード「PRIVATE USE」、「HIERARCHICAL ALLOCATION」、「FIRST COME FIRST SERVED」、「EXPERT REVIEW」、「SPECIFICATION REQUIRED」、「IESG APPROVAL」、「IETF CONSENSUS」、および「STANDARDS ACTION」は、[RFC2434]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -2389,7 +2389,7 @@ o Initial IV client to server: HASH(K || H || &#34;A&#34; || session_id) (Here K
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o サーバーへの最初のIVクライアント：HASH（K || H || &#34;A&#34; || session_id）（ここで、Kはmpintとしてエンコードされ、 &#34;A&#34;はバイトとして、session_idは生データとしてエンコードされます。 &#34;A&#34;は単一文字A、ASCIIを意味します65）。
+o クライアントからサーバーへの初期IV：HASH（K || H || &#34;A&#34; || session_id）（ここで、Kはmpintとしてエンコードされ、 &#34;A&#34;はバイトとして、session_idは生データとしてエンコードされます。 &#34;A&#34;は単一文字A、ASCII 65を意味します）。
         </p>
       </div>
     </div>
@@ -2401,7 +2401,7 @@ o Initial IV server to client: HASH(K || H || &#34;B&#34; || session_id)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o 最初のIVサーバーからクライアントへ：HASH（K || H || &#34;B&#34; || session_id）
+o サーバーからクライアントへの初期IV：HASH（K || H || &#34;B&#34; || session_id）
         </p>
       </div>
     </div>
@@ -2413,7 +2413,7 @@ o Encryption key client to server: HASH(K || H || &#34;C&#34; || session_id)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o クライアントからサーバーへの暗号化キークライアント：HASH（K || H || &#34;C&#34; || session_id）
+o クライアントからサーバーへの暗号化キー：HASH（K || H || &#34;C&#34; || session_id）
         </p>
       </div>
     </div>
@@ -2425,7 +2425,7 @@ o Encryption key server to client: HASH(K || H || &#34;D&#34; || session_id)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o クライアントへの暗号化キーサーバー：HASH（K || H || &#34;D&#34; || session_id）
+o サーバーからクライアントへの暗号化キー：HASH（K || H || &#34;D&#34; || session_id）
         </p>
       </div>
     </div>
@@ -2437,7 +2437,7 @@ o Integrity key client to server: HASH(K || H || &#34;E&#34; || session_id)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o クライアントからサーバーへの整合性キークライアント：HASH（K || H || &#34;E&#34; || session_id）
+o クライアントからサーバーへの整合性キー：HASH（K || H || &#34;E&#34; || session_id）
         </p>
       </div>
     </div>
@@ -2449,7 +2449,7 @@ o Integrity key server to client: HASH(K || H || &#34;F&#34; || session_id)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-o クライアントへの整合性キーサーバー：HASH（K || H || &#34;F&#34; || session_id）
+o サーバーからクライアントへの整合性キー：HASH（K || H || &#34;F&#34; || session_id）
         </p>
       </div>
     </div>
