@@ -449,7 +449,7 @@
       "indent": 0,
       "text": "3.3. Sign",
       "section_title": true,
-      "ja": "3.3. 符号"
+      "ja": "3.3. 署名"
     },
     {
       "indent": 3,
@@ -738,7 +738,7 @@
       "indent": 0,
       "text": "5.1.6. Sign",
       "section_title": true,
-      "ja": "5.1.6. 符号"
+      "ja": "5.1.6. 署名"
     },
     {
       "indent": 3,
@@ -980,7 +980,7 @@
       "indent": 0,
       "text": "5.2.6. Sign",
       "section_title": true,
-      "ja": "5.2.6. 符号"
+      "ja": "5.2.6. 署名"
     },
     {
       "indent": 3,
@@ -1481,7 +1481,7 @@
       "indent": 0,
       "text": "8.4. Signature Malleability",
       "section_title": true,
-      "ja": "8.4. Signature Malleability"
+      "ja": "8.4. 署名の可変性"
     },
     {
       "indent": 3,
