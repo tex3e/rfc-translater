@@ -47,7 +47,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 9783 - ARMのプラットフォームセキュリティアーキテクチャ（PSA）証明トークン</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -402,7 +402,7 @@ The terms Attester, Relying Party, Verifier, Attestation Result, Target Environm
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-証明、依存者、検証者、証明の結果、ターゲット環境、環境の証明、および証拠という用語は、[RFC9334]で定義されています。「受信機」という用語を使用して、頼るパーティーと検証因子を指します。
+証明、頼る当事者、検証者、証明の結果、ターゲット環境、環境の証明、および証拠という用語は、[RFC9334]で定義されています。「受信機」という用語を使用して、頼る当事者と検証者を指します。
         </p>
       </div>
     </div>
@@ -426,7 +426,7 @@ Root of Trust (RoT):
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ルートオブトラスト（腐敗）：
+ルートオブトラスト（RoT）：
         </p>
       </div>
     </div>
@@ -438,7 +438,7 @@ The minimal set of software, hardware, and data that has to be implicitly truste
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-プラットフォームで暗黙的に信頼する必要があるソフトウェア、ハードウェア、およびデータの最小限のセット。より深いレベルのソフトウェアやハードウェアはありません。これにより、腐敗が本物で変更されていないことを確認できます。腐敗の例は、特定のハードウェアプラットフォームで実行されている暗号化関数と資格情報を含むROMの初期ブートローダーです。
+プラットフォームで暗黙的に信頼する必要があるソフトウェア、ハードウェア、およびデータの最小限のセット。より深いレベルのソフトウェアやハードウェアはありません。これにより、RoTが本物で変更されていないことを確認できます。RoTの例は、特定のハードウェアプラットフォームで実行されている暗号化関数と資格情報を含むROMの初期ブートローダーです。
         </p>
       </div>
     </div>
@@ -462,7 +462,7 @@ A platform&#39;s processing environment for software that provides confidentiali
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-SPE以外のソフトウェアとハードウェアから、ランタイム状態に機密性と整合性を提供するソフトウェア用のプラットフォームの処理環境。信頼できるコードと信頼できるハードウェアが含まれています。（Tシャツ、「セキュアワールド」、または「セキュアエンクレーブ」に相当します。）
+SPE以外のソフトウェアとハードウェアから、ランタイム状態に機密性と整合性を提供するソフトウェア用のプラットフォームの処理環境。信頼できるコードと信頼できるハードウェアが含まれています。（TEE、「セキュアワールド」、または「セキュアエンクレーブ」に相当します。）
         </p>
       </div>
     </div>
@@ -581,7 +581,7 @@ The PSA Attester is a relatively straightforward embodiment of the RATS Attester
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-PSA Attesterは、1つの証明環境と1つ以上のターゲット環境を備えたラットの攻撃の比較的単純な具体化です。
+PSA Attesterは、1つの証明環境と1つ以上のターゲット環境を備えたRATSアテスターの比較的単純な具体化です。
         </p>
       </div>
     </div>
@@ -718,7 +718,7 @@ The Target Environments can be of four types, some of which may or may not be pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* （のサブセット）インスタンスと実装IDを含むPSA ROTパラメーター。
+* PSA RoTパラメーター（インスタンスIDと実装IDを含む）の一部。
         </p>
       </div>
     </div>
@@ -730,7 +730,7 @@ The Target Environments can be of four types, some of which may or may not be pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* 安全なパーティションマネージャーとすべてのPSA ROTサービスを含む、更新可能なPSA ROT。
+* 安全なパーティションマネージャーとすべてのPSA RoTサービスを含む、更新可能なPSA RoT。
         </p>
       </div>
     </div>
@@ -742,7 +742,7 @@ The Target Environments can be of four types, some of which may or may not be pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* （オプションの）アプリケーションの腐敗は、PSA ROTサービスを利用する可能性のあるアプリケーション定義のセキュリティサービスです。
+* （オプションの）アプリケーションRoTは、PSA RoTサービスを利用する可能性のあるアプリケーション定義のセキュリティサービスです。
         </p>
       </div>
     </div>
@@ -1262,7 +1262,7 @@ The Security Lifecycle claim represents the current lifecycle state of the PSA R
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュリティライフサイクルの主張は、PSA腐敗の現在のライフサイクル状態を表しています。状態は、主要な状態と小国家を伝えるために分割された整数によって表されます。主要な状態は必須であり、[PSA-SM]によって定義されています。マイナー状態はオプションであり、「実装が定義されている」。PSAセキュリティライフサイクルの状態と実装状態は、次のようにエンコードされています。
+セキュリティライフサイクルの主張は、PSA RoTの現在のライフサイクル状態を表しています。状態は、主要な状態と小国家を伝えるために分割された整数によって表されます。主要な状態は必須であり、[PSA-SM]によって定義されています。マイナー状態はオプションであり、「実装が定義されている」。PSAセキュリティライフサイクルの状態と実装状態は、次のようにエンコードされています。
         </p>
       </div>
     </div>
@@ -1298,7 +1298,7 @@ The PSA lifecycle states are illustrated in Figure 4. For PSA, a Verifier can on
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-PSAライフサイクルの状態を図4に示します。PSAの場合、検証者はPSA ROTからのレポートのみをセキュリティで保護している場合、またはnon_psa_rot_debugの主要状態です。
+PSAライフサイクルの状態を図4に示します。PSAの場合、検証者は、PSA RoTがSECUREDまたはNON_PSA_ROT_DEBUGの主要な状態にある場合にのみ、PSA RoTからのレポートを信頼できます。
         </p>
       </div>
     </div>
@@ -1554,7 +1554,7 @@ The Software Components claim is a list of software components that includes all
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ソフトウェアコンポーネントのクレームは、PSA ROTによってロードされたすべてのソフトウェア（コードと構成の両方）を含むソフトウェアコンポーネントのリストです。このクレームは、[PSA-SM]に適合した実装によって生成される証明トークンに含める必要があります。
+ソフトウェアコンポーネントのクレームは、PSA RoTによってロードされたすべてのソフトウェア（コードと構成の両方）を含むソフトウェアコンポーネントのリストです。このクレームは、[PSA-SM]に適合した実装によって生成される証明トークンに含める必要があります。
         </p>
       </div>
     </div>
@@ -1667,7 +1667,7 @@ a Boot Loader
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「Prot」：
+「PRoT」：
         </p>
       </div>
     </div>
@@ -1679,7 +1679,7 @@ a component of the PSA Root of Trust
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-信頼のPSAルートのコンポーネント
+PSA RoTの構成要素
         </p>
       </div>
     </div>
@@ -1691,7 +1691,7 @@ a component of the PSA Root of Trust
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「アロ」：
+「ARoT」：
         </p>
       </div>
     </div>
@@ -1703,7 +1703,7 @@ a component of the Application Root of Trust
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-信頼のアプリケーションルートのコンポーネント
+アプリケーションRoTの構成要素
         </p>
       </div>
     </div>
@@ -1763,7 +1763,7 @@ The same labels with a &#34;_CONFIG&#34; postfix (e.g., &#34;PRoT_CONFIG&#34;) M
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「_config」ポストフィックス（「prot_config」など）を備えた同じラベルを構成測定に使用できます。
+「_CONFIG」ポストフィックス（「PRoT_CONFIG」など）を備えた同じラベルを構成測定に使用できます。
         </p>
       </div>
     </div>
@@ -1799,7 +1799,7 @@ The Measurement Value attribute (key=2) represents a hash of the invariant softw
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-測定値属性（key = 2）は、起動時にメモリ内の不変ソフトウェアコンポーネントのハッシュを表します。値は、256ビット以下の暗号化ハッシュでなければなりません。
+測定値属性（key = 2）は、起動時にメモリ内の不変ソフトウェアコンポーネントのハッシュを表します。値は、256ビット以上の暗号化ハッシュでなければなりません。
         </p>
       </div>
     </div>
@@ -1859,7 +1859,7 @@ The Signer ID attribute (key=5) uniquely identifies the signer of the software c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名者ID属性（key = 5）は、ソフトウェアコンポーネントの署名者を一意に識別します。識別は通常、署名者の公開鍵をハッシュすることによって達成されます。この属性の値は、コンポーネントの元のマニフェストのエントリに対応します。これは、検証剤が使用して、予想される信頼できるソースによってコンポーネントが署名されたことを確認できます。
+署名者ID属性（key = 5）は、ソフトウェアコンポーネントの署名者を一意に識別します。識別は通常、署名者の公開鍵をハッシュすることによって達成されます。この属性の値は、コンポーネントの元のマニフェストのエントリに対応します。これは、検証者が使用して、予想される信頼できるソースによってコンポーネントが署名されたことを確認できます。
         </p>
       </div>
     </div>
@@ -1979,7 +1979,7 @@ Note: This hint requires the Relying Party to parse the content of the PSA token
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：このヒントでは、PSAトークンのコンテンツを解析するために頼る当事者が必要です。依存者は、デジタル署名を検証するために信託アンカーを所有していない可能性があるため、攻撃者が提供するデータを含む外部当事者が提供する他の情報を扱うのと同じ方法でヒントを使用します。
+注：このヒントでは、PSAトークンのコンテンツを解析するために頼る当事者が必要です。頼る当事者は、デジタル署名を検証するために信託アンカーを所有していない可能性があるため、攻撃者が提供するデータを含む外部当事者が提供する他の情報を扱うのと同じ方法でヒントを使用します。
         </p>
       </div>
     </div>
@@ -2350,7 +2350,7 @@ This document also defines a &#34;TFM&#34; profile (Section 5.2) that builds on 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、ベースラインに基づいて構築されながら、COSEアルゴリズムの使用を制約して、アテッターと検証剤間の相互運用性を改善する「TFM」プロファイル（セクション5.2）を定義します。
+このドキュメントでは、ベースラインに基づいて構築されながら、COSEアルゴリズムの使用を制約して、アテスターと検証者間の相互運用性を改善する「TFM」プロファイル（セクション5.2）を定義します。
         </p>
       </div>
     </div>
@@ -2806,7 +2806,7 @@ IAKs (see Section 3) can be either raw public keys or certified public keys.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IAKS（セクション3を参照）は、生の公開鍵または認定公開キーのいずれかです。
+IAK（セクション3を参照）は、生の公開鍵または認定公開キーのいずれかです。
         </p>
       </div>
     </div>
@@ -2818,7 +2818,7 @@ Certified public keys require the manufacturer to run the certification authorit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-認定公開鍵では、製造業者がIAKSのX.509証明書を発行する認定機関（CA）を運営する必要があります。（CAを運営することは、特定のメーカーにとって手に負えない複雑で高価なタスクであることに注意してください。）
+認定公開鍵では、製造業者がIAKのX.509証明書を発行する認定機関（CA）を運営する必要があります。（CAを運営することは、特定のメーカーにとって手に負えない複雑で高価なタスクであることに注意してください。）
         </p>
       </div>
     </div>
@@ -2842,7 +2842,7 @@ Using certified public keys offers better scalability properties when compared t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* 検証剤のストレージ要件が最小化されます。同じメーカーの信頼アンカーは、任意の数のデバイスに使用されます。
+* 検証者のストレージ要件が最小化されます。同じメーカーの信頼アンカーは、任意の数のデバイスに使用されます。
         </p>
       </div>
     </div>
@@ -2902,7 +2902,7 @@ To verify the token, the primary need is to check correct encoding and signing a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-トークンを検証するために、主な必要性は、セクション5.1.1で詳述されているように、正しいエンコードと署名を確認することです。検証に使用されるキーは、セクション7で説明されているようにX5チェーンヘッダーパラメーターを使用して、対応するAttesterのインスタンスIDとともに、対応するAttesterのインスタンスIDとトークンにインラインされた認定証書によって検証剤に提供されるかのいずれかです。IAKが生の鍵であり、インスタンスIDのクレームは、CWTをカバーする兆候を検証する鍵を見つけるために使用される場合に使用されます。IAKが認定された公開キーである場合、X.509パスの構築と検証（[X509]のセクション6）までのCAまでのCAまでは、キーを使用してトークンの署名を確認する前に成功する必要があります。これには、取り消しチェックも含まれます。
+トークンを検証するために、主な必要性は、セクション5.1.1で詳述されているように、正しいエンコードと署名を確認することです。検証に使用されるキーは、セクション7で説明されているようにX5チェーンヘッダーパラメーターを使用して、対応するアテスターのインスタンスIDとともに、対応するアテスターのインスタンスIDとトークンにインラインされた認定証書によって検証者に提供されるかのいずれかです。IAKが生の鍵であり、インスタンスIDのクレームは、CWTトークンをカバーする署名を検証する鍵を見つけるために使用される場合に使用されます。IAKが認定された公開キーである場合、X.509パスの構築と検証（[X509]のセクション6）までのCAまでのCAまでは、キーを使用してトークンの署名を確認する前に成功する必要があります。これには、取り消しチェックも含まれます。
         </p>
       </div>
     </div>
@@ -2938,7 +2938,7 @@ Verifierには通常、このプロファイルの一部のクレームを、特
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* ソフトウェアコンポーネント、測定値：この値は、サプライチェーンからのファームウェアリリースを一意に識別できます。場合によっては、検証剤は、一連のファームウェアリリースのレコードを、元のベースラインリリースまでのパッチであることを維持する場合があります。検証ポリシーにより、この値がそのリリースシーケンスの任意のポイントに一致するか、シーケンスに関連する最小レベルの成熟度を期待する場合があります。
+* ソフトウェアコンポーネント、測定値：この値は、サプライチェーンからのファームウェアリリースを一意に識別できます。場合によっては、検証者は、一連のファームウェアリリースのレコードを、元のベースラインリリースまでのパッチであることを維持する場合があります。検証ポリシーにより、この値がそのリリースシーケンスの任意のポイントに一致するか、シーケンスに関連する最小レベルの成熟度を期待する場合があります。
         </p>
       </div>
     </div>
@@ -2998,7 +2998,7 @@ The contents of Table 5 are intended as guidance for implementing a PSA Verifier
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-表5の内容は、AR4SIを使用して結果を計算するPSA検証剤を実装するためのガイダンスとして意図されています。表には、どのPSAの証拠がAR4SIの信頼性の主張に関連しているか（もしあれば）が主張するか、したがって、PSA Attesterに関連する特定の機能を評価するかどうか、どのように評価するかを検証者が考慮しなければならないことを説明しています。
+表5の内容は、AR4SIを使用して結果を計算するPSA検証者を実装するためのガイダンスとして意図されています。表には、どのPSAの証拠がAR4SIの信頼性の主張に関連しているか（もしあれば）が主張するか、したがって、PSAアテスターに関連する特定の機能を評価するかどうか、どのように評価するかを検証者が考慮しなければならないことを説明しています。
         </p>
       </div>
     </div>
@@ -3127,7 +3127,7 @@ A PSA Attester MUST NOT provide Evidence to an untrusted challenger, as it may a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-PSAの攻撃者は、攻撃者が干渉し、検証者をだまして攻撃者が正当な攻撃であると信じることを可能にする可能性があるため、信頼できない挑戦者に証拠を提供してはなりません。これは、PSAの証明トークンを使用して依存者にアテスターを認証するプロトコルに特に関連しています。
+PSAの攻撃者は、攻撃者が干渉し、検証者をだまして攻撃者が正当な攻撃であると信じることを可能にする可能性があるため、信頼できない挑戦者に証拠を提供してはなりません。これは、PSAの証明トークンを使用して頼る当事者にアテスターを認証するプロトコルに特に関連しています。
         </p>
       </div>
     </div>
@@ -5181,7 +5181,7 @@ The JWK representation of the IAK used for creating the COSE Mac0 signature over
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-PSAトークンを介したコードMAC0署名の作成に使用されるオークのJWK表現は次のとおりです。
+PSAトークンを介したコードMAC0署名の作成に使用されるIAKのJWK表現は次のとおりです。
         </p>
       </div>
     </div>

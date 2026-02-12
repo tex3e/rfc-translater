@@ -5,7 +5,7 @@
   },
   "number": 9783,
   "created_at": "2025-06-15 23:24:07.016198+09:00",
-  "updated_by": "",
+  "updated_by": "自動生成＆有志による翻訳・編集",
   "contents": [
     {
       "indent": 0,
@@ -140,7 +140,7 @@
     {
       "indent": 3,
       "text": "The terms Attester, Relying Party, Verifier, Attestation Result, Target Environment, Attesting Environment, and Evidence are defined in [RFC9334]. We use the term \"receiver\" to refer to Relying Parties and Verifiers.",
-      "ja": "証明、依存者、検証者、証明の結果、ターゲット環境、環境の証明、および証拠という用語は、[RFC9334]で定義されています。「受信機」という用語を使用して、頼るパーティーと検証因子を指します。"
+      "ja": "証明、頼る当事者、検証者、証明の結果、ターゲット環境、環境の証明、および証拠という用語は、[RFC9334]で定義されています。「受信機」という用語を使用して、頼る当事者と検証者を指します。"
     },
     {
       "indent": 3,
@@ -150,12 +150,12 @@
     {
       "indent": 3,
       "text": "Root of Trust (RoT):",
-      "ja": "ルートオブトラスト（腐敗）："
+      "ja": "ルートオブトラスト（RoT）："
     },
     {
       "indent": 12,
       "text": "The minimal set of software, hardware, and data that has to be implicitly trusted in the platform; there is no software or hardware at a deeper level that can verify that the RoT is authentic and unmodified. An example of RoT is an initial bootloader in ROM, which contains cryptographic functions and credentials, running on a specific hardware platform.",
-      "ja": "プラットフォームで暗黙的に信頼する必要があるソフトウェア、ハードウェア、およびデータの最小限のセット。より深いレベルのソフトウェアやハードウェアはありません。これにより、腐敗が本物で変更されていないことを確認できます。腐敗の例は、特定のハードウェアプラットフォームで実行されている暗号化関数と資格情報を含むROMの初期ブートローダーです。"
+      "ja": "プラットフォームで暗黙的に信頼する必要があるソフトウェア、ハードウェア、およびデータの最小限のセット。より深いレベルのソフトウェアやハードウェアはありません。これにより、RoTが本物で変更されていないことを確認できます。RoTの例は、特定のハードウェアプラットフォームで実行されている暗号化関数と資格情報を含むROMの初期ブートローダーです。"
     },
     {
       "indent": 3,
@@ -165,7 +165,7 @@
     {
       "indent": 12,
       "text": "A platform's processing environment for software that provides confidentiality and integrity for its runtime state, from software and hardware, outside of the SPE. Contains trusted code and trusted hardware. (Equivalent to a TEE, \"secure world\", or \"secure enclave\".)",
-      "ja": "SPE以外のソフトウェアとハードウェアから、ランタイム状態に機密性と整合性を提供するソフトウェア用のプラットフォームの処理環境。信頼できるコードと信頼できるハードウェアが含まれています。（Tシャツ、「セキュアワールド」、または「セキュアエンクレーブ」に相当します。）"
+      "ja": "SPE以外のソフトウェアとハードウェアから、ランタイム状態に機密性と整合性を提供するソフトウェア用のプラットフォームの処理環境。信頼できるコードと信頼できるハードウェアが含まれています。（TEE、「セキュアワールド」、または「セキュアエンクレーブ」に相当します。）"
     },
     {
       "indent": 3,
@@ -207,7 +207,7 @@
     {
       "indent": 3,
       "text": "The PSA Attester is a relatively straightforward embodiment of the RATS Attester with exactly one Attesting Environment and one or more Target Environments.",
-      "ja": "PSA Attesterは、1つの証明環境と1つ以上のターゲット環境を備えたラットの攻撃の比較的単純な具体化です。"
+      "ja": "PSA Attesterは、1つの証明環境と1つ以上のターゲット環境を備えたRATSアテスターの比較的単純な具体化です。"
     },
     {
       "indent": 3,
@@ -259,17 +259,17 @@
     {
       "indent": 6,
       "text": "* (A subset of) the PSA RoT parameters, including Instance and Implementation IDs.",
-      "ja": "* （のサブセット）インスタンスと実装IDを含むPSA ROTパラメーター。"
+      "ja": "* PSA RoTパラメーター（インスタンスIDと実装IDを含む）の一部。"
     },
     {
       "indent": 6,
       "text": "* The updateable PSA RoT, including the Secure Partition Manager and all PSA RoT services.",
-      "ja": "* 安全なパーティションマネージャーとすべてのPSA ROTサービスを含む、更新可能なPSA ROT。"
+      "ja": "* 安全なパーティションマネージャーとすべてのPSA RoTサービスを含む、更新可能なPSA RoT。"
     },
     {
       "indent": 6,
       "text": "* The (optional) Application RoT, that is any application-defined security service possibly making use of the PSA RoT services.",
-      "ja": "* （オプションの）アプリケーションの腐敗は、PSA ROTサービスを利用する可能性のあるアプリケーション定義のセキュリティサービスです。"
+      "ja": "* （オプションの）アプリケーションRoTは、PSA RoTサービスを利用する可能性のあるアプリケーション定義のセキュリティサービスです。"
     },
     {
       "indent": 6,
@@ -505,7 +505,7 @@
     {
       "indent": 3,
       "text": "The Security Lifecycle claim represents the current lifecycle state of the PSA RoT. The state is represented by an integer that is divided to convey a major state and a minor state. A major state is mandatory and defined by [PSA-SM]. A minor state is optional and 'IMPLEMENTATION DEFINED'. The PSA security lifecycle state and implementation state are encoded as follows:",
-      "ja": "セキュリティライフサイクルの主張は、PSA腐敗の現在のライフサイクル状態を表しています。状態は、主要な状態と小国家を伝えるために分割された整数によって表されます。主要な状態は必須であり、[PSA-SM]によって定義されています。マイナー状態はオプションであり、「実装が定義されている」。PSAセキュリティライフサイクルの状態と実装状態は、次のようにエンコードされています。"
+      "ja": "セキュリティライフサイクルの主張は、PSA RoTの現在のライフサイクル状態を表しています。状態は、主要な状態と小国家を伝えるために分割された整数によって表されます。主要な状態は必須であり、[PSA-SM]によって定義されています。マイナー状態はオプションであり、「実装が定義されている」。PSAセキュリティライフサイクルの状態と実装状態は、次のようにエンコードされています。"
     },
     {
       "indent": 6,
@@ -520,7 +520,7 @@
     {
       "indent": 3,
       "text": "The PSA lifecycle states are illustrated in Figure 4. For PSA, a Verifier can only trust reports from the PSA RoT when it is in SECURED or NON_PSA_ROT_DEBUG major states.",
-      "ja": "PSAライフサイクルの状態を図4に示します。PSAの場合、検証者はPSA ROTからのレポートのみをセキュリティで保護している場合、またはnon_psa_rot_debugの主要状態です。"
+      "ja": "PSAライフサイクルの状態を図4に示します。PSAの場合、検証者は、PSA RoTがSECUREDまたはNON_PSA_ROT_DEBUGの主要な状態にある場合にのみ、PSA RoTからのレポートを信頼できます。"
     },
     {
       "indent": 3,
@@ -612,7 +612,7 @@
     {
       "indent": 3,
       "text": "The Software Components claim is a list of software components that includes all the software (both code and configuration) loaded by the PSA RoT. This claim MUST be included in attestation tokens produced by an implementation conformant with [PSA-SM].",
-      "ja": "ソフトウェアコンポーネントのクレームは、PSA ROTによってロードされたすべてのソフトウェア（コードと構成の両方）を含むソフトウェアコンポーネントのリストです。このクレームは、[PSA-SM]に適合した実装によって生成される証明トークンに含める必要があります。"
+      "ja": "ソフトウェアコンポーネントのクレームは、PSA RoTによってロードされたすべてのソフトウェア（コードと構成の両方）を含むソフトウェアコンポーネントのリストです。このクレームは、[PSA-SM]に適合した実装によって生成される証明トークンに含める必要があります。"
     },
     {
       "indent": 3,
@@ -659,22 +659,22 @@
     {
       "indent": 3,
       "text": "\"PRoT\":",
-      "ja": "「Prot」："
+      "ja": "「PRoT」："
     },
     {
       "indent": 12,
       "text": "a component of the PSA Root of Trust",
-      "ja": "信頼のPSAルートのコンポーネント"
+      "ja": "PSA RoTの構成要素"
     },
     {
       "indent": 3,
       "text": "\"ARoT\":",
-      "ja": "「アロ」："
+      "ja": "「ARoT」："
     },
     {
       "indent": 12,
       "text": "a component of the Application Root of Trust",
-      "ja": "信頼のアプリケーションルートのコンポーネント"
+      "ja": "アプリケーションRoTの構成要素"
     },
     {
       "indent": 3,
@@ -699,7 +699,7 @@
     {
       "indent": 3,
       "text": "The same labels with a \"_CONFIG\" postfix (e.g., \"PRoT_CONFIG\") MAY be used for configuration measurements.",
-      "ja": "「_config」ポストフィックス（「prot_config」など）を備えた同じラベルを構成測定に使用できます。"
+      "ja": "「_CONFIG」ポストフィックス（「PRoT_CONFIG」など）を備えた同じラベルを構成測定に使用できます。"
     },
     {
       "indent": 3,
@@ -715,7 +715,7 @@
     {
       "indent": 3,
       "text": "The Measurement Value attribute (key=2) represents a hash of the invariant software component in memory at startup time. The value MUST be a cryptographic hash of 256 bits or stronger.",
-      "ja": "測定値属性（key = 2）は、起動時にメモリ内の不変ソフトウェアコンポーネントのハッシュを表します。値は、256ビット以下の暗号化ハッシュでなければなりません。"
+      "ja": "測定値属性（key = 2）は、起動時にメモリ内の不変ソフトウェアコンポーネントのハッシュを表します。値は、256ビット以上の暗号化ハッシュでなければなりません。"
     },
     {
       "indent": 3,
@@ -742,7 +742,7 @@
     {
       "indent": 3,
       "text": "The Signer ID attribute (key=5) uniquely identifies the signer of the software component. The identification is typically accomplished by hashing the signer's public key. The value of this attribute will correspond to the entry in the original manifest for the component. This can be used by a Verifier to ensure the components were signed by an expected trusted source.",
-      "ja": "署名者ID属性（key = 5）は、ソフトウェアコンポーネントの署名者を一意に識別します。識別は通常、署名者の公開鍵をハッシュすることによって達成されます。この属性の値は、コンポーネントの元のマニフェストのエントリに対応します。これは、検証剤が使用して、予想される信頼できるソースによってコンポーネントが署名されたことを確認できます。"
+      "ja": "署名者ID属性（key = 5）は、ソフトウェアコンポーネントの署名者を一意に識別します。識別は通常、署名者の公開鍵をハッシュすることによって達成されます。この属性の値は、コンポーネントの元のマニフェストのエントリに対応します。これは、検証者が使用して、予想される信頼できるソースによってコンポーネントが署名されたことを確認できます。"
     },
     {
       "indent": 3,
@@ -796,7 +796,7 @@
     {
       "indent": 3,
       "text": "Note: This hint requires the Relying Party to parse the content of the PSA token. Since the Relying Party may not be in possession of a trust anchor to verify the digital signature, it uses the hint in the same way as it would treat any other information provided by an external party, which includes attacker-provided data.",
-      "ja": "注：このヒントでは、PSAトークンのコンテンツを解析するために頼る当事者が必要です。依存者は、デジタル署名を検証するために信託アンカーを所有していない可能性があるため、攻撃者が提供するデータを含む外部当事者が提供する他の情報を扱うのと同じ方法でヒントを使用します。"
+      "ja": "注：このヒントでは、PSAトークンのコンテンツを解析するために頼る当事者が必要です。頼る当事者は、デジタル署名を検証するために信託アンカーを所有していない可能性があるため、攻撃者が提供するデータを含む外部当事者が提供する他の情報を扱うのと同じ方法でヒントを使用します。"
     },
     {
       "indent": 0,
@@ -947,7 +947,7 @@
     {
       "indent": 3,
       "text": "This document also defines a \"TFM\" profile (Section 5.2) that builds on the baseline while constraining the use of COSE algorithms to improve interoperability between Attesters and Verifiers.",
-      "ja": "このドキュメントでは、ベースラインに基づいて構築されながら、COSEアルゴリズムの使用を制約して、アテッターと検証剤間の相互運用性を改善する「TFM」プロファイル（セクション5.2）を定義します。"
+      "ja": "このドキュメントでは、ベースラインに基づいて構築されながら、COSEアルゴリズムの使用を制約して、アテスターと検証者間の相互運用性を改善する「TFM」プロファイル（セクション5.2）を定義します。"
     },
     {
       "indent": 3,
@@ -1082,12 +1082,12 @@
     {
       "indent": 3,
       "text": "IAKs (see Section 3) can be either raw public keys or certified public keys.",
-      "ja": "IAKS（セクション3を参照）は、生の公開鍵または認定公開キーのいずれかです。"
+      "ja": "IAK（セクション3を参照）は、生の公開鍵または認定公開キーのいずれかです。"
     },
     {
       "indent": 3,
       "text": "Certified public keys require the manufacturer to run the certification authority (CA) that issues X.509 certificates for the IAKs. (Note that operating a CA is a complex and expensive task that may be unaffordable to certain manufacturers.)",
-      "ja": "認定公開鍵では、製造業者がIAKSのX.509証明書を発行する認定機関（CA）を運営する必要があります。（CAを運営することは、特定のメーカーにとって手に負えない複雑で高価なタスクであることに注意してください。）"
+      "ja": "認定公開鍵では、製造業者がIAKのX.509証明書を発行する認定機関（CA）を運営する必要があります。（CAを運営することは、特定のメーカーにとって手に負えない複雑で高価なタスクであることに注意してください。）"
     },
     {
       "indent": 3,
@@ -1097,7 +1097,7 @@
     {
       "indent": 6,
       "text": "* Storage requirements for the Verifier are minimized; the same manufacturer's trust anchor is used for any number of devices.",
-      "ja": "* 検証剤のストレージ要件が最小化されます。同じメーカーの信頼アンカーは、任意の数のデバイスに使用されます。"
+      "ja": "* 検証者のストレージ要件が最小化されます。同じメーカーの信頼アンカーは、任意の数のデバイスに使用されます。"
     },
     {
       "indent": 6,
@@ -1123,7 +1123,7 @@
     {
       "indent": 3,
       "text": "To verify the token, the primary need is to check correct encoding and signing as detailed in Section 5.1.1. The key used for verification is either supplied to the Verifier by an authorized Endorser along with the corresponding Attester's Instance ID or inlined in the token using the x5chain header parameter as described in Section 7. If the IAK is a raw public key and the Instance ID claim is used to assist in locating the key used to verify the signature covering the CWT token. If the IAK is a certified public key, X.509 path construction and validation (Section 6 of [X509]) up to a trusted CA MUST be successful before the key is used to verify the token signature. This also includes revocation checking.",
-      "ja": "トークンを検証するために、主な必要性は、セクション5.1.1で詳述されているように、正しいエンコードと署名を確認することです。検証に使用されるキーは、セクション7で説明されているようにX5チェーンヘッダーパラメーターを使用して、対応するAttesterのインスタンスIDとともに、対応するAttesterのインスタンスIDとトークンにインラインされた認定証書によって検証剤に提供されるかのいずれかです。IAKが生の鍵であり、インスタンスIDのクレームは、CWTをカバーする兆候を検証する鍵を見つけるために使用される場合に使用されます。IAKが認定された公開キーである場合、X.509パスの構築と検証（[X509]のセクション6）までのCAまでのCAまでは、キーを使用してトークンの署名を確認する前に成功する必要があります。これには、取り消しチェックも含まれます。"
+      "ja": "トークンを検証するために、主な必要性は、セクション5.1.1で詳述されているように、正しいエンコードと署名を確認することです。検証に使用されるキーは、セクション7で説明されているようにX5チェーンヘッダーパラメーターを使用して、対応するアテスターのインスタンスIDとともに、対応するアテスターのインスタンスIDとトークンにインラインされた認定証書によって検証者に提供されるかのいずれかです。IAKが生の鍵であり、インスタンスIDのクレームは、CWTトークンをカバーする署名を検証する鍵を見つけるために使用される場合に使用されます。IAKが認定された公開キーである場合、X.509パスの構築と検証（[X509]のセクション6）までのCAまでのCAまでは、キーを使用してトークンの署名を確認する前に成功する必要があります。これには、取り消しチェックも含まれます。"
     },
     {
       "indent": 3,
@@ -1138,7 +1138,7 @@
     {
       "indent": 6,
       "text": "* Software Component, Measurement Value: This value can uniquely identify a firmware release from the supply chain. In some cases, a Verifier may maintain a record for a series of firmware releases being patches to an original baseline release. A verification policy may then allow this value to match any point on that release sequence or expect some minimum level of maturity related to the sequence.",
-      "ja": "* ソフトウェアコンポーネント、測定値：この値は、サプライチェーンからのファームウェアリリースを一意に識別できます。場合によっては、検証剤は、一連のファームウェアリリースのレコードを、元のベースラインリリースまでのパッチであることを維持する場合があります。検証ポリシーにより、この値がそのリリースシーケンスの任意のポイントに一致するか、シーケンスに関連する最小レベルの成熟度を期待する場合があります。"
+      "ja": "* ソフトウェアコンポーネント、測定値：この値は、サプライチェーンからのファームウェアリリースを一意に識別できます。場合によっては、検証者は、一連のファームウェアリリースのレコードを、元のベースラインリリースまでのパッチであることを維持する場合があります。検証ポリシーにより、この値がそのリリースシーケンスの任意のポイントに一致するか、シーケンスに関連する最小レベルの成熟度を期待する場合があります。"
     },
     {
       "indent": 6,
@@ -1164,7 +1164,7 @@
     {
       "indent": 3,
       "text": "The contents of Table 5 are intended as guidance for implementing a PSA Verifier that computes its results using AR4SI. The table describes which PSA Evidence claims (if any) are related to which AR4SI trustworthiness claim, and therefore what the Verifier must consider when deciding if and how to appraise a certain feature associated with the PSA Attester.",
-      "ja": "表5の内容は、AR4SIを使用して結果を計算するPSA検証剤を実装するためのガイダンスとして意図されています。表には、どのPSAの証拠がAR4SIの信頼性の主張に関連しているか（もしあれば）が主張するか、したがって、PSA Attesterに関連する特定の機能を評価するかどうか、どのように評価するかを検証者が考慮しなければならないことを説明しています。"
+      "ja": "表5の内容は、AR4SIを使用して結果を計算するPSA検証者を実装するためのガイダンスとして意図されています。表には、どのPSAの証拠がAR4SIの信頼性の主張に関連しているか（もしあれば）が主張するか、したがって、PSAアテスターに関連する特定の機能を評価するかどうか、どのように評価するかを検証者が考慮しなければならないことを説明しています。"
     },
     {
       "indent": 4,
@@ -1212,7 +1212,7 @@
     {
       "indent": 3,
       "text": "A PSA Attester MUST NOT provide Evidence to an untrusted challenger, as it may allow attackers to interpose and trick the Verifier into believing the attacker is a legitimate Attester. This is especially relevant to protocols that use PSA attestation tokens to authenticate the attester to a Relying Party.",
-      "ja": "PSAの攻撃者は、攻撃者が干渉し、検証者をだまして攻撃者が正当な攻撃であると信じることを可能にする可能性があるため、信頼できない挑戦者に証拠を提供してはなりません。これは、PSAの証明トークンを使用して依存者にアテスターを認証するプロトコルに特に関連しています。"
+      "ja": "PSAの攻撃者は、攻撃者が干渉し、検証者をだまして攻撃者が正当な攻撃であると信じることを可能にする可能性があるため、信頼できない挑戦者に証拠を提供してはなりません。これは、PSAの証明トークンを使用して頼る当事者にアテスターを認証するプロトコルに特に関連しています。"
     },
     {
       "indent": 3,
@@ -2123,7 +2123,7 @@
     {
       "indent": 3,
       "text": "The JWK representation of the IAK used for creating the COSE Mac0 signature over the PSA token is:",
-      "ja": "PSAトークンを介したコードMAC0署名の作成に使用されるオークのJWK表現は次のとおりです。"
+      "ja": "PSAトークンを介したコードMAC0署名の作成に使用されるIAKのJWK表現は次のとおりです。"
     },
     {
       "indent": 3,
