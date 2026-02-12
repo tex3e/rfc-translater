@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RFC 9449 - OAuth 2.0 Demonstrating Proof of Possession (DPoP) 日本語訳</title>
-  <meta name="description" content="RFC 9449は、OAuth 2.0 Demonstrating Proof of Possession (DPoP)を通じてOAuth 2.0トークンの送信元制限を実現し、再生攻撃を検出することを目的としています。">
+  <meta name="description" content="RFC 9449は、OAuth 2.0 証明鍵に基づく所有証明 (DPoP) を通じてOAuth 2.0トークンの送信者制限を実現し、リプレイ攻撃を検出することを目的としています。">
   
   <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -47,8 +47,8 @@
           </a>
         </span><br>
         <span class="title_ja">
-          タイトル : <strong>RFC 9449 - OAUTH2.0所有証明の実証（DPOP）</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+          タイトル : <strong>RFC 9449 - OAuth 2.0 証明鍵に基づく所有証明 (DPoP)</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -59,7 +59,7 @@
     <div id="rfc_summary">
       <div class="card mb-3">
         <div class="card-body">
-          <p class="card-text">[要約] RFC 9449は、OAuth 2.0 Demonstrating Proof of Possession (DPoP)を通じてOAuth 2.0トークンの送信元制限を実現し、再生攻撃を検出することを目的としています。</p>
+          <p class="card-text">[要約] RFC 9449は、OAuth 2.0 証明鍵に基づく所有証明 (DPoP) を通じてOAuth 2.0トークンの送信者制限を実現し、リプレイ攻撃を検出することを目的としています。</p>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ OAuth 2.0 Demonstrating Proof of Possession (DPoP)
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-OAUTH2.0所有証明の実証（DPOP）
+OAuth 2.0 証明鍵に基づく所有証明 (DPoP)
         </h5>
       </div>
     </div>
@@ -150,7 +150,7 @@ This document is a product of the Internet Engineering Task Force (IETF). It rep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、インターネットエンジニアリングタスクフォース（IETF）の製品です。IETFコミュニティのコンセンサスを表しています。公開レビューを受けており、インターネットエンジニアリングステアリンググループ（IESG）からの出版が承認されています。インターネット標準の詳細については、RFC 7841のセクション2で入手できます。
+このドキュメントは、インターネット技術タスクフォース (IETF) の成果です。これはIETFコミュニティの合意を表しています。公開レビューを受け、インターネット技術ステアリンググループ (IESG) による公開が承認されています。インターネット標準に関する追加情報は、RFC 7841のセクション2で参照できます。
         </p>
       </div>
     </div>
@@ -162,7 +162,7 @@ Information about the current status of this document, any errata, and how to pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの現在のステータス、任意のERRATA、およびそのフィードバックを提供する方法に関する情報は、https：//www.rfc-editor.org/info/rfc9449で取得できます。
+このドキュメントの現在のステータス、正誤表 (errata)、およびフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9449で参照できます。
         </p>
       </div>
     </div>
@@ -186,7 +186,7 @@ Copyright (c) 2023 IETF Trust and the persons identified as the document authors
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-著作権（c）2023 IETF Trustおよび文書著者として特定された人。無断転載を禁じます。
+著作権（c）2023 IETF Trust および文書の著者として識別された者。無断転載を禁じます。
         </p>
       </div>
     </div>
@@ -198,7 +198,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、BCP 78およびIETFドキュメント（https://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、セクション4.Eで説明されている法的規定のセクション4.Eで説明されており、改訂されたBSDライセンスで説明されている保証なしで提供されるように、改訂されたBSDライセンステキストを含める必要があります。
+本ドキュメントは、BCP 78 および本ドキュメントの発行日に有効な IETF Trust の法的規定 (https://trustee.ietf.org/license-info) に従うものとします。これらの文書には、本ドキュメントに関するお客様の権利と制限が記載されていますので、注意深くご確認ください。本ドキュメントから抽出されたコードコンポーネントは、Trust Legal Provisions のセクション 4.e に記載されている Revised BSD License のテキストを含める必要があり、Revised BSD License に記載されている通り無保証で提供されます。
         </p>
       </div>
     </div>
@@ -293,7 +293,7 @@ Demonstrating Proof of Possession (DPoP) is an application-level mechanism for s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-所有証明（DPOP）の実証は、送信者が制約しているOAuth [RFC6749]アクセスと更新トークンのアプリケーションレベルのメカニズムです。これにより、クライアントは、HTTPリクエストにDPOPヘッダーを含めることにより、パブリック/プライベートキーペアの所有を証明できます。ヘッダーの値は、JSON Webトークン（JWT）[RFC7519]で、認証サーバーは発行されたトークンをクライアントのキーペアの公開部分にバインドできます。そのようなトークンの受信者は、クライアントがDPOPヘッダーを介して保持することを実証したキーペアへのトークンのバインディングを検証することができ、それにより、トークンを提示するクライアントが秘密鍵も所有していることを保証することができます。言い換えれば、トークンの合法的なプレゼンターは、キーペアの私的部分を保持し、証明する送信者に制約されています。
+証明鍵に基づく所有証明 (DPoP) は、送信者制限型の OAuth [RFC6749] アクセスおよびリフレッシュトークンを対象としたアプリケーションレベルのメカニズムです。これにより、クライアントはHTTPリクエストにDPoPヘッダーを含めることで、公開鍵/秘密鍵ペアの所有を証明できます。このヘッダーの値はJSON Web Token (JWT) [RFC7519] であり、認可サーバーは発行されたトークンをクライアントの鍵ペアの公開部分にバインドできます。このようなトークンの受信者は、クライアントがDPoPヘッダーを介して所有を実証した鍵ペアとトークンとのバインディングを検証でき、それにより、トークンを提示するクライアントも秘密鍵を所有しているという確証を得られます。言い換えれば、トークンの正当な提示者は、鍵ペアの秘密部分を保持し、その所有を証明する送信者に限定されます。
         </p>
       </div>
     </div>
@@ -305,7 +305,7 @@ The mechanism specified herein can be used in cases where other methods of sende
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-本明細書で指定されているメカニズムは、[RFC8705]や[トークン結合]などの基礎となる安全な輸送層の要素を利用する他の送信者が制約するトークンの他の方法が利用可能または望ましくない場合に使用できます。たとえば、ユーザーエージェントのTLSクライアント認証のサブパーユーザーエクスペリエンスとHTTPトークンバインディングのサポートの欠如により、OAuthクライアントがWebブラウザーで動的にダウンロードおよび実行されるアプリケーションである場合、どちらのメカニズムも使用できません。（「シングルページアプリケーション」と呼ばれることもあります）。さらに、ユーザーのデバイスにインストールされて直接実行されるアプリケーションは、侵害または悪意のあるリソースによってトークンの誤用を防ぐDPOPに縛られたトークンの恩恵を受けるのに適しています。このようなアプリケーションには、多くの場合、暗号化キー用の専用保護ストレージがあります。
+本ドキュメントで指定されているメカニズムは、[RFC8705]や[TOKEN-BINDING]のような、基盤となるセキュアなトランスポート層の要素を利用する他の送信者制限型トークン方法が利用できない、または望ましくない場合に使用できます。たとえば、ユーザーエージェントにおけるTLSクライアント認証のユーザーエクスペリエンスが劣悪であることや、HTTPトークンバインディングのサポートが不足しているため、OAuthクライアントがWebブラウザで動的にダウンロードおよび実行されるアプリケーション（「シングルページアプリケーション」と呼ばれることもある）である場合、どちらのメカニズムも使用できません。さらに、ユーザーのデバイスに直接インストールされて実行されるアプリケーションは、侵害された、または悪意のあるリソースによるトークンの不正使用から保護するDPoPバインドされたトークンの恩恵を受けるのに適しています。このようなアプリケーションは、多くの場合、暗号鍵用の専用の保護ストレージを持っています。
         </p>
       </div>
     </div>
@@ -317,7 +317,7 @@ DPoP can be used to sender-constrain access tokens regardless of the client auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPは、採用されたクライアント認証方法に関係なく、Sender-Constrainアクセストークンに使用できますが、DPOP自体はクライアント認証には使用されません。DPOPは、パブリッククライアント（Client_IDに関連付けられた認証資格情報のないもの）に発行された送信者とコストレーションの更新トークンにも使用できます。
+DPoPは、使用されるクライアント認証方法に関わらず、送信者制限型のアクセストークンに使用できますが、DPoP自体はクライアント認証には使用されません。DPoPは、パブリッククライアント (client_id に関連付けられた認証情報を持たないクライアント) に発行された送信者制限型のリフレッシュトークンにも使用できます。
         </p>
       </div>
     </div>
@@ -341,7 +341,7 @@ The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この文書のキーワード &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL&#34;, &#34;SHALL NOT&#34;, &#34;SHOULD&#34;, &#34;SHOULD NOT&#34;, &#34;RECOMMENDED&#34;, &#34;MAY&#34;, および &#34;OPTIONAL&#34; はBCP 14 [RFC2119] [RFC8174]で説明されているように、すべて大文字の場合にのみ解釈されます。
+この文書のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、「OPTIONAL」は、すべて大文字で記述されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているとおりに解釈されます。
         </p>
       </div>
     </div>
@@ -353,7 +353,7 @@ This specification uses the Augmented Backus-Naur Form (ABNF) notation of [RFC52
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、[RFC5234]の拡張されたBackus-Naurフォーム（ABNF）表記を使用します。
+この仕様では、[RFC5234]の拡張バッカス・ナウア記法 (ABNF) を使用します。
         </p>
       </div>
     </div>
@@ -365,7 +365,7 @@ This specification uses the terms &#34;access token&#34;, &#34;refresh token&#34
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、「アクセストークン」、「リフレッシュトークン」、「認証サーバー」、「リソースサーバー」、「認証エンドポイント」、「認証リクエスト」、「認証応答」、「トークンエンドポイント」、「グラントタイプ」という用語を使用します。「アクセストークンリクエスト」、「アクセストークン応答」、「クライアント」、「パブリッククライアント」、および「OAUTH 2.0 Authorization Framework」[RFC6749]で定義された「Confidential Client」。
+この仕様では、「アクセストークン」、「リフレッシュトークン」、「認可サーバー」、「リソースサーバー」、「認可エンドポイント」、「認可リクエスト」、「認可レスポンス」、「トークンエンドポイント」、「グラント種別」、「アクセストークンリクエスト」、「アクセストークンレスポンス」、「クライアント」、「パブリッククライアント」、および「OAuth 2.0 Authorization Framework」[RFC6749]で定義されている「コンフィデンシャルクライアント」という用語を使用します。
         </p>
       </div>
     </div>
@@ -389,7 +389,7 @@ The terms &#34;JOSE&#34; and &#34;JOSE Header&#34; are imported from [RFC7515].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「Jose」と「Jose Header」という用語は[RFC7515]からインポートされます。
+「JOSE」と「JOSE Header」という用語は[RFC7515]からインポートされます。
         </p>
       </div>
     </div>
@@ -401,7 +401,7 @@ This document contains non-normative examples of partial and complete HTTP messa
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントには、部分的および完全なHTTPメッセージの非規範的な例が含まれています。いくつかの例は、[RFC8792]に従って、長い値のラインラッピングを示すために、単一の後続のバックスラッシュを使用しています。ラップラインのキャラクターと主要なスペースは、値の一部ではありません。
+このドキュメントには、部分的および完全なHTTPメッセージの非規範的な例が含まれています。一部の例では、長い値の行折り返しを示すために、[RFC8792] に従って単一の末尾のバックスラッシュを使用しています。折り返された行の文字と先行するスペースは、値の一部ではありません。
         </p>
       </div>
     </div>
@@ -425,7 +425,7 @@ The primary aim of DPoP is to prevent unauthorized or illegitimate parties from 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPの主な目的は、発行時にトークンを公開キーに拘束し、クライアントがトークンを使用するときに対応する秘密鍵の所有を証明することを要求することにより、不正なまたは違法な当事者が漏れたまたは盗まれたアクセストークンを使用することを防ぐことです。これにより、トークンの正当な送信者が秘密鍵にアクセスできるパーティーのみに制約し、トークンを受信するサーバーに、送信者がそれを使用することを合法的に許可されているという保証を追加しました。
+DPoPの主な目的は、発行時にトークンを公開鍵に紐付けし、クライアントがトークンを使用するときに対応する秘密鍵の所有を証明することを要求することによって、不正な当事者や悪意のある当事者による、漏洩または盗難されたアクセストークンの使用を防止することです。これにより、トークンの正当な送信者を秘密鍵にアクセスできる当事者のみに限定し、トークンを受け取るサーバーに対して、その送信者が正当にトークンを使用する権限があるという追加の保証を与えます。
         </p>
       </div>
     </div>
@@ -437,7 +437,7 @@ Access tokens that are sender-constrained via DPoP thus stand in contrast to the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-したがって、DPOPを介して制御に制約されている送信者にアクセスしているアクセストークンは、このようなトークンを所持している当事者が使用できる典型的なベアラートークンとは対照的です。ベアラートークンの意図しない開示を防ぐために一般的に保護が存在しますが、プロトコルまたはソフトウェアスタックの他のレイヤーの脆弱性と実装の問題により、漏れの予期せぬベクターが発生しました（たとえば、圧縮比が簡単に作られた（犯罪）[犯罪）[犯罪を参照]、ハイパーテキスト（違反）[ブリーチ]、ハートブルド[ハートブルド]、およびクラウドフラアパーサーバグ[クラウドビード]の適応的圧縮によるブラウザ偵察と除去。また、OAuthの実装自体に対するトークン盗難攻撃が多数ありました（[github.tokens]は、1つの有名な例です）。DPOPは、予期しないトークン漏れの影響に対して、一般的な防御を深く提供します。ただし、DPOPは安全な輸送の代替品ではなく、常にHTTPSと組み合わせて使用する必要があります。
+したがって、DPoP によって送信者制限されたアクセストークンは、そのトークンを所持する任意の当事者が使用できる典型的なベアラートークンとは対照的です。ベアラートークンの意図しない開示を防ぐための保護は一般的に存在しますが、プロトコルまたはソフトウェアスタックの他の層における脆弱性や実装上の問題により、予期せぬ情報漏洩経路が発生しています（例えば、CRIME [CRIME]、BREACH [BREACH]、Heartbleed [Heartbleed]、Cloudflare パーサーバグ [Cloudbleed] など）。OAuth の実装自体に対する多数のトークン窃盗攻撃も報告されています（[GitHub.Tokens] はその一例です）。DPoP は、予期せぬトークン漏洩の影響に対する一般的な多層防御を提供します。ただし、DPoP はセキュアなトランスポートの代替ではなく、常にHTTPSと組み合わせて使用する必要があります。
         </p>
       </div>
     </div>
@@ -449,7 +449,7 @@ The very nature of the typical OAuth protocol interaction necessitates that the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-典型的なOAUTHプロトコル相互作用の本質は、クライアントがアクセスする保護リソースへのアクセストークンを開示することを必要とします。[セキュリティトピック]の攻撃者モデルは、保護されたリソースが偽造、悪意、または侵害されている可能性のあるケースを説明し、他の保護されたリソースに対してトークンを受け取って許可されていないアクセスを獲得します。オーディエンス制限のアクセストークン（たとえば、JWT [RFC7519] AUDクレームを使用）は、そのような誤用を防ぐことができます。ただし、実際にそうすることは、多くの展開に対して法外に扱いにくいことが証明されています（[RFC8707]などの拡張にもかかわらず）。Sender-Constraining Access Tokenは、このようなトークンリプレイを別のエンドポイントで防ぐためのより堅牢で簡単なメカニズムであり、DPOPはアクセス可能なアプリケーション層の手段です。
+典型的なOAuthプロトコルによるやり取りの本質上、クライアントはアクセスする保護されたリソースに対してアクセストークンを開示する必要があります。[SECURITY-TOPICS] の攻撃者モデルは、保護されたリソースが偽造、悪意、または侵害されている可能性のあるケースを説明し、受け取ったトークンを他の保護されたリソースに対して再生することで不正アクセスを得る可能性があります。オーディエンス制限されたアクセストークン（例えば、JWT [RFC7519] の aud クレームを使用）は、そのような誤用を防止できます。しかし、実際には、多くの展開でこれが法外に煩雑であることが判明しています（[RFC8707] などの拡張にもかかわらず）。送信者制限型アクセストークンは、異なるエンドポイントでのトークンリプレイを防止するための、より堅牢で分かりやすいメカニズムであり、DPoP は、これを実現するためのアクセスしやすいアプリケーション層の手段です。
         </p>
       </div>
     </div>
@@ -461,7 +461,7 @@ Due to the potential for cross-site scripting (XSS), browser-based OAuth clients
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クロスサイトスクリプト（XSS）の可能性があるため、ブラウザベースのOAUTHクライアントは、トークンの保護に関して追加の考慮事項をもたらします。最も簡単なXSSベースの攻撃は、攻撃者がトークンを除去し、正当なクライアントから完全に独立してそれを使用することです。盗まれたアクセストークンは、保護されたリソースアクセスに使用され、盗まれた更新トークンが新しいアクセストークンの取得に使用されます。秘密鍵が抽出不可能である場合（[W3C.WebCryptoapi]可能な限り）、DPOPはExflted Tokensだけを使用できません。
+クロスサイトスクリプト（XSS）の可能性があるため、ブラウザベースのOAuthクライアントは、トークンの保護に関して追加の考慮事項をもたらします。最も単純なXSSベースの攻撃は、攻撃者がトークンを窃取し、正当なクライアントから完全に独立してそれを使用することです。窃取されたアクセストークンは保護されたリソースへのアクセスに使用され、窃取されたリフレッシュトークンは新しいアクセストークンを取得するために使用されます。秘密鍵が抽出不可能である場合（[W3C.WebCryptoAPI] のように）、DPoP は、窃取されたトークン単独では使用不可能にします。
         </p>
       </div>
     </div>
@@ -473,7 +473,7 @@ XSS vulnerabilities also allow an attacker to execute code in the context of the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-XSSの脆弱性により、攻撃者はブラウザーベースのクライアントアプリケーションのコンテキストでコードを実行し、クライアントを介してトークンを間接的に使用することもできます。その実行コンテキストは、署名キーを利用するためにアクセスできます。したがって、トークンと組み合わせて使用するDPOPプルーフを生成できます。このアプリケーションレイヤーでは、一般にXSSを防ぐことを除いて、この脅威に対する実行可能な防御はおそらくない可能性が高いです。したがって、DPOPの範囲外と見なされます。
+XSSの脆弱性により、攻撃者はブラウザベースのクライアントアプリケーションのコンテキストでコードを実行し、クライアントを介してトークンを間接的に悪用することもできます。その実行コンテキストは、署名鍵を利用するアクセス権限を持ちます。したがって、トークンと組み合わせて使用するDPoP証明を生成できます。このアプリケーション層においては、一般的にXSSを防止することを除いて、この脅威に対する実現可能な防御策はおそらくありません。したがって、これはDPoP の範囲外と見なされます。
         </p>
       </div>
     </div>
@@ -485,7 +485,7 @@ Malicious XSS code executed in the context of the browser-based client applicati
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ブラウザベースのクライアントアプリケーションのコンテキストで実行された悪意のあるXSSコードは、将来のタイムスタンプの値を持つDPOPプルーフを作成し、トークンと組み合わせてそれらを除去する立場にあります。これらの盗まれたアーティファクトは、クライアントアプリケーションとは無関係に保護されたリソースにアクセスするために使用できます。これを防ぐために、サーバーはオプションで、クライアントが攻撃者（NONCE）では予測できない証明にサーバーを選択した値を含めるように要求することができます。オプションのNonCEがない場合、事前に計算されたDPOPプルーフの影響は、保護されたリソースアクセスのアクセストークンにバインドされていることにより、いくらか制限されています。まだ存在しないアクセストークンをカバーするプルーフを実行可能に作成できないため、Exftlted Refreshトークンと事前計算された証明で取得したアクセストークンは使用できません。
+ブラウザベースのクライアントアプリケーションのコンテキストで実行された悪意のあるXSSコードは、将来のタイムスタンプ値を持つDPoP証明を作成し、トークンと組み合わせて窃取する可能性があります。これらの窃取された成果物は、後でクライアントアプリケーションとは独立して保護されたリソースにアクセスするために使用できます。これを防止するため、サーバーは、攻撃者が予測できないサーバーによって選択された値（nonce）を証明に含めるようクライアントにオプションで要求することができます。オプションの nonce がない場合でも、事前に計算されたDPoP証明の影響は、保護されたリソースアクセス時のアクセストークンへのバインディングによって、ある程度制限されます。まだ存在しないアクセストークンを対象とする証明は現実的に作成できないため、窃取されたリフレッシュトークンと事前に計算された証明で取得されたアクセストークンは使用できなくなります。
         </p>
       </div>
     </div>
@@ -521,7 +521,7 @@ The main data structure introduced by this specification is a DPoP proof JWT tha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様で導入された主なデータ構造は、以下で詳しく説明するように、HTTP要求でヘッダーとして送信されるDPOP証明JWTです。クライアントは、DPOPプルーフJWTを使用して、特定の公開キーに対応する秘密鍵の所有を証明します。
+この仕様で導入された主なデータ構造は、以下で詳しく説明するように、HTTPリクエストでヘッダーとして送信されるDPoP証明JWTです。クライアントはDPoP証明JWTを使用して、特定の公開鍵に対応する秘密鍵の所有を証明します。
         </p>
       </div>
     </div>
@@ -533,7 +533,7 @@ Roughly speaking, a DPoP proof is a signature over:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-大まかに言えば、DPOP証明は署名です：
+大まかに言えば、DPoP証明は以下のものに対する署名です：
         </p>
       </div>
     </div>
@@ -581,7 +581,7 @@ Roughly speaking, a DPoP proof is a signature over:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* オプションのサーバーが提供するNonce、および
+* オプションのサーバーが提供するnonce、および
         </p>
       </div>
     </div>
@@ -626,7 +626,7 @@ Figure 1: Basic DPoP Flow
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-25">
-図1：基本的なDPOPフロー
+図1：基本的なDPoPフロー
         </p>
       </div>
     </div>
@@ -638,7 +638,7 @@ The basic steps of an OAuth flow with DPoP (without the optional nonce) are show
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPを使用したOAuthフローの基本的なステップ（オプションのNONCEなし）を図1に示します。
+DPoPを使用したOAuthフローの基本的なステップ（オプションのnonceなし）を図1に示します。
         </p>
       </div>
     </div>
@@ -650,7 +650,7 @@ A. In the token request, the client sends an authorization grant (e.g., an autho
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-8">
-A.トークンリクエストでは、クライアントは、アクセストークン（および潜在的に更新トークン）を取得するために、承認助成金（承認コード、更新トークンなど）を認証サーバーに送信します。クライアントは、HTTPヘッダーのリクエストにDPOPプルーフを添付します。
+A.トークンリクエストでは、クライアントは、アクセストークン（および潜在的にリフレッシュトークン）を取得するために、認可グラント（認可コード、リフレッシュトークンなど）を認可サーバーに送信します。クライアントは、HTTPヘッダーのリクエストにDPoP証明を添付します。
         </p>
       </div>
     </div>
@@ -662,7 +662,7 @@ B. The authorization server binds (sender-constrains) the access token to the pu
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-8">
-B.承認サーバーは、DPOP証明でクライアントが請求した公開鍵へのアクセストークンにバインドされます（Sender-Constrains）。つまり、それぞれの秘密鍵の所有を証明せずにアクセストークンを使用することはできません。更新トークンがパブリッククライアントに発行された場合、DPOPプルーフの公開鍵にもバインドされます。
+B. 認可サーバーは、DPoP証明でクライアントが主張する公開鍵にアクセストークンをバインドします（送信者制限）。つまり、それぞれの秘密鍵の所有を証明せずにアクセストークンを使用することはできません。リフレッシュトークンがパブリッククライアントに発行された場合、それもDPoP証明の公開鍵にバインドされます。
         </p>
       </div>
     </div>
@@ -674,7 +674,7 @@ C. To use the access token, the client has to prove possession of the private ke
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-8">
-C.アクセストークンを使用するには、クライアントは再び、その要求のDPOP証明を運ぶリクエストにヘッダーを追加することにより、秘密鍵の所有を証明する必要があります。リソースサーバーは、アクセストークンがバインドされている公開キーに関する情報を受信する必要があります。この情報は、アクセストークン（JWT構造のアクセストークンの場合）に直接エンコードされるか、トークン内省のエンドポイントを介して提供される場合があります（示されていません）。リソースサーバーは、アクセストークンがバインドされている公開キーがDPOPプルーフの公開キーと一致することを確認します。また、DPOPプルーフのアクセストークンハッシュが、リクエストで提示されたアクセストークンと一致することも確認します。
+C.アクセストークンを使用するには、クライアントは再度、そのリクエストに対するDPoP証明を運ぶヘッダーをリクエストに追加することにより、秘密鍵の所有を証明する必要があります。リソースサーバーは、アクセストークンがバインドされている公開鍵に関する情報を受け取る必要があります。この情報は、アクセストークン（JWT構造のアクセストークンの場合）に直接エンコードされるか、トークンイントロスペクションエンドポイントを介して提供される場合があります（図には示されていません）。リソースサーバーは、アクセストークンがバインドされている公開鍵がDPoP証明の公開鍵と一致することを確認します。また、DPoP証明内のアクセストークンハッシュが、リクエストで提示されたアクセストークンと一致することも確認します。
         </p>
       </div>
     </div>
@@ -686,7 +686,7 @@ D. The resource server refuses to serve the request if the signature check fails
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-8">
-D.リソースサーバーは、署名チェックが失敗した場合、またはDPOP証明のデータが間違っている場合、リクエストの提供を拒否します。もちろん、アクセストークン自体は、他のすべての点でも有効でなければなりません。
+D.リソースサーバーは、署名チェックが失敗した場合、またはDPoP証明のデータが不正な場合（例えば、ターゲットURIがDPoP証明JWTのURIクレームと一致しない場合）に、リクエストの処理を拒否します。もちろん、アクセストークン自体も他のすべての点で有効でなければなりません。
         </p>
       </div>
     </div>
@@ -698,7 +698,7 @@ The DPoP mechanism presented herein is not a client authentication method. In fa
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ここで提示されるDPOPメカニズムは、クライアント認証方法ではありません。実際、DPOPの主なユースケースは、クライアント認証を使用しないパブリッククライアント（ユーザーのデバイス上の単一ページアプリケーションとアプリケーションなど）を対象としています。それにもかかわらず、DPOPは、private_key_jwtおよび他のすべてのクライアント認証方法と互換性があるように設計されています。
+ここで提示されるDPoPメカニズムは、クライアント認証方法ではありません。実際、DPoPの主なユースケースは、クライアント認証を使用しないパブリッククライアント（ユーザーのデバイス上のシングルページアプリケーションやアプリケーションなど）を対象としています。それにもかかわらず、DPoPは、private_key_jwtおよび他のすべてのクライアント認証方法と互換性があるように設計されています。
         </p>
       </div>
     </div>
@@ -710,7 +710,7 @@ DPoP does not directly ensure message integrity, but it relies on the TLS layer 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPはメッセージの整合性を直接保証しませんが、その目的のためにTLSレイヤーに依存しています。詳細については、セクション11を参照してください。
+DPoPはメッセージの整合性を直接保証しませんが、その目的のためにTLS層に依存しています。詳細については、セクション11を参照してください。
         </p>
       </div>
     </div>
@@ -722,7 +722,7 @@ DPOPはメッセージの整合性を直接保証しませんが、その目的�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4. DPOP証明JWTS
+4. DPoP証明JWT
         </h5>
       </div>
     </div>
@@ -734,7 +734,7 @@ DPoP introduces the concept of a DPoP proof, which is a JWT created by the clien
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPは、クライアントによって作成されたJWTであり、DPOPヘッダーフィールドを使用してHTTP要求で送信されたDPOPプルーフの概念を紹介します。各HTTP要求には、一意のDPOPプルーフが必要です。
+DPoPは、クライアントによって作成されたJWTであり、DPoPヘッダーフィールドを使用してHTTPリクエストで送信されるDPoP証明の概念を導入します。各HTTPリクエストには、一意のDPoP証明が必要です。
         </p>
       </div>
     </div>
@@ -746,7 +746,7 @@ A valid DPoP proof demonstrates to the server that the client holds the private 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-有効なDPOPプルーフは、クライアントがDPOPプルーフJWTに署名するために使用された秘密鍵を保持していることをサーバーに示しています。これにより、認定サーバーは、発行されたトークンを対応する公開キーにバインドできます（セクション5で説明）。秘密鍵にアクセスできないエンティティ。
+有効なDPoP証明は、クライアントがDPoP証明JWTの署名に使用した秘密鍵を保持していることをサーバーに示します。これにより、認可サーバーは、発行されたトークンを対応する公開鍵にバインドすることができ（セクション5参照）、リソースサーバーは、受け取ったトークンの鍵バインディングを検証することができます（セクション7.1参照）。これにより、秘密鍵にアクセスできないいかなるエンティティによる当該トークンの使用も防止されます。
         </p>
       </div>
     </div>
@@ -758,7 +758,7 @@ The DPoP proof demonstrates possession of a key and, by itself, is not an authen
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPの証明は、キーの所持を示しており、それ自体が認証またはアクセス制御メカニズムではありません。セクション7.1で説明されているように、キーバウンドアクセストークンと組み合わせて提示された場合、DPOPプルーフは、アクセストークンを提示するクライアントの正当性に関する追加の保証を提供します。ただし、有効なDPOP証明JWTでは、アクセス制御の決定を下すのに十分ではありません。
+DPoP証明は鍵の所有を実証するものであり、それ自体が認証またはアクセス制御メカニズムではありません。セクション7.1で説明されているように、鍵にバインドされたアクセストークンと組み合わせて提示された場合、DPoP証明は、アクセストークンを提示するクライアントの正当性に関する追加の保証を提供します。ただし、有効なDPoP証明JWTだけでは、アクセス制御の決定を下すのに十分ではありません。
         </p>
       </div>
     </div>
@@ -770,7 +770,7 @@ DPOPの証明は、キーの所持を示しており、それ自体が認証ま�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.1. DPOP HTTPヘッダー
+4.1. DPoP HTTPヘッダー
         </h5>
       </div>
     </div>
@@ -782,7 +782,7 @@ A DPoP proof is included in an HTTP request using the following request header f
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフは、次の要求ヘッダーフィールドを使用してHTTP要求に含まれています。
+DPoP証明は、次のリクエストヘッダーフィールドを使用してHTTPリクエストに含まれます。
         </p>
       </div>
     </div>
@@ -794,7 +794,7 @@ DPoP:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DEPOP：
+DPoP：
         </p>
       </div>
     </div>
@@ -818,7 +818,7 @@ Figure 2 shows an example DPoP HTTP header field. The example uses &#34;\&#34; l
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図2は、DPOP HTTPヘッダーフィールドの例を示しています。この例では、[RFC8792]ごとに「\」ラインラップを使用します。
+図2は、DPoP HTTPヘッダーフィールドの例を示しています。この例では、[RFC8792] に従って行折り返しを使用します。
         </p>
       </div>
     </div>
@@ -843,7 +843,7 @@ Figure 2: Example DPoP Header
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-23">
-図2：DPOPヘッダーの例
+図2：DPoPヘッダーの例
         </p>
       </div>
     </div>
@@ -855,7 +855,7 @@ Note that per [RFC9110], header field names are case insensitive; thus, DPoP, DP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[rfc9110]ごとに、ヘッダーフィールド名はケースの鈍感であることに注意してください。したがって、DPOP、DPOP、DPOPなどはすべて有効かつ同等のヘッダーフィールド名です。ただし、ヘッダーフィールド値ではケースが重要です。
+[RFC9110] によると、ヘッダーフィールド名は大文字と小文字を区別しません。したがって、DPoP、DPOP、dpop などはすべて有効かつ同等のヘッダーフィールド名として扱われます。ただし、ヘッダーフィールド値では大文字と小文字が区別されます。
         </p>
       </div>
     </div>
@@ -867,7 +867,7 @@ The DPoP HTTP header field value uses the token68 syntax defined in Section 11.2
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP HTTPヘッダーフィールド値は、[RFC9110]のセクション11.2で定義されているtoken68構文を使用し、参照を簡単にするために図3で以下に繰り返します。
+DPoP HTTPヘッダーフィールド値は、[RFC9110]のセクション11.2で定義されているtoken68構文を使用し、参照を容易にするために図3で以下に繰り返します。
         </p>
       </div>
     </div>
@@ -888,7 +888,7 @@ Figure 3: DPoP Header Field ABNF
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-22">
-図3：DPOPヘッダーフィールドABNF
+図3：DPoPヘッダーフィールドABNF
         </p>
       </div>
     </div>
@@ -900,7 +900,7 @@ Figure 3: DPoP Header Field ABNF
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.2. DPOP証明JWT構文
+4.2. DPoP証明JWT構文
         </h5>
       </div>
     </div>
@@ -912,7 +912,7 @@ A DPoP proof is a JWT [RFC7519] that is signed (using JSON Web Signature (JWS) [
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフは、クライアントが選択したプライベートキー（以下を参照）を備えた署名（JSON Web Signature（JWS）[RFC7515]を使用）に署名されたJWT [RFC7519]です。DPOP JWTのホセヘッダーには、少なくとも次のパラメーターが含まれている必要があります。
+DPoP証明は、クライアントが選択した秘密鍵を用いて署名された（JSON Web Signature (JWS) [RFC7515] を使用）JWT [RFC7519] です。DPoP JWTのJOSEヘッダーには、少なくとも次のパラメーターが含まれている必要があります。
         </p>
       </div>
     </div>
@@ -924,7 +924,7 @@ typ:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-タイプ：
+typ:
         </p>
       </div>
     </div>
@@ -936,7 +936,7 @@ A field with the value dpop+jwt, which explicitly types the DPoP proof JWT as re
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-[RFC8725]のセクション3.11で推奨されているように、DPOP Proof JWTを明示的にタイプする値DPOP JWTのフィールド。
+[RFC8725]のセクション3.11で推奨されているように、DPoP Proof JWTを明示的にタイプする値 dpop+jwt を持つフィールド。
         </p>
       </div>
     </div>
@@ -948,7 +948,7 @@ alg:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-アルグ：
+alg:
         </p>
       </div>
     </div>
@@ -960,7 +960,7 @@ An identifier for a JWS asymmetric digital signature algorithm from [IANA.JOSE.A
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-[iana.jose.algs]からのJWS非対称デジタル署名アルゴリズムの識別子。対称アルゴリズム（メッセージ認証コード（MAC））の識別子や識別子であってはなりません。
+[IANA.JOSE.ALGS]からのJWS非対称デジタル署名アルゴリズムの識別子。none、または対称アルゴリズム（メッセージ認証コード（MAC））の識別子であってはなりません。
         </p>
       </div>
     </div>
@@ -972,7 +972,7 @@ jwk:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JWK：
+jwk:
         </p>
       </div>
     </div>
@@ -984,7 +984,7 @@ Represents the public key chosen by the client in JSON Web Key (JWK) [RFC7517] f
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-[RFC7515]のセクション4.1.3で定義されているように、JSON Webキー（JWK）[RFC7517]形式のクライアントが選択した公開キーを表します。秘密鍵を含めてはなりません。
+[RFC7515]のセクション4.1.3で定義されているように、JSON Web Key (JWK) [RFC7517] 形式のクライアントが選択した公開鍵を表します。秘密鍵を含めてはなりません。
         </p>
       </div>
     </div>
@@ -996,7 +996,7 @@ The payload of a DPoP proof MUST contain at least the following claims:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP証明のペイロードには、少なくとも次のクレームが含まれている必要があります。
+DPoP証明のペイロードには、少なくとも次のクレームが含まれている必要があります。
         </p>
       </div>
     </div>
@@ -1008,7 +1008,7 @@ jti:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JTI：
+jti:
         </p>
       </div>
     </div>
@@ -1020,7 +1020,7 @@ Unique identifier for the DPoP proof JWT. The value MUST be assigned such that t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DPOPプルーフJWTの一意の識別子。値は、有効性の時間枠で同じコンテキストで使用される他のDPOP証明に同じ値が割り当てられるという無視できる確率があるように割り当てる必要があります。このような一意性は、少なくとも96ビットの擬似ランダムデータをエンコード（base64urlまたはその他の適切なエンコード）するか、[RFC4122]に従ってバージョン4の普遍的に一意の識別子（UUID）文字列を使用することで達成できます。JTIは、リプレイの検出と予防のためにサーバーで使用できます。セクション11.1を参照してください。
+DPoP証明JWTの一意の識別子。値は、有効性の時間枠で同じコンテキストで使用される他のDPoP証明に同じ値が割り当てられる確率が無視できるほど小さいように割り当てる必要があります。このような一意性は、少なくとも96ビットの擬似ランダムデータをエンコード（base64urlまたはその他の適切なエンコード）するか、[RFC4122]に従ってバージョン4のUUID (Universally Unique Identifier) 文字列を使用することで達成できます。jti は、リプレイの検出と防止のためにサーバーで使用できます。セクション11.1を参照してください。
         </p>
       </div>
     </div>
@@ -1032,7 +1032,7 @@ htm:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-HTM：
+htm:
         </p>
       </div>
     </div>
@@ -1044,7 +1044,7 @@ The value of the HTTP method (Section 9.1 of [RFC9110]) of the request to which 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JWTが添付されている要求のHTTPメソッド（[RFC9110]のセクション9.1）の値。
+JWTが添付されているリクエストのHTTPメソッド（[RFC9110]のセクション9.1）の値。
         </p>
       </div>
     </div>
@@ -1056,7 +1056,7 @@ htu:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-HTU：
+htu:
         </p>
       </div>
     </div>
@@ -1068,7 +1068,7 @@ The HTTP target URI (Section 7.1 of [RFC9110]) of the request to which the JWT i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JWTが添付されている要求のHTTPターゲットURI（[RFC9110]のセクション7.1）は、クエリとフラグメントパーツなしで添付されています。
+JWTが添付されているリクエストのHTTPターゲットURI（[RFC9110]のセクション7.1）で、クエリとフラグメント部分を含まないもの。
         </p>
       </div>
     </div>
@@ -1080,7 +1080,7 @@ iat:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IAT：
+iat:
         </p>
       </div>
     </div>
@@ -1104,7 +1104,7 @@ When the DPoP proof is used in conjunction with the presentation of an access to
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフが、保護されたリソースアクセスでアクセストークンの提示と併せて使用される場合（セクション7を参照）、DPOPプルーフには次のクレームも含める必要があります。
+DPoP証明が、保護されたリソースアクセスでアクセストークンの提示と併せて使用される場合（セクション7を参照）、DPoP証明には次のクレームも含める必要があります。
         </p>
       </div>
     </div>
@@ -1116,7 +1116,7 @@ ath:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ATH：
+ath:
         </p>
       </div>
     </div>
@@ -1128,7 +1128,7 @@ Hash of the access token. The value MUST be the result of a base64url encoding (
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-アクセストークンのハッシュ。値は、関連するアクセストークンの値のASCIIエンコードのSHA-256 [SHS]ハッシュのsha-256 [shs]ハッシュのbase64urlエンコードの結果でなければなりません。
+アクセストークンのハッシュ。値は、関連するアクセストークンの値のASCIIエンコーディングのSHA-256 [SHS] ハッシュを、base64urlエンコーディング（[RFC7515] のセクション2で定義）した結果である必要があります。
         </p>
       </div>
     </div>
@@ -1140,7 +1140,7 @@ When the authentication server or resource server provides a DPoP-Nonce HTTP hea
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-認証サーバーまたはリソースサーバーが応答でDPOP-Nonce HTTPヘッダーを提供する場合（セクション8および9を参照）、DPOPプルーフには次のクレームも含める必要があります。
+認可サーバーまたはリソースサーバーが応答でDPoP-Nonce HTTPヘッダーを提供する場合（セクション8および9を参照）、DPoP証明には次のクレームも含める必要があります。
         </p>
       </div>
     </div>
@@ -1152,7 +1152,7 @@ nonce:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ノンセ：
+nonce:
         </p>
       </div>
     </div>
@@ -1164,7 +1164,7 @@ A recent nonce provided via the DPoP-Nonce HTTP header.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DPOP-Nonce HTTPヘッダーを介して提供された最近のNONCE。
+DPoP-Nonce HTTPヘッダーを介して提供された最近のnonce。
         </p>
       </div>
     </div>
@@ -1176,7 +1176,7 @@ A DPoP proof MAY contain other JOSE Header Parameters or claims as defined by ex
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフには、他のホセヘッダーパラメーターまたは拡張、プロファイル、または展開固有の要件によって定義されるクレームが含まれている場合があります。
+DPoP証明には、拡張、プロファイル、または展開固有の要件によって定義される、他のJOSEヘッダーパラメーターまたはクレームが含まれる場合があります。
         </p>
       </div>
     </div>
@@ -1188,7 +1188,7 @@ Figure 4 is a conceptual example showing the decoded content of the DPoP proof i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図4は、図2のDPOP証明のデコードされたコンテンツを示す概念的例です。JWTヘッダーとペイロードのJSONが示されていますが、署名部分は省略されています。いつものように、フォーマットと読みやすさのために、ラインブレークと余分なスペースが含まれています。
+図4は、図2のDPoP証明のデコードされたコンテンツを示す概念的例です。JWTヘッダーとペイロードのJSONが示されていますが、署名部分は省略されています。いつものように、フォーマットと読みやすさのために、改行と余分なスペースが含まれています。
         </p>
       </div>
     </div>
@@ -1223,7 +1223,7 @@ Figure 4: Example JWT Content of a DPoP Proof
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-図4：DPOPプルーフのJWTコンテンツの例
+図4：DPoP証明のJWTコンテンツの例
         </p>
       </div>
     </div>
@@ -1235,7 +1235,7 @@ Of the HTTP request, only the HTTP method and URI are included in the DPoP JWT; 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-HTTP要求のうち、HTTPメソッドとURIのみがDPOP JWTに含まれています。したがって、これら2つのメッセージパーツのみがDPOPプルーフでカバーされます。アイデアは、HTTPリクエストに関して合理的な所有の証明を提供するために、HTTPデータの十分な署名に署名することです。HTTPヘッダーデータの最小限のサブセットのみを使用するこの設計アプローチは、HTTPメッセージの正規化に固有の実質的な困難を回避するためです。それにもかかわらず、DPOPプルーフを拡張して、HTTP要求の他の情報を含めることができます（セクション11.7も参照）。
+HTTPリクエストのうち、HTTPメソッドとURIのみがDPoP JWTに含まれます。したがって、これら2つのメッセージ部分のみがDPoP証明によってカバーされます。このアイデアは、HTTPリクエストに関して合理的な所有の証明を提供できるよう、十分なHTTPデータのみを署名することです。この設計アプローチは、HTTPヘッダーデータの最小限のサブセットのみを使用することで、HTTPメッセージの正規化に内在する実質的な困難を回避します。それにもかかわらず、DPoP証明は、HTTPリクエストの他の情報を含むように拡張できます（セクション11.7も参照）。
         </p>
       </div>
     </div>
@@ -1247,7 +1247,7 @@ HTTP要求のうち、HTTPメソッドとURIのみがDPOP JWTに含まれてい�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4.3. DPOPプルーフの確認
+4.3. DPoP証明の確認
         </h5>
       </div>
     </div>
@@ -1259,7 +1259,7 @@ To validate a DPoP proof, the receiving server MUST ensure the following:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP証明を検証するには、受信サーバーは次のことを確認する必要があります。
+DPoP証明を検証するには、受信サーバーは次のことを確認する必要があります。
         </p>
       </div>
     </div>
@@ -1271,7 +1271,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-1. DPOP HTTPリクエストヘッダーフィールドは1つ以下です。
+1. DPoP HTTPリクエストヘッダーフィールドは1つ以下です。
         </p>
       </div>
     </div>
@@ -1283,7 +1283,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-2. DPOP HTTPリクエストヘッダーフィールド値は、単一でよく形成されたJWTです。
+2. DPoP HTTPリクエストヘッダーフィールド値は、単一で整形式のJWTです。
         </p>
       </div>
     </div>
@@ -1295,7 +1295,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-3. セクション4.2ごとに必要なすべての請求は、JWTに含まれています。
+3. セクション4.2で定義されているすべての必須クレームがJWTに含まれていること。
         </p>
       </div>
     </div>
@@ -1307,7 +1307,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-4. Typhose Headerパラメーターには、値DPOP JWTがあります。
+4. typ JOSEヘッダーパラメーターが値 dpop+jwt を持つこと。
         </p>
       </div>
     </div>
@@ -1319,7 +1319,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-5. アルグホセヘッダーパラメーターは、登録された非対称デジタル署名アルゴリズム[IANA.jose.algs]を示しており、アプリケーションによってサポートされており、ローカルポリシーごとに受け入れられます。
+5. alg JOSEヘッダーパラメーターが、登録された非対称デジタル署名アルゴリズム [IANA.JOSE.ALGS] を示しており、none ではなく、アプリケーションによってサポートされており、ローカルポリシーに従って許容されること。
         </p>
       </div>
     </div>
@@ -1331,7 +1331,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-6. JWT署名は、JWKホセヘッダーパラメーターに含まれる公開キーで検証されます。
+6. JWT署名が、jwk JOSEヘッダーパラメーターに含まれる公開鍵で検証されること。
         </p>
       </div>
     </div>
@@ -1343,7 +1343,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-7. JWKホセヘッダーパラメーターには、秘密鍵は含まれていません。
+7. jwk JOSEヘッダーパラメーターに秘密鍵が含まれていないこと。
         </p>
       </div>
     </div>
@@ -1355,7 +1355,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-8. HTMクレームは、現在の要求のHTTPメソッドと一致します。
+8. htmクレームが、現在のリクエストのHTTPメソッドと一致すること。
         </p>
       </div>
     </div>
@@ -1367,7 +1367,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-9. HTUクレームは、JWTが受信されたHTTP要求のHTTP URI値と一致し、クエリとフラグメントパーツを無視します。
+9. htuクレームが、JWTが受信されたHTTPリクエストのHTTP URI値と、クエリおよびフラグメント部分を無視して一致すること。
         </p>
       </div>
     </div>
@@ -1379,7 +1379,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-10. サーバーがクライアントにNonCE値を提供した場合、NonCeクレームはサーバーが提供するNonCe値と一致します。
+10. サーバーがクライアントにnonce値を提供した場合、nonceクレームがサーバーが提供するnonce値と一致すること。
         </p>
       </div>
     </div>
@@ -1391,7 +1391,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-11. JWTの作成時間は、IATクレームまたはNonCEクレームを介してタイムスタンプを管理するサーバーのいずれかによって決定されるように、許容可能なウィンドウ内にあります（セクション11.1を参照）。
+11. JWTの作成時間が、iatクレームまたはnonceクレームを介したサーバー管理のタイムスタンプのいずれかによって決定される、許容可能な時間枠内にあること（セクション11.1を参照）。
         </p>
       </div>
     </div>
@@ -1415,7 +1415,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-16">
-* ATHクレームの価値がそのアクセストークンのハッシュに等しいことを確認し、
+* athクレームの値がそのアクセストークンのハッシュと等しいことを確認すること、および
         </p>
       </div>
     </div>
@@ -1427,7 +1427,7 @@ DPOP証明を検証するには、受信サーバーは次のことを確認す�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-16">
-* アクセストークンがバインドされている公開鍵が、DPOPプルーフの公開キーと一致することを確認します。
+* アクセストークンがバインドされている公開鍵が、DPoP証明の公開鍵と一致することを確認すること。
         </p>
       </div>
     </div>
@@ -1439,7 +1439,7 @@ To reduce the likelihood of false negatives, servers SHOULD employ syntax-based 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-偽陰性の可能性を減らすために、サーバーは、HTUクレームを比較する前に、構文ベースの正規化（[RFC3986]のセクション6.2.2）とスキームベースの正規化（[RFC3986]のセクション6.2.3）を使用する必要があります。
+偽陰性の可能性を減らすために、サーバーは、htuクレームを比較する前に、構文ベースの正規化（[RFC3986]のセクション6.2.2）とスキームベースの正規化（[RFC3986]のセクション6.2.3）を適用すべきです。
         </p>
       </div>
     </div>
@@ -1463,7 +1463,7 @@ These checks may be performed in any order.
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-5. DPOPアクセストークンリクエスト
+5. DPoPアクセストークンリクエスト
         </h5>
       </div>
     </div>
@@ -1475,7 +1475,7 @@ To request an access token that is bound to a public key using DPoP, the client 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPを使用して公開キーにバインドされているアクセストークンを要求するには、クライアントは、Authorization Serverのトークンエンドポイントにアクセストークン要求を行う際に、DPOPヘッダーに有効なDPOPプルーフJWTを提供する必要があります。これは、助成金の種類に関係なく、すべてのアクセストークン要求に適用されます（たとえば、一般的なAuthorization_CodeおよびREFRESH_TOKEN GRANTタイプおよびJWT認証助成金[RFC7523]などの拡張助成金）。図5に示すHTTP要求は、DPOPヘッダーにDPOPプルーフJWTを備えた認証コード助成金を使用して、このようなアクセストークン要求を示しています。図5は、[RFC8792]ごとに「\」ラインラッピングを使用しています。
+DPoPを使用して公開鍵にバインドされているアクセストークンを要求するには、クライアントは、認可サーバーのトークンエンドポイントにアクセストークンリクエストを行う際に、DPoPヘッダーに有効なDPoP証明JWTを提供する必要があります。これは、グラント種別に関わらず、すべてのアクセストークンリクエストに適用されます（例えば、一般的なauthorization_codeおよびrefresh_tokenグラント種別、ならびにJWT認可グラント[RFC7523]などの拡張グラント）。図5に示すHTTPリクエストは、DPoPヘッダーにDPoP証明JWTを含んだ認可コードグラントを使用して、そのようなアクセストークンリクエストを示しています。図5は、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -1509,7 +1509,7 @@ Figure 5: Token Request for a DPoP Sender-Constrained Token Using an Authorizati
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-4">
-図5：承認コードを使用したDPOP送信者に制約のトークンのトークンリクエスト
+図5：認可コードを使用したDPoP送信者制限型トークンのトークンリクエスト
         </p>
       </div>
     </div>
@@ -1521,7 +1521,7 @@ The DPoP HTTP header field MUST contain a valid DPoP proof JWT. If the DPoP proo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP HTTPヘッダーフィールドには、有効なDPOPプルーフJWTが含まれている必要があります。DPOPプルーフが無効である場合、Authorization Serverは、[RFC6749]のセクション5.2ごとにエラー応答を発行します。
+DPoP HTTPヘッダーフィールドには、有効なDPoP証明JWTが含まれている必要があります。DPoP証明が無効である場合、認可サーバーは、[RFC6749]のセクション5.2に従って、エラーパラメーターの値としてinvalid_dpop_proofを伴うエラーレスポンスを発行します。
         </p>
       </div>
     </div>
@@ -1533,7 +1533,7 @@ To sender-constrain the access token after checking the validity of the DPoP pro
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフの有効性を確認した後、送信者がアクセストークンを制御するために、Authorization Serverは、発行されたアクセストークンをDPOPプルーフの公開鍵と関連付けます。アクセストークンでは、アクセストークンがDPOPキーにバインドされており、セクション7.1で説明されているように使用できます。図6に示す応答の例は、そのような応答を示しています。
+DPoP証明の有効性を確認した後、アクセストークンを送信者制限するために、認可サーバーは発行されたアクセストークンをDPoP証明の公開鍵に関連付けます。これはセクション6で説明されているとおりに達成できます。アクセストークンレスポンスには、アクセストークンがそのDPoP鍵にバインドされており、セクション7.1で説明されているとおりに使用できることをクライアントに通知するために、token_typeにDPoPを含める必要があります。図6に示すレスポンスの例は、そのようなレスポンスを示しています。
         </p>
       </div>
     </div>
@@ -1561,7 +1561,7 @@ Figure 6: Access Token Response
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-22">
-図6：アクセストークン応答
+図6：アクセストークンレスポンス
         </p>
       </div>
     </div>
@@ -1573,7 +1573,7 @@ The example response in Figure 6 includes a refresh token that the client can us
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図6の例の応答には、クライアントが前のものが期限切れになったときに新しいアクセストークンを取得するために使用できる更新トークンが含まれています。 アクセストークンを更新するのは、Authorization Serverのトークンエンドポイントに作成されたREFRESH_TOKEN GRANTタイプを使用したトークンリクエストです。 すべてのアクセストークン要求と同様に、図7に示すように、クライアントはDPOPプルーフを含めることによりDPOP要求になります。図7は[RFC8792]ごとに「\」ラインラップを使用します。
+図6の例のレスポンスには、クライアントが前のアクセストークンの期限が切れたときに新しいアクセストークンを取得するために使用できるリフレッシュトークンが含まれています。アクセストークンのリフレッシュは、認可サーバーのトークンエンドポイントに対して行われる、refresh_tokenグラント種別を使用したトークンリクエストです。すべてのアクセストークンリクエストと同様に、クライアントは図7に示すようにDPoP証明を含めることで、それをDPoPリクエストにします。図7は、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -1605,7 +1605,7 @@ Figure 7: Token Request for a DPoP-Bound Token Using a Refresh Token
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-4">
-図7：リフレッシュトークンを使用したDPOPバウンドトークンのトークンリクエスト
+図7：リフレッシュトークンを使用したDPoPバインドされたトークンのトークンリクエスト
         </p>
       </div>
     </div>
@@ -1617,7 +1617,7 @@ When an authorization server supporting DPoP issues a refresh token to a public 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPをサポートする承認サーバーが、トークンエンドポイントで有効なDPOPプルーフを提示するパブリッククライアントに更新トークンを発行する場合、更新トークンはそれぞれの公開キーにバインドする必要があります。新しいアクセストークンを取得するために、リフレッシュトークンが後で提示されたときにバインディングを検証する必要があります。その結果、このようなクライアントは、更新トークンが新しいアクセストークンを取得するために使用されるたびに更新トークンを取得するために使用された同じキーのDPOP証明を提示する必要があります。更新トークンのバインディングの実装の詳細は、承認サーバーの裁量にあります。承認サーバーは、更新トークンを生成および検証するため、バインディングの特定の詳細に相互運用性の考慮事項はありません。
+DPoPをサポートする認可サーバーが、トークンエンドポイントで有効なDPoP証明を提示するパブリッククライアントにリフレッシュトークンを発行する場合、リフレッシュトークンはそれぞれの公開鍵にバインドされる必要があります。新しいアクセストークンを取得するためにリフレッシュトークンが提示される際には、そのバインディングが検証される必要があります。その結果、そのようなクライアントは、リフレッシュトークンが新しいアクセストークンを取得するために使用されるたびに、リフレッシュトークンの取得に使用されたのと同じ鍵に対するDPoP証明を提示する必要があります。リフレッシュトークンのバインディングの実装の詳細は、認可サーバーの裁量に委ねられます。認可サーバーはリフレッシュトークンを生成および検証するため、バインディングの具体的な詳細に関する相互運用性の考慮事項はありません。
         </p>
       </div>
     </div>
@@ -1629,7 +1629,7 @@ An authorization server MAY elect to issue access tokens that are not DPoP bound
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Authorization Serverは、DPOPバウンドではないアクセストークンを発行することを選択できます。これは、[RFC6750]ごとにアクセストークン応答のtoken_typeパラメーターにBEARERの値でクライアントに信号を送信されます。更新トークンも発行されているパブリッククライアントの場合、これはDPOPバインドのみのリフレッシュトークンだけで、保護されたリソースがDPOPをサポートするために更新されない場合でもセキュリティ姿勢を改善できます。
+認可サーバーは、DPoPにバインドされていないアクセストークンを発行することもできます。これは、[RFC6750]に従ってアクセストークンレスポンスのtoken_typeパラメーターにBearerの値をクライアントに通知することで行われます。リフレッシュトークンも発行されているパブリッククライアントの場合、これはリフレッシュトークンのみがDPoPバインディングされる効果があり、保護されたリソースがDPoPをサポートするように更新されていない場合でもセキュリティ体制を改善できます。
         </p>
       </div>
     </div>
@@ -1641,7 +1641,7 @@ If the access token response contains a different token_type value than DPoP, th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-アクセストークン応答にDPOPとは異なるtoken_type値が含まれている場合、DPOPが提供するアクセストークン保護は与えられません。クライアントは、この保護がアプリケーションのセキュリティにとって重要であるとみなされる場合、この場合に応答を廃棄する必要があります。それ以外の場合、クライアントは通常のOAuth相互作用のように続行する場合があります。
+アクセストークンレスポンスにDPoPとは異なるtoken_type値が含まれている場合、DPoPが提供するアクセストークン保護は提供されません。この保護がアプリケーションのセキュリティにとって重要であると見なされる場合、クライアントはこのレスポンスを破棄しなければなりません。それ以外の場合、クライアントは通常のOAuthによるやり取りと同様に続行しても構いません。
         </p>
       </div>
     </div>
@@ -1653,7 +1653,7 @@ Refresh tokens issued to confidential clients (those having established authenti
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Confidential Clients（Authorization Serverで認証資格情報を確立したもの）に発行された更新トークンは、DPOPプルーフ公開キーに拘束されていません。OAUTH 2.0 Authorization Framework [RFC6749]では、承認サーバーがリフレッシュトークンを発行したクライアントにバインドし、更新トークンを提示するときに承認サーバーに認証するConfidentialクライアントが既に要求されています。その結果、このような更新トークンは、クライアントの識別子と関連する認証要件によって、送信者に制約されています。この既存の送信者制約メカニズムは、特定の公開キーに直接結合するよりも、より柔軟になります（たとえば、リフレッシュトークンを無効にすることなくクライアントの資格情報の回転を許可します）。
+コンフィデンシャルクライアント（認可サーバーに対して認証情報が確立されているクライアント）に発行されたリフレッシュトークンは、既に既存の異なるメカニズムによって送信者制限されているため、DPoP証明の公開鍵にはバインドされません。OAuth 2.0 Authorization Framework [RFC6749] は、認可サーバーがリフレッシュトークンを発行されたクライアントにバインドすること、およびコンフィデンシャルクライアントがリフレッシュトークンを提示する際に認可サーバーに対して認証することを既に要求しています。その結果、そのようなリフレッシュトークンは、クライアント識別子と関連する認証要件によって送信者制限されます。この既存の送信者制限メカニズムは、特定の公開鍵に直接バインドするよりも、より柔軟です（例：リフレッシュトークンを無効にすることなくクライアントの資格情報のローテーションを可能にします）。
         </p>
       </div>
     </div>
@@ -1665,7 +1665,7 @@ Confidential Clients（Authorization Serverで認証資格情報を確立した�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-5.1. 承認サーバーメタデータ
+5.1. 認可サーバーメタデータ
         </h5>
       </div>
     </div>
@@ -1677,7 +1677,7 @@ This document introduces the following authorization server metadata [RFC8414] p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、次の承認サーバーメタデータ[RFC8414]パラメーターを導入して、一般的にDPOPのサポートを信号し、特定のJWS ALG値は、DPOPプルーフJWTSの認証サーバーがサポートしています。
+このドキュメントでは、一般的にDPoPのサポートと、認可サーバーがDPoP証明JWTでサポートする特定のJWS alg値を示すために、次の認可サーバーメタデータ [RFC8414] パラメーターを導入します。
         </p>
       </div>
     </div>
@@ -1689,7 +1689,7 @@ dpop_signing_alg_values_supported:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-dpop_singe_alg_values_supported：
+dpop_signing_alg_values_supported：
         </p>
       </div>
     </div>
@@ -1701,7 +1701,7 @@ A JSON array containing a list of the JWS alg values (from the [IANA.JOSE.ALGS] 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DPOPプルーフJWTSの認証サーバーによってサポートされているJWSアルグ値のリスト（[iana.jose.algs]レジストリから）を含むJSONアレイ。
+DPoP証明JWTで認可サーバーがサポートするJWS alg値のリスト（[IANA.JOSE.ALGS] レジストリから）を含むJSON配列。
         </p>
       </div>
     </div>
@@ -1725,7 +1725,7 @@ The Dynamic Client Registration Protocol [RFC7591] defines an API for dynamicall
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-動的クライアント登録プロトコル[RFC7591]は、OAUTH 2.0クライアントメタデータを認証サーバーで動的に登録するためのAPIを定義します。[RFC7591]によって定義されたメタデータ、および拡張拡張機能は、ダイナミッククライアント登録プロトコルが再生されていない場合でも、承認サーバーの実装に役立つクライアントの一般的なデータモデルでもあります。このような実装では、通常、クライアント構成の管理に利用できるような種類のユーザーインターフェイスがあります。
+動的クライアント登録プロトコル[RFC7591]は、OAuth 2.0クライアントメタデータを認可サーバーに動的に登録するためのAPIを定義します。[RFC7591]によって定義されたメタデータ、およびそれに対する登録済みの拡張は、動的クライアント登録プロトコルが使用されていない場合でも、認可サーバーの実装にとって有用なクライアントの一般的なデータモデルを示唆しています。そのような実装では、通常、クライアント設定を管理するための何らかのユーザーインターフェースが利用可能でしょう。
         </p>
       </div>
     </div>
@@ -1737,7 +1737,7 @@ This document introduces the following client registration metadata [RFC7591] pa
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントでは、次のクライアント登録メタデータ[RFC7591]パラメーターを導入して、クライアントが認証サーバーからトークンを要求するときに常にDPOPを使用することを示します。
+このドキュメントでは、クライアントが認可サーバーからトークンをリクエストする際に常にDPoPを使用することを示すため、次のクライアント登録メタデータ [RFC7591] パラメーターを導入します。
         </p>
       </div>
     </div>
@@ -1761,7 +1761,7 @@ A boolean value specifying whether the client always uses DPoP for token request
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-クライアントが常にトークン要求にDPOPを使用するかどうかを指定するブール値。省略した場合、デフォルト値はfalseです。
+クライアントがトークンリクエストに常にDPoPを使用するかどうかを指定するブール値。省略された場合、デフォルト値はfalseです。
         </p>
       </div>
     </div>
@@ -1773,7 +1773,7 @@ If the value is true, the authorization server MUST reject token requests from t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-値が真である場合、承認サーバーは、DPOPヘッダーを含まないクライアントからトークンリクエストを拒否する必要があります。
+値がtrueである場合、認可サーバーは、DPoPヘッダーを含まないクライアントからのトークンリクエストを拒否しなければなりません。
         </p>
       </div>
     </div>
@@ -1797,7 +1797,7 @@ Resource servers MUST be able to reliably identify whether an access token is DP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リソースサーバーは、アクセストークンがDPOPバウンドであるかどうかを確実に識別し、DPOP証明の公開鍵へのバインディングを検証するのに十分な情報を確認できる必要があります（セクション7.1を参照）。このようなバインディングは、公開鍵を、発行されたアクセストークンに直接埋め込むなど、保護されたリソースでアクセスできる方法でトークンを関連付けることによって達成されます。セクション6.2で説明されているように。公開キーをアクセストークンに関連付ける他の方法は、認証サーバーと保護されたリソースによって契約に応じて可能です。ただし、これらはこの仕様の範囲を超えています。
+リソースサーバーは、アクセストークンがDPoPバインドされているかどうかを確実に識別し、DPoP証明の公開鍵へのバインディングを検証するのに十分な情報を確認できる必要があります（セクション7.1を参照）。このようなバインディングは、公開鍵を、発行されたアクセストークンに直接JWKハッシュを埋め込むなど、保護されたリソースがアクセスできる方法でトークンに関連付けることによって、セクション6.1で説明されている構文を使用するか、セクション6.2で説明されているトークンイントロスペクションを介して達成されます。公開鍵をアクセストークンに関連付ける他の方法は、認可サーバーと保護されたリソース間の合意に基づいて可能ですが、それらはこの仕様の範囲を超えています。
         </p>
       </div>
     </div>
@@ -1809,7 +1809,7 @@ Resource servers supporting DPoP MUST ensure that the public key from the DPoP p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPをサポートするリソースサーバーは、DPOPプルーフの公開キーがアクセストークンにバインドされたものと一致することを確認する必要があります。
+DPoPをサポートするリソースサーバーは、DPoP証明の公開鍵がアクセストークンにバインドされたものと一致することを確認しなければなりません。
         </p>
       </div>
     </div>
@@ -1833,7 +1833,7 @@ When access tokens are represented as JWTs [RFC7519], the public key information
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-アクセストークンがJWTS [RFC7519]として表される場合、公開キー情報は、本明細書に定義されているJKT確認方法メンバーを使用して表されます。JWTの公開鍵のハッシュを伝えるために、この仕様では、CNFクレームの下で使用するための次のJWT確認方法[RFC7800]メンバーを紹介します。
+アクセストークンがJWT [RFC7519] として表現される場合、公開鍵情報は本ドキュメントで定義されているjkt確認方法メンバーを使用して表されます。JWTで公開鍵のハッシュを伝えるために、この仕様では、cnfクレームの下で使用するための次のJWT Confirmation Method [RFC7800] メンバーを導入します。
         </p>
       </div>
     </div>
@@ -1845,7 +1845,7 @@ jkt:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JKT：
+jkt：
         </p>
       </div>
     </div>
@@ -1857,7 +1857,7 @@ JWK SHA-256 Thumbprint confirmation method. The value of the jkt member MUST be 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JWK SHA-256 Thumbprint確認方法。JKTメンバーの値は、DPOP公開キー（JWK形式）のJWK SHA-256 ThumbPrint（[RFC7638]に従って）のJWK SHA-256 ThumbPrint（JWK形式）のbase64urlエンコード（[RFC7515]で定義されている）である必要があります。。
+JWK SHA-256サムプリント確認方法。jktメンバーの値は、アクセストークンがバインドされているDPoP公開鍵（JWK形式）のJWK SHA-256サムプリント（[RFC7638]に従う）を、[RFC7515]のセクション2で定義されているbase64urlエンコードしたものである必要があります。
         </p>
       </div>
     </div>
@@ -1869,7 +1869,7 @@ The following example JWT in Figure 8 with a decoded JWT payload shown in Figure
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図8のJWTの次の例は、図9に示すデコードされたJWTペイロードを使用して、JKT JWK ThumbPrint確認方法メンバーのCNFクレームが含まれています。これらの例のJKT値は、セクション5に示す例のDPOP証明からの公開鍵のハッシュです。この例では、[RFC8792]ごとに「\」ラインラッピングを使用しています。
+図8に示すJWTの次の例は、図9に示すデコードされたJWTペイロードとともに、jkt JWKサムプリント確認方法メンバーを含むcnfクレームを含んでいます。これらの例におけるjkt値は、セクション5に示す例のDPoP証明からの公開鍵のハッシュです。この例では、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -1892,7 +1892,7 @@ Figure 8: JWT Containing a JWK SHA-256 Thumbprint Confirmation
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-7">
-図8：JWK SHA-256 Thumbprintの確認を含むJWT
+図8：JWK SHA-256 サムプリントの確認を含むJWT
         </p>
       </div>
     </div>
@@ -1920,7 +1920,7 @@ Figure 9: JWT Claims Set with a JWK SHA-256 Thumbprint Confirmation
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-4">
-図9：JWK SHA-256 Thumbprintの確認で設定されたJWTクレーム
+図9：JWK SHA-256 サムプリントの確認で設定されたJWTクレーム
         </p>
       </div>
     </div>
@@ -1944,7 +1944,7 @@ Figure 9: JWT Claims Set with a JWK SHA-256 Thumbprint Confirmation
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「OAuth 2.0トークン内省」[RFC7662]は、保護されたリソースがアクセストークンのアクティブ状態について認証サーバーを照会する方法を定義します。保護されたリソースは、トークンに関するメテイン形成も決定します。
+「OAuth 2.0トークン内省」[RFC7662]は、保護されたリソースがアクセストークンのアクティブな状態について認可サーバーに問い合わせる方法を定義します。保護されたリソースは、トークンに関するメタ情報も決定します。
         </p>
       </div>
     </div>
@@ -1956,7 +1956,7 @@ For a DPoP-bound access token, the hash of the public key to which the token is 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPに縛られたアクセストークンの場合、トークンがバインドされている公開鍵のハッシュは、トークン内省反応でメテン形成として保護されたリソースに伝えられます。ハッシュは、JKTメンバー構造を持つ同じCNFコンテンツを使用して、JWK Thumbprint確認方法と同じCNFコンテンツを使用して伝達されます。リソースサーバーは、内省要求を使用してDPOPプルーフを送信せず、Authorizationサーバーは内省エンドポイントでのアクセストークンのDPOPバインディングを検証しないことに注意してください。むしろ、リソースサーバーは内省応答のデータを使用して、アクセストークンバインディング自体をローカルに検証します。
+DPoPにバインドされたアクセストークンの場合、トークンがバインドされている公開鍵のハッシュは、トークンイントロスペクションレスポンスにおいてメタ情報として保護されたリソースに伝達されます。ハッシュは、セクション6.1で記述されているJWKサムプリント確認方法と同様に、jktメンバー構造を持つ同じcnfコンテンツを使用して伝達されます。リソースサーバーはイントロスペクションリクエストでDPoP証明を送信せず、認可サーバーは、イントロスペクションエンドポイントでアクセストークンのDPoPバインディングを検証しないことに注意してください。むしろ、リソースサーバーはイントロスペクションレスポンスのデータを使用して、アクセストークンバインディング自体をローカルで検証します。
         </p>
       </div>
     </div>
@@ -1968,7 +1968,7 @@ If the token_type member is included in the introspection response, it MUST cont
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-token_typeメンバーが内省応答に含まれている場合、値DPOPを含める必要があります。
+token_typeメンバーがイントロスペクションレスポンスに含まれている場合、その値はDPoPでなければなりません。
         </p>
       </div>
     </div>
@@ -1980,7 +1980,7 @@ The example introspection request in Figure 10 and corresponding response in Fig
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図10の内省要求と図11の対応する応答の例は、図6で発行されたDPOPバウンドアクセストークンの例の内省交換を示しています。
+図10のイントロスペクションリクエストと、図11の対応するレスポンスの例は、図6で発行されたDPoPバインドされたアクセストークンのイントロスペクションのやり取りを示しています。
         </p>
       </div>
     </div>
@@ -2037,7 +2037,7 @@ Figure 11: Example Introspection Response for a DPoP-Bound Access Token
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-図11：DPOPバウンドアクセストークンのイントロスペクティション応答の例
+図11：DPoPバインドされたアクセストークンのイントロスペクションレスポンスの例
         </p>
       </div>
     </div>
@@ -2061,7 +2061,7 @@ Requests to DPoP-protected resources MUST include both a DPoP proof as per Secti
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP保護されたリソースへのリクエストには、セクション4に従ってDPOPプルーフとセクション7.1で説明されているアクセストークンの両方を含める必要があります。DPOPプルーフには、関連するアクセストークンの有効なハッシュを含むATH請求を含める必要があります。
+DPoP保護されたリソースへのリクエストには、セクション4に従ったDPoP証明とセクション7.1で説明されているアクセストークンの両方を含めなければなりません。DPoP証明には、関連するアクセストークンの有効なハッシュを含むathクレームを含めなければなりません。
         </p>
       </div>
     </div>
@@ -2073,7 +2073,7 @@ Binding the token value to the proof in this way prevents a proof to be used wit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この方法でトークン値を証明にバインドすると、異なる要求にわたって複数の異なるアクセストークン値で使用されることが妨げられます。たとえば、クライアントがAT1とAT2の2つの異なるリソース所有者にバインドされたトークンを保持し、Authorizationサーバーと話すときに同じキーを使用すると、これらのトークンを交換する可能性があります。それをバインドするATHフィールドがなければ、AT1に適用されるキャプチャされた署名を代わりにAT2で再生し、意図した要求の権利とアクセスを変更できます。クライアントとリソース所有者の同じ組み合わせ内の回転アクセストークンのこの同じ代替防止は、回転したトークン値に新しい証明の計算が必要です。さらに、このバインディングにより、アクセストークンで使用することを目的とした証明が、アクセストークンなしでは使用できないことが保証されます。
+この方法でトークン値を証明にバインドすると、異なるリクエスト間で複数の異なるアクセストークン値で証明が使用されることが防止されます。例えば、クライアントが2つの異なるリソース所有者、AT1とAT2にバインドされたトークンを保持し、認可サーバーと通信する際に同じ鍵を使用した場合、これらのトークンが入れ替えられる可能性があります。athフィールドによるバインディングがないと、AT1に適用されたキャプチャされた署名がAT2で再生され、意図されたリクエストの権限とアクセスが変更される可能性があります。この同様の置換防止は、クライアントとリソース所有者の同じ組み合わせ内での、ローテーションされたアクセストークンに対しても維持されます。ローテーションされたトークン値には新しい証明の計算が必要になります。このバインディングはさらに、アクセストークンで使用されることを意図した証明が、アクセストークンなしでは使用できないこと、またはその逆も同様であることを保証します。
         </p>
       </div>
     </div>
@@ -2085,7 +2085,7 @@ The resource server is required to calculate the hash of the token value present
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リソースサーバーは、提示されたトークン値のハッシュを計算し、セクション4.3で説明したようにATHフィールドのハッシュ値と同じであることを確認するために必要です。ATHフィールド値はDPOPプルーフの署名でカバーされているため、その包含は署名を生成するために使用されるキーの所有者にアクセストークン値を結合します。
+リソースサーバーは、提示されたトークン値のハッシュを計算し、セクション4.3で説明されているathフィールドのハッシュ値と同じであることを確認する必要があります。athフィールドの値はDPoP証明の署名によって保護されているため、その含まれている値は、署名の生成に使用された鍵の所有者にアクセストークン値を結合します。
         </p>
       </div>
     </div>
@@ -2097,7 +2097,7 @@ Note that the ath field alone does not prevent replay of the DPoP proof or provi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ATHフィールドだけでは、DPOP証明のリプレイを妨げたり、証明が提示されているリクエストに拘束力を与えたりしないことに注意してください。HTMとHTU。
+athフィールドだけでは、DPoP証明のリプレイを防止したり、証明が提示されているリクエストへのバインディングを提供したりしないことに注意してください。htmやhtuなどの含まれるメッセージパラメータだけでなく、証明の有効期間もチェックすることが依然として重要です。
         </p>
       </div>
     </div>
@@ -2109,7 +2109,7 @@ ATHフィールドだけでは、DPOP証明のリプレイを妨げたり、証�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-7.1. DPOP認証スキーム
+7.1. DPoP認証スキーム
         </h5>
       </div>
     </div>
@@ -2121,7 +2121,7 @@ A DPoP-bound access token is sent using the Authorization request header field p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPの認証スキームを使用して、[RFC9110]のセクション11.6.2ごとに、DPOPバインドアクセストークンを使用して送信されます。DPOPスキームの認証ヘッダーフィールドの構文は、資格情報について[RFC9110]のセクション11.2で定義されているtoken68構文を使用し、参照を容易にするために以下に繰り返します。DPOP認証スキームの資格情報のABNF表記構文は次のとおりです。
+DPoP認証スキームを使用して、[RFC9110]のセクション11.6.2に従ってAuthorizationリクエストヘッダーフィールドを使用してDPoPバインドされたアクセストークンが送信されます。DPoPスキームのAuthorizationヘッダーフィールドの構文は、資格情報のために[RFC9110]のセクション11.2で定義されているtoken68構文を使用しており、参照を容易にするために以下に繰り返します。DPoP認証スキームの資格情報のABNF記法構文は次のとおりです。
         </p>
       </div>
     </div>
@@ -2143,7 +2143,7 @@ Figure 12: DPoP Authentication Scheme ABNF
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-17">
-図12：DPOP認証スキームABNF
+図12：DPoP認証スキームABNF
         </p>
       </div>
     </div>
@@ -2155,7 +2155,7 @@ For such an access token, a resource server MUST check that a DPoP proof was als
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このようなアクセストークンの場合、リソースサーバーは、HTTPリクエストのDPOPヘッダーフィールドでDPOPプルーフが受信されたことを確認する必要があります。セクション6に従ってアクセストークンがバインドされる公開キーと一致します。
+そのようなアクセストークンの場合、リソースサーバーは、HTTPリクエストのDPoPヘッダーフィールドでDPoP証明も受信されたこと、セクション4.3の規則に従ってDPoP証明を検証すること、およびアクセストークンがバインドされている公開鍵がセクション6に従ってDPoP証明の公開鍵と一致することを確認しなければなりません。
         </p>
       </div>
     </div>
@@ -2179,7 +2179,7 @@ Figure 13 shows an example request to a protected resource with a DPoP-bound acc
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図13は、認証ヘッダーにDPOPバインドアクセストークンとDPOPヘッダーのDPOPプルーフを備えた保護されたリソースへのリクエストの例を示しています。この例では、[RFC8792]ごとに「\」ラインラップを使用します。図14は、そのDPOPプルーフのデコードされた内容を示しています。JWTヘッダーとペイロードのJSONが表示されますが、署名部品は省略されています。いつものように、フォーマットと読みやすさのために、ラインブレークとインデントが含まれています。
+図13は、AuthorizationヘッダーにDPoPバインドされたアクセストークンを、DPoPヘッダーにDPoP証明を含む、保護されたリソースへのリクエストの例を示しています。この例では、[RFC8792] に従って行折り返しを使用しています。図14は、そのDPoP証明のデコードされたコンテンツを示しています。JWTヘッダーとペイロードのJSONが表示されていますが、署名部分は省略されています。いつものように、フォーマットと読みやすさのために、改行とインデントが含まれています。
         </p>
       </div>
     </div>
@@ -2208,7 +2208,7 @@ Figure 13: DPoP-Protected Resource Request
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-17">
-図13：DPOP保護されたリソースリクエスト
+図13：DPoP保護されたリソースリクエスト
         </p>
       </div>
     </div>
@@ -2244,7 +2244,7 @@ Figure 14: Decoded Content of the DPoP Proof JWT in Figure 13
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-7">
-図14：図13のDPOP証明JWTのデコードされたコンテンツ
+図14：図13のDPoP証明JWTのデコードされたコンテンツ
         </p>
       </div>
     </div>
@@ -2256,7 +2256,7 @@ Upon receipt of a request to a protected resource within the protection space re
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP認証を必要とする保護スペース内の保護されたリソースへのリクエストを受信すると、サーバーは、リクエストに有効な資格情報が含まれていないか、アクセスに十分なアクセストークンを含めていない場合、DPOP認証情報を提供するためにクライアントに挑戦して応答できます。。このような課題は、401（不正）応答ステータスコード（[RFC9110]、セクション15.5.2）およびwww-authenticateヘッダーフィールド（[RFC9110]、セクション11.6.1）を使用して行われます。サーバーには、他の条件にも応じてwww-authenticateヘッダーを含めることができます。
+DPoP認証を必要とする保護スペース内の保護されたリソースへのリクエストを受信した場合、サーバーは、リクエストに有効なクレデンシャルが含まれていないか、アクセスに十分なアクセストークンが含まれていない場合に、クライアントに対してDPoP認証情報を提供するようチャレンジで応答できます。このようなチャレンジは、401 (Unauthorized) レスポンスステータスコード（[RFC9110]、セクション15.5.2）およびWWW-Authenticateヘッダーフィールド（[RFC9110]、セクション11.6.1）を使用して行われます。サーバーは、他の状況に応じてWWW-Authenticateヘッダーを含めることもできます。
         </p>
       </div>
     </div>
@@ -2268,7 +2268,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-そのような課題で：
+そのようなチャレンジでは、
         </p>
       </div>
     </div>
@@ -2280,7 +2280,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* スキーム名はDPOPです。
+* スキーム名はDPoPです。
         </p>
       </div>
     </div>
@@ -2292,7 +2292,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* [RFC9110]、セクション11.5に記載されている方法での保護範囲を示すために、認証パラメーターの領域を含めることができます。
+* [RFC9110]のセクション11.5に記載されている方法で保護の範囲を示すために、認証パラメーターのrealmが含まれてもよい。
         </p>
       </div>
     </div>
@@ -2304,7 +2304,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* [RFC6750]、セクション3で定義されているように、スコープ認証パラメーターを含めることができます。
+* [RFC6750]のセクション3で定義されているように、スコープ認証パラメーターが含まれてもよい。
         </p>
       </div>
     </div>
@@ -2316,7 +2316,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* リクエストにアクセストークンが含まれていたが認証に失敗した場合、リクエストが拒否された理由を示すために、エラーパラメーター（[RFC6750]、セクション3）を含める必要があります。[RFC6750]で説明されているエラーパラメーター値、セクション3.1は、拡張によって定義される適切な値と同様に適切です。値USE_DPOP_NONCEは、セクション9で説明されているように使用して、後続の要求のDPOP証明で非CEが必要であることを示すことができます。さらに、Invalid_dpop_Proofは、DPOP証明自体がセクション4.3の基準に基づいて無効と見なされたことを示すために使用されます。
+* リクエストにアクセストークンが含まれていたが認証に失敗した場合、リクエストが拒否された理由を示すために、エラーパラメーター（[RFC6750]、セクション3）を含めるべきです。[RFC6750]のセクション3.1で説明されているエラーパラメーター値は適切であり、拡張によって定義される適切な値も同様に適切です。use_dpop_nonce の値は、セクション9で説明されているように、後続のリクエストのDPoP証明で nonce が必要であることを通知するために使用できます。さらに、invalid_dpop_proof は、DPoP証明自体がセクション4.3の基準に基づいて無効であると判断されたことを示すために使用されます。
         </p>
       </div>
     </div>
@@ -2328,7 +2328,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* ERROR_Descriptionパラメーター（[RFC6750]、セクション3）をエラーパラメーターとともに含めることができ、エンドユーザーに表示されることを意図していない人間の読み取り可能な説明を開発者に提供します。
+* error_descriptionパラメーター（[RFC6750]、セクション3）は、エンドユーザーに表示されることを意図していない開発者向けの人間が読める説明を提供するために、エラーパラメーターとともに含められてもよい。
         </p>
       </div>
     </div>
@@ -2340,7 +2340,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* DPOPプルーフJWTに受け入れられるJWSアルゴリズムをクライアントに信号するために、ALGSパラメーターを含める必要があります。パラメーターの値は、JWSアルグ（アルゴリズム）ヘッダー値（[RFC7515]、セクション4.1.1）のスペース削除リストです。
+* algsパラメーターは、DPoP証明JWTに許容されるJWSアルゴリズムをクライアントに通知するために含めるべきです。パラメーターの値は、JWS alg (Algorithm) ヘッダー値（[RFC7515]、セクション4.1.1）のスペース区切りのリストです。
         </p>
       </div>
     </div>
@@ -2352,7 +2352,7 @@ In such challenges:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* 追加の認証パラメーターが使用される場合があり、未知のパラメーターは受信者が無視する必要があります。
+* 追加の認証パラメーターが使用されてもよく、未知のパラメーターは受信者が無視しなければなりません。
         </p>
       </div>
     </div>
@@ -2364,7 +2364,7 @@ Figure 15 shows a response to a protected resource request without authenticatio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図15は、認証なしで保護されたリソース要求に対する応答を示しています。
+図15は、認証なしで保護されたリソース要求に対するレスポンスを示しています。
         </p>
       </div>
     </div>
@@ -2384,7 +2384,7 @@ Figure 15: HTTP 401 Response to a Protected Resource Request without Authenticat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-4">
-図15：認証なしで保護されたリソース要求に対するHTTP 401の応答
+図15：認証なしで保護されたリソース要求に対するHTTP 401レスポンス
         </p>
       </div>
     </div>
@@ -2396,7 +2396,7 @@ Figure 16 shows a response to a protected resource request that was rejected due
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-図16は、アクセストークンでのDPOPバインディングの確認が失敗したため拒否された保護されたリソース要求に対する応答を示しています。図16は、[RFC8792]ごとに「\」ラインラッピングを使用しています。
+図16は、アクセストークンでのDPoPバインディングの確認が失敗したため拒否された保護されたリソース要求に対するレスポンスを示しています。図16は、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -2417,7 +2417,7 @@ Figure 16: HTTP 401 Response to a Protected Resource Request with an Invalid Tok
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-図16：無効なトークンを使用した保護されたリソース要求に対するHTTP 401の応答
+図16：無効なトークンを使用した保護されたリソース要求に対するHTTP 401レスポンス
         </p>
       </div>
     </div>
@@ -2429,7 +2429,7 @@ Note that browser-based client applications using Cross-Origin Resource Sharing 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クロスオリジンリソース共有（CORS）[Whatwg.fetch]を使用したブラウザベースのクライアントアプリケーションは、デフォルトでCORSセーフェリスト応答HTTPヘッダーにのみアクセスできることに注意してください。アプリケーションがwww-authenticate http応答ヘッダー値を取得して使用するためには、サーバーは、アクセス制御 - 拡張者ヘッダー応答ヘッダーリスト値にwww-authenticateを含めることにより、アプリケーションを利用できるようにする必要があります。
+クロスオリジンリソース共有（CORS）[WHATWG.Fetch] を使用するブラウザベースのクライアントアプリケーションは、デフォルトではCORSセーフリスト化されたHTTPレスポンスヘッダーにのみアクセスできることに注意してください。アプリケーションがWWW-Authenticate HTTPレスポンスヘッダー値を取得して使用できるようにするためには、サーバーはAccess-Control-Expose-Headers レスポンスヘッダーリストの値にWWW-Authenticateを含めることにより、それをアプリケーションが利用できるようにする必要があります。
         </p>
       </div>
     </div>
@@ -2441,7 +2441,7 @@ This authentication scheme is for origin-server authentication only. Therefore, 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この認証スキームは、Origin-Server認証専用です。したがって、この認証スキームは、Proxy-AuthenticateまたはProxy-Authorization Headerフィールドで使用してはなりません。
+この認証スキームは、オリジンサーバー認証専用です。したがって、この認証スキームは、Proxy-AuthenticateまたはProxy-Authorizationヘッダーフィールドで使用してはなりません。
         </p>
       </div>
     </div>
@@ -2453,7 +2453,7 @@ Note that the syntax of the Authorization header field for this authentication s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この認証スキームの認証ヘッダーフィールドの構文は、[RFC6750]のセクション2.1で定義されているベアラースキームの使用に従うことに注意してください。[RFC9110]の好ましい資格情報の構文ではありませんが、その中の一般的な認証フレームワークと互換性があり、Bearerスキームに一貫性と精通のために使用されます。
+この認証スキームのAuthorizationヘッダーフィールドの構文は、[RFC6750]のセクション2.1で定義されているBearerスキームの使用法に準拠していることに注意してください。[RFC9110]の推奨されるクレデンシャル構文ではありませんが、その中の一般的な認証フレームワークと互換性があり、Bearerスキームとの一貫性と親和性のために使用されます。
         </p>
       </div>
     </div>
@@ -2477,7 +2477,7 @@ Protected resources simultaneously supporting both the DPoP and Bearer schemes n
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPとベアラーの両方のスキームをサポートする保護されたリソースは、Bearerトークンの評価プロセスの実行方法を更新して、DPOPバウンドアクセストークンの格下げの使用を防ぐ必要があります。具体的には、このような保護されたリソースは、[RFC6750]ごとにベアラートークンとして受信したDPOPバインドアクセストークンを拒否する必要があります。
+DPoPとBearerの両方のスキームを同時にサポートする保護されたリソースは、DPoPバインドされたアクセストークンのダウングレードされた使用を防ぐために、Bearerトークンの評価プロセスの実行方法を更新する必要があります。具体的には、そのような保護されたリソースは、[RFC6750]に従ってBearerトークンとして受信したDPoPバインドされたアクセストークンを拒否しなければなりません。
         </p>
       </div>
     </div>
@@ -2489,7 +2489,7 @@ Section 11.6.1 of [RFC9110] allows a protected resource to indicate support for 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC9110]のセクション11.6.1では、保護されたリソースが、401（不正な）応答のwww-authenticateヘッダーフィールドを使用して、複数の認証スキーム（つまりBEARERおよびDPOP）のサポートを示すことができます。
+[RFC9110]のセクション11.6.1では、保護されたリソースが、401 (Unauthorized) レスポンスのWWW-Authenticateヘッダーフィールドを使用して、複数の認証スキーム（つまりBearerおよびDPoP）のサポートを示すことができます。
         </p>
       </div>
     </div>
@@ -2501,7 +2501,7 @@ A protected resource that supports only [RFC6750] and is unaware of DPoP would m
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC6750]のみをサポートし、DPOPを知らない保護されたリソースは、Bearer Token（JWT [RFC7519]が認識されていない主張を無視すると述べているため、DPOPに縛られたアクセストークンを最も受け入れます。存在に機能的な要件を置かず、[RFC6750]は、有効性に関連しているため、アクセストークンのコンテンツに効果的に沈黙しています）。そのため、クライアントは、www-authenticate：保護されたリソースからのBearer Challengeを受信したときにBearerスキームを使用してDPOPバウンドアクセストークンを送信できます（または、機能の事前知識がある場合はDPOPバウンドアクセストークンを送信できます保護されたリソースの）。これの効果は、サポートDPOPの保護リソースへの段階的アップグレードのロジスティクスまたは、混合トークンタイプのサポートを備えた保護されたリソースの長期展開のロジスティクスを簡素化する可能性があります。
+[RFC6750]のみをサポートし、DPoPを認識しない保護されたリソースは、DPoPバインドされたアクセストークンをBearerトークンとして受け入れるでしょう（JWT [RFC7519] は未認識のクレームを無視するように述べており、イントロスペクション [RFC7662] は機能要件を課すことなく他のパラメーターが存在する可能性があると述べており、[RFC6750] は有効性に関連するため、アクセストークンのコンテンツについて実質的に沈黙しています）。そのため、クライアントは、WWW-Authenticate: Bearer チャレンジを保護されたリソースから受信した際にBearerスキームを使用してDPoPバインドされたアクセストークンを送信できます（または、保護されたリソースの機能に関する事前の知識がある場合はDPoPバインドされたアクセストークンを送信できます）。これは、保護されたリソースがDPoPをサポートするための段階的なアップグレード、あるいは混在するトークンタイプをサポートする保護されたリソースの長期的なデプロイメントのロジスティクスを簡素化する可能性があります。
         </p>
       </div>
     </div>
@@ -2513,7 +2513,7 @@ If a protected resource supporting both Bearer and DPoP schemes elects to respon
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-BearerとDPOPスキームの両方をサポートする保護されたリソースが、複数のwww-authenticateの課題で応答することを選択する場合、実際のエラー情報を提供する課題に注意を払う必要があります。次のルールを順守することをお勧めします。
+BearerとDPoPスキームの両方をサポートする保護されたリソースが、複数のWWW-Authenticateチャレンジで応答することを選択した場合、実際のエラー情報を提供するべきチャレンジに注意を払うべきです。以下のルールを順守することが推奨されます。
         </p>
       </div>
     </div>
@@ -2525,7 +2525,7 @@ BearerとDPOPスキームの両方をサポートする保護されたリソー�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* リクエストに認証情報が含まれていない場合、[RFC6750]のセクション3.1に従って、課題にはエラーコードやその他のエラー情報を含めるべきではありません（図17）。
+* リクエストに認証情報が含まれていない場合、[RFC6750]のセクション3.1に従って、チャレンジにはエラーコードやその他のエラー情報を含めるべきではありません（図17）。
         </p>
       </div>
     </div>
@@ -2537,7 +2537,7 @@ BearerとDPOPスキームの両方をサポートする保護されたリソー�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* 認証を試みるために使用されるメカニズムを明確に確立できる場合、対応する課題を使用してエラー情報を提供する必要があります（図18）。
+* 認証を試みるために使用されるメカニズムを明確に確立できる場合、対応するチャレンジを使用してエラー情報が提供されるべきです（図18）。
         </p>
       </div>
     </div>
@@ -2549,7 +2549,7 @@ BearerとDPOPスキームの両方をサポートする保護されたリソー�
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* それ以外の場合、ベアラーとDPOPの課題の両方を使用して、エラー情報を提供できます（図19）。
+* それ以外の場合、BearerおよびDPoPチャレンジの両方を使用して、エラー情報が提供されてもよい（図19）。
         </p>
       </div>
     </div>
@@ -2561,7 +2561,7 @@ The following examples use &#34;\&#34; line wrapping per [RFC8792].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次の例では、[RFC8792]ごとに「\」ラインラッピングを使用します。
+次の例では、[RFC8792] に従って行折り返しを使用します。
         </p>
       </div>
     </div>
@@ -2584,7 +2584,7 @@ Figure 17: HTTP 401 Response to a Protected Resource Request without Authenticat
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-4">
-図17：認証なしで保護されたリソース要求に対するHTTP 401の応答
+図17：認証なしで保護されたリソース要求に対するHTTP 401レスポンス
         </p>
       </div>
     </div>
@@ -2609,7 +2609,7 @@ Figure 18: HTTP 401 Response to a Protected Resource Request with Invalid Authen
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-図18：HTTP 401無効な認証による保護されたリソース要求への応答
+図18：無効な認証による保護されたリソース要求に対するHTTP 401レスポンス
         </p>
       </div>
     </div>
@@ -2637,7 +2637,7 @@ Figure 19: HTTP 400 Response to a Protected Resource Request with Ambiguous Auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-図19：あいまいな認証を使用した保護されたリソース要求に対するHTTP 400応答
+図19：あいまいな認証を使用した保護されたリソース要求に対するHTTP 400レスポンス
         </p>
       </div>
     </div>
@@ -2661,7 +2661,7 @@ Authorization including a DPoP proof may not be idempotent (depending on server 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPの証明を含む承認は、等隊ではない場合があります（JTI、IAT、およびNonCEクレームのサーバー施行に応じて）。したがって、以前は等隊であった保護されたリソースに対する以前の等式の要求はすべて、もはや等隊ではない可能性があります。一般に一時的に理解されるHTTPエラーに応じてiDempotent要求を再試行する場合でも、クライアントは一意のDPOP証明を生成することをお勧めします。
+DPoP証明を含む認可は、冪等ではない場合があります（jti、iat、およびnonceクレームのサーバーによる強制に応じて）。その結果、以前は冪等であった保護されたリソースに対するすべてのリクエストが、もはや冪等ではない可能性があります。一般に一時的なものとして理解されるHTTPエラーに応答して冪等なリクエストを再試行する場合でも、クライアントは一意のDPoP証明を生成することが推奨されます。
         </p>
       </div>
     </div>
@@ -2673,7 +2673,7 @@ Clients that encounter frequent network errors may experience additional challen
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-頻繁なネットワークエラーに遭遇するクライアントは、より厳格なNonCE検証実装を使用してサーバーと対話する際に追加の課題を経験する場合があります。
+頻繁なネットワークエラーに遭遇するクライアントは、より厳格なnonce検証実装を持つサーバーと対話する際に追加の課題に直面する可能性があります。
         </p>
       </div>
     </div>
@@ -2685,7 +2685,7 @@ Clients that encounter frequent network errors may experience additional challen
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-8. Authorization Serverが提供するNonce
+8. 認可サーバーが提供するnonce
         </h5>
       </div>
     </div>
@@ -2697,7 +2697,7 @@ This section specifies a mechanism using opaque nonces provided by the server th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このセクションでは、DPOPプルーフの寿命を制限するために使用できるサーバーが提供する不透明なノンセスを使用したメカニズムを指定します。このようなメカニズムを採用することなく、クライアントを制御する悪意のあるパーティー（潜在的にエンドユーザーを含む）は、将来的に任意に遠くに使用するためのDPOPプルーフを作成できます。
+このセクションでは、DPoP証明の寿命を制限するために使用できる、サーバーによって提供される不透明なnonceを使用したメカニズムを指定します。このようなメカニズムを採用しない場合、クライアントを制御する悪意のある当事者（エンドユーザーを含む可能性がある）は、将来にわたって任意にDPoP証明を作成できます。
         </p>
       </div>
     </div>
@@ -2709,7 +2709,7 @@ Including a nonce value contributed by the authorization server in the DPoP proo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフに承認サーバーによって貢献したNonCE値を含むことは、承認サーバーがDPOPプルーフの寿命を制限するために使用できます。サーバーは、新しいDPOP NonCe Challengeを発行するタイミングと、それが必要な場合、それによりその後のDPOPプルーフでNonCe値を使用する必要があることを決定します。サーバーがその決定を行うロジックは、このドキュメントの範囲外です。
+認可サーバーによってDPoP証明に含まれるnonce値は、DPoP証明の寿命を制限するために認可サーバーによって使用されてもよいです。サーバーは、新しいDPoP nonceチャレンジを発行するタイミングと、それが必要かどうかを決定し、それによって後続のDPoP証明でnonce値の使用を要求します。サーバーがその決定を行うロジックは、このドキュメントの範囲外です。
         </p>
       </div>
     </div>
@@ -2721,7 +2721,7 @@ An authorization server MAY supply a nonce value to be included by the client in
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-認証サーバーは、送信されたDPOPプルーフにクライアントが含めるNonCE値を提供する場合があります。この場合、承認サーバーは、use_dpop_nonceをエラーコード値として使用して、[rfc6749]のセクション5.2ごとにHTTP 400（悪い要求）エラー応答を持つノンセを含めないリクエストに応答します。Authorization Serverには、後続のリクエストを送信するときに使用するNonCE値を提供するDPOP-Nonce HTTPヘッダーが応答に含まれています。NONCE値は予測不可能でなければなりません。この同じエラーコードは、NonCEの不一致があるときに新しいNonCE値を提供するときに使用されます。通常、クライアントは、添付されたNonCe値でuse_dpop_nonceエラーを受信すると、新しいNonce値が提供された新しいNonce値でリクエストを再試行します。
+認可サーバーは、クライアントが送信するDPoP証明に含めるnonce値を提供してもよいです。この場合、認可サーバーは、use_dpop_nonce をエラーコード値として使用し、[RFC6749] のセクション5.2に従ってHTTP 400 (Bad Request) エラーレスポンスで、nonceを含まないリクエストに応答します。認可サーバーは、後続のリクエストを送信する際に使用されるnonce値を提供するDPoP-Nonce HTTPヘッダーをレスポンスに含めます。nonce値は予測不可能でなければなりません。この同じエラーコードは、nonceの不一致があった場合に新しいnonce値を提供する際にも使用されます。通常、クライアントは、添付されたnonce値とともにuse_dpop_nonceエラーを受信すると、提供された新しいnonce値でリクエストを再試行します。
         </p>
       </div>
     </div>
@@ -2733,7 +2733,7 @@ For example, in response to a token request without a nonce when the authorizati
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-たとえば、認証サーバーが必要な場合、NonCEなしでトークン要求に応じて、承認サーバーは、DPOPプルーフに含めるNONCE値を提供するために、次のようなDPOPノンス値で応答できます。
+たとえば、認可サーバーが必要とする場合に、nonceを含まないトークンリクエストに応答して、認可サーバーはDPoP証明に含めるnonce値を提供するために、次のようなDPoP-Nonce値で応答できます。
         </p>
       </div>
     </div>
@@ -2759,7 +2759,7 @@ Figure 20: HTTP 400 Response to a Token Request without a Nonce
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-図20：ノンセなしでトークンリクエストに対するHTTP 400応答
+図20：nonceなしでトークンリクエストに対するHTTP 400レスポンス
         </p>
       </div>
     </div>
@@ -2771,7 +2771,7 @@ Other HTTP headers and JSON fields MAY also be included in the error response, b
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-他のHTTPヘッダーとJSONフィールドもエラー応答に含まれる場合がありますが、DPOP-Nonceヘッダーを1つ以上存在してはなりません。
+他のHTTPヘッダーとJSONフィールドもエラーレスポンスに含まれてもよいですが、DPoP-Nonceヘッダーが1つ以上存在してはなりません。
         </p>
       </div>
     </div>
@@ -2783,7 +2783,7 @@ Upon receiving the nonce, the client is expected to retry its token request usin
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-NONCEを受信すると、クライアントは、DPOPプルーフのNONCE請求に提供されたNONCE値を含むDPOPプルーフを使用してトークンリクエストを再試行することが期待されます。以下に示すようなDPOP証明のこのようなDPOPプルーフのエンコードされていないJWTペイロードを以下に示します。
+nonceを受信すると、クライアントは、DPoP証明のnonceクレームに提供されたnonce値を含むDPoP証明を使用してトークンリクエストを再試行することが期待されます。以下に示すのは、そのようなnonceを含むDPoP証明の、エンコードされていないJWTペイロードの例です。
         </p>
       </div>
     </div>
@@ -2808,7 +2808,7 @@ Figure 21: DPoP Proof Payload including a Nonce Value
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-11">
-図21：NonCe値を含むDPOPプルーフペイロード
+図21：nonce値を含むDPoP証明ペイロード
         </p>
       </div>
     </div>
@@ -2820,7 +2820,7 @@ The nonce is opaque to the client.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ノンセはクライアントに不透明です。
+nonceはクライアントに不透明です。
         </p>
       </div>
     </div>
@@ -2832,7 +2832,7 @@ If the nonce claim in the DPoP proof does not exactly match a nonce recently sup
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPプルーフのNonCE請求が、承認サーバーからクライアントに最近提供されたNONCEと正確に一致しない場合、承認サーバーはリクエストを拒否する必要があります。拒否応答には、後続のリクエストに使用する新しいNonCE値を提供するDPOP-Nonce HTTPヘッダーが含まれる場合があります。
+DPoP証明のnonceクレームが、認可サーバーからクライアントに最近提供されたnonceと正確に一致しない場合、認可サーバーはリクエストを拒否しなければなりません。拒否レスポンスには、後続のリクエストに使用する新しいnonce値を提供するDPoP-Nonce HTTPヘッダーが含まれてもよいです。
         </p>
       </div>
     </div>
@@ -2844,7 +2844,7 @@ The intent is that clients need to keep only one nonce value and servers need to
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-意図は、クライアントが1つのNONCE値のみを維持する必要があり、サーバーが最近のNonceのウィンドウを維持する必要があることです。とはいえ、サーバーとクライアントの保存されたNonCE値が異なる過渡状況が発生する可能性があります。ただし、この状況は自己修正されています。拒否メッセージを使用すると、サーバーはクライアントにクライアントに使用したいNonCe値を送信でき、クライアントはそのNONCE値を保存してリクエストを再試行できます。クライアントおよび/またはサーバーが保存されたNonCE値を破棄しても、その状況も自己修正されています。
+意図としては、クライアントは1つのnonce値のみを保持し、サーバーは最近のnonceのウィンドウを保持する必要があるということです。そうは言っても、サーバーとクライアントで格納されているnonce値が異なる一時的な状況が発生する可能性があります。しかし、この状況は自己修正されます。拒否メッセージが送られると、サーバーはクライアントに対して使用してほしいnonce値を送信でき、クライアントはそのnonce値を格納してリクエストを再試行できます。クライアントおよび/またはサーバーが格納されているnonce値を破棄したとしても、失敗したリクエストに応答または再試行する際に新しいnonce値が伝達されるため、その状況も自己修正されます。
         </p>
       </div>
     </div>
@@ -2856,7 +2856,7 @@ Note that browser-based client applications using CORS [WHATWG.Fetch] only have 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-CORを使用したブラウザベースのクライアントアプリケーション[Whatwg.fetch]は、デフォルトでCORSセーフェリストの応答HTTPヘッダーにのみアクセスできることに注意してください。アプリケーションがDPOP-Nonce HTTP Response Header値を取得して使用するためには、サーバーはAccess-Control-Expose-Headers Response Headerリスト値にDPOP-Nonceを含めることにより、アプリケーションを利用できるようにする必要があります。
+CORS [WHATWG.Fetch] を使用するブラウザベースのクライアントアプリケーションは、デフォルトではCORSセーフリスト化されたHTTPレスポンスヘッダーにのみアクセスできることに注意してください。アプリケーションがDPoP-Nonce HTTPレスポンスヘッダー値を取得して使用できるようにするためには、サーバーはAccess-Control-Expose-Headers レスポンスヘッダーリストの値にDPoP-Nonceを含めることにより、それをアプリケーションが利用できるようにする必要があります。
         </p>
       </div>
     </div>
@@ -2868,7 +2868,7 @@ CORを使用したブラウザベースのクライアントアプリケーシ�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-8.1. NonCe構文
+8.1. nonce構文
         </h5>
       </div>
     </div>
@@ -2880,7 +2880,7 @@ The nonce syntax in ABNF as used by [RFC6749] (which is the same as the scope-to
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC6749]で使用されるABNFの非CE構文（スコープトークンの構文と同じ）を以下に示します。
+[RFC6749]で使用されるABNFのnonce構文（スコープトークンの構文と同じ）を以下に示します。
         </p>
       </div>
     </div>
@@ -2899,7 +2899,7 @@ Figure 22: Nonce ABNF
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-27">
-図22：nonce abnf
+図22：nonce ABNF
         </p>
       </div>
     </div>
@@ -2911,7 +2911,7 @@ Figure 22: Nonce ABNF
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-8.2. 新しいNonCe値を提供します
+8.2. 新しいnonce値を提供します
         </h5>
       </div>
     </div>
@@ -2923,7 +2923,7 @@ It is up to the authorization server when to supply a new nonce value for the cl
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントが使用する新しいNONCE値をいつ提供するかは、Authorization Server次第です。クライアントは、サーバーが新しいNONCE値を提供するまで、DPOPプルーフで既存の供給されたNonCEを使用することが期待されます。
+クライアントが使用する新しいnonce値をいつ提供するかは、認可サーバー次第です。クライアントは、サーバーが新しいnonce値を提供するまで、DPoP証明で既存の提供されたnonceを使用することが期待されます。
         </p>
       </div>
     </div>
@@ -2935,7 +2935,7 @@ The authorization server MAY supply the new nonce in the same way that the initi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Authorization Serverは、最初のものが提供されたのと同じ方法で新しいNonCEを提供する場合があります。応答にDPOP-Nonce HTTPヘッダーを使用します。DPOP-Nonce HTTPヘッダーフィールドは、セクション8.1で定義されているNonCE構文を使用します。これが発生するたびに、追加のプロトコルラウンドトリップが必要です。
+認可サーバーは、最初のnonceが提供されたのと同じ方法で新しいnonceを提供してもよいです。すなわち、レスポンスのDPoP-Nonce HTTPヘッダーを使用することによってです。DPoP-Nonce HTTPヘッダーフィールドは、セクション8.1で定義されているnonce構文を使用します。これが起こるたびに、追加のプロトコルラウンドトリップが必要になります。
         </p>
       </div>
     </div>
@@ -2947,7 +2947,7 @@ A more efficient manner of supplying a new nonce value is also defined by includ
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-新しいNonCE値を提供するより効率的な方法は、前のリクエストからHTTP 200（OK）応答にDPOP-Nonce HTTPヘッダーを含めることによって定義されます。クライアントは、承認サーバーが新しいNONCEを提供するまで、次のトークンリクエストとその後のすべてのトークンリクエストに提供された新しいNONCE値を使用する必要があります。
+新しいnonce値を提供するより効率的な方法も、以前のリクエストからのHTTP 200 (OK) レスポンスにDPoP-Nonce HTTPヘッダーを含めることによって定義されます。クライアントは、認可サーバーが新しいnonceを提供するまで、次のトークンリクエストおよびそれ以降のすべてのトークンリクエストに対して提供された新しいnonce値を使用しなければなりません。
         </p>
       </div>
     </div>
@@ -2959,7 +2959,7 @@ Responses that include the DPoP-Nonce HTTP header should be uncacheable (e.g., u
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP-Nonce HTTPヘッダーを含む応答は、その後のリクエストと古いNonCE値を使用するために応答が使用されるのを防ぐために、修復不可能（キャッシュコントロール：GETリクエストに応じてストアなし）でなければなりません結果として。
+DPoP-Nonce HTTPヘッダーを含むレスポンスは、キャッシュ不可能（例：GETリクエストへのレスポンスでCache-Control: no-storeを使用）であるべきです。これは、レスポンスが後続のリクエストの処理に使用されたり、古いnonce値が結果として使用されたりすることを防ぐためです。
         </p>
       </div>
     </div>
@@ -2971,7 +2971,7 @@ An example 200 OK response providing a new nonce value is shown below.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-新しいNonCE値を提供する例200 OK応答を以下に示します。
+新しいnonce値を提供するHTTP 200 OKレスポンスの例を以下に示します。
         </p>
       </div>
     </div>
@@ -3004,7 +3004,7 @@ Figure 23: HTTP 200 Response Providing the Next Nonce Value
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-9. リソースサーバーが提供するノンセ
+9. リソースサーバーが提供するnonce
         </h5>
       </div>
     </div>
@@ -3016,7 +3016,7 @@ Resource servers can also choose to provide a nonce value to be included in DPoP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リソースサーバーは、送信されたDPOPプルーフに含まれるNonCE値を提供することもできます。セクション8および8.2で説明されているように、承認サーバーが行うのと同じ方法で、DPOP-Nonceヘッダーを使用してNONCEを提供します。エラーシグナル伝達は、セクション7.1で説明されているように実行されます。リソースサーバーは、これを達成するためにwww-authenticate：dpop値とdpop-nonce値を伴うhttp 401（不正）エラーコードを使用します。
+リソースサーバーは、自身に送信されるDPoP証明に含めるnonce値を提供することもできます。これらは、セクション8および8.2で説明されている認可サーバーが行うのと同じ方法で、DPoP-Nonceヘッダーを使用してnonceを提供します。エラー通知はセクション7.1で説明されているとおりに実行されます。リソースサーバーは、これを達成するために、HTTP 401 (Unauthorized) エラーコードと、それに付随するWWW-Authenticate: DPoP値およびDPoP-Nonce値を使用します。
         </p>
       </div>
     </div>
@@ -3028,7 +3028,7 @@ For example, in response to a resource request without a nonce when the resource
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-たとえば、リソースサーバーが必要な場合、NONCEのないリソース要求に応じて、リソースサーバーは、DPOPプルーフに含めるNonCE値を提供するために、次のようなDPOPノンス値で応答できます。以下の例では、[RFC8792]ごとに「\」ラインラッピングを使用しています。
+たとえば、リソースサーバーが必要な場合に、nonceのないリソースリクエストに応答して、リソースサーバーはDPoP証明に含めるnonce値を提供するために、次のようなDPoP-Nonce値で応答できます。以下の例では、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -3050,7 +3050,7 @@ Figure 24: HTTP 401 Response to a Resource Request without a Nonce
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-5">
-図24：HTTP 401ノンセなしのリソース要求への応答
+図24：nonceなしのリソースリクエストに対するHTTP 401レスポンス
         </p>
       </div>
     </div>
@@ -3062,7 +3062,7 @@ Note that the nonces provided by an authorization server and a resource server a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-認証サーバーとリソースサーバーによって提供されるNoncesは異なっており、noncesが発行したサーバーによってのみ受け入れられるため、互いに混同しないでください。同様に、クライアントが複数の承認サーバーおよび/またはリソースサーバーを使用する場合、それらのいずれかが発行したNONCEは、発行サーバーでのみ使用する必要があります。また、開発者は、DPOP NoncesをOpenID Connect [OpenID.Core] IDトークンNonceと混同しないように注意する必要があります。
+認可サーバーとリソースサーバーによって提供されるnonceは異なっており、nonceは発行元サーバーによってのみ受け入れられるため、互いに混同すべきではありません。同様に、クライアントが複数の認可サーバーやリソースサーバーを使用する場合、それらのいずれかが発行したnonceは、発行元サーバーでのみ使用されるべきです。開発者は、DPoP nonceをOpenID Connect [OpenID.Core] IDトークンnonceと混同しないように注意する必要があります。
         </p>
       </div>
     </div>
@@ -3074,7 +3074,7 @@ Note that the nonces provided by an authorization server and a resource server a
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-10. DPOPキーへの承認コードバインディング
+10. DPoP鍵への認可コードバインディング
         </h5>
       </div>
     </div>
@@ -3086,7 +3086,7 @@ Binding the authorization code issued to the client&#39;s proof-of-possession ke
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントのプルーフポッセッションキーに発行された承認コードをバインドすると、承認フロー全体のエンドツーエンドのバインディングが可能になります。この仕様は、この目的のためにDPOP_JKT認証要求パラメーターを定義します。DPOP_JKT認証リクエストパラメーターの値は、SHA-256ハッシュ関数を使用したPhose-of-Possession公開キーのJWK ThumbPrint [RFC7638]です。
+クライアントの所有証明鍵に発行された認可コードをバインドすることで、認可フロー全体のエンドツーエンドのバインディングが可能になります。この仕様では、この目的のためにdpop_jkt認可リクエストパラメーターを定義します。dpop_jkt認可リクエストパラメーターの値は、SHA-256ハッシュ関数を使用した所有証明公開鍵のJWKサムプリント [RFC7638] であり、セクション6.1で定義されているjkt確認方法と同じ値です。
         </p>
       </div>
     </div>
@@ -3098,7 +3098,7 @@ When a token request is received, the authorization server computes the JWK Thum
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-トークン要求が受信されると、承認サーバーは、DPOPプルーフのプルーフオブポッセッション公開キーのJWKサムプリントを計算し、承認要求のDPOP_JKTパラメーター値と一致することを確認します。それらが一致しない場合、リクエストを拒否する必要があります。
+トークンリクエストが受信されると、認可サーバーはDPoP証明内の所有証明公開鍵のJWKサムプリントを計算し、それが認可リクエスト内のdpop_jktパラメーター値と一致することを確認します。一致しない場合、リクエストを拒否しなければなりません。
         </p>
       </div>
     </div>
@@ -3110,7 +3110,7 @@ An example authorization request using the dpop_jkt authorization request parame
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP_JKT承認要求パラメーターを使用した承認要求の例を以下に示し、[RFC8792]ごとに「\」ラインラッピングを使用します。
+dpop_jkt認可リクエストパラメーターを使用した認可リクエストの例を以下に示します。この例では、[RFC8792] に従って行折り返しを使用しています。
         </p>
       </div>
     </div>
@@ -3134,7 +3134,7 @@ Figure 25: Authorization Request Using the dpop_jkt Parameter
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-7">
-図25：dpop_jktパラメーターを使用した承認要求
+図25：dpop_jktパラメーターを使用した認可リクエスト
         </p>
       </div>
     </div>
@@ -3146,7 +3146,7 @@ Use of the dpop_jkt authorization request parameter is OPTIONAL. Note that the d
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP_JKT認証要求パラメーターの使用はオプションです。DPOP_JKT認証リクエストパラメーターは、認証コードインジェクションの対策として[セキュリティトピック]によって推奨されるコードエクスチェンジ（PKCE）[RFC7636]の証明キーと組み合わせて使用できることに注意してください。DPOP_JKT認証要求パラメーターは、各承認要求に一意のDPOPキーが使用されている場合にのみ、同様の保護を提供します。
+dpop_jkt認可リクエストパラメーターの使用はOPTIONALです。dpop_jkt認可リクエストパラメーターは、認可コードインジェクションの対策として[SECURITY-TOPICS]によって推奨されるProof Key for Code Exchange (PKCE) [RFC7636] と組み合わせて使用されてもよいことに注意してください。dpop_jkt認可リクエストパラメーターは、各認可リクエストに一意のDPoP鍵が使用されている場合にのみ、同様の保護を提供します。
         </p>
       </div>
     </div>
@@ -3158,7 +3158,7 @@ DPOP_JKT認証要求パラメーターの使用はオプションです。DPOP_J
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-10.1. プッシュされた承認リクエストを備えたDPOP
+10.1. プッシュされた認可リクエストでのDPoP
         </h5>
       </div>
     </div>
@@ -3170,7 +3170,7 @@ When Pushed Authorization Requests (PARs) [RFC9126] are used in conjunction with
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-プッシュされた承認リクエスト（PAR）[RFC9126]がDPOPと併用されると、DPOPキーをPARリクエストで通信できる2つの方法があります。
+プッシュされた認可リクエスト（PAR）[RFC9126]がDPoPと併用される場合、PARリクエストでDPoP鍵を伝達する方法は2つあります。
         </p>
       </div>
     </div>
@@ -3182,7 +3182,7 @@ When Pushed Authorization Requests (PARs) [RFC9126] are used in conjunction with
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* DPOP_JKTパラメーターは、セクション10で説明されているように使用して、発行された承認コードを特定のキーに結合できます。この場合、DPOP_JKTは、PARリクエストのポスト本体にある他の承認要求パラメーターとともに含める必要があります。
+* dpop_jktパラメーターは、セクション10で説明されているように、発行された認可コードを特定の鍵にバインドするために使用できます。この場合、dpop_jktは、PARリクエストのPOSTボディにある他の認可リクエストパラメーターとともに含めなければなりません。
         </p>
       </div>
     </div>
@@ -3194,7 +3194,7 @@ When Pushed Authorization Requests (PARs) [RFC9126] are used in conjunction with
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-* または、DPOPヘッダーをPARリクエストに追加できます。この場合、承認サーバーは、セクション4.3で定義されているように、提供されたDPOP証明JWTを確認する必要があります。含まれる公開キーのサムプリントがDPOP_JKTを使用して提供されたかのようにさらに動作する必要があります。つまり、同じキーのDPOP証明が提供されない限り、後続のトークン要求を拒否します。これは、クライアントの実装を簡素化するのに役立ちます。これは、リクエストの種類に関係なく、DPOPヘッダーをすべてのリクエストに認証サーバーに「盲目的に」添付できるためです。さらに、DPOPヘッダーには秘密鍵の所持の証明が含まれているため、より強力なバインディングを提供します。
+* あるいは、DPoPヘッダーをPARリクエストに追加できます。この場合、認可サーバーは、セクション4.3で定義されているように、提供されたDPoP証明JWTを検証しなければなりません。さらに、含まれる公開鍵のサムプリントがdpop_jktを使用して提供されたかのように動作しなければなりません。つまり、同じ鍵に対するDPoP証明が提供されない限り、後続のトークンリクエストを拒否します。これは、クライアントがリクエストの種類に関係なく、認可サーバーへのすべてのリクエストに「盲目的に」DPoPヘッダーを添付できるため、クライアントの実装を簡素化するのに役立ちます。加えて、DPoPヘッダーには秘密鍵の所有証明が含まれているため、より強力なバインディングを提供します。
         </p>
       </div>
     </div>
@@ -3206,7 +3206,7 @@ Both mechanisms MUST be supported by an authorization server that supports PAR a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-両方のメカニズムは、PARおよびDPOPをサポートする認証サーバーによってサポートする必要があります。両方のメカニズムが同時に使用されている場合、DPOP_JKTのJWK ThumbprintがDPOPヘッダーの公開キーと一致しない場合、承認サーバーはリクエストを拒否する必要があります。
+両方のメカニズムは、PARおよびDPoPをサポートする認可サーバーによってサポートされなければなりません。両方のメカニズムが同時に使用されている場合、dpop_jkt内のJWKサムプリントがDPoPヘッダー内の公開鍵と一致しない場合、認可サーバーはリクエストを拒否しなければなりません。
         </p>
       </div>
     </div>
@@ -3218,7 +3218,7 @@ Allowing both mechanisms ensures that clients using dpop_jkt do not need to dist
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-両方のメカニズムを許可すると、DPOP_JKTを使用するクライアントがフロントチャネルとプッシュされた認証要求を区別する必要がないことを保証します。同時に、すべての呼び出しを許可サーバーエンドポイントに保護するためのコードパスを1つだけ持っているクライアントは、リクエストを区別する必要がありません。PARエンドポイントとトークンエンドポイントへ。
+両方のメカニズムを許可することで、dpop_jktを使用するクライアントがフロントチャネルとプッシュされた認可リクエストを区別する必要がなくなり、同時に、認可サーバーエンドポイントへのすべての呼び出しを保護するためのコードパスを1つだけ持つクライアントが、PARエンドポイントとトークンエンドポイントへのリクエストを区別する必要がなくなります。
         </p>
       </div>
     </div>
@@ -3242,7 +3242,7 @@ In DPoP, the prevention of token replay at a different endpoint (see Section 2) 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPでは、別のエンドポイントでのトークンリプレイの防止（セクション2を参照）は、[RFC6125]ごとにサーバーの認証とDPOPプルーフの特定のURIおよびHTTPメソッドへの結合によって達成されます。ただし、DPOPには、OAuth相互TLS [RFC8705]やOAuthトークン結合[トークンバインディング]などのTLSベースの方法とは多少異なる保護の性質があります（セクション11.1および11.7も参照）。TLSベースのメカニズムは、TLSレイヤーとアプリケーションレイヤー間の緊密な統合を活用して、強力なメッセージの整合性、信頼性、およびリプレイ保護を実現できます。
+DPoPでは、異なるエンドポイントでのトークンリプレイの防止（セクション2参照）は、[RFC6125]に従ったサーバーの認証と、DPoP証明を特定のURIおよびHTTPメソッドにバインドすることによって達成されます。しかし、DPoPは、OAuth Mutual TLS [RFC8705] や OAuth Token Binding [TOKEN-BINDING] などのTLSベースの方法とは、保護の性質がやや異なります（セクション11.1および11.7も参照）。TLSベースのメカニズムは、TLS層とアプリケーション層との緊密な統合を活用して、強力なメッセージの整合性、真正性、およびリプレイ保護を実現できます。
         </p>
       </div>
     </div>
@@ -3254,7 +3254,7 @@ DPOPでは、別のエンドポイントでのトークンリプレイの防止�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.1. DPOPプルーフリプレイ
+11.1. DPoP証明リプレイ
         </h5>
       </div>
     </div>
@@ -3266,7 +3266,7 @@ If an adversary is able to get hold of a DPoP proof JWT, the adversary could rep
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-敵がDPOPプルーフJWTを手に入れることができる場合、敵は同じエンドポイントでトークンを再生できます（HTTPエンドポイントと方法は、JWTSのそれぞれのクレームを介して施行されます）。これを制限するには、サーバーは作成後の限られた時間のためにDPOPプルーフのみを受け入れる必要があります（できれば、秒または数分の順序で比較的短い期間のみ）。
+敵がDPoP証明JWTを手に入れることができる場合、敵は同じエンドポイントでそのトークンを再生できます（HTTPエンドポイントとメソッドは、JWTのそれぞれのクレームを介して強制されます）。これを制限するために、サーバーはDPoP証明をその作成後限られた期間（できれば数秒または数分程度の比較的短い期間のみ）受け入れなければなりません。
         </p>
       </div>
     </div>
@@ -3278,7 +3278,7 @@ In the context of the target URI, servers can store the jti value of each DPoP p
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ターゲットURIのコンテキストでは、サーバーは、同じDPOPプルーフの複数の使用を防ぐためにそれぞれのDPOP証明JWTが受け入れられる時間ウィンドウの各DPOP証明のJTI値を保存できます。HTTPは、以前にJTI値が見られたのと同じURIにリクエストされます。厳密に施行された場合、このような使い捨てチェックはDPOPプルーフリプレイに対する非常に強力な保護を提供しますが、たとえば、単一のエンドポイントの背後にある複数のサーバーに共有状態がない場合、実際には必ずしも実行可能ではない場合があります。
+ターゲットURIのコンテキストでは、サーバーは、同じDPoP証明の複数回使用を防ぐために、それぞれのDPoP証明JWTが受け入れられる時間枠内において、各DPoP証明のjti値を保存できます。jti値が以前に確認されたのと同じURIへのHTTPリクエストは拒否されます。厳密に強制された場合、このような単一使用チェックはDPoP証明のリプレイに対して非常に強力な保護を提供しますが、例えば、単一のエンドポイントの背後にある複数のサーバーが共有状態を持たない場合など、実際には常に実現可能であるとは限りません。
         </p>
       </div>
     </div>
@@ -3290,7 +3290,7 @@ In order to guard against memory exhaustion attacks, a server that is tracking j
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メモリの消耗攻撃を防ぐために、JTI値を追跡しているサーバーは、不必要に大きなJTI値を持つDPOP証明JWTを拒否するか、そのハッシュのみを保存する必要があります。
+メモリ枯渇攻撃を防ぐために、jti値を追跡しているサーバーは、不必要に大きなjti値を持つDPoP証明JWTを拒否するか、そのハッシュのみを保存すべきです。
         </p>
       </div>
     </div>
@@ -3302,7 +3302,7 @@ Note: To accommodate for clock offsets, the server MAY accept DPoP proofs that c
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：クロックオフセットに対応するために、サーバーは、適度に近い将来（秒または数分で）にIAT時間を運ぶDPOPプルーフを受け入れる場合があります。サーバーとクライアントの間のクロックスキューは大規模である可能性があるため、サーバーは、サーバーの時間とサーバーの時間を比較するのではなく、サーバーでの時間を含むサーバーが提供するNonCE値を使用することにより、DPOP証明の寿命を制限する場合があります。このようにして作成されたノンセスは、任意に大きなクロックスキューに直面しても同じ結果をもたらします。
+注：クロックオフセットに対応するために、サーバーは、適度に近未来（数秒または数分程度）のiat時間を含むDPoP証明を受け入れてもよいです。サーバーとクライアント間のクロックスキューが大きい可能性があるため、サーバーは、クライアントが提供したiat時間をサーバーの時間と比較するのではなく、サーバーでの時間を含むサーバー提供のnonce値を使用することによって、DPoP証明のライフタイムを制限してもよいです。この方法で作成されたnonceは、任意に大きなクロックスキューに直面しても同じ結果をもたらします。
         </p>
       </div>
     </div>
@@ -3314,7 +3314,7 @@ Server-provided nonces are an effective means for further reducing the chances f
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーが提供するNoncesは、DPOPプルーフリプレイを成功させる可能性をさらに減らすための効果的な手段です。暗号化されていないノンセスとは異なり、クライアントは同じノンセを複数回使用し、サーバーが同じNONCEを複数回受け入れることは許容されます。JTI値が追跡され、非CEの寿命のために重複が拒否される限り、トークンリプレイの追加のリスクはありません。
+サーバー提供のnonceは、DPoP証明リプレイの成功の可能性をさらに低減するための効果的な手段です。暗号化nonceとは異なり、クライアントが同じnonceを複数回使用すること、およびサーバーが同じnonceを複数回受け入れることは許容されます。jti値が追跡され、nonceのライフタイム中に重複が拒否される限り、トークンリプレイの追加のリスクはありません。
         </p>
       </div>
     </div>
@@ -3326,7 +3326,7 @@ Server-provided nonces are an effective means for further reducing the chances f
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.2. DPOPプルーフプレジェネレーション
+11.2. DPoP証明の事前生成
         </h5>
       </div>
     </div>
@@ -3338,7 +3338,7 @@ An attacker in control of the client can pre-generate DPoP proofs for specific e
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントを制御する攻撃者は、DPOP証明のIAT値を選択することにより、特定のエンドポイントのDPOPプルーフを任意に任意に任意に任意に任命することができます。そのような攻撃者の1人は、クライアントの正当なユーザーである人であることに注意してください。ユーザーは、DPOPプルーフを事前に生成して、生成されたプルーフオブポッセッションキーを所有しているマシンから除去し、キーを所有していない別のマシンにコピーすることができます。たとえば、銀行の従業員は、銀行コンピューターでDPOPプルーフを事前に生成し、将来使用するために別のマシンにコピーして、銀行の監査管理をバイパスする場合があります。DPOPプルーフを事前に生成して拡張できる場合、DPOPプロトコルの相互作用で実際に証明されているのは、dPOP証明の所有であり、プルーフオブポッセッションキーではありません。
+クライアントを制御する攻撃者は、DPoP証明のiat値を選択することにより、特定のターゲットに対してDPoP証明を任意に将来にわたって事前生成できます。そのような攻撃者の一人として、クライアントの正当なユーザーが挙げられます。ユーザーは、DPoP証明を事前に生成し、それが生成された所有証明鍵を持つマシンからそれを窃取し、鍵を持たない別のマシンにコピーする可能性があります。例えば、銀行員が銀行のコンピューターでDPoP証明を事前生成し、それを将来使用するために別のマシンにコピーすることで、銀行の監査管理を迂回する場合があります。DPoP証明が事前生成され窃取されうる場合、DPoPプロトコルによるやり取りで実際に証明されているのは、DPoP証明の所有であり、所有証明鍵の所有ではありません。
         </p>
       </div>
     </div>
@@ -3350,7 +3350,7 @@ Use of server-provided nonce values that are not predictable by attackers can pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-攻撃者が予測できないサーバーが提供するNonCE値を使用すると、この攻撃を防ぐことができます。選択したときに新しいNonCe値を提供することにより、サーバーはDPOPプルーフの寿命を制限し、事前に生成されたDPOPプルーフが使用されないようにすることができます。サーバーが提供するNoncesが使用される場合、DPOP証明の所持だけでなく、プルーフオブポッセッションキーの所持が実証されています。
+攻撃者が予測できないサーバー提供のnonce値を使用することで、この攻撃を防止できます。サーバーは、自身の選択したタイミングで新しいnonce値を提供することにより、DPoP証明のライフタイムを制限し、事前生成されたDPoP証明が使用されるのを防ぐことができます。サーバー提供のnonceが使用される場合、DPoP証明の所有だけでなく、所有証明鍵の所有が実証されます。
         </p>
       </div>
     </div>
@@ -3362,7 +3362,7 @@ The ath claim limits the use of pre-generated DPoP proofs to the lifetime of the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ATH請求は、事前に生成されたDPOPプルーフの使用がアクセストークンの寿命に制限されています。NonCEメカニズムを利用していない展開は、長寿命のDPOP制約付きアクセストークンを発行しないでください。代わりに、短命のアクセストークンを使用してトークンを更新することを好みます。攻撃者はDPOPプルーフを事前に生成して更新トークンを使用して新しいアクセストークンを取得できますが、DPOPプルーフを現実的に事前に生成して、新しく発行されたアクセストークンを使用することはできません。
+athクレームは、事前に生成されたDPoP証明の使用をアクセストークンのライフタイムに限定します。nonceメカニズムを利用しないデプロイメントは、長期間有効なDPoPによって制限されたアクセストークンを発行すべきではありません。代わりに、短期間有効なアクセストークンとリフレッシュトークンを使用することが推奨されます。攻撃者は、リフレッシュトークンを使用して新しいアクセストークンを取得するためにDPoP証明を事前生成できるかもしれませんが、新しく発行されたアクセストークンを使用するためのDPoP証明を現実的に事前生成することはできません。
         </p>
       </div>
     </div>
@@ -3374,7 +3374,7 @@ ATH請求は、事前に生成されたDPOPプルーフの使用がアクセス�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.3. DPOP NonCeダウングレード
+11.3. DPoP nonceダウングレード
         </h5>
       </div>
     </div>
@@ -3386,7 +3386,7 @@ A server MUST NOT accept any DPoP proofs without the nonce claim when a DPoP non
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-サーバーは、DPOP NonCeがクライアントに提供された場合、NonCeの請求なしにDPOPプルーフを受け入れてはなりません。
+サーバーは、DPoP nonceがクライアントに提供された場合、nonceクレームなしにDPoP証明を受け入れてはなりません。
         </p>
       </div>
     </div>
@@ -3410,7 +3410,7 @@ If an adversary is able to run code in the client&#39;s execution context, the s
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-敵がクライアントの実行コンテキストでコードを実行できる場合、DPOPのセキュリティは保証されなくなります。信頼されていないコードの実行につながるWebアプリケーションの一般的な問題は、XSSとリモートコードインクルージョン攻撃です。
+敵がクライアントの実行コンテキストでコードを実行できる場合、DPoPのセキュリティは保証されなくなります。信頼されていないコードの実行につながるWebアプリケーションの一般的な問題は、XSSとリモートコードインクルージョン攻撃です。
         </p>
       </div>
     </div>
@@ -3422,7 +3422,7 @@ If the private key used for DPoP is stored in such a way that it cannot be expor
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPに使用される秘密キーが、たとえばハードウェアまたはソフトウェアセキュリティモジュールでエクスポートできないように保存されている場合、敵はキーを除去して任意のDPOPプルーフを作成することができません。ただし、クライアントがオンラインである限り、敵は新しいDPOPプルーフを作成し、これらの証明を（それぞれのトークンと一緒に）被害者のデバイスまたは攻撃者の管理下にあるデバイスで使用して、任意のリクエストを送信することができます。サーバー。
+DPoPに使用される秘密鍵が、例えばハードウェアまたはソフトウェアセキュリティモジュールにエクスポートできない形で保存されている場合、敵は鍵を窃取して任意のDPoP証明を作成することはできません。しかし、クライアントがオンラインである限り、敵は新しいDPoP証明を作成し、これらの証明を（それぞれのトークンとともに）被害者のデバイス上または攻撃者の制御下にあるデバイス上で使用して、サーバーから受け入れられる任意の新しいリクエストを送信することができます。
         </p>
       </div>
     </div>
@@ -3434,7 +3434,7 @@ To send requests even when the client is offline, an adversary can try to pre-co
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントがオフラインである場合でもリクエストを送信するには、敵は将来のタイムスタンプを使用してDPOPプルーフを事前に計算し、アクセスまたは更新トークンとともにこれらを除外しようとすることができます。
+クライアントがオフラインである場合でもリクエストを送信するために、敵は将来のタイムスタンプを使用してDPoP証明を事前に計算し、それらをアクセストークンまたはリフレッシュトークンとともに窃取しようとすることができます。
         </p>
       </div>
     </div>
@@ -3446,7 +3446,7 @@ An adversary might further try to associate tokens issued from the token endpoin
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-敵はさらに、トークンのエンドポイントから発行されたトークンを敵のコントロールの下でキーペアと関連付けることを試みるかもしれません。これを達成する1つの方法は、既存のコードを変更することです。たとえば、暗号化APIを交換することです。もう1つの方法は、IFRAMEでクライアントと承認サーバーの間に新しい承認助成金を起動することです。この助成金は「サイレント」である必要があります。つまり、ユーザーとのやり取りを必要としません。クライアントの起源でコードが実行されているため、敵は結果として得られる認証コードにアクセスでき、それを使用して、独自のDPOPキーをトークンエンドポイントから返すトークンに関連付けることができます。敵は、クライアントがオフラインである場合でも、結果のトークンを独自のデバイスで使用できます。
+敵はさらに、トークンエンドポイントから発行されたトークンを、敵のコントロール下にある鍵ペアと関連付けようと試みるかもしれません。これを達成する一つの方法は、既存のコードを改変することです。例えば、暗号APIを置き換えるなどです。もう一つの方法は、iframe内でクライアントと認可サーバーの間に新しい認可グラントを開始することです。このグラントは「サイレント」、すなわちユーザーとの対話を必要としないものである必要があります。クライアントのオリジンでコードが実行されている場合、敵は結果として得られる認可コードにアクセスでき、それを使用して自身のDPoP鍵をトークンエンドポイントから返されたトークンと関連付けることができます。その結果、敵はクライアントがオフラインである場合でも、自身のデバイスでそのトークンを使用できるようになります。
         </p>
       </div>
     </div>
@@ -3458,7 +3458,7 @@ Therefore, protecting clients against the execution of untrusted code is extreme
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-したがって、DPOPを使用しても、信頼できないコードの実行からクライアントを保護することは非常に重要です。安全なコーディングプラクティスに加えて、コンテンツセキュリティポリシー[W3C.CSP]は、XSSに対する第2の防御層として使用できます。
+したがって、DPoPを使用する場合でも、信頼できないコードの実行からクライアントを保護することは非常に重要です。安全なコーディングプラクティスに加えて、Content Security Policy [W3C.CSP] は、XSSに対する第二の防御層として使用できます。
         </p>
       </div>
     </div>
@@ -3482,7 +3482,7 @@ Servers accepting signed DPoP proof JWTs MUST verify that the typ field is dpop+
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名済みのDPOP証明JWTSを受け入れるサーバーは、TypフィールドがJWTSのヘッダーのDPOP JWTであることを確認する必要があります。
+署名されたDPoP証明JWTを受け入れるサーバーは、typフィールドがJWTのヘッダーでdpop+jwtであることを確認しなければなりません。これにより、敵対者が他の目的で作成されたJWTを使用できないようにします。
         </p>
       </div>
     </div>
@@ -3506,7 +3506,7 @@ Implementers MUST ensure that only asymmetric digital signature algorithms (such
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装者は、安全であるとみなされる非対称デジタル署名アルゴリズム（ES256など）のみがDPOPプルーフの署名に使用できることを確認する必要があります。特に、アルゴリズムは許可されてはなりません。
+実装者は、安全であると見なされる非対称デジタル署名アルゴリズム（ES256など）のみがDPoP証明の署名に使用できることを確認しなければなりません。特に、アルゴリズム none は許可されてはなりません。
         </p>
       </div>
     </div>
@@ -3518,7 +3518,7 @@ Implementers MUST ensure that only asymmetric digital signature algorithms (such
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.7. 整合性を要求します
+11.7. リクエストの整合性
         </h5>
       </div>
     </div>
@@ -3530,7 +3530,7 @@ DPoP does not ensure the integrity of the payload or headers of requests. The DP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPは、ペイロードまたはリクエストのヘッダーの整合性を保証しません。DPOPプルーフには、HTTP URIとメソッドのクレームのみが含まれていますが、たとえばメッセージ本文または一般的な要求ヘッダーは含まれません。
+DPoPは、リクエストのペイロードやヘッダーの整合性を保証しません。DPoP証明には、HTTP URIとメソッドのクレームのみが含まれていますが、例えばメッセージボディや一般的なリクエストヘッダーは含まれません。
         </p>
       </div>
     </div>
@@ -3542,7 +3542,7 @@ This is an intentional design decision intended to keep DPoP simple to use, but 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これは、DPOPを使用しやすくすることを目的とした意図的な設計決定ですが、説明されているように、攻撃者がメッセージコンテンツとヘッダーを変更できる場合、DPOPは攻撃を再生しやすくなります。多くのセットアップでは、TLSが提供するメッセージの整合性と機密性は、適切なレベルの保護を提供するのに十分です。
+これは、DPoPを使用しやすくすることを目的とした意図的な設計決定ですが、説明されているように、攻撃者がメッセージコンテンツとヘッダーを変更できる場合、DPoPはリプレイ攻撃を受けやすくなります。多くのセットアップでは、TLSが提供するメッセージの整合性と機密性は、適切なレベルの保護を提供するのに十分です。
         </p>
       </div>
     </div>
@@ -3554,7 +3554,7 @@ Note: While signatures covering other parts of requests are out of the scope of 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：リクエストの他の部分をカバーする署名はこの仕様の範囲外ではありませんが、署名する追加情報はDPOPプルーフに追加できます。
+注：リクエストの他の部分をカバーする署名はこの仕様の範囲外ではありませんが、署名する追加情報はDPoP証明に追加できます。
         </p>
       </div>
     </div>
@@ -3566,7 +3566,7 @@ Note: While signatures covering other parts of requests are out of the scope of 
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.8. アクセストークンと公開キーのバインディング
+11.8. アクセストークンと公開鍵のバインディング
         </h5>
       </div>
     </div>
@@ -3578,7 +3578,7 @@ The binding of the access token to the DPoP public key, as specified in Section 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セクション6で指定されているように、DPOP公開キーへのアクセストークンの結合は、公開キーのJWK表現の暗号化ハッシュを使用しています。同じハッシュ出力値を生成する別のキーを見つけたり作成したりするために、計算上無効にするために、十分な2番目のプリメージ抵抗を持つハッシュ関数に依存しています。SHA-256ハッシュ関数は、広く利用可能である間、前述の要件を満たしているため使用されました。
+セクション6で指定されているように、DPoP公開鍵へのアクセストークンのバインディングは、公開鍵のJWK表現の暗号学的ハッシュを使用します。これは、同じハッシュ出力値を生成する別の鍵を見つけたり作成したりすることが計算上困難になるように、ハッシュ関数が十分な第二原像耐性を持つことに依存しています。SHA-256ハッシュ関数は、前述の要件を満たしつつ広く利用可能であるため、使用されています。
         </p>
       </div>
     </div>
@@ -3590,7 +3590,7 @@ Similarly, the binding of the DPoP proof to the access token uses a hash of that
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-同様に、DPOP証明のアクセストークンへの結合は、DPOPプルーフのATH請求の値としてそのアクセストークンのハッシュを使用します（セクション4.2を参照）。これは、アクセストークンを確実に識別するために、ハッシュの値が十分に一意であることに依存しています。SHA-256の衝突抵抗は、その要件を満たしています。
+同様に、DPoP証明とアクセストークンのバインディングは、DPoP証明のathクレームの値としてそのアクセストークンのハッシュを使用します（セクション4.2参照）。これは、アクセストークンを確実に識別できるように、ハッシュの値が十分に一意であることに依存しています。SHA-256の衝突耐性はその要件を満たしています。
         </p>
       </div>
     </div>
@@ -3602,7 +3602,7 @@ Similarly, the binding of the DPoP proof to the access token uses a hash of that
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.9. 承認コードと公開キーバインディング
+11.9. 認可コードと公開鍵のバインディング
         </h5>
       </div>
     </div>
@@ -3614,7 +3614,7 @@ Cryptographic binding of the authorization code to the DPoP public key is specif
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP公開キーへの承認コードの暗号化バインディングは、セクション10で指定されています。このバインディングは、攻撃者が認証コードをキャプチャし、クライアントが保持しているもの以外のキーを使用してDPOP証明を作成する攻撃を防ぎます。そのDPOP証明を使用して認証コードを引き換えます。クライアントのDPOPキーのみを使用できることをエンドエンドで確実にすることにより、キャプチャされた認証コードが抽出され、認証コードが発行された場所以外の場所で使用されるのを防ぎます。
+認可コードとDPoP公開鍵の暗号学的バインディングは、セクション10で指定されています。このバインディングは、攻撃者が認可コードをキャプチャし、クライアントが保持しているもの以外の鍵を使用してDPoP証明を作成し、そのDPoP証明を使用して認可コードを引き換える攻撃を防止します。クライアントのDPoP鍵のみが使用できることをエンドツーエンドで保証することにより、キャプチャされた認可コードが、発行された場所以外の場所で窃取され使用されることを防ぎます。
         </p>
       </div>
     </div>
@@ -3626,7 +3626,7 @@ Authorization codes can, for instance, be harvested by attackers from places whe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-たとえば、承認コードは、それらを含むHTTPメッセージが記録される場所から攻撃者が収穫することができます。実際には、承認コードを1回限り使用する努力が行われた場合でも、攻撃者がそれらを再生できる時間枠がしばしばあります。たとえば、承認サーバーがスケーラブルな複製サービスとして実装されている場合、一部のレプリカは、再生を防ぐために必要な情報を一時的に持っていない場合があります。承認コードのDPOPバインディングは、これらの問題を解決します。
+たとえば、認可コードは、それらを含むHTTPメッセージがログに記録される場所から攻撃者によって収集される可能性があります。認可コードを一度限りの使用にする努力がなされても、実際には、攻撃者がそれらをリプレイできる時間枠がしばしば存在します。例えば、認可サーバーがスケーラブルな複製サービスとして実装されている場合、一部のレプリカは一時的にリプレイを防ぐために必要な情報を持っていない可能性があります。認可コードのDPoPバインディングは、これらの問題を解決します。
         </p>
       </div>
     </div>
@@ -3638,7 +3638,7 @@ If an authorization server does not (or cannot) strictly enforce the single-use 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-承認サーバーが認証コードの単一使用制限を厳密に実施していない（またはできない）場合、攻撃者が認証コードにアクセスできる場合（およびPKCEが使用された場合、code_verifier）、攻撃者は鍛造トークンリクエストを作成し、その結果、攻撃者が制御するキーへのトークン。たとえば、XSSを使用すると、攻撃者は承認コードとPKCEパラメーターへのアクセスを取得する場合があります。DPOP_JKTパラメーターを使用すると、この攻撃が防止されます。
+認可サーバーが認可コードの単一使用制限を厳密に強制しない（またはできない）場合で、攻撃者が認可コード（およびPKCEが使用されている場合はcode_verifier）にアクセスできる場合、攻撃者は偽造されたトークンリクエストを作成し、結果のトークンを攻撃者が制御する鍵にバインドできます。例えば、XSSを使用して、攻撃者は認可コードとPKCEパラメーターにアクセスできる可能性があります。dpop_jktパラメーターを使用することで、この攻撃は防止されます。
         </p>
       </div>
     </div>
@@ -3650,7 +3650,7 @@ The binding of the authorization code to the DPoP public key uses a JWK Thumbpri
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOP公開キーへの承認コードのバインディングは、アクセストークンバインディングと同様に、公開キーのJWKサムプリントを使用します。同じJWK Thumbprintの考慮事項が適用されます。
+DPoP公開鍵への認可コードのバインディングは、アクセストークンバインディングと同様に、公開鍵のJWKサムプリントを使用します。同じJWKサムプリントの考慮事項が適用されます。
         </p>
       </div>
     </div>
@@ -3674,7 +3674,7 @@ The jkt confirmation method member, the ath JWT claim, and the dpop_jkt authoriz
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JKT確認方法メンバー、ATH JWTクレーム、およびここで定義されているDPOP_JKT認証要求パラメーターはすべて、SHA-256ハッシュ関数の出力を値として使用します。この仕様による単一のハッシュ関数の使用は意図的であり、パラメーター化されたアルゴリズムの俊敏性スキームを実装および展開する一般的な間違いから生じる潜在的なセキュリティと相互運用性の問題のシンプルさと回避を目的としています。ただし、将来の状況が変化し、この仕様の要件にSHA-256が不十分になった場合、異なるハッシュ関数の使用は排除されません。その必要が発生した場合、これを更新する短い仕様が作成されることが予想されます。適切なハッシュ関数の出力を値として使用すると、その仕様により、新しい確認方法メンバー、新しいJWTクレーム、および新しい承認要求パラメーターが定義される可能性があります。これらの項目は、この仕様で定義されたより大きなプロトコルの同じメッセージ構造とフローの代わりに、またはそれぞれの対応物の代わりに使用されます。
+ここで定義されているjkt確認方法メンバー、ath JWTクレーム、およびdpop_jkt認可リクエストパラメーターはすべて、SHA-256ハッシュ関数の出力を値として使用します。この仕様における単一のハッシュ関数の使用は意図的であり、パラメーター化されたアルゴリズムアジリティスキームの実装および展開における一般的な誤りから生じる潜在的なセキュリティおよび相互運用性の問題を単純化し、回避することを目的としていました。ただし、将来の状況が変化し、SHA-256が本仕様の要件にとって不十分になった場合、異なるハッシュ関数の使用が排除されるわけではありません。その必要が生じた場合、本仕様を更新する短い仕様が作成されることが予想されます。適切なハッシュ関数の出力を値として使用することで、その仕様は新しい確認方法メンバー、新しいJWTクレーム、および新しい認可リクエストパラメーターを定義する可能性が高いです。これらの項目は、本仕様によって定義されるより大きなプロトコルの同じメッセージ構造とフローにおいて、それぞれの対応物の代わりとして、またはそれらと並行して使用されます。
         </p>
       </div>
     </div>
@@ -3686,7 +3686,7 @@ JKT確認方法メンバー、ATH JWTクレーム、およびここで定義さ�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-11.11. クライアントのアイデンティティへの拘束
+11.11. クライアントの識別子へのバインディング
         </h5>
       </div>
     </div>
@@ -3698,7 +3698,7 @@ In cases where DPoP is used with client authentication, it is only bound to auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-DPOPがクライアント認証で使用されている場合、同じTLSトンネルに一致することにより、認証にのみ拘束されます。DPOPプルーフは認証と暗号化に直接結合していないため、認証またはDPOPメッセージがトンネルにコピーされた可能性があります。DPOPにURIを含めることは、このリスクの一部を部分的に軽減できますが、認証メカニズムを変更して認証とDPOPの間に暗号化結合を提供すると、より良い保護を提供できます。ただし、認証メカニズムまたはその他の手段の変更を通じて認証を伴う追加のバインディングを提供することは、この仕様の範囲を超えています。
+DPoPがクライアント認証とともに使用される場合、それは同じTLSトンネルで一致することによってのみ認証にバインドされます。DPoP証明が認証に暗号学的に直接バインドされていないため、認証またはDPoPメッセージがトンネルにコピーされる可能性があります。DPoPにURIを含めることは、このリスクの一部を部分的に軽減できますが、認証メカニズムを変更して認証とDPoPの間に暗号学的バインディングを提供すると、より良い保護を提供できます。ただし、認証メカニズムの変更またはその他の手段を通じて、認証を伴う追加のバインディングを提供することは、この仕様の範囲を超えています。
         </p>
       </div>
     </div>
@@ -3722,7 +3722,7 @@ DPOPがクライアント認証で使用されている場合、同じTLSトン�
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-12.1. OAUTHアクセストークンタイプの登録
+12.1. OAuthアクセストークンタイプの登録
         </h5>
       </div>
     </div>
@@ -3734,7 +3734,7 @@ IANA has registered the following access token type in the &#34;OAuth Access Tok
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、[RFC6749]によって確立された「OAuthアクセストークンタイプ」レジストリ[iana.oauth.params]に次のアクセストークンタイプを登録しています。
+IANAは、[RFC6749]によって確立された「OAuthアクセストークンタイプ」レジストリ[IANA.OAuth.Params]に次のアクセストークンタイプを登録しています。
         </p>
       </div>
     </div>
@@ -3758,7 +3758,7 @@ DPoP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DEPOP
+DPoP
         </p>
       </div>
     </div>
@@ -3770,7 +3770,7 @@ Additional Token Endpoint Response Parameters:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-追加のトークンエンドポイント応答パラメーター：
+追加のトークンエンドポイントレスポンスパラメーター：
         </p>
       </div>
     </div>
@@ -3806,7 +3806,7 @@ DPoP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DEPOP
+DPoP
         </p>
       </div>
     </div>
@@ -3866,7 +3866,7 @@ RFC 9449
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-12.2. OAUTH拡張エラー登録
+12.2. OAuth拡張エラー登録
         </h5>
       </div>
     </div>
@@ -3878,7 +3878,7 @@ IANA has registered the following error values in the &#34;OAuth Extensions Erro
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、[RFC6749]によって確立された「OAUTH拡張エラー」レジストリ[IANA.OAUTH.PARAMS]に次のエラー値を登録しています。
+IANAは、[RFC6749]によって確立された「OAuth拡張エラー」レジストリ[IANA.OAuth.Params]に次のエラー値を登録しています。
         </p>
       </div>
     </div>
@@ -3890,7 +3890,7 @@ Invalid DPoP proof:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-無効なDPOP証明：
+無効なDPoP証明：
         </p>
       </div>
     </div>
@@ -3914,7 +3914,7 @@ invalid_dpop_proof
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-Invalid_dpop_proof
+invalid_dpop_proof
         </p>
       </div>
     </div>
@@ -3938,7 +3938,7 @@ token error response, resource access error response
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-トークンエラー応答、リソースアクセスエラー応答
+トークンエラーレスポンス、リソースアクセスエラーレスポンス
         </p>
       </div>
     </div>
@@ -3962,7 +3962,7 @@ Demonstrating Proof of Possession (DPoP)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-所有証明の実証（DPOP）
+証明鍵に基づく所有証明 (DPoP)
         </p>
       </div>
     </div>
@@ -4070,7 +4070,7 @@ token error response, resource access error response
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-トークンエラー応答、リソースアクセスエラー応答
+トークンエラーレスポンス、リソースアクセスエラーレスポンス
         </p>
       </div>
     </div>
@@ -4094,7 +4094,7 @@ Demonstrating Proof of Possession (DPoP)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-15">
-所有証明の実証（DPOP）
+証明鍵に基づく所有証明 (DPoP)
         </p>
       </div>
     </div>
@@ -4166,7 +4166,7 @@ IANA has registered the following authorization request parameter in the &#34;OA
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、[RFC6749]によって確立された「OAUTHパラメーター」レジストリ[IANA.OAUTH.PARAMS]に次の承認要求パラメーターを登録しています。
+IANAは、[RFC6749]によって確立された「OAuthパラメーター」レジストリ[IANA.OAuth.Params]に次の認可リクエストパラメーターを登録しています。
         </p>
       </div>
     </div>
@@ -4214,7 +4214,7 @@ authorization request
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-承認リクエスト
+認可リクエスト
         </p>
       </div>
     </div>
@@ -4286,7 +4286,7 @@ IANA has registered the following scheme in the &#34;HTTP Authentication Schemes
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、[RFC9110]、セクション16.4.1によって確立された「HTTP認証スキーム」レジストリ[iana.http.authschemes]に次のスキームを登録しました。
+IANAは、[RFC9110]のセクション16.4.1によって確立された「HTTP認証スキーム」レジストリ[IANA.HTTP.AuthSchemes]に次のスキームを登録しました。
         </p>
       </div>
     </div>
@@ -4310,7 +4310,7 @@ DPoP
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DEPOP
+DPoP
         </p>
       </div>
     </div>
@@ -4358,7 +4358,7 @@ IANA has registered the application/dpop+jwt media type [RFC2046] in the &#34;Me
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、[RFC6838]に記載されている方法で、「メディアタイプ」レジストリ[IANA.Mediatypes]にアプリケーション/DPOP JWTメディアタイプ[RFC2046]を[RFC6838]に登録しました。
+IANAは、[RFC6838]に記載されている方法で、「メディアタイプ」レジストリ[IANA.MediaTypes]にapplication/dpop+jwtメディアタイプ[RFC2046]を登録しました。
         </p>
       </div>
     </div>
@@ -4382,7 +4382,7 @@ application
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-応用アプリケーション出願塗布申請アプリ使用利用申込申し込み応募運用願い願い出要請控訴勉励丹念請求応用力適用業務
+アプリケーション
         </p>
       </div>
     </div>
@@ -4406,7 +4406,7 @@ dpop+jwt
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-DPOP JWT
+dpop+jwt
         </p>
       </div>
     </div>
@@ -4478,7 +4478,7 @@ binary. A DPoP JWT is a JWT; JWT values are encoded as a series of base64url-enc
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-バイナリ。DPOP JWTはJWTです。JWT値は、一連のbase64urlエンコード値（その一部は空の文字列である可能性があります）としてエンコードされます。
+バイナリ。DPoP JWTはJWTです。JWT値は、一連のbase64urlエンコード値（その一部は空の文字列である可能性があります）としてエンコードされます。
         </p>
       </div>
     </div>
@@ -4730,7 +4730,7 @@ none
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-なしのどれも
+なし
         </p>
       </div>
     </div>

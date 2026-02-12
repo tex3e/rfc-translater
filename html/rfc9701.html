@@ -47,7 +47,7 @@
         </span><br>
         <span class="title_ja">
           タイトル : <strong>RFC 9701 - OAuthトークンイントロスペクションに対するJSON Webトークン（JWT）応答</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -98,7 +98,7 @@ This specification proposes an additional response secured by JSON Web Token (JW
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、OAuth 2.0トークンイントロスペクションのJSON Webトークン（JWT）によって保護された追加の応答を提案します。
+この仕様では、OAuth 2.0トークンイントロスペクション用のJSON Webトークン（JWT）で保護された追加の応答を提案します。
         </p>
       </div>
     </div>
@@ -146,7 +146,7 @@ Information about the current status of this document, any errata, and how to pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの現在のステータス、任意のERRATA、およびそのフィードバックを提供する方法に関する情報は、https://www.rfc-editor.org/info/rfc9701で取得できます。
+このドキュメントの現在のステータス、正誤表、およびフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9701で取得できます。
         </p>
       </div>
     </div>
@@ -170,7 +170,7 @@ Copyright (c) 2025 IETF Trust and the persons identified as the document authors
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-著作権（c）2025 IETF Trustおよび文書著者として特定された人。無断転載を禁じます。
+著作権（c）2025 IETF Trustおよび文書の著者として特定された人物。無断転載を禁じます。
         </p>
       </div>
     </div>
@@ -182,7 +182,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、BCP 78およびIETFドキュメント（https://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、セクション4.Eで説明されている法的規定のセクション4.Eで説明されており、改訂されたBSDライセンスで説明されている保証なしで提供されるように、改訂されたBSDライセンステキストを含める必要があります。
+このドキュメントは、発行日時点で有効なBCP 78およびIETFドキュメントに関連するIETF Trustの法的規定（https://trustee.ietf.org/license-info）の対象となります。これらの文書には、このドキュメントに関するあなたの権利と制限が記述されているため、注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、Trustの法的規定のセクション4.eで説明されている改訂されたBSDライセンスのテキストを含める必要があり、改訂されたBSDライセンスで説明されているように、保証なしで提供されます。
         </p>
       </div>
     </div>
@@ -249,7 +249,7 @@ Table of Contents
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「OAUTH 2.0トークンイントロスペクション」[RFC7662]は、保護されたリソースがOAUTH 2.0 Authorization Serverを照会して、アクセストークンの状態を決定し、アクセストークンに関連付けられたデータを取得する方法を指定します。これにより、展開が相互運用可能な方法で不透明アクセストークンを実装できます。
+「OAuth 2.0トークンイントロスペクション」[RFC7662]は、保護されたリソースがOAuth 2.0認可サーバーに問い合わせて、アクセストークンの状態を決定し、アクセストークンに関連付けられたデータを取得する方法を指定します。これにより、展開において相互運用可能な方法で不透明なアクセストークンを実装できます。
         </p>
       </div>
     </div>
@@ -261,7 +261,7 @@ The introspection response, as specified in &#34;OAuth 2.0 Token Introspection&#
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「OAuth 2.0トークンイントロスペクション」[RFC7662]で指定されているイントロスペクション応答は、単純なJSONオブジェクトです。ただし、リソースサーバーが、認証サーバーがトークンイントロスペクション反応の内容の責任を引き受ける場合を含む、アクセストークンのトークンイントロスペクション応答を発行したというより強力な保証を必要とするユースケースがあります。例としては、検証済みの個人データを使用して証明書を作成するリソースサーバーがあります。これは、適格な電子署名を作成するために使用されます。
+「OAuth 2.0トークンイントロスペクション」[RFC7662]で指定されているイントロスペクション応答は、単純なJSONオブジェクトです。ただし、認可サーバーがトークンイントロスペクション応答の内容に責任を負う場合を含め、リソースサーバーが、アクセストークンに対するトークンイントロスペクション応答を認可サーバーが発行したという、より強力な保証を要求するユースケースがあります。例としては、検証済みの個人データを使用して証明書を作成するリソースサーバーがあります。生成された証明書は、適格な電子署名を作成するために利用されます。
         </p>
       </div>
     </div>
@@ -273,7 +273,7 @@ In such use cases, it may be useful or even required to return a signed JWT [RFC
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このようなユースケースでは、イントロスペクション応答として署名されたJWT [RFC7519]を返すことが有用であるか、さらには必要な場合があります。この仕様は、JWTSとして応答を返す機能を備えたトークンイントロスペクションエンドポイントを拡張します。
+このようなユースケースでは、イントロスペクション応答として署名されたJWT [RFC7519]を返すことが有用であるか、さらには必要な場合があります。この仕様は、JWTとして応答を返す機能を持つトークンイントロスペクションエンドポイントを拡張します。
         </p>
       </div>
     </div>
@@ -321,7 +321,7 @@ The authorization server (AS) and the resource server (RS) maintain a strong, tw
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Authorization Server（AS）およびResource Server（RS）は、強力な双方向の信頼関係を維持しています。リソースサーバーは、Authorization Serverに依存して、アクセス制御の決定とサービス提供への入力として認証、ユーザー、およびその他のデータを取得します。Authorization Serverは、提供されたデータを適切に処理するためにリソースサーバーに依存しています。
+認可サーバー（AS）およびリソースサーバー（RS）は、強力な双方向の信頼関係を維持しています。リソースサーバーは、認可サーバーに依存して、アクセス制御の決定とサービス提供への入力として、認可、ユーザー、およびその他のデータを取得します。認可サーバーは、提供されたデータを適切に処理するためにリソースサーバーに依存しています。
         </p>
       </div>
     </div>
@@ -333,7 +333,7 @@ In the context of this specification, the token introspection endpoint is used t
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様のコンテキストでは、トークンイントロスペクションのエンドポイントを使用して、そのようなセキュリティデータを伝達し、アクセストークンに関連するプライバシーに敏感なデータも伝えます。
+この仕様のコンテキストでは、トークンイントロスペクションのエンドポイントを使用して、そのようなセキュリティデータと、アクセストークンに関連するプライバシーに敏感なデータも伝達するために使用されます。
         </p>
       </div>
     </div>
@@ -345,7 +345,7 @@ In order to process the introspection requests in a secure and privacy-preservin
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-イントロスペクション的要求を安全でプライバシーに基づいた方法で処理するために、認証サーバーはリソースサーバーを識別、認証、認証できる必要があります。
+イントロスペクション要求を安全でプライバシーを保護する方法で処理するために、認可サーバーはリソースサーバーを識別、認証し、認可できる必要があります。
         </p>
       </div>
     </div>
@@ -357,7 +357,7 @@ The AS MAY additionally encrypt the token introspection response JWTs. If encryp
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ASは、さらにトークンイントロスペクション応答JWTSを暗号化する場合があります。暗号化が使用される場合、ASはRsの暗号化キーとアルゴリズムでプロビジョニングされます。
+ASは、さらにトークンイントロスペクション応答JWTを暗号化する場合があります。暗号化が使用される場合、ASはRSの暗号化キーとアルゴリズムでプロビジョニングされます。
         </p>
       </div>
     </div>
@@ -369,7 +369,7 @@ The AS MUST be able to determine whether an RS is the audience for a particular 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ASは、RSが特定のアクセストークンの視聴者であるかどうか、および受信する資格のあるデータを決定できる必要があります。それ以外の場合、RSはアクセストークンのデータを取得する権限がありません。この要件を満たす方法の裁量があります。たとえば、スコープ値とRSSの間のマッピングを維持できる可能性があります。
+ASは、RSが特定のアクセストークンの視聴者であるかどうか、および受信する資格のあるデータを決定できる必要があります。それ以外の場合、RSはアクセストークンのデータを取得する権限がありません。この要件を満たす方法はASの裁量に委ねられます。たとえば、スコープ値とRSの間のマッピングを維持できる可能性があります。
         </p>
       </div>
     </div>
@@ -393,7 +393,7 @@ One way is by utilizing dynamic client registration [RFC7591] and treating every
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-1つの方法は、ダイナミッククライアント登録[RFC7591]を利用し、すべてのRSをOAUTHクライアントとして扱うことです。この場合、ASは、少なくとも「JWKS」や「Client_Secret」などの補完的な認証メソッドメタデータを使用して、少なくとも「client_id」と「token_endpoint_auth_method」を維持すると想定されています。データをRSに送信する必要がある場合に必要な場合、次のクライアントメタデータフィールドが推奨されます：「client_name」、「client_uri」、「contacts」、「tos_uri」、および「policy_uri」。
+1つの方法は、ダイナミッククライアント登録[RFC7591]を利用し、すべてのRSをOAuthクライアントとして扱うことです。この場合、ASは、少なくとも「JWKS」や「Client_Secret」などの補完的な認証メソッドメタデータを使用して、少なくとも「client_id」と「token_endpoint_auth_method」を維持するものと想定されます。データをRSに送信するために同意を得る必要がある場合、次のクライアントメタデータフィールドが推奨されます：「client_name」、「client_uri」、「contacts」、「tos_uri」、および「policy_uri」。
         </p>
       </div>
     </div>
@@ -405,7 +405,7 @@ The AS MUST restrict the use of client credentials by an RS to the calls it requ
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ASは、RSによるクライアント資格情報の使用を必要とする呼び出しに制限する必要があります。この制限がこの仕様の範囲を超えている方法。
+ASは、RSによるクライアント資格情報の使用を必要とする呼び出しに制限する必要があります。ASがこの制限をどのように実装するかは、この仕様の範囲外です。
         </p>
       </div>
     </div>
@@ -417,7 +417,7 @@ This specification further introduces client metadata to manage the configuratio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、クライアントメタデータをさらに導入して、トークンイントロスペクション応答JWTSに署名して暗号化するために必要な構成オプションを管理します。
+この仕様では、クライアントメタデータをさらに導入して、トークンイントロスペクション応答JWTに署名して暗号化するために必要な構成オプションを管理します。
         </p>
       </div>
     </div>
@@ -441,7 +441,7 @@ An RS requests a JWT introspection response by sending an introspection request 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-RSは、「Application/Token-Intropection+JWT」に設定されたAccept HTTPヘッダーフィールドを使用してイントロスペクションリクエストを送信することにより、JWTイントロスペクション応答を要求します。
+RSは、「application/token-introspection+jwt」に設定されたAccept HTTPヘッダーフィールドを使用してイントロスペクションリクエストを送信することにより、JWTイントロスペクション応答を要求します。
         </p>
       </div>
     </div>
@@ -465,7 +465,7 @@ The following is a non-normative example request, with the RS authenticating wit
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-以下は、非規範的な例リクエストであり、RSは秘密のキーJWTで認証されています。
+以下は、非規範的な要求例であり、RSは秘密鍵JWTで認証されています。
         </p>
       </div>
     </div>
@@ -504,7 +504,7 @@ The introspection endpoint responds with a JWT, setting the Content-Type HTTP he
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-イントロスペクションエンドポイントはJWTで応答し、コンテンツタイプのHTTPヘッダーフィールドを「application/token-introspection+jwt」に設定し、JWT Typ（「Type」）ヘッダーパラメーターに「token-introspection+jwt」に設定します。
+イントロスペクションエンドポイントはJWTで応答し、Content-Type HTTPヘッダーフィールドを「application/token-introspection+jwt」に設定し、JWTのtyp（「タイプ」）ヘッダーパラメーターを「token-introspection+jwt」に設定します。
         </p>
       </div>
     </div>
@@ -540,7 +540,7 @@ MUST be set to the issuer URL of the authorization server.
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-Authorization Serverの発行者URLに設定する必要があります。
+認可サーバーの発行者URLに設定する必要があります。
         </p>
       </div>
     </div>
@@ -588,7 +588,7 @@ MUST be set to the time when the introspection response was created by the autho
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-イントロスペクション応答が承認サーバーによって作成された時間に設定する必要があります
+イントロスペクション応答が認可サーバーによって作成された時間に設定する必要があります
         </p>
       </div>
     </div>
@@ -612,7 +612,7 @@ A JSON object containing the members of the token introspection response, as spe
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-[RFC7662]で指定されているトークンイントロスペクション応答のメンバーを含むJSONオブジェクト、セクション2.2。JWTクレームを含む専用のJSONオブジェクトへのイントロスペクション応答メンバーの分離は、同じ名前を持つ可能性のあるトップレベルのJWTクレームとの紛争と混乱を防ぐことを目的としています。
+[RFC7662]のセクション2.2で指定されている、トークンイントロスペクション応答のメンバーを含むJSONオブジェクトです。JWTクレームを含む専用のJSONオブジェクトへのイントロスペクション応答メンバーの分離は、同じ名前を持つ可能性のあるトップレベルのJWTクレームとの衝突や混乱を防ぐことを意図しています。
         </p>
       </div>
     </div>
@@ -624,7 +624,7 @@ If the access token is invalid, expired, revoked, or not intended for the callin
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-アクセストークンが無効、期限切れ、取り消された、または呼び出しリソースサーバー（オーディエンス）を対象としていない場合、承認サーバーは、token_intropectionのアクティブメンバーの値をfalseに請求する必要があり、他のメンバーを含めてはなりません。それ以外の場合、アクティブなメンバーはtrueに設定されています。
+アクセストークンが無効、期限切れ、取り消された、または呼び出しリソースサーバー（オーディエンス）を対象としていない場合、認可サーバーは、token_introspectionのアクティブメンバーの値をfalseに設定する必要があり、他のメンバーを含めてはなりません。それ以外の場合、アクティブなメンバーはtrueに設定されています。
         </p>
       </div>
     </div>
@@ -636,7 +636,7 @@ The AS SHOULD narrow down the scope value to the scopes relevant to the particul
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-ASは、特定のRsに関連するスコープにスコープ値を絞り込む必要があります。
+ASは、特定のRSに関連するスコープにスコープ値を絞り込むべきです。
         </p>
       </div>
     </div>
@@ -648,7 +648,7 @@ As specified in Section 2.2 of [RFC7662], implementations MAY extend the token i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-[RFC7662]のセクション2.2で指定されているように、実装は、サービス固有のクレームを使用してトークンイントロスペクション応答を拡張する場合があります。この仕様の文脈では、そのようなクレームは、token_intropectionクレームのトップレベルメンバーとして追加されます。
+[RFC7662]のセクション2.2で指定されているように、実装は、サービス固有のクレームを使用してトークンイントロスペクション応答を拡張する場合があります。この仕様の文脈では、そのようなクレームは、token_introspectionクレームのトップレベルメンバーとして追加されます。
         </p>
       </div>
     </div>
@@ -660,7 +660,7 @@ Token introspection response parameter names intended to be used across domains 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-ドメイン全体で使用することを目的としたトークンイントロスペクション応答パラメーター名は、[rfc7662]で定義された「OAuthトークンイントロスペクション応答」レジストリ[iana.oauth.token.intropection]に登録する必要があります。
+ドメイン全体で使用することを目的としたトークンイントロスペクション応答パラメーター名は、[RFC7662]で定義された「OAuthトークンイントロスペクション応答」レジストリ[IANA.OAuth.Token.Introspection]に登録する必要があります。
         </p>
       </div>
     </div>
@@ -672,7 +672,7 @@ When the AS acts as a provider of resource owner identity claims to the RS, the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-ASがリソース所有者のアイデンティティのプロバイダーとして機能する場合、RSをrsに請求する場合、RS固有のポリシーに基づいて、Token Introspection Responseに戻ると主張するアイデンティティが決定されます。ASは、プライバシーに敏感なデータのリリースが法的に基づいていることを確認する必要があります（セクション9を参照）。
+ASがRSへのリソース所有者のIDクレームのプロバイダーとして機能する場合、ASは、そのRS固有のポリシーに基づいて、トークンイントロスペクション応答で返すIDクレームを決定します。ASは、プライバシーに敏感なデータのリリースに法的根拠があることを確認する必要があります（セクション9を参照）。
         </p>
       </div>
     </div>
@@ -696,7 +696,7 @@ The JWT MAY include other claims, including those from the &#34;JSON Web Token C
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JWTには、[RFC7519]によって確立された「JSON Webトークンクレーム」レジストリの請求を含む他のクレームが含まれる場合があります。JWTには、JWTのアクセストークンとしての誤用を防ぐための追加の措置として、SubおよびExpクレームを含めるべきではありません（セクション8.1を参照）。
+JWTには、[RFC7519]によって確立された「JSON Webトークンクレーム」レジストリからのクレームを含む他のクレームが含まれる場合があります。JWTには、JWTのアクセストークンとしての誤用を防ぐための追加の措置として、SubおよびExpクレームを含めるべきではありません（セクション8.1を参照）。
         </p>
       </div>
     </div>
@@ -708,7 +708,7 @@ Note: Although the JWT format is widely used as an access token format, the JWT 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：JWT形式はアクセストークン形式として広く使用されていますが、イントロスペクション応答で返されたJWTは、イントロスペクション的アクセストークンの代替表現ではなく、アクセストークンとして使用することを意図していません。
+注：JWT形式はアクセストークン形式として広く使用されていますが、イントロスペクション応答で返されたJWTは、イントロスペクトされたアクセストークンの代替表現ではなく、アクセストークンとして使用することを意図していません。
         </p>
       </div>
     </div>
@@ -720,7 +720,7 @@ This specification registers the &#34;application/token-introspection+jwt&#34; m
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様は、「application/token-introspection+jwt」メディアタイプを登録します。これは、ペイロードがトークンイントロスペクション応答であることを示すために、JWTのtyp（ &#34;type&#34;）ヘッダーパラメーターの値として使用されます。
+この仕様は、「application/token-introspection+jwt」メディアタイプを登録します。これは、ペイロードがトークンイントロスペクション応答であることを示すために、JWTのtyp（「タイプ」）ヘッダーパラメーターの値として使用されます。
         </p>
       </div>
     </div>
@@ -744,7 +744,7 @@ Depending on the specific resource server policy, the JWT is either signed or si
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-特定のリソースサーバーポリシーに応じて、JWTは署名または署名および暗号化されています。JWTが署名および暗号化されている場合、JWT [RFC7519]で定義されているように、それはネストされたJWTでなければなりません。
+特定のリソースサーバーポリシーに応じて、JWTは署名されるか、署名および暗号化されます。JWTが署名および暗号化されている場合、JWT [RFC7519]で定義されているように、ネストされたJWTである必要があります。
         </p>
       </div>
     </div>
@@ -756,7 +756,7 @@ Note: An AS compliant with this specification MUST refuse to serve introspection
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-注：この仕様に準拠していると、発信者に認証されておらず、HTTPステータスコード400を返すイントロスペクションリクエストの提供を拒否する必要があります。これは、トークンデータが正当な受信者のみにリリースされ、[RFC7662]の格下げを防ぐために行われます。（セクション8.2を参照）。
+注：この仕様に準拠するASは、発信者に認証されておらず、イントロスペクション要求の提供を拒否し、HTTPステータスコード400を返さなければなりません。これは、トークンデータが正当な受信者にのみリリースされることを保証し、[RFC7662]の動作へのダウングレードを防ぐために行われます（セクション8.2を参照）。
         </p>
       </div>
     </div>
@@ -877,7 +877,7 @@ The authorization server determines the algorithm to secure the JWT for a partic
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Authorization Serverは、特定のイントロスペクション応答のためにJWTを保護するためのアルゴリズムを決定します。この決定は、以下に指定されているように、クライアントとして機能するリソースサーバーを使用して、ダイナミッククライアント登録[RFC7591]を介して提供されるリソースサーバーの登録されたメタデータパラメーターに基づいています。
+認可サーバーは、特定のイントロスペクション応答のためにJWTを保護するためのアルゴリズムを決定します。この決定は、以下に指定されているように、クライアントとして機能するリソースサーバーを使用して、動的クライアント登録[RFC7591]を介して提供されるリソースサーバーの登録されたメタデータパラメーターに基づいています。
         </p>
       </div>
     </div>
@@ -889,7 +889,7 @@ The parameter names follow the pattern established by OpenID Connect Dynamic Cli
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-パラメーター名は、userInfoエンドポイントでJWT応答の署名および暗号化アルゴリズムを構成するために、OpenID Connect Dynamic Client登録[OpenID.Registration]によって確立されたパターンに従います。
+パラメーター名は、UserInfoエンドポイントでJWT応答の署名および暗号化アルゴリズムを構成するために、OpenID Connect 動的クライアント登録[OpenID.Registration]によって確立されたパターンに従います。
         </p>
       </div>
     </div>
@@ -901,7 +901,7 @@ The following client metadata parameters are introduced by this specification:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次のクライアントメタデータパラメーターは、この仕様によって紹介されます。
+次のクライアントメタデータパラメーターは、この仕様によって導入されます。
         </p>
       </div>
     </div>
@@ -925,7 +925,7 @@ OPTIONAL. &#34;JSON Web Signature (JWS)&#34; [RFC7515] algorithm (alg value), as
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。「JSON Web Signature（JWS）」[RFC7515]アルゴリズム（ALG値）、「JSON Webアルゴリズム（JWA）」[RFC7518]で定義されています。これが指定されている場合、応答はJWSと構成されたアルゴリズムを使用して署名されます。省略した場合、デフォルトはRS256です。
+オプション。「JSON Web Signature（JWS）」[RFC7515]アルゴリズム（alg値）、「JSON Webアルゴリズム（JWA）」[RFC7518]で定義される、イントロスペクション応答の署名のためのアルゴリズム。これが指定されている場合、応答はJWSと構成されたアルゴリズムを使用して署名されます。省略した場合、デフォルトはRS256です。
         </p>
       </div>
     </div>
@@ -949,7 +949,7 @@ OPTIONAL. &#34;JSON Web Encryption (JWE)&#34; [RFC7516] algorithm (alg value), a
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。「JSON Web暗号化（JWE）」[RFC7516]アルゴリズム（ALG値）、JWA [RFC7518]で定義され、コンテンツキー暗号化。これが指定されている場合、応答はJWEと構成されたコンテンツ暗号化アルゴリズム（Introspection_encrypted_response_enc）を使用して暗号化されます。デフォルトは、省略した場合、暗号化が実行されないことです。署名と暗号化の両方が要求されると、応答が署名され、暗号化され、結果はJWT [RFC7519]で定義されているように、ネストされたJWTです。
+オプション。「JSON Web暗号化（JWE）」[RFC7516]アルゴリズム（alg値）、JWA [RFC7518]で定義される、コンテンツキー暗号化のためのアルゴリズム。これが指定されている場合、応答はJWEと構成されたコンテンツ暗号化アルゴリズム（introspection_encrypted_response_enc）を使用して暗号化されます。省略された場合のデフォルトは、暗号化が実行されないことです。署名と暗号化の両方が要求される場合、応答は署名された後に暗号化され、その結果はJWT [RFC7519]で定義されているネストされたJWTとなります。
         </p>
       </div>
     </div>
@@ -973,7 +973,7 @@ OPTIONAL. JWE [RFC7516] algorithm (enc value), as defined in JWA [RFC7518], for 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWA [RFC7516]アルゴリズム（ENC値）、JWA [RFC7518]で定義されているように、イントロスペクション反応のコンテンツ暗号化。デフォルトは、省略されている場合、A128CBC-HS256です。注：このパラメーターは、introspection_encrypted_response_algを設定せずに指定してはなりません。
+オプション。JWE [RFC7516]アルゴリズム（enc値）、JWA [RFC7518]で定義される、イントロスペクション応答のコンテンツ暗号化のためのアルゴリズム。省略された場合のデフォルトは、A128CBC-HS256です。注：このパラメーターは、introspection_encrypted_response_algを設定せずに指定してはなりません。
         </p>
       </div>
     </div>
@@ -1009,7 +1009,7 @@ Authorization servers SHOULD publish the supported algorithms for signing and en
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-承認サーバーは、「OAUTH 2.0 Authorization Server Metadata」[RFC8414]パラメーターを使用して、イントロスペクション応答のJWTに署名および暗号化するためのサポートされているアルゴリズムを公開する必要があります。リソースサーバーは、このデータを使用して、クライアントの登録要求をパラメーター化します。
+認可サーバーは、「OAuth 2.0 Authorization Server Metadata」[RFC8414]パラメーターを使用して、イントロスペクション応答のJWTに署名および暗号化するためのサポートされているアルゴリズムを公開することが推奨されます。リソースサーバーは、このデータを使用して、クライアントの登録要求をパラメーター化します。
         </p>
       </div>
     </div>
@@ -1033,7 +1033,7 @@ introspection_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-introspection_singe_alg_values_supported
+introspection_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -1045,7 +1045,7 @@ OPTIONAL. JSON array containing a list of the JWS [RFC7515] signing algorithms (
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWA [RFC7515]署名アルゴリズム（ALG値）のリストを含むJSONアレイ、JWA [RFC7518]で定義されているように、イントロスペクションエンドポイントによってサポートされて応答に署名します。
+オプション。JWS [RFC7515]署名アルゴリズム（alg値）のリストを含むJSON配列、JWA [RFC7518]で定義される、イントロスペクションエンドポイントが応答に署名するためにサポートするアルゴリズムのリストを含むJSON配列。
         </p>
       </div>
     </div>
@@ -1057,7 +1057,7 @@ introspection_encryption_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Introspection_encryption_alg_values_supported
+introspection_encryption_alg_values_supported
         </p>
       </div>
     </div>
@@ -1069,7 +1069,7 @@ OPTIONAL. JSON array containing a list of the JWE [RFC7516] encryption algorithm
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWA [RFC7516] JWA [RFC7518]で定義されているJWE [RFC7516]暗号化アルゴリズム（ALG値）のリストを含むJSONアレイは、イントロスペクション的エンドポイントでサポートされ、イントロスペクション的エンドポイントによってサポートされています（コンテンツキー暗号化）。
+オプション。JWE [RFC7516]暗号化アルゴリズム（alg値）のリストを含むJSON配列、JWA [RFC7518]で定義される、イントロスペクション応答のコンテンツ暗号化キーを暗号化するためにイントロスペクションエンドポイントによってサポートされるアルゴリズム（コンテンツキー暗号化）。
         </p>
       </div>
     </div>
@@ -1081,7 +1081,7 @@ introspection_encryption_enc_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Introspection_encryption_enc_values_supported
+introspection_encryption_enc_values_supported
         </p>
       </div>
     </div>
@@ -1093,7 +1093,7 @@ OPTIONAL. JSON array containing a list of the JWE [RFC7516] encryption algorithm
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWA [RFC7516]暗号化アルゴリズム（ENC値）のリストを含むJSONアレイは、JWA [RFC7518]で定義されており、イントロスペクションエンドポイントによってサポートされて応答（コンテンツ暗号化）を暗号化します。
+オプション。JWE [RFC7516]暗号化アルゴリズム（enc値）のリストを含むJSON配列、JWA [RFC7518]で定義される、イントロスペクションエンドポイントが応答（コンテンツ暗号化）を暗号化するためにサポートするアルゴリズムのリストを含むJSON配列。
         </p>
       </div>
     </div>
@@ -1117,7 +1117,7 @@ OPTIONAL. JSON array containing a list of the JWE [RFC7516] encryption algorithm
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-8.1. Cross-Jwtの混乱
+8.1. Cross-JWTの混乱
         </h5>
       </div>
     </div>
@@ -1129,7 +1129,7 @@ The iss and potentially the aud claim of a token introspection JWT can resemble 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-ISSおよび潜在的には、トークンイントロスペクションのJWTのOUD請求は、JWTエンコードされたアクセストークンのOUDに似ている可能性があります。攻撃者は、これを悪用し、JWTトークンイントロスペクション応答をリソースサーバーへのアクセストークンとして渡そうとすることができます。typ（ &#34;Type&#34;）JWT Header &#34;Token-intropection+JWT&#34;およびToken_intropectionクレームのサブや範囲などのトークン内注文メンバーのカプセル化は、そのような代替攻撃を防ぐことを目的としています。したがって、リソースサーバーは、受信したJWTエンコードアクセストークンのTyp JWTヘッダー値を確認し、有効なアクセストークンに必要な最小限の請求がすべて存在することを確認する必要があります。
+issおよび潜在的には、トークンイントロスペクションのJWTのaudクレームは、JWTエンコードされたアクセストークンのaudに似ている可能性があります。攻撃者は、これを悪用し、JWTトークンイントロスペクション応答をリソースサーバーへのアクセストークンとして渡そうとすることができます。typ（「タイプ」）JWTヘッダー「token-introspection+jwt」およびtoken_introspectionクレームのサブや範囲などのトークンイントロスペクションメンバーのカプセル化は、そのような代替攻撃を防ぐことを目的としています。したがって、リソースサーバーは、受信したJWTエンコードアクセストークンのtyp JWTヘッダー値を確認し、有効なアクセストークンに必要な最小限のクレームがすべて存在することを確認する必要があります。
         </p>
       </div>
     </div>
@@ -1141,7 +1141,7 @@ Resource servers MUST additionally apply the countermeasures against access toke
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC9700]で説明されているように、リソースサーバーはさらに、アクセストークンリプレイに対して対策を適用する必要があります。
+[RFC9700]で説明されているように、リソースサーバーはさらに、アクセストークンのリプレイに対して対策を適用する必要があります。
         </p>
       </div>
     </div>
@@ -1177,7 +1177,7 @@ The authorization server MUST use Transport Layer Security (TLS) 1.2 (or higher)
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-承認サーバーは、トークンデータの漏れを防ぐために、BCP 195 [RFC9325]ごとに、Transport Layer Security（TLS）1.2（またはそれ以上）を使用する必要があります。
+認可サーバーは、トークンデータの漏れを防ぐために、BCP 195 [RFC9325]に従い、Transport Layer Security（TLS）1.2（またはそれ以上）を使用する必要があります。
         </p>
       </div>
     </div>
@@ -1189,7 +1189,7 @@ Section 2.1 of [RFC7662] permits requests to the introspection endpoint to be au
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC7662]のセクション2.1は、発信者を識別しないアクセストークンでイントロスペクションエンドポイントにリクエストを許可することを許可しています。意図した消費者ではない当事者によるトークンのイントロスペクションを防ぐために、承認サーバーは、トークンイントロスペクションのエンドポイントへのすべての要求を認証する必要があります。
+[RFC7662]のセクション2.1は、イントロスペクションエンドポイントへの要求を、発信者を識別しないアクセストークンで認可することを許可しています。意図した消費者ではない当事者によるトークンのイントロスペクションを防ぐために、認可サーバーは、トークンイントロスペクションのエンドポイントへのすべての要求を認証することを要求する必要があります。
         </p>
       </div>
     </div>
@@ -1213,7 +1213,7 @@ The token introspection response can be used to transfer personal identifiable i
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-トークンイントロスペクション応答を使用して、Rsから個人識別可能な情報（PII）を転送できます。ASは、データが特定のRsにリリースされる前に、データ転送の法的および管轄区域の制約に準拠する必要があります。これらの制約の詳細と決定は、管轄区域によって異なり、このドキュメントの範囲外です。
+トークンイントロスペクション応答を使用して、RSから個人識別可能な情報（PII）を転送できます。ASは、データが特定のRSにリリースされる前に、データ転送の法的および管轄区域の制約に準拠する必要があります。これらの制約の詳細と決定は、管轄区域によって異なり、このドキュメントの範囲外です。
         </p>
       </div>
     </div>
@@ -1261,7 +1261,7 @@ In any case, the AS MUST ensure that the scope of the legal basis is enforced th
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-いずれにせよ、ASは、法的根拠の範囲がプロセス全体を通して施行されることを保証する必要があります。ASは、アクセストークン、たとえばスコープ値のアクセストークンを使用して法的根拠の範囲を保持する必要があります。RSを認証する必要があり、ASはRSのIDと適切なトークンデータに基づいて受信できるデータを決定する必要があります。、例えば、スコープ値。
+いずれにせよ、ASは、法的根拠の範囲がプロセス全体を通して施行されることを保証する必要があります。ASは、アクセストークン、例えばスコープ値の中に法的根拠の範囲を保持する必要があり、RSを認証し、ASはRSのIDと適切なトークンデータに基づいて、RSが受信を許可されるデータを決定する必要があります。例えば、スコープ値に基づいて。
         </p>
       </div>
     </div>
@@ -1273,7 +1273,7 @@ Implementers should be aware that a token introspection request lets the AS know
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-実装者は、トークンイントロスペクション要求により、クライアント（および潜在的にユーザー）がRSにアクセスしていることをAS ASを知ることができることに注意する必要があります。これは、ユーザーがクライアントを使用していることも示すものです。If this implication is not acceptable, implementers MUST use other means to relay access token data, for example, by directly transferring the data needed by the RS within the access token.
+実装者は、トークンイントロスペクション要求によって、クライアント（および潜在的にユーザー）がRSにアクセスしていることをASが知ることになる点、これはユーザーがクライアントを使用していることの兆候でもある点に注意する必要があります。この意味合いが許容できない場合、実装者はアクセストークンデータを中継するために他の手段を使用する必要があります。例えば、RSが必要とするデータをアクセストークン内に直接転送するなどです。
         </p>
       </div>
     </div>
@@ -1297,7 +1297,7 @@ Implementers should be aware that a token introspection request lets the AS know
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-10.1. OAuth Dynamic Client登録メタデータ登録
+10.1. OAuth 動的クライアント登録メタデータ登録
         </h5>
       </div>
     </div>
@@ -1309,7 +1309,7 @@ The following client metadata definitions have been registered in the IANA &#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次のクライアントメタデータ定義は、[RFC7591]によって確立されたIANA &#34;OAuth Dynamic Client Registration Metadata&#34; Registry [iana.oauth.parameters]に登録されています。
+次のクライアントメタデータ定義は、[RFC7591]によって確立されたIANA &#34;OAuth Dynamic Client Registration Metadata&#34; Registry [IANA.OAuth.Parameters]に登録されています。
         </p>
       </div>
     </div>
@@ -1369,7 +1369,7 @@ String value indicating the client&#39;s desired introspection response signing 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-クライアントが望むイントロスペクション応答を示す文字列値署名アルゴリズム
+クライアントが望むイントロスペクション応答の署名アルゴリズムを示す文字列値
         </p>
       </div>
     </div>
@@ -1381,7 +1381,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1465,7 +1465,7 @@ String value specifying the desired introspection response content key encryptio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-文字列値目的のイントロスペクション応答コンテンツキー暗号化アルゴリズム（alg値）を指定する
+目的のイントロスペクション応答コンテンツキー暗号化アルゴリズム（alg値）を指定する文字列値
         </p>
       </div>
     </div>
@@ -1477,7 +1477,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1561,7 +1561,7 @@ String value specifying the desired introspection response content encryption al
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-文字列値目的のイントロスペクション応答コンテンツ暗号化アルゴリズム（enc値）を指定する
+目的のイントロスペクション応答コンテンツ暗号化アルゴリズム（enc値）を指定する文字列値
         </p>
       </div>
     </div>
@@ -1573,7 +1573,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1633,7 +1633,7 @@ The following values have been registered in the IANA &#34;OAuth Authorization S
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次の値は、[RFC8414]によって確立されたIANA「OAuth Authorization Server Metadata」レジストリ[iana.oauth.parameters]に登録されています。
+次の値は、[RFC8414]によって確立されたIANA「OAuth Authorization Server Metadata」レジストリ[IANA.OAuth.Parameters]に登録されています。
         </p>
       </div>
     </div>
@@ -1669,7 +1669,7 @@ introspection_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-introspection_singe_alg_values_supported
+introspection_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -1693,7 +1693,7 @@ JSON array containing a list of algorithms supported by the authorization server
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-イントロスペクション応答のために承認サーバーによってサポートされているアルゴリズムのリストを含むJSONアレイ
+イントロスペクション応答のために認可サーバーによってサポートされているアルゴリズムのリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -1705,7 +1705,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1765,7 +1765,7 @@ introspection_encryption_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-Introspection_encryption_alg_values_supported
+introspection_encryption_alg_values_supported
         </p>
       </div>
     </div>
@@ -1789,7 +1789,7 @@ JSON array containing a list of algorithms supported by the authorization server
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-イントロスペクション応答コンテンツの認証サーバーによってサポートされているアルゴリズムのリストを含むJSONアレイキー暗号化（ALG値）
+JSON配列、イントロスペクション応答のコンテンツキー暗号化のために認可サーバーによってサポートされているアルゴリズム（alg値）のリストを含む
         </p>
       </div>
     </div>
@@ -1801,7 +1801,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1861,7 +1861,7 @@ introspection_encryption_enc_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-Introspection_encryption_enc_values_supported
+introspection_encryption_enc_values_supported
         </p>
       </div>
     </div>
@@ -1885,7 +1885,7 @@ JSON array containing a list of algorithms supported by the authorization server
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-イントロスペクション応答コンテンツ暗号化のために承認サーバーによってサポートされているアルゴリズムのリストを含むJSONアレイ（ENC値）
+イントロスペクション応答コンテンツ暗号化のために認可サーバーによってサポートされているアルゴリズムのリストを含むJSON配列（enc値）
         </p>
       </div>
     </div>
@@ -1897,7 +1897,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -1957,7 +1957,7 @@ The &#34;application/token-introspection+jwt&#34; media type has been registered
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC6838]で説明されている方法で、「Application/Token-intropection+JWT」メディアタイプが「メディアタイプ」レジストリ[iana.mediatypes]に登録されています。コンテンツがJWT形式でのトークンイントロスペクション応答であることを示すために使用できます。
+[RFC6838]で説明されている方法で、「application/token-introspection+jwt」メディアタイプが「メディアタイプ」レジストリ[IANA.MediaTypes]に登録されています。コンテンツがJWT形式でのトークンイントロスペクション応答であることを示すために使用できます。
         </p>
       </div>
     </div>
@@ -1981,7 +1981,7 @@ Type name:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-タイプ名：
+型名：
         </p>
       </div>
     </div>
@@ -2077,7 +2077,7 @@ Encoding considerations:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-考慮事項のエンコード：
+エンコードに関する考慮事項：
         </p>
       </div>
     </div>
@@ -2089,7 +2089,7 @@ binary. A token introspection response is a JWT; JWT values are encoded as a ser
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-バイナリ。トークンイントロスペクション反応はJWTです。JWT値は、一連のbase64urlエンコード値（後続の &#39;=&#39;文字が削除されている）としてエンコードされ、その一部は空の文字列であり、ピリオド（ &#39;。&#39;）文字で区切られている場合があります。
+バイナリ。トークンイントロスペクション応答はJWTです。JWT値は、一連のbase64urlエンコード値（後続の &#39;=&#39;文字が削除されている）としてエンコードされ、その一部は空の文字列であり、ピリオド（&#39;.&#39;）文字で区切られています。
         </p>
       </div>
     </div>
@@ -2305,7 +2305,7 @@ Person &amp; email address to contact for further information:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-詳細については、連絡先への個人およびメールアドレス：
+詳細については、連絡先およびメールアドレス：
         </p>
       </div>
     </div>
@@ -2401,7 +2401,7 @@ Change controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>
@@ -2437,7 +2437,7 @@ The &#34;token_introspection&#34; claim has been registered in the &#34;JSON Web
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-「token_intropection」クレームは、[RFC7519]で説明されている方法で「JSON Web Token（JWT）」レジストリ[IANA.JWT]に登録されています。
+「token_introspection」クレームは、[RFC7519]で説明されている方法で「JSON Web Token（JWT）」レジストリ[IANA.JWT]に登録されています。
         </p>
       </div>
     </div>
@@ -2509,7 +2509,7 @@ Change Controller:
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-Change Controller：
+変更管理者：
         </p>
       </div>
     </div>

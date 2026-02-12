@@ -46,8 +46,8 @@
           </a>
         </span><br>
         <span class="title_ja">
-          タイトル : <strong>RFC 9728 - OAUTH 2.0保護されたリソースメタデータ</strong></span><br>
-        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+          タイトル : <strong>RFC 9728 - OAuth 2.0保護されたリソースメタデータ</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成＆有志による翻訳・編集</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
       </div>
       <div id="rfc_alert" class="hidden" role="alert">
         <div class="alert alert-danger">
@@ -76,7 +76,7 @@ OAuth 2.0 Protected Resource Metadata
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-OAUTH 2.0保護されたリソースメタデータ
+OAuth 2.0保護されたリソースメタデータ
         </h5>
       </div>
     </div>
@@ -100,7 +100,7 @@ This specification defines a metadata format that an OAuth 2.0 client or authori
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、OAUTH 2.0クライアントまたは承認サーバーがOAUTH 2.0保護されたリソースと対話するために必要な情報を取得するために使用できるメタデータ形式を定義します。
+この仕様では、OAuth 2.0クライアントまたは認可サーバーがOAuth 2.0保護リソースと対話するために必要な情報を取得するために使用できるメタデータ形式を定義します。
         </p>
       </div>
     </div>
@@ -148,7 +148,7 @@ Information about the current status of this document, any errata, and how to pr
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントの現在のステータス、任意のERRATA、およびそのフィードバックを提供する方法に関する情報は、https://www.rfc-editor.org/info/rfc9728で取得できます。
+このドキュメントの現在のステータス、正誤表、およびそのフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9728で取得できます。
         </p>
       </div>
     </div>
@@ -184,7 +184,7 @@ This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Rel
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このドキュメントは、BCP 78およびIETFドキュメント（https://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定の対象となります。この文書に関するあなたの権利と制限を説明するので、これらの文書を注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、セクション4.Eで説明されている法的規定のセクション4.Eで説明されており、改訂されたBSDライセンスで説明されている保証なしで提供されるように、改訂されたBSDライセンステキストを含める必要があります。
+このドキュメントは、BCP 78およびIETFドキュメント（https://trustee.ietf.org/license-info）に関連するIETF Trustの法的規定に従うものとします。これらはこのドキュメントの発行日において有効です。このドキュメントに関するお客様の権利と制限を説明していますので、これらのドキュメントを注意深く確認してください。このドキュメントから抽出されたコードコンポーネントには、法的規定のセクション4.eで説明されている改訂BSDライセンステキストを含める必要があり、改訂BSDライセンスで説明されているように、保証なしで提供されます。
         </p>
       </div>
     </div>
@@ -267,7 +267,7 @@ This specification defines a metadata format enabling OAuth 2.0 clients and auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、OAUTH 2.0クライアントと承認サーバーがOAUTH 2.0保護されたリソースと対話するために必要な情報を取得できるメタデータ形式を定義します。この仕様の構造と内容は、（1）「OAUTH 2.0ダイナミッククライアント登録プロトコル」[RFC7591]と可能な限り並行して意図的に並行しています。これにより、クライアントはOAUTH 2.0認証サーバーにメタデータを提供できます。サーバー。
+この仕様では、OAuth 2.0クライアントおよび認可サーバーがOAuth 2.0保護リソースと対話するために必要な情報を取得できるメタデータ形式を定義します。この仕様の構造と内容は、(1) クライアントがOAuth 2.0認可サーバーに自身のメタデータを提供できるようにする「OAuth 2.0動的クライアント登録プロトコル」[RFC7591]、および (2) クライアントがOAuth 2.0認可サーバーに関するメタデータを取得できるようにする「OAuth 2.0認可サーバーメタデータ」[RFC8414]と、可能な限り並行するように意図されています。
         </p>
       </div>
     </div>
@@ -279,7 +279,7 @@ The means by which the client obtains the location of the protected resource is 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントが保護されたリソースの場所を取得する手段は、このドキュメントの範囲外です。場合によっては、場所をクライアントに手動で構成することができます。たとえば、電子メールクライアントは、ユーザーがJSONメタアプリケーションプロトコル（JMAP）サーバー[RFC8620]のURLを入力するインターフェイスを提供できます。他の場合には、動的に発見される場合があります。たとえば、ユーザーは電子メールアドレスを電子メールクライアントに入力できます。クライアントはWebfinger Discovery [RFC7033]（[openID.discovery]のセクション2の説明に関連する方法で）を実行してリソースサーバーを見つけます。クライアントは、ユーザーのメールにアクセスするための認証サーバーを見つけるためにリソースサーバーメタデータを取得できます。
+クライアントが保護されたリソースの場所を取得する手段は、このドキュメントの範囲外です。場合によっては、場所をクライアントに手動で構成することができます。たとえば、電子メールクライアントは、ユーザーがJSONメタアプリケーションプロトコル（JMAP）サーバー[RFC8620]のURLを入力するインターフェイスを提供できます。他の場合には、動的に発見される場合があります。たとえば、ユーザーは電子メールアドレスを電子メールクライアントに入力できます。クライアントはWebFinger Discovery [RFC7033]（[OpenID.Discovery]のセクション2の説明に関連する方法で）を実行してリソースサーバーを見つけ、クライアントは、ユーザーのメールへのアクセス認可を取得するために使用する認可サーバーを見つけるために、リソースサーバーのメタデータをフェッチできます。
         </p>
       </div>
     </div>
@@ -303,7 +303,7 @@ This metadata can be communicated either in a self-asserted fashion or as a set 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このメタデータは、自己容疑で、またはJSON Webトークン（JWT）[JWT]のクレームとして表される署名されたメタデータ値のセットとして伝えることができます。JWTの場合、発行者は保護されたリソースに関するデータの有効性を保証しています。これは、ソフトウェアステートメントがOAuth Dynamic Client登録で果たす役割に類似しています[RFC7591]。
+このメタデータは、自己表明された方法で、またはJSON Webトークン（JWT）[JWT]のクレームとして表される署名されたメタデータ値のセットとして伝えることができます。JWTの場合、発行者は保護されたリソースに関するデータの有効性を保証しています。これは、ソフトウェアステートメントがOAuth 動的クライアント登録[RFC7591]で果たす役割に類似しています。
         </p>
       </div>
     </div>
@@ -315,7 +315,7 @@ Each protected resource publishing metadata about itself makes its own metadata 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-各保護されたリソース出版メタデータ自体が、リソースサーバーが複数の保護されたリソースを実装している場合でも、保護されたリソースのURLから決定的に導出された有名な場所で独自のメタデータドキュメントを利用できます。これにより、攻撃者は保護されたリソースを記述していると思われるメタデータを公開することを防ぎますが、セクション7.3で説明されているように、保護されたリソースに対して実際には権威がありません。
+自身のメタデータを公開する各保護されたリソースは、リソースサーバーが複数の保護されたリソースを実装している場合でも、保護されたリソースのURLから決定的に導出された有名な場所で独自のメタデータドキュメントを利用できるようにします。これにより、攻撃者は、保護されたリソースを記述していると思われるが、実際にはその保護されたリソースに対して権威のあるものではないメタデータを公開することを防ぎます（セクション7.3で説明）。
         </p>
       </div>
     </div>
@@ -327,7 +327,7 @@ Section 2 defines metadata parameters that a protected resource can publish, whi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セクション2では、保護されたリソースが公開できるメタデータパラメーターを定義します。これには、スコープがサポートされているもの、クライアントがアクセストークンを提示する方法などが含まれます。JWKS_URI（セクション2を参照）などのこれらの値は、他の仕様で使用できます。たとえば、JWKS_URIで公開されているパブリックキーを使用して、[fapi.messageing]で説明されているように、署名されたリソース応答を検証できます。
+セクション2では、保護されたリソースが公開できるメタデータパラメーターを定義します。これには、スコープがサポートされているもの、クライアントがアクセストークンを提示する方法などが含まれます。JWKS_URI（セクション2を参照）などのこれらの値は、他の仕様で使用できます。たとえば、JWKS_URIで公開されているパブリックキーを使用して、[FAPI.MessageSigning]で説明されているように、署名されたリソース応答を検証できます。
         </p>
       </div>
     </div>
@@ -339,7 +339,7 @@ Section 5 describes the use of WWW-Authenticate by protected resources to dynami
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セクション5では、保護されたリソースによるwww-authenticateの使用について、保護されたリソースメタデータのURLをクライアントに動的に通知します。www-authenticateのこの使用は、保護されたリソースメタデータが変更された可能性があることを示すことができます。
+セクション5では、保護されたリソースによるWWW-Authenticateの使用について、保護されたリソースメタデータのURLをクライアントに動的に通知します。WWW-Authenticateのこの使用は、保護されたリソースメタデータが変更された可能性があることを示すことができます。
         </p>
       </div>
     </div>
@@ -375,7 +375,7 @@ All applications of JSON Web Signature (JWS) data structures [JWS] and JSON Web 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JSON Web Signature（JWS）データ構造[JWS]およびJSON Web暗号化（JWE）データ構造[JWE]のすべてのアプリケーションは、JWSコンパクトシリアル化またはJWEコンパクトシリアル化を利用しています。JWS JSONシリアル化とJWE JSONシリアル化は使用されていません。単一のシリアル化を選択することは、相互運用性を促進することを目的としています。
+JSON Web Signature（JWS）データ構造[JWS]およびJSON Web Encryption（JWE）データ構造[JWE]のすべてのアプリケーションは、JWSコンパクトシリアル化またはJWEコンパクトシリアル化を利用しています。JWS JSONシリアル化とJWE JSONシリアル化は使用されていません。単一のシリアル化を選択することは、相互運用性を促進することを目的としています。
         </p>
       </div>
     </div>
@@ -399,7 +399,7 @@ This specification uses the terms &#34;access token&#34;, &#34;authorization cod
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、「アクセストークン」、「認証コード」、「認証サーバー」、「クライアント」、「クライアント認証」、「クライアント識別子」、「保護されたリソース」、および「RFC6749」[RFC6749]、および「クレーム名」と「JSON Web Token（JWT）」で定義された「リソースサーバー」という用語を使用します。
+この仕様では、OAuth 2.0 [RFC6749]で定義されている「アクセストークン」、「認可コード」、「認可サーバー」、「クライアント」、「クライアント認証」、「クライアント識別子」、「保護されたリソース」、「リソースサーバー」の用語、および「JSON Web Token (JWT)」[JWT]で定義されている「クレーム名」と「JSON Web Token (JWT)」の用語を使用します。
         </p>
       </div>
     </div>
@@ -435,7 +435,7 @@ The protected resource&#39;s resource identifier, which is a URL that uses the h
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-保護されたリソースのリソース識別子は、HTTPSスキームを使用し、フラグメントコンポーネントを持たないURLです。[RFC8707]のセクション2で指定されているように、クエリコンポーネントも含めるべきではありませんが、クエリコンポーネントをリソース識別子の有用かつ必要な部分にするケースがあることが認識されています。保護されたリソースメタデータは、セクション3で説明されているように、このリソース識別子から派生した.well-known Location [RFC8615]で公開されています。
+保護されたリソースのリソース識別子は、httpsスキームを使用し、フラグメントコンポーネントを持たないURLです。[RFC8707]のセクション2で指定されているように、クエリコンポーネントも含めるべきではありませんが、クエリコンポーネントをリソース識別子の有用かつ必要な部分にするケースがあるケースが認識されています。保護されたリソースメタデータは、セクション3で説明されているように、このリソース識別子から派生した.well-knownの場所[RFC8615]で公開されます。
         </p>
       </div>
     </div>
@@ -507,7 +507,7 @@ OPTIONAL. JSON array containing a list of OAuth authorization server issuer iden
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。[RFC8414]で定義されているOAuth Authorization Server発行者識別子のリストを含むJSONアレイは、この保護されたリソースで使用できる承認サーバーのために。保護されたリソースは、このパラメーターが使用されている場合でも、いくつかのサポートされている承認サーバーを宣伝しないことを選択できます。一部のユースケースでは、一連の承認サーバーは列挙できません。その場合、このメタデータパラメーターは使用されません。
+オプション。[RFC8414]で定義されているOAuth認可サーバー発行者識別子のリストを含むJSONアレイは、この保護されたリソースで使用できる認可サーバーのものです。保護されたリソースは、このパラメーターが使用されている場合でも、いくつかのサポートされている認可サーバーを公開しないことを選択できます。一部のユースケースでは、一連の認可サーバーは列挙できません。その場合、このメタデータパラメーターは使用されません。
         </p>
       </div>
     </div>
@@ -531,7 +531,7 @@ OPTIONAL. URL of the protected resource&#39;s JSON Web Key (JWK) Set [JWK] docum
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。保護されたリソースのJSON Webキー（JWK）セット[JWK]ドキュメントのURL。これには、リソースサーバーがリソース応答に署名するために使用する署名キーなど、保護されたリソースに属するパブリックキーが含まれています。このURLはHTTPSスキームを使用する必要があります。署名キーと暗号化キーの両方が利用可能になると、参照されたJWKセットのすべてのキーに使用（公開キーの使用）パラメーター値が必要です。
+オプション。保護されたリソースのJSON Webキー（JWK）セット[JWK]ドキュメントのURL。これには、リソースサーバーがリソース応答に署名するために使用する署名キーなど、保護されたリソースに属する公開鍵が含まれています。このURLはhttpsスキームを使用する必要があります。署名キーと暗号化キーの両方が利用可能になると、参照されたJWKセットのすべてのキーに用途（公開鍵用途）パラメーター値が必要です。
         </p>
       </div>
     </div>
@@ -555,7 +555,7 @@ RECOMMENDED. JSON array containing a list of scope values, as defined in OAuth 2
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-推奨。OAUTH 2.0 [RFC6749]で定義されているスコープ値のリストを含むJSONアレイは、この保護されたリソースへのアクセスを要求する認定要求で使用されます。保護されたリソースは、このパラメーターが使用されている場合でも、サポートされているスコープ値を宣伝しないことを選択できます。
+推奨。OAuth 2.0 [RFC6749]で定義されているスコープ値のリストを含むJSONアレイは、この保護されたリソースへのアクセスを要求する認可要求で使用されます。保護されたリソースは、このパラメーターが使用されている場合でも、サポートされているスコープ値を公開しないことを選択できます。
         </p>
       </div>
     </div>
@@ -579,7 +579,7 @@ OPTIONAL. JSON array containing a list of the supported methods of sending an OA
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。OAUTH 2.0 BEARERトークン[RFC6750]を保護されたリソースに送信するサポートされている方法のリストを含むJSONアレイ。定義された値は[&#34;&#34; header &#34;、&#34; body &#34;、&#34; query &#34;]で、[RFC6750]のセクション2.1、2.2、および2.3に対応しています。空の配列[]を使用して、ベアラーの方法がサポートされていないことを示すことができます。このエントリが省略されている場合、サポートされているデフォルトのベアラーメソッドは暗示されておらず、その不在は、それらがサポートされていないことを示しません。
+オプション。OAuth 2.0 ベアラートークン[RFC6750]を保護されたリソースに送信するサポートされている方法のリストを含むJSONアレイ。定義された値は[&#34;header&#34;、&#34;body&#34;、&#34;query&#34;]で、[RFC6750]のセクション2.1、2.2、および2.3に対応しています。空の配列[]を使用して、ベアラーの方法がサポートされていないことを示すことができます。このエントリが省略されている場合、サポートされているデフォルトのベアラーメソッドは暗示されず、その不在によってサポートされていないことを示すものでもありません。
         </p>
       </div>
     </div>
@@ -591,7 +591,7 @@ resource_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-resource_singe_alg_values_supported
+resource_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -603,7 +603,7 @@ OPTIONAL. JSON array containing a list of the JWS [JWS] signing algorithms (alg 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWS [JWS]署名アルゴリズム（alg値）[JWA]のリストを含むJSONアレイ[JWA]は、[fapi.messageing]で説明されているように、リソース応答などのリソース応答に署名するためにサポートされています。このエントリが省略されている場合、デフォルトのアルゴリズムは暗示されていません。値は使用してはなりません。
+オプション。JWS [JWS]署名アルゴリズム（alg値）[JWA]のリストを含むJSONアレイは、リソース応答への署名、例えば [FAPI.MessageSigning] で説明されているようなものに対して、保護されたリソースによってサポートされています。このエントリが省略されている場合、デフォルトのアルゴリズムは暗示されていません。値 &#39;none&#39; は使用してはなりません。
         </p>
       </div>
     </div>
@@ -675,7 +675,7 @@ OPTIONAL. URL of a page containing human-readable information about the protecte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。保護されたリソースの要件に関するヒューマン読み取り可能な情報を含むページのURLは、保護されたリソースによって提供されるデータをクライアントがどのように使用できるかに関する要件を含みます。セクション2.1で説明されているように、このフィールドの値は国際化される場合があります。
+オプション。保護されたリソースが提供するデータをクライアントがどのように使用できるかに関する保護されたリソースの要件についての人間が読解可能な情報を含むページのURLです。このフィールドの値は、セクション2.1で説明されているように、国際化される場合があります。
         </p>
       </div>
     </div>
@@ -747,7 +747,7 @@ OPTIONAL. JSON array containing a list of the authorization details type values 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。Authorization_Detailsリクエストパラメーター[RFC9396]が使用されたときに、リソースサーバーでサポートされている承認詳細のリストを含むJSONアレイが使用されます。
+オプション。Authorization_Detailsリクエストパラメーター[RFC9396]が使用されたときに、リソースサーバーでサポートされる認可詳細タイプ値のリストを含むJSON配列です。
         </p>
       </div>
     </div>
@@ -759,7 +759,7 @@ dpop_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-dpop_singe_alg_values_supported
+dpop_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -771,7 +771,7 @@ OPTIONAL. JSON array containing a list of the JWS alg values (from the &#34;JSON
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。JWSアルグ値のリストを含むJSONアレイ（「JSON Web署名および暗号化アルゴリズム」レジストリ[IANA.JOSE]から）リソースサーバーがサポートしています。
+オプション。JSON Web署名および暗号化アルゴリズム」レジストリ[IANA.JOSE]からのJWS alg値のリストを含むJSON配列であり、リソースサーバーがDemonstrating Proof of Possession (DPoP) proof JWTs [RFC9449]を検証するためにサポートするものです。
         </p>
       </div>
     </div>
@@ -795,7 +795,7 @@ OPTIONAL. Boolean value specifying whether the protected resource always require
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。保護されたリソースが常にDPOPバウンドアクセストークンの使用を必要とするかどうかを指定するブール値[RFC9449]。省略した場合、デフォルト値はfalseです。
+オプション。保護されたリソースが常にDPoPバウンドアクセストークンの使用を必要とするかどうかを指定するブール値[RFC9449]。省略した場合、デフォルト値はfalseです。
         </p>
       </div>
     </div>
@@ -843,7 +843,7 @@ To specify the languages and scripts, language tags [BCP47] are added to resourc
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-言語とスクリプトを指定するために、言語タグ[BCP47]は、＃文字によって区切られたリソースメタデータパラメーター名に追加されます。JSON [RFC8259]で説明されているメンバー名はケースに敏感であるため、クレーム名で使用される言語タグ値は、「言語サブタグレジストリ」[iana.language]に登録されている文字ケースを使用して綴ることをお勧めします。特に、通常、言語名は小文字で綴られ、地域名は大文字で綴られ、言語は混合ケース文字で綴られます。ただし、言語タグの値は[BCP47]ごとに症例不敏感であるため、実装はケース非感受性で提供される言語タグ値を解釈する必要があります。[BCP47]の推奨事項によると、メタデータパラメーター名で使用される言語タグ値は、必要な限り具体的でなければなりません。たとえば、FRを使用することは、FR-CAまたはFR-FRではなく、多くのコンテキストで十分かもしれません。
+言語とスクリプトを指定するために、言語タグ[BCP47]は、＃文字によって区切られたリソースメタデータパラメーター名に追加されます。JSON [RFC8259]で説明されているメンバー名はケースに敏感であるため、クレーム名で使用される言語タグ値は、「Language Subtag Registry」[IANA.Language]に登録されている文字ケースを使用して綴ることをお勧めします。特に、通常、言語名は小文字で綴られ、地域名は大文字で綴られ、言語は混合ケース文字で綴られます。ただし、言語タグの値は[BCP47]ごとに大文字と小文字を区別しないため、実装はケース非感受性で提供される言語タグ値を解釈する必要があります。[BCP47]の推奨事項によると、メタデータパラメーター名で使用される言語タグ値は、必要な限り具体的でなければなりません。たとえば、FRを使用することは、FR-CAまたはFR-FRではなく、多くのコンテキストで十分かもしれません。
         </p>
       </div>
     </div>
@@ -867,7 +867,7 @@ If any human-readable field is sent without a language tag, parties using it MUS
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-人間の読み取り可能なフィールドが言語タグなしで送信される場合、それを使用する当事者は、文字列値の言語、文字セット、またはスクリプトについて仮定を立ててはなりません。また、文字列値は、ユーザーインターフェイスのどこにいても使用する必要があります。相互運用性を容易にするために、提供される人間が読みやすいメタデータの各種類には、言語固有のパラメーターに加えて言語タグのないメタデータパラメーターのインスタンスを含めることをお勧めします。
+人間の読み取り可能なフィールドが言語タグなしで送信される場合、それを使用する当事者は、文字列値の言語、文字セット、またはスクリプトについて仮定を立ててはなりません。また、文字列値は、ユーザーインターフェイスのどこにいても、そのまま使用する必要があります。相互運用性を容易にするために、提供される人間が読みやすいメタデータの各種類には、言語固有のパラメーターに加えて言語タグのないメタデータパラメーターのインスタンスを含めることをお勧めします。また、言語タグなしで送信される人間が読みやすいフィールドには、さまざまなシステムで表示するのに適した値を含めることをお勧めします。
         </p>
       </div>
     </div>
@@ -891,7 +891,7 @@ In addition to JSON elements, metadata values MAY also be provided as a signed_m
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-JSON要素に加えて、メタデータ値は、保護されたリソースに関するメタデータ値をバンドルとして主張するJSON Webトークン（JWT）[JWT]であるSigned_Metadata値として提供される場合があります。クレームとして署名されたメタデータで使用できる一連のメタデータパラメーターは、セクション2で定義されています。署名されたメタデータは、JSON Web署名（JWS）[JWS]を使用してデジタル署名またはマケッド（メッセージ認証コードで保護）を使用する必要があり、ISS（発行者）が含まれている必要があります。メタデータの消費者は、この機能をサポートしていない場合、署名されたメタデータを無視する場合があります。メタデータの消費者が署名されたメタデータをサポートする場合、署名されたメタデータで伝えられるメタデータ値は、プレーンJSON要素を使用して伝えられる対応する値よりも優先される必要があります。
+JSON要素に加えて、メタデータ値は、保護されたリソースに関するメタデータ値をバンドルとして主張するJSON Webトークン（JWT）[JWT]であるSigned_Metadata値として提供される場合があります。クレームとして署名されたメタデータで使用できる一連のメタデータパラメーターは、セクション2で定義されています。署名されたメタデータは、JSON Web署名（JWS）[JWS]を使用してデジタル署名またはMACed（メッセージ認証コードで保護）を使用する必要があり、iss（発行者）クレームを含む必要があります。メタデータの消費者は、この機能をサポートしていない場合、署名されたメタデータを無視する場合があります。メタデータの消費者が署名されたメタデータをサポートする場合、署名されたメタデータで伝えられるメタデータ値は、プレーンJSON要素を使用して伝えられる対応する値よりも優先される必要があります。
         </p>
       </div>
     </div>
@@ -927,7 +927,7 @@ A JWT containing metadata parameters about the protected resource as claims. Thi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-保護されたリソースに関するメタデータパラメーターをクレームとして含むJWT。これは、署名されたJWT全体で構成される文字列値です。signed_metadataパラメーターは、JWTのクレームとして表示されてはなりません。これが発生するメタデータを拒否することをお勧めします。
+保護されたリソースに関するメタデータパラメーターをクレームとして含むJWT。これは、署名されたJWT全体で構成される文字列値です。signed_metadataパラメーターは、JWTのクレームとして表示されてはなりません。この状況が発生するメタデータは拒否することをお勧めします。
         </p>
       </div>
     </div>
@@ -951,7 +951,7 @@ Protected resources supporting metadata MUST make a JSON document containing met
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メタデータをサポートする保護されたリソースは、有名なURI文字列をホストコンポーネントとパスおよび/またはクエリコンポーネントとの間の保護されたリソースのリソース識別子に挿入することによって形成されたURLで利用可能なセクション2で指定されたメタデータを含むJSONドキュメントを作成する必要があります。デフォルトでは、使用されるよく知られているURI文字列は /.Well-Known /Oauth-Protected-Resourceです。.well-knowsの構文とセマンティクスは[RFC8615]で定義されています。使用されるよく知られているURIパスの接尾辞は、「有名なURIS」レジストリ[iana.well-known]に登録する必要があります。この構造の例は、セクション3.1にあります。
+メタデータをサポートする保護されたリソースは、よく知られたURI文字列をホストコンポーネントとパスおよび/またはクエリコンポーネントとの間の保護されたリソースのリソース識別子に挿入することによって形成されたURLで、セクション2で指定されたメタデータを含むJSONドキュメントを利用可能にする必要があります。デフォルトでは、使用されるよく知られているURI文字列は /.well-known/oauth-protected-resource です。.well-knownの構文とセマンティクスは[RFC8615]で定義されています。使用されるよく知られているURIパスの接尾辞は、「Well-Known URIs」レジストリ[IANA.well-known]に登録する必要があります。この構造の例は、セクション3.1にあります。
         </p>
       </div>
     </div>
@@ -963,7 +963,7 @@ The term &#34;application&#34;, as used below (and as used in [RFC8414]), encomp
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-以下で使用される（および[RFC8414]で使用される）「アプリケーション」という用語は、ユースケースのタスクを達成するために使用されるすべてのコンポーネントを含みます。これには、それぞれで実行されているコードを含む、OAuthクライアント、認証サーバー、保護されたリソース、および非OAUTHコンポーネントが含まれます。アプリケーションは特定の問題を解決するために構築されており、多くのコンポーネントとサービスを利用する場合があります。
+以下で使用される（および[RFC8414]で使用される）「アプリケーション」という用語は、ユースケースのタスクを達成するために使用されるすべてのコンポーネントを含みます。これには、それぞれで実行されているコードを含む、OAuthクライアント、認可サーバー、保護されたリソース、および非OAuthコンポーネントが含まれます。アプリケーションは特定の問題を解決するために構築されており、多くのコンポーネントとサービスを利用する場合があります。
         </p>
       </div>
     </div>
@@ -975,7 +975,7 @@ Different applications utilizing OAuth protected resources in application-specif
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-OAUTH保護されたリソースをアプリケーション固有の方法で使用するさまざまなアプリケーションは、これらのアプリケーションで使用される保護されたリソースメタデータを公開するためのさまざまな有名なURIパスサフィックスを定義および登録することができます。たとえば、サンプルアプリケーションが例固有の方法でOAuth保護されたリソースを使用し、公開する必要がある例固有のメタデータ値がある場合、URIパスのサフィックスを登録および使用し、/.well-konded-completected-resurtected-resourted-resurtected-resourents forth compentの挿入によって形成されたURLでメタデータドキュメントを公開する場合があります。識別子。あるいは、そのようなアプリケーションの多くは、デフォルトのよく知られているURI String /.Well-Known/Oauth-Protected-Resourceを使用します。
+OAuth保護されたリソースをアプリケーション固有の方法で使用するさまざまなアプリケーションは、これらのアプリケーションで使用される保護されたリソースメタデータを公開するためのさまざまなよく知られたURIパスサフィックスを定義および登録することができます。たとえば、ExampleアプリケーションがExample固有の方法でOAuth保護リソースを使用し、公開する必要があるExample固有のメタデータ値がある場合、example-protected-resource URIパスサフィックスを登録および使用し、保護されたリソースのリソース識別子のホストコンポーネントとパスおよび/またはクエリコンポーネントの間に /.well-known/example-protected-resource を挿入することによって形成されるURLでメタデータドキュメントを公開するかもしれません。あるいは、多くのそのようなアプリケーションは、汎用OAuth保護リソースに適切なデフォルトのよく知られているURI文字列 /.well-known/oauth-protected-resource を使用し、アプリケーション固有のものを登録しないでしょう。
         </p>
       </div>
     </div>
@@ -987,7 +987,7 @@ An OAuth 2.0 application using this specification MUST specify what well-known U
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様を使用したOAUTH 2.0アプリケーションは、この目的に使用する有名なURIサフィックスを指定する必要があります。同じ保護されたリソースは、そのリソース識別子から派生した複数の有名な場所でそのメタデータを公開することを選択できます。たとえば、メタデータを /.Well-Nownexample-Protected-Resourceと /.Well-Nownote/Oauth-Protected-Resourceの両方で公開します。
+この仕様を使用したOAuth 2.0アプリケーションは、この目的に使用するよく知られたURIサフィックスを指定する必要があります。同じ保護されたリソースは、そのリソース識別子から派生した複数のよく知られた場所でそのメタデータを公開することを選択できます。たとえば、メタデータを /.well-known/example-protected-resource と /.well-known/oauth-protected-resource の両方で公開します。
         </p>
       </div>
     </div>
@@ -1023,7 +1023,7 @@ The consumer of the metadata would make the following request when the resource 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-メタデータの消費者は、リソース識別子がhttps://resource.example.comであり、有名なURIパスの接尾辞がメタデータを取得するためのoauth保護対象である場合に次の要求を行います。リソース識別子にはパスコンポーネントが含まれていないため、
+メタデータの消費者は、リソース識別子がhttps://resource.example.comであり、well-known URIパスサフィックスがoauth-protected-resourceである場合に、メタデータを取得するために次のリクエストを行います。これは、リソース識別子にパスコンポーネントが含まれていないためです。
         </p>
       </div>
     </div>
@@ -1043,7 +1043,7 @@ If the resource identifier value contains a path or query component, any termina
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リソース識別子値にパスまたはクエリコンポーネントが含まれている場合、/.Well-Nownd/とホストコンポーネントとパスおよび/またはクエリコンポーネントの間の有名なURIパスの接尾辞を挿入する前に、ホストコンポーネントに続く終端スラッシュ（/）を削除する必要があります。メタデータの消費者は、リソース識別子がhttps://resource.example.com/ resource1であり、有名なURIパスの接尾辞が、リソース識別子にパスコンポーネントが含まれているため、メタデータを取得するためのOAuthで保護されたリソースである場合、次の要求を行います。
+リソース識別子値にパスまたはクエリコンポーネントが含まれている場合、/.well-known/ およびwell-known URIパスサフィックスをホストコンポーネントとパスおよび/またはクエリコンポーネントの間に挿入する前に、ホストコンポーネントに続く終端スラッシュ（/）を削除する必要があります。リソース識別子が https://resource.example.com/resource1 であり、well-known URIパスサフィックスが oauth-protected-resource で、リソース識別子にパスコンポーネントが含まれている場合、メタデータ消費者はメタデータを取得するために次のリクエストを行います。
         </p>
       </div>
     </div>
@@ -1099,7 +1099,7 @@ Parameters with multiple values are represented as JSON arrays. Parameters with 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-複数の値を持つパラメーターは、JSONアレイとして表されます。ゼロ値のパラメーターは、応答から省略する必要があります。
+複数の値を持つパラメーターは、JSON配列として表されます。ゼロ値のパラメーターは、応答から省略する必要があります。
         </p>
       </div>
     </div>
@@ -1181,7 +1181,7 @@ If the protected resource metadata was retrieved from a URL returned by the prot
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-保護されたリソースメタデータが、www-authenticate resource_metadataパラメーターを介して保護されたリソースによって返されたURLから取得された場合、返されるリソース値は、クライアントがリソースサーバーにリクエストするために使用したURLと同一でなければなりません。これらの値が同一でない場合、応答に含まれるデータを使用してはなりません。
+保護されたリソースメタデータが、WWW-Authenticate resource_metadataパラメーターを介して保護されたリソースによって返されたURLから取得された場合、返されるリソース値は、クライアントがリソースサーバーにリクエストするために使用したURLと同一でなければなりません。これらの値が同一でない場合、応答に含まれるデータを使用してはなりません。
         </p>
       </div>
     </div>
@@ -1193,7 +1193,7 @@ These validation actions can thwart impersonation attacks, as described in Secti
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-これらの検証アクションは、セクション7.3で説明されているように、抑制攻撃を妨げる可能性があります。
+これらの検証アクションは、セクション7.3で説明されているように、なりすまし攻撃を妨げる可能性があります。
         </p>
       </div>
     </div>
@@ -1217,7 +1217,7 @@ The recipient MUST validate that any signed metadata was signed by a key belongi
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-4. 承認サーバーメタデータ
+4. 認可サーバーメタデータ
         </h5>
       </div>
     </div>
@@ -1229,7 +1229,7 @@ To support use cases in which the set of legitimate protected resources to use w
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-承認サーバーで使用する合法的な保護されたリソースのセットが列挙可能であるユースケースをサポートするために、この仕様はAuthorization Server Metadata Parameter Protected_Resourcesを定義します。これにより、認証サーバーは保護されたリソースを明示的にリストできます。保護されたリソースで使用する合法的な認証サーバーのセットも列挙可能である場合、承認サーバーメタデータと保護されたリソースメタデータのリストは、これらのリストをアプリケーションプロファイルで使用する場合、一貫性を互いにクロスチェックする必要があることに注意してください。
+認可サーバーで使用する合法的な保護されたリソースのセットが列挙可能であるユースケースをサポートするために、この仕様はAuthorization Server Metadata Parameter Protected_Resourcesを定義します。これにより、認可サーバーは保護されたリソースを明示的にリストできます。保護されたリソースで使用する合法的な認可サーバーのセットも列挙可能である場合、認可サーバーメタデータと保護されたリソースメタデータのリストは、これらのリストをアプリケーションプロファイルで使用する場合、一貫性を互いにクロスチェックする必要があることに注意してください。
         </p>
       </div>
     </div>
@@ -1241,7 +1241,7 @@ The following authorization server metadata parameter is defined by this specifi
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-次のAuthorization Serverメタデータパラメーターは、この仕様によって定義され、「OAUTH 2.0 Authorization Server Metadata」[RFC8414]に確立された「OAuth Authorization Server Metadata」レジストリに登録されています。
+次のAuthorization Serverメタデータパラメーターは、この仕様によって定義され、「OAuth 2.0 Authorization Server Metadata」[RFC8414]に確立された「OAuth Authorization Server Metadata」レジストリに登録されています。
         </p>
       </div>
     </div>
@@ -1265,7 +1265,7 @@ OPTIONAL. JSON array containing a list of resource identifiers for OAuth protect
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-オプション。この承認サーバーで使用できるOAUTH保護リソースのリソース識別子のリストを含むJSONアレイ。承認サーバーは、このパラメーターが使用されている場合でも、サポートされている保護されたリソースを宣伝しないことを選択できます。一部のユースケースでは、保護されたリソースのセットは列挙できません。その場合、このメタデータパラメーターは存在しません。
+オプション。この認可サーバーで使用できるOAuth保護リソースのリソース識別子のリストを含むJSON配列。認可サーバーは、このパラメーターが使用されている場合でも、サポートされている保護されたリソースを公開しないことを選択できます。一部のユースケースでは、保護されたリソースのセットは列挙できません。その場合、このメタデータパラメーターは存在しません。
         </p>
       </div>
     </div>
@@ -1277,7 +1277,7 @@ OPTIONAL. JSON array containing a list of resource identifiers for OAuth protect
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-5. 保護されたリソースメタデータのためのwww-authenticateの使用
+5. 保護されたリソースメタデータのためのWWW-Authenticateの使用
         </h5>
       </div>
     </div>
@@ -1289,7 +1289,7 @@ A protected resource MAY use the WWW-Authenticate HTTP response header field, as
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-保護されたリソースは、[RFC9110]で説明されているように、www-authenticate HTTP応答ヘッダーフィールドを使用して、保護されたリソースメタデータにURLをクライアントに返すことができます。クライアントは、セクション3で説明されているように、保護されたリソースメタデータを取得できます。たとえば、クライアントは、保護されたリソースメタデータを取得したリソースに使用する認証サーバーを決定する場合があります。
+保護されたリソースは、[RFC9110]で説明されているように、WWW-Authenticate HTTP応答ヘッダーフィールドを使用して、保護されたリソースメタデータへのURLをクライアントに返すことができます。クライアントは、セクション3で説明されているように、保護されたリソースメタデータを取得できます。たとえば、クライアントは、取得した保護されたリソースメタデータに基づいて、リソースに使用する認可サーバーを決定するかもしれません。
         </p>
       </div>
     </div>
@@ -1301,7 +1301,7 @@ A typical end-to-end flow doing so is as follows. Note that while this example u
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-そうする典型的なエンドツーエンドのフローは次のとおりです。この例ではOAuth 2.0認証コードフローを使用しているが、同様のシーケンスも他のOAuthフローで実装できることに注意してください。
+そうする典型的なエンドツーエンドのフローは次のとおりです。この例ではOAuth 2.0認可コードフローを使用しているが、同様のシーケンスも他のOAuthフローで実装できることに注意してください。
         </p>
       </div>
     </div>
@@ -1393,7 +1393,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-2. リソースサーバーは、保護されたリソースメタデータのURLを含むwww-authenticateヘッダーで応答します。
+2. リソースサーバーは、保護されたリソースメタデータのURLを含むWWW-Authenticateヘッダーで応答します。
         </p>
       </div>
     </div>
@@ -1429,7 +1429,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-5. クライアントは、セクション3.3で説明されているように、保護されたリソースメタデータを検証し、[RFC8414]に従ってリソースメタデータの発行者識別子から認証サーバーメタデータURLを構築します。
+5. クライアントは、セクション3.3で説明されているように、保護されたリソースメタデータを検証し、[RFC8414]に従ってリソースメタデータの発行者識別子から認可サーバーメタデータURLを構築します。
         </p>
       </div>
     </div>
@@ -1441,7 +1441,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-6. クライアントは、承認サーバーメタデータを取得するリクエストを行います。
+6. クライアントは、認可サーバーメタデータを取得するリクエストを行います。
         </p>
       </div>
     </div>
@@ -1453,7 +1453,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-7. Authorization Serverは、[RFC8414]に従って、Authorization Serverメタデータドキュメントで応答します。
+7. 認可サーバーは、[RFC8414]に従って、認可サーバーメタデータドキュメントで応答します。
         </p>
       </div>
     </div>
@@ -1465,7 +1465,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-8. クライアントは、ユーザーエージェントに承認サーバーに承認フローを開始するよう指示します。
+8. クライアントは、ユーザーエージェントに認可サーバーに認可フローを開始するよう指示します。
         </p>
       </div>
     </div>
@@ -1477,7 +1477,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-10">
-9. 承認交換が完了し、承認サーバーはクライアントにアクセストークンを返します。
+9. 認可交換が完了し、認可サーバーはクライアントにアクセストークンを返します。
         </p>
       </div>
     </div>
@@ -1513,7 +1513,7 @@ Figure 1: Sequence Diagram
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-5.1. www-authenticate応答
+5.1. WWW-Authenticate応答
         </h5>
       </div>
     </div>
@@ -1525,7 +1525,7 @@ This specification introduces a new parameter in the WWW-Authenticate HTTP respo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様では、保護されたリソースメタデータURLを示すために、www-authenticate http応答ヘッダーフィールドに新しいパラメーターを紹介します。
+この仕様では、保護されたリソースメタデータURLを示すために、WWW-Authenticate HTTP応答ヘッダーフィールドに新しいパラメーターを導入します。
         </p>
       </div>
     </div>
@@ -1561,7 +1561,7 @@ The response below is an example of a WWW-Authenticate header that includes the 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-以下の応答は、リソース識別子を含むwww-authenticateヘッダーの例です。
+以下の応答は、リソース識別子を含むWWW-Authenticateヘッダーの例です。
         </p>
       </div>
     </div>
@@ -1594,7 +1594,7 @@ This parameter MAY also be used in WWW-Authenticate responses using authorizatio
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-このパラメーターは、[RFC9449]によって定義されたDPOPスキームなど、「Bearer」[RFC6750]以外の認証スキームを使用してwww-authenticate応答で使用することもできます。
+このパラメーターは、[RFC9449]によって定義されたDPoPスキームなど、「Bearer」[RFC6750]以外の認可スキームを使用してWWW-Authenticate応答で使用することもできます。
         </p>
       </div>
     </div>
@@ -1630,7 +1630,7 @@ At any point, for any reason determined by the resource server, the protected re
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-いつでも、リソースサーバーによって決定された理由により、保護されたリソースは、保護されたリソースメタデータURLの値を含む新しいwww-authenticateチャレンジで、そのメタデータが変化した可能性があることを示すことができます。クライアントがそのようなwww-authenticate応答を受信した場合、セクション3.3で説明したように検証した後、更新された保護されたリソースメタデータを取得し、取得した新しいメタデータ値を使用する必要があります。とりわけ、これにより、リソースサーバーがクライアントとの他の調整なしに使用する承認サーバーを変更できます。
+いつでも、リソースサーバーによって決定された理由により、保護されたリソースは、保護されたリソースメタデータURLの値を含む新しいWWW-Authenticateチャレンジで、そのメタデータが変化した可能性があることを示すことができます。クライアントがそのようなWWW-Authenticate応答を受信した場合、セクション3.3で説明したように検証した後、更新された保護されたリソースメタデータを取得し、取得した新しいメタデータ値を使用する必要があります。とりわけ、これにより、リソースサーバーがクライアントとの他の調整なしに使用する認可サーバーを変更できます。
         </p>
       </div>
     </div>
@@ -1654,7 +1654,7 @@ The way in which the client identifier is established at the authorization serve
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアント識別子が承認サーバーで確立される方法は、この仕様の範囲外です。
+クライアント識別子が認可サーバーで確立される方法は、この仕様の範囲外です。
         </p>
       </div>
     </div>
@@ -1678,7 +1678,7 @@ There are some existing methods by which an unrecognized client can make use of 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-認識されていないクライアントが、承認フローを開始する前にクライアントを登録するためのダイナミッククライアント登録[RFC7591]を使用するなど、認定サーバーを使用できる既存の方法がいくつかあります。将来のOAUTH拡張機能は、URLを使用してクライアントを識別するなど、代替案を定義する場合があります。
+認識されていないクライアントが、認可フローを開始する前にクライアントを登録するためのダイナミッククライアント登録[RFC7591]を使用するなど、認可サーバーを使用できる既存の方法がいくつかあります。将来のOAuth拡張機能は、URLを使用してクライアントを識別するなど、代替案を定義する場合があります。
         </p>
       </div>
     </div>
@@ -1702,7 +1702,7 @@ Resource servers MAY return other WWW-Authenticate headers indicating various au
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-リソースサーバーは、さまざまな認証スキームを示す他のwww-authenticateヘッダーを返す場合があります。これにより、リソースサーバーは、この仕様を実装する、または実装できない場合があるクライアントをサポートし、クライアントが優先認証スキームを選択できるようになります。
+リソースサーバーは、さまざまな認証スキームを示す他のWWW-Authenticateヘッダーを返す場合があります。これにより、リソースサーバーは、この仕様を実装する、または実装できない場合があるクライアントをサポートし、クライアントが優先認証スキームを選択できるようになります。
         </p>
       </div>
     </div>
@@ -1726,7 +1726,7 @@ Processing some OAuth 2.0 messages requires comparing values in the messages to 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-一部のOAUTH 2.0メッセージを処理するには、メッセージ内の値を既知の値と比較する必要があります。たとえば、メタデータ応答のメンバー名は、リソースなどの特定のメンバー名と比較される場合があります。ただし、Unicode文字列[Unicode]を比較すると、セキュリティに大きな意味があります。
+一部のOAuth 2.0メッセージを処理するには、メッセージ内の値を既知の値と比較する必要があります。たとえば、メタデータ応答のメンバー名は、リソースなどの特定のメンバー名と比較される場合があります。ただし、Unicode文字列[Unicode]を比較すると、セキュリティに大きな意味があります。
         </p>
       </div>
     </div>
@@ -1858,7 +1858,7 @@ The scopes_supported parameter is the list of scopes the resource server is will
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SCOPES_SUPPORTEDパラメーターは、リソースサーバーがサポートすることを喜んで開示するSCOPESのリストです。OAUTHクライアントがリスト内のすべてのスコープを要求する必要があることを示すことは意図されていません。クライアントは引き続きOAUTHのベストプラクティスに従い、「OAUTH 2.0セキュリティの最良の現在のプラクティス」[RFC9700]のセクション2.3で説明されているように、特定の操作のスコープをできるだけ制限されたトークンを要求する必要があります。
+scopes_supportedパラメーターは、リソースサーバーがサポートすることを喜んで開示するスコープのリストです。OAuthクライアントがリスト内のすべてのスコープを要求する必要があることを示すことは意図されていません。クライアントは引き続きOAuthのベストプラクティスに従い、「OAuth 2.0セキュリティの最良の現在のプラクティス」[RFC9700]のセクション2.3で説明されているように、特定の操作のスコープをできるだけ制限されたトークンを要求する必要があります。
         </p>
       </div>
     </div>
@@ -1882,7 +1882,7 @@ TLS certificate checking MUST be performed by the client as described in [RFC952
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-保護されたリソースメタデータリクエストを作成する場合は、[RFC9525]で説明されているように、クライアントがTLS証明書のチェックを実行する必要があります。サーバー証明書がリソース識別子URLに対して有効であることを確認すると、中間およびDNSベースの攻撃を防ぎます。これらの攻撃により、クライアントが攻撃者のリソースサーバーを使用してだまされる可能性があり、これにより、正当な保護されたリソースのなりすましが可能になります。攻撃者がこれを達成できる場合、影響を受けるクライアントがアクセスできるリソースにアクセスできます。
+保護されたリソースメタデータリクエストを作成する場合は、[RFC9525]で説明されているように、クライアントがTLS証明書のチェックを実行する必要があります。サーバー証明書がリソース識別子URLに対して有効であることを確認すると、中間者攻撃やDNSベースの攻撃を防ぎます。これらの攻撃により、クライアントは攻撃者のリソースサーバーを使用するように騙される可能性があり、これにより正当な保護されたリソースのなりすましが可能になります。攻撃者がこれを達成できる場合、彼らは自身がなりすましている保護されたリソースを使用して、影響を受けるクライアントがアクセスできるリソースにアクセスできます。
         </p>
       </div>
     </div>
@@ -1918,7 +1918,7 @@ If a client expects to interact with multiple resource servers, the client SHOUL
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-クライアントが複数のリソースサーバーと対話することを期待している場合、クライアントは[RFC8707]を使用してオーディエンス制限のアクセストークンを要求する必要があり、認証サーバーはオーディエンス制限のアクセストークンをサポートする必要があります。
+クライアントが複数のリソースサーバーと対話することを期待している場合、クライアントは[RFC8707]を使用してオーディエンス制限のアクセストークンを要求する必要があり、認可サーバーはオーディエンス制限のアクセストークンをサポートする必要があります。
         </p>
       </div>
     </div>
@@ -1930,7 +1930,7 @@ Without audience-restricted access tokens, a malicious resource server (RS1) may
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-オーディエンス制限のアクセストークンがなければ、悪意のあるリソースサーバー（RS1）は、www-authenticateヘッダーを使用して、クライアントに正当なリソースサーバー（RS2）が使用するスコープでアクセストークンを要求することができ、クライアントがRS1にリクエストを送信した後、RS1はRS2でアクセストークンを復活させる可能性があります。
+オーディエンス制限のアクセストークンがなければ、悪意のあるリソースサーバー（RS1）は、WWW-Authenticateヘッダーを使用して、クライアントに正当なリソースサーバー（RS2）が使用するスコープでアクセストークンを要求することができ、クライアントがRS1にリクエストを送信した後、RS1はRS2でアクセストークンを再利用する可能性があります。
         </p>
       </div>
     </div>
@@ -1978,7 +1978,7 @@ Publishing information about the protected resource in a standard format makes i
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-7.6. 承認サーバー
+7.6. 認可サーバー
         </h5>
       </div>
     </div>
@@ -1990,7 +1990,7 @@ To support use cases in which the set of legitimate authorization servers to use
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-保護されたリソースで使用する合法的な認証サーバーのセットが列挙可能であるユースケースをサポートするために、この仕様はauthorization_serversメタデータパラメーターを定義し、それらを明示的にリストすることを可能にします。認証サーバーで使用する合法的な保護されたリソースのセットも列挙可能である場合、保護されたリソースメタデータと認証サーバーメタデータのリストは、これらのリストをアプリケーションプロファイルで使用する場合、一貫性を互いにクロスチェックする必要があることに注意してください。
+保護されたリソースで使用する合法的な認可サーバーのセットが列挙可能であるユースケースをサポートするために、この仕様はauthorization_serversメタデータパラメーターを定義し、それらを明示的にリストすることを可能にします。認可サーバーで使用する合法的な保護されたリソースのセットも列挙可能である場合、保護されたリソースメタデータと認可サーバーメタデータのリストは、これらのリストをアプリケーションプロファイルで使用する場合、一貫性を互いにクロスチェックする必要があることに注意してください。
         </p>
       </div>
     </div>
@@ -2002,7 +2002,7 @@ Secure determination of appropriate authorization servers to use with a protecte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-すべてのユースケースに対して保護されたリソースで使用する適切な承認サーバーの安全な決定は、この仕様の範囲外です。この仕様は、クライアントが保護されたリソースで使用する適切な認証サーバーを決定する手段を持っていること、およびクライアントが保護された各リソースに正しいメタデータを使用していることを前提としています。実装者は、クライアントが不適切な承認サーバーを使用している場合、攻撃者は、認証サーバーまたはクライアントによって検出されることなく、有効な承認サーバーの敵対的なプロキシとして機能することができることに注意する必要があります。
+すべてのユースケースに対して保護されたリソースで使用する適切な認可サーバーの安全な決定は、この仕様の範囲外です。この仕様は、クライアントが保護されたリソースで使用する適切な認可サーバーを決定する手段を持っていること、およびクライアントが保護された各リソースに正しいメタデータを使用していることを前提としています。実装者は、クライアントが不適切な認可サーバーを使用している場合、攻撃者は、認可サーバーまたはクライアントによって検出されることなく、有効な認可サーバーの敵対的なプロキシとして機能することができることに注意する必要があります。
         </p>
       </div>
     </div>
@@ -2014,7 +2014,7 @@ The ways to determine the appropriate authorization servers to use with a protec
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-保護されたリソースで使用する適切な承認サーバーを決定する方法は、一般に、アプリケーションに依存します。たとえば、一部の保護されたリソースは、固定承認サーバーまたは一連の承認サーバーで使用されます。あるいは、この仕様で説明されているように、認証サーバーの場所は、保護されたリソースによってメタデータ値として公開される可能性があります。それ以外の場合、保護されたリソースで使用できる一連の承認サーバーは、管理アクションまたは信頼フレームワークに忠実な一連の承認サーバーの変更によって動的に変更できます。保護されたリソースと承認サーバー間の適切な関連性を決定する他の多くの手段も可能です。
+保護されたリソースで使用する適切な認可サーバーを決定する方法は、一般に、アプリケーションに依存します。たとえば、一部の保護されたリソースは、固定認可サーバーまたは一連の認可サーバーで使用されます。あるいは、この仕様で説明されているように、認可サーバーの場所は、保護されたリソースによってメタデータ値として公開される可能性があります。それ以外の場合、保護されたリソースで使用できる一連の認可サーバーは、管理アクションまたは信頼フレームワークに忠実な一連の認可サーバーの変更によって動的に変更できます。保護されたリソースと認可サーバー間の適切な関連性を決定する他の多くの手段も可能です。
         </p>
       </div>
     </div>
@@ -2038,7 +2038,7 @@ The OAuth client is expected to fetch the authorization server metadata based on
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-OAUTHクライアントは、リソースサーバーメタデータの発行者の値に基づいて、認証サーバーメタデータを取得することが期待されています。この仕様により、クライアントはRSSとASEと相互運用できるため、事前知識がないため、これにより、悪意のあるユーザーまたは悪意のあるリソースサーバーによるサーバー側のリクエスト偽造（SSRF）攻撃のリスクが開かれます。クライアントは、内部IPアドレス範囲への要求をブロックするなど、SSRF攻撃に対して適切な予防策を講じる必要があります。さらなる推奨事項は、Open Worldwide Application Security Project（OWASP）SSRF Preventionチートシート[owasp.ssrf]に記載されています。
+OAuthクライアントは、リソースサーバーメタデータの発行者の値に基づいて、認可サーバーメタデータを取得することが期待されています。この仕様により、クライアントはRSおよびASと相互運用できるため、事前知識がないため、これにより、悪意のあるユーザーまたは悪意のあるリソースサーバーによるサーバーサイドリクエストフォージェリ（SSRF）攻撃のリスクが開かれます。クライアントは、内部IPアドレス範囲への要求をブロックするなど、SSRF攻撃に対して適切な予防策を講じる必要があります。さらなる推奨事項は、Open Worldwide Application Security Project（OWASP）SSRF Preventionチートシート[OWASP.SSRF]に記載されています。
         </p>
       </div>
     </div>
@@ -2062,7 +2062,7 @@ This specification may be deployed in a scenario where the desired HTTP resource
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様は、ユーザー選択のURLによって目的のHTTPリソースが識別されるシナリオに展開される場合があります。このリソースが悪意のあるまたは侵害されている場合、ユーザーがアカウントの資格情報を明らかにしたり、OAUTH制御機能への不要なアクセスを許可したりするように誤解を招く可能性があります。このリスクは、ユーザーへの明確な通知を提供したり、認証サーバーのドメイン名を表示したり、出身のフィッシング耐性認証器をサポートしたり、パスワードマネージャーの使用をサポートしたり、ドメインの評判などのヒューリスティックチェックを適用したりするなど、OAUTHユーザーインターフェイスのベストプラクティスに従うことで削減されません。
+この仕様は、ユーザー選択のURLによって目的のHTTPリソースが識別されるシナリオに展開される場合があります。このリソースが悪意のあるまたは侵害されている場合、ユーザーがアカウントの資格情報を明らかにしたり、OAuth制御機能への不要なアクセスを許可したりするように誤解を招く可能性があります。このリスクは、ユーザーへの明確な通知を提供したり、認可サーバーのドメイン名を表示したり、出身のフィッシング耐性認証器をサポートしたり、パスワードマネージャーの使用をサポートしたり、ドメインの評判などのヒューリスティックチェックを適用したりするなど、OAuthユーザーインターフェイスのベストプラクティスに従うことで削減されますが、排除されるわけではありません。
         </p>
       </div>
     </div>
@@ -2098,7 +2098,7 @@ When using unsigned metadata, the party issuing the metadata is the protected re
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-署名されていないメタデータを使用する場合、メタデータを発行する当事者は保護されたリソース自体であり、これはメタデータのリソース値で表されますが、署名されたメタデータを使用する場合、メタデータを発行する当事者は署名されたメタデータのISS（ISSUER）請求によって表されます。署名済みのメタデータを使用する場合、アプリケーションは、署名を実行した発行者に基づいて信頼の決定を下すことができます。これらの信頼の決定がどのように行われるかは、この仕様の範囲外です。
+署名されていないメタデータを使用する場合、メタデータを発行する当事者は保護されたリソース自体であり、これはメタデータのリソース値で表されますが、署名されたメタデータを使用する場合、メタデータを発行する当事者は署名されたメタデータのiss（issuer）クレームによって表されます。署名済みのメタデータを使用する場合、アプリケーションは、署名を実行した発行者に基づいて信頼の決定を下すことができます。これらの信頼の決定がどのように行われるかは、この仕様の範囲外です。
         </p>
       </div>
     </div>
@@ -2158,7 +2158,7 @@ Registration requests sent to the mailing list for review should use an appropri
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-レビューのためにメーリングリストに送信された登録リクエストは、適切な科目を使用する必要があります（例：「OAUTH保護されたリソースメタデータを登録するリクエスト：例」）。
+レビューのためにメーリングリストに送信された登録リクエストは、適切な件名を使用する必要があります（例：「OAuth保護されたリソースメタデータを登録するリクエスト：例」）。
         </p>
       </div>
     </div>
@@ -2242,7 +2242,7 @@ This specification establishes the &#34;OAuth Protected Resource Metadata&#34; r
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様は、OAUTH 2.0保護されたリソースメタデータ名の「OAuth保護されたリソースメタデータ」レジストリを確立します。レジストリは、保護されたリソースメタデータパラメーターと、それを定義する仕様への参照を記録します。
+この仕様は、OAuth 2.0保護されたリソースメタデータ名の「OAuth Protected Resource Metadata」レジストリを確立します。レジストリは、保護されたリソースメタデータパラメーターと、それを定義する仕様への参照を記録します。
         </p>
       </div>
     </div>
@@ -2326,7 +2326,7 @@ For IETF Stream RFCs, list &#34;IETF&#34;. For others, give the name of the resp
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-IETFストリームRFCSの場合、「IETF」をリストします。他の人のために、責任者の名前を与えてください。その他の詳細（例：郵便アドレス、メールアドレス、ホームページURI）も含めることができます。
+IETF Stream RFCsの場合、「IETF」をリストします。他の人のために、責任者の名前を与えてください。その他の詳細（例：郵送先住所、メールアドレス、ホームページURI）も含めることができます。
         </p>
       </div>
     </div>
@@ -2506,7 +2506,7 @@ JSON array containing a list of OAuth authorization server issuer identifiers
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-OAuth Authorization Server発行具のリストを含むJSONアレイ
+OAuth認可サーバー発行者のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -2698,7 +2698,7 @@ JSON array containing a list of the OAuth 2.0 scope values that are used in auth
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JSONアレイこの保護されたリソースへのアクセスをリクエストするための承認リクエストで使用されるOAUTH 2.0スコープ値のリストを含む
+この保護されたリソースへのアクセスをリクエストするための認可リクエストで使用されるOAuth 2.0スコープ値のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -2794,7 +2794,7 @@ JSON array containing a list of the OAuth 2.0 bearer token presentation methods 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-この保護されたリソースがサポートするOAUTH 2.0 BEARER TOKENプレゼンテーション方法のリストを含むJSONアレイ
+この保護されたリソースがサポートするOAuth 2.0 ベアラートークンプレゼンテーション方法のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -2866,7 +2866,7 @@ resource_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-resource_singe_alg_values_supported
+resource_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -2890,7 +2890,7 @@ JSON array containing a list of the JWS signing algorithms (alg values) supporte
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JSONアレイ署名されたコンテンツの保護されたリソースによってサポートされるJWS署名アルゴリズム（アルグ値）のリストを含む
+署名されたコンテンツの保護されたリソースによってサポートされるJWS署名アルゴリズム（alg値）のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -3274,7 +3274,7 @@ URL of a page containing human-readable information about the protected resource
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-保護されたリソースのサービス利用規約に関する人間が読み取る可能な情報を含むページのURL
+保護されたリソースのサービス利用規約に関する人間が読解可能な情報を含むページのURL
         </p>
       </div>
     </div>
@@ -3466,7 +3466,7 @@ JSON array containing a list of the authorization details type values supported 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-Authorization_Details要求パラメーターが使用されているときにリソースサーバーでサポートされる承認詳細のリストのリストを含むJSONアレイ
+Authorization_Details要求パラメーターが使用されているときにリソースサーバーでサポートされる認可詳細タイプ値のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -3538,7 +3538,7 @@ dpop_signing_alg_values_supported
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-dpop_singe_alg_values_supported
+dpop_signing_alg_values_supported
         </p>
       </div>
     </div>
@@ -3562,7 +3562,7 @@ JSON array containing a list of the JWS alg values supported by the resource ser
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-JSONアレイDPOPプルーフJWTSを検証するためにリソースサーバーがサポートするJWSアルグ値のリストを含む
+DPoPプルーフJWTを検証するためにリソースサーバーがサポートするJWS alg値のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -3658,7 +3658,7 @@ Boolean value specifying whether the protected resource always requires the use 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-保護されたリソースが常にDPOPバウンドアクセストークンの使用を必要とするかどうかを指定するブール値
+保護されたリソースが常にDPoPバウンドアクセストークンの使用を必要とするかどうかを指定するブール値
         </p>
       </div>
     </div>
@@ -3754,7 +3754,7 @@ Signed JWT containing metadata parameters about the protected resource as claims
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-保護されたリソースに関するメタデータパラメーターを含むJWTに署名された主張として
+保護されたリソースに関するメタデータパラメーターをクレームとして含む署名済みJWT
         </p>
       </div>
     </div>
@@ -3826,7 +3826,7 @@ IANA has registered the following authorization server metadata parameter in the
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-IANAは、「OAuth 2.0 Authorization Server Metadata」[RFC8414]に確立された「OAuth Authorization Server Metadata」レジストリに次の承認サーバーメタデータパラメーターを登録しました。
+IANAは、「OAuth 2.0 Authorization Server Metadata」[RFC8414]に確立された「OAuth Authorization Server Metadata」レジストリに次の認可サーバーメタデータパラメーターを登録しました。
         </p>
       </div>
     </div>
@@ -3886,7 +3886,7 @@ JSON array containing a list of resource identifiers for OAuth protected resourc
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-12">
-OAuth保護されたリソースのリソース識別子のリストを含むJSONアレイ
+OAuth保護されたリソースのリソース識別子のリストを含むJSON配列
         </p>
       </div>
     </div>
@@ -3946,7 +3946,7 @@ RFC 9728のセクション4
       </div>
       <div class="col-sm-12 col-md-6">
         <h5 class="text mt-2">
-8.3. 有名なURISレジストリ
+8.3. よく知られたURIレジストリ
         </h5>
       </div>
     </div>
@@ -3958,7 +3958,7 @@ This specification registers the well-known URI defined in Section 3 in the &#34
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様は、「よく知られているURIS」レジストリ[IANA.Well-Conking]のセクション3で定義されているよく知られているURIを登録します。
+この仕様は、「Well-Known URIs」レジストリ[IANA.well-known]のセクション3で定義されているwell-known URIを登録します。
         </p>
       </div>
     </div>
@@ -4502,7 +4502,7 @@ The authors of this specification would like to thank the attendees of the IETF 
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-この仕様の著者は、IETF 115 OAuthおよびHTTP APIワーキンググループミーティングの参加者と、この仕様に関する入力についてその後のOAuthワーキンググループミーティングの参加者に感謝します。また、アマンダ・ババー、マイク・ビショップ、ラルフ・ブラッグ、ブライアン・キャンベル、デブ・クーリー、ガブリエル・コロナ、ローマン・ダニリウ、ジョージ・フレッチャー、ジョージ・フレッチャー、アルント・ガルブランセン、ピーター・ケーセルマン、ムーレ・クエラウィ、ダビデ・マンデルマン、タニー・ナダルンマンにも感謝します。Scudder、Rifaat Shekh-Yusef、Filip Skokan、Orie Steele、Atul Tulshibagwale、éricVyncke、Paul Wouters、およびBo Wuの仕様への貢献について。
+この仕様の著者は、IETF 115 OAuthおよびHTTP APIワーキンググループミーティングの参加者と、その後のOAuthワーキンググループミーティングの参加者の皆様からの本仕様へのご意見に感謝いたします。また、Amanda Baber、Mike Bishop、Ralph Bragg、Brian Campbell、Deb Cooley、Gabriel Corona、Roman Danyliw、Vladimir Dzhuvinov、George Fletcher、Arnt Gulbrandsen、Pieter Kasselman、Murray Kucherawy、David Mandelberg、Tony Nadalin、Francesca Palombini、John Scudder、Rifaat Shekh-Yusef、Filip Skokan、Orie Steele、Atul Tulshibagwale、Éric Vyncke、Paul Wouters、およびBo Wuの皆様の仕様への貢献に感謝いたします。
         </p>
       </div>
     </div>
