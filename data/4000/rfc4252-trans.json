@@ -21,7 +21,7 @@
     {
       "indent": 0,
       "text": "Status of This Memo",
-      "ja": "本文書の状態"
+      "ja": "本文書の位置付け"
     },
     {
       "indent": 3,
@@ -111,7 +111,7 @@
     {
       "indent": 3,
       "text": "All documents related to the SSH protocols shall use the keywords \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", and \"OPTIONAL\" to describe requirements. These keywords are to be interpreted as described in [RFC2119].",
-      "ja": "SSHプロトコルに関連するすべてのドキュメントは、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」を使用するものとします。要件を説明する「オプション」。これらのキーワードは、[RFC2119]で説明されているように解釈されます。"
+      "ja": "SSHプロトコルに関連するすべての文書では、要件を記述するために「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」のキーワードを使用するものとします。これらのキーワードは、[RFC2119]で説明されているように解釈されます。"
     },
     {
       "indent": 3,
@@ -125,8 +125,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data",
-      "ja": "バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ"
+      "text": "byte      SSH_MSG_CHANNEL_DATA\nuint32    recipient channel\nstring    data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -208,8 +209,9 @@
     },
     {
       "indent": 6,
-      "text": "\"publickey\" REQUIRED \"password\" OPTIONAL \"hostbased\" OPTIONAL \"none\" NOT RECOMMENDED",
-      "ja": "\"publickey\"必須 \"password\"オプション \"hostbased\"オプション \"none\"非推奨"
+      "text": "\"publickey\"             REQUIRED\n\"password\"              OPTIONAL\n\"hostbased\"             OPTIONAL\n\"none\"                  NOT RECOMMENDED",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -229,8 +231,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_FAILURE name-list authentications that can continue boolean partial success",
-      "ja": "ブールの部分的な成功を継続できるバイトSSH_MSG_USERAUTH_FAILURE名前リスト認証"
+      "text": "byte         SSH_MSG_USERAUTH_FAILURE\nname-list    authentications that can continue\nboolean      partial success",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -259,8 +262,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_SUCCESS",
-      "ja": "バイトSSH_MSG_USERAUTH_SUCCESS"
+      "text": "byte      SSH_MSG_USERAUTH_SUCCESS",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -333,7 +337,7 @@
     {
       "indent": 3,
       "text": "In some jurisdictions, sending a warning message before authentication may be relevant for getting legal protection. Many UNIX machines, for example, normally display text from /etc/issue, use TCP wrappers, or similar software to display a banner before issuing a login prompt.",
-      "ja": "一部の管轄区域では、認証の前に警告メッセージを送信することが法的保護を取得するために適切である場合があります。たとえば、多くのUNIXマシンは通常、/ etc / issueからのテキストを表示し、TCPラッパーまたは同様のソフトウェアを使用して、ログインプロンプトを発行する前にバナーを表示します。"
+      "ja": "一部の管轄区域では、認証の前に警告メッセージを送信することが法的保護を取得するために適切である場合があります。たとえば、多くのUNIXマシンは通常、/etc/issueからのテキストを表示し、TCPラッパーまたは同様のソフトウェアを使用して、ログインプロンプトを発行する前にバナーを表示します。"
     },
     {
       "indent": 3,
@@ -342,8 +346,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_BANNER string message in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]",
-      "ja": "ISO-10646 UTF-8エンコーディングのバイトSSH_MSG_USERAUTH_BANNER文字列メッセージ[RFC3629]文字列言語タグ[RFC3066]"
+      "text": "byte      SSH_MSG_USERAUTH_BANNER\nstring    message in ISO-10646 UTF-8 encoding [RFC3629]\nstring    language tag [RFC3066]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -383,8 +388,9 @@
     },
     {
       "indent": 6,
-      "text": "SSH_MSG_USERAUTH_REQUEST 50 SSH_MSG_USERAUTH_FAILURE 51 SSH_MSG_USERAUTH_SUCCESS 52 SSH_MSG_USERAUTH_BANNER 53",
-      "ja": "SSH_MSG_USERAUTH_REQUEST 50 SSH_MSG_USERAUTH_FAILURE 51 SSH_MSG_USERAUTH_SUCCESS 52 SSH_MSG_USERAUTH_BANNER 53"
+      "text": "SSH_MSG_USERAUTH_REQUEST            50\nSSH_MSG_USERAUTH_FAILURE            51\nSSH_MSG_USERAUTH_SUCCESS            52\nSSH_MSG_USERAUTH_BANNER             53",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -414,8 +420,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_REQUEST string user name in ISO-10646 UTF-8 encoding [RFC3629] string service name in US-ASCII string \"publickey\" boolean FALSE string public key algorithm name string public key blob",
-      "ja": "バイトSSH_MSG_USERAUTH_REQUEST文字列ISO-10646 UTF-8エンコードのユーザー名[RFC3629]文字列US-ASCII文字列 \"publickey\"ブールFALSE文字列公開鍵アルゴリズム名文字列公開鍵blob"
+      "text": "byte      SSH_MSG_USERAUTH_REQUEST\nstring    user name in ISO-10646 UTF-8 encoding [RFC3629]\nstring    service name in US-ASCII\nstring    \"publickey\"\nboolean   FALSE\nstring    public key algorithm name\nstring    public key blob",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -434,8 +441,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_PK_OK string public key algorithm name from the request string public key blob from the request",
-      "ja": "バイトSSH_MSG_USERAUTH_PK_OK文字列リクエストの公開鍵アルゴリズム名文字列リクエストの公開鍵blob"
+      "text": "byte      SSH_MSG_USERAUTH_PK_OK\nstring    public key algorithm name from the request\nstring    public key blob from the request",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -444,8 +452,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"publickey\" boolean TRUE string public key algorithm name string public key to be used for authentication string signature",
-      "ja": "バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"publickey\"ブール値TRUE文字列公開鍵アルゴリズム名文字列認証文字列の署名に使用される公開鍵"
+      "text": "byte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"publickey\"\nboolean   TRUE\nstring    public key algorithm name\nstring    public key to be used for authentication\nstring    signature",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -454,8 +463,9 @@
     },
     {
       "indent": 6,
-      "text": "string session identifier byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"publickey\" boolean TRUE string public key algorithm name string public key to be used for authentication",
-      "ja": "文字列セッション識別子バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"publickey\"ブール値TRUE文字列公開鍵アルゴリズム名文字列認証に使用される公開鍵"
+      "text": "string    session identifier\nbyte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"publickey\"\nboolean   TRUE\nstring    public key algorithm name\nstring    public key to be used for authentication",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -474,8 +484,9 @@
     },
     {
       "indent": 6,
-      "text": "SSH_MSG_USERAUTH_PK_OK 60",
-      "ja": "SSH_MSG_USERAUTH_PK_OK 60"
+      "text": "SSH_MSG_USERAUTH_PK_OK              60",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 0,
@@ -490,8 +501,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"password\" boolean FALSE string plaintext password in ISO-10646 UTF-8 encoding [RFC3629]",
-      "ja": "バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"password\"ブールFALSE文字列ISO-10646 UTF-8エンコードのプレーンテキストパスワード[RFC3629]"
+      "text": "byte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"password\"\nboolean   FALSE\nstring    plaintext password in ISO-10646 UTF-8 encoding [RFC3629]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -515,8 +527,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_PASSWD_CHANGEREQ string prompt in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]",
-      "ja": "ISO-10646 UTF-8エンコーディングのバイトSSH_MSG_USERAUTH_PASSWD_CHANGEREQ文字列プロンプト[RFC3629]文字列言語タグ[RFC3066]"
+      "text": "byte      SSH_MSG_USERAUTH_PASSWD_CHANGEREQ\nstring    prompt in ISO-10646 UTF-8 encoding [RFC3629]\nstring    language tag [RFC3066]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -525,8 +538,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"password\" boolean TRUE string plaintext old password in ISO-10646 UTF-8 encoding [RFC3629] string plaintext new password in ISO-10646 UTF-8 encoding [RFC3629]",
-      "ja": "バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"password\"ブール値TRUE文字列プレーンテキストISO-10646 UTF-8エンコードの古いパスワード[RFC3629]文字列ISO-10646 UTF-8エンコードのプレーンテキスト新しいパスワード[RFC3629]"
+      "text": "byte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"password\"\nboolean   TRUE\nstring    plaintext old password in ISO-10646 UTF-8 encoding\n           [RFC3629]\nstring    plaintext new password in ISO-10646 UTF-8 encoding\n           [RFC3629]\n",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -536,22 +550,22 @@
     {
       "indent": 6,
       "text": "SSH_MSG_USERAUTH_SUCCESS - The password has been changed, and authentication has been successfully completed.",
-      "ja": "SSH_MSG_USERAUTH_SUCCESS-パスワードが変更され、認証が正常に完了しました。"
+      "ja": "SSH_MSG_USERAUTH_SUCCESS - パスワードが変更され、認証が正常に完了しました。"
     },
     {
       "indent": 6,
       "text": "SSH_MSG_USERAUTH_FAILURE with partial success - The password has been changed, but more authentications are needed.",
-      "ja": "SSH_MSG_USERAUTH_FAILURE（一部成功）-パスワードは変更されましたが、さらに認証が必要です。"
+      "ja": "SSH_MSG_USERAUTH_FAILURE（一部成功） - パスワードは変更されましたが、さらに認証が必要です。"
     },
     {
       "indent": 6,
       "text": "SSH_MSG_USERAUTH_FAILURE without partial success - The password has not been changed. Either password changing was not supported, or the old password was bad. Note that if the server has already sent SSH_MSG_USERAUTH_PASSWD_CHANGEREQ, we know that it supports changing the password.",
-      "ja": "SSH_MSG_USERAUTH_FAILURE（部分的な成功なし）-パスワードは変更されていません。パスワードの変更がサポートされていなかったか、古いパスワードが不適切でした。サーバーがすでにSSH_MSG_USERAUTH_PASSWD_CHANGEREQを送信している場合は、パスワードの変更がサポートされていることがわかります。"
+      "ja": "SSH_MSG_USERAUTH_FAILURE（部分的な成功なし） - パスワードは変更されていません。パスワードの変更がサポートされていなかったか、古いパスワードが不適切でした。サーバーがすでにSSH_MSG_USERAUTH_PASSWD_CHANGEREQを送信している場合は、パスワードの変更がサポートされていることがわかります。"
     },
     {
       "indent": 6,
       "text": "SSH_MSG_USERAUTH_CHANGEREQ - The password was not changed because the new password was not acceptable (e.g., too easy to guess).",
-      "ja": "SSH_MSG_USERAUTH_CHANGEREQ-新しいパスワードが受け入れられなかった（たとえば、簡単に推測できる）ため、パスワードは変更されませんでした。"
+      "ja": "SSH_MSG_USERAUTH_CHANGEREQ - 新しいパスワードが受け入れられなかった（たとえば、簡単に推測できる）ため、パスワードは変更されませんでした。"
     },
     {
       "indent": 3,
@@ -560,8 +574,9 @@
     },
     {
       "indent": 6,
-      "text": "SSH_MSG_USERAUTH_PASSWD_CHANGEREQ 60",
-      "ja": "SSH_MSG_USERAUTH_PASSWD_CHANGEREQ 60"
+      "text": "SSH_MSG_USERAUTH_PASSWD_CHANGEREQ   60",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 0,
@@ -586,8 +601,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"hostbased\" string public key algorithm for host key string public host key and certificates for client host string client host name expressed as the FQDN in US-ASCII string user name on the client host in ISO-10646 UTF-8 encoding [RFC3629] string signature",
-      "ja": "バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"ホストベース\"文字列ホスト鍵の公開鍵アルゴリズム文字列公開ホスト鍵およびクライアントホスト文字列の証明書US-ASCIIのFQDNとして表されるクライアントホスト名ISO-のクライアントホストのユーザー名10646 UTF-8エンコード[RFC3629]文字列署名"
+      "text": "byte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"hostbased\"\nstring    public key algorithm for host key\nstring    public host key and certificates for client host\nstring    client host name expressed as the FQDN in US-ASCII\nstring    user name on the client host in ISO-10646 UTF-8 encoding\n           [RFC3629]\nstring    signature",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -601,8 +617,9 @@
     },
     {
       "indent": 6,
-      "text": "string session identifier byte SSH_MSG_USERAUTH_REQUEST string user name string service name string \"hostbased\" string public key algorithm for host key string public host key and certificates for client host string client host name expressed as the FQDN in US-ASCII string user name on the client host in ISO-10646 UTF-8 encoding [RFC3629]",
-      "ja": "文字列セッション識別子バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 \"ホストベース\"文字列ホスト鍵の公開鍵アルゴリズム文字列公開ホスト鍵とクライアントホストの証明書文字列クライアントホスト名US-ASCIIのFQDNとして表されるクライアントホスト名文字列ISO-10646 UTF-8エンコーディング[RFC3629]"
+      "text": "string    session identifier\nbyte      SSH_MSG_USERAUTH_REQUEST\nstring    user name\nstring    service name\nstring    \"hostbased\"\nstring    public key algorithm for host key\nstring    public host key and certificates for client host\nstring    client host name expressed as the FQDN in US-ASCII\nstring    user name on the client host in ISO-10646 UTF-8 encoding\n           [RFC3629]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -656,47 +673,47 @@
     {
       "indent": 3,
       "text": "[SSH-ARCH] Ylonen, T. and C. Lonvick, Ed., \"The Secure Shell (SSH) Protocol Architecture\", RFC 4251, January 2006.",
-      "ja": "[SSH-ARCH] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Protocol Architecture」、RFC 4251、2006年1月。"
+      "ja": "[SSH-ARCH] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Protocol Architecture」, RFC 4251, 2006年1月."
     },
     {
       "indent": 3,
       "text": "[SSH-CONNECT] Ylonen, T. and C. Lonvick, Ed., \"The Secure Shell (SSH) Connection Protocol\", RFC 4254, January 2006.",
-      "ja": "[SSH-CONNECT] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Connection Protocol」、RFC 4254、2006年1月。"
+      "ja": "[SSH-CONNECT] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Connection Protocol」, RFC 4254, 2006年1月."
     },
     {
       "indent": 3,
       "text": "[SSH-TRANS] Ylonen, T. and C. Lonvick, Ed., \"The Secure Shell (SSH) Transport Layer Protocol\", RFC 4253, January 2006.",
-      "ja": "[SSH-TRANS] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Transport Layer Protocol」、RFC 4253、2006年1月。"
+      "ja": "[SSH-TRANS] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Transport Layer Protocol」, RFC 4253, 2006年1月."
     },
     {
       "indent": 3,
       "text": "[SSH-NUMBERS] Lehtinen, S. and C. Lonvick, Ed., \"The Secure Shell (SSH) Protocol Assigned Numbers\", RFC 4250, January 2006.",
-      "ja": "[SSH-NUMBERS] Lehtinen、S。およびC. Lonvick、編、「Secure Shell（SSH）Protocol Assigned Numbers」、RFC 4250、2006年1月。"
+      "ja": "[SSH-NUMBERS] Lehtinen, S. およびC. Lonvick, Ed.,「Secure Shell（SSH）Protocol Assigned Numbers」、RFC 4250、2006年1月."
     },
     {
       "indent": 3,
       "text": "[RFC2119] Bradner, S., \"Key words for use in RFCs to Indicate Requirement Levels\", BCP 14, RFC 2119, March 1997.",
-      "ja": "[RFC2119] Bradner、S。、「要件レベルを示すためにRFCで使用するキーワード」、BCP 14、RFC 2119、1997年3月。"
+      "ja": "[RFC2119] Bradner, S.,「要件レベルを示すためにRFCで使用するキーワード」, BCP 14, RFC 2119, 1997年3月。"
     },
     {
       "indent": 3,
       "text": "[RFC2434] Narten, T. and H. Alvestrand, \"Guidelines for Writing an IANA Considerations Section in RFCs\", BCP 26, RFC 2434, October 1998.",
-      "ja": "[RFC2434] Narten、T。およびH. Alvestrand、「RFCでIANAの考慮事項セクションを作成するためのガイドライン」、BCP 26、RFC 2434、1998年10月。"
+      "ja": "[RFC2434] Narten, T。およびH. Alvestrand, 「RFCでIANAの考慮事項セクションを作成するためのガイドライン」, BCP 26, RFC 2434, 1998年10月。"
     },
     {
       "indent": 3,
       "text": "[RFC3066] Alvestrand, H., \"Tags for the Identification of Languages\", BCP 47, RFC 3066, January 2001.",
-      "ja": "[RFC3066] Alvestrand、H。、「言語の識別のためのタグ」、BCP 47、RFC 3066、2001年1月。"
+      "ja": "[RFC3066] Alvestrand, H.,「言語の識別のためのタグ」, BCP 47, RFC 3066, 2001年1月。"
     },
     {
       "indent": 3,
       "text": "[RFC3629] Yergeau, F., \"UTF-8, a transformation format of ISO 10646\", STD 63, RFC 3629, November 2003.",
-      "ja": "[RFC3629] Yergeau、F。、「UTF-8、ISO 10646の変換フォーマット」、STD 63、RFC 3629、2003年11月。"
+      "ja": "[RFC3629] Yergeau, F.,「UTF-8、ISO 10646の変換フォーマット」, STD 63, RFC 3629, 2003年11月。"
     },
     {
       "indent": 3,
       "text": "[RFC4013] Zeilenga, K., \"SASLprep: Stringprep Profile for User Names and Passwords\", RFC 4013, February 2005.",
-      "ja": "[RFC4013] Zeilenga、K。、「SASLprep：Stringprep Profile for User Names and Passwords」、RFC 4013、2005年2月。"
+      "ja": "[RFC4013] Zeilenga, K.,「SASLprep：Stringprep Profile for User Names and Passwords」, RFC 4013, 2005年2月。"
     },
     {
       "indent": 0,
@@ -707,7 +724,7 @@
     {
       "indent": 3,
       "text": "[ssh-1.2.30] Ylonen, T., \"ssh-1.2.30/RFC\", File within compressed tarball ftp://ftp.funet.fi/pub/unix/security/login/ ssh/ssh-1.2.30.tar.gz, November 1995.",
-      "ja": "[ssh-1.2.30] Ylonen、T。、「ssh-1.2.30 / RFC」、圧縮tarball内のファイルftp://ftp.funet.fi/pub/unix/security/login/ ssh / ssh-1.2。 30.tar.gz、1995年11月。"
+      "ja": "[ssh-1.2.30] Ylonen、T.,「ssh-1.2.30 / RFC」、圧縮tarball内のファイルftp://ftp.funet.fi/pub/unix/security/login/ ssh / ssh-1.2。 30.tar.gz、1995年11月。"
     },
     {
       "indent": 0,

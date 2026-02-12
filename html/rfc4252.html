@@ -94,7 +94,7 @@ Status of This Memo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-0">
-本文書の状態
+本文書の位置付け
         </p>
       </div>
     </div>
@@ -312,7 +312,7 @@ All documents related to the SSH protocols shall use the keywords &#34;MUST&#34;
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-SSHプロトコルに関連するすべてのドキュメントは、キーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」を使用するものとします。要件を説明する「オプション」。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
+SSHプロトコルに関連するすべての文書では、要件を記述するために「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」のキーワードを使用するものとします。これらのキーワードは、[RFC2119]で説明されているように解釈されます。
         </p>
       </div>
     </div>
@@ -341,15 +341,12 @@ Protocol fields and possible values to fill them are defined in this set of docu
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_DATA
+      uint32    recipient channel
+      string    data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -532,15 +529,13 @@ The following &#39;method name&#39; values are defined.
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-&#34;publickey&#34; REQUIRED &#34;password&#34; OPTIONAL &#34;hostbased&#34; OPTIONAL &#34;none&#34; NOT RECOMMENDED
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-&#34;publickey&#34;必須 &#34;password&#34;オプション &#34;hostbased&#34;オプション &#34;none&#34;非推奨
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      &#34;publickey&#34;             REQUIRED
+      &#34;password&#34;              OPTIONAL
+      &#34;hostbased&#34;             OPTIONAL
+      &#34;none&#34;                  NOT RECOMMENDED
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -580,15 +575,12 @@ If the server rejects the authentication request, it MUST respond with the follo
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_FAILURE name-list authentications that can continue boolean partial success
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-ブールの部分的な成功を継続できるバイトSSH_MSG_USERAUTH_FAILURE名前リスト認証
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte         SSH_MSG_USERAUTH_FAILURE
+      name-list    authentications that can continue
+      boolean      partial success
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -652,15 +644,10 @@ When the server accepts authentication, it MUST respond with the following:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_SUCCESS
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_SUCCESS
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_SUCCESS
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -827,7 +814,7 @@ In some jurisdictions, sending a warning message before authentication may be re
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-一部の管轄区域では、認証の前に警告メッセージを送信することが法的保護を取得するために適切である場合があります。たとえば、多くのUNIXマシンは通常、/ etc / issueからのテキストを表示し、TCPラッパーまたは同様のソフトウェアを使用して、ログインプロンプトを発行する前にバナーを表示します。
+一部の管轄区域では、認証の前に警告メッセージを送信することが法的保護を取得するために適切である場合があります。たとえば、多くのUNIXマシンは通常、/etc/issueからのテキストを表示し、TCPラッパーまたは同様のソフトウェアを使用して、ログインプロンプトを発行する前にバナーを表示します。
         </p>
       </div>
     </div>
@@ -844,15 +831,12 @@ SSHサーバーは、この認証プロトコルが開始してから認証が�
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_BANNER string message in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-ISO-10646 UTF-8エンコーディングのバイトSSH_MSG_USERAUTH_BANNER文字列メッセージ[RFC3629]文字列言語タグ[RFC3066]
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_BANNER
+      string    message in ISO-10646 UTF-8 encoding [RFC3629]
+      string    language tag [RFC3066]
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -940,15 +924,13 @@ These are the general authentication message codes:
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_REQUEST 50 SSH_MSG_USERAUTH_FAILURE 51 SSH_MSG_USERAUTH_SUCCESS 52 SSH_MSG_USERAUTH_BANNER 53
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_REQUEST 50 SSH_MSG_USERAUTH_FAILURE 51 SSH_MSG_USERAUTH_SUCCESS 52 SSH_MSG_USERAUTH_BANNER 53
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      SSH_MSG_USERAUTH_REQUEST            50
+      SSH_MSG_USERAUTH_FAILURE            51
+      SSH_MSG_USERAUTH_SUCCESS            52
+      SSH_MSG_USERAUTH_BANNER             53
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1012,15 +994,16 @@ Private keys are often stored in an encrypted form at the client host, and the u
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_REQUEST string user name in ISO-10646 UTF-8 encoding [RFC3629] string service name in US-ASCII string &#34;publickey&#34; boolean FALSE string public key algorithm name string public key blob
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_REQUEST文字列ISO-10646 UTF-8エンコードのユーザー名[RFC3629]文字列US-ASCII文字列 &#34;publickey&#34;ブールFALSE文字列公開鍵アルゴリズム名文字列公開鍵blob
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name in ISO-10646 UTF-8 encoding [RFC3629]
+      string    service name in US-ASCII
+      string    &#34;publickey&#34;
+      boolean   FALSE
+      string    public key algorithm name
+      string    public key blob
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1060,15 +1043,12 @@ The server MUST respond to this message with either SSH_MSG_USERAUTH_FAILURE or 
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_PK_OK string public key algorithm name from the request string public key blob from the request
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_PK_OK文字列リクエストの公開鍵アルゴリズム名文字列リクエストの公開鍵blob
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_PK_OK
+      string    public key algorithm name from the request
+      string    public key blob from the request
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1084,15 +1064,17 @@ To perform actual authentication, the client MAY then send a signature generated
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;publickey&#34; boolean TRUE string public key algorithm name string public key to be used for authentication string signature
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;publickey&#34;ブール値TRUE文字列公開鍵アルゴリズム名文字列認証文字列の署名に使用される公開鍵
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;publickey&#34;
+      boolean   TRUE
+      string    public key algorithm name
+      string    public key to be used for authentication
+      string    signature
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1108,15 +1090,17 @@ The value of &#39;signature&#39; is a signature by the corresponding private key
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string session identifier byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;publickey&#34; boolean TRUE string public key algorithm name string public key to be used for authentication
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列セッション識別子バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;publickey&#34;ブール値TRUE文字列公開鍵アルゴリズム名文字列認証に使用される公開鍵
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    session identifier
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;publickey&#34;
+      boolean   TRUE
+      string    public key algorithm name
+      string    public key to be used for authentication
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1156,15 +1140,10 @@ The following method-specific message numbers are used by the &#34;publickey&#34
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_PK_OK 60
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_PK_OK 60
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      SSH_MSG_USERAUTH_PK_OK              60
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1192,15 +1171,15 @@ Password authentication uses the following packets. Note that a server MAY reque
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;password&#34; boolean FALSE string plaintext password in ISO-10646 UTF-8 encoding [RFC3629]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;password&#34;ブールFALSE文字列ISO-10646 UTF-8エンコードのプレーンテキストパスワード[RFC3629]
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;password&#34;
+      boolean   FALSE
+      string    plaintext password in ISO-10646 UTF-8 encoding [RFC3629]
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1252,15 +1231,12 @@ Normally, the server responds to this message with success or failure. However, 
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_PASSWD_CHANGEREQ string prompt in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-ISO-10646 UTF-8エンコーディングのバイトSSH_MSG_USERAUTH_PASSWD_CHANGEREQ文字列プロンプト[RFC3629]文字列言語タグ[RFC3066]
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_PASSWD_CHANGEREQ
+      string    prompt in ISO-10646 UTF-8 encoding [RFC3629]
+      string    language tag [RFC3066]
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1276,15 +1252,19 @@ In this case, the client MAY continue with a different authentication method, or
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;password&#34; boolean TRUE string plaintext old password in ISO-10646 UTF-8 encoding [RFC3629] string plaintext new password in ISO-10646 UTF-8 encoding [RFC3629]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;password&#34;ブール値TRUE文字列プレーンテキストISO-10646 UTF-8エンコードの古いパスワード[RFC3629]文字列ISO-10646 UTF-8エンコードのプレーンテキスト新しいパスワード[RFC3629]
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;password&#34;
+      boolean   TRUE
+      string    plaintext old password in ISO-10646 UTF-8 encoding
+                 [RFC3629]
+      string    plaintext new password in ISO-10646 UTF-8 encoding
+                 [RFC3629]
+
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1307,7 +1287,7 @@ SSH_MSG_USERAUTH_SUCCESS - The password has been changed, and authentication has
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-SSH_MSG_USERAUTH_SUCCESS-パスワードが変更され、認証が正常に完了しました。
+SSH_MSG_USERAUTH_SUCCESS - パスワードが変更され、認証が正常に完了しました。
         </p>
       </div>
     </div>
@@ -1319,7 +1299,7 @@ SSH_MSG_USERAUTH_FAILURE with partial success - The password has been changed, b
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-SSH_MSG_USERAUTH_FAILURE（一部成功）-パスワードは変更されましたが、さらに認証が必要です。
+SSH_MSG_USERAUTH_FAILURE（一部成功） - パスワードは変更されましたが、さらに認証が必要です。
         </p>
       </div>
     </div>
@@ -1331,7 +1311,7 @@ SSH_MSG_USERAUTH_FAILURE without partial success - The password has not been cha
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-SSH_MSG_USERAUTH_FAILURE（部分的な成功なし）-パスワードは変更されていません。パスワードの変更がサポートされていなかったか、古いパスワードが不適切でした。サーバーがすでにSSH_MSG_USERAUTH_PASSWD_CHANGEREQを送信している場合は、パスワードの変更がサポートされていることがわかります。
+SSH_MSG_USERAUTH_FAILURE（部分的な成功なし） - パスワードは変更されていません。パスワードの変更がサポートされていなかったか、古いパスワードが不適切でした。サーバーがすでにSSH_MSG_USERAUTH_PASSWD_CHANGEREQを送信している場合は、パスワードの変更がサポートされていることがわかります。
         </p>
       </div>
     </div>
@@ -1343,7 +1323,7 @@ SSH_MSG_USERAUTH_CHANGEREQ - The password was not changed because the new passwo
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-6">
-SSH_MSG_USERAUTH_CHANGEREQ-新しいパスワードが受け入れられなかった（たとえば、簡単に推測できる）ため、パスワードは変更されませんでした。
+SSH_MSG_USERAUTH_CHANGEREQ - 新しいパスワードが受け入れられなかった（たとえば、簡単に推測できる）ため、パスワードは変更されませんでした。
         </p>
       </div>
     </div>
@@ -1360,15 +1340,10 @@ The following method-specific message numbers are used by the password authentic
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_PASSWD_CHANGEREQ 60
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-SSH_MSG_USERAUTH_PASSWD_CHANGEREQ 60
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      SSH_MSG_USERAUTH_PASSWD_CHANGEREQ   60
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1420,15 +1395,19 @@ This method works by having the client send a signature created with the private
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;hostbased&#34; string public key algorithm for host key string public host key and certificates for client host string client host name expressed as the FQDN in US-ASCII string user name on the client host in ISO-10646 UTF-8 encoding [RFC3629] string signature
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;ホストベース&#34;文字列ホスト鍵の公開鍵アルゴリズム文字列公開ホスト鍵およびクライアントホスト文字列の証明書US-ASCIIのFQDNとして表されるクライアントホスト名ISO-のクライアントホストのユーザー名10646 UTF-8エンコード[RFC3629]文字列署名
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;hostbased&#34;
+      string    public key algorithm for host key
+      string    public host key and certificates for client host
+      string    client host name expressed as the FQDN in US-ASCII
+      string    user name on the client host in ISO-10646 UTF-8 encoding
+                 [RFC3629]
+      string    signature
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1456,15 +1435,19 @@ The value of &#39;signature&#39; is a signature with the private host key of the
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-string session identifier byte SSH_MSG_USERAUTH_REQUEST string user name string service name string &#34;hostbased&#34; string public key algorithm for host key string public host key and certificates for client host string client host name expressed as the FQDN in US-ASCII string user name on the client host in ISO-10646 UTF-8 encoding [RFC3629]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-文字列セッション識別子バイトSSH_MSG_USERAUTH_REQUEST文字列ユーザー名文字列サービス名文字列 &#34;ホストベース&#34;文字列ホスト鍵の公開鍵アルゴリズム文字列公開ホスト鍵とクライアントホストの証明書文字列クライアントホスト名US-ASCIIのFQDNとして表されるクライアントホスト名文字列ISO-10646 UTF-8エンコーディング[RFC3629]
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      string    session identifier
+      byte      SSH_MSG_USERAUTH_REQUEST
+      string    user name
+      string    service name
+      string    &#34;hostbased&#34;
+      string    public key algorithm for host key
+      string    public host key and certificates for client host
+      string    client host name expressed as the FQDN in US-ASCII
+      string    user name on the client host in ISO-10646 UTF-8 encoding
+                 [RFC3629]
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1583,7 +1566,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[SSH-ARCH] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Protocol Architecture」、RFC 4251、2006年1月。
+[SSH-ARCH] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Protocol Architecture」, RFC 4251, 2006年1月.
         </p>
       </div>
     </div>
@@ -1595,7 +1578,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[SSH-CONNECT] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Connection Protocol」、RFC 4254、2006年1月。
+[SSH-CONNECT] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Connection Protocol」, RFC 4254, 2006年1月.
         </p>
       </div>
     </div>
@@ -1607,7 +1590,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[SSH-TRANS] Ylonen、T。およびC. Lonvick、編、「The Secure Shell（SSH）Transport Layer Protocol」、RFC 4253、2006年1月。
+[SSH-TRANS] Ylonen, T. およびC. Lonvick, Ed.,「The Secure Shell（SSH）Transport Layer Protocol」, RFC 4253, 2006年1月.
         </p>
       </div>
     </div>
@@ -1619,7 +1602,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[SSH-NUMBERS] Lehtinen、S。およびC. Lonvick、編、「Secure Shell（SSH）Protocol Assigned Numbers」、RFC 4250、2006年1月。
+[SSH-NUMBERS] Lehtinen, S. およびC. Lonvick, Ed.,「Secure Shell（SSH）Protocol Assigned Numbers」、RFC 4250、2006年1月.
         </p>
       </div>
     </div>
@@ -1631,7 +1614,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2119] Bradner、S。、「要件レベルを示すためにRFCで使用するキーワード」、BCP 14、RFC 2119、1997年3月。
+[RFC2119] Bradner, S.,「要件レベルを示すためにRFCで使用するキーワード」, BCP 14, RFC 2119, 1997年3月。
         </p>
       </div>
     </div>
@@ -1643,7 +1626,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC2434] Narten、T。およびH. Alvestrand、「RFCでIANAの考慮事項セクションを作成するためのガイドライン」、BCP 26、RFC 2434、1998年10月。
+[RFC2434] Narten, T。およびH. Alvestrand, 「RFCでIANAの考慮事項セクションを作成するためのガイドライン」, BCP 26, RFC 2434, 1998年10月。
         </p>
       </div>
     </div>
@@ -1655,7 +1638,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3066] Alvestrand、H。、「言語の識別のためのタグ」、BCP 47、RFC 3066、2001年1月。
+[RFC3066] Alvestrand, H.,「言語の識別のためのタグ」, BCP 47, RFC 3066, 2001年1月。
         </p>
       </div>
     </div>
@@ -1667,7 +1650,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC3629] Yergeau、F。、「UTF-8、ISO 10646の変換フォーマット」、STD 63、RFC 3629、2003年11月。
+[RFC3629] Yergeau, F.,「UTF-8、ISO 10646の変換フォーマット」, STD 63, RFC 3629, 2003年11月。
         </p>
       </div>
     </div>
@@ -1679,7 +1662,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[RFC4013] Zeilenga、K。、「SASLprep：Stringprep Profile for User Names and Passwords」、RFC 4013、2005年2月。
+[RFC4013] Zeilenga, K.,「SASLprep：Stringprep Profile for User Names and Passwords」, RFC 4013, 2005年2月。
         </p>
       </div>
     </div>
@@ -1703,7 +1686,7 @@ Full security considerations for this protocol are provided in [SSH-ARCH].
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-[ssh-1.2.30] Ylonen、T。、「ssh-1.2.30 / RFC」、圧縮tarball内のファイルftp://ftp.funet.fi/pub/unix/security/login/ ssh / ssh-1.2。 30.tar.gz、1995年11月。
+[ssh-1.2.30] Ylonen、T.,「ssh-1.2.30 / RFC」、圧縮tarball内のファイルftp://ftp.funet.fi/pub/unix/security/login/ ssh / ssh-1.2。 30.tar.gz、1995年11月。
         </p>
       </div>
     </div>

@@ -154,7 +154,7 @@ Secure Shell (SSH) is a protocol for secure remote login and other secure networ
       </div>
       <div class="col-sm-12 col-md-6">
         <p class="text indent-3">
-セキュアシェル（SSH）は、安全でないリモートログインや、安全でないネットワークを介したその他の安全なネットワークサービスのためのプロトコルです。
+セキュアシェル (SSH) は、安全でないネットワーク上で安全なリモートログインやその他のセキュアなネットワークサービスを提供するためのプロトコルです。
         </p>
       </div>
     </div>
@@ -367,15 +367,12 @@ Protocol fields and possible values to fill them are defined in this set of docu
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_DATA
+      uint32    recipient channel
+      string    data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -481,15 +478,10 @@ If the recipient does not recognize or support the request, it simply responds w
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_REQUEST_FAILURE
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_REQUEST_FAILURE
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte SSH_MSG_REQUEST_FAILURE
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -637,15 +629,14 @@ The &#39;recipient channel&#39; is the channel number given in the original open
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_OPEN_FAILURE uint32 recipient channel uint32 reason code string description in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_OPEN_FAILURE uint32受信者チャネルuint32理由コード文字列の説明（ISO-10646 UTF-8エンコーディング[RFC3629]文字列言語タグ[RFC3066]）
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_OPEN_FAILURE
+      uint32    recipient channel
+      uint32    reason code
+      string    description in ISO-10646 UTF-8 encoding [RFC3629]
+      string    language tag [RFC3066]
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -757,15 +748,12 @@ The window size specifies how many bytes the other party can send before it must
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_WINDOW_ADJUST uint32 recipient channel uint32 bytes to add
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-追加するバイトSSH_MSG_CHANNEL_WINDOW_ADJUST uint32受信者チャネルuint32バイト
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_WINDOW_ADJUST
+      uint32    recipient channel
+      uint32    bytes to add
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -793,15 +781,12 @@ Data transfer is done with messages of the following type.
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_DATA
+      uint32    recipient channel
+      string    data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -865,15 +850,13 @@ Additionally, some channels can transfer several types of data. An example of th
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_EXTENDED_DATA uint32 recipient channel uint32 data_type_code string data
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_EXTENDED_DATA uint32受信者チャネルuint32 data_type_code文字列データ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_EXTENDED_DATA
+      uint32    recipient channel
+      uint32    data_type_code
+      string    data
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -946,15 +929,11 @@ When a party will no longer send more data to a channel, it SHOULD send SSH_MSG_
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_EOF uint32 recipient channel
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_EOF uint32受信者チャネル
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_EOF
+      uint32    recipient channel
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -982,15 +961,11 @@ When either party wishes to terminate the channel, it sends SSH_MSG_CHANNEL_CLOS
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_CLOSE uint32 recipient channel
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_CLOSE uint32受信者チャネル
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_CLOSE
+      uint32    recipient channel
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1113,27 +1088,15 @@ The client is allowed to send further messages without waiting for the response 
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_SUCCESS uint32 recipient channel
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_SUCCESS uint32受信者チャネル
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_FAILURE uint32 recipient channel
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_FAILURE uint32受信者チャネル
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_SUCCESS
+      uint32    recipient channel
+
+
+      byte      SSH_MSG_CHANNEL_FAILURE
+      uint32    recipient channel
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1197,15 +1160,14 @@ A session is started by sending the following message.
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_OPEN string &#34;session&#34; uint32 sender channel uint32 initial window size uint32 maximum packet size
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_OPEN文字列 &#34;セッション&#34; uint32送信側チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_OPEN
+      string    &#34;session&#34;
+      uint32    sender channel
+      uint32    initial window size
+      uint32    maximum packet size
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1245,15 +1207,19 @@ A pseudo-terminal can be allocated for the session by sending the following mess
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_REQUEST uint32 recipient channel string &#34;pty-req&#34; boolean want_reply string TERM environment variable value (e.g., vt100) uint32 terminal width, characters (e.g., 80) uint32 terminal height, rows (e.g., 24) uint32 terminal width, pixels (e.g., 640) uint32 terminal height, pixels (e.g., 480) string encoded terminal modes
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_REQUEST uint32受信側チャネル文字列 &#34;pty-req&#34;ブールwant_reply文字列TERM環境変数値（たとえば、vt100）uint32端末の幅、文字（たとえば、80）uint32端末の高さ、行（たとえば、24）uint32端末の幅、ピクセル（たとえば、640）uint32端末の高さ、ピクセル（たとえば、480）文字列エンコードされた端末モード
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_REQUEST
+      uint32    recipient channel
+      string    &#34;pty-req&#34;
+      boolean   want_reply
+      string    TERM environment variable value (e.g., vt100)
+      uint32    terminal width, characters (e.g., 80)
+      uint32    terminal height, rows (e.g., 24)
+      uint32    terminal width, pixels (e.g., 640)
+      uint32    terminal height, pixels (e.g., 480)
+      string    encoded terminal modes
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1329,15 +1295,17 @@ SSH_MSG_CHANNEL_REQUESTメッセージを送信することにより、セッシ
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_REQUEST uint32 recipient channel string &#34;x11-req&#34; boolean want reply boolean single connection string x11 authentication protocol string x11 authentication cookie uint32 x11 screen number
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_REQUEST uint32受信者チャネル文字列 &#34;x11-req&#34;ブール値応答を要求ブール値シングル接続文字列x11認証プロトコル文字列x11認証cookie uint32 x11画面番号
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_REQUEST
+      uint32    recipient channel
+      string    &#34;x11-req&#34;
+      boolean   want reply
+      boolean   single connection
+      string    x11 authentication protocol
+      string    x11 authentication cookie
+      uint32    x11 screen number
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -1984,15 +1952,14 @@ A party need not explicitly request forwardings from its own end to the other di
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_GLOBAL_REQUEST string &#34;tcpip-forward&#34; boolean want reply string address to bind (e.g., &#34;0.0.0.0&#34;) uint32 port number to bind
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_GLOBAL_REQUEST文字列 &#34;tcpip-forward&#34;ブール値にバインドする応答文字列アドレス（例： &#34;0.0.0.0&#34;）バインドするuint32ポート番号
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_GLOBAL_REQUEST
+      string    &#34;tcpip-forward&#34;
+      boolean   want reply
+      string    address to bind (e.g., &#34;0.0.0.0&#34;)
+      uint32    port number to bind
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -2116,15 +2083,11 @@ If a client passes 0 as port number to bind and has &#39;want reply&#39; as TRUE
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_REQUEST_SUCCESS uint32 port that was bound on the server
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-サーバーにバインドされたバイトSSH_MSG_REQUEST_SUCCESS uint32ポート
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte     SSH_MSG_REQUEST_SUCCESS
+      uint32   port that was bound on the server
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -2140,15 +2103,14 @@ A port forwarding can be canceled with the following message. Note that channel 
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_GLOBAL_REQUEST string &#34;cancel-tcpip-forward&#34; boolean want reply string address_to_bind (e.g., &#34;127.0.0.1&#34;) uint32 port number to bind
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_GLOBAL_REQUEST文字列 &#34;cancel-tcpip-forward&#34;ブール値の返信文字列address_to_bind（例： &#34;127.0.0.1&#34;）バインドするuint32ポート番号
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_GLOBAL_REQUEST
+      string    &#34;cancel-tcpip-forward&#34;
+      boolean   want reply
+      string    address_to_bind (e.g., &#34;127.0.0.1&#34;)
+      uint32    port number to bind
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -2188,15 +2150,18 @@ When a connection comes to a port for which remote forwarding has been requested
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_OPEN string &#34;forwarded-tcpip&#34; uint32 sender channel uint32 initial window size uint32 maximum packet size string address that was connected uint32 port that was connected string originator IP address uint32 originator port
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_OPEN文字列 &#34;forwarded-tcpip&#34; uint32送信者チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ文字列接続されたアドレスuint32ポート接続された文字列発信元IPアドレスuint32発信者ポート
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_OPEN
+      string    &#34;forwarded-tcpip&#34;
+      uint32    sender channel
+      uint32    initial window size
+      uint32    maximum packet size
+      string    address that was connected
+      uint32    port that was connected
+      string    originator IP address
+      uint32    originator port
+        </pre>
       </div>
     </div>
     <div class="row">
@@ -2224,15 +2189,18 @@ When a connection comes to a locally forwarded TCP/IP port, the following packet
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-byte SSH_MSG_CHANNEL_OPEN string &#34;direct-tcpip&#34; uint32 sender channel uint32 initial window size uint32 maximum packet size string host to connect uint32 port to connect string originator IP address uint32 originator port
-        </p>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <p class="text indent-6">
-バイトSSH_MSG_CHANNEL_OPEN文字列 &#34;direct-tcpip&#34; uint32送信側チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ文字列host to connect uint32 port to connect string originator IP address uint32 originator port
-        </p>
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+      byte      SSH_MSG_CHANNEL_OPEN
+      string    &#34;direct-tcpip&#34;
+      uint32    sender channel
+      uint32    initial window size
+      uint32    maximum packet size
+      string    host to connect
+      uint32    port to connect
+      string    originator IP address
+      uint32    originator port
+        </pre>
       </div>
     </div>
     <div class="row">

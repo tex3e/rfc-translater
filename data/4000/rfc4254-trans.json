@@ -46,7 +46,7 @@
     {
       "indent": 3,
       "text": "Secure Shell (SSH) is a protocol for secure remote login and other secure network services over an insecure network.",
-      "ja": "セキュアシェル（SSH）は、安全でないリモートログインや、安全でないネットワークを介したその他の安全なネットワークサービスのためのプロトコルです。"
+      "ja": "セキュアシェル (SSH) は、安全でないネットワーク上で安全なリモートログインやその他のセキュアなネットワークサービスを提供するためのプロトコルです。"
     },
     {
       "indent": 3,
@@ -130,8 +130,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data",
-      "ja": "バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ"
+      "text": "byte      SSH_MSG_CHANNEL_DATA\nuint32    recipient channel\nstring    data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -184,7 +185,8 @@
     {
       "indent": 6,
       "text": "byte SSH_MSG_REQUEST_FAILURE",
-      "ja": "バイトSSH_MSG_REQUEST_FAILURE"
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -252,8 +254,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_OPEN_FAILURE uint32 recipient channel uint32 reason code string description in ISO-10646 UTF-8 encoding [RFC3629] string language tag [RFC3066]",
-      "ja": "バイトSSH_MSG_CHANNEL_OPEN_FAILURE uint32受信者チャネルuint32理由コード文字列の説明（ISO-10646 UTF-8エンコーディング[RFC3629]文字列言語タグ[RFC3066]）"
+      "text": "byte      SSH_MSG_CHANNEL_OPEN_FAILURE\nuint32    recipient channel\nuint32    reason code\nstring    description in ISO-10646 UTF-8 encoding [RFC3629]\nstring    language tag [RFC3066]",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -304,8 +307,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_WINDOW_ADJUST uint32 recipient channel uint32 bytes to add",
-      "ja": "追加するバイトSSH_MSG_CHANNEL_WINDOW_ADJUST uint32受信者チャネルuint32バイト"
+      "text": "byte      SSH_MSG_CHANNEL_WINDOW_ADJUST\nuint32    recipient channel\nuint32    bytes to add",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -319,8 +323,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_DATA uint32 recipient channel string data",
-      "ja": "バイトSSH_MSG_CHANNEL_DATA uint32受信者チャネル文字列データ"
+      "text": "byte      SSH_MSG_CHANNEL_DATA\nuint32    recipient channel\nstring    data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -349,8 +354,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_EXTENDED_DATA uint32 recipient channel uint32 data_type_code string data",
-      "ja": "バイトSSH_MSG_CHANNEL_EXTENDED_DATA uint32受信者チャネルuint32 data_type_code文字列データ"
+      "text": "byte      SSH_MSG_CHANNEL_EXTENDED_DATA\nuint32    recipient channel\nuint32    data_type_code\nstring    data",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -386,8 +392,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_EOF uint32 recipient channel",
-      "ja": "バイトSSH_MSG_CHANNEL_EOF uint32受信者チャネル"
+      "text": "byte      SSH_MSG_CHANNEL_EOF\nuint32    recipient channel",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -401,8 +408,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_CLOSE uint32 recipient channel",
-      "ja": "バイトSSH_MSG_CHANNEL_CLOSE uint32受信者チャネル"
+      "text": "byte      SSH_MSG_CHANNEL_CLOSE\nuint32    recipient channel",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -458,13 +466,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_SUCCESS uint32 recipient channel",
-      "ja": "バイトSSH_MSG_CHANNEL_SUCCESS uint32受信者チャネル"
-    },
-    {
-      "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_FAILURE uint32 recipient channel",
-      "ja": "バイトSSH_MSG_CHANNEL_FAILURE uint32受信者チャネル"
+      "text": "byte      SSH_MSG_CHANNEL_SUCCESS\nuint32    recipient channel\n\n\nbyte      SSH_MSG_CHANNEL_FAILURE\nuint32    recipient channel",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -495,8 +499,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_OPEN string \"session\" uint32 sender channel uint32 initial window size uint32 maximum packet size",
-      "ja": "バイトSSH_MSG_CHANNEL_OPEN文字列 \"セッション\" uint32送信側チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ"
+      "text": "byte      SSH_MSG_CHANNEL_OPEN\nstring    \"session\"\nuint32    sender channel\nuint32    initial window size\nuint32    maximum packet size",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -516,8 +521,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_REQUEST uint32 recipient channel string \"pty-req\" boolean want_reply string TERM environment variable value (e.g., vt100) uint32 terminal width, characters (e.g., 80) uint32 terminal height, rows (e.g., 24) uint32 terminal width, pixels (e.g., 640) uint32 terminal height, pixels (e.g., 480) string encoded terminal modes",
-      "ja": "バイトSSH_MSG_CHANNEL_REQUEST uint32受信側チャネル文字列 \"pty-req\"ブールwant_reply文字列TERM環境変数値（たとえば、vt100）uint32端末の幅、文字（たとえば、80）uint32端末の高さ、行（たとえば、24）uint32端末の幅、ピクセル（たとえば、640）uint32端末の高さ、ピクセル（たとえば、480）文字列エンコードされた端末モード"
+      "text": "byte      SSH_MSG_CHANNEL_REQUEST\nuint32    recipient channel\nstring    \"pty-req\"\nboolean   want_reply\nstring    TERM environment variable value (e.g., vt100)\nuint32    terminal width, characters (e.g., 80)\nuint32    terminal height, rows (e.g., 24)\nuint32    terminal width, pixels (e.g., 640)\nuint32    terminal height, pixels (e.g., 480)\nstring    encoded terminal modes",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -553,8 +559,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_REQUEST uint32 recipient channel string \"x11-req\" boolean want reply boolean single connection string x11 authentication protocol string x11 authentication cookie uint32 x11 screen number",
-      "ja": "バイトSSH_MSG_CHANNEL_REQUEST uint32受信者チャネル文字列 \"x11-req\"ブール値応答を要求ブール値シングル接続文字列x11認証プロトコル文字列x11認証cookie uint32 x11画面番号"
+      "text": "byte      SSH_MSG_CHANNEL_REQUEST\nuint32    recipient channel\nstring    \"x11-req\"\nboolean   want reply\nboolean   single connection\nstring    x11 authentication protocol\nstring    x11 authentication cookie\nuint32    x11 screen number",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -844,8 +851,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_GLOBAL_REQUEST string \"tcpip-forward\" boolean want reply string address to bind (e.g., \"0.0.0.0\") uint32 port number to bind",
-      "ja": "バイトSSH_MSG_GLOBAL_REQUEST文字列 \"tcpip-forward\"ブール値にバインドする応答文字列アドレス（例： \"0.0.0.0\"）バインドするuint32ポート番号"
+      "text": "byte      SSH_MSG_GLOBAL_REQUEST\nstring    \"tcpip-forward\"\nboolean   want reply\nstring    address to bind (e.g., \"0.0.0.0\")\nuint32    port number to bind",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -899,8 +907,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_REQUEST_SUCCESS uint32 port that was bound on the server",
-      "ja": "サーバーにバインドされたバイトSSH_MSG_REQUEST_SUCCESS uint32ポート"
+      "text": "byte     SSH_MSG_REQUEST_SUCCESS\nuint32   port that was bound on the server",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -909,8 +918,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_GLOBAL_REQUEST string \"cancel-tcpip-forward\" boolean want reply string address_to_bind (e.g., \"127.0.0.1\") uint32 port number to bind",
-      "ja": "バイトSSH_MSG_GLOBAL_REQUEST文字列 \"cancel-tcpip-forward\"ブール値の返信文字列address_to_bind（例： \"127.0.0.1\"）バインドするuint32ポート番号"
+      "text": "byte      SSH_MSG_GLOBAL_REQUEST\nstring    \"cancel-tcpip-forward\"\nboolean   want reply\nstring    address_to_bind (e.g., \"127.0.0.1\")\nuint32    port number to bind",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -930,8 +940,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_OPEN string \"forwarded-tcpip\" uint32 sender channel uint32 initial window size uint32 maximum packet size string address that was connected uint32 port that was connected string originator IP address uint32 originator port",
-      "ja": "バイトSSH_MSG_CHANNEL_OPEN文字列 \"forwarded-tcpip\" uint32送信者チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ文字列接続されたアドレスuint32ポート接続された文字列発信元IPアドレスuint32発信者ポート"
+      "text": "byte      SSH_MSG_CHANNEL_OPEN\nstring    \"forwarded-tcpip\"\nuint32    sender channel\nuint32    initial window size\nuint32    maximum packet size\nstring    address that was connected\nuint32    port that was connected\nstring    originator IP address\nuint32    originator port",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
@@ -945,8 +956,9 @@
     },
     {
       "indent": 6,
-      "text": "byte SSH_MSG_CHANNEL_OPEN string \"direct-tcpip\" uint32 sender channel uint32 initial window size uint32 maximum packet size string host to connect uint32 port to connect string originator IP address uint32 originator port",
-      "ja": "バイトSSH_MSG_CHANNEL_OPEN文字列 \"direct-tcpip\" uint32送信側チャネルuint32初期ウィンドウサイズuint32最大パケットサイズ文字列host to connect uint32 port to connect string originator IP address uint32 originator port"
+      "text": "byte      SSH_MSG_CHANNEL_OPEN\nstring    \"direct-tcpip\"\nuint32    sender channel\nuint32    initial window size\nuint32    maximum packet size\nstring    host to connect\nuint32    port to connect\nstring    originator IP address\nuint32    originator port",
+      "raw": true,
+      "ja": ""
     },
     {
       "indent": 3,
