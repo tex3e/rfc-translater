@@ -1,0 +1,4692 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFC 9994 - MPLS Network Action (MNA) Sub-Stack Specification Including In-Stack Network Actions and Data 日本語訳</title>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./master.css">
+  <script src="./index.js"></script>
+
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">RFC Trans</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <div class="navbar-nav mr-auto">
+        <a class="nav-item nav-link" href="draft/index.html">Draft</a>
+        <a class="nav-item nav-link" href="contact.html">Contact</a>
+        <a class="nav-item nav-link" href="../figs/html/index.html">Figs</a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <span class="navbar-text"><small>@tex2e</small></span>
+      </div>
+    </div>
+  </nav>
+
+  <span id="rfc_number" class="hidden">9994</span>
+  <div style="height: 1ex;"></div>
+  <div class="jump-to-original-rfc-container">
+    <a href="https://www.rfc-editor.org/rfc/rfc9994.html">
+      <button type="button" class="btn btn-light btn-sm">
+        <span class="jump-to-original-rfc">Orig</span>
+      </button>
+    </a>
+  </div>
+  <div class="container">
+    <div>
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">RFC 9994 - MPLS Network Action (MNA) Sub-Stack Specification Including In-Stack Network Actions and Data 日本語訳</h4>
+        <span class="URL">原文URL :
+          <a href="https://www.rfc-editor.org/rfc/rfc9994.html">
+            https://www.rfc-editor.org/rfc/rfc9994.html
+          </a>
+        </span><br>
+        <span class="title_ja">
+          タイトル : <strong>RFC 9994 - スタック内ネットワーク アクションとデータを含む MPLS ネットワーク アクション (MNA) サブスタック仕様</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+      </div>
+      <div id="rfc_alert" class="hidden" role="alert">
+        <div class="alert alert-danger">
+          <span id="rfc_alert_obsoleted_by"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+Internet Engineering Task Force (IETF)              J. Rajamanickam, Ed.
+Request for Comments: 9994                                R. Gandhi, Ed.
+Updates: 9789                                        Cisco Systems, Inc.
+Category: Standards Track                                      R. Zigler
+ISSN: 2070-1721                                                 Broadcom
+                                                                 H. Song
+                                                  Futurewei Technologies
+                                                             K. Kompella
+                                                        Juniper Networks
+                                                               June 2026
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="MPLS-Network-Action-MNA-Sub-Stack-Specification-Including-In-Stack-Network-Actions-and-Data">
+MPLS Network Action (MNA) Sub-Stack Specification Including In-Stack Network Actions and Data
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+スタック内ネットワーク アクションとデータを含む MPLS ネットワーク アクション (MNA) サブスタック仕様
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Abstract">
+Abstract
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+概要
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document specifies the MPLS Network Action (MNA) Sub-Stack for carrying network actions and Ancillary Data (AD) in the MPLS label stack. MNA can be used to influence packet-forwarding decisions, carry additional Operations, Administration, and Maintenance (OAM) information in the MPLS packet, or perform user-defined operations.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、MPLS ラベル スタックでネットワーク アクションと補助データ (AD) を伝送するための MPLS ネットワーク アクション (MNA) サブスタックを指定します。MNA を使用すると、パケット転送の決定に影響を与えたり、MPLS パケットで追加の運用、管理、保守 (OAM) 情報を伝送したり、ユーザー定義の操作を実行したりできます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document updates RFC 9789 to refine the list of pieces of information that must be included in any document that defines an MNA.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は RFC 9789 を更新し、MNA を定義する文書に含める必要がある情報のリストを改良します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Status-of-This-Memo">
+Status of This Memo
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+本文書の状態
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This is an Internet Standards Track document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これはインターネット標準化トラックの文書です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9994.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9994 で入手できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Copyright-Notice">
+Copyright Notice
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著作権表示
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Table-of-Contents">
+Table of Contents
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+目次
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace toc">
+   1.  Introduction
+   2.  Conventions Used in This Document
+     2.1.  Requirements Language
+     2.2.  Abbreviations
+     2.3.  Terminology
+   3.  Overview
+   4.  Label Stack Entry Formats
+     4.1.  LSE Format A: The MNA Sub-Stack Indicator
+     4.2.  LSE Format B: The Initial Opcode
+     4.3.  LSE Format C: Subsequent Opcodes
+     4.4.  LSE Format D: Additional Data
+   5.  The MNA Sub-Stack
+     5.1.  Opcodes
+     5.2.  Ancillary Data
+     5.3.  Scope
+     5.4.  Unknown Network Action Handling
+     5.5.  Ordering
+   6.  Special Opcodes
+     6.1.  bSPL Protection
+     6.2.  Flag-Based NAIs Without AD
+     6.3.  No-Operation Opcode
+     6.4.  Extension Opcode
+   7.  NAS Placement in the Label Stack
+     7.1.  Actions When Pushing Labels
+   8.  Node Capability Signaling
+   9.  Processing the Network Action Sub-Stack
+     9.1.  Encapsulating Node Responsibilities
+     9.2.  Transit Node Responsibilities
+     9.3.  Penultimate Node Responsibilities
+     9.4.  Egress Node Responsibilities
+   10. Network Action Indicator Opcode Definition
+   11. Security Considerations
+   12. Operational Considerations
+     12.1.  Manageability Considerations
+     12.2.  Performance and Scale Considerations
+     12.3.  Backward Compatibility
+   13. IANA Considerations
+     13.1.  MNA bSPL Label
+     13.2.  MPLS Network Actions Parameters
+       13.2.1.  Network Action Flags Without Ancillary Data
+       13.2.2.  Network Action Opcodes
+   14. References
+     14.1.  Normative References
+     14.2.  Informative References
+   Appendix A.  Examples
+     A.1.  Network Action Encoding Examples
+       A.1.1.  Network Action Flags Without AD
+       A.1.2.  Network Action Opcode with AD
+       A.1.3.  Network Action Opcode with More AD with Format B
+       A.1.4.  Network Action Opcode with More AD with Format C
+     A.2.  Network Action Processing Order
+       A.2.1.  Network Action Processing Order
+   Acknowledgments
+   Contributors
+   Authors&#39; Addresses
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="1--Introduction">
+1. Introduction
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+1. はじめに
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+[RFC3032] defines the encoding of the MPLS label stack, the basic structure used to define a forwarding path. There are applications that require MPLS packets to perform special network actions and carry optional Ancillary Data (AD) that can affect the packet-forwarding decision or trigger Operations, Administration, and Maintenance (OAM) logging, for example, as described in [RFC9791]. AD can be used to carry additional information, for example, for network slice purposes (see [RFC9791]).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+[RFC3032] は、転送パスを定義するために使用される基本構造である MPLS ラベル スタックのエンコーディングを定義しています。たとえば、[RFC9791] で説明されているように、特別なネットワーク アクションを実行し、パケット転送の決定に影響を与えたり、運用、管理、保守 (OAM) ログをトリガーしたりできるオプションの補助データ (AD) を伝送するために、MPLS パケットを必要とするアプリケーションがあります。AD は、ネットワークスライスなどの目的で追加情報を運ぶために使用できます ([RFC9791] を参照)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The requirements for in-stack network action and In-Stack Data (ISD) are described in [RFC9613].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+スタック内ネットワークアクションとスタック内データ (ISD) の要件は [RFC9613] で説明されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document defines the syntax and semantics of network actions and AD encoded in an MPLS label stack. In-stack actions and AD are contained in a Network Action Sub-Stack (NAS), which is recognized by a new base Special-Purpose Label (bSPL). This document follows the framework specified in [RFC9789].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、MPLS ラベル スタックでエンコードされたネットワーク アクションと AD の構文とセマンティクスを定義します。スタック内アクションと AD は、新しい基本特殊目的ラベル (bSPL) によって認識されるネットワーク アクション サブスタック (NAS) に含まれています。この文書は、[RFC9789] で指定されたフレームワークに従います。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Section 5 of [RFC9789] provides details about information that a document defining a network action must contain. Section 10 of this document updates [RFC9789] by providing a refined list of pieces of information that must be included in any document that defines an MNA.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+[RFC9789] のセクション 5 には、ネットワークアクションを定義する文書に含める必要がある情報の詳細が記載されています。この文書のセクション 10 は、MNA を定義する文書に含める必要がある情報の詳細なリストを提供することにより、[RFC9789] を更新します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2--Conventions-Used-in-This-Document">
+2. Conventions Used in This Document
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2. この文書で使用される表記規則
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2-1--Requirements-Language">
+2.1. Requirements Language
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2.1. 要件言語
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL&#34;, &#34;SHALL NOT&#34;, &#34;SHOULD&#34;, &#34;SHOULD NOT&#34;, &#34;RECOMMENDED&#34;, &#34;NOT RECOMMENDED&#34;, &#34;MAY&#34;, and &#34;OPTIONAL&#34; in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2-2--Abbreviations">
+2.2. Abbreviations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2.2. 略語
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   +==============+====================================+===============+
+   | Abbreviation | Meaning                            | Reference     |
+   +==============+====================================+===============+
+   | AD           | Ancillary Data                     | [RFC9613]     |
+   +--------------+------------------------------------+---------------+
+   | bSPL         | base Special-Purpose Label         | [RFC9017]     |
+   +--------------+------------------------------------+---------------+
+   | BoS          | Bottom of Stack                    | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | ECMP         | Equal-Cost Multipath               | [RFC6790]     |
+   +--------------+------------------------------------+---------------+
+   | HbH          | Hop-by-Hop                         | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | I2E          | Ingress to Egress                  | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | IHS          | I2E, HbH, or Select                | This document |
+   +--------------+------------------------------------+---------------+
+   | ISD          | In-Stack Data                      | [RFC9613]     |
+   +--------------+------------------------------------+---------------+
+   | LSE          | Label Stack Entry                  | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | LSP          | Label Switched Path                | [RFC3031]     |
+   +--------------+------------------------------------+---------------+
+   | MNA          | MPLS Network Action                | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | NAI          | Network Action Indicator           | [RFC9613]     |
+   +--------------+------------------------------------+---------------+
+   | NAL          | Network Action Length              | This document |
+   +--------------+------------------------------------+---------------+
+   | NAS          | Network Action Sub-Stack           | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | NSI          | Network Action Sub-Stack           | This document |
+   |              | Indicator                          |               |
+   +--------------+------------------------------------+---------------+
+   | NASL         | Network Action Sub-Stack           | This document |
+   |              | Length                             |               |
+   +--------------+------------------------------------+---------------+
+   | OAM          | Operations, Administration,        | [RFC6291]     |
+   |              | and Maintenance                    |               |
+   +--------------+------------------------------------+---------------+
+   | RLD          | Readable Label Depth               | [RFC9789]     |
+   +--------------+------------------------------------+---------------+
+   | TC           | Traffic Class                      | [RFC5462]     |
+   +--------------+------------------------------------+---------------+
+   | TTL          | Time to Live                       | [RFC3032]     |
+   +--------------+------------------------------------+---------------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-27">
+Table 1: Abbreviations
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-27">
+表 1: 略語
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2-3--Terminology">
+2.3. Terminology
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2.3. 用語
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following terms are used in this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書では次の用語が使用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS Egress Node:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS 出力ノード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+An MPLS edge node in its role in handling traffic as it leaves an MPLS domain [RFC3031].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+MPLS エッジ ノードは、MPLS ドメインから離れるときにトラフィックを処理する役割を果たします [RFC3031]。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS Ingress Node:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS 入力ノード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+An MPLS edge node in its role in handling traffic as it enters an MPLS domain [RFC3031].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+MPLS エッジ ノードは、MPLS ドメインに入るときにトラフィックを処理する役割を果たします [RFC3031]。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS Domain:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS ドメイン:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+A contiguous set of nodes that operate MPLS routing and forwarding and that are also in one Routing or Administrative Domain [RFC3031].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+MPLS ルーティングと転送を操作し、1 つのルーティング ドメインまたは管理ドメイン [RFC3031] 内にある連続したノードのセット。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Encapsulating Node:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+カプセル化ノード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+A node that adds a NAS to the label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ラベル スタックに NAS を追加するノード。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="3--Overview">
+3. Overview
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+3. 概要
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The MPLS NAS is a set of Label Stack Entries (LSEs) that appear as part of an MPLS label stack and serve to encode information about the network actions that should be invoked for the packet. Multiple NASes may appear in a label stack and be placed as described in Section 5.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS NAS は、MPLS ラベル スタックの一部として表示される一連のラベル スタック エントリ (LSE) であり、パケットに対して呼び出されるネットワーク アクションに関する情報をエンコードする役割を果たします。複数の NAS がラベル スタックに表示され、セクション 5 で説明されているように配置される場合があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document specifies how network actions and their optional AD are encoded as part of a NAS as a stack of LSEs. Mechanisms that allow sharing of AD between multiple network actions encoded in the same NAS can be described in other documents and do not rely on any explicit provision in the encodings described in this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書では、ネットワーク アクションとそのオプションの AD が、LSE のスタックとして NAS の一部としてエンコードされる方法を指定します。同じ NAS 内でエンコードされた複数のネットワーク アクション間で AD の共有を可能にするメカニズムは、他のドキュメントで説明できますが、このドキュメントで説明されているエンコーディングの明示的な規定には依存しません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document defines new LSE formats beyond those in [RFC3032] that define behaviors or are processed in different ways than MPLS labels as defined in [RFC3031]. Three new LSE formats are defined to carry 7 bits of network action opcodes and varying amounts of opcode-specific AD. Specifically, Format B LSE carries up to 13 bits of AD in an LSE. Format C LSE carries up to 20 bits of AD in an LSE. Format D LSE is used when additional AD is needed by the opcodes in Format B or Format C LSEs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、動作を定義するか、[RFC3031] で定義されている MPLS ラベルとは異なる方法で処理される [RFC3032] のフォーマットを超える新しい LSE フォーマットを定義します。3 つの新しい LSE フォーマットは、7 ビットのネットワーク アクション オペコードとさまざまな量のオペコード固有の AD を伝送するように定義されています。具体的には、フォーマット B LSE は、LSE 内で最大 13 ビットの AD を伝送します。フォーマット C LSE は、LSE 内で最大 20 ビットの AD を伝送します。フォーマット D LSE は、フォーマット B またはフォーマット C LSE のオペコードによって追加の AD が必要な場合に使用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+As shown in Figure 1, the first LSE in an MNA Sub-Stack uses Format A. The second LSE uses Format B and is followed by a Format D LSE to carry additional data. Next, there may be a Format C LSE for an additional network action followed by another Format D LSE for additional data. Additional Format C and Format D LSEs may be added as needed for additional network actions and data.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+図 1 に示すように、MNA サブスタックの最初の LSE はフォーマット A を使用します。2 番目の LSE はフォーマット B を使用し、その後に追加データを伝送するフォーマット D LSE が続きます。次に、追加のネットワーク アクション用のフォーマット C LSE があり、その後に追加データ用のフォーマット D LSE が続く場合があります。追加のネットワーク アクションとデータの必要に応じて、追加のフォーマット C およびフォーマット D LSE を追加できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |      MNA-Label=bSPL                   | TC  |S|    TTL        |A
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |   Opcode    |        13-bit Data      |R|IHS|S|  NASL |U| NAL |B
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |1|                    22-bit Data            |S|  8-bit Data   |D*
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |   Opcode    |        16-bit Data            |S|4b Data|U| NAL |C
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |1|                    22-bit Data            |S|  8-bit Data   |D*
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   |   Opcode    |        16-bit Data            |S|4b Data|U| NAL |C
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+   ~                                                               ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--
+
+   * Format D LSE presence indicated by NAL greater than one
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-16">
+Figure 1: An MNA Sub-Stack Encoding Example
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-16">
+図 1: MNA サブスタックのエンコーディング例
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4--Label-Stack-Entry-Formats">
+4. Label Stack Entry Formats
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4. ラベル スタック エントリの形式
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The NAS uses a variety of different formats of LSEs for different purposes. This section describes the syntax of the various formats while the overall structure of the NAS and the semantics of the various LSEs are described in the sections below.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAS は、さまざまな目的にさまざまな形式の LSE を使用します。このセクションではさまざまな形式の構文について説明し、NAS の全体的な構造とさまざまな LSE のセマンティクスについては以下のセクションで説明します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4-1--LSE-Format-A-The-MNA-Sub-Stack-Indicator">
+4.1. LSE Format A: The MNA Sub-Stack Indicator
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4.1. LSE フォーマット A: MNA サブスタック インジケーター
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Format A is an LSE as described in [RFC3032] and [RFC5462]. The label value is 4 for the MNA bSPL label from the &#34;Base Special-Purpose MPLS Label Values&#34; IANA registry (see Section 13.1) to indicate the presence of an MNA in the packet and the beginning of an MNA Sub-Stack in the label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE フォーマット A は、[RFC3032] および [RFC5462] で説明されている LSE です。「Base Special-Purpose MPLS Label Values」IANA レジストリ (セクション 13.1 を参照) の MNA bSPL ラベルのラベル値は 4 で、パケット内の MNA の存在とラベル スタック内の MNA サブスタックの始まりを示します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      MNA-Label=bSPL                   | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Figure 2: LSE Format A: The MNA Sub-Stack Indicator
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+図 2: LSE フォーマット A: MNA サブスタック インジケーター
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The BoS [RFC3032]. MUST be set to 0 on transmitted packets. If a packet is received with an LSE containing the bSPL (4) and with S bit set to 1, then the packet MUST be dropped.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+BoS [RFC3032]。送信パケットでは 0 に設定しなければなりません。bSPL (4) を含む LSE で S ビットが 1 に設定されたパケットを受信した場合、そのパケットはドロップされなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4-2--LSE-Format-B-The-Initial-Opcode">
+4.2. LSE Format B: The Initial Opcode
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4.2. LSE フォーマット B: 初期オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Format B is used to encode the first opcode in the NAS, plus a number of other fields about the NAS. The Data field of this LSE can carry up to 13 bits of AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE フォーマット B は、NAS の最初のオペコードと、NAS に関する他の多くのフィールドをエンコードするために使用されます。この LSE のデータ フィールドは、最大 13 ビットの AD を伝送できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   Opcode    |        13-bit Data      |R|IHS|S|  NASL |U| NAL |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-17">
+Figure 3: LSE Format B: The Initial Opcode
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-17">
+図 3: LSE フォーマット B: 初期オペコード
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode (7 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード (7 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The operation code for this LSE. See Section 5.1.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+この LSE のオペレーション コード。See Section 5.1.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data (13 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ (13 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Opcode-specific AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+オペコード固有の AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+R (1 bit): Reserved.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+R (1 ビット): 予約済み。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This bit MUST be set to zero on transmission and ignored upon receipt.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このビットは送信時にゼロに設定され、受信時には無視されなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IHS (2 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IHS (2ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The scope of all the network actions in this NAS. See Section 5.3.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+この NAS 内のすべてのネットワーク アクションの範囲。セクション 5.3 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The BoS [RFC3032]. If the NASL value is non-zero, then the S bit MUST be 0. If a packet is received with the S bit set to 1 and a non-zero NASL value, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE in the MPLS header.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+BoS [RFC3032]。NASL 値が 0 以外の場合、S ビットは 0 でなければなりません。S ビットが 1 に設定され、NASL 値が 0 以外の状態でパケットを受信した場合、パケットはドロップされなければなりません。カプセル化ノードは、MPLS ヘッダーの最後の LSE でのみ S ビットが 1 に設定されていることを保証しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL (4 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL (4 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The Network Action Sub-Stack Length. The number of Format C and Format D LSEs in the NAS, i.e., not including the leading Format A LSE and the Format B LSE.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ネットワークアクションのサブスタックの長さ。NAS 内のフォーマット C およびフォーマット D LSE の数。つまり、先頭のフォーマット A LSE およびフォーマット B LSE は含まれません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Unknown Network Action Handling. See Section 5.4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+不明なネットワーク アクションの処理。セクション 5.4 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL (3 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL (3 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Network Action Length. The number of LSEs of additional data, encoded in Format D LSEs (Section 4.4), following this Format B LSE. The NAL value MUST be less than or equal to the NASL value in the Format B LSE. If not, the packet MUST be dropped. A Format C LSE would be following when the NAL value is less than the NASL value.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ネットワークアクションの長さ。このフォーマット B LSE に続くフォーマット D LSE (セクション 4.4) でエンコードされた追加データの LSE の数。NAL 値は、フォーマット B LSE の NASL 値以下でなければなりません。そうでない場合、パケットはドロップされなければなりません。NAL 値が NASL 値より小さい場合、フォーマット C LSE が続きます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4-3--LSE-Format-C-Subsequent-Opcodes">
+4.3. LSE Format C: Subsequent Opcodes
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4.3. LSE フォーマット C: 後続のオペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Format C is used to encode the subsequent opcodes in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE フォーマット C は、NAS 内で後続のオペコードをエンコードするために使用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   Opcode    |        16-bit Data            |S|4b Data|U| NAL |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-17">
+Figure 4: LSE Format C: Subsequent Opcodes
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-17">
+図 4: LSE フォーマット C: 後続のオペコード
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode (7 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード (7 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The operation code for this LSE. See Section 5.1.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+この LSE のオペレーション コード。セクション 5.1 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data (16 bits + 4 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ (16 ビット + 4 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Opcode-specific AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+オペコード固有の AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The BoS [RFC3032]. If the NAL value is non-zero and if the S bit is set to 1, then the packet MUST be dropped. If this is not the last LSE in the NAS and if the S bit is set to 1, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+BoS [RFC3032]。NAL 値がゼロ以外で、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。これが NAS 内の最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。カプセル化ノードは、最後の LSE でのみ S ビットが 1 に設定されるようにしなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Unknown Network Action Handling. See Section 5.4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+不明なネットワーク アクションの処理。セクション 5.4 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL (3 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL (3 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Network Action Length. The number of LSEs of additional data, encoded in Format D LSEs (Section 4.4) following this Format C LSE. The NAL value MUST be less than or equal to the NASL value in the Format B LSE. If not, the packet MUST be dropped.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ネットワークアクションの長さ。このフォーマット C LSE に続くフォーマット D LSE (セクション 4.4) でエンコードされた追加データの LSE の数。NAL 値は、フォーマット B LSE の NASL 値以下でなければなりません。そうでない場合、パケットはドロップされなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A Format A and a Format B LSE MUST be present when a Format C LSE is carried in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット C LSE が NAS に搭載される場合、フォーマット A およびフォーマット B LSE が存在しなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4-4--LSE-Format-D-Additional-Data">
+4.4. LSE Format D: Additional Data
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4.4. LSE フォーマット D: 追加データ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Format D is used to encode additional data that did not fit in the LSE with the preceding opcode.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE フォーマット D は、前述のオペコードで LSE に収まらなかった追加データをエンコードするために使用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |1|                    22-bit Data            |S|  8-bit Data   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+Figure 5: LSE Format D: Additional Data
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+図 5: LSE フォーマット D: 追加データ
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+1 (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+1 (1 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The most significant bit MUST be set. This prevents legacy implementations from misinterpreting this LSE as containing a special purpose label if the data begins with zeros.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+最上位ビットを設定する必要があります。これにより、データがゼロで始まる場合に、レガシー実装がこの LSE を特別な目的のラベルが含まれていると誤って解釈するのを防ぎます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S (1 bit):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S(1ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The BoS [RFC3032]. If this is not the last LSE for the network action based on the NAL value and if the S bit is set to 1, then the packet MUST be dropped. If this is not the last LSE in the NAS and if the S bit is set to 1, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+BoS [RFC3032]。これが NAL 値に基づくネットワーク アクションの最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。これが NAS 内の最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。カプセル化ノードは、最後の LSE でのみ S ビットが 1 に設定されるようにしなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data (22 bits + 8 bits):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ (22 ビット + 8 ビット):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Opcode-specific AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+オペコード固有の AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A Format A and a Format B LSE MUST be present when a Format D LSE is carried in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット D LSE が NAS に搭載される場合、フォーマット A およびフォーマット B LSE が存在しなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5--The-MNA-Sub-Stack">
+5. The MNA Sub-Stack
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5. MNA サブスタック
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The MNA Sub-Stack MUST begin with a Format A LSE (Section 4.1). The label value of the LSE contains the MNA bSPL (4) to indicate the presence of the MNA Sub-Stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA サブスタックは、フォーマット A LSE (セクション 4.1) で始まらなければなりません (MUST)。LSE のラベル値には、MNA サブスタックの存在を示す MNA bSPL (4) が含まれています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The TC and TTL values of the Format A LSE retain their semantics as defined in [RFC3032] and [RFC5462]. The TTL and TC values in the Format A LSE are copied from the forwarding label at the top of the label stack. The penultimate node on the path copies the TTL and TC values from the preceding LSE to the next LSE on the label stack, overwriting the TTL and TC values of the next LSE, as specified in Section 3.5 of [RFC3443] and Section 2.6.3 of [RFC3270] in the Uniform Mode LSPs. If the node performing this copy is not aware of MNA, this could overwrite the values in the Format A LSE of the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット A LSE の TC 値と TTL 値は、[RFC3032] および [RFC5462] で定義されているセマンティクスを保持します。フォーマット A LSE の TTL 値と TC 値は、ラベル スタックの最上位にある転送ラベルからコピーされます。パス上の最後から 2 番目のノードは、均一モード LSP の [RFC3443] のセクション 3.5 および [RFC3270] のセクション 2.6.3 で規定されているように、ラベル スタック上の前の LSE から次の LSE に TTL および TC 値をコピーし、次の LSE の TTL および TC 値を上書きします。このコピーを実行するノードが MNA を認識しない場合、NAS のフォーマット A LSE の値が上書きされる可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The second LSE in a NAS MUST be a Format B LSE (Section 4.2). This LSE contains an initial opcode plus additional fields that describe the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAS 内の 2 番目の LSE は、フォーマット B LSE でなければなりません (セクション 4.2)。この LSE には、初期オペコードに加えて、NAS を説明する追加フィールドが含まれています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The Format B LSE (Section 4.2) could optionally carry additional data in Format D (Section 4.4) LSEs, up to the length encoded in the LSE&#39;s NAL value.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット B LSE (セクション 4.2) は、オプションで、LSE の NAL 値にエンコードされた長さまで、フォーマット D (セクション 4.4) LSE の追加データを伝送できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A NAS MAY contain more Format C (Section 4.3) and Format D (Section 4.4) LSEs, up to the length encoded in the NASL value. All Format D LSEs MUST follow a Format C or Format B LSE and be included in that LSE&#39;s NAL value.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAS には、NASL 値にエンコードされた長さまで、さらに多くのフォーマット C (セクション 4.3) およびフォーマット D (セクション 4.4) の LSE を含めることができます (MAY)。すべてのフォーマット D LSE は、フォーマット C またはフォーマット B LSE に従い、その LSE の NAL 値に含まれなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-1--Opcodes">
+5.1. Opcodes
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.1. オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The opcode is a 7-bit field that indicates the semantics of its LSE. Several opcodes are assigned special semantics (Section 6). Other opcodes act as NAIs and are assigned through IANA (see Sections 10 and 13.2.2).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコードは、その LSE のセマンティクスを示す 7 ビットのフィールドです。いくつかのオペコードには特別なセマンティクスが割り当てられています (セクション 6)。他のオペコードは NAI として機能し、IANA を通じて割り当てられます (セクション 10 および 13.2.2 を参照)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-2--Ancillary-Data">
+5.2. Ancillary Data
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.2. 補助データ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The data field carries opcode-specific data that is AD for a network action. In the case of opcode 1, the data field carries Flag-Based NAIs without AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ フィールドには、ネットワーク アクションの AD であるオペコード固有のデータが含まれます。オペコード 1 の場合、データ フィールドは AD なしでフラグベースの NAI を伝送します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The label value (most significant 20 bits) in one or more consecutive LSEs is commonly used for load-balancing data flows in an ECMP environment. Modifying the first 20 bits in an LSE might alter a packet&#39;s path and result in out-of-order delivery of packets belonging to a given flow. To maintain the stability of deployed services in ECMP environments that rely on label value information for load-balancing, care must be taken when encoding network action data in the given LSE. If the network action data may differ among packets in the same flow or change during forwarding across the MPLS network, it MUST NOT be placed in the most significant 20 bits of a Format B LSE (Section 4.2), a Format C LSE (Section 4.3), or a Format D LSE (Section 4.4). Thus, the available bits for data that can change by a transit node or differ among packets of the same flow in Format A and Format B LSEs is 0, in a Format C LSE 7 (bits 20-22 and 25-28), and in a Format D LSE 11 (bits 20-22 and 24-31).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+1 つ以上の連続する LSE のラベル値 (最上位 20 ビット) は、ECMP 環境でのデータ フローの負荷分散に通常使用されます。LSE の最初の 20 ビットを変更すると、パケットのパスが変更され、特定のフローに属するパケットの配信が順序どおりに行われない可能性があります。負荷分散のためにラベル値情報に依存する ECMP 環境でデプロイされたサービスの安定性を維持するには、特定の LSE でネットワーク アクション データをエンコードするときに注意する必要があります。ネットワークアクションデータが同じフロー内のパケット間で異なる可能性がある場合、または MPLS ネットワーク全体での転送中に変更される可能性がある場合、それをフォーマット B LSE (セクション 4.2)、フォーマット C LSE (セクション 4.3)、またはフォーマット D LSE (セクション 4.4) の最上位 20 ビットに配置してはなりません (MUST NOT)。したがって、フォーマット A およびフォーマット B LSE では、トランジット ノードによって変更される可能性がある、または同じフローのパケット間で異なる可能性があるデータに使用可能なビットは 0、フォーマット C LSE 7 (ビット 20 ～ 22 および 25 ～ 28)、およびフォーマット D LSE 11 (ビット 20 ～ 22 および 24 ～ 31) では、0 です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Similarly, to preserve service stability, such data also MUST NOT be carried in the most significant 23 bits of these LSEs when the legacy implementation also uses the TC value, in addition to the label value, in all LSEs when computing ECMP decisions.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+同様に、サービスの安定性を維持するために、レガシー実装が ECMP 決定を計算するときにすべての LSE でラベル値に加えて TC 値も使用する場合、そのようなデータをこれらの LSE の最上位 23 ビットで伝送してはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The available mitigations for these problems are to use additional Format D LSEs to carry the data or to place the data in Post-Stack Data as described in [RFC9789].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これらの問題に対する利用可能な軽減策は、[RFC9789] で説明されているように、追加のフォーマット D LSE を使用してデータを伝送するか、ポストスタック データにデータを配置することです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In network deployments where it is known that a load-balancing of data flows is not used, or if only the explicitly signaled entropy value is used, and it is certain that the load-balancing path selection will not be based on the label value of the LSEs, then the data in the label value of the LSEs in the ISD MAY be mutable within the data flow without causing the out-of-order delivery of packets.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ フローのロード バランシングが使用されないことがわかっているネットワーク展開、または明示的に通知されたエントロピー値のみが使用され、ロード バランシング パスの選択が LSE のラベル値に基づいていないことが確実な場合、ISD 内の LSE のラベル値のデータは、パケットの順序どおりの配信を引き起こすことなく、データ フロー内で変更可能であってもよい(MAY)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-3--Scope">
+5.3. Scope
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.3. 範囲
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The IHS field in the Format B LSE indicates the scope of all the NAIs encoded in the NAS. Scope defines which nodes along the MPLS path should perform the network actions found within the NAS. The specific values of the IHS field are as follows:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット B LSE の IHS フィールドは、NAS でエンコードされたすべての NAI の範囲を示します。スコープは、MPLS パス上のどのノードが NAS 内で見つかったネットワーク アクションを実行するかを定義します。IHS フィールドの具体的な値は次のとおりです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+                    +======+=========================+
+                    | Bits | Scope                   |
+                    +======+=========================+
+                    | 00   | I2E                     |
+                    +------+-------------------------+
+                    | 01   | HbH                     |
+                    +------+-------------------------+
+                    | 10   | Select                  |
+                    +------+-------------------------+
+                    | 11   | Reserved for future use |
+                    +------+-------------------------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-24">
+Table 2: IHS Scope Values
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-24">
+表 2: IHS 範囲の値
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ingress to Egress (I2E):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+入力から出力へ (I2E):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The network actions in this NAS MUST NOT be processed by any node except the egress node.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+この NAS のネットワーク アクションは、出力ノード以外のノードによって処理されてはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Hop-by-Hop (HbH):
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ホップバイホップ (HbH):
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+All nodes along the path MUST process the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+パス上のすべてのノードは NAS を処理しなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Select:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+選択してください:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Only specific nodes along the path that bring NAS to the top of the stack will perform the action.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+NAS をスタックの最上位に置くパス上の特定のノードのみがアクションを実行します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A given NAS can only carry NAIs with the same scope (I2E/HbH/Select). To support multiple scopes for a single packet, multiple NASes MAY be included in a single label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+特定の NAS は、同じスコープ (I2E/HbH/Select) の NAI のみを伝送できます。単一のパケットに対して複数のスコープをサポートするために、複数の NAS を単一のラベル スタックに含めることができます (MAY)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The egress node is included in the HbH scope. This implies that the penultimate node MUST NOT remove a NAS with HbH scope. The egress node may receive a NAS at the top of the label stack as discussed in Section 9.4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+出口ノードは HbH スコープに含まれます。これは、最後から 2 番目のノードが HbH スコープを持つ NAS を削除してはいけないことを意味します。セクション9.4で説明したように、出口ノードはラベルスタックの最上位でNASを受け取る場合があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A NAS with I2E scope, if present, MUST be encoded after any HbH or Select scope NASes. This makes it easier for the transit nodes to process a NAS with HbH or Select scope.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+I2E スコープを備えた NAS (存在する場合) は、HbH または Select スコープ NAS の後にエンコードする必要があります。これにより、トランジット ノードが HbH または Select スコープを使用して NAS を処理することが容易になります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+If a packet is received with the IHS scope set to &#34;Reserved for future use&#34;, the packet is processed based on the U bit in the Format B LSE in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IHS スコープが「将来の使用のために予約」に設定されたパケットを受信した場合、パケットは NAS のフォーマット B LSE の U ビットに基づいて処理されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-4--Unknown-Network-Action-Handling">
+5.4. Unknown Network Action Handling
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.4. 不明なネットワークアクションの処理
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The Unknown Network Action Handling (U) field in a Format B LSE (Section 4.2) and Format C LSE (Section 4.3) is a 1-bit value that defines the action to be taken by a node that does not understand an action within the NAS. The different types of Unknown Network Action Handling actions are defined below.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+フォーマット B LSE (セクション 4.2) およびフォーマット C LSE (セクション 4.3) の Unknown Network Action Handling (U) フィールドは、NAS 内のアクションを理解できないノードが実行するアクションを定義する 1 ビットの値です。さまざまなタイプの不明なネットワーク アクション処理アクションを以下に定義します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+                       +=====+=====================+
+                       | Bit | Action              |
+                       +=====+=====================+
+                       | 0   | Skip to the next NA |
+                       +-----+---------------------+
+                       | 1   | Drop the packet     |
+                       +-----+---------------------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-26">
+Table 3: Unknown Network Action Handling
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-26">
+表 3: 不明なネットワーク アクションの処理
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+When a packet with an Unknown Network Action Handling is dropped, the node should maintain a local counter for this event and may send a rate-limited notification to the operator.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+不明なネットワーク アクション処理を伴うパケットがドロップされた場合、ノードはこのイベントのローカル カウンタを維持する必要があり、レート制限された通知をオペレータに送信する場合があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-5--Ordering">
+5.5. Ordering
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.5. 注文
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The network actions encoded in the NAS MUST be processed in the order that they appear in the NAS, from the top of the NAS to the bottom. NAIs encoded as flags (see Section 6.2) MUST be processed from the most significant bit to the least significant bit. If a label stack contains multiple NASes, they MUST be processed in the order that they appear in the label stack, subject to the restrictions in Section 7.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAS 内でエンコードされたネットワーク アクションは、NAS に表示される順序で、NAS の上部から下部まで処理されなければなりません。フラグとしてエンコードされた NAI (セクション 6.2 を参照) は、最上位ビットから最下位ビットまで処理されなければなりません (MUST)。ラベル スタックに複数の NAS が含まれる場合、セクション 7 の制限に従って、ラベル スタックに表示される順序で処理しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6--Special-Opcodes">
+6. Special Opcodes
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6. 特別なオペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Below are the special opcodes defined to build a basic in-stack MNA solution and assigned in the &#34;Network Action Opcodes&#34; IANA registry (see Section 13.2.2). In the future, additional special opcodes may be defined and their code points assigned from this registry.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+以下は、基本的なスタック内 MNA ソリューションを構築するために定義され、「ネットワーク アクション オペコード」IANA レジストリに割り当てられた特別なオペコードです (セクション 13.2.2 を参照)。将来的には、追加の特別なオペコードが定義され、そのコード ポイントがこのレジストリから割り当てられる可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6-1--bSPL-Protection">
+6.1. bSPL Protection
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6.1. bSPL 保護
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+0
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+0
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Purpose:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+目的：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Legacy implementations may scan the label stack looking for bSPL values. As long as the opcode field is non-zero, an LSE cannot be misinterpreted as containing a bSPL. Therefore, opcode 0 is reserved and not to be used.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+従来の実装では、ラベル スタックをスキャンして bSPL 値を探す場合があります。opcode フィールドがゼロ以外である限り、LSE が bSPL を含むものとして誤って解釈されることはありません。したがって、オペコード 0 は予約されており、使用されません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6-2--Flag-Based-NAIs-Without-AD">
+6.2. Flag-Based NAIs Without AD
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6.2. AD を使用しないフラグベースの NAI
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+1
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+1
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Purpose:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+目的：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This opcode is used for network actions that do not require AD. A single flag can be used to indicate each of these network actions.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このオペコードは、AD を必要としないネットワーク アクションに使用されます。単一のフラグを使用して、これらのネットワーク アクションのそれぞれを示すことができます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Formats:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE フォーマット:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+B, C, D
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+B、C、D
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The data field carries NAIs, which should be evaluated from the most significant bit to the least significant bit. If this opcode is used with LSE Format B only, then up to 13 flags may be carried. If this opcode is used with LSE Format C only, then up to 20 flags may be carried. Format D LSEs can be used with Format C LSEs to encode more than 20 flags. Flags are assigned from the &#34;Network Action Flags Without Ancillary Data&#34; registry (Section 13.2.1). If flags need to be evaluated in a different order, multiple LSEs using this opcode may be used to specify the requested order. The Flag-Based NAIs MUST follow the procedure for data specified in Section 5.2.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+データ フィールドには NAI が含まれており、最上位ビットから最下位ビットまで評価する必要があります。このオペコードが LSE フォーマット B のみで使用される場合、最大 13 個のフラグを伝送できます。このオペコードが LSE フォーマット C のみで使用される場合、最大 20 個のフラグを保持できます。フォーマット D LSE をフォーマット C LSE と一緒に使用すると、20 を超えるフラグをエンコードできます。フラグは、「補助データを含まないネットワーク アクション フラグ」レジストリ (セクション 13.2.1) から割り当てられます。フラグを別の順序で評価する必要がある場合は、このオペコードを使用する複数の LSE を使用して、要求された順序を指定できます。フラグベースの NAI は、セクション 5.2 で指定されたデータの手順に従わなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Scope:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+範囲：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This opcode can be used with any scope.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このオペコードは任意のスコープで使用できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6-3--No-Operation-Opcode">
+6.3. No-Operation Opcode
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6.3. ノーオペレーションオペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+2
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+2
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Purpose:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+目的：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This opcode is used to indicate that it does not perform any network action and MUST be skipped.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このオペコードは、ネットワーク アクションを実行しないため、スキップしなければならないことを示すために使用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSE Format:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+LSEフォーマット:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+B
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+B
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Scope:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+範囲：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Any scope value may be set and MUST be ignored.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+任意のスコープ値を設定できますが、無視しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6-4--Extension-Opcode">
+6.4. Extension Opcode
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6.4. 拡張オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+127
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+127
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Purpose:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+目的：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This opcode is used to extend the current opcode range beyond 127 in the future. If this opcode is not supported, then the packet with opcode 127 MUST be dropped regardless of the setting of the U bit. Use of this opcode is outside the scope of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このオペコードは、現在のオペコード範囲を将来 127 を超えて拡張するために使用されます。このオペコードがサポートされていない場合、U ビットの設定に関係なく、オペコード 127 を持つパケットはドロップされなければなりません (MUST)。このオペコードの使用は、このドキュメントの範囲外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="7--NAS-Placement-in-the-Label-Stack">
+7. NAS Placement in the Label Stack
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+7. ラベル スタック内の NAS の配置
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The node adding a NAS to the label stack places a copy of the NAS where the relevant nodes can read it. Each downstream node along the path has a Readable Label Depth (RLD). If the NAS is to be processed by a downstream MNA-capable node, then the entire NAS MUST be placed so that it is within RLD by the time the packet reaches the downstream MNA-capable node. The RLD of the downstream MNA-capable node MUST be learned as described in Section 2.3.1 of [RFC9789].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ラベル スタックに NAS を追加するノードは、関連するノードがそれを読み取ることができる場所に NAS のコピーを配置します。パスに沿った各下流ノードには、読み取り可能なラベル深さ (RLD) があります。NAS がダウンストリーム MNA 対応ノードによって処理される場合、パケットがダウンストリーム MNA 対応ノードに到達するまでに NAS 全体が RLD 内に収まるように配置する必要があります。下流の MNA 対応ノードの RLD は、[RFC9789] のセクション 2.3.1 の説明に従って学習しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+If the label stack is deep, several copies of the NAS may need to be encoded in the label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ラベル スタックが深い場合、NAS のいくつかのコピーをラベル スタック内でエンコードする必要がある場合があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+For a NAS with HbH scope, every node will process the top copy of the NAS. However, the NAS MUST NOT appear at the top of the stack at any MNA-incapable node on the path that is ensured by the encapsulating node using the node capability, as described in Section 8.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+HbH スコープを備えた NAS の場合、すべてのノードが NAS の最上位コピーを処理します。ただし、NAS は、セクション 8 で説明されているように、ノード機能を使用してカプセル化ノードによって保証されるパス上の MNA 非対応ノードのスタックの最上位に表示されてはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A NAS MUST NOT appear at the top of the stack after popping the forwarding label on an MNA-incapable node on the path.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+パス上の MNA 非対応ノードで転送ラベルをポップした後、NAS がスタックの最上位に表示されてはなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The behavior of a node where a NAS with I2E and HbH scopes is also removed along with popping the forwarding label on a PHP node is outside the scope of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+I2E および HbH スコープを持つ NAS も削除され、PHP ノードで転送ラベルがポップされるノードの動作は、このドキュメントの範囲外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A NAS with Select scope is processed by the node that brings the NAS to the top of the stack (for example, in the case of using the MPLS label pop operation in Segment Routing); then, the NAS is removed from the stack. The Select scope NAS needs to be inserted after the forwarding label and before the next forwarding label. It could be inserted before or after a NAS with HbH scope. Note that the case of a NAS with Select scope with an MPLS label swap operation (for example, with RSVP-TE LSPs) is for future study.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+選択スコープを持つ NAS は、NAS をスタックの最上位にするノードによって処理されます (たとえば、セグメント ルーティングで MPLS ラベル ポップ操作を使用する場合)。その後、NAS はスタックから削除されます。スコープの選択 NAS は、転送ラベルの後、次の転送ラベルの前に挿入する必要があります。HbH スコープを備えた NAS の前後に挿入できます。MPLS ラベル スワップ操作 (RSVP-TE LSP など) を使用する選択スコープを備えた NAS のケースは今後の検討課題であることに注意してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+For a NAS with I2E scope, only one copy of the NAS needs to be added at the bottom of the stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+I2E スコープの NAS の場合、スタックの一番下に追加する必要があるのは NAS のコピー 1 つだけです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A transit node that is not the penultimate node that pops a forwarding label and exposes a copy of a NAS MUST remove that NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+転送ラベルをポップして NAS のコピーを公開する最後から 2 番目のノードではないトランジット ノードは、その NAS を削除しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+An MNA-capable node performing Penultimate Hop Popping (PHP) that pops the forwarding label with only the NAS(es) remaining on the stack MUST NOT remove the NAS(es). Instead, it forwards the packet with the NAS(es) at the top of the stack to the next node. Note that the behavior of the PHP node, as defined in [RFC3270] for TC processing and as defined in [RFC3443] for TTL processing, is not modified regardless of whether the PHP node supports MNA.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+スタック上に NAS のみを残して転送ラベルをポップする、PHP (Penultimate Hop Popping) を実行する MNA 対応ノードは、NAS を削除してはなりません (MUST NOT)。代わりに、スタックの最上位にある NAS を持つパケットを次のノードに転送します。TC 処理については [RFC3270] で定義され、TTL 処理については [RFC3443] で定義されているように、PHP ノードの動作は、PHP ノードが MNA をサポートするかどうかに関係なく変更されないことに注意してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The node that receives the NAS at the top of the label stack MUST process and remove it.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ラベルスタックの最上位で NAS を受け取るノードは、NAS を処理して削除する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="7-1--Actions-When-Pushing-Labels">
+7.1. Actions When Pushing Labels
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+7.1. ラベルをプッシュするときのアクション
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+An MNA-capable node may need to push additional labels as well as push new network actions onto a received packet.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA 対応ノードは、受信パケットに新しいネットワーク アクションをプッシュするだけでなく、追加のラベルをプッシュする必要がある場合があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+While pushing additional labels onto the label stack of the received packet, the MNA-capable node MUST verify that the entire topmost NAS with HbH scope is still within the RLD of the downstream MNA-capable nodes. If required, the MNA-capable node MAY create a copy of the topmost NAS with HbH scope and insert it within the RLD of the downstream MNA-capable nodes on the label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA 対応ノードは、受信パケットのラベル スタックに追加のラベルをプッシュする際、HbH スコープを持つ最上位の NAS 全体が依然として下流の MNA 対応ノードの RLD 内にあることを確認しなければなりません (MUST)。必要に応じて、MNA 対応ノードは、HbH スコープを持つ最上位の NAS のコピーを作成し、それをラベル スタック上の下流 MNA 対応ノードの RLD 内に挿入してもよい(MAY)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+When an MNA-capable node needs to push a new NAS with HbH scope on to a received packet that already has a NAS with HbH scope, it SHOULD copy (and merge) the network actions (including their AD) from the received topmost NAS with HbH scope in the new NAS with HbH scope. The new NAS MUST be placed within the RLD of the downstream MNA-capable nodes. This behavior can be based on local policy.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA 対応ノードが、HbH スコープを持つ新しい NAS を、すでに HbH スコープを持つ NAS を持つ受信パケットにプッシュする必要がある場合、受信した HbH スコープを持つ最上位の NAS からのネットワーク アクション (AD を含む) を、HbH スコープを持つ新しい NAS にコピー (およびマージ) する必要があります (SHOULD)。新しい NAS は、ダウンストリームの MNA 対応ノードの RLD 内に配置する必要があります。この動作はローカル ポリシーに基づいている可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The new network actions added MUST NOT conflict with the network actions in the received NAS with HbH scope. The mechanism to resolve such conflicts depends on the network actions and can be based on local policy. The MNA-capable node that pushes entries MUST understand any network actions that it is pushing that may result in a conflict and MUST resolve any conflicts between new and received network actions. In the usual case of a conflict of duplicating a network action, the definition of a network action MUST give guidance on conflict resolution.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+追加された新しいネットワーク アクションは、HbH スコープを持つ受信した NAS のネットワーク アクションと競合してはなりません。このような競合を解決するメカニズムはネットワークのアクションに依存し、ローカル ポリシーに基づいて行うことができます。エントリをプッシュする MNA 対応ノードは、競合を引き起こす可能性のあるプッシュしているネットワーク アクションを理解しなければならず (MUST)、新しいネットワーク アクションと受信したネットワーク アクション間の競合を解決しなければなりません (MUST)。ネットワークアクションの複製による競合の通常の場合、ネットワークアクションの定義は競合解決に関する指針を提供しなければなりません(MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="8--Node-Capability-Signaling">
+8. Node Capability Signaling
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+8. ノード機能のシグナリング
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The encapsulating node MUST make sure that the NAS can be processed by the transit and egress nodes. In addition, the encapsulated packet MUST NOT exceed the path MTU as described in [RFC3032].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+カプセル化ノードは、NAS が通過ノードと出力ノードによって処理できることを確認しなければなりません。さらに、カプセル化されたパケットは、[RFC3032] に記載されているパス MTU を超えてはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The node responsible for selecting a path through the MPLS network needs to know and consider the MNA-capabilities and RLD of the transit nodes as well as the MNA-capabilities of the egress node as described in Section 2.3 of [RFC9789].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MPLS ネットワークを介したパスの選択を担当するノードは、[RFC9789] のセクション 2.3 で説明されているように、通過ノードの MNA 機能と RLD、さらに出口ノードの MNA 機能を知り、考慮する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Information about the capabilities of the nodes may be configured, collected through management protocols, or distributed by control protocols (such as advertising by routing protocols).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ノードの機能に関する情報は、管理プロトコルを通じて構成、収集、または制御プロトコル (ルーティング プロトコルによる広告など) によって配布できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The node responsible for selecting a path through the MPLS network learns about the capabilities of nodes using mechanisms that are out of scope for this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MPLS ネットワークを介したパスの選択を担当するノードは、このドキュメントの範囲外であるメカニズムを使用してノードの機能を学習します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* In the case of Segment Routing over MPLS (SR-MPLS), as well as the RLD, the path computation system needs to know the Maximum SID Depth (MSD) [RFC8664] that can be imposed at the ingress node of a given SR path. This ensures that the label stack depth of a computed path does not exceed the maximum number of labels (i.e., MSD) the node is capable of imposing and the maximum number of labels that can be read by the MNA-processing nodes in the path. The MSD MUST include the MNA Sub-Stacks that will be added.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Segment Routing over MPLS (SR-MPLS) および RLD の場合、パス計算システムは、特定の SR パスの入口ノードに適用できる最大 SID 深さ (MSD) [RFC8664] を知っている必要があります。これにより、計算されたパスのラベル スタックの深さが、ノードが課すことができるラベルの最大数 (つまり、MSD) と、パス内の MNA 処理ノードによって読み取られるラベルの最大数を超えないことが保証されます。MSD には、追加される MNA サブスタックが含まれなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The encapsulating node MUST learn about the RLD of the nodes in the path as described in Section 2.3.1 of [RFC9789].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* カプセル化ノードは、[RFC9789] のセクション 2.3.1 で説明されているように、パス内のノードの RLD について学習しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="9--Processing-the-Network-Action-Sub-Stack">
+9. Processing the Network Action Sub-Stack
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+9. ネットワークアクションサブスタックの処理
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This section defines the specific responsibilities for nodes along an LSP [RFC3031].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このセクションでは、LSP [RFC3031] に沿ったノードの特定の責任を定義します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="9-1--Encapsulating-Node-Responsibilities">
+9.1. Encapsulating Node Responsibilities
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+9.1. ノードの責任のカプセル化
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The encapsulating node MAY add NASes to the label stack in accordance with its policies, the placement restrictions in Section 7, and the capabilities learned from Section 8.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+カプセル化ノードは、そのポリシー、セクション 7 の配置制限、およびセクション 8 から学んだ機能に従って、ラベル スタックに NAS を追加してもよい(MAY)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+If there is an existing label stack, the encapsulating node MUST NOT modify the first 20 bits of any LSE in the label stack when the ECMP technique in the network uses hashing of the labels on the label stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+既存のラベル スタックが存在する場合、ネットワークの ECMP 技術がラベル スタック上のラベルのハッシュを使用する場合、カプセル化ノードはラベル スタック内の LSE の最初の 20 ビットを変更してはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="9-2--Transit-Node-Responsibilities">
+9.2. Transit Node Responsibilities
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+9.2. トランジットノードの責任
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The transit node is the node that processes a NAS in the label stack but does not push any new NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+トランジット ノードは、ラベル スタック内の NAS を処理しますが、新しい NAS をプッシュしないノードです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The transit node MUST follow the procedure for data specified in Section 5.2.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+トランジットノードは、セクション 5.2 で指定されたデータの手順に従わなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Transit nodes MUST process the NASes in the label stack according to the rules set out in Section 5.5.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+トランジットノードは、セクション 5.5 に定められたルールに従って、ラベルスタック内の NAS を処理しなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A transit node that processes a NAS and does not recognize the value of an opcode MUST follow the rules according to the setting of the Unknown Network Action Handling value in the NAS as described in Section 5.4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAS を処理し、オペコードの値を認識しないトランジット ノードは、セクション 5.4 で説明されているように、NAS の不明なネットワーク アクション処理値の設定に従ったルールに従わなければなりません (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="9-3--Penultimate-Node-Responsibilities">
+9.3. Penultimate Node Responsibilities
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+9.3. 最後から 2 番目のノードの責任
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In addition to the transit node responsibilities, the penultimate node and penultimate SR-MPLS segment node MUST NOT remove the last copy of an HbH or I2E NAS when it is exposed after removing the forwarding (transport) label. This allows the egress node to process the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+トランジット ノードの責任に加えて、最後から 2 番目のノードおよび最後から 2 番目の SR-MPLS セグメント ノードは、転送 (トランスポート) ラベルを削除した後に HbH または I2E NAS が公開された場合、その最後のコピーを削除してはなりません。これにより、出力ノードが NAS を処理できるようになります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="9-4--Egress-Node-Responsibilities">
+9.4. Egress Node Responsibilities
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+9.4. 出口ノードの責任
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The egress node MUST remove any NAS it receives.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+出口ノードは、受信した NAS を削除しなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="10--Network-Action-Indicator-Opcode-Definition">
+10. Network Action Indicator Opcode Definition
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+10. ネットワークアクションインジケーターのオペコード定義
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following information MUST be defined for a new NAI opcode request in the document that specifies the network action. This updates the list found in Section 5 of [RFC9789] and should be used instead of that list.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+次の情報は、ネットワークアクションを指定する文書内の新しい NAI オペコード要求に対して定義されなければなりません (MUST)。これは [RFC9789] のセクション 5 にあるリストを更新するものであり、そのリストの代わりに使用する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Format:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+形式：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The definition of the new network action MUST specify the LSE formats. The opcode can define the network action in Format B or C or both Formats B and C. Both Format B and C LSEs MAY optionally carry Format D LSEs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+新しいネットワーク アクションの定義では、LSE 形式を指定する必要があります。オペコードは、フォーマット B または C、またはフォーマット B と C の両方でネットワーク アクションを定義できます。フォーマット B と C の両方の LSE は、オプションでフォーマット D LSE を運ぶことができます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Scope:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+範囲：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The definition of the new network action MUST specify at least one scope (I2E, HbH, Select) for the network action and MAY specify more than one scope.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+新しいネットワーク アクションの定義では、ネットワーク アクションに対して少なくとも 1 つのスコープ (I2E、HbH、Select) を指定しなければなりません (MUST)。また、複数のスコープを指定してもよいです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The definition of the new network action MUST specify the quantity, syntax, and semantics of any associated AD. The AD MAY be variable length, but the NAL MUST be computable based on the data added in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+新しいネットワーク アクションの定義では、関連付けられた AD の量、構文、およびセマンティクスを指定する必要があります。AD は可変長であってもよい (MAY) が、NAL は NAS に追加されたデータに基づいて計算可能でなければならない (MUST)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Processing:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+処理：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The definition of the new network action MUST specify the detailed procedure for processing the network action.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+新しいネットワークアクションの定義では、ネットワークアクションを処理するための詳細な手順を指定しなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Interactions:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+インタラクション:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The definition of the new network action MUST specify its interaction including merging with other currently defined network action if there is any.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+新しいネットワーク アクションの定義では、現在定義されている他のネットワーク アクション (存在する場合) とのマージを含む相互作用を指定する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+An assignment for a NAI MAY make requests from any combination of the &#34;Network Action Opcodes&#34; or &#34;Network Action Flags Without Ancillary Data&#34; assignments (see Section 13). This decision should optimize for eventual encoding efficiency. If the NAI does not require any AD, then a flag is preferred as only one bit is used in the encoding.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAI の割り当ては、「ネットワーク アクション オペコード」または「補助データのないネットワーク アクション フラグ」割り当ての任意の組み合わせからリクエストを行ってもよい(セクション 13 を参照)。この決定により、最終的なエンコード効率が最適化されます。NAI が AD を必要としない場合は、エンコードで 1 ビットのみが使用されるため、フラグが推奨されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="11--Security-Considerations">
+11. Security Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+11. セキュリティに関する考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The security considerations in [RFC3032] and [RFC9789] also apply to this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+[RFC3032] および [RFC9789] のセキュリティに関する考慮事項は、この文書にも適用されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In addition, MNA creates a new dimension in security concerns:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+さらに、MNA はセキュリティ上の懸念に新たな次元をもたらします。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The actions of an encapsulating node can affect any or all of the nodes along the path. In the most common and benign situations, a syntactically incorrect packet could result in packet loss or corruption, for example.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* カプセル化ノードのアクションは、パス上の任意のノードまたはすべてのノードに影響を与える可能性があります。最も一般的で問題のない状況では、構文的に正しくないパケットにより、パケットの損失や破損などが発生する可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The semantics of a network action are unbounded and may be insecure. A network action could be defined that makes arbitrary changes to the memory of the forwarding router, which could then be used by the encapsulating node to compromise every MNA-capable router in the network.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ネットワーク アクションのセマンティクスには制限がなく、安全でない可能性があります。転送ルーターのメモリに任意の変更を加えるネットワーク アクションを定義すると、カプセル化ノードがその変更を使用して、ネットワーク内のすべての MNA 対応ルーターを侵害する可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The MNA architecture supports locally defined network actions. For such actions, there will be limited oversight to ensure that the semantics do not create security issues. Implementors and network operators will need to ensure that even the locally defined network actions do not compromise the security of the network by following the security considerations specified in this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNA アーキテクチャは、ローカルに定義されたネットワーク アクションをサポートします。このようなアクションについては、セマンティクスによってセキュリティ上の問題が発生しないことを保証するために、限定的な監視が行われます。実装者とネットワーク オペレータは、このドキュメントで指定されているセキュリティに関する考慮事項に従って、ローカルで定義されたネットワーク アクションであってもネットワークのセキュリティを侵害しないようにする必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The MPLS domain border nodes MUST ensure that the MPLS packets with MNA from any domain with a different administrative control can be filtered to prevent entering the provider MPLS domain. The filtering capability MAY be enabled on a per-network-action basis, and it can be based on a local policy. The filtering capability MUST be implemented on those nodes before deploying MNA in the provider MPLS domain. The RLD on the filtering node MUST be higher than the RLD on all other nodes in the provider MPLS domain.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MPLS ドメイン境界ノードは、異なる管理制御を持つドメインからの MNA を持つ MPLS パケットがプロバイダー MPLS ドメインに入らないようにフィルタリングできることを保証しなければなりません (MUST)。フィルタリング機能は、ネットワーク アクションごとに有効にすることができます (MAY)。また、ローカル ポリシーに基づいて有効にすることもできます。フィルタリング機能は、プロバイダー MPLS ドメインに MNA を展開する前に、これらのノードに実装する必要があります。フィルタリング ノードの RLD は、プロバイダ MPLS ドメイン内の他のすべてのノードの RLD よりも高くなければなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* The MNA architecture supports modifying the AD on the intermediate nodes so the critical network functions either should not rely on the data or should be aware of the risks and use other means to verify the security of the whole network.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNA アーキテクチャは中間ノード上の AD の変更をサポートしているため、重要なネットワーク機能はデータに依存しないか、リスクを認識して他の手段を使用してネットワーク全体のセキュリティを検証する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* System designers must be aware that information included in AD may be transmitted &#34;in the clear&#34;. Network actions that require the exchange of sensitive data MUST be defined in such a way that the data is encrypted in transit. Otherwise, sensitive data MUST NOT be transmitted using these mechanisms.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* システム設計者は、AD に含まれる情報が「平文」で送信される可能性があることを認識する必要があります。機密データの交換を必要とするネットワーク アクションは、転送中にデータが暗号化されるような方法で定義しなければなりません。それ以外の場合は、これらのメカニズムを使用して機密データを送信してはなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Mis-delivery of a packet due to malformed forwarding action data could be considered a security risk.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* 不正な転送アクション データによるパケットの誤配信は、セキュリティ リスクとみなされる可能性があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="12--Operational-Considerations">
+12. Operational Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+12. 運用上の考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="12-1--Manageability-Considerations">
+12.1. Manageability Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+12.1. 管理性に関する考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+An MNA implementation MAY collect the following counters:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA 実装は、次のカウンタを収集してもよい (MAY)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Packets with MNA received
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNAを含むパケットを受信しました
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNA Sub-Stacks processed
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* 処理された MNA サブスタック
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNA per-network-action counters
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* MNA ネットワークアクションごとのカウンター
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Packets with MNA dropped due to unknown actions
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* 不明なアクションにより MNA を含むパケットがドロップされる
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Packets with MNA skipped due to unknown actions
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* 不明なアクションにより MNA を含むパケットがスキップされる
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Packets with MNA dropped due to malformed NAS
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* 不正な形式の NAS により MNA を含むパケットがドロップされる
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Additionally, tracking both successful invocations and failures for each specific network action is RECOMMENDED to provide granular visibility. Nodes MAY generate rate-limited notifications or alarms for significant operational events, such as sustained high rates of MNA packet drops or frequent encounters of malformed MNA Sub-Stacks, to alert operators to potential issues. Comprehensive logging of MNA processing details and outcomes can aid in the network diagnostics and post-mortem analysis.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+さらに、詳細な可視性を提供するために、特定のネットワーク アクションごとに成功した呼び出しと失敗した呼び出しの両方を追跡することが推奨されます。ノードは、潜在的な問題についてオペレータに警告するために、継続的な高率の MNA パケットドロップや不正な MNA サブスタックの頻繁な遭遇などの重大な運用イベントに対して、レート制限された通知またはアラームを生成してもよい(MAY)。MNA 処理の詳細と結果の包括的なログは、ネットワーク診断と事後分析に役立ちます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="12-2--Performance-and-Scale-Considerations">
+12.2. Performance and Scale Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+12.2. パフォーマンスとスケールの考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Performance and scale assessments are outside the scope of this document; the authors of any future MNA application documents are encouraged to address them.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+パフォーマンスとスケールの評価は、このドキュメントの範囲外です。将来の MNA 申請書類の作成者は、それらに対処することが推奨されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="12-3--Backward-Compatibility">
+12.3. Backward Compatibility
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+12.3. 下位互換性
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This section discusses interactions between MNA-capable and MNA-incapable nodes.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このセクションでは、MNA 対応ノードと MNA 非対応ノード間の対話について説明します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+An MNA encapsulating node MUST ensure that the MPLS NAS is not at the top of the MPLS label stack when the packet arrives at an MNA-incapable node. If such a packet did arrive at an MNA-incapable node, it will most likely be dropped as described in Section 2.1.1 of [RFC7325].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA カプセル化ノードは、パケットが MNA 非対応ノードに到着するときに、MPLS NAS が MPLS ラベル スタックの最上位にないことを保証しなければなりません (MUST)。そのようなパケットが MNA 非対応ノードに到着した場合、[RFC7325] のセクション 2.1.1 で説明されているようにドロップされる可能性が高くなります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Any node could scan the label stack, potentially looking for a label value containing a bSPL. To ensure that the LSE formats described herein do not appear to contain a bSPL value, the opcode value of 0 has been reserved. By ensuring that there is a non-zero value in the high-order 7 bits, we are assured that the high-order 20 bits cannot be misinterpreted as containing a bSPL value (0-15).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+どのノードもラベル スタックをスキャンして、bSPL を含むラベル値を探す可能性があります。ここで説明する LSE フォーマットに bSPL 値が含まれていないようにするために、オペコード値 0 が予約されています。上位 7 ビットにゼロ以外の値が存在することを保証することで、上位 20 ビットが bSPL 値 (0 ～ 15) を含むものとして誤って解釈されないことが保証されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The TC and TTL values of the Format A LSE are not repurposed for encoding, as the penultimate node on the MPLS packet path may propagate TTL from the transport (or forwarding) label to the next label on the label stack, overwriting the TTL on the next label. If the penultimate node is a legacy node, it might perform this action, potentially corrupting other values stored in the TC and TTL values. To protect against this, we retain the TC and TTL values in the Format A LSE.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MPLS パケット パス上の最後から 2 番目のノードがトランスポート (または転送) ラベルからラベル スタック上の次のラベルに TTL を伝播し、次のラベルの TTL を上書きする可能性があるため、フォーマット A LSE の TC 値と TTL 値はエンコードには再利用されません。最後から 2 番目のノードがレガシー ノードである場合、このアクションが実行され、TC 値と TTL 値に格納されている他の値が破損する可能性があります。これを防ぐために、TC 値と TTL 値をフォーマット A LSE に保持します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+When adding the Entropy Label Indicator (ELI) (bSPL 7) and Entropy Label (EL) as defined in [RFC6790], along with an MNA NAS, the RLD MUST be considered for the placement of both, and they both can be placed in any order. If a transit LSR chooses to use as much of the whole label stack as feasible as a key for the load-balancing function, the MNA-reserved label MUST NOT be used as a key for the load-balancing function, as specified in Section 4.3 of [RFC6790]. Note that the behavior of an MNA-incapable transit LSR that scans the label stack for ELI and EL but encounters a different, unrecognized reserved label first, is not modified by this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+MNA NAS とともに、[RFC6790] で定義されているエントロピー ラベル インジケーター (ELI) (bSPL 7) とエントロピー ラベル (EL) を追加する場合、両方の配置について RLD を考慮しなければならず (MUST)、両方を任意の順序で配置できます。トランジット LSR が負荷分散機能のキーとして可能な限りラベル スタック全体を使用することを選択した場合、[RFC6790] のセクション 4.3 に規定されているように、MNA が予約したラベルを負荷分散機能のキーとして使用してはなりません (MUST NOT)。ELI および EL のラベル スタックをスキャンするが、最初に異なる認識されていない予約ラベルに遭遇する MNA 非対応のトランジット LSR の動作は、このドキュメントでは変更されないことに注意してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Similarly, when adding the Flow-ID Label Indicator (FLI) (including the extension label 15) and Flow-ID Label (FL) as defined in [RFC9714], along with an MNA NAS, the RLD MUST be considered for the placement of both, and they both can be placed in any order. Note that the behavior of an MNA-incapable transit LSR that scans the label stack for FLI (including the extension label 15) and FL, but encounters a different, unrecognized reserved label first, is not modified by this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+同様に、[RFC9714] で定義されている Flow-ID Label Indicator (FLI) (拡張ラベル 15 を含む) と Flow-ID Label (FL) を MNA NAS とともに追加する場合、両方の配置について RLD を考慮しなければならず (MUST)、両方を任意の順序で配置できます。FLI (拡張ラベル 15 を含む) および FL のラベル スタックをスキャンするが、最初に異なる認識されていない予約ラベルに遭遇する MNA 非対応トランジット LSR の動作は、この文書では変更されないことに注意してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+However, as the existing behavior is not specified for transit LSRs, upon encountering any unrecognized bSPLs or extended SPLs (eSPLs) below the top of the label stack, some existing implementations may have chosen to implement non-standardized actions, such as discarding packets. Any uses of a new bSPL or eSPL would cause issues with such existing implementations using the non-standardized actions upon encountering unrecognized bSPLs or eSPLs below the top of the label stack. Since this is a generic problem, any clarifications for the treatment of unrecognized bSPL or eSPL are outside the scope of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ただし、既存の動作はトランジット LSR に対して指定されていないため、ラベル スタックの最上位より下で認識されていない bSPL または拡張 SPL (eSPL) に遭遇すると、一部の既存の実装では、パケットの破棄などの非標準化アクションの実装を選択している可能性があります。新しい bSPL または eSPL を使用すると、ラベル スタックの最上部より下に認識されない bSPL または eSPL が発生したときに、標準化されていないアクションを使用する既存の実装で問題が発生します。これは一般的な問題であるため、認識されていない bSPL または eSPL の処理に関する説明は、この文書の範囲外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="13--IANA-Considerations">
+13. IANA Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+13. IANAの考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="13-1--MNA-bSPL-Label">
+13.1. MNA bSPL Label
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+13.1. MNA bSPL ラベル
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA has allocated the value 4 for the MNA bSPL label from the &#34;Base Special-Purpose MPLS Label Values&#34; registry to indicate the presence of an MNA Sub-Stack in the label stack. The description of the value is &#34;MPLS Network Actions&#34;.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA は、ラベル スタック内の MNA サブスタックの存在を示すために、「Base Special-Purpose MPLS Label Values」レジストリから MNA bSPL ラベルに値 4 を割り当てました。値の説明は「MPLS ネットワーク アクション」です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="13-2--MPLS-Network-Actions-Parameters">
+13.2. MPLS Network Actions Parameters
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+13.2. MPLSネットワークアクションパラメータ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA has created a registry group called &#34;MPLS Network Actions&#34;. This registry group contains the &#34;Network Action Flags Without Ancillary Data&#34; registry (see Section 13.2.1) and the &#34;Network Action Opcodes&#34; registry (see Section 13.2.2).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA は、「MPLS Network Actions」と呼ばれるレジストリ グループを作成しました。このレジストリ グループには、「補助データのないネットワーク アクション フラグ」レジストリ (セクション 13.2.1 を参照) および「ネットワーク アクション オペコード」レジストリ (セクション 13.2.2 を参照) が含まれています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="13-2-1--Network-Action-Flags-Without-Ancillary-Data">
+13.2.1. Network Action Flags Without Ancillary Data
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+13.2.1. 補助データのないネットワーク アクション フラグ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+For the &#34;Network Action Flags Without Ancillary Data&#34; registry, registration requests should comply with Section 10. Depending on the range, the registration procedure for this registry is &#34;IETF Review&#34;, &#34;Experimental Use&#34;, or &#34;Private Use&#34; (as defined in [RFC8126]). The fields in this registry are &#34;Bit Position&#34; (integer), &#34;Description&#34; (string), and &#34;Reference&#34; (string).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+「補助データを含まないネットワーク アクション フラグ」レジストリの場合、登録要求はセクション 10 に準拠する必要があります。範囲に応じて、このレジストリの登録手順は「IETF レビュー」、「実験的使用」、または ([RFC8126] で定義されている) 「私的使用」になります。このレジストリのフィールドは、「ビット位置」(整数)、「説明」(文字列)、および「参照」(文字列) です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Bit Position refers to the position relative to the most significant bit in LSE Format B or C Data fields and any subsequent Format D LSEs. Bit Position 0 is the most significant bit in an LSE Format B or C Data field. Bit Position 20 is the most significant bit in the first LSE Format D Data field. There are 20 bits available in LSE Format C and 30 bits available in LSE Format D. There are, at most, 14 Format D LSEs per opcode (due to the NASL limit of 15 and the constraint of Format D requiring a Format C LSE), so there are at most 20 + 14 * 30 = 440 bit positions. The value listed in the Bit Position column is an integer with value between 0-439. The initial registry has no entries.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ビット位置とは、LSE フォーマット B または C データ フィールドおよび後続のフォーマット D LSE の最上位ビットに対する相対的な位置を指します。ビット位置 0 は、LSE フォーマット B または C データ フィールドの最上位ビットです。ビット位置 20 は、最初の LSE フォーマット D データ フィールドの最上位ビットです。LSE フォーマット C では 20 ビットが利用可能で、LSE フォーマット D では 30 ビットが利用可能です。オペコードごとに最大 14 のフォーマット D LSE が存在します (NASL 制限が 15 であることと、フォーマット C LSE を必要とするフォーマット D の制約のため)。つまり、最大 20 + 14 * 30 = 440 ビット位置があります。「ビット位置」列にリストされる値は、0 ～ 439 の整数です。初期レジストリにはエントリがありません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The registration procedures for code point allocation for this registry are defined in Table 4:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このレジストリのコード ポイント割り当ての登録手順は、表 4 で定義されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+                    +========+========================+
+                    | Range  | Registration Procedure |
+                    +========+========================+
+                    | 0-14   | IETF Review            |
+                    +--------+------------------------+
+                    | 15-16  | Experimental Use       |
+                    +--------+------------------------+
+                    | 17-19  | Private Use            |
+                    +--------+------------------------+
+                    | 20-439 | IETF Review            |
+                    +--------+------------------------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-23">
+ Table 4: Registration Procedures for the &#34;Network Action Flags Without Ancillary Data&#34; Registry
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-23">
+表 4: 「補助データを含まないネットワーク アクション フラグ」レジストリの登録手順
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="13-2-2--Network-Action-Opcodes">
+13.2.2. Network Action Opcodes
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+13.2.2. ネットワークアクションのオペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+For the &#34;Network Action Opcodes&#34; registry, registration requests should comply with Section 10 as well as the Security Considerations section (Section 11). Depending on the range, the registration procedure for this registry is &#34;IETF Review&#34;, &#34;Experimental Use&#34;, or &#34;Private Use&#34; (as defined in [RFC8126]). The fields are &#34;Opcode&#34; (integer), &#34;Description&#34; (string), and &#34;Reference&#34; (string). Opcode is an integer with value 1-126.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+「ネットワーク アクション オペコード」レジストリの場合、登録要求はセクション 10 およびセキュリティに関する考慮事項セクション (セクション 11) に準拠する必要があります。範囲に応じて、このレジストリの登録手順は「IETF レビュー」、「実験的使用」、または ([RFC8126] で定義されている) 「私的使用」のいずれかになります。フィールドは、「Opcode」（整数）、「Description」（文字列）、および「Reference」（文字列）です。オペコードは、値 1 ～ 126 の整数です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+                   +=========+========================+
+                   | Range   | Registration Procedure |
+                   +=========+========================+
+                   | 1-110   | IETF Review            |
+                   +---------+------------------------+
+                   | 111-114 | Experimental Use       |
+                   +---------+------------------------+
+                   | 115-126 | Private Use            |
+                   +---------+------------------------+
+                   | 127     | IETF Review            |
+                   +---------+------------------------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-21">
+Table 5: Registration Procedures for the &#34;Network Action Opcodes&#34; Registry
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-21">
+表 5: 「ネットワーク アクション オペコード」レジストリの登録手順
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA has allocated values for the following network action opcodes from the &#34;Network Action Opcodes&#34; registry.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA は、「ネットワーク アクション オペコード」レジストリから次のネットワーク アクション オペコードの値を割り当てました。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+            +========+===========================+===========+
+            | Opcode |        Description        | Reference |
+            +========+===========================+===========+
+            | 0      | Reserved                  | RFC 9994  |
+            +--------+---------------------------+-----------+
+            | 1      | Flag-Based Network Action | RFC 9994  |
+            |        | Indicators without AD     |           |
+            +--------+---------------------------+-----------+
+            | 2      | No operation Opcode       | RFC 9994  |
+            +--------+---------------------------+-----------+
+            | 127    | Opcode Range Extension    | RFC 9994  |
+            |        | Beyond 127                |           |
+            +--------+---------------------------+-----------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-16">
+Table 6: Initial Contents of the &#34;Network Action Opcodes&#34; Registry
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-16">
+表 6: 「Network Action Opcodes」レジストリの初期内容
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="14--References">
+14. References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+14. 参考文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="14-1--Normative-References">
+14.1. Normative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+14.1. 引用文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC2119]  Bradner, S., &#34;Key words for use in RFCs to Indicate
+              Requirement Levels&#34;, BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              &lt;https://www.rfc-editor.org/info/rfc2119&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC3032]  Rosen, E., Tappan, D., Fedorkow, G., Rekhter, Y.,
+              Farinacci, D., Li, T., and A. Conta, &#34;MPLS Label Stack
+              Encoding&#34;, RFC 3032, DOI 10.17487/RFC3032, January 2001,
+              &lt;https://www.rfc-editor.org/info/rfc3032&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC3270]  Le Faucheur, F., Ed., Wu, L., Davie, B., Davari, S.,
+              Vaananen, P., Krishnan, R., Cheval, P., and J. Heinanen,
+              &#34;Multi-Protocol Label Switching (MPLS) Support of
+              Differentiated Services&#34;, RFC 3270, DOI 10.17487/RFC3270,
+              May 2002, &lt;https://www.rfc-editor.org/info/rfc3270&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC3443]  Agarwal, P. and B. Akyol, &#34;Time To Live (TTL) Processing
+              in Multi-Protocol Label Switching (MPLS) Networks&#34;,
+              RFC 3443, DOI 10.17487/RFC3443, January 2003,
+              &lt;https://www.rfc-editor.org/info/rfc3443&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC5462]  Andersson, L. and R. Asati, &#34;Multiprotocol Label Switching
+              (MPLS) Label Stack Entry: &#34;EXP&#34; Field Renamed to &#34;Traffic
+              Class&#34; Field&#34;, RFC 5462, DOI 10.17487/RFC5462, February
+              2009, &lt;https://www.rfc-editor.org/info/rfc5462&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC6790]  Kompella, K., Drake, J., Amante, S., Henderickx, W., and
+              L. Yong, &#34;The Use of Entropy Labels in MPLS Forwarding&#34;,
+              RFC 6790, DOI 10.17487/RFC6790, November 2012,
+              &lt;https://www.rfc-editor.org/info/rfc6790&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8174]  Leiba, B., &#34;Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words&#34;, BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, &lt;https://www.rfc-editor.org/info/rfc8174&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9017]  Andersson, L., Kompella, K., and A. Farrel, &#34;Special-
+              Purpose Label Terminology&#34;, RFC 9017,
+              DOI 10.17487/RFC9017, April 2021,
+              &lt;https://www.rfc-editor.org/info/rfc9017&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9789]  Andersson, L., Bryant, S., Bocci, M., and T. Li, &#34;MPLS
+              Network Actions (MNAs) Framework&#34;, RFC 9789,
+              DOI 10.17487/RFC9789, July 2025,
+              &lt;https://www.rfc-editor.org/info/rfc9789&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="14-2--Informative-References">
+14.2. Informative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+14.2. 参考引用
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC3031]  Rosen, E., Viswanathan, A., and R. Callon, &#34;Multiprotocol
+              Label Switching Architecture&#34;, RFC 3031,
+              DOI 10.17487/RFC3031, January 2001,
+              &lt;https://www.rfc-editor.org/info/rfc3031&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
+              D., and S. Mansfield, &#34;Guidelines for the Use of the &#34;OAM&#34;
+              Acronym in the IETF&#34;, BCP 161, RFC 6291,
+              DOI 10.17487/RFC6291, June 2011,
+              &lt;https://www.rfc-editor.org/info/rfc6291&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC7325]  Villamizar, C., Ed., Kompella, K., Amante, S., Malis, A.,
+              and C. Pignataro, &#34;MPLS Forwarding Compliance and
+              Performance Requirements&#34;, RFC 7325, DOI 10.17487/RFC7325,
+              August 2014, &lt;https://www.rfc-editor.org/info/rfc7325&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, &#34;Guidelines for
+              Writing an IANA Considerations Section in RFCs&#34;, BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              &lt;https://www.rfc-editor.org/info/rfc8126&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8664]  Sivabalan, S., Filsfils, C., Tantsura, J., Henderickx, W.,
+              and J. Hardwick, &#34;Path Computation Element Communication
+              Protocol (PCEP) Extensions for Segment Routing&#34;, RFC 8664,
+              DOI 10.17487/RFC8664, December 2019,
+              &lt;https://www.rfc-editor.org/info/rfc8664&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9613]  Bocci, M., Ed., Bryant, S., and J. Drake, &#34;Requirements
+              for Solutions that Support MPLS Network Actions (MNAs)&#34;,
+              RFC 9613, DOI 10.17487/RFC9613, August 2024,
+              &lt;https://www.rfc-editor.org/info/rfc9613&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9714]  Cheng, W., Ed., Min, X., Ed., Zhou, T., Dai, J., and Y.
+              Peleg, &#34;Encapsulation for MPLS Performance Measurement
+              with the Alternate-Marking Method&#34;, RFC 9714,
+              DOI 10.17487/RFC9714, February 2025,
+              &lt;https://www.rfc-editor.org/info/rfc9714&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9791]  Saad, T., Makhijani, K., Song, H., and G. Mirsky, &#34;Use
+              Cases for MPLS Network Action Indicators and Ancillary
+              Data&#34;, RFC 9791, DOI 10.17487/RFC9791, July 2025,
+              &lt;https://www.rfc-editor.org/info/rfc9791&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Appendix-A--Examples">
+Appendix A. Examples
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+付録A. 例
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-1--Network-Action-Encoding-Examples">
+A.1. Network Action Encoding Examples
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.1. ネットワークアクションのエンコード例
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-1-1--Network-Action-Flags-Without-AD">
+A.1.1. Network Action Flags Without AD
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.1.1. AD なしのネットワーク アクション フラグ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          MNA-Label=bSPL               | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=1   |        13-bit Flags     |R|IHS|S|NASL=0 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+Figure 6: NAS with Network Action Flags
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+図 6: ネットワーク アクション フラグのある NAS
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This is an example of a NAS with Flag-Based NAIs without AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これは、AD を使用しないフラグベース NAI を備えた NAS の例です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+詳細：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode=1:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード=1:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This opcode indicates that the LSE carries Flag-Based NAIs without AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+このオペコードは、LSE が AD なしでフラグベースの NAI を伝送することを示します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The data field carries the Flag-Based NAIs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+データフィールドにはフラグベースの NAI が含まれます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+S:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+This is the bottom of the stack bit. Set if and only if this LSE is the bottom of the stack.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+これはスタック ビットの底部です。この LSE がスタックの最下位である場合にのみ設定します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+U:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Action to be taken if one of the NAIs is not recognized by the processing node.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+NAI の 1 つが処理ノードによって認識されない場合に実行されるアクション。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The NASL value is set to 0, as there are no additional LSEs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+追加の LSE がないため、NASL 値は 0 に設定されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The NAL value is set to 0, as there are no additional AD encoded using Format D.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+フォーマット D を使用してエンコードされた追加の AD がないため、NAL 値は 0 に設定されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      MNA-Label=bSPL                   | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=2   |        Data=0           |R|IHS|S|NASL=2 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=1   |        Flag-Based NAIs        |S| NAIs  |U|NAL=1|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |1| Additional Flag-Based NAIs                |S|Flag-Based-NAIs|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-8">
+Figure 7: Network Action Flags Without AD Using LSE Format D
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-8">
+図 7: LSE フォーマット D を使用した AD なしのネットワーク アクション フラグ
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, the NAS contains a Format B LSE with a No-Operation Opcode value 2. The next LSE uses Format C, but the network action flag is not in a bit position contained within the Format C LSE, so a single Format D LSE has been added to the NAS to carry the flag.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、NAS には No-Operation オペコード値 2 のフォーマット B LSE が含まれています。次の LSE はフォーマット C を使用しますが、ネットワーク アクション フラグはフォーマット C LSE 内に含まれるビット位置にないため、フラグを運ぶために 1 つのフォーマット D LSE が NAS に追加されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL is set to 1 to indicate that Flag-Based NAIs are also encoded in the next LSE.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL は 1 に設定され、フラグベース NAI も次の LSE でエンコードされることを示します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL is set to 2 to indicate that two additional LSEs are used.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NASL は 2 に設定され、2 つの追加 LSE が使用されることを示します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-1-2--Network-Action-Opcode-with-AD">
+A.1.2. Network Action Opcode with AD
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.1.2. AD を使用したネットワーク アクション オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      MNA-Label=bSPL                   | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=8   |      Ancillary Data     |R|IHS|S|NASL=0 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Figure 8: Network Action Opcode with Ancillary Data
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+図 8: 補助データを含むネットワーク アクション オペコード
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, the NAS is carrying only one Network Action that requires 13 bits of AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、NAS は 13 ビットの AD を必要とするネットワーク アクションを 1 つだけ伝送します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details on the second LSE:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+2 番目の LSE の詳細:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode=8:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード=8:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+A network action allocation is outside of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ネットワーク アクションの割り当てについては、このドキュメントの対象外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+データ：
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The data field contains 13 bits of AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+データフィールドには 13 ビットの AD が含まれます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-1-3--Network-Action-Opcode-with-More-AD-with-Format-B">
+A.1.3. Network Action Opcode with More AD with Format B
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.1.3. フォーマット B の追加 AD を使用したネットワーク アクション オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A network action may require more AD than can fit in a single LSE. In this example, a Format D LSE is added to carry additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ネットワーク アクションには、単一の LSE に収まりきらないより多くの AD が必要になる場合があります。この例では、追加の AD を伝送するためにフォーマット D LSE が追加されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          MNA-Label=bSPL               | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=10  |      Ancillary Data     |R|IHS|S|NASL=1 |U|NAL=1|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |1|            Ancillary Data                 |S|Ancillary Data |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-10">
+Figure 9: Network Action with Additional Ancillary Data
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-10">
+図 9: 追加の補助データを含むネットワーク アクション
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, opcode 10 is encoded in Format B, and it requires more than one LSE&#39;s worth of AD, so a Format D LSE is added.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、オペコード 10 はフォーマット B でエンコードされており、複数の LSE に相当する AD が必要であるため、フォーマット D LSE が追加されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details on the second LSE:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+2 番目の LSE の詳細:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode=10:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード=10:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+An opcode allocation is outside of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+オペコードの割り当てについては、このドキュメントの範囲外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+AD required to process the network action opcode 10.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+AD はネットワーク アクション オペコード 10 を処理するために必要です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+NAL:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Length of additional LSEs used to encode its AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+AD をエンコードするために使用される追加の LSE の長さ。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details on the third LSE:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+3 番目の LSE の詳細:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+22 bits of additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+22 ビットの追加 AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+8 bits of additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+8 ビットの追加 AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-1-4--Network-Action-Opcode-with-More-AD-with-Format-C">
+A.1.4. Network Action Opcode with More AD with Format C
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.1.4. フォーマット C の追加 AD を使用したネットワーク アクション オペコード
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+A network action may require more AD than can fit in a single LSE. In this example, a Format D LSE is added to carry additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ネットワーク アクションには、単一の LSE に収まりきらないより多くの AD が必要になる場合があります。この例では、追加の AD を伝送するためにフォーマット D LSE が追加されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          MNA-Label=bSPL               | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=2   |      Data=0             |R|IHS|S|NASL=2 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Opcode=9   |      Ancillary Data           |S|   AD  |U|NAL=1|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |1|            Ancillary Data                 |S|Ancillary Data |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-10">
+Figure 10: Network Action with Additional Ancillary Data
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-10">
+図 10: 追加の補助データを含むネットワーク アクション
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, opcode 9 requires more than one LSE&#39;s worth of AD, so a Format D LSE is added.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、オペコード 9 は複数の LSE に相当する AD を必要とするため、フォーマット D LSE が追加されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details on the third LSE:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+3 番目の LSE の詳細:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Opcode=9:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+オペコード=9:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+An opcode allocation is outside of this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+オペコードの割り当てについては、このドキュメントの範囲外です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+Most significant bits of AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+AD の最上位ビット。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+AD:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+AD:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+4 bits of additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+4 ビットの追加 AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Details on the fourth LSE:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+4 番目の LSE の詳細:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+22 bits of additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+22 ビットの追加 AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Ancillary Data:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+補助データ:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+8 bits of additional AD.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+8 ビットの追加 AD。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-2--Network-Action-Processing-Order">
+A.2. Network Action Processing Order
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.2. ネットワークアクションの処理順序
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The semantics of a network action can vary widely and the results of processing one network action may affect the processing of a subsequent network action. See Section 5.5.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ネットワーク アクションのセマンティクスは大きく異なる可能性があり、1 つのネットワーク アクションの処理結果が後続のネットワーク アクションの処理に影響を与える可能性があります。セクション 5.5 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="A-2-1--Network-Action-Processing-Order">
+A.2.1. Network Action Processing Order
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+A.2.1. ネットワークアクションの処理順序
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |           MNA-Label=bSPL              | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=8    |      Ancillary Data     |R|IHS|S|NASL=2 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=7    |      Ancillary Data7          |S|  AD7  |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=1    |      Flag-Based NAIs          |S|  NAI  |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+Figure 11: In-Stack NA Processing Order
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+図 11: スタック内 NA の処理順序
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, opcode 8 is processed first, then opcode 7, and then the network action flags are processed from most significant to least significant.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、オペコード 8 が最初に処理され、次にオペコード 7 が処理され、その後ネットワーク アクション フラグが最上位から最下位の順に処理されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In a different case, some Flag-Based NAIs may need to be processed before opcode 7, and some Flag-Based NAIs may need to be processed after opcode 7. This can be done by causing some NAIs to appear earlier in the NAS.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+別のケースでは、一部のフラグベース NAI はオペコード 7 の前に処理する必要がある場合があり、一部のフラグベース NAI はオペコード 7 の後に処理する必要がある場合があります。これは、一部の NAI を NAS で以前に出現させることで実行できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |              MNA-Label=bSPL           | TC  |S|    TTL        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=8    |      Ancillary Data     |R|IHS|S|NASL=3 |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=1    |        0x01                   |S|  NAI  |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=7    |      Ancillary Data7          |S|  AD7  |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Opcode=1    |        0x02                   |S|  NAI  |U|NAL=0|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+Figure 12: Interleaving Network Actions
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-18">
+図 12: インターリーブ ネットワーク アクション
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In the above example, opcode 8 is processed first, then Flag-Based NAI 0x01 is processed, then opcode 7 is processed, and finally NAI 0x02 is processed.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+上記の例では、オペコード 8 が最初に処理され、次にフラグベース NAI 0x01 が処理され、次にオペコード 7 が処理され、最後に NAI 0x02 が処理されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Acknowledgments">
+Acknowledgments
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+謝辞
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The authors of this document would like to thank the MPLS Working Group Open Design Team for the discussions and comments on this document. The authors would also like to thank Amanda Baber for reviewing the IANA Considerations and providing many useful suggestions. The authors would like to thank Loa Andersson, Stewart Bryant, Greg Mirsky, Joel M. Halpern, and Adrian Farrel for reviewing this document and providing many useful suggestions. The authors would like to thank Fabian Ihle and Michael Menth, both from the University of Tuebingen, for reviewing and implementing the solution defined in this document in P4 pipeline. Also, thank you to Tarek Saad for the Shepherd&#39;s review, Joe Clarke for the OpsDir review, Matthew Bocci for the Rtgdir review, Derrell Piper for the Secdir review, and James Guichard for the AD review, Mohamed Boucadair, Éric Vyncke, Deb Cooley, Ketan Talaulikar, and Mahesh Jethanandani for the IESG review, which helped improve this document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントの作成者は、このドキュメントに関する議論とコメントを提供してくれた MPLS ワーキング グループ オープン デザイン チームに感謝の意を表します。著者らは、IANA の考慮事項をレビューし、多くの有用な提案を提供してくれた Amanda Baber にも感謝したいと思います。著者らは、この文書をレビューし、多くの有用な提案を提供してくれた Loa Andersson、Stewart Bryant、Greg Mirsky、Joel M. Halpern、および Adrian Farrel に感謝します。著者らは、本書で定義されているソリューションを P4 パイプラインでレビューおよび実装していただいたテュービンゲン大学の Fabian Ihle 氏と Michael Menth 氏に感謝の意を表します。また、Shepherd のレビューについては Tarek Saad 氏、OpsDir のレビューについては Joe Clarke、Rtgdir のレビューについては Matthew Bocci、Secdir のレビューについては Derrell Piper、AD のレビューについては James Guichard、このドキュメントの改善に貢献した IESG のレビューについては Mohamed Boucadair、Éric Vyncke、Deb Cooley、Ketan Talaulikar、Mahesh Jethanandani に感謝します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Contributors">
+Contributors
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+貢献者
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following people have substantially contributed to this document:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+以下の人々がこの文書に大きく貢献しました。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Jisu Bhattacharya
+   Cisco Systems, Inc.
+   Email: jisu@cisco.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Bruno Decraene
+   Orange
+   Email: bruno.decraene@orange.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Weiqiang Cheng
+   China Mobile
+   Email: chengweiqiang@chinamobile.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Xiao Min
+   ZTE Corp.
+   Email: xiao.min2@zte.com.cn
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Luay Jalil
+   Verizon
+   Email: luay.jalil@verizon.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Jie Dong
+   Huawei Technologies
+   Huawei Campus, No. 156 Beiqing Rd.
+   Beijing
+   100095
+   China
+   Email: jie.dong@huawei.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Tianran Zhou
+   Huawei Technologies
+   China
+   Email: zhoutianran@huawei.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Bin Wen
+   Comcast
+   Email: Bin_Wen@cable.comcast.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Sami Boutros
+   Ciena
+   Email: sboutros@ciena.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Tony Li
+   Juniper Networks
+   United States of America
+   Email: tony.li@tony.li
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   John Drake
+   Juniper Networks
+   United States of America
+   Email: jdrake@juniper.net
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Authors-Addresses">
+Authors&#39; Addresses
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著者の住所
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Jaganbabu Rajamanickam (editor)
+   Cisco Systems, Inc.
+   Canada
+   Email: jrajaman@cisco.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Rakesh Gandhi (editor)
+   Cisco Systems, Inc.
+   Canada
+   Email: rgandhi@cisco.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Royi Zigler
+   Broadcom
+   Email: royi.zigler@broadcom.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Haoyu Song
+   Futurewei Technologies
+   Email: haoyu.song@futurewei.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Kireeti Kompella
+   Juniper Networks
+   United States of America
+   Email: kireeti.ietf@gmail.com
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div id="rfc_footer"></div>
+</body>
+</html>

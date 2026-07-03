@@ -28543,7 +28543,8 @@
       "9598",
       "9608",
       "9618",
-      "9925"
+      "9925",
+      "10007"
     ],
     "st": "Proposed Standard",
     "wg": "pkix"
@@ -33905,6 +33906,9 @@
     "wg": "ipsecme"
   },
   "6291": {
+    "upd_by": [
+      "10014"
+    ],
     "st": "Best Current Practice",
     "wg": "opsawg"
   },
@@ -52246,6 +52250,9 @@
     "wg": "lamps"
   },
   "9789": {
+    "upd_by": [
+      "9994"
+    ],
     "st": "Informational",
     "wg": "mpls"
   },
@@ -52990,6 +52997,14 @@
     "st": "Informational",
     "wg": "sshm"
   },
+  "9942": {
+    "st": "Proposed Standard",
+    "wg": "cose"
+  },
+  "9943": {
+    "st": "Proposed Standard",
+    "wg": "scitt"
+  },
   "9944": {
     "st": "Proposed Standard",
     "wg": "scim"
@@ -53105,9 +53120,17 @@
   "9969": {
     "st": "Informational"
   },
+  "9970": {
+    "st": "Proposed Standard",
+    "wg": "stir"
+  },
   "9972": {
     "st": "Proposed Standard",
     "wg": "grow"
+  },
+  "9974": {
+    "st": "Informational",
+    "wg": "bier"
   },
   "9975": {
     "upd": [
@@ -53121,9 +53144,17 @@
     "st": "Proposed Standard",
     "wg": "opsawg"
   },
+  "9978": {
+    "st": "Experimental",
+    "wg": "bfd"
+  },
   "9979": {
     "st": "Informational",
     "wg": "mailmaint"
+  },
+  "9980": {
+    "st": "Proposed Standard",
+    "wg": "openpgp"
   },
   "9981": {
     "upd": [
@@ -53195,11 +53226,36 @@
     "st": "Proposed Standard",
     "wg": "avtcore"
   },
+  "9994": {
+    "upd": [
+      "9789"
+    ],
+    "st": "Proposed Standard",
+    "wg": "mpls"
+  },
   "9998": {
     "st": "Informational"
+  },
+  "10005": {
+    "st": "Proposed Standard",
+    "wg": "idr"
+  },
+  "10007": {
+    "upd": [
+      "5280"
+    ],
+    "st": "Proposed Standard",
+    "wg": "lamps"
   },
   "10008": {
     "st": "Proposed Standard",
     "wg": "httpbis"
+  },
+  "10014": {
+    "upd": [
+      "6291"
+    ],
+    "st": "Best Current Practice",
+    "wg": "opsawg"
   }
 }
