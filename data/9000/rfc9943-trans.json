@@ -1,0 +1,2300 @@
+{
+  "title": {
+    "text": "RFC 9943 - An Architecture for Trustworthy and Transparent Digital Supply Chains",
+    "ja": "RFC 9943 - 信頼性と透明性のあるデジタル サプライ チェーンのアーキテクチャ"
+  },
+  "number": 9943,
+  "created_at": "2026-07-03 23:24:44.725886+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)                       H. Birkholz\nRequest for Comments: 9943                                Fraunhofer SIT\nCategory: Standards Track                             A. Delignat-Lavaud\nISSN: 2070-1721                                               C. Fournet\n                                                               Microsoft\n                                                            Y. Deshpande\n                                                                     ARM\n                                                               S. Lasker\n                                                               June 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "An Architecture for Trustworthy and Transparent Digital Supply Chains",
+      "section_title": true,
+      "ja": "信頼性と透明性のあるデジタル サプライ チェーンのアーキテクチャ"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "Traceability in supply chains is a growing security concern. While Verifiable Data Structures (VDSs) have addressed specific issues, such as equivocation over digital certificates, they lack a universal architecture for all supply chains. This document defines such an architecture for single-issuer signed statement transparency. It ensures extensibility and interoperability between different transparency services as well as compliance with various auditing procedures and regulatory requirements.",
+      "ja": "サプライチェーンにおけるトレーサビリティは、セキュリティ上の懸念が高まっています。検証可能なデータ構造 (VDS) は、デジタル証明書に関する曖昧さなどの特定の問題に対処していますが、すべてのサプライ チェーンに対応する普遍的なアーキテクチャが欠けています。この文書は、単一発行者の署名済みステートメントの透明性のためのそのようなアーキテクチャを定義します。これにより、さまざまな透明性サービス間の拡張性と相互運用性が保証されるだけでなく、さまざまな監査手順や規制要件への準拠も保証されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の状態"
+    },
+    {
+      "indent": 3,
+      "text": "This is an Internet Standards Track document.",
+      "ja": "これはインターネット標準化トラックの文書です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
+      "ja": "このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9943.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9943 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n  1.1.  Requirements Notation\n2.  Software Supply Chain Scope\n  2.1.  Generic SSC Problem Statement\n  2.2.  Eclectic SSC Use Cases\n    2.2.1.  Security Analysis of a Software Product\n    2.2.2.  Promotion of a Software Component by Multiple Entities\n    2.2.3.  Software Integrator Assembling a Software Product for a\n            Vehicle\n3.  Terminology\n4.  Definition of Transparency\n5.  Architecture Overview\n  5.1.  Transparency Service\n    5.1.1.  Registration Policies\n    5.1.2.  Initialization and Bootstrapping\n    5.1.3.  Verifiable Data Structure\n    5.1.4.  Adjacent Services\n6.  Signed Statements\n  6.1.  Signed Statement Examples\n  6.2.  Signing Large or Sensitive Statements\n  6.3.  Registration of Signed Statements\n7.  Transparent Statements\n  7.1.  Validation\n8.  Privacy Considerations\n9.  Security Considerations\n  9.1.  Ordering of Signed Statements\n  9.2.  Accuracy of Statements\n  9.3.  Issuer Participation\n  9.4.  Key Management\n    9.4.1.  Verifiable Data Structure\n    9.4.2.  Key Compromise\n    9.4.3.  Bootstrapping\n  9.5.  Implications of Media Type Usage\n  9.6.  Cryptographic Agility\n  9.7.  Threat Model\n10. IANA Considerations\n  10.1.  Registration of application/scitt-statement+cose\n  10.2.  Registration of application/scitt-receipt+cose\n  10.3.  CoAP Content-Format Registrations\n11. References\n  11.1.  Normative References\n  11.2.  Informative References\nContributors\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines an architecture, a base set of extensible message structures, and associated flows to make signed content transparent via VDSs maintained by corresponding transparency services. The goal of the transparency enabled by the Supply Chain Integrity, Transparency, and Trust (SCITT) architecture is to enhance auditability and accountability for single-issuer signed content (statements) that are about supply chain commodities (artifacts).",
+      "ja": "この文書は、対応する透過性サービスによって維持される VDS を介して署名されたコンテンツを透過的にするためのアーキテクチャ、拡張可能なメッセージ構造の基本セット、および関連するフローを定義します。サプライ チェーンの完全性、透明性、信頼性 (SCITT) アーキテクチャによって実現される透明性の目標は、サプライ チェーンの商品 (成果物) に関する単一発行者の署名済みコンテンツ (ステートメント) の監査可能性と説明責任を強化することです。"
+    },
+    {
+      "indent": 3,
+      "text": "Registering signed statements with a Transparency Service (TS) is akin to a notarization procedure. TSs confirm a policy is met before recording the statement on the ledger. The SCITT ledger represents a linear and irrevocable history of statements made. Once the signed statement is registered, the TS issues a receipt.",
+      "ja": "署名された声明を透明性サービス (TS) に登録することは、公証手続きに似ています。TS は、台帳に明細を記録する前に、ポリシーが満たされていることを確認します。SCITT 台帳は、行われた発言の直線的で取り消し不能な履歴を表します。署名済み明細書が登録されると、TS は領収書を発行します。"
+    },
+    {
+      "indent": 3,
+      "text": "Similar approaches have been implemented for specific classes of artifacts, such as Certificate Transparency (CT) [RFC9162]. The SCITT approach follows a more generic paradigm than previous approaches. This \"content-agnostic\" approach allows TSs to be either integrated in existing solutions or an initial part of new emerging systems. Extensibility is a vital feature of the SCITT architecture, so that requirements from various applications can be accommodated while always ensuring interoperability with respect to registration procedures and corresponding auditability and accountability. For simplicity, the scope of this document is limited to use cases originating from the software supply chain domain. However, the specification defined is applicable to any other type of supply chain statements (also referred to as \"value-add graphs\"), for example, statements about hardware supply chains.",
+      "ja": "同様のアプローチが、Certificate Transparency (CT) [RFC9162] などの特定のクラスのアーティファクトに対して実装されています。SCITT アプローチは、以前のアプローチよりも一般的なパラダイムに従います。この「コンテンツに依存しない」アプローチにより、TS を既存のソリューションに統合することも、新しい新興システムの初期部分に統合することもできます。拡張性は SCITT アーキテクチャの重要な機能であり、登録手順および対応する監査責任と説明責任に関する相互運用性を常に確保しながら、さまざまなアプリケーションの要件に対応できます。わかりやすくするために、このドキュメントの範囲はソフトウェア サプライ チェーン ドメインに由来するユースケースに限定されます。ただし、定義された仕様は、ハードウェア サプライ チェーンに関するステートメントなど、他のタイプのサプライ チェーン ステートメント (「付加価値グラフ」とも呼ばれる) にも適用できます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document also defines message structures for signed statements and transparent statements, which embed CBOR Object Signing and Encryption (COSE) receipts [RFC9942], i.e., signed Verifiable Data Structure Proofs (VDP). These message structures are based on the Concise Binary Object Representation (CBOR) Standard [STD94] and corresponding signing is facilitated via the COSE Standard [STD96]. The message structures are defined using the Concise Data Definition Language (CDDL) [RFC8610]. The signed statements and receipts are, respectively, based on the COSE_Sign1 specification in Section 4.2 of RFC 9052 [STD96] and on COSE receipts [RFC9942]. The application-domain-agnostic nature of COSE_Sign1 and its extensibility through COSE header parameters are prerequisites for implementing the interoperable message layer defined in this document.",
+      "ja": "この文書はまた、CBOR Object Signing and Encryption (COSE) レシート [RFC9942]、つまり署名された Verifiable Data Structure Proofs (VDP) を埋め込む、署名付きステートメントと透過的ステートメントのメッセージ構造も定義します。これらのメッセージ構造は、Concise Binary Object Representation (CBOR) 標準 [STD94] に基づいており、対応する署名は COSE 標準 [STD96] によって容易に行われます。メッセージ構造は、Concise Data Definition Language (CDDL) [RFC8610] を使用して定義されます。署名された明細書と領収書は、それぞれ、RFC 9052 [STD96] のセクション 4.2 の COSE_Sign1 仕様と COSE 領収書 [RFC9942] に基づいています。COSE_Sign1 のアプリケーション ドメインに依存しない性質と、COSE ヘッダー パラメーターによる拡張性は、この文書で定義されている相互運用可能なメッセージ層を実装するための前提条件です。"
+    },
+    {
+      "indent": 3,
+      "text": "In summary, this specification supports relying parties obtaining proof that signed statements were recorded and checked for their validity at the time they were registered. How these statements are managed or stored as well as how participating entities discover and notify each other of changes is out of scope of this document.",
+      "ja": "要約すると、この仕様は、署名されたステートメントが記録され、登録時にその有効性がチェックされたという証拠を信頼当事者が取得することをサポートします。これらのステートメントがどのように管理または保存されるか、また参加エンティティがどのように変更を検出して相互に通知するかについては、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "1.1. Requirements Notation",
+      "section_title": true,
+      "ja": "1.1. 要件の表記"
+    },
+    {
+      "indent": 3,
+      "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "ja": "このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Software Supply Chain Scope",
+      "section_title": true,
+      "ja": "2. ソフトウェア サプライ チェーンの範囲"
+    },
+    {
+      "indent": 3,
+      "text": "To illustrate the applicability of the SCITT architecture and its messages, this section details the exemplary context of Software Supply Chain (SSC) use cases. The building blocks provided by the SCITT architecture are not restricted to SSC use cases. SSCs serve as useful application guidance and first usage scenarios.",
+      "ja": "SCITT アーキテクチャとそのメッセージの適用性を説明するために、このセクションでは、ソフトウェア サプライ チェーン (SSC) の使用例のコンテキスト例について詳しく説明します。SCITT アーキテクチャによって提供される構成要素は、SSC の使用例に限定されません。SSC は、有用なアプリケーション ガイダンスおよび最初の使用シナリオとして機能します。"
+    },
+    {
+      "indent": 0,
+      "text": "2.1. Generic SSC Problem Statement",
+      "section_title": true,
+      "ja": "2.1. 一般的な SSC 問題ステートメント"
+    },
+    {
+      "indent": 3,
+      "text": "Supply chain security is a prerequisite to protecting consumers and minimizing economic, public health, and safety threats. Supply chain security has historically focused on risk management practices to safeguard logistics, meet regulatory requirements, forecast demand, and optimize inventory. While these elements are foundational to a healthy supply chain, an integrated cyber-security-based perspective of the SSCs remains broadly undefined. Recently, the global community has experienced numerous supply chain attacks targeting weaknesses in SSCs. As illustrated in Figure 1, an SSC attack may leverage one or more life-cycle stages and directly or indirectly target the component.",
+      "ja": "サプライチェーンのセキュリティは、消費者を保護し、経済、公衆衛生、安全の脅威を最小限に抑えるための前提条件です。サプライチェーンのセキュリティはこれまで、物流の保護、規制要件の満たし、需要の予測、在庫の最適化を目的としたリスク管理の実践に焦点を当ててきました。これらの要素は健全なサプライ チェーンの基礎ですが、SSC の統合されたサイバー セキュリティ ベースの視点は依然として未定義のままです。最近、国際社会は SSC の弱点を狙ったサプライチェーン攻撃を数多く経験しています。図 1 に示すように、SSC 攻撃は 1 つ以上のライフサイクル ステージを利用し、コンポーネントを直接的または間接的に標的にする可能性があります。"
+    },
+    {
+      "indent": 8,
+      "text": " Dependencies        Malicious third-party package or version\n      |\n      |\n+-----+-----+\n|           |\n|   Code    |        Compromise source control\n|           |\n+-----+-----+\n      |\n+-----+-----+\n|           |        Malicious plug-ins\n|  Commit   |        Malicious commit\n|           |\n+-----+-----+\n      |\n+-----+-----+\n|           |        Modify build tasks or the build environment\n|   Build   |        Poison the build agent/compiler\n|           |        Tamper with build cache\n+-----+-----+\n      |\n+-----+-----+\n|           |        Compromise test tools\n|    Test   |        Falsification of test results\n|           |\n+-----+-----+\n      |\n+-----+-----+\n|           |        Use bad packages\n|  Package  |        Compromise package repository\n|           |\n+-----+-----+\n      |\n+-----+-----+\n|           |        Modify release tasks\n|  Release  |        Modify build drop prior to release\n|           |\n+-----+-----+\n      |\n+-----+-----+\n|           |\n|  Deploy   |        Tamper with versioning and update process\n|           |\n+-----------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 18,
+      "text": "Figure 1: Example SSC Life-Cycle Threats",
+      "ja": "図 1: SSC ライフサイクルの脅威の例"
+    },
+    {
+      "indent": 3,
+      "text": "DevSecOps, as defined in [NIST.SP.800-204C], often depends on third-party and open-source software. These dependencies can be quite complex throughout the supply chain, so checking provenance and traceability throughout their life cycle is difficult. There is a need for manageable auditability and accountability of digital products. Typically, the range of types of statements about digital products (and their dependencies) is vast, heterogeneous, and can differ between community policy requirements. Taking the type and structure of all statements about digital products into account might not be possible. Examples of statements may include commit signatures, build environment and parameters, Software Bill of Materials (SBOM), static and dynamic application security testing results, fuzz testing results, release approvals, deployment records, vulnerability scan results, and patch logs. Consequently, instead of trying to understand and describe the detailed syntax and semantics of every type of statement about digital products, the SCITT architecture focuses on ensuring statement authenticity, ensuring visibility/transparency, and intends to provide scalable accessibility. Threats and practical issues can also arise from unintended side effects of using security techniques outside their proper bounds. For instance, digital signatures may fail to verify past their expiry date even though the signed item itself remains completely valid. Or a signature may verify even though the information it is securing is now found unreliable but fine-grained revocation is too hard.",
+      "ja": "[NIST.SP.800-204C] で定義されている DevSecOps は、多くの場合、サードパーティ ソフトウェアやオープンソース ソフトウェアに依存します。これらの依存関係はサプライチェーン全体で非常に複雑になる可能性があるため、ライフサイクル全体にわたって出所と追跡可能性を確認することは困難です。デジタル製品には管理可能な監査可能性と説明責任が必要です。通常、デジタル製品 (およびその依存関係) に関するステートメントの種類は多岐にわたり、多種多様であり、コミュニティのポリシー要件によって異なる場合があります。デジタル製品に関するすべての記述の種類と構造を考慮することは不可能かもしれません。ステートメントの例には、コミット署名、ビルド環境とパラメータ、ソフトウェア部品表 (SBOM)、静的および動的アプリケーション セキュリティ テスト結果、ファズ テスト結果、リリース承認、展開記録、脆弱性スキャン結果、パッチ ログなどが含まれます。したがって、SCITT アーキテクチャは、デジタル製品に関するあらゆる種類のステートメントの詳細な構文とセマンティクスを理解して説明しようとするのではなく、ステートメントの信頼性の確保、可視性/透明性の確保に重点を置き、スケーラブルなアクセシビリティを提供することを目的としています。脅威や現実的な問題は、セキュリティ技術を適切な範囲外で使用した場合の意図しない副作用からも発生する可能性があります。たとえば、署名されたアイテム自体は完全に有効なままであっても、デジタル署名は有効期限を過ぎると検証できない場合があります。あるいは、署名によって保護されている情報が信頼性が低いことが判明した場合でも、署名が検証される可能性がありますが、きめ細かい取り消しは非常に困難です。"
+    },
+    {
+      "indent": 3,
+      "text": "Lastly, where data exchange underpins serious business decision-making, it is important to hold the producers of those data to a higher standard of auditability. The SCITT architecture provides mechanisms and structures for ensuring that the makers of authoritative statements can be held accountable and not hide or shred the evidence when it becomes inconvenient later.",
+      "ja": "最後に、データ交換がビジネス上の重大な意思決定を支える場合、それらのデータの作成者に高い監査可能性の基準を課すことが重要です。SCITT アーキテクチャは、権威ある声明の作成者が責任を負うことができ、後で不都合になったときに証拠を隠蔽したり細断したりしないことを保証するためのメカニズムと構造を提供します。"
+    },
+    {
+      "indent": 3,
+      "text": "The following use cases illustrate the scope of SCITT and elaborate on the generic problem statement above.",
+      "ja": "次の使用例では、SCITT の範囲を示し、上記の一般的な問題点について詳しく説明します。"
+    },
+    {
+      "indent": 0,
+      "text": "2.2. Eclectic SSC Use Cases",
+      "section_title": true,
+      "ja": "2.2. 折衷的な SSC の使用例"
+    },
+    {
+      "indent": 3,
+      "text": "The three following use cases are a specialization derived from the generic problem statement above.",
+      "ja": "次の 3 つの使用例は、上記の一般的な問題ステートメントから派生した特殊化です。"
+    },
+    {
+      "indent": 0,
+      "text": "2.2.1. Security Analysis of a Software Product",
+      "section_title": true,
+      "ja": "2.2.1. ソフトウェア製品のセキュリティ分析"
+    },
+    {
+      "indent": 3,
+      "text": "A released software product is often accompanied by a set of complementary statements about its security properties. This gives enough confidence to both producers and consumers that the released software meets the expected security standards and is suitable to use.",
+      "ja": "リリースされたソフトウェア製品には、多くの場合、そのセキュリティ特性に関する一連の補足的な記述が付属しています。これにより、リリースされたソフトウェアが期待されるセキュリティ標準を満たしており、使用に適しているという十分な確信が、制作者と消費者の両方に与えられます。"
+    },
+    {
+      "indent": 3,
+      "text": "Subsequently, multiple security researchers often run sophisticated security analysis tools on the same product. The intention is to identify any security weaknesses or vulnerabilities in the package.",
+      "ja": "その後、複数のセキュリティ研究者が同じ製品で高度なセキュリティ分析ツールを実行することがよくあります。その目的は、パッケージ内のセキュリティ上の弱点や脆弱性を特定することです。"
+    },
+    {
+      "indent": 3,
+      "text": "Initially, a particular analysis can identify a simple weakness in a software component. Over a period of time, a statement from a third party illustrates that the weakness is exposed in a way that represents an exploitable vulnerability. The producer of the software product provides a statement that confirms the linking of a software component vulnerability with the software product by issuing a product vulnerability disclosure report and also issuing an advisory statement on how to mitigate the vulnerability. At first, the producer provides an updated software product that still uses the vulnerable software component but shields the issue in a fashion that inhibits exploitation. Later, a second update of the software product includes a security patch to the affected software component from the software producer. Finally, a third update includes a new release (updated version) of the formerly insecure software component. For this release, both the software product and the affected software component are deemed secure by the producer and consumers.",
+      "ja": "まず、特定の分析により、ソフトウェア コンポーネントの単純な弱点を特定できます。一定期間が経過すると、第三者からの声明により、悪用可能な脆弱性を表す形で脆弱性が暴露されたことが示されます。ソフトウェア製品の製造元は、製品脆弱性開示報告書を発行し、さらに脆弱性を軽減する方法に関する勧告声明を発行することにより、ソフトウェア コンポーネントの脆弱性とソフトウェア製品の関連性を確認する声明を提供します。最初に、製造者は、脆弱なソフトウェア コンポーネントを依然として使用しているものの、悪用を阻止する方法で問題を保護する、更新されたソフトウェア製品を提供します。その後、ソフトウェア製品の 2 回目のアップデートには、影響を受けるソフトウェア コンポーネントに対するソフトウェア メーカーからのセキュリティ パッチが含まれます。最後に、3 番目の更新には、以前は安全ではなかったソフトウェア コンポーネントの新しいリリース (更新バージョン) が含まれています。このリリースでは、ソフトウェア製品と影響を受けるソフトウェア コンポーネントの両方が、プロデューサーとコンシューマーによって安全であると見なされます。"
+    },
+    {
+      "indent": 3,
+      "text": "A consumer of a released software wants to:",
+      "ja": "リリースされたソフトウェアの消費者は次のことを望んでいます。"
+    },
+    {
+      "indent": 6,
+      "text": "* know where to get these security statements from producers and third parties related to the software product in a timely and unambiguous fashion",
+      "ja": "* ソフトウェア製品に関連するプロデューサーやサードパーティからこれらのセキュリティ ステートメントをタイムリーかつ明確な方法で入手できる場所を知っている"
+    },
+    {
+      "indent": 6,
+      "text": "* attribute them to an authoritative issuer",
+      "ja": "* それらを権威ある発行者に帰属させる"
+    },
+    {
+      "indent": 6,
+      "text": "* associate the statements in a meaningful manner via a set of well-known semantic relationships",
+      "ja": "* 一連のよく知られた意味関係を介して、意味のある方法でステートメントを関連付けます。"
+    },
+    {
+      "indent": 6,
+      "text": "* consistently, efficiently, and homogeneously check their authenticity",
+      "ja": "* 一貫して効率的かつ均質に信頼性をチェックする"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT provides a standardized way to:",
+      "ja": "SCITT は、次の標準化された方法を提供します。"
+    },
+    {
+      "indent": 6,
+      "text": "* know the various sources of statements",
+      "ja": "* 発言のさまざまな情報源を知る"
+    },
+    {
+      "indent": 6,
+      "text": "* express the provenance and historicity of statements",
+      "ja": "* 発言の出所と歴史性を表現する"
+    },
+    {
+      "indent": 6,
+      "text": "* relate and link various heterogeneous statements in a simple fashion",
+      "ja": "* さまざまな異種ステートメントを簡単な方法で関連付けてリンクする"
+    },
+    {
+      "indent": 6,
+      "text": "* check that the statement comes from a source with authority to issue that statement",
+      "ja": "* その声明がその声明を発行する権限のある情報源からのものであることを確認してください"
+    },
+    {
+      "indent": 6,
+      "text": "* confirm that sources provide a complete history of statements related to a given component",
+      "ja": "* ソースが特定のコンポーネントに関連するステートメントの完全な履歴を提供していることを確認する"
+    },
+    {
+      "indent": 0,
+      "text": "2.2.2. Promotion of a Software Component by Multiple Entities",
+      "section_title": true,
+      "ja": "2.2.2. 複数のエンティティによるソフトウェア コンポーネントのプロモーション"
+    },
+    {
+      "indent": 3,
+      "text": "A software component (e.g., a library or software product), open-source or commercial, is often initially released by a single trusted producer who can choose to attach a statement of authenticity to it. As that component becomes used in a growing range of other products, providers other than the original trusted producer often re-distribute or release their own version of that component.",
+      "ja": "ソフトウェア コンポーネント (ライブラリやソフトウェア製品など) は、オープンソースであろうと商用であろうと、多くの場合、信頼できる単一の制作者によって最初にリリースされます。制作者は、それに信頼性に関する声明を添付することを選択できます。そのコンポーネントが他の製品で使用されるようになるにつれて、元の信頼できるプロデューサー以外のプロバイダーがそのコンポーネントの独自バージョンを再配布またはリリースすることがよくあります。"
+    },
+    {
+      "indent": 3,
+      "text": "Some providers include it as part of their release product or package bundle and provide the package with proof of authenticity using their issuer authority. Some packages include the original statement of authenticity, and some do not. Over time, some providers no longer offer the exact same software component source code but pre-compiled software component binaries. Some sources do not provide the exact same software component but include patches and fixes produced by third parties as these emerge faster than solutions from the original producer. Due to complex distribution and promotion life-cycle scenarios, the original software component takes myriad forms.",
+      "ja": "一部のプロバイダーは、リリース製品またはパッケージ バンドルの一部としてこれを組み込み、発行者権限を使用してパッケージに信頼性の証明を提供します。パッケージによっては、オリジナルの信頼性を示すステートメントが含まれているものと、含まれていないものがあります。時間が経つにつれて、一部のプロバイダーはまったく同じソフトウェア コンポーネントのソース コードではなく、コンパイル済みのソフトウェア コンポーネント バイナリを提供するようになりました。一部のソースでは、まったく同じソフトウェア コンポーネントが提供されていませんが、サードパーティによって作成されたパッチや修正が含まれています。これらは、元の作成者からのソリューションよりも早く出現するためです。複雑な配布およびプロモーションのライフサイクル シナリオにより、元のソフトウェア コンポーネントは無数の形式になります。"
+    },
+    {
+      "indent": 3,
+      "text": "A consumer of a released software wants to:",
+      "ja": "リリースされたソフトウェアの消費者は次のことを望んでいます。"
+    },
+    {
+      "indent": 6,
+      "text": "* understand if a particular provider is a trusted originating producer or an alternative party",
+      "ja": "* 特定のプロバイダーが信頼できる発信元プロデューサーであるか代替当事者であるかを理解する"
+    },
+    {
+      "indent": 6,
+      "text": "* know if and how the source, or resulting binary, of a promoted software component differs from the original software component",
+      "ja": "* プロモートされたソフトウェア コンポーネントのソース、または結果のバイナリが元のソフトウェア コンポーネントと異なるかどうか、またどのように異なるかを知る"
+    },
+    {
+      "indent": 6,
+      "text": "* check the provenance and history of a software component's source back to its origin",
+      "ja": "* ソフトウェアコンポーネントのソースの出所と履歴をその起源にまで遡って確認する"
+    },
+    {
+      "indent": 6,
+      "text": "* assess whether to trust a component or product based on a downloaded package location and source supplier",
+      "ja": "* ダウンロードしたパッケージの場所とソースサプライヤーに基づいて、コンポーネントまたは製品を信頼するかどうかを評価します"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT provides a standardized way to:",
+      "ja": "SCITT は、次の標準化された方法を提供します。"
+    },
+    {
+      "indent": 6,
+      "text": "* reliably discern if a provider is the original, trusted producer or is a trustworthy alternative provider or is an illegitimate provider",
+      "ja": "* プロバイダーが元の信頼できるプロデューサーであるか、信頼できる代替プロバイダーであるか、または違法なプロバイダーであるかを確実に識別する"
+    },
+    {
+      "indent": 6,
+      "text": "* track the provenance path from an original producer to a particular provider",
+      "ja": "* 元のプロデューサーから特定のプロバイダーへの出所経路を追跡する"
+    },
+    {
+      "indent": 6,
+      "text": "* check the trustworthiness of a provider",
+      "ja": "* プロバイダーの信頼性を確認する"
+    },
+    {
+      "indent": 6,
+      "text": "* check the integrity of modifications or transformations applied by a provider",
+      "ja": "* プロバイダーによって適用された変更または変換の整合性をチェックする"
+    },
+    {
+      "indent": 0,
+      "text": "2.2.3. Software Integrator Assembling a Software Product for a Vehicle",
+      "section_title": true,
+      "ja": "2.2.3. 車両用のソフトウェア製品を組み立てるソフトウェア インテグレーター"
+    },
+    {
+      "indent": 3,
+      "text": "Software integration is a complex activity. Typically, it involves getting various software components from multiple suppliers and producing an integrated package deployed as part of device assembly. For example, car manufacturers source integrated software for their vehicles from third parties that integrate software components from various sources. Integration complexity creates a higher risk of security vulnerabilities to the delivered software.",
+      "ja": "ソフトウェアの統合は複雑な作業です。通常、これには、複数のサプライヤーからさまざまなソフトウェア コンポーネントを入手し、デバイス アセンブリの一部として導入される統合パッケージを作成することが含まれます。たとえば、自動車メーカーは、さまざまなソースからソフトウェア コンポーネントを統合するサードパーティから自社車両用の統合ソフトウェアを調達しています。統合が複雑になると、提供されるソフトウェアにセキュリティ上の脆弱性が発生するリスクが高まります。"
+    },
+    {
+      "indent": 3,
+      "text": "Consumers of integrated software want:",
+      "ja": "統合ソフトウェアの消費者は次のことを望んでいます。"
+    },
+    {
+      "indent": 6,
+      "text": "* a list of all components present in a software product",
+      "ja": "* ソフトウェア製品に存在するすべてのコンポーネントのリスト"
+    },
+    {
+      "indent": 6,
+      "text": "* the ability to identify and retrieve all components from a secure and tamper-proof location",
+      "ja": "* すべてのコンポーネントを識別し、安全で改ざん防止の場所から取得する機能"
+    },
+    {
+      "indent": 6,
+      "text": "* verifiable proofs on build process and build environment with all supplier tiers to ensure end-to-end build quality and security",
+      "ja": "* エンドツーエンドのビルド品質とセキュリティを確保するための、すべてのサプライヤー層によるビルド プロセスとビルド環境に関する検証可能な証拠"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT provides a standardized way to:",
+      "ja": "SCITT は、次の標準化された方法を提供します。"
+    },
+    {
+      "indent": 6,
+      "text": "* provide a tiered and transparent framework that allows for verification of integrity and authenticity of the integrated software at both component and product level before installation",
+      "ja": "* インストール前にコンポーネントレベルと製品レベルの両方で統合ソフトウェアの整合性と信頼性を検証できる、階層的で透過的なフレームワークを提供します。"
+    },
+    {
+      "indent": 6,
+      "text": "* provide valid annotations on build integrity to ensure conformance",
+      "ja": "* 準拠を保証するために、ビルドの整合性に関する有効な注釈を提供します。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Terminology",
+      "section_title": true,
+      "ja": "3. 用語"
+    },
+    {
+      "indent": 3,
+      "text": "The terms defined in this section have special meaning in the context of SCITT and are used throughout this document.",
+      "ja": "このセクションで定義される用語は、SCITT の文脈において特別な意味を持ち、この文書全体で使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document has been developed in coordination with the COSE, OAUTH, and RATS working groups (WGs) and uses terminology common to these WGs as often as possible.",
+      "ja": "この文書は COSE、OAUTH、および RATS ワーキング グループ (WG) と連携して作成されており、これらの WG に共通の用語を可能な限り使用しています。"
+    },
+    {
+      "indent": 3,
+      "text": "The terms \"header\", \"payload\", and \"to-be-signed bytes\" are defined in [STD96].",
+      "ja": "「ヘッダー」、「ペイロード」、および「署名対象バイト」という用語は [STD96] で定義されています。"
+    },
+    {
+      "indent": 3,
+      "text": "The term \"claim\" is defined in [RFC8392].",
+      "ja": "「クレーム」という用語は[RFC8392]で定義されています。"
+    },
+    {
+      "indent": 3,
+      "text": "When used in text in the sense defined, the following terms are capitalized. To ensure readability, only a core set of terms is included in this section.",
+      "ja": "定義された意味で本文中で使用される場合、以下の用語は大文字で表記されます。読みやすさを確保するために、このセクションには主要な用語セットのみが含まれています。"
+    },
+    {
+      "indent": 3,
+      "text": "Append-only Log:",
+      "ja": "追加専用ログ:"
+    },
+    {
+      "indent": 12,
+      "text": "a Statement Sequence comprising the entire registration history of the TS. To make the append-only property verifiable and transparent, the TS defines how Signed Statements are made available to Auditors.",
+      "ja": "TS の登録履歴全体を含むステートメント シーケンス。追加専用プロパティを検証可能かつ透過的にするために、TS は署名付きステートメントを監査人が利用できる方法を定義します。"
+    },
+    {
+      "indent": 3,
+      "text": "Artifact:",
+      "ja": "アーチファクト："
+    },
+    {
+      "indent": 12,
+      "text": "a physical or non-physical item that is moving along a supply chain.",
+      "ja": "サプライチェーンに沿って移動する物理的または非物理的なアイテム。"
+    },
+    {
+      "indent": 3,
+      "text": "Attestation:",
+      "ja": "証明書:"
+    },
+    {
+      "indent": 12,
+      "text": "[NIST.SP.1800-19] defines \"attestation\" as:",
+      "ja": "[NIST.SP.1800-19] では、「証明書」を次のように定義しています。"
+    },
+    {
+      "indent": 12,
+      "text": "The process of providing a digital signature for a set of measurements securely stored in hardware, and then having the requester validate the signature and the set of measurements.",
+      "ja": "ハードウェアに安全に保存された一連の測定値にデジタル署名を提供し、要求者にその署名と一連の測定値を検証させるプロセス。"
+    },
+    {
+      "indent": 12,
+      "text": "NIST guidance \"Software Supply Chain Security Guidance EO 14028\" [NIST_EO14028] uses the definition from [ISO_IEC_17000], which states that an \"attestation\" is:",
+      "ja": "NIST ガイダンス「ソフトウェア サプライ チェーン セキュリティ ガイダンス EO 14028」[NIST_EO14028] は、[ISO_IEC_17000] の定義を使用しており、「証明書」とは次のように述べられています。"
+    },
+    {
+      "indent": 12,
+      "text": "The issue of a statement, based on a decision, that fulfillment of specified requirements has been demonstrated.",
+      "ja": "決定に基づいて、特定の要件を満たしていることが実証されたという声明の発行。"
+    },
+    {
+      "indent": 12,
+      "text": "It is often useful for the intended audience to qualify the term \"attestation\" in their specific context to avoid confusion and ambiguity.",
+      "ja": "混乱や曖昧さを避けるために、対象読者が特定の文脈で「証明書」という用語を修飾すると便利なことがよくあります。"
+    },
+    {
+      "indent": 3,
+      "text": "Auditor:",
+      "ja": "監査人:"
+    },
+    {
+      "indent": 12,
+      "text": "an entity that checks the correctness and consistency of all Transparent Statements, or the transparent Statement Sequence, issued by a TS. An Auditor is an example of a specialized Relying Party.",
+      "ja": "TS によって発行されたすべての透過的ステートメント、または透過的ステートメント シーケンスの正確さと一貫性をチェックするエンティティ。監査人は、専門化された依拠当事者の一例です。"
+    },
+    {
+      "indent": 3,
+      "text": "Client:",
+      "ja": "クライアント:"
+    },
+    {
+      "indent": 12,
+      "text": "an application making protected TS resource requests on behalf of the resource owner and with its authorization.",
+      "ja": "リソース所有者の代わりに、その許可を得て、保護された TS リソース要求を行うアプリケーション。"
+    },
+    {
+      "indent": 3,
+      "text": "Envelope:",
+      "ja": "封筒："
+    },
+    {
+      "indent": 12,
+      "text": "metadata, created by the Issuer to produce a Signed Statement. The Envelope contains the identity of the Issuer and information about the Artifact, enabling TS Registration Policies to validate the Signed Statement. A Signed Statement is a COSE Envelope wrapped around a Statement, binding the metadata in the Envelope to the Statement. In COSE, an Envelope consists of a protected header (included in the Issuer's signature) and an unprotected header (not included in the Issuer's signature).",
+      "ja": "メタデータ。署名付きステートメントを作成するために発行者によって作成されます。エンベロープには発行者の ID とアーティファクトに関する情報が含まれており、TS 登録ポリシーが署名済みステートメントを検証できるようになります。署名付きステートメントは、ステートメントの周囲にラップされた COSE エンベロープであり、エンベロープ内のメタデータをステートメントにバインドします。COSE では、エンベロープは、保護されたヘッダー (発行者の署名に含まれる) と保護されていないヘッダー (発行者の署名に含まれない) で構成されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Equivocation:",
+      "ja": "曖昧な表現:"
+    },
+    {
+      "indent": 12,
+      "text": "a state where a TS provides inconsistent proofs to Relying Parties, containing conflicting claims about the Signed Statement bound at a given position in the VDS.",
+      "ja": "TS が、VDS 内の特定の位置にバインドされた署名付きステートメントに関する矛盾した主張を含む、一貫性のない証明を依拠当事者に提供している状態。"
+    },
+    {
+      "indent": 3,
+      "text": "Issuer:",
+      "ja": "発行者:"
+    },
+    {
+      "indent": 12,
+      "text": "an identifier representing an organization, device, user, or entity securing Statements about supply chain Artifacts. An Issuer may be the owner or author of Artifacts or an independent third party such as an Auditor, reviewer, or endorser. In SCITT Statements and Receipts, the iss Claim is a member of the COSE header parameter 15: CWT Claims defined in [RFC9597], which embeds a CBOR Web Token (CWT) Claims Set [RFC8392] within the protected header of a COSE Envelope. This document uses the terms \"Issuer\" and \"Subject\" as described in [RFC8392]; however, the usage is consistent with the broader interpretation of these terms in both JSON Object Signing and Encryption (JOSE) and COSE, and the guidance in [RFC8725] generally applies the COSE equivalent terms with consistent semantics.",
+      "ja": "サプライチェーン成果物に関するステートメントを保護する組織、デバイス、ユーザー、またはエンティティを表す識別子。発行者は、アーティファクトの所有者または作成者、または監査人、レビュー担当者、承認者などの独立した第三者である場合があります。SCITT ステートメントおよび受領書では、iss クレームは [RFC9597] で定義されている COSE ヘッダー パラメーター 15: CWT クレームのメンバーであり、COSE エンベロープの保護されたヘッダー内に CBOR Web トークン (CWT) クレーム セット [RFC8392] が埋め込まれます。この文書では、[RFC8392] で説明されているように、「発行者」および「サブジェクト」という用語を使用します。ただし、その使用法は、JSON Object Signing and Encryption (JOSE) と COSE の両方におけるこれらの用語の広範な解釈と一致しており、[RFC8725] のガイダンスは一般に、一貫したセマンティクスを持つ COSE の同等の用語を適用します。"
+    },
+    {
+      "indent": 3,
+      "text": "Non-equivocation:",
+      "ja": "曖昧でない:"
+    },
+    {
+      "indent": 12,
+      "text": "a state where all proofs provided by the TS to Relying Parties are produced from a single VDS describing a unique sequence of Signed Statements and are therefore consistent [EQUIVOCATION]. Over time, an Issuer may register new Signed Statements about an Artifact in a TS with new information. However, the consistency of a collection of Signed Statements about the Artifact can be checked by all Relying Parties.",
+      "ja": "TS によって信頼当事者に提供されるすべての証明が、署名付きステートメントの一意のシーケンスを記述する単一の VDS から生成され、したがって一貫性がある状態 [EQUIVOCATION]。時間が経つと、発行者は新しい情報を含む TS 内のアーティファクトに関する新しい署名済みステートメントを登録する場合があります。ただし、アーティファクトに関する署名済みステートメントのコレクションの一貫性は、すべての依拠当事者によってチェックできます。"
+    },
+    {
+      "indent": 3,
+      "text": "Receipt:",
+      "ja": "レシート："
+    },
+    {
+      "indent": 12,
+      "text": "a COSE Single Signer Data Object as defined in [RFC9942]. See [RFC9942] for implementations. Receipts are signed proofs of VDS properties. Receipt Profiles implemented by a TS MUST support inclusion proofs and MAY support other Proof Types (see Section 3 of [RFC9942]), such as consistency proofs.",
+      "ja": "[RFC9942] で定義されている COSE 単一署名者データ オブジェクト。実装については[RFC9942]を参照してください。領収書は、VDS 資産の署名済みの証明です。TS によって実装された受信プロファイルは、包含証明をサポートしなければならず (MUST)、一貫性証明などの他の証明タイプ ([RFC9942] のセクション 3 を参照) をサポートしてもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "Registration:",
+      "ja": "登録："
+    },
+    {
+      "indent": 12,
+      "text": "the process of submitting a Signed Statement to a TS, applying the TS's Registration Policy, adding to the VDS, and producing a Receipt.",
+      "ja": "署名付きステートメントを TS に送信し、TS の登録ポリシーを適用し、VDS に追加し、受領書を作成するプロセス。"
+    },
+    {
+      "indent": 3,
+      "text": "Registration Policy:",
+      "ja": "登録ポリシー:"
+    },
+    {
+      "indent": 12,
+      "text": "the precondition enforced by the TS before registering a Signed Statement, based on information in the non-opaque header and metadata contained in its COSE Envelope.",
+      "ja": "COSE エンベロープに含まれる非不透明ヘッダーとメタデータの情報に基づいて、署名付きステートメントを登録する前に TS によって強制される前提条件。"
+    },
+    {
+      "indent": 3,
+      "text": "Relying Party:",
+      "ja": "依拠当事者:"
+    },
+    {
+      "indent": 12,
+      "text": "Relying Parties consume Transparent Statements, verifying their proofs and inspecting the Statement payload, either before using corresponding Artifacts or later to audit an Artifact's provenance on the supply chain.",
+      "ja": "依拠当事者は、対応するアーティファクトを使用する前に、または後でサプライチェーン上のアーティファクトの出所を監査するために、透明なステートメントを消費し、その証明を検証し、ステートメントのペイロードを検査します。"
+    },
+    {
+      "indent": 3,
+      "text": "Signed Statement:",
+      "ja": "署名済み声明:"
+    },
+    {
+      "indent": 12,
+      "text": "an identifiable and non-repudiable Statement about an Artifact signed by an Issuer. In SCITT, Signed Statements are encoded as Enveloped COSE Structures; the payload of the COSE structure contains the issued Statement.",
+      "ja": "発行者によって署名された、アーティファクトに関する識別可能かつ否認不可能な声明。SCITT では、署名付きステートメントはエンベロープされた COSE 構造としてエンコードされます。COSE 構造のペイロードには、発行されたステートメントが含まれます。"
+    },
+    {
+      "indent": 3,
+      "text": "Statement:",
+      "ja": "声明："
+    },
+    {
+      "indent": 12,
+      "text": "any serializable information about an Artifact. To help interpret Statements, they must be tagged with a relevant media type (as specified in [RFC6838]). A Statement may represent an SBOM that lists the ingredients of a software Artifact, contains an endorsement or attestation about an Artifact, indicates the End of Life (EOL), redirects to a newer version, or contains any content an Issuer wishes to publish about an Artifact. Additional Statements about an Artifact are correlated by the Subject Claim as defined in the \"CBOR Web Token (CWT) Claims\" registry [IANA.cwt] and used as a protected header parameter as defined in [RFC9597]. The Statement is considered opaque to TS and MAY be encrypted.",
+      "ja": "アーティファクトに関するシリアル化可能な情報。ステートメントの解釈を支援するには、ステートメントに関連するメディア タイプ ([RFC6838] で指定されているとおり) のタグを付ける必要があります。ステートメントは、ソフトウェア アーティファクトの構成要素をリストしたり、アーティファクトに関する承認や証明を含んだり、サポート終了 (EOL) を示したり、新しいバージョンにリダイレクトしたり、発行者がアーティファクトに関して公開したいコンテンツを含んだりする SBOM を表す場合があります。アーティファクトに関する追加のステートメントは、「CBOR Web Token (CWT) Claims」レジストリ [IANA.cwt] で定義されているように Subject Claim によって関連付けられ、[RFC9597] で定義されているように保護されたヘッダー パラメーターとして使用されます。ステートメントは TS に対して不透明とみなされ、暗号化されてもよい (MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "Statement Sequence:",
+      "ja": "ステートメントのシーケンス:"
+    },
+    {
+      "indent": 12,
+      "text": "a sequence of Signed Statements captured by a VDS. See Verifiable Data Structure.",
+      "ja": "VDS によってキャプチャされた一連の署名付きステートメント。「検証可能なデータ構造」を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Subject:",
+      "ja": "主題："
+    },
+    {
+      "indent": 12,
+      "text": "an identifier, defined by the Issuer, that represents the organization, device, user, entity, or Artifact about which Statements (and Receipts) are made and by which a logical collection of Statements can be grouped. It is possible that there are multiple Statements about the same Artifact. In these cases, distinct Issuers (iss) might agree to use the sub CWT Claim, defined in [RFC8392], to create a coherent sequence of Signed Statements about the same Artifact, and Relying Parties can leverage sub to ensure completeness and Non-equivocation across Statements by identifying all Transparent Statements associated with a specific Subject.",
+      "ja": "発行者によって定義される識別子。これは、ステートメント (および領収書) が作成される組織、デバイス、ユーザー、エンティティ、またはアーティファクトを表し、ステートメントの論理的なコレクションをグループ化する際の基準となります。同じアーティファクトについて複数のステートメントが存在する可能性があります。このような場合、異なる発行者 (iss) は、[RFC8392] で定義されているサブ CWT クレームを使用して、同じアーティファクトに関する署名付きステートメントの一貫したシーケンスを作成することに同意する可能性があり、依存当事者はサブを活用して、特定のサブジェクトに関連付けられたすべての透過的ステートメントを識別することにより、ステートメント間の完全性と非曖昧性を確保できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Transparency Service:",
+      "ja": "透明性サービス:"
+    },
+    {
+      "indent": 12,
+      "text": "an entity that maintains and extends the VDS and endorses its state. The identity of a TS is captured by a public key that must be known by Relying Parties in order to validate Receipts.",
+      "ja": "VDS を維持および拡張し、その状態を承認するエンティティ。TS の ID は公開鍵によって取得され、受領書を検証するために信頼当事者はこの公開鍵を知っている必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Transparent Statement:",
+      "ja": "透明性のある声明:"
+    },
+    {
+      "indent": 12,
+      "text": "a Signed Statement that is augmented with a Receipt created via Registration in a TS. The Receipt is stored in the unprotected header of COSE Envelope of the Signed Statement. A Transparent Statement remains a valid Signed Statement and may be registered again in a different TS.",
+      "ja": "TS への登録によって作成された受領書で強化された署名付きステートメント。受領書は、署名済みステートメントの COSE エンベロープの保護されていないヘッダーに保存されます。透過的ステートメントは有効な署名付きステートメントのままであり、別の TS に再度登録することができます。"
+    },
+    {
+      "indent": 3,
+      "text": "Verifiable Data Structure:",
+      "ja": "検証可能なデータ構造:"
+    },
+    {
+      "indent": 12,
+      "text": "a data structure defined in [RFC9942] in which Signed Statements can be inserted as they are Registered by a TS. SCITT supports multiple VDSs and Receipt formats as defined in [RFC9942], accommodating different TS implementations.",
+      "ja": "[RFC9942] で定義されているデータ構造。署名付きステートメントは、TS によって登録されるときに挿入できます。SCITT は、[RFC9942] で定義されている複数の VDS と受信フォーマットをサポートし、さまざまな TS 実装に対応します。"
+    },
+    {
+      "indent": 0,
+      "text": "4. Definition of Transparency",
+      "section_title": true,
+      "ja": "4. 透明性の定義"
+    },
+    {
+      "indent": 3,
+      "text": "In this document, the definition of transparency is intended to build over abstract notions of append-only Logs and Receipts. Existing transparency systems such as CT [RFC9162] are instances of this definition. SCITT supports multiple VDSs, as defined in [RFC9942].",
+      "ja": "このドキュメントでは、透明性の定義は、追加専用のログと受領書の抽象的な概念を構築することを目的としています。CT [RFC9162] などの既存の透過性システムは、この定義の例です。SCITT は、[RFC9942] で定義されているように、複数の VDS をサポートします。"
+    },
+    {
+      "indent": 3,
+      "text": "A Signed Statement is an identifiable and non-repudiable Statement made by an Issuer. The Issuer selects additional metadata and attaches a proof of endorsement (in most cases, a signature) using the identity key of the Issuer that binds the Statement and its metadata. Signed Statements can be made transparent by attaching a proof of Registration by a TS in the form of a Receipt. Receipts demonstrate inclusion of Signed Statements in the VDS of a TS. By extension, the Signed Statement may say an Artifact (for example, a firmware binary) is transparent if it comes with one or more Transparent Statements from its author or owner, though the context should make it clear what type of Signed Statement is expected for a given Artifact.",
+      "ja": "署名付き声明は、発行者によって作成された、識別可能かつ否認不可能な声明です。発行者は追加のメタデータを選択し、ステートメントとそのメタデータをバインドする発行者の ID キーを使用して承認の証拠 (ほとんどの場合、署名) を添付します。TS による登録証明を領収書の形式で添付することで、署名済みの声明を透明にすることができます。受領書は、TS の VDS に署名済みステートメントが含まれていることを示します。拡張すると、署名付きステートメントは、その作成者または所有者からの 1 つ以上の透過的ステートメントが付属している場合、アーティファクト (ファームウェア バイナリなど) が透過的であると言うことができますが、コンテキストにより、特定のアーティファクトに対してどのような種類の署名付きステートメントが期待されているかが明確になるはずです。"
+    },
+    {
+      "indent": 3,
+      "text": "Transparency does not prevent dishonest or compromised Issuers, but it holds them accountable. Any Artifact that may be verified is subject to scrutiny and auditing by other parties. The TS provides a history of Statements, which may be made by multiple Issuers, enabling Relying Parties to make informed decisions.",
+      "ja": "透明性は、不誠実な発行者や侵害された発行者を防ぐものではありませんが、発行者に責任を負わせます。検証される可能性のあるアーティファクトは、他の当事者による精査と監査の対象となります。TS は、複数の発行者によって作成されたステートメントの履歴を提供し、信頼当事者が情報に基づいた意思決定を行えるようにします。"
+    },
+    {
+      "indent": 3,
+      "text": "Transparency is implemented by providing a consistent, append-only, cryptographically verifiable, publicly available record of entries. Implementations of TSs may protect their registered sequence of Signed Statements and VDS using a combination of trusted hardware, consensus protocols, and cryptographic evidence. A Receipt is a signature over one or more VDP that a Signed Statement is registered in the VDS. It is universally verifiable without online access to the TS. Requesting a Receipt can result in the production of a new Receipt for the same Signed Statement. A Receipt's verification key, signing algorithm, validity period, header parameters or other claims MAY change each time a Receipt is produced.",
+      "ja": "透明性は、一貫性があり、追加専用で、暗号的に検証可能で、公開されているエントリの記録を提供することによって実装されます。TS の実装では、信頼できるハードウェア、コンセンサス プロトコル、および暗号証拠の組み合わせを使用して、署名済みステートメントと VDS の登録されたシーケンスを保護できます。受領書は、署名付きステートメントが VDS に登録されていることを示す 1 つ以上の VDP 上の署名です。TS にオンラインでアクセスしなくても、普遍的に検証できます。領収書をリクエストすると、同じ署名付きステートメントに対して新しい領収書が作成される場合があります。領収書の検証キー、署名アルゴリズム、有効期間、ヘッダーパラメータ、またはその他のクレームは、領収書が作成されるたびに変更される場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Anyone with access to the TS can independently verify its consistency and review the complete list of Transparent Statements registered by each Issuer.",
+      "ja": "TS にアクセスできる人は誰でも、その一貫性を独立して検証し、各発行者によって登録された透明性のある声明の完全なリストを確認できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Thus, reputable Issuers are incentivized to carefully review their Statements before signing them to produce Signed Statements. Similarly, reputable TSs are incentivized to secure their VDS, as any inconsistency can easily be pinpointed by any Auditor with read access to the TS.",
+      "ja": "したがって、評判の良い発行者は、署名済み声明を作成するために署名する前に、声明を注意深く検討するよう奨励されます。同様に、TS への読み取りアクセス権を持つ監査人であれば、不一致を簡単に特定できるため、評判の良い TS は VDS を保護するよう奨励されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The building blocks specified in this document enable the unequivocal and auditable production of statements about software supply chain artifacts. The extensible design of the SCITT architecture potentially allows future usage with other supply chains in different domains, for example, advanced manufacturing or food supply.",
+      "ja": "この文書で指定されている構成要素により、ソフトウェア サプライ チェーンの成果物に関する明白かつ監査可能なステートメントの作成が可能になります。SCITT アーキテクチャの拡張可能な設計により、将来、高度な製造や食品供給など、さまざまなドメインの他のサプライ チェーンでの使用が可能になる可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT is a generalization of CT [RFC9162], which can be interpreted as a transparency architecture for the supply chain of X.509 certificates. Considering CT in terms of SCITT:",
+      "ja": "SCITT は CT [RFC9162] を一般化したもので、X.509 証明書のサプライ チェーンの透過性アーキテクチャとして解釈できます。SCITT の観点から CT を考慮すると、次のようになります。"
+    },
+    {
+      "indent": 6,
+      "text": "* Certificate Authorities (CAs) (Issuers) sign the ASN.1 DER-encoded tbsCertificate structure to produce an X.509 certificate (Signed Statements)",
+      "ja": "* 認証局 (CA) (発行者) は、ASN.1 DER でエンコードされた tbsCertificate 構造に署名して、X.509 証明書 (署名付きステートメント) を生成します。"
+    },
+    {
+      "indent": 6,
+      "text": "* CAs submit the certificates to one or more CT logs (TSs)",
+      "ja": "* CA は証明書を 1 つ以上の CT ログ (TS) に送信します。"
+    },
+    {
+      "indent": 6,
+      "text": "* CT logs produce Signed Certificate Timestamps (Transparent Statements)",
+      "ja": "* CT ログは署名付き証明書のタイムスタンプ (透過的なステートメント) を生成します"
+    },
+    {
+      "indent": 6,
+      "text": "* Signed Certificate Timestamps, Signed Tree Heads, and their respective consistency proofs are checked by Relying Parties",
+      "ja": "* 署名付き証明書のタイムスタンプ、署名付きツリーヘッド、およびそれぞれの整合性証明は、依拠当事者によってチェックされます。"
+    },
+    {
+      "indent": 6,
+      "text": "* The VDS can be checked by Auditors",
+      "ja": "* VDS は監査人によってチェックされます"
+    },
+    {
+      "indent": 0,
+      "text": "5. Architecture Overview",
+      "section_title": true,
+      "ja": "5. アーキテクチャの概要"
+    },
+    {
+      "indent": 3,
+      "text": "The SCITT architecture enables TSs in a given application domain to implement a collective baseline by providing a set of common formats and protocols for issuing and registering Signed Statements and auditing Transparent Statements.",
+      "ja": "SCITT アーキテクチャにより、署名付きステートメントの発行と登録、および透過的ステートメントの監査のための共通フォーマットとプロトコルのセットを提供することで、特定のアプリケーション ドメイン内の TS が集合的なベースラインを実装できるようになります。"
+    },
+    {
+      "indent": 3,
+      "text": "In order to accommodate as many TS implementations as possible, this document only specifies the format of Signed Statements (which must be used by all Issuers) and a very thin wrapper format for Receipts, which specifies the TS identity and the agility parameters for the signed proofs. The remaining details of the Receipt's contents are specified in [RFC9942].",
+      "ja": "可能な限り多くの TS 実装に対応するために、この文書では、署名付きステートメントの形式 (すべての発行者が使用する必要がある) と、TS ID と署名済み証明の機敏性パラメーターを指定する受領書の非常に薄いラッパー形式のみを指定します。領収書の内容の残りの詳細は [RFC9942] で規定されています。"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 2 illustrates the roles and processes that comprise a TS independent of any one use case:",
+      "ja": "図 2 は、1 つのユースケースに依存しない TS を構成する役割とプロセスを示しています。"
+    },
+    {
+      "indent": 6,
+      "text": "* Issuers that use their credentials to create Signed Statements about Artifacts.",
+      "ja": "* 認証情報を使用してアーティファクトに関する署名付きステートメントを作成する発行者。"
+    },
+    {
+      "indent": 6,
+      "text": "* TSs that evaluate Signed Statements against Registration Policies producing Receipts upon successful Registration. The returned Receipt may be combined with the Signed Statement to create a Transparent Statement.",
+      "ja": "* 署名済みステートメントを登録ポリシーに照らして評価し、登録が成功した場合に受領書を発行する TS。返された受領書を署名付き声明と組み合わせて、透明性のある声明を作成することができます。"
+    },
+    {
+      "indent": 6,
+      "text": "* Relying Parties that:",
+      "ja": "* 以下の依存当事者:"
+    },
+    {
+      "indent": 12,
+      "text": "- collect Receipts of Signed Statements for subsequent registration of Transparent Statements;",
+      "ja": "- その後の透明性のある声明の登録のために署名された声明の受領書を収集する。"
+    },
+    {
+      "indent": 12,
+      "text": "- retrieve Transparent Statements for analysis of Statements about Artifacts themselves (e.g., verification);",
+      "ja": "- アーティファクト自体に関するステートメントを分析するための透明なステートメントを取得します (検証など)。"
+    },
+    {
+      "indent": 12,
+      "text": "- or replay all the Transparent Statements to check for the consistency and correctness of the TS's VDS (e.g., auditing).",
+      "ja": "- または、すべての透過的ステートメントを再生して、TS の VDS の一貫性と正確性をチェックします (監査など)。"
+    },
+    {
+      "indent": 3,
+      "text": "In addition, Figure 2 illustrates multiple TSs and multiple Receipts as a single Signed Statement MAY be registered with one or more TS. Each TS produces a Receipt, which may be aggregated in a single Transparent Statement, demonstrating the Signed Statement was registered by multiple TSs.",
+      "ja": "さらに、図 2 は、単一の署名付きステートメントが 1 つ以上の TS に登録されてもよいとして、複数の TS と複数の受領書を示しています。各 TS は受領書を生成し、これは単一の透過的ステートメントに集約され、署名付きステートメントが複数の TS によって登録されたことを示します。"
+    },
+    {
+      "indent": 3,
+      "text": "The arrows indicate the flow of information.",
+      "ja": "矢印は情報の流れを示します。"
+    },
+    {
+      "indent": 3,
+      "text": " .----------.                      +--------------+\n|  Artifact  |                     |    Issuer    |\n '----+-----'                      +-+----------+-+\n      v                              v          v\n .----+----.                   .-----+----.    .+---------.\n| Statement |                 /   sign   /    /  verify  /\n '----+----'                 '-----+----+    '-------+--+\n      |                            |                 '-------.\n      |    .----------------------' '---------.               |\n      |   |                                    |              |\n      v   v                                    v              |\n .----+---+---.                           +----+----+-----+   |\n|    Signed    +------------------------->+ Transparency  |   |\n|   Statement  |                         .+               |   |\n '------+-----'           .-------.     | |   Service     +-+ |\n        |      .---------+ Receipt +<--'  +--+------------+ | |\n        |     |.-----.   |         +.        | Transparency | |\n        |     |       |   '+------'  |       |              | |\n        v     v        '---+ Receipt +<------+   Service    | |\n     .--+-----+--.          '-------'        +--------+-----+ |\n    | Transparent |                                   |       |\n    |  Statement  +-------.                .----------)------'\n     '-----+-----'         |              |           |\n           v               v              v           v\n  .--------+---------.  .--+--------------+--. .------+----------.\n / Collect Receipts /  / Verify Transparent / /   Replay Log    /\n'--+---------------+  /      Statement     / '-+---------------+\n   | Relying Party | '----+---------------+    | Relying Party |\n   +---------------+      | Relying Party |    +---------------+\n                          +---------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 16,
+      "text": "Figure 2: Relationship of Concepts in SCITT",
+      "ja": "図 2: SCITT における概念の関係"
+    },
+    {
+      "indent": 3,
+      "text": "The subsequent sections describe the main concepts, namely TS, Signed Statements, Registration, and Transparent Statements in more detail.",
+      "ja": "後続のセクションでは、主要な概念、つまり TS、署名付きステートメント、登録、および透過的ステートメントについて詳しく説明します。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1. Transparency Service",
+      "section_title": true,
+      "ja": "5.1. 透明性サービス"
+    },
+    {
+      "indent": 3,
+      "text": "TSs MUST produce COSE Receipts [RFC9942].",
+      "ja": "TS は COSE 受領書 [RFC9942] を生成しなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Typically, a TS has a single Issuer identity that is present in the iss Claim of Receipts for that service.",
+      "ja": "通常、TS には、そのサービスの iss Claim of Receipts に存在する単一の発行者 ID があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Multi-tenant support can be enabled through the use of identifiers in the iss Claim; for example, ts.example. may have a distinct Issuer identity for each subdomain, such as \"tenant1.ts.example.\" and \"tenant2.ts.example.\".",
+      "ja": "マルチテナントのサポートは、iss クレームで識別子を使用することで有効にすることができます。たとえば、ts.example。「tenant1.ts.example」など、サブドメインごとに異なる発行者 ID を持つ場合があります。and \"tenant2.ts.example.\"."
+    },
+    {
+      "indent": 0,
+      "text": "5.1.1. Registration Policies",
+      "section_title": true,
+      "ja": "5.1.1. 登録ポリシー"
+    },
+    {
+      "indent": 3,
+      "text": "Registration Policies refer to additional checks over and above the mandatory Registration checks that are performed before a Signed Statement is registered to the VDS. To enable auditability, TSs MUST maintain Registration Policies. The presence of an explicit transparent registration policy, even if it allows all authenticated submissions, facilitates service audit, and enables potential future changes to that policy.",
+      "ja": "登録ポリシーとは、署名付きステートメントが VDS に登録される前に実行される必須の登録チェックに加えて追加のチェックを指します。監査可能性を有効にするために、TS は登録ポリシーを維持しなければなりません。明示的な透過的な登録ポリシーが存在すると、すべての認証された送信が許可される場合でも、サービス監査が容易になり、そのポリシーに対する将来の変更が可能になります。"
+    },
+    {
+      "indent": 3,
+      "text": "Beyond the mandatory Registration checks, the scope of additional checks, including no additional checks, is up to the implementation.",
+      "ja": "必須の登録チェック以外に、追加チェックの範囲 (追加チェックを行わないことも含む) は実装次第です。"
+    },
+    {
+      "indent": 3,
+      "text": "This specification leaves implementation, encoding, and documentation of Registration Policies and trust anchors to the operator of the TS.",
+      "ja": "この仕様では、登録ポリシーとトラスト アンカーの実装、エンコード、文書化が TS の運用者に委ねられています。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1.1.1. Mandatory Registration Checks",
+      "section_title": true,
+      "ja": "5.1.1.1. 必須の登録チェック"
+    },
+    {
+      "indent": 3,
+      "text": "During Registration, a TS MUST syntactically check the Issuer of the Signed Statement by cryptographically verifying the COSE signature according to [STD96]. The Issuer identity MUST be bound to the Signed Statement by including an identifier in the protected header. If the protected header includes multiple identifiers, all those that are registered by the TS MUST be checked.",
+      "ja": "登録中、TS は [STD96] に従って COSE 署名を暗号的に検証することにより、署名付きステートメントの発行者を構文的にチェックしなければなりません (MUST)。発行者 ID は、保護されたヘッダーに識別子を含めることによって、署名付きステートメントにバインドされなければなりません (MUST)。保護されたヘッダーに複数の識別子が含まれる場合、TS によって登録されているすべての識別子をチェックしなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "TSs MUST maintain a list of trust anchors (see definition of trust anchor in [RFC4949]) in order to check the signatures of Signed Statements either separately or inside Registration Policies. TSs MUST authenticate Signed Statements as part of a Registration Policy. For instance, a trust anchor could be an X.509 root certificate (directly or its thumbprint), a pointer to an OpenID Connect identity provider, or any other trust anchor that can be referenced in a COSE header parameter.",
+      "ja": "TS は、署名付きステートメントの署名を個別に、または登録ポリシー内でチェックするために、トラスト アンカーのリスト ([RFC4949] のトラスト アンカーの定義を参照) を維持しなければなりません (MUST)。TS は、登録ポリシーの一部として署名付きステートメントを認証しなければなりません (MUST)。たとえば、トラスト アンカーは、X.509 ルート証明書 (直接またはその拇印)、OpenID Connect ID プロバイダーへのポインター、または COSE ヘッダー パラメーターで参照できるその他のトラスト アンカーである可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "When using X.509 Signed Statements, the TS MUST build and validate a complete certification path from an Issuer's certificate to one of the root certificates currently registered as a trust anchor by the TS. The protected header of the COSE_Sign1 Envelope MUST include either the Issuer's certificate as x5t or the chain including the Issuer's certificate as x5chain, as defined in [RFC9360]. If x5t is included in the protected header, an x5chain with a leaf certificate corresponding to the x5t value MAY be included in the unprotected header.",
+      "ja": "X.509 署名付きステートメントを使用する場合、TS は、発行者の証明書から、現在 TS によってトラストアンカーとして登録されているルート証明書の 1 つまでの完全な証明書パスを構築し、検証しなければなりません (MUST)。COSE_Sign1 Envelope の保護されたヘッダーには、[RFC9360] で定義されているように、x5t としての発行者の証明書、または x5chain としての発行者の証明書を含むチェーンのいずれかを含めなければなりません (MUST)。x5t が保護されたヘッダーに含まれる場合、x5t 値に対応するリーフ証明書を持つ x5chain が保護されていないヘッダーに含まれてもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "Registration Policies and trust anchors MUST be made Transparent and available to all Relying Parties of the TS by Registering them as Signed Statements on the VDS.",
+      "ja": "登録ポリシーとトラストアンカーは、VDS に署名付きステートメントとして登録することにより、透明性があり、TS のすべての依拠当事者が利用できるようにしなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "The TS MUST apply the Registration Policy that was most recently committed to the VDS at the time of Registration.",
+      "ja": "TS は、登録時に VDS に最後にコミットされた登録ポリシーを適用する必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1.1.2. Auditability of Registration",
+      "section_title": true,
+      "ja": "5.1.1.2. 登録の監査可能性"
+    },
+    {
+      "indent": 3,
+      "text": "The operator of a TS MAY update the Registration Policy or the trust anchors of a TS at any time.",
+      "ja": "TS のオペレータは、TS の登録ポリシーまたはトラストアンカーをいつでも更新できます (MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "TSs MUST ensure that for any Signed Statement they register, enough information is made available to Auditors to reproduce the Registration checks that were defined by the Registration Policies at the time of Registration. At a minimum, this consists of the Signed Statements themselves, any additional collateral data required to perform their authentication, and the applicable Registration Policy at the time of Registration.",
+      "ja": "TS は、登録する署名付きステートメントについて、登録時に登録ポリシーによって定義された登録チェックを再現するために十分な情報が監査人に利用可能であることを保証しなければなりません。これは、少なくとも、署名済みステートメント自体、その認証を実行するために必要な追加の付随データ、および登録時に適用される登録ポリシーで構成されます。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1.2. Initialization and Bootstrapping",
+      "section_title": true,
+      "ja": "5.1.2. 初期化とブートストラップ"
+    },
+    {
+      "indent": 3,
+      "text": "Since the mandatory Registration checks rely on having registered Signed Statements for the Registration Policy and trust anchors, TSs MUST support at least one of the three following bootstrapping mechanisms:",
+      "ja": "必須の登録チェックは、登録ポリシーとトラスト アンカーの署名付きステートメントが登録されているかどうかに依存するため、TS は次の 3 つのブートストラップ メカニズムのうち少なくとも 1 つをサポートしなければなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* Preconfigured Registration Policy and trust anchors;",
+      "ja": "* 事前構成された登録ポリシーとトラストアンカー。"
+    },
+    {
+      "indent": 6,
+      "text": "* Acceptance of a first Signed Statement whose payload is a valid Registration Policy, without performing Registration checks; or",
+      "ja": "* ペイロードが有効な登録ポリシーである最初の署名付きステートメントを、登録チェックを実行せずに受け入れる。または"
+    },
+    {
+      "indent": 6,
+      "text": "* An out-of-band authenticated management interface.",
+      "ja": "* 帯域外認証された管理インターフェイス。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1.3. Verifiable Data Structure",
+      "section_title": true,
+      "ja": "5.1.3. 検証可能なデータ構造"
+    },
+    {
+      "indent": 3,
+      "text": "The security properties are determined by the choice of the VDS (see [RFC9942]) used by the TS implementation. This VDS MUST support the following security requirements:",
+      "ja": "セキュリティ プロパティは、TS 実装で使用される VDS ([RFC9942] を参照) の選択によって決まります。この VDS は、次のセキュリティ要件をサポートする必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Append-only:",
+      "ja": "追加のみ:"
+    },
+    {
+      "indent": 12,
+      "text": "a property required for a VDS to be applicable to SCITT, ensuring that the Statement Sequence cannot be modified, deleted, or reordered.",
+      "ja": "VDS を SCITT に適用するために必要なプロパティ。これにより、ステートメント シーケンスが変更、削除、並べ替えられないことが保証されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Non-equivocation:",
+      "ja": "曖昧でない:"
+    },
+    {
+      "indent": 12,
+      "text": "there is no fork in the registered sequence of Signed Statements accepted by the TS and committed to the VDS. Everyone with access to its content sees the same ordered collection of Signed Statements and can check that it is consistent with any Receipts they have verified.",
+      "ja": "TS によって受け入れられ、VDS にコミットされた署名付きステートメントの登録済みシーケンスにフォークはありません。そのコンテンツにアクセスできる人は誰でも、同じ順序で並べられた署名付きステートメントのコレクションを確認し、それが検証済みの受領書と一致しているかどうかを確認できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Replayability:",
+      "ja": "再生可能性:"
+    },
+    {
+      "indent": 12,
+      "text": "the VDS includes sufficient information to enable authorized actors with access to its content to check that each data structure representing each Signed Statement has been correctly registered.",
+      "ja": "VDS には、承認されたアクターがそのコンテンツにアクセスして、各署名付きステートメントを表す各データ構造が正しく登録されていることを確認できるようにするのに十分な情報が含まれています。"
+    },
+    {
+      "indent": 3,
+      "text": "In addition to Receipts, some VDSs might support additional Proof Types, such as proofs of consistency or proofs of non-inclusion.",
+      "ja": "一部の VDS では、領収書に加えて、一貫性の証明や非包含の証明など、追加の証明タイプをサポートしている場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Specific VDSs, such as those described in [RFC9162] and [RFC9942], and the review of their security requirements for SCITT are out of scope for this document.",
+      "ja": "[RFC9162] や [RFC9942] で説明されているような特定の VDS、および SCITT のセキュリティ要件のレビューは、この文書の範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1.4. Adjacent Services",
+      "section_title": true,
+      "ja": "5.1.4. 隣接するサービス"
+    },
+    {
+      "indent": 3,
+      "text": "TSs can be deployed alongside other database or object storage technologies. For example, a TS that supports a software package management system, might be referenced from the APIs exposed for package management. It can also provide the ability to request a fresh Receipt for a given software package or a list of Signed Statements associated with that package.",
+      "ja": "TS は、他のデータベースまたはオブジェクト ストレージ テクノロジーと一緒に導入できます。たとえば、ソフトウェア パッケージ管理システムをサポートする TS は、パッケージ管理用に公開されている API から参照される場合があります。また、特定のソフトウェア パッケージの新しい領収書、またはそのパッケージに関連付けられた署名付きステートメントのリストを要求する機能も提供できます。"
+    },
+    {
+      "indent": 0,
+      "text": "6. Signed Statements",
+      "section_title": true,
+      "ja": "6. 署名された声明"
+    },
+    {
+      "indent": 3,
+      "text": "This specification prioritizes conformance to [STD96] and its required and optional properties. Signed Statements produced by Issuers must be COSE_Sign1 messages, as defined by [STD96]. Profiles and implementation-specific choices should be used to determine admissibility of conforming messages. This specification is left intentionally open to allow implementations to make Registration restrictions that make the most sense for their operational use cases.",
+      "ja": "この仕様は、[STD96] とその必須およびオプションのプロパティへの準拠を優先します。[STD96] で定義されているように、発行者が生成する署名付きステートメントは COSE_Sign1 メッセージでなければなりません。適合するメッセージの許容性を決定するには、プロファイルと実装固有の選択を使用する必要があります。この仕様は、実装が運用上のユースケースに最も適した登録制限を行えるようにするために、意図的にオープンなままになっています。"
+    },
+    {
+      "indent": 3,
+      "text": "There are many types of Statements (such as an SBOM, malware scans, audit reports, policy definitions) that Issuers may want to turn into Signed Statements. An Issuer must first decide on a suitable format (3: payload type) to serialize the Statement payload. For a software supply chain, payloads describing the software Artifacts may include:",
+      "ja": "発行者が署名付きステートメントに変換したいステートメントの種類は数多くあります (SBOM、マルウェア スキャン、監査レポート、ポリシー定義など)。発行者はまず、Statement ペイロードをシリアル化するために適切な形式 (3: ペイロード タイプ) を決定する必要があります。ソフトウェア サプライ チェーンの場合、ソフトウェア アーティファクトを記述するペイロードには次のものが含まれる場合があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* Concise Software Identification Tags format [CoSWID]",
+      "ja": "* 簡潔なソフトウェア識別タグ形式 [CoSWID]"
+    },
+    {
+      "indent": 6,
+      "text": "* Bill of Materials format [CycloneDX]",
+      "ja": "* 部品表フォーマット【CycloneDX】"
+    },
+    {
+      "indent": 6,
+      "text": "* Supply chain description metadata [in-toto]",
+      "ja": "* サプライチェーン記述メタデータ [in-toto]"
+    },
+    {
+      "indent": 6,
+      "text": "* Software component description format [SPDX]",
+      "ja": "* ソフトウェアコンポーネント記述形式[SPDX]"
+    },
+    {
+      "indent": 6,
+      "text": "* Supply-chain Levels for Software Artifacts [SLSA]",
+      "ja": "* ソフトウェア成果物のサプライチェーンレベル [SLSA]"
+    },
+    {
+      "indent": 6,
+      "text": "* Software Identification Tag format [SWID]",
+      "ja": "* ソフトウェア識別タグ形式 [SWID]"
+    },
+    {
+      "indent": 3,
+      "text": "Issuers can produce Signed Statements about different Artifacts under the same Identity. Issuers and Relying Parties must be able to recognize the Artifact to which the Statements pertain by looking at the Signed Statement. The iss and sub Claims, within the CWT Claims protected header, are used to identify the Artifact the Statement pertains to. (See Subject in Section 3.)",
+      "ja": "発行者は、同じ ID の下で異なるアーティファクトに関する署名付きステートメントを作成できます。発行者と依拠当事者は、署名されたステートメントを見て、ステートメントが関係するアーティファクトを認識できなければなりません。CWT Claims で保護されたヘッダー内の iss および sub Claim は、ステートメントが関係するアーティファクトを識別するために使用されます。(セクション 3 の主題を参照してください。)"
+    },
+    {
+      "indent": 3,
+      "text": "Issuers MAY use different signing keys (identified by kid in the protected header from [STD96]) for different Artifacts or sign all Signed Statements under the same key.",
+      "ja": "発行者は、異なるアーティファクトに対して異なる署名鍵 ([STD96] の保護されたヘッダー内の kid によって識別される) を使用したり、同じ鍵の下ですべての署名付きステートメントに署名したりできます (MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "An Issuer can make multiple Statements about the same Artifact. For example, an Issuer can make amended Statements about the same Artifact as their view changes over time.",
+      "ja": "発行者は、同じアーティファクトについて複数のステートメントを作成できます。たとえば、発行者は、時間の経過とともに見解が変化するにつれて、同じアーティファクトについて修正ステートメントを作成できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Multiple Issuers can make different, even conflicting, Statements about the same Artifact. Relying Parties can choose which Issuers they trust.",
+      "ja": "複数の発行者が、同じアーティファクトに関して異なる、または矛盾するステートメントを作成する可能性があります。信頼当事者は、どの発行者を信頼するかを選択できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Multiple Issuers can make the same Statement about a single Artifact, affirming multiple Issuers agree.",
+      "ja": "複数の発行者が単一のアーティファクトについて同じステートメントを作成し、複数の発行者が同意することを確認できます。"
+    },
+    {
+      "indent": 3,
+      "text": "Additionally, an x5chain that corresponds to either x5t or kid identifying the leaf certificate in the included certification path MAY be included in the unprotected header of the COSE Envelope.",
+      "ja": "さらに、含まれる証明書パス内のリーフ証明書を識別する x5t または kid に対応する x5chain が、COSE エンベロープの保護されていないヘッダーに含まれてもよい(MAY)。"
+    },
+    {
+      "indent": 6,
+      "text": "* When using X.509 certificates, support for either x5t or x5chain in the protected header is REQUIRED to implement.",
+      "ja": "* X.509 証明書を使用する場合、保護されたヘッダーでの x5t または x5chain のサポートを実装する必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* Support for kid in the protected header and x5chain in the unprotected header is OPTIONAL to implement.",
+      "ja": "* 保護されたヘッダーでの kid と保護されていないヘッダーでの x5chain のサポートは実装がオプションです。"
+    },
+    {
+      "indent": 3,
+      "text": "When x5t or x5chain is present in the protected header, the iss Claim value MUST be a string that meets URI requirements defined in [RFC8392]. The iss Claim value's length MUST be between 1 and 8192 characters in length.",
+      "ja": "x5t または x5chain が保護されたヘッダーに存在する場合、iss Claim 値は [RFC8392] で定義されている URI 要件を満たす文字列でなければなりません (MUST)。iss Claim 値の長さは 1 ～ 8192 文字でなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "The kid header parameter MUST be present when neither x5t nor x5chain is present in the protected header. Key discovery protocols are out of scope of this document.",
+      "ja": "保護されたヘッダーに x5t も x5chain も存在しない場合、kid ヘッダー パラメーターが存在しなければなりません (MUST)。主要な検出プロトコルは、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "The protected header of a Signed Statement and a Receipt MUST include the CWT Claims header parameter as specified in Section 2 of [RFC9597]. The CWT Claims value MUST include the Issuer Claim (Claim label 1) and the Subject Claim (Claim label 2) [IANA.cwt].",
+      "ja": "Signed Statement と Receipt の保護されたヘッダーには、[RFC9597] のセクション 2 で指定されている CWT Claims ヘッダー パラメーターが含まれなければなりません (MUST)。CWT Claims 値には、Issuer Claim (Claim label 1) と Subject Claim (Claim label 2) を含めなければなりません [IANA.cwt]。"
+    },
+    {
+      "indent": 3,
+      "text": "A Receipt is a Signed Statement (COSE_Sign1) with additional Claims in its protected header related to verifying the inclusion proof in its unprotected header. See [RFC9942].",
+      "ja": "受領書は、保護されていないヘッダー内の包含証明の検証に関連する追加のクレームを保護されたヘッダーに含む署名付きステートメント (COSE_Sign1) です。[RFC9942]を参照してください。"
+    },
+    {
+      "indent": 0,
+      "text": "6.1. Signed Statement Examples",
+      "section_title": true,
+      "ja": "6.1. 署名付きステートメントの例"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 3 illustrates a normative CDDL definition [RFC8610] for the protected header and unprotected header of Signed Statements and Receipts.",
+      "ja": "図 3 は、署名付き明細書と領収書の保護されたヘッダーと保護されていないヘッダーに関する標準的な CDDL 定義 [RFC8610] を示しています。"
+    },
+    {
+      "indent": 3,
+      "text": "The SCITT architecture specifies the minimal mandatory labels. Implementation-specific Registration Policies may define additional mandatory labels.",
+      "ja": "SCITT アーキテクチャでは、最小限の必須ラベルが指定されています。実装固有の登録ポリシーでは、追加の必須ラベルを定義する場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Signed_Statement = #6.18(COSE_Sign1)\nReceipt = #6.18(COSE_Sign1)\n\nCOSE_Sign1 = [\n  protected   : bstr .cbor Protected_Header,\n  unprotected : Unprotected_Header,\n  payload     : bstr / nil,\n  signature   : bstr\n]\n\nProtected_Header = {\n  &(CWT_Claims: 15) => CWT_Claims\n  ? &(alg: 1) => int\n  ? &(content_type: 3) => tstr / uint\n  ? &(kid: 4) => bstr\n  ? &(x5t: 34) => COSE_CertHash\n  ? &(x5chain: 33) => COSE_X509\n  * label => any\n}\n\nCWT_Claims = {\n  &(iss: 1) => tstr\n  &(sub: 2) => tstr\n  * label => any\n}\n\nUnprotected_Header = {\n  ? &(x5chain: 33) => COSE_X509\n  ? &(receipts: 394)  => [+ bstr .cbor Receipt]\n  * label => any\n}\n\nlabel = int / tstr",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 8,
+      "text": "Figure 3: CDDL Definition for Signed Statements and Receipts",
+      "ja": "図 3: 署名付き明細書と領収書の CDDL 定義"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 4 illustrates an instance of a Signed Statement in Extended Diagnostic Notation (EDN), with a payload that is detached. Detached payloads support large Statements and ensure Signed Statements can integrate with existing storage systems.",
+      "ja": "図 4 は、ペイロードが分離された拡張診断記法 (EDN) の署名付きステートメントのインスタンスを示しています。分離されたペイロードは大規模なステートメントをサポートし、署名付きステートメントを既存のストレージ システムと確実に統合できます。"
+    },
+    {
+      "indent": 3,
+      "text": "18(                                 / COSE_Sign1       /\n    [\n      h'a4012603...6d706c65',       / Protected        /\n      {},                           / Unprotected      /\n      nil,                          / Detached payload /\n      h'79ada558...3a28bae4'        / Signature        /\n    ]\n)",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 6,
+      "text": "Figure 4: CBOR-Extended Diagnostic Notation Example of a Signed Statement",
+      "ja": "図 4: CBOR 拡張診断表記法による署名付きステートメントの例"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 5 illustrates the decoded protected header of the Signed Statement in Figure 4. It indicates the Signed Statement is securing a JSON content type and identifying the content with the sub Claim \"vendor.product.example\".",
+      "ja": "図 5 は、図 4 の Signed Statement のデコードされた保護ヘッダーを示しています。これは、Signed Statement が JSON コンテンツ タイプを保護し、サブ クレーム「vendor.product.example」でコンテンツを識別していることを示しています。"
+    },
+    {
+      "indent": 3,
+      "text": "{                                   / Protected        /\n  1: -7,                            / Algorithm        /\n  3: application/example+json,      / Content type     /\n  4: h'50685f55...50523255',        / Key identifier   /\n  15: {                             / CWT Claims       /\n    1: software.vendor.example,     / Issuer           /\n    2: vendor.product.example,      / Subject          /\n  }\n}",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 6,
+      "text": "Figure 5: CBOR-Extended Diagnostic Notation Example of a Signed Statement's Protected Header",
+      "ja": "図 5: 署名付きステートメントの保護されたヘッダーの CBOR 拡張診断表記法の例"
+    },
+    {
+      "indent": 0,
+      "text": "6.2. Signing Large or Sensitive Statements",
+      "section_title": true,
+      "ja": "6.2. 大規模なステートメントまたは機密性の高いステートメントへの署名"
+    },
+    {
+      "indent": 3,
+      "text": "Statement payloads might be too large or too sensitive to be sent to a remote TS. In these cases, a Statement can be made over the hash of a payload rather than the full payload bytes.",
+      "ja": "ステートメント ペイロードが大きすぎるか、機密性が高すぎるため、リモート TS に送信できない可能性があります。このような場合、ペイロード バイト全体ではなく、ペイロードのハッシュに対してステートメントを作成できます。"
+    },
+    {
+      "indent": 3,
+      "text": "   .----+-----.\n  |  Artifact  |\n   '+-+-------'\n    | |\n .-'  v\n|  .--+-------.\n| |  Hash      +-+\n|  '----------'  |     /\\\n '-.             |    /  \\     .----------.\n    |            +-->+ OR +-->+  Payload   |\n    v            |    \\  /     '--------+-'\n   .+--------.   |     \\/               |\n  | Statement +--+                      |\n   '---------'                          |\n                                        |\n                                        |\n           ...  Producer Network ...    |\n\n                      ...\n\n           ...   Issuer Network ...     |\n                                        |\n                                        |\n .---------.                            |\n| Identity  |     (iss, x5t)            |\n| Document  +--------------------+      |\n `----+----`                     |      |\n      ^                          |      |\n .----+-------.                  |      |\n| Private Key  |                 |      |\n '----+-------'                  v      |\n      |                     .----+---.  |\n      |                    |  Header  | |\n      |                     '----+---'  |\n      v                          v      v\n    .-+-----------.       .------+------+--.\n   /             /       /                  \\\n  /    Sign     +<------+ To-Be-Signed-Bytes |\n /             /         \\                  /\n'-----+-------'           '----------------'\n      v\n .----+-------.\n| COSE_Sign1   |\n '------------'",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 14,
+      "text": "Figure 6: Signing Large or Sensitive Statements",
+      "ja": "図 6: 大規模なステートメントまたは機密性の高いステートメントへの署名"
+    },
+    {
+      "indent": 0,
+      "text": "6.3. Registration of Signed Statements",
+      "section_title": true,
+      "ja": "6.3. 署名済み陳述書の登録"
+    },
+    {
+      "indent": 3,
+      "text": "To register a Signed Statement, the TS performs the following steps:",
+      "ja": "署名付きステートメントを登録するには、TS は次の手順を実行します。"
+    },
+    {
+      "indent": 8,
+      "text": "1. Client Authentication",
+      "ja": "1. クライアント認証"
+    },
+    {
+      "indent": 12,
+      "text": "A Client authenticates with the TS before registering Signed Statements on behalf of one or more Issuers. Authentication and authorization are implementation specific and out of scope of the SCITT architecture.",
+      "ja": "クライアントは、1 つ以上の発行者に代わって署名付きステートメントを登録する前に、TS で認証します。認証と認可は実装固有であり、SCITT アーキテクチャの範囲外です。"
+    },
+    {
+      "indent": 8,
+      "text": "2. TS Signed Statement Verification and Validation",
+      "ja": "2. TS 署名付きステートメントの検証と検証"
+    },
+    {
+      "indent": 12,
+      "text": "The TS MUST perform signature verification per Section 4.4 of RFC 9052 [STD96] and MUST verify the signature of the Signed Statement with the signature algorithm and verification key of the Issuer per [RFC9360]. The TS MUST also check that the Signed Statement includes the required protected headers. The TS MAY validate the Signed Statement payload in order to enforce domain-specific registration policies that apply to specific content types.",
+      "ja": "TS は、RFC 9052 [STD96] のセクション 4.4 に従って署名検証を実行しなければならず、[RFC9360] に従って署名アルゴリズムと発行者の検証キーを使用して署名付きステートメントの署名を検証しなければなりません。TS は、署名付きステートメントに必要な保護されたヘッダーが含まれていることも確認しなければなりません (MUST)。TS は、特定のコンテンツ タイプに適用されるドメイン固有の登録ポリシーを強制するために、署名付きステートメント ペイロードを検証してもよい (MAY)。"
+    },
+    {
+      "indent": 8,
+      "text": "3. Apply Registration Policy",
+      "ja": "3. 登録ポリシーの適用"
+    },
+    {
+      "indent": 12,
+      "text": "The TS MUST check the attributes required by a Registration Policy are present in the protected headers. Custom Signed Statements are evaluated given the current TS state and the entire Envelope and may use information contained in the attributes of named policies.",
+      "ja": "TS は、登録ポリシーによって要求される属性が保護されたヘッダーに存在することを確認しなければなりません (MUST)。カスタム署名付きステートメントは、現在の TS 状態とエンベロープ全体を考慮して評価され、名前付きポリシーの属性に含まれる情報を使用する場合があります。"
+    },
+    {
+      "indent": 8,
+      "text": "4. Register the Signed Statement",
+      "ja": "4. 署名済みステートメントを登録する"
+    },
+    {
+      "indent": 8,
+      "text": "5. Return the Receipt",
+      "ja": "5. 領収書を返却する"
+    },
+    {
+      "indent": 12,
+      "text": "This MAY be asynchronous from Registration. The TS MUST be able to provide a Receipt for all registered Signed Statements. Details about generating Receipts are described in Section 7.",
+      "ja": "これは登録とは非同期であってもよい(MAY)。TS は、登録されたすべての署名付きステートメントに対して受領書を提供できなければなりません (MUST)。領収書の生成の詳細については、セクション 7 で説明します。"
+    },
+    {
+      "indent": 3,
+      "text": "The last two steps may be shared between a batch of Signed Statements registered in the VDS.",
+      "ja": "最後の 2 つのステップは、VDS に登録された署名付きステートメントのバッチ間で共有される場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "A TS MUST ensure that a Signed Statement is registered before releasing its Receipt.",
+      "ja": "TS は、受領書を発行する前に、署名付きステートメントが登録されていることを確認しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "A TS MAY accept a Signed Statement with content in its unprotected header and MAY use values from that unprotected header during verification and registration policy evaluation.",
+      "ja": "TS は、保護されていないヘッダーに内容を含む署名付きステートメントを受け入れてもよく、検証および登録ポリシーの評価中にその保護されていないヘッダーの値を使用してもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "However, the unprotected header of a Signed Statement MUST be set to an empty map before the Signed Statement can be included in a Statement Sequence.",
+      "ja": "ただし、署名付きステートメントをステートメント シーケンスに含める前に、署名付きステートメントの保護されていないヘッダーを空のマップに設定しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "The same Signed Statement may be independently registered in multiple TSs, producing multiple independent Receipts. The multiple Receipts may be attached to the unprotected header of the Signed Statement creating a Transparent Statement.",
+      "ja": "同じ署名付きステートメントが複数の TS に独立して登録され、複数の独立した受領書が生成される場合があります。複数の領収書が署名済みステートメントの保護されていないヘッダーに添付され、透明なステートメントが作成される場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "An Issuer that knows of a changed state of quality for an Artifact SHOULD Register a new Signed Statement using the same 15 CWT iss and sub Claims.",
+      "ja": "アーティファクトの品質状態の変化を知っている発行者は、同じ 15 CWT iss および sub Claims を使用して新しい署名付きステートメントを登録すべきです (SHOULD)。"
+    },
+    {
+      "indent": 0,
+      "text": "7. Transparent Statements",
+      "section_title": true,
+      "ja": "7. 透明性のある声明"
+    },
+    {
+      "indent": 3,
+      "text": "The Client (which is not necessarily the Issuer) that registers a Signed Statement and receives a Receipt can produce a Transparent Statement by adding the Receipt to the unprotected header of the Signed Statement. Client applications MAY register Signed Statements on behalf of one or more Issuers. Client applications MAY request Receipts regardless of the identity of the Issuer of the associated Signed Statement.",
+      "ja": "署名付きステートメントを登録し、受領書を受け取るクライアント (必ずしも発行者である必要はありません) は、署名済みステートメントの保護されていないヘッダーに受領書を追加することにより、透過的ステートメントを生成できます。クライアント アプリケーションは、1 つ以上の発行者に代わって署名付きステートメントを登録してもよい (MAY)。クライアント アプリケーションは、関連する署名付きステートメントの発行者の身元に関係なく、領収書を要求してもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "When a Signed Statement is registered by a TS a Receipt becomes available. When a Receipt is included in a Signed Statement, a Transparent Statement is produced.",
+      "ja": "署名付きステートメントが TS によって登録されると、受領書が利用可能になります。署名付き明細書に領収書が含まれている場合、透明な明細書が作成されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Receipts are based on signed proofs as described in COSE Receipts [RFC9942], which also provides the COSE header parameter semantics for label 394.",
+      "ja": "領収書は、COSE 領収書 [RFC9942] で説明されている署名付き証明に基づいており、ラベル 394 の COSE ヘッダー パラメーター セマンティクスも提供します。"
+    },
+    {
+      "indent": 3,
+      "text": "The Registration time is recorded as the timestamp when the TS added the Signed Statement to its VDS.",
+      "ja": "登録時刻は、TS が署名付きステートメントを VDS に追加したときのタイムスタンプとして記録されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 7 illustrates a normative CDDL definition of Transparent Statements. See Figure 3 for the CDDL rule that defines COSE_Sign1 as specified in Section 4.2 of RFC 9052 [STD96].",
+      "ja": "図 7 は、透過的ステートメントの標準的な CDDL 定義を示しています。RFC 9052 [STD96] のセクション 4.2 に規定されている COSE_Sign1 を定義する CDDL ルールについては、図 3 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Transparent_Statement = #6.18(COSE_Sign1)\n\nUnprotected_Header = {\n  &(receipts: 394)  => [+ bstr .cbor Receipt]\n}",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 11,
+      "text": "Figure 7: CDDL Definition for a Transparent Statement",
+      "ja": "図 7: 透過的ステートメントの CDDL 定義"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 8 illustrates a Transparent Statement with a detached payload and two Receipts in its unprotected header. The type of label 394 receipts in the unprotected header is a CBOR array that can contain one or more Receipts (each entry encoded as a .cbor-encoded Receipt).",
+      "ja": "図 8 は、分離されたペイロードと保護されていないヘッダーに 2 つのレシートを含む透過的ステートメントを示しています。保護されていないヘッダー内のラベル 394 レシートのタイプは、1 つ以上のレシート (各エントリは .cbor エンコードされたレシートとしてエンコードされる) を含めることができる CBOR 配列です。"
+    },
+    {
+      "indent": 3,
+      "text": "18(                                 / COSE_Sign1                /\n    [\n      h'a4012603...6d706c65',       / Protected                 /\n      {                             / Unprotected               /\n        394:   [                    / Receipts (2)              /\n          h'd284586c...4191f9d2'    / Receipt 1                 /\n          h'c624586c...8f4af97e'    / Receipt 2                 /\n        ]\n      },\n      nil,                          / Detached payload          /\n      h'79ada558...3a28bae4'        / Signature                 /\n    ]\n)",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 10,
+      "text": "Figure 8: CBOR-Extended Diagnostic Notation Example of a Transparent Statement",
+      "ja": "図 8: CBOR 拡張診断表記法の透過的なステートメントの例"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 9 illustrates one of the decoded Receipts from Figure 8. The Receipt contains inclusion proofs for VDSs. The unprotected header contains VDP. See the protected header for details regarding the specific VDS used. Per the \"COSE Verifiable Data Structure Algorithms\" registry documented in [RFC9942], the Verifiable Data Structure algorithm RFC9162_SHA256 is value 1. Labels identify inclusion proofs (-1) and consistency proofs (-2).",
+      "ja": "図 9 は、図 8 からデコードされた領収書の 1 つを示しています。この領収書には、VDS の封入証明が含まれています。保護されていないヘッダーには VDP が含まれています。使用される特定の VDS の詳細については、保護されたヘッダーを参照してください。[RFC9942] に文書化されている「COSE Verifiable Data Structure Algorithms」レジストリによれば、Verifiable Data Structure アルゴリズム RFC9162_SHA256 は値 1 です。ラベルは、包含証明 (-1) と一貫性証明 (-2) を識別します。"
+    },
+    {
+      "indent": 3,
+      "text": "18(                                 / COSE_Sign1                /\n    [\n      h'a4012604...6d706c65',       / Protected                 /\n      {                             / Unprotected               /\n        396: {                      / Proofs                    /\n          -1: [                     / Inclusion proofs (1)      /\n            h'83080783...32568964', / Inclusion proof 1         /\n          ]\n        },\n      },\n      nil,                          / Detached payload          /\n      h'10f6b12a...4191f9d2'        / Signature                 /\n    ]\n)",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 6,
+      "text": "Figure 9: CBOR-Extended Diagnostic Notation Example of a Receipt",
+      "ja": "図 9: CBOR 拡張診断表記のレシートの例"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 10 illustrates the decoded protected header of the Transparent Statement in Figure 8. The VDS (395) uses 1 from RFC9162_SHA256.",
+      "ja": "図 10 は、図 8 の Transparent Statement のデコードされた保護されたヘッダーを示しています。VDS (395) は、RFC9162_SHA256 の 1 を使用します。"
+    },
+    {
+      "indent": 3,
+      "text": "{                                   / Protected                 /\n  1: -7,                            / Algorithm                 /\n  4: h'50685f55...50523255',        / Key identifier            /\n  395: 1,                           / Verifiable Data Structure /\n  15: {                             / CWT Claims                /\n    1: transparency.vendor.example, / Issuer                    /\n    2: vendor.product.example,      / Subject                   /\n  }\n}",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 9,
+      "text": "Figure 10: CBOR-Extended Diagnostic Notation Example of a Receipt's Protected Header",
+      "ja": "図 10: CBOR 拡張診断表記法によるレシートの保護されたヘッダーの例"
+    },
+    {
+      "indent": 3,
+      "text": "Figure 11 illustrates the decoded inclusion proof from Figure 9. This inclusion proof indicates that the size of the VDS was 8 at the time the Receipt was issued. The structure of this inclusion proof is specific to the VDS used by RFC9162_SHA256.",
+      "ja": "図 11 は、図 9 からデコードされた包含証明を示しています。この包含証明は、領収書が発行された時点で VDS のサイズが 8 であったことを示しています。この包含証明の構造は、RFC9162_SHA256 で使用される VDS に固有です。"
+    },
+    {
+      "indent": 3,
+      "text": "[                                   / Inclusion proof 1         /\n  8,                                / Tree size                 /\n  7,                                / Leaf index                /\n  [                                 / Inclusion hashes (3)      /\n     h'c561d333...f9850597'         / Intermediate hash 1       /\n     h'75f177fd...2e73a8ab'         / Intermediate hash 2       /\n     h'0bdaaed3...32568964'         / Intermediate hash 3       /\n  ]\n]",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 9,
+      "text": "Figure 11: CBOR-Extended Diagnostic Notation Example of a Receipt's Inclusion Proof",
+      "ja": "図 11: CBOR 拡張診断表記法による領収書の封入証明の例"
+    },
+    {
+      "indent": 0,
+      "text": "7.1. Validation",
+      "section_title": true,
+      "ja": "7.1. 検証"
+    },
+    {
+      "indent": 3,
+      "text": "Relying Parties MUST apply the verification process as described in Section 4.4 of RFC 9052 [STD96] when checking the signature of Signed Statements and Receipts.",
+      "ja": "依存当事者は、署名付き声明および領収書の署名をチェックする際に、RFC 9052 [STD96] のセクション 4.4 に記載されている検証プロセスを適用しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "A Relying Party MUST trust the verification key or certificate and the associated identity of at least one Issuer of a Receipt.",
+      "ja": "依拠当事者は、検証キーまたは証明書と、少なくとも 1 つの領収書の発行者の関連する ID を信頼しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "A Relying Party MAY decide to verify only a single Receipt that is acceptable to them and not check the signature on the Signed Statement or Receipts that rely on VDSs they do not understand.",
+      "ja": "依拠当事者は、自分たちが受け入れられる単一の受領書のみを検証し、理解できない VDS に依存する署名付きステートメントまたは受領書の署名をチェックしないことを決定してもよい (MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "APIs exposing verification logic for Transparent Statements may provide more details than a single boolean result. For example, an API may indicate if the signature on the Receipt or Signed Statement is valid, if Claims related to the validity period are valid, or if the inclusion proof in the Receipt is valid.",
+      "ja": "透過的ステートメントの検証ロジックを公開する API は、単一のブール結果よりも詳細な情報を提供する場合があります。たとえば、API は、領収書または署名済み明細書の署名が有効かどうか、有効期間に関連する請求が有効かどうか、または領収書の封入証明が有効かどうかを示すことができます。"
+    },
+    {
+      "indent": 3,
+      "text": "Relying Parties MAY be configured to re-verify the Issuer's Signed Statement locally.",
+      "ja": "依拠当事者は、発行者の署名済みステートメントをローカルで再検証するように構成されてもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "In addition, Relying Parties MAY apply arbitrary validation policies after the Transparent Statement has been verified and validated. Such policies may use as input all information in the Envelope, the Receipt, and the Statement payload, as well as any local state.",
+      "ja": "さらに、依存当事者は、透明性ステートメントが検証および検証された後に、任意の検証ポリシーを適用してもよい(MAY)。このようなポリシーでは、エンベロープ、領収書、および明細ペイロード内のすべての情報、およびローカル状態を入力として使用できます。"
+    },
+    {
+      "indent": 0,
+      "text": "8. Privacy Considerations",
+      "section_title": true,
+      "ja": "8. プライバシーへの配慮"
+    },
+    {
+      "indent": 3,
+      "text": "Interactions with TSs are expected to use appropriately strong encryption and authorization technologies.",
+      "ja": "TS とのやり取りでは、適切に強力な暗号化および認可テクノロジーを使用することが期待されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The TS is trusted with the confidentiality of the Signed Statements presented for Registration. Issuers and Clients are responsible for verifying that the TS's privacy and security posture is suitable for the contents of the Signed Statements they submit prior to Registration. Issuers must carefully review the inclusion of private, confidential, or Personally Identifiable Information (PII) in their Statements against the TS's privacy posture.",
+      "ja": "TS は、登録のために提示された署名付き声明の機密性を信頼されています。発行者とクライアントは、TS のプライバシーとセキュリティの姿勢が、登録前に提出する署名付き声明の内容に適していることを検証する責任があります。発行者は、TS のプライバシー姿勢に反するステートメントに個人情報、機密情報、または個人を特定できる情報 (PII) が含まれているかどうかを慎重に検討する必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "In some deployments, a special role such as an Auditor might require and be given access to both the TS and related Adjacent Services.",
+      "ja": "一部の展開では、監査人などの特別な役割が TS と関連する隣接サービスの両方へのアクセスを必要とし、それらへのアクセスが許可される場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "TSs can leverage VDSs that only retain cryptographic metadata (e.g., a hash) rather than the complete Signed Statement as part of an in-depth defensive approach to maintaining confidentiality. By analyzing the relationship between data stored in the TS and data stored in Adjacent Services, it is possible to perform metadata analysis, which could reveal the order in which artifacts were built, signed, and uploaded.",
+      "ja": "TS は、機密性を維持するための徹底した防御アプローチの一環として、完全な署名付きステートメントではなく、暗号化メタデータ (ハッシュなど) のみを保持する VDS を活用できます。TS に保存されているデータと隣接サービスに保存されているデータの関係を分析することで、メタデータ分析を実行でき、アーティファクトが構築、署名、アップロードされた順序を明らかにすることができます。"
+    },
+    {
+      "indent": 0,
+      "text": "9. Security Considerations",
+      "section_title": true,
+      "ja": "9. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT provides the following security guarantees:",
+      "ja": "SCITT は次のセキュリティ保証を提供します。"
+    },
+    {
+      "indent": 8,
+      "text": "1. Statements made by Issuers about supply chain Artifacts are identifiable and can be authenticated.",
+      "ja": "1. 発行者がサプライチェーンアーティファクトに関して行った声明は識別可能であり、認証することができます。"
+    },
+    {
+      "indent": 8,
+      "text": "2. Statement provenance and history can be independently and consistently audited.",
+      "ja": "2. ステートメントの出所と履歴は、独立して一貫して監査できます。"
+    },
+    {
+      "indent": 8,
+      "text": "3. Issuers can efficiently prove that their Statement is logged by a TS.",
+      "ja": "3. 発行者は、ステートメントが TS によって記録されていることを効率的に証明できます。"
+    },
+    {
+      "indent": 3,
+      "text": "The first guarantee is achieved by requiring Issuers to sign their Statements. The second guarantee is achieved by proving a Signed Statement is present in a VDS. The third guarantee is achieved by the combination of both of these steps.",
+      "ja": "最初の保証は、発行者に声明への署名を要求することによって実現されます。2 番目の保証は、署名付きステートメントが VDS 内に存在することを証明することで実現されます。3 番目の保証は、これらの両方の手順を組み合わせることによって実現されます。"
+    },
+    {
+      "indent": 3,
+      "text": "In addition to deciding whether to trust a TS, Relying Parties can use the history of registered Signed Statements to decide which Issuers they choose to trust. This decision process is out of scope of this document.",
+      "ja": "信頼当事者は、TS を信頼するかどうかを決定するだけでなく、登録された署名付きステートメントの履歴を使用して、どの発行者を信頼するかを決定できます。この決定プロセスは、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "9.1. Ordering of Signed Statements",
+      "section_title": true,
+      "ja": "9.1. 署名されたステートメントの順序"
+    },
+    {
+      "indent": 3,
+      "text": "Statements are signed prior to submitting to a SCITT Transparency service. Unless advertised in the TS Registration Policy, the Relying Party cannot assume that the ordering of Signed Statements in the VDS matches the ordering of their issuance.",
+      "ja": "ステートメントは、SCITT 透明性サービスに送信する前に署名されます。TS 登録ポリシーで宣伝されていない限り、依拠当事者は、VDS 内の署名付きステートメントの順序がその発行の順序と一致すると仮定することはできません。"
+    },
+    {
+      "indent": 0,
+      "text": "9.2. Accuracy of Statements",
+      "section_title": true,
+      "ja": "9.2. 記述の正確性"
+    },
+    {
+      "indent": 3,
+      "text": "Issuers can make false Statements either intentionally or unintentionally; registering a Statement only proves it was produced by an Issuer. A registered Statement may be superseded by a subsequently submitted Signed Statement from the same Issuer, with the same subject in the CWT Claims protected header. Other Issuers may make new Statements to reflect new or corrected information. Relying Parties may choose to include or exclude Statements from Issuers to determine the accuracy of a collection of Statements.",
+      "ja": "発行者は意図的または非意図的に虚偽の声明を作成する可能性があります。ステートメントを登録することは、それが発行者によって作成されたことを証明するだけです。登録済みステートメントは、同じ発行者から CWT Claims protected ヘッダーに同じ件名が含まれてその後送信される署名付きステートメントによって置き換えられる場合があります。他の発行者は、新しい情報または修正された情報を反映するために新しい声明を作成する場合があります。依存当事者は、ステートメントのコレクションの正確性を判断するために、発行者からのステートメントを含めるか除外するかを選択できます。"
+    },
+    {
+      "indent": 0,
+      "text": "9.3. Issuer Participation",
+      "section_title": true,
+      "ja": "9.3. 発行者の参加"
+    },
+    {
+      "indent": 3,
+      "text": "Issuers can refuse to register their Statements with a TS or selectively submit some but not all the Statements they issue. It is important for Relying Parties not to accept Signed Statements for which they cannot discover Receipts issued by a TS they trust.",
+      "ja": "発行者は、TS へのステートメントの登録を拒否したり、発行するステートメントのすべてではなく一部を選択的に提出したりすることができます。信頼当事者にとって、信頼できる TS によって発行された受領書を発見できない署名付きステートメントを受け入れないことが重要です。"
+    },
+    {
+      "indent": 0,
+      "text": "9.4. Key Management",
+      "section_title": true,
+      "ja": "9.4. 鍵の管理"
+    },
+    {
+      "indent": 3,
+      "text": "Issuers and TSs MUST:",
+      "ja": "発行者とTSは以下を行わなければなりません:"
+    },
+    {
+      "indent": 6,
+      "text": "* carefully protect their private signing keys",
+      "ja": "* 秘密署名キーを慎重に保護する"
+    },
+    {
+      "indent": 6,
+      "text": "* avoid using keys for more than one purpose",
+      "ja": "* キーを複数の目的で使用しないようにする"
+    },
+    {
+      "indent": 6,
+      "text": "* rotate their keys at a cryptoperiod (defined in [RFC4949]) appropriate for the key-algorithm and domain-specific regulations",
+      "ja": "* 鍵アルゴリズムとドメイン固有の規制に適した暗号化期間 ([RFC4949] で定義) で鍵をローテーションする"
+    },
+    {
+      "indent": 0,
+      "text": "9.4.1. Verifiable Data Structure",
+      "section_title": true,
+      "ja": "9.4.1. 検証可能なデータ構造"
+    },
+    {
+      "indent": 3,
+      "text": "The security considerations for specific VDSs are out of scope for this document. See [RFC9942] for the generic security considerations that apply to VDSs and Receipts.",
+      "ja": "特定の VDS のセキュリティに関する考慮事項は、このドキュメントの範囲外です。VDS とレシートに適用される一般的なセキュリティに関する考慮事項については、[RFC9942] を参照してください。"
+    },
+    {
+      "indent": 0,
+      "text": "9.4.2. Key Compromise",
+      "section_title": true,
+      "ja": "9.4.2. 主要な侵害"
+    },
+    {
+      "indent": 3,
+      "text": "It is important for Issuers and TSs to clearly communicate when keys are compromised so that Signed Statements can be rejected by TSs or Receipts can be ignored by Relying Parties. TSs whose receipt signing keys have been compromised can roll back their Statement Sequence to a point before compromise, establish new credentials, and use the new credentials to issue fresh Receipts going forward. Issuers are encouraged to follow existing best practices if their credentials are compromised. Revocation strategies for compromised keys are out of scope for this document.",
+      "ja": "署名付きステートメントが TS によって拒否されたり、受領書が依拠当事者によって無視されたりできるように、キーが侵害されたときに発行者と TS が明確に通信することが重要です。レシート署名キーが侵害された TS は、ステートメント シーケンスを侵害前の時点までロールバックし、新しい資格情報を確立し、その新しい資格情報を使用して今後新しいレシートを発行することができます。認証情報が侵害された場合、発行者は既存のベスト プラクティスに従うことが推奨されます。侵害されたキーの取り消し戦略は、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "9.4.3. Bootstrapping",
+      "section_title": true,
+      "ja": "9.4.3. ブートストラッピング"
+    },
+    {
+      "indent": 3,
+      "text": "Bootstrapping mechanisms that solely rely on Statement registration to set and update registration policy can be audited without additional implementation-specific knowledge; therefore, they are preferable. Mechanisms that rely on preconfigured values and do not allow updates are unsuitable for use in long-lived service deployments in which the ability to patch a potentially faulty policy is essential.",
+      "ja": "ステートメントの登録のみに依存して登録ポリシーを設定および更新するブートストラップ メカニズムは、追加の実装固有の知識がなくても監査できます。therefore, they are preferable.事前構成された値に依存し、更新を許可しないメカニズムは、潜在的に欠陥のあるポリシーにパッチを適用する機能が不可欠な長期サービス展開での使用には適していません。"
+    },
+    {
+      "indent": 0,
+      "text": "9.5. Implications of Media Type Usage",
+      "section_title": true,
+      "ja": "9.5. メディアタイプの使用の影響"
+    },
+    {
+      "indent": 3,
+      "text": "The Statement (scitt-statement+cose) and Receipt (scitt-receipt+cose) media types describe the expected content of COSE envelope headers. The payload media type (content type) is included in the COSE envelope header. [STD96] describes the security implications of reliance on this header parameter.",
+      "ja": "Statement (scitt-statement+cose) および Receipt (scitt-receipt+cose) メディア タイプは、COSE エンベロープ ヘッダーの予想される内容を記述します。ペイロード メディア タイプ (コンテンツ タイプ) は、COSE エンベロープ ヘッダーに含まれます。[STD96] では、このヘッダー パラメーターへの依存によるセキュリティへの影響について説明しています。"
+    },
+    {
+      "indent": 3,
+      "text": "Both media types describe COSE_Sign1 messages, which include a signature and therefore provide integrity protection.",
+      "ja": "どちらのメディア タイプも COSE_Sign1 メッセージを記述します。COSE_Sign1 メッセージには署名が含まれているため、整合性保護が提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "9.6. Cryptographic Agility",
+      "section_title": true,
+      "ja": "9.6. 暗号化の俊敏性"
+    },
+    {
+      "indent": 3,
+      "text": "Because the SCITT architecture leverages [STD96] for Statements and Receipts, it benefits from the format's cryptographic agility.",
+      "ja": "SCITT アーキテクチャは明細書と領収書に [STD96] を利用しているため、この形式の暗号化の機敏性の恩恵を受けます。"
+    },
+    {
+      "indent": 0,
+      "text": "9.7. Threat Model",
+      "section_title": true,
+      "ja": "9.7. 脅威モデル"
+    },
+    {
+      "indent": 3,
+      "text": "This section provides a generic threat model for SCITT, describing its residual security properties when some of its actors (Issuers, TSs, and Auditors) are either corrupt or compromised.",
+      "ja": "このセクションでは、SCITT の一般的な脅威モデルを提供し、そのアクター (発行者、TS、監査人) の一部が破損または侵害された場合に残存するセキュリティ特性について説明します。"
+    },
+    {
+      "indent": 3,
+      "text": "SCITT primarily supports checking of Signed Statement authenticity, both from the Issuer (authentication) and from the TS (transparency). Issuers and TSs can both be compromised.",
+      "ja": "SCITT は主に、発行者 (認証) と TS (透明性) の両方からの署名付きステートメントの信頼性のチェックをサポートします。発行者と TS は両方とも侵害される可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The SCITT architecture does not require trust in a single centralized TS. Different actors may rely on different TSs, each registering a subset of Signed Statements subject to their own policy. Running multiple, independent TSs provides different organizations to represent consistent or divergent opinions. It is the role of the relying party to decide which TSs and Issuers they choose to trust for their scenario.",
+      "ja": "SCITT アーキテクチャでは、単一の集中型 TS に対する信頼は必要ありません。異なるアクターは異なる TS に依存する可能性があり、それぞれが独自のポリシーに従って署名付きステートメントのサブセットを登録します。複数の独立した TS を運営することで、さまざまな組織が一貫した意見または異なる意見を代表することができます。シナリオに対してどの TS と発行者を信頼するかを決定するのは、証明書利用者の役割です。"
+    },
+    {
+      "indent": 3,
+      "text": "In both cases, the SCITT architecture provides generic, universally verifiable cryptographic proofs to hold Issuers or TSs accountable. On one hand, this enables valid actors to detect and disambiguate malicious actors who employ Equivocation with Signed Statements to different entities. On the other hand, their liability and the resulting damage to their reputation are application specific and out of scope of the SCITT architecture.",
+      "ja": "どちらの場合でも、SCITT アーキテクチャは、発行者または TS に責任を負わせるための、汎用的で普遍的に検証可能な暗号証明を提供します。これにより、一方では、有効なアクターが、署名付きステートメントによる曖昧さをさまざまなエンティティに対して使用する悪意のあるアクターを検出し、曖昧さを解消できるようになります。一方、その責任とその結果として生じる評判への損害はアプリケーション固有のものであり、SCITT アーキテクチャの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "Relying Parties and Auditors need not be trusted by other actors. So long as actors maintain proper control of their signing keys and identity infrastructure they cannot \"frame\" an Issuer or a TS for Signed Statements they did not issue or register.",
+      "ja": "依拠当事者と監査人は、他の主体から信頼される必要はありません。攻撃者が署名キーと ID インフラストラクチャを適切に制御している限り、発行者または自分が発行または登録していない署名済みステートメントの TS を「フレーム化」することはできません。"
+    },
+    {
+      "indent": 0,
+      "text": "10. IANA Considerations",
+      "section_title": true,
+      "ja": "10. IANAの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following media types in the \"application\" subregistry of the \"Media Types\" registry group [IANA.media-types]:",
+      "ja": "IANA は、「メディア タイプ」レジストリ グループ [IANA.media-types] の「アプリケーション」サブレジストリに次のメディア タイプを登録しました。"
+    },
+    {
+      "indent": 6,
+      "text": "* application/scitt-statement+cose (see Section 10.1)",
+      "ja": "* application/scitt-statement+cose (セクション 10.1 を参照)"
+    },
+    {
+      "indent": 6,
+      "text": "* application/scitt-receipt+cose (see Section 10.2)",
+      "ja": "* application/scitt-receipt+cose (セクション 10.2 を参照)"
+    },
+    {
+      "indent": 0,
+      "text": "10.1. Registration of application/scitt-statement+cose",
+      "section_title": true,
+      "ja": "10.1. アプリケーション/scitt-statement+coseの登録"
+    },
+    {
+      "indent": 7,
+      "text": "+======================+======================+=============+\n| Name                 | Template             | Reference   |\n+======================+======================+=============+\n| scitt-statement+cose | application/scitt-   | Section 6   |\n|                      | statement+cose       | of RFC 9943 |\n+----------------------+----------------------+-------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 10,
+      "text": "Table 1: SCITT Signed Statement Media Type Registration",
+      "ja": "表 1: SCITT 署名付きステートメントのメディア タイプの登録"
+    },
+    {
+      "indent": 3,
+      "text": "Type name:",
+      "ja": "型名:"
+    },
+    {
+      "indent": 12,
+      "text": "application",
+      "ja": "応用"
+    },
+    {
+      "indent": 3,
+      "text": "Subtype name:",
+      "ja": "サブタイプ名:"
+    },
+    {
+      "indent": 12,
+      "text": "scitt-statement+cose",
+      "ja": "scitt ステートメント + cose"
+    },
+    {
+      "indent": 3,
+      "text": "Required parameters:",
+      "ja": "必須パラメータ:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Optional parameters:",
+      "ja": "オプションのパラメータ:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Encoding considerations:",
+      "ja": "エンコーディングに関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "binary (CBOR data item)",
+      "ja": "バイナリ (CBOR データ項目)"
+    },
+    {
+      "indent": 3,
+      "text": "Security considerations:",
+      "ja": "セキュリティに関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "Section 9.5 of RFC 9943",
+      "ja": "RFC 9943 のセクション 9.5"
+    },
+    {
+      "indent": 3,
+      "text": "Interoperability considerations:",
+      "ja": "相互運用性に関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "none",
+      "ja": "なし"
+    },
+    {
+      "indent": 3,
+      "text": "Published specification:",
+      "ja": "公開された仕様:"
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9943",
+      "ja": "RFC 9943"
+    },
+    {
+      "indent": 3,
+      "text": "Applications that use this media type:",
+      "ja": "このメディア タイプを使用するアプリケーション:"
+    },
+    {
+      "indent": 12,
+      "text": "Used to provide an identifiable and non-repudiable Statement about an Artifact signed by an Issuer.",
+      "ja": "発行者によって署名されたアーティファクトに関する、識別可能かつ否認不可能なステートメントを提供するために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Fragment identifier considerations:",
+      "ja": "フラグメント識別子の考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Additional information:",
+      "ja": "追加情報："
+    },
+    {
+      "indent": 6,
+      "text": "Deprecated alias names for this type:",
+      "ja": "このタイプの非推奨のエイリアス名:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 6,
+      "text": "Magic number(s):",
+      "ja": "マジックナンバー:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 6,
+      "text": "File extension(s):",
+      "ja": "ファイル拡張子:"
+    },
+    {
+      "indent": 15,
+      "text": ".scitt",
+      "ja": ".scitt"
+    },
+    {
+      "indent": 6,
+      "text": "Macintosh file type code(s):",
+      "ja": "Macintosh ファイルタイプコード:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Person & email address to contact for further information:",
+      "ja": "詳細についての連絡先の担当者と電子メール アドレス:"
+    },
+    {
+      "indent": 12,
+      "text": "iesg@ietf.org",
+      "ja": "iesg@ietf.org"
+    },
+    {
+      "indent": 3,
+      "text": "Intended usage:",
+      "ja": "使用目的:"
+    },
+    {
+      "indent": 12,
+      "text": "COMMON",
+      "ja": "一般"
+    },
+    {
+      "indent": 3,
+      "text": "Restrictions on usage:",
+      "ja": "使用上の制限:"
+    },
+    {
+      "indent": 12,
+      "text": "none",
+      "ja": "なし"
+    },
+    {
+      "indent": 3,
+      "text": "Author/Change controller:",
+      "ja": "作成者/変更コントローラー:"
+    },
+    {
+      "indent": 12,
+      "text": "IETF",
+      "ja": "IETF"
+    },
+    {
+      "indent": 0,
+      "text": "10.2. Registration of application/scitt-receipt+cose",
+      "section_title": true,
+      "ja": "10.2. アプリケーションの登録/scitt-receipt+cose"
+    },
+    {
+      "indent": 3,
+      "text": "+====================+================================+=============+\n| Name               | Template                       | Reference   |\n+====================+================================+=============+\n| scitt-receipt+cose | application/scitt-             | Section 7   |\n|                    | receipt+cose                   | of RFC 9943 |\n+--------------------+--------------------------------+-------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 15,
+      "text": "Table 2: SCITT Receipt Media Type Registration",
+      "ja": "表 2: SCITT 受信メディア タイプの登録"
+    },
+    {
+      "indent": 3,
+      "text": "Type name:",
+      "ja": "型名:"
+    },
+    {
+      "indent": 12,
+      "text": "application",
+      "ja": "応用"
+    },
+    {
+      "indent": 3,
+      "text": "Subtype name:",
+      "ja": "サブタイプ名:"
+    },
+    {
+      "indent": 12,
+      "text": "scitt-receipt+cose",
+      "ja": "scitt-受信+cose"
+    },
+    {
+      "indent": 3,
+      "text": "Required parameters:",
+      "ja": "必須パラメータ:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Optional parameters:",
+      "ja": "オプションのパラメータ:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Encoding considerations:",
+      "ja": "エンコーディングに関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "binary (CBOR data item)",
+      "ja": "バイナリ (CBOR データ項目)"
+    },
+    {
+      "indent": 3,
+      "text": "Security considerations:",
+      "ja": "セキュリティに関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "Section 9.5 of RFC 9943",
+      "ja": "RFC 9943 のセクション 9.5"
+    },
+    {
+      "indent": 3,
+      "text": "Interoperability considerations:",
+      "ja": "相互運用性に関する考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "none",
+      "ja": "なし"
+    },
+    {
+      "indent": 3,
+      "text": "Published specification:",
+      "ja": "公開された仕様:"
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9943",
+      "ja": "RFC 9943"
+    },
+    {
+      "indent": 3,
+      "text": "Applications that use this media type:",
+      "ja": "このメディア タイプを使用するアプリケーション:"
+    },
+    {
+      "indent": 12,
+      "text": "Used to establish or verify transparency over Statements. Typically emitted by a TS for the benefit of Relying Parties wanting to ensure Non-equivocation over all or part of a Statement Sequence.",
+      "ja": "ステートメントに対する透明性を確立または検証するために使用されます。通常、ステートメント シーケンスの全体または一部について曖昧でないことを保証したい依存当事者の利益のために TS によって発行されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Fragment identifier considerations:",
+      "ja": "フラグメント識別子の考慮事項:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Additional information:",
+      "ja": "追加情報："
+    },
+    {
+      "indent": 6,
+      "text": "Deprecated alias names for this type:",
+      "ja": "このタイプの非推奨のエイリアス名:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 6,
+      "text": "Magic number(s):",
+      "ja": "マジックナンバー:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 6,
+      "text": "File extension(s):",
+      "ja": "ファイル拡張子:"
+    },
+    {
+      "indent": 15,
+      "text": ".receipt",
+      "ja": "。レシート"
+    },
+    {
+      "indent": 6,
+      "text": "Macintosh file type code(s):",
+      "ja": "Macintosh ファイルタイプコード:"
+    },
+    {
+      "indent": 15,
+      "text": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "indent": 3,
+      "text": "Person & email address to contact for further information:",
+      "ja": "詳細についての連絡先の担当者と電子メール アドレス:"
+    },
+    {
+      "indent": 12,
+      "text": "iesg@ietf.org",
+      "ja": "iesg@ietf.org"
+    },
+    {
+      "indent": 3,
+      "text": "Intended usage:",
+      "ja": "使用目的:"
+    },
+    {
+      "indent": 12,
+      "text": "COMMON",
+      "ja": "一般"
+    },
+    {
+      "indent": 3,
+      "text": "Restrictions on usage:",
+      "ja": "使用上の制限:"
+    },
+    {
+      "indent": 12,
+      "text": "none",
+      "ja": "なし"
+    },
+    {
+      "indent": 3,
+      "text": "Author/Change controller:",
+      "ja": "作成者/変更コントローラー:"
+    },
+    {
+      "indent": 12,
+      "text": "IETF",
+      "ja": "IETF"
+    },
+    {
+      "indent": 0,
+      "text": "10.3. CoAP Content-Format Registrations",
+      "section_title": true,
+      "ja": "10.3. CoAP コンテンツ形式の登録"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following Content-Format numbers in the \"CoAP Content-Formats\" subregistry within the \"Constrained RESTful Environments (CoRE) Parameters\" registry group [IANA.core-parameters] in the 256-9999 range:",
+      "ja": "IANA は、「制約付き RESTful 環境 (CoRE) パラメーター」レジストリ グループ [IANA.core-parameters] 内の「CoAP Content-Formats」サブレジストリに、256 ～ 9999 の範囲で次の Content-Format 番号を登録しました。"
+    },
+    {
+      "indent": 8,
+      "text": "+======================+================+=====+===========+\n| Content Type         | Content Coding | ID  | Reference |\n+======================+================+=====+===========+\n| application/scitt-   | -              | 277 | RFC 9943  |\n| statement+cose       |                |     |           |\n+----------------------+----------------+-----+-----------+\n| application/scitt-   | -              | 278 | RFC 9943  |\n| receipt+cose         |                |     |           |\n+----------------------+----------------+-----+-----------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 16,
+      "text": "Table 3: SCITT Content-Formats Registration",
+      "ja": "表 3: SCITT コンテンツ形式の登録"
+    },
+    {
+      "indent": 0,
+      "text": "11. References",
+      "section_title": true,
+      "ja": "11. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "11.1. Normative References",
+      "section_title": true,
+      "ja": "11.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[IANA.core-parameters]\n           IANA, \"Constrained RESTful Environments (CoRE)\n           Parameters\",\n           <https://www.iana.org/assignments/core-parameters>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[IANA.cwt] IANA, \"CBOR Web Token (CWT) Claims\",\n           <https://www.iana.org/assignments/cwt>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[IANA.media-types]\n           IANA, \"Media Types\",\n           <https://www.iana.org/assignments/media-types>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC2119]  Bradner, S., \"Key words for use in RFCs to Indicate\n           Requirement Levels\", BCP 14, RFC 2119,\n           DOI 10.17487/RFC2119, March 1997,\n           <https://www.rfc-editor.org/info/rfc2119>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6838]  Freed, N., Klensin, J., and T. Hansen, \"Media Type\n           Specifications and Registration Procedures\", BCP 13,\n           RFC 6838, DOI 10.17487/RFC6838, January 2013,\n           <https://www.rfc-editor.org/info/rfc6838>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8174]  Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC\n           2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174,\n           May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,\n           \"CBOR Web Token (CWT)\", RFC 8392, DOI 10.17487/RFC8392,\n           May 2018, <https://www.rfc-editor.org/info/rfc8392>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, \"Concise Data\n           Definition Language (CDDL): A Notational Convention to\n           Express Concise Binary Object Representation (CBOR) and\n           JSON Data Structures\", RFC 8610, DOI 10.17487/RFC8610,\n           June 2019, <https://www.rfc-editor.org/info/rfc8610>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9360]  Schaad, J., \"CBOR Object Signing and Encryption (COSE):\n           Header Parameters for Carrying and Referencing X.509\n           Certificates\", RFC 9360, DOI 10.17487/RFC9360, February\n           2023, <https://www.rfc-editor.org/info/rfc9360>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9597]  Looker, T. and M.B. Jones, \"CBOR Web Token (CWT) Claims in\n           COSE Headers\", RFC 9597, DOI 10.17487/RFC9597, June 2024,\n           <https://www.rfc-editor.org/info/rfc9597>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9942]  Steele, O., Birkholz, H., Delignat-Lavaud, A., and C.\n           Fournet, \"CBOR Object Signing and Encryption (COSE)\n           Receipts\", RFC 9942, DOI 10.17487/RFC9942, June 2026,\n           <https://www.rfc-editor.org/info/rfc9942>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[STD94]    Internet Standard 94,\n           <https://www.rfc-editor.org/info/std94>.\n           At the time of writing, this STD comprises the following:\n\n           Bormann, C. and P. Hoffman, \"Concise Binary Object\n           Representation (CBOR)\", STD 94, RFC 8949,\n           DOI 10.17487/RFC8949, December 2020,\n           <https://www.rfc-editor.org/info/rfc8949>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[STD96]    Internet Standard 96,\n           <https://www.rfc-editor.org/info/std96>.\n           At the time of writing, this STD comprises the following:\n\n           Schaad, J., \"CBOR Object Signing and Encryption (COSE):\n           Structures and Process\", STD 96, RFC 9052,\n           DOI 10.17487/RFC9052, August 2022,\n           <https://www.rfc-editor.org/info/rfc9052>.\n\n           Schaad, J., \"CBOR Object Signing and Encryption (COSE):\n           Countersignatures\", STD 96, RFC 9338,\n           DOI 10.17487/RFC9338, December 2022,\n           <https://www.rfc-editor.org/info/rfc9338>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "11.2. Informative References",
+      "section_title": true,
+      "ja": "11.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[CoSWID]   Birkholz, H., Fitzgerald-McKay, J., Schmidt, C., and D.\n           Waltermire, \"Concise Software Identification Tags\",\n           RFC 9393, DOI 10.17487/RFC9393, June 2023,\n           <https://www.rfc-editor.org/info/rfc9393>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[CycloneDX]\n           \"CycloneDX\",\n           <https://cyclonedx.org/specification/overview/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[EQUIVOCATION]\n           Chun, B., Maniatis, P., Shenker, S., and J. Kubiatowicz,\n           \"Attested Append-Only Memory: Making Adversaries Stick to\n           their Word\", ACM SIGOPS Operating Systems Review, vol. 41,\n           no. 6, pp. 189-204, DOI 10.1145/1323293.1294280, 14\n           October 2007, <https://www.read.seas.harvard.edu/~kohler/\n           class/08w-dsi/chun07attested.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[in-toto]  \"in-toto\", <https://in-toto.io/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[ISO_IEC_17000]\n           ISO/IEC, \"Conformity assessment - Vocabulary and general\n           principles\", ISO/IEC 17000:2020, December 2020,\n           <https://www.iso.org/standard/73029.html>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[NIST.SP.1800-19]\n           Bartock, M., Dodson, D., Souppaya, M., Carroll, D.,\n           Masten, R., Scinta, G., Massis, P., Prafullchandra, H.,\n           Malnar, J., Singh, H., Ghandi, R., Storey, L. E., Yeluri,\n           R., Shea, T., Dalton, M., Weber, R., Scarfone, K., Dukes,\n           A., Haskins, J., Phoenix, C., and B. Swarts, \"Trusted\n           cloud: Security Practice Guide for VMware Hybrid Cloud\n           Infrastructure as a Service (IaaS) Environments\",\n           DOI 10.6028/NIST.SP.1800-19, NIST SP 1800-19, 20 April\n           2022,\n           <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/\n           NIST.SP.1800-19.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[NIST.SP.800-204C]\n           Chandramouli, R., \"Implementation of DevSecOps for a\n           Microservices-based Application with Service Mesh\",\n           DOI 10.6028/NIST.SP.800-204C, NIST Special Publications\n           (General) 800-204C, NIST SP 800-204C,\n           DOI 10.6028/NIST.SP.800-204C, March 2022,\n           <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/\n           NIST.SP.800-204C.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[NIST_EO14028]\n           NIST, \"Software Supply Chain Security Guidance Under\n           Executive Order (EO) 14028 Section 4e\", 4 February 2022,\n           <https://www.nist.gov/system/files/documents/2022/02/04/\n           software-supply-chain-security-guidance-under-EO-14028-\n           section-4e.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC4949]  Shirey, R., \"Internet Security Glossary, Version 2\",\n           FYI 36, RFC 4949, DOI 10.17487/RFC4949, August 2007,\n           <https://www.rfc-editor.org/info/rfc4949>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, \"JSON Web Token Best\n           Current Practices\", BCP 225, RFC 8725,\n           DOI 10.17487/RFC8725, February 2020,\n           <https://www.rfc-editor.org/info/rfc8725>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9162]  Laurie, B., Messeri, E., and R. Stradling, \"Certificate\n           Transparency Version 2.0\", RFC 9162, DOI 10.17487/RFC9162,\n           December 2021, <https://www.rfc-editor.org/info/rfc9162>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[SLSA]     \"SLSA\", <https://slsa.dev/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[SPDX]     \"SPDX Specification\",\n           <https://spdx.dev/use/specifications/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[SWID]     NIST, \"SWID Specification\",\n           <https://csrc.nist.gov/Projects/Software-Identification-\n           SWID/guidelines>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Contributors",
+      "section_title": true,
+      "ja": "貢献者"
+    },
+    {
+      "indent": 3,
+      "text": "Orie Steele\nTradeverifyd\nUnited States of America\nEmail: orie@or13.io",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Orie contributed to improving the generalization of COSE building blocks and document consistency.",
+      "ja": "Orie は、COSE ビルディング ブロックの一般化とドキュメントの一貫性の向上に貢献しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Amaury Chamayou\nMicrosoft\nUnited Kingdom\nEmail: amaury.chamayou@microsoft.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Amaury contributed elemental parts to finalize normative language on registration behavior and the single-issuer design, as well as overall document consistency.",
+      "ja": "Amaury は、登録動作と単一発行者の設計、および文書全体の一貫性に関する規範的な文言を最終決定するために要素部分に貢献しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Dick Brooks\nBusiness Cyber Guardian\nUnited States of America\nEmail: dick@businesscyberguardian.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Dick contributed to the software supply chain use cases.",
+      "ja": "Dick はソフトウェア サプライ チェーンのユースケースに貢献しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Brian Knight\nMicrosoft\nUnited States of America\nEmail: brianknight@microsoft.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Brian contributed to the software supply chain use cases.",
+      "ja": "ブライアンはソフトウェア サプライ チェーンのユースケースに貢献しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Robert Martin\nMITRE Corporation\nUnited States of America\nEmail: ramartin@mitre.org",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Robert contributed to the software supply chain use cases.",
+      "ja": "Robert はソフトウェア サプライ チェーンのユースケースに貢献しました。"
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Henk Birkholz\nFraunhofer SIT\nRheinstrasse 75\n64295 Darmstadt\nGermany\nEmail: henk.birkholz@ietf.contact",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Antoine Delignat-Lavaud\nMicrosoft\nUnited Kingdom\nEmail: antdl@microsoft.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Cédric Fournet\nMicrosoft\nUnited Kingdom\nEmail: fournet@microsoft.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Yogesh Deshpande\nARM\n110 Fulbourn Road\nCambridge\nCB1 9NJ\nUnited Kingdom\nEmail: yogesh.deshpande@arm.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Steve Lasker\nEmail: stevenlasker@hotmail.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}

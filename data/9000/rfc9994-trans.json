@@ -1,0 +1,2020 @@
+{
+  "title": {
+    "text": "RFC 9994 - MPLS Network Action (MNA) Sub-Stack Specification Including In-Stack Network Actions and Data",
+    "ja": "RFC 9994 - スタック内ネットワーク アクションとデータを含む MPLS ネットワーク アクション (MNA) サブスタック仕様"
+  },
+  "number": 9994,
+  "created_at": "2026-06-27 23:24:44.394042+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)              J. Rajamanickam, Ed.\nRequest for Comments: 9994                                R. Gandhi, Ed.\nUpdates: 9789                                        Cisco Systems, Inc.\nCategory: Standards Track                                      R. Zigler\nISSN: 2070-1721                                                 Broadcom\n                                                                 H. Song\n                                                  Futurewei Technologies\n                                                             K. Kompella\n                                                        Juniper Networks\n                                                               June 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "MPLS Network Action (MNA) Sub-Stack Specification Including In-Stack Network Actions and Data",
+      "section_title": true,
+      "ja": "スタック内ネットワーク アクションとデータを含む MPLS ネットワーク アクション (MNA) サブスタック仕様"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "This document specifies the MPLS Network Action (MNA) Sub-Stack for carrying network actions and Ancillary Data (AD) in the MPLS label stack. MNA can be used to influence packet-forwarding decisions, carry additional Operations, Administration, and Maintenance (OAM) information in the MPLS packet, or perform user-defined operations.",
+      "ja": "この文書は、MPLS ラベル スタックでネットワーク アクションと補助データ (AD) を伝送するための MPLS ネットワーク アクション (MNA) サブスタックを指定します。MNA を使用すると、パケット転送の決定に影響を与えたり、MPLS パケットで追加の運用、管理、保守 (OAM) 情報を伝送したり、ユーザー定義の操作を実行したりできます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document updates RFC 9789 to refine the list of pieces of information that must be included in any document that defines an MNA.",
+      "ja": "この文書は RFC 9789 を更新し、MNA を定義する文書に含める必要がある情報のリストを改良します。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の状態"
+    },
+    {
+      "indent": 3,
+      "text": "This is an Internet Standards Track document.",
+      "ja": "これはインターネット標準化トラックの文書です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
+      "ja": "このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9994.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9994 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Conventions Used in This Document\n  2.1.  Requirements Language\n  2.2.  Abbreviations\n  2.3.  Terminology\n3.  Overview\n4.  Label Stack Entry Formats\n  4.1.  LSE Format A: The MNA Sub-Stack Indicator\n  4.2.  LSE Format B: The Initial Opcode\n  4.3.  LSE Format C: Subsequent Opcodes\n  4.4.  LSE Format D: Additional Data\n5.  The MNA Sub-Stack\n  5.1.  Opcodes\n  5.2.  Ancillary Data\n  5.3.  Scope\n  5.4.  Unknown Network Action Handling\n  5.5.  Ordering\n6.  Special Opcodes\n  6.1.  bSPL Protection\n  6.2.  Flag-Based NAIs Without AD\n  6.3.  No-Operation Opcode\n  6.4.  Extension Opcode\n7.  NAS Placement in the Label Stack\n  7.1.  Actions When Pushing Labels\n8.  Node Capability Signaling\n9.  Processing the Network Action Sub-Stack\n  9.1.  Encapsulating Node Responsibilities\n  9.2.  Transit Node Responsibilities\n  9.3.  Penultimate Node Responsibilities\n  9.4.  Egress Node Responsibilities\n10. Network Action Indicator Opcode Definition\n11. Security Considerations\n12. Operational Considerations\n  12.1.  Manageability Considerations\n  12.2.  Performance and Scale Considerations\n  12.3.  Backward Compatibility\n13. IANA Considerations\n  13.1.  MNA bSPL Label\n  13.2.  MPLS Network Actions Parameters\n    13.2.1.  Network Action Flags Without Ancillary Data\n    13.2.2.  Network Action Opcodes\n14. References\n  14.1.  Normative References\n  14.2.  Informative References\nAppendix A.  Examples\n  A.1.  Network Action Encoding Examples\n    A.1.1.  Network Action Flags Without AD\n    A.1.2.  Network Action Opcode with AD\n    A.1.3.  Network Action Opcode with More AD with Format B\n    A.1.4.  Network Action Opcode with More AD with Format C\n  A.2.  Network Action Processing Order\n    A.2.1.  Network Action Processing Order\nAcknowledgments\nContributors\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3032] defines the encoding of the MPLS label stack, the basic structure used to define a forwarding path. There are applications that require MPLS packets to perform special network actions and carry optional Ancillary Data (AD) that can affect the packet-forwarding decision or trigger Operations, Administration, and Maintenance (OAM) logging, for example, as described in [RFC9791]. AD can be used to carry additional information, for example, for network slice purposes (see [RFC9791]).",
+      "ja": "[RFC3032] は、転送パスを定義するために使用される基本構造である MPLS ラベル スタックのエンコーディングを定義しています。たとえば、[RFC9791] で説明されているように、特別なネットワーク アクションを実行し、パケット転送の決定に影響を与えたり、運用、管理、保守 (OAM) ログをトリガーしたりできるオプションの補助データ (AD) を伝送するために、MPLS パケットを必要とするアプリケーションがあります。AD は、ネットワークスライスなどの目的で追加情報を運ぶために使用できます ([RFC9791] を参照)。"
+    },
+    {
+      "indent": 3,
+      "text": "The requirements for in-stack network action and In-Stack Data (ISD) are described in [RFC9613].",
+      "ja": "スタック内ネットワークアクションとスタック内データ (ISD) の要件は [RFC9613] で説明されています。"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines the syntax and semantics of network actions and AD encoded in an MPLS label stack. In-stack actions and AD are contained in a Network Action Sub-Stack (NAS), which is recognized by a new base Special-Purpose Label (bSPL). This document follows the framework specified in [RFC9789].",
+      "ja": "この文書は、MPLS ラベル スタックでエンコードされたネットワーク アクションと AD の構文とセマンティクスを定義します。スタック内アクションと AD は、新しい基本特殊目的ラベル (bSPL) によって認識されるネットワーク アクション サブスタック (NAS) に含まれています。この文書は、[RFC9789] で指定されたフレームワークに従います。"
+    },
+    {
+      "indent": 3,
+      "text": "Section 5 of [RFC9789] provides details about information that a document defining a network action must contain. Section 10 of this document updates [RFC9789] by providing a refined list of pieces of information that must be included in any document that defines an MNA.",
+      "ja": "[RFC9789] のセクション 5 には、ネットワークアクションを定義する文書に含める必要がある情報の詳細が記載されています。この文書のセクション 10 は、MNA を定義する文書に含める必要がある情報の詳細なリストを提供することにより、[RFC9789] を更新します。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Conventions Used in This Document",
+      "section_title": true,
+      "ja": "2. この文書で使用される表記規則"
+    },
+    {
+      "indent": 0,
+      "text": "2.1. Requirements Language",
+      "section_title": true,
+      "ja": "2.1. 要件言語"
+    },
+    {
+      "indent": 3,
+      "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "ja": "このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。"
+    },
+    {
+      "indent": 0,
+      "text": "2.2. Abbreviations",
+      "section_title": true,
+      "ja": "2.2. 略語"
+    },
+    {
+      "indent": 3,
+      "text": "+==============+====================================+===============+\n| Abbreviation | Meaning                            | Reference     |\n+==============+====================================+===============+\n| AD           | Ancillary Data                     | [RFC9613]     |\n+--------------+------------------------------------+---------------+\n| bSPL         | base Special-Purpose Label         | [RFC9017]     |\n+--------------+------------------------------------+---------------+\n| BoS          | Bottom of Stack                    | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| ECMP         | Equal-Cost Multipath               | [RFC6790]     |\n+--------------+------------------------------------+---------------+\n| HbH          | Hop-by-Hop                         | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| I2E          | Ingress to Egress                  | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| IHS          | I2E, HbH, or Select                | This document |\n+--------------+------------------------------------+---------------+\n| ISD          | In-Stack Data                      | [RFC9613]     |\n+--------------+------------------------------------+---------------+\n| LSE          | Label Stack Entry                  | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| LSP          | Label Switched Path                | [RFC3031]     |\n+--------------+------------------------------------+---------------+\n| MNA          | MPLS Network Action                | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| NAI          | Network Action Indicator           | [RFC9613]     |\n+--------------+------------------------------------+---------------+\n| NAL          | Network Action Length              | This document |\n+--------------+------------------------------------+---------------+\n| NAS          | Network Action Sub-Stack           | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| NSI          | Network Action Sub-Stack           | This document |\n|              | Indicator                          |               |\n+--------------+------------------------------------+---------------+\n| NASL         | Network Action Sub-Stack           | This document |\n|              | Length                             |               |\n+--------------+------------------------------------+---------------+\n| OAM          | Operations, Administration,        | [RFC6291]     |\n|              | and Maintenance                    |               |\n+--------------+------------------------------------+---------------+\n| RLD          | Readable Label Depth               | [RFC9789]     |\n+--------------+------------------------------------+---------------+\n| TC           | Traffic Class                      | [RFC5462]     |\n+--------------+------------------------------------+---------------+\n| TTL          | Time to Live                       | [RFC3032]     |\n+--------------+------------------------------------+---------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 27,
+      "text": "Table 1: Abbreviations",
+      "ja": "表 1: 略語"
+    },
+    {
+      "indent": 0,
+      "text": "2.3. Terminology",
+      "section_title": true,
+      "ja": "2.3. 用語"
+    },
+    {
+      "indent": 3,
+      "text": "The following terms are used in this document.",
+      "ja": "この文書では次の用語が使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "MPLS Egress Node:",
+      "ja": "MPLS 出力ノード:"
+    },
+    {
+      "indent": 12,
+      "text": "An MPLS edge node in its role in handling traffic as it leaves an MPLS domain [RFC3031].",
+      "ja": "MPLS エッジ ノードは、MPLS ドメインから離れるときにトラフィックを処理する役割を果たします [RFC3031]。"
+    },
+    {
+      "indent": 3,
+      "text": "MPLS Ingress Node:",
+      "ja": "MPLS 入力ノード:"
+    },
+    {
+      "indent": 12,
+      "text": "An MPLS edge node in its role in handling traffic as it enters an MPLS domain [RFC3031].",
+      "ja": "MPLS エッジ ノードは、MPLS ドメインに入るときにトラフィックを処理する役割を果たします [RFC3031]。"
+    },
+    {
+      "indent": 3,
+      "text": "MPLS Domain:",
+      "ja": "MPLS ドメイン:"
+    },
+    {
+      "indent": 12,
+      "text": "A contiguous set of nodes that operate MPLS routing and forwarding and that are also in one Routing or Administrative Domain [RFC3031].",
+      "ja": "MPLS ルーティングと転送を操作し、1 つのルーティング ドメインまたは管理ドメイン [RFC3031] 内にある連続したノードのセット。"
+    },
+    {
+      "indent": 3,
+      "text": "Encapsulating Node:",
+      "ja": "カプセル化ノード:"
+    },
+    {
+      "indent": 12,
+      "text": "A node that adds a NAS to the label stack.",
+      "ja": "ラベル スタックに NAS を追加するノード。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Overview",
+      "section_title": true,
+      "ja": "3. 概要"
+    },
+    {
+      "indent": 3,
+      "text": "The MPLS NAS is a set of Label Stack Entries (LSEs) that appear as part of an MPLS label stack and serve to encode information about the network actions that should be invoked for the packet. Multiple NASes may appear in a label stack and be placed as described in Section 5.",
+      "ja": "MPLS NAS は、MPLS ラベル スタックの一部として表示される一連のラベル スタック エントリ (LSE) であり、パケットに対して呼び出されるネットワーク アクションに関する情報をエンコードする役割を果たします。複数の NAS がラベル スタックに表示され、セクション 5 で説明されているように配置される場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "This document specifies how network actions and their optional AD are encoded as part of a NAS as a stack of LSEs. Mechanisms that allow sharing of AD between multiple network actions encoded in the same NAS can be described in other documents and do not rely on any explicit provision in the encodings described in this document.",
+      "ja": "この文書では、ネットワーク アクションとそのオプションの AD が、LSE のスタックとして NAS の一部としてエンコードされる方法を指定します。同じ NAS 内でエンコードされた複数のネットワーク アクション間で AD の共有を可能にするメカニズムは、他のドキュメントで説明できますが、このドキュメントで説明されているエンコーディングの明示的な規定には依存しません。"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines new LSE formats beyond those in [RFC3032] that define behaviors or are processed in different ways than MPLS labels as defined in [RFC3031]. Three new LSE formats are defined to carry 7 bits of network action opcodes and varying amounts of opcode-specific AD. Specifically, Format B LSE carries up to 13 bits of AD in an LSE. Format C LSE carries up to 20 bits of AD in an LSE. Format D LSE is used when additional AD is needed by the opcodes in Format B or Format C LSEs.",
+      "ja": "この文書は、動作を定義するか、[RFC3031] で定義されている MPLS ラベルとは異なる方法で処理される [RFC3032] のフォーマットを超える新しい LSE フォーマットを定義します。3 つの新しい LSE フォーマットは、7 ビットのネットワーク アクション オペコードとさまざまな量のオペコード固有の AD を伝送するように定義されています。具体的には、フォーマット B LSE は、LSE 内で最大 13 ビットの AD を伝送します。フォーマット C LSE は、LSE 内で最大 20 ビットの AD を伝送します。フォーマット D LSE は、フォーマット B またはフォーマット C LSE のオペコードによって追加の AD が必要な場合に使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "As shown in Figure 1, the first LSE in an MNA Sub-Stack uses Format A. The second LSE uses Format B and is followed by a Format D LSE to carry additional data. Next, there may be a Format C LSE for an additional network action followed by another Format D LSE for additional data. Additional Format C and Format D LSEs may be added as needed for additional network actions and data.",
+      "ja": "図 1 に示すように、MNA サブスタックの最初の LSE はフォーマット A を使用します。2 番目の LSE はフォーマット B を使用し、その後に追加データを伝送するフォーマット D LSE が続きます。次に、追加のネットワーク アクション用のフォーマット C LSE があり、その後に追加データ用のフォーマット D LSE が続く場合があります。追加のネットワーク アクションとデータの必要に応じて、追加のフォーマット C およびフォーマット D LSE を追加できます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|      MNA-Label=bSPL                   | TC  |S|    TTL        |A\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|   Opcode    |        13-bit Data      |R|IHS|S|  NASL |U| NAL |B\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|1|                    22-bit Data            |S|  8-bit Data   |D*\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|   Opcode    |        16-bit Data            |S|4b Data|U| NAL |C\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|1|                    22-bit Data            |S|  8-bit Data   |D*\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n|   Opcode    |        16-bit Data            |S|4b Data|U| NAL |C\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n~                                                               ~\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--\n\n* Format D LSE presence indicated by NAL greater than one",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 16,
+      "text": "Figure 1: An MNA Sub-Stack Encoding Example",
+      "ja": "図 1: MNA サブスタックのエンコーディング例"
+    },
+    {
+      "indent": 0,
+      "text": "4. Label Stack Entry Formats",
+      "section_title": true,
+      "ja": "4. ラベル スタック エントリの形式"
+    },
+    {
+      "indent": 3,
+      "text": "The NAS uses a variety of different formats of LSEs for different purposes. This section describes the syntax of the various formats while the overall structure of the NAS and the semantics of the various LSEs are described in the sections below.",
+      "ja": "NAS は、さまざまな目的にさまざまな形式の LSE を使用します。このセクションではさまざまな形式の構文について説明し、NAS の全体的な構造とさまざまな LSE のセマンティクスについては以下のセクションで説明します。"
+    },
+    {
+      "indent": 0,
+      "text": "4.1. LSE Format A: The MNA Sub-Stack Indicator",
+      "section_title": true,
+      "ja": "4.1. LSE フォーマット A: MNA サブスタック インジケーター"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Format A is an LSE as described in [RFC3032] and [RFC5462]. The label value is 4 for the MNA bSPL label from the \"Base Special-Purpose MPLS Label Values\" IANA registry (see Section 13.1) to indicate the presence of an MNA in the packet and the beginning of an MNA Sub-Stack in the label stack.",
+      "ja": "LSE フォーマット A は、[RFC3032] および [RFC5462] で説明されている LSE です。「Base Special-Purpose MPLS Label Values」IANA レジストリ (セクション 13.1 を参照) の MNA bSPL ラベルのラベル値は 4 で、パケット内の MNA の存在とラベル スタック内の MNA サブスタックの始まりを示します。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|      MNA-Label=bSPL                   | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 12,
+      "text": "Figure 2: LSE Format A: The MNA Sub-Stack Indicator",
+      "ja": "図 2: LSE フォーマット A: MNA サブスタック インジケーター"
+    },
+    {
+      "indent": 3,
+      "text": "S (1 bit):",
+      "ja": "S(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The BoS [RFC3032]. MUST be set to 0 on transmitted packets. If a packet is received with an LSE containing the bSPL (4) and with S bit set to 1, then the packet MUST be dropped.",
+      "ja": "BoS [RFC3032]。送信パケットでは 0 に設定しなければなりません。bSPL (4) を含む LSE で S ビットが 1 に設定されたパケットを受信した場合、そのパケットはドロップされなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "4.2. LSE Format B: The Initial Opcode",
+      "section_title": true,
+      "ja": "4.2. LSE フォーマット B: 初期オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Format B is used to encode the first opcode in the NAS, plus a number of other fields about the NAS. The Data field of this LSE can carry up to 13 bits of AD.",
+      "ja": "LSE フォーマット B は、NAS の最初のオペコードと、NAS に関する他の多くのフィールドをエンコードするために使用されます。この LSE のデータ フィールドは、最大 13 ビットの AD を伝送できます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|   Opcode    |        13-bit Data      |R|IHS|S|  NASL |U| NAL |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 17,
+      "text": "Figure 3: LSE Format B: The Initial Opcode",
+      "ja": "図 3: LSE フォーマット B: 初期オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode (7 bits):",
+      "ja": "オペコード (7 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The operation code for this LSE. See Section 5.1.",
+      "ja": "この LSE のオペレーション コード。See Section 5.1."
+    },
+    {
+      "indent": 3,
+      "text": "Data (13 bits):",
+      "ja": "データ (13 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Opcode-specific AD.",
+      "ja": "オペコード固有の AD。"
+    },
+    {
+      "indent": 3,
+      "text": "R (1 bit): Reserved.",
+      "ja": "R (1 ビット): 予約済み。"
+    },
+    {
+      "indent": 12,
+      "text": "This bit MUST be set to zero on transmission and ignored upon receipt.",
+      "ja": "このビットは送信時にゼロに設定され、受信時には無視されなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "IHS (2 bits):",
+      "ja": "IHS (2ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The scope of all the network actions in this NAS. See Section 5.3.",
+      "ja": "この NAS 内のすべてのネットワーク アクションの範囲。セクション 5.3 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "S (1 bit):",
+      "ja": "S(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The BoS [RFC3032]. If the NASL value is non-zero, then the S bit MUST be 0. If a packet is received with the S bit set to 1 and a non-zero NASL value, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE in the MPLS header.",
+      "ja": "BoS [RFC3032]。NASL 値が 0 以外の場合、S ビットは 0 でなければなりません。S ビットが 1 に設定され、NASL 値が 0 以外の状態でパケットを受信した場合、パケットはドロップされなければなりません。カプセル化ノードは、MPLS ヘッダーの最後の LSE でのみ S ビットが 1 に設定されていることを保証しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "NASL (4 bits):",
+      "ja": "NASL (4 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The Network Action Sub-Stack Length. The number of Format C and Format D LSEs in the NAS, i.e., not including the leading Format A LSE and the Format B LSE.",
+      "ja": "ネットワークアクションのサブスタックの長さ。NAS 内のフォーマット C およびフォーマット D LSE の数。つまり、先頭のフォーマット A LSE およびフォーマット B LSE は含まれません。"
+    },
+    {
+      "indent": 3,
+      "text": "U (1 bit):",
+      "ja": "U(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Unknown Network Action Handling. See Section 5.4.",
+      "ja": "不明なネットワーク アクションの処理。セクション 5.4 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "NAL (3 bits):",
+      "ja": "NAL (3 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Network Action Length. The number of LSEs of additional data, encoded in Format D LSEs (Section 4.4), following this Format B LSE. The NAL value MUST be less than or equal to the NASL value in the Format B LSE. If not, the packet MUST be dropped. A Format C LSE would be following when the NAL value is less than the NASL value.",
+      "ja": "ネットワークアクションの長さ。このフォーマット B LSE に続くフォーマット D LSE (セクション 4.4) でエンコードされた追加データの LSE の数。NAL 値は、フォーマット B LSE の NASL 値以下でなければなりません。そうでない場合、パケットはドロップされなければなりません。NAL 値が NASL 値より小さい場合、フォーマット C LSE が続きます。"
+    },
+    {
+      "indent": 0,
+      "text": "4.3. LSE Format C: Subsequent Opcodes",
+      "section_title": true,
+      "ja": "4.3. LSE フォーマット C: 後続のオペコード"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Format C is used to encode the subsequent opcodes in the NAS.",
+      "ja": "LSE フォーマット C は、NAS 内で後続のオペコードをエンコードするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|   Opcode    |        16-bit Data            |S|4b Data|U| NAL |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 17,
+      "text": "Figure 4: LSE Format C: Subsequent Opcodes",
+      "ja": "図 4: LSE フォーマット C: 後続のオペコード"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode (7 bits):",
+      "ja": "オペコード (7 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The operation code for this LSE. See Section 5.1.",
+      "ja": "この LSE のオペレーション コード。セクション 5.1 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Data (16 bits + 4 bits):",
+      "ja": "データ (16 ビット + 4 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Opcode-specific AD.",
+      "ja": "オペコード固有の AD。"
+    },
+    {
+      "indent": 3,
+      "text": "S (1 bit):",
+      "ja": "S(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The BoS [RFC3032]. If the NAL value is non-zero and if the S bit is set to 1, then the packet MUST be dropped. If this is not the last LSE in the NAS and if the S bit is set to 1, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE.",
+      "ja": "BoS [RFC3032]。NAL 値がゼロ以外で、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。これが NAS 内の最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。カプセル化ノードは、最後の LSE でのみ S ビットが 1 に設定されるようにしなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "U (1 bit):",
+      "ja": "U(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Unknown Network Action Handling. See Section 5.4.",
+      "ja": "不明なネットワーク アクションの処理。セクション 5.4 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "NAL (3 bits):",
+      "ja": "NAL (3 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Network Action Length. The number of LSEs of additional data, encoded in Format D LSEs (Section 4.4) following this Format C LSE. The NAL value MUST be less than or equal to the NASL value in the Format B LSE. If not, the packet MUST be dropped.",
+      "ja": "ネットワークアクションの長さ。このフォーマット C LSE に続くフォーマット D LSE (セクション 4.4) でエンコードされた追加データの LSE の数。NAL 値は、フォーマット B LSE の NASL 値以下でなければなりません。そうでない場合、パケットはドロップされなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "A Format A and a Format B LSE MUST be present when a Format C LSE is carried in the NAS.",
+      "ja": "フォーマット C LSE が NAS に搭載される場合、フォーマット A およびフォーマット B LSE が存在しなければなりません。"
+    },
+    {
+      "indent": 0,
+      "text": "4.4. LSE Format D: Additional Data",
+      "section_title": true,
+      "ja": "4.4. LSE フォーマット D: 追加データ"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Format D is used to encode additional data that did not fit in the LSE with the preceding opcode.",
+      "ja": "LSE フォーマット D は、前述のオペコードで LSE に収まらなかった追加データをエンコードするために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|1|                    22-bit Data            |S|  8-bit Data   |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 18,
+      "text": "Figure 5: LSE Format D: Additional Data",
+      "ja": "図 5: LSE フォーマット D: 追加データ"
+    },
+    {
+      "indent": 3,
+      "text": "1 (1 bit):",
+      "ja": "1 (1 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The most significant bit MUST be set. This prevents legacy implementations from misinterpreting this LSE as containing a special purpose label if the data begins with zeros.",
+      "ja": "最上位ビットを設定する必要があります。これにより、データがゼロで始まる場合に、レガシー実装がこの LSE を特別な目的のラベルが含まれていると誤って解釈するのを防ぎます。"
+    },
+    {
+      "indent": 3,
+      "text": "S (1 bit):",
+      "ja": "S(1ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The BoS [RFC3032]. If this is not the last LSE for the network action based on the NAL value and if the S bit is set to 1, then the packet MUST be dropped. If this is not the last LSE in the NAS and if the S bit is set to 1, then the packet MUST be dropped. The encapsulating node MUST ensure that the S bit is set to 1 only in the last LSE.",
+      "ja": "BoS [RFC3032]。これが NAL 値に基づくネットワーク アクションの最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。これが NAS 内の最後の LSE ではなく、S ビットが 1 に設定されている場合、パケットはドロップされなければなりません (MUST)。カプセル化ノードは、最後の LSE でのみ S ビットが 1 に設定されるようにしなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Data (22 bits + 8 bits):",
+      "ja": "データ (22 ビット + 8 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "Opcode-specific AD.",
+      "ja": "オペコード固有の AD。"
+    },
+    {
+      "indent": 3,
+      "text": "A Format A and a Format B LSE MUST be present when a Format D LSE is carried in the NAS.",
+      "ja": "フォーマット D LSE が NAS に搭載される場合、フォーマット A およびフォーマット B LSE が存在しなければなりません。"
+    },
+    {
+      "indent": 0,
+      "text": "5. The MNA Sub-Stack",
+      "section_title": true,
+      "ja": "5. MNA サブスタック"
+    },
+    {
+      "indent": 3,
+      "text": "The MNA Sub-Stack MUST begin with a Format A LSE (Section 4.1). The label value of the LSE contains the MNA bSPL (4) to indicate the presence of the MNA Sub-Stack.",
+      "ja": "MNA サブスタックは、フォーマット A LSE (セクション 4.1) で始まらなければなりません (MUST)。LSE のラベル値には、MNA サブスタックの存在を示す MNA bSPL (4) が含まれています。"
+    },
+    {
+      "indent": 3,
+      "text": "The TC and TTL values of the Format A LSE retain their semantics as defined in [RFC3032] and [RFC5462]. The TTL and TC values in the Format A LSE are copied from the forwarding label at the top of the label stack. The penultimate node on the path copies the TTL and TC values from the preceding LSE to the next LSE on the label stack, overwriting the TTL and TC values of the next LSE, as specified in Section 3.5 of [RFC3443] and Section 2.6.3 of [RFC3270] in the Uniform Mode LSPs. If the node performing this copy is not aware of MNA, this could overwrite the values in the Format A LSE of the NAS.",
+      "ja": "フォーマット A LSE の TC 値と TTL 値は、[RFC3032] および [RFC5462] で定義されているセマンティクスを保持します。フォーマット A LSE の TTL 値と TC 値は、ラベル スタックの最上位にある転送ラベルからコピーされます。パス上の最後から 2 番目のノードは、均一モード LSP の [RFC3443] のセクション 3.5 および [RFC3270] のセクション 2.6.3 で規定されているように、ラベル スタック上の前の LSE から次の LSE に TTL および TC 値をコピーし、次の LSE の TTL および TC 値を上書きします。このコピーを実行するノードが MNA を認識しない場合、NAS のフォーマット A LSE の値が上書きされる可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The second LSE in a NAS MUST be a Format B LSE (Section 4.2). This LSE contains an initial opcode plus additional fields that describe the NAS.",
+      "ja": "NAS 内の 2 番目の LSE は、フォーマット B LSE でなければなりません (セクション 4.2)。この LSE には、初期オペコードに加えて、NAS を説明する追加フィールドが含まれています。"
+    },
+    {
+      "indent": 3,
+      "text": "The Format B LSE (Section 4.2) could optionally carry additional data in Format D (Section 4.4) LSEs, up to the length encoded in the LSE's NAL value.",
+      "ja": "フォーマット B LSE (セクション 4.2) は、オプションで、LSE の NAL 値にエンコードされた長さまで、フォーマット D (セクション 4.4) LSE の追加データを伝送できます。"
+    },
+    {
+      "indent": 3,
+      "text": "A NAS MAY contain more Format C (Section 4.3) and Format D (Section 4.4) LSEs, up to the length encoded in the NASL value. All Format D LSEs MUST follow a Format C or Format B LSE and be included in that LSE's NAL value.",
+      "ja": "NAS には、NASL 値にエンコードされた長さまで、さらに多くのフォーマット C (セクション 4.3) およびフォーマット D (セクション 4.4) の LSE を含めることができます (MAY)。すべてのフォーマット D LSE は、フォーマット C またはフォーマット B LSE に従い、その LSE の NAL 値に含まれなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "5.1. Opcodes",
+      "section_title": true,
+      "ja": "5.1. オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "The opcode is a 7-bit field that indicates the semantics of its LSE. Several opcodes are assigned special semantics (Section 6). Other opcodes act as NAIs and are assigned through IANA (see Sections 10 and 13.2.2).",
+      "ja": "オペコードは、その LSE のセマンティクスを示す 7 ビットのフィールドです。いくつかのオペコードには特別なセマンティクスが割り当てられています (セクション 6)。他のオペコードは NAI として機能し、IANA を通じて割り当てられます (セクション 10 および 13.2.2 を参照)。"
+    },
+    {
+      "indent": 0,
+      "text": "5.2. Ancillary Data",
+      "section_title": true,
+      "ja": "5.2. 補助データ"
+    },
+    {
+      "indent": 3,
+      "text": "The data field carries opcode-specific data that is AD for a network action. In the case of opcode 1, the data field carries Flag-Based NAIs without AD.",
+      "ja": "データ フィールドには、ネットワーク アクションの AD であるオペコード固有のデータが含まれます。オペコード 1 の場合、データ フィールドは AD なしでフラグベースの NAI を伝送します。"
+    },
+    {
+      "indent": 3,
+      "text": "The label value (most significant 20 bits) in one or more consecutive LSEs is commonly used for load-balancing data flows in an ECMP environment. Modifying the first 20 bits in an LSE might alter a packet's path and result in out-of-order delivery of packets belonging to a given flow. To maintain the stability of deployed services in ECMP environments that rely on label value information for load-balancing, care must be taken when encoding network action data in the given LSE. If the network action data may differ among packets in the same flow or change during forwarding across the MPLS network, it MUST NOT be placed in the most significant 20 bits of a Format B LSE (Section 4.2), a Format C LSE (Section 4.3), or a Format D LSE (Section 4.4). Thus, the available bits for data that can change by a transit node or differ among packets of the same flow in Format A and Format B LSEs is 0, in a Format C LSE 7 (bits 20-22 and 25-28), and in a Format D LSE 11 (bits 20-22 and 24-31).",
+      "ja": "1 つ以上の連続する LSE のラベル値 (最上位 20 ビット) は、ECMP 環境でのデータ フローの負荷分散に通常使用されます。LSE の最初の 20 ビットを変更すると、パケットのパスが変更され、特定のフローに属するパケットの配信が順序どおりに行われない可能性があります。負荷分散のためにラベル値情報に依存する ECMP 環境でデプロイされたサービスの安定性を維持するには、特定の LSE でネットワーク アクション データをエンコードするときに注意する必要があります。ネットワークアクションデータが同じフロー内のパケット間で異なる可能性がある場合、または MPLS ネットワーク全体での転送中に変更される可能性がある場合、それをフォーマット B LSE (セクション 4.2)、フォーマット C LSE (セクション 4.3)、またはフォーマット D LSE (セクション 4.4) の最上位 20 ビットに配置してはなりません (MUST NOT)。したがって、フォーマット A およびフォーマット B LSE では、トランジット ノードによって変更される可能性がある、または同じフローのパケット間で異なる可能性があるデータに使用可能なビットは 0、フォーマット C LSE 7 (ビット 20 ～ 22 および 25 ～ 28)、およびフォーマット D LSE 11 (ビット 20 ～ 22 および 24 ～ 31) では、0 です。"
+    },
+    {
+      "indent": 3,
+      "text": "Similarly, to preserve service stability, such data also MUST NOT be carried in the most significant 23 bits of these LSEs when the legacy implementation also uses the TC value, in addition to the label value, in all LSEs when computing ECMP decisions.",
+      "ja": "同様に、サービスの安定性を維持するために、レガシー実装が ECMP 決定を計算するときにすべての LSE でラベル値に加えて TC 値も使用する場合、そのようなデータをこれらの LSE の最上位 23 ビットで伝送してはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 3,
+      "text": "The available mitigations for these problems are to use additional Format D LSEs to carry the data or to place the data in Post-Stack Data as described in [RFC9789].",
+      "ja": "これらの問題に対する利用可能な軽減策は、[RFC9789] で説明されているように、追加のフォーマット D LSE を使用してデータを伝送するか、ポストスタック データにデータを配置することです。"
+    },
+    {
+      "indent": 3,
+      "text": "In network deployments where it is known that a load-balancing of data flows is not used, or if only the explicitly signaled entropy value is used, and it is certain that the load-balancing path selection will not be based on the label value of the LSEs, then the data in the label value of the LSEs in the ISD MAY be mutable within the data flow without causing the out-of-order delivery of packets.",
+      "ja": "データ フローのロード バランシングが使用されないことがわかっているネットワーク展開、または明示的に通知されたエントロピー値のみが使用され、ロード バランシング パスの選択が LSE のラベル値に基づいていないことが確実な場合、ISD 内の LSE のラベル値のデータは、パケットの順序どおりの配信を引き起こすことなく、データ フロー内で変更可能であってもよい(MAY)。"
+    },
+    {
+      "indent": 0,
+      "text": "5.3. Scope",
+      "section_title": true,
+      "ja": "5.3. 範囲"
+    },
+    {
+      "indent": 3,
+      "text": "The IHS field in the Format B LSE indicates the scope of all the NAIs encoded in the NAS. Scope defines which nodes along the MPLS path should perform the network actions found within the NAS. The specific values of the IHS field are as follows:",
+      "ja": "フォーマット B LSE の IHS フィールドは、NAS でエンコードされたすべての NAI の範囲を示します。スコープは、MPLS パス上のどのノードが NAS 内で見つかったネットワーク アクションを実行するかを定義します。IHS フィールドの具体的な値は次のとおりです。"
+    },
+    {
+      "indent": 20,
+      "text": "+======+=========================+\n| Bits | Scope                   |\n+======+=========================+\n| 00   | I2E                     |\n+------+-------------------------+\n| 01   | HbH                     |\n+------+-------------------------+\n| 10   | Select                  |\n+------+-------------------------+\n| 11   | Reserved for future use |\n+------+-------------------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 24,
+      "text": "Table 2: IHS Scope Values",
+      "ja": "表 2: IHS 範囲の値"
+    },
+    {
+      "indent": 3,
+      "text": "Ingress to Egress (I2E):",
+      "ja": "入力から出力へ (I2E):"
+    },
+    {
+      "indent": 12,
+      "text": "The network actions in this NAS MUST NOT be processed by any node except the egress node.",
+      "ja": "この NAS のネットワーク アクションは、出力ノード以外のノードによって処理されてはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 3,
+      "text": "Hop-by-Hop (HbH):",
+      "ja": "ホップバイホップ (HbH):"
+    },
+    {
+      "indent": 12,
+      "text": "All nodes along the path MUST process the NAS.",
+      "ja": "パス上のすべてのノードは NAS を処理しなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Select:",
+      "ja": "選択してください:"
+    },
+    {
+      "indent": 12,
+      "text": "Only specific nodes along the path that bring NAS to the top of the stack will perform the action.",
+      "ja": "NAS をスタックの最上位に置くパス上の特定のノードのみがアクションを実行します。"
+    },
+    {
+      "indent": 3,
+      "text": "A given NAS can only carry NAIs with the same scope (I2E/HbH/Select). To support multiple scopes for a single packet, multiple NASes MAY be included in a single label stack.",
+      "ja": "特定の NAS は、同じスコープ (I2E/HbH/Select) の NAI のみを伝送できます。単一のパケットに対して複数のスコープをサポートするために、複数の NAS を単一のラベル スタックに含めることができます (MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "The egress node is included in the HbH scope. This implies that the penultimate node MUST NOT remove a NAS with HbH scope. The egress node may receive a NAS at the top of the label stack as discussed in Section 9.4.",
+      "ja": "出口ノードは HbH スコープに含まれます。これは、最後から 2 番目のノードが HbH スコープを持つ NAS を削除してはいけないことを意味します。セクション9.4で説明したように、出口ノードはラベルスタックの最上位でNASを受け取る場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "A NAS with I2E scope, if present, MUST be encoded after any HbH or Select scope NASes. This makes it easier for the transit nodes to process a NAS with HbH or Select scope.",
+      "ja": "I2E スコープを備えた NAS (存在する場合) は、HbH または Select スコープ NAS の後にエンコードする必要があります。これにより、トランジット ノードが HbH または Select スコープを使用して NAS を処理することが容易になります。"
+    },
+    {
+      "indent": 3,
+      "text": "If a packet is received with the IHS scope set to \"Reserved for future use\", the packet is processed based on the U bit in the Format B LSE in the NAS.",
+      "ja": "IHS スコープが「将来の使用のために予約」に設定されたパケットを受信した場合、パケットは NAS のフォーマット B LSE の U ビットに基づいて処理されます。"
+    },
+    {
+      "indent": 0,
+      "text": "5.4. Unknown Network Action Handling",
+      "section_title": true,
+      "ja": "5.4. 不明なネットワークアクションの処理"
+    },
+    {
+      "indent": 3,
+      "text": "The Unknown Network Action Handling (U) field in a Format B LSE (Section 4.2) and Format C LSE (Section 4.3) is a 1-bit value that defines the action to be taken by a node that does not understand an action within the NAS. The different types of Unknown Network Action Handling actions are defined below.",
+      "ja": "フォーマット B LSE (セクション 4.2) およびフォーマット C LSE (セクション 4.3) の Unknown Network Action Handling (U) フィールドは、NAS 内のアクションを理解できないノードが実行するアクションを定義する 1 ビットの値です。さまざまなタイプの不明なネットワーク アクション処理アクションを以下に定義します。"
+    },
+    {
+      "indent": 23,
+      "text": "+=====+=====================+\n| Bit | Action              |\n+=====+=====================+\n| 0   | Skip to the next NA |\n+-----+---------------------+\n| 1   | Drop the packet     |\n+-----+---------------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 26,
+      "text": "Table 3: Unknown Network Action Handling",
+      "ja": "表 3: 不明なネットワーク アクションの処理"
+    },
+    {
+      "indent": 3,
+      "text": "When a packet with an Unknown Network Action Handling is dropped, the node should maintain a local counter for this event and may send a rate-limited notification to the operator.",
+      "ja": "不明なネットワーク アクション処理を伴うパケットがドロップされた場合、ノードはこのイベントのローカル カウンタを維持する必要があり、レート制限された通知をオペレータに送信する場合があります。"
+    },
+    {
+      "indent": 0,
+      "text": "5.5. Ordering",
+      "section_title": true,
+      "ja": "5.5. 注文"
+    },
+    {
+      "indent": 3,
+      "text": "The network actions encoded in the NAS MUST be processed in the order that they appear in the NAS, from the top of the NAS to the bottom. NAIs encoded as flags (see Section 6.2) MUST be processed from the most significant bit to the least significant bit. If a label stack contains multiple NASes, they MUST be processed in the order that they appear in the label stack, subject to the restrictions in Section 7.",
+      "ja": "NAS 内でエンコードされたネットワーク アクションは、NAS に表示される順序で、NAS の上部から下部まで処理されなければなりません。フラグとしてエンコードされた NAI (セクション 6.2 を参照) は、最上位ビットから最下位ビットまで処理されなければなりません (MUST)。ラベル スタックに複数の NAS が含まれる場合、セクション 7 の制限に従って、ラベル スタックに表示される順序で処理しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "6. Special Opcodes",
+      "section_title": true,
+      "ja": "6. 特別なオペコード"
+    },
+    {
+      "indent": 3,
+      "text": "Below are the special opcodes defined to build a basic in-stack MNA solution and assigned in the \"Network Action Opcodes\" IANA registry (see Section 13.2.2). In the future, additional special opcodes may be defined and their code points assigned from this registry.",
+      "ja": "以下は、基本的なスタック内 MNA ソリューションを構築するために定義され、「ネットワーク アクション オペコード」IANA レジストリに割り当てられた特別なオペコードです (セクション 13.2.2 を参照)。将来的には、追加の特別なオペコードが定義され、そのコード ポイントがこのレジストリから割り当てられる可能性があります。"
+    },
+    {
+      "indent": 0,
+      "text": "6.1. bSPL Protection",
+      "section_title": true,
+      "ja": "6.1. bSPL 保護"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode:",
+      "ja": "オペコード:"
+    },
+    {
+      "indent": 12,
+      "text": "0",
+      "ja": "0"
+    },
+    {
+      "indent": 3,
+      "text": "Purpose:",
+      "ja": "目的："
+    },
+    {
+      "indent": 12,
+      "text": "Legacy implementations may scan the label stack looking for bSPL values. As long as the opcode field is non-zero, an LSE cannot be misinterpreted as containing a bSPL. Therefore, opcode 0 is reserved and not to be used.",
+      "ja": "従来の実装では、ラベル スタックをスキャンして bSPL 値を探す場合があります。opcode フィールドがゼロ以外である限り、LSE が bSPL を含むものとして誤って解釈されることはありません。したがって、オペコード 0 は予約されており、使用されません。"
+    },
+    {
+      "indent": 0,
+      "text": "6.2. Flag-Based NAIs Without AD",
+      "section_title": true,
+      "ja": "6.2. AD を使用しないフラグベースの NAI"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode:",
+      "ja": "オペコード:"
+    },
+    {
+      "indent": 12,
+      "text": "1",
+      "ja": "1"
+    },
+    {
+      "indent": 3,
+      "text": "Purpose:",
+      "ja": "目的："
+    },
+    {
+      "indent": 12,
+      "text": "This opcode is used for network actions that do not require AD. A single flag can be used to indicate each of these network actions.",
+      "ja": "このオペコードは、AD を必要としないネットワーク アクションに使用されます。単一のフラグを使用して、これらのネットワーク アクションのそれぞれを示すことができます。"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Formats:",
+      "ja": "LSE フォーマット:"
+    },
+    {
+      "indent": 12,
+      "text": "B, C, D",
+      "ja": "B、C、D"
+    },
+    {
+      "indent": 3,
+      "text": "Data:",
+      "ja": "データ："
+    },
+    {
+      "indent": 12,
+      "text": "The data field carries NAIs, which should be evaluated from the most significant bit to the least significant bit. If this opcode is used with LSE Format B only, then up to 13 flags may be carried. If this opcode is used with LSE Format C only, then up to 20 flags may be carried. Format D LSEs can be used with Format C LSEs to encode more than 20 flags. Flags are assigned from the \"Network Action Flags Without Ancillary Data\" registry (Section 13.2.1). If flags need to be evaluated in a different order, multiple LSEs using this opcode may be used to specify the requested order. The Flag-Based NAIs MUST follow the procedure for data specified in Section 5.2.",
+      "ja": "データ フィールドには NAI が含まれており、最上位ビットから最下位ビットまで評価する必要があります。このオペコードが LSE フォーマット B のみで使用される場合、最大 13 個のフラグを伝送できます。このオペコードが LSE フォーマット C のみで使用される場合、最大 20 個のフラグを保持できます。フォーマット D LSE をフォーマット C LSE と一緒に使用すると、20 を超えるフラグをエンコードできます。フラグは、「補助データを含まないネットワーク アクション フラグ」レジストリ (セクション 13.2.1) から割り当てられます。フラグを別の順序で評価する必要がある場合は、このオペコードを使用する複数の LSE を使用して、要求された順序を指定できます。フラグベースの NAI は、セクション 5.2 で指定されたデータの手順に従わなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Scope:",
+      "ja": "範囲："
+    },
+    {
+      "indent": 12,
+      "text": "This opcode can be used with any scope.",
+      "ja": "このオペコードは任意のスコープで使用できます。"
+    },
+    {
+      "indent": 0,
+      "text": "6.3. No-Operation Opcode",
+      "section_title": true,
+      "ja": "6.3. ノーオペレーションオペコード"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode:",
+      "ja": "オペコード:"
+    },
+    {
+      "indent": 12,
+      "text": "2",
+      "ja": "2"
+    },
+    {
+      "indent": 3,
+      "text": "Purpose:",
+      "ja": "目的："
+    },
+    {
+      "indent": 12,
+      "text": "This opcode is used to indicate that it does not perform any network action and MUST be skipped.",
+      "ja": "このオペコードは、ネットワーク アクションを実行しないため、スキップしなければならないことを示すために使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "LSE Format:",
+      "ja": "LSEフォーマット:"
+    },
+    {
+      "indent": 12,
+      "text": "B",
+      "ja": "B"
+    },
+    {
+      "indent": 3,
+      "text": "Scope:",
+      "ja": "範囲："
+    },
+    {
+      "indent": 12,
+      "text": "Any scope value may be set and MUST be ignored.",
+      "ja": "任意のスコープ値を設定できますが、無視しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "6.4. Extension Opcode",
+      "section_title": true,
+      "ja": "6.4. 拡張オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode:",
+      "ja": "オペコード:"
+    },
+    {
+      "indent": 12,
+      "text": "127",
+      "ja": "127"
+    },
+    {
+      "indent": 3,
+      "text": "Purpose:",
+      "ja": "目的："
+    },
+    {
+      "indent": 12,
+      "text": "This opcode is used to extend the current opcode range beyond 127 in the future. If this opcode is not supported, then the packet with opcode 127 MUST be dropped regardless of the setting of the U bit. Use of this opcode is outside the scope of this document.",
+      "ja": "このオペコードは、現在のオペコード範囲を将来 127 を超えて拡張するために使用されます。このオペコードがサポートされていない場合、U ビットの設定に関係なく、オペコード 127 を持つパケットはドロップされなければなりません (MUST)。このオペコードの使用は、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "7. NAS Placement in the Label Stack",
+      "section_title": true,
+      "ja": "7. ラベル スタック内の NAS の配置"
+    },
+    {
+      "indent": 3,
+      "text": "The node adding a NAS to the label stack places a copy of the NAS where the relevant nodes can read it. Each downstream node along the path has a Readable Label Depth (RLD). If the NAS is to be processed by a downstream MNA-capable node, then the entire NAS MUST be placed so that it is within RLD by the time the packet reaches the downstream MNA-capable node. The RLD of the downstream MNA-capable node MUST be learned as described in Section 2.3.1 of [RFC9789].",
+      "ja": "ラベル スタックに NAS を追加するノードは、関連するノードがそれを読み取ることができる場所に NAS のコピーを配置します。パスに沿った各下流ノードには、読み取り可能なラベル深さ (RLD) があります。NAS がダウンストリーム MNA 対応ノードによって処理される場合、パケットがダウンストリーム MNA 対応ノードに到達するまでに NAS 全体が RLD 内に収まるように配置する必要があります。下流の MNA 対応ノードの RLD は、[RFC9789] のセクション 2.3.1 の説明に従って学習しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "If the label stack is deep, several copies of the NAS may need to be encoded in the label stack.",
+      "ja": "ラベル スタックが深い場合、NAS のいくつかのコピーをラベル スタック内でエンコードする必要がある場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "For a NAS with HbH scope, every node will process the top copy of the NAS. However, the NAS MUST NOT appear at the top of the stack at any MNA-incapable node on the path that is ensured by the encapsulating node using the node capability, as described in Section 8.",
+      "ja": "HbH スコープを備えた NAS の場合、すべてのノードが NAS の最上位コピーを処理します。ただし、NAS は、セクション 8 で説明されているように、ノード機能を使用してカプセル化ノードによって保証されるパス上の MNA 非対応ノードのスタックの最上位に表示されてはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 3,
+      "text": "A NAS MUST NOT appear at the top of the stack after popping the forwarding label on an MNA-incapable node on the path.",
+      "ja": "パス上の MNA 非対応ノードで転送ラベルをポップした後、NAS がスタックの最上位に表示されてはなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "The behavior of a node where a NAS with I2E and HbH scopes is also removed along with popping the forwarding label on a PHP node is outside the scope of this document.",
+      "ja": "I2E および HbH スコープを持つ NAS も削除され、PHP ノードで転送ラベルがポップされるノードの動作は、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "A NAS with Select scope is processed by the node that brings the NAS to the top of the stack (for example, in the case of using the MPLS label pop operation in Segment Routing); then, the NAS is removed from the stack. The Select scope NAS needs to be inserted after the forwarding label and before the next forwarding label. It could be inserted before or after a NAS with HbH scope. Note that the case of a NAS with Select scope with an MPLS label swap operation (for example, with RSVP-TE LSPs) is for future study.",
+      "ja": "選択スコープを持つ NAS は、NAS をスタックの最上位にするノードによって処理されます (たとえば、セグメント ルーティングで MPLS ラベル ポップ操作を使用する場合)。その後、NAS はスタックから削除されます。スコープの選択 NAS は、転送ラベルの後、次の転送ラベルの前に挿入する必要があります。HbH スコープを備えた NAS の前後に挿入できます。MPLS ラベル スワップ操作 (RSVP-TE LSP など) を使用する選択スコープを備えた NAS のケースは今後の検討課題であることに注意してください。"
+    },
+    {
+      "indent": 3,
+      "text": "For a NAS with I2E scope, only one copy of the NAS needs to be added at the bottom of the stack.",
+      "ja": "I2E スコープの NAS の場合、スタックの一番下に追加する必要があるのは NAS のコピー 1 つだけです。"
+    },
+    {
+      "indent": 3,
+      "text": "A transit node that is not the penultimate node that pops a forwarding label and exposes a copy of a NAS MUST remove that NAS.",
+      "ja": "転送ラベルをポップして NAS のコピーを公開する最後から 2 番目のノードではないトランジット ノードは、その NAS を削除しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "An MNA-capable node performing Penultimate Hop Popping (PHP) that pops the forwarding label with only the NAS(es) remaining on the stack MUST NOT remove the NAS(es). Instead, it forwards the packet with the NAS(es) at the top of the stack to the next node. Note that the behavior of the PHP node, as defined in [RFC3270] for TC processing and as defined in [RFC3443] for TTL processing, is not modified regardless of whether the PHP node supports MNA.",
+      "ja": "スタック上に NAS のみを残して転送ラベルをポップする、PHP (Penultimate Hop Popping) を実行する MNA 対応ノードは、NAS を削除してはなりません (MUST NOT)。代わりに、スタックの最上位にある NAS を持つパケットを次のノードに転送します。TC 処理については [RFC3270] で定義され、TTL 処理については [RFC3443] で定義されているように、PHP ノードの動作は、PHP ノードが MNA をサポートするかどうかに関係なく変更されないことに注意してください。"
+    },
+    {
+      "indent": 3,
+      "text": "The node that receives the NAS at the top of the label stack MUST process and remove it.",
+      "ja": "ラベルスタックの最上位で NAS を受け取るノードは、NAS を処理して削除する必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "7.1. Actions When Pushing Labels",
+      "section_title": true,
+      "ja": "7.1. ラベルをプッシュするときのアクション"
+    },
+    {
+      "indent": 3,
+      "text": "An MNA-capable node may need to push additional labels as well as push new network actions onto a received packet.",
+      "ja": "MNA 対応ノードは、受信パケットに新しいネットワーク アクションをプッシュするだけでなく、追加のラベルをプッシュする必要がある場合があります。"
+    },
+    {
+      "indent": 3,
+      "text": "While pushing additional labels onto the label stack of the received packet, the MNA-capable node MUST verify that the entire topmost NAS with HbH scope is still within the RLD of the downstream MNA-capable nodes. If required, the MNA-capable node MAY create a copy of the topmost NAS with HbH scope and insert it within the RLD of the downstream MNA-capable nodes on the label stack.",
+      "ja": "MNA 対応ノードは、受信パケットのラベル スタックに追加のラベルをプッシュする際、HbH スコープを持つ最上位の NAS 全体が依然として下流の MNA 対応ノードの RLD 内にあることを確認しなければなりません (MUST)。必要に応じて、MNA 対応ノードは、HbH スコープを持つ最上位の NAS のコピーを作成し、それをラベル スタック上の下流 MNA 対応ノードの RLD 内に挿入してもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "When an MNA-capable node needs to push a new NAS with HbH scope on to a received packet that already has a NAS with HbH scope, it SHOULD copy (and merge) the network actions (including their AD) from the received topmost NAS with HbH scope in the new NAS with HbH scope. The new NAS MUST be placed within the RLD of the downstream MNA-capable nodes. This behavior can be based on local policy.",
+      "ja": "MNA 対応ノードが、HbH スコープを持つ新しい NAS を、すでに HbH スコープを持つ NAS を持つ受信パケットにプッシュする必要がある場合、受信した HbH スコープを持つ最上位の NAS からのネットワーク アクション (AD を含む) を、HbH スコープを持つ新しい NAS にコピー (およびマージ) する必要があります (SHOULD)。新しい NAS は、ダウンストリームの MNA 対応ノードの RLD 内に配置する必要があります。この動作はローカル ポリシーに基づいている可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The new network actions added MUST NOT conflict with the network actions in the received NAS with HbH scope. The mechanism to resolve such conflicts depends on the network actions and can be based on local policy. The MNA-capable node that pushes entries MUST understand any network actions that it is pushing that may result in a conflict and MUST resolve any conflicts between new and received network actions. In the usual case of a conflict of duplicating a network action, the definition of a network action MUST give guidance on conflict resolution.",
+      "ja": "追加された新しいネットワーク アクションは、HbH スコープを持つ受信した NAS のネットワーク アクションと競合してはなりません。このような競合を解決するメカニズムはネットワークのアクションに依存し、ローカル ポリシーに基づいて行うことができます。エントリをプッシュする MNA 対応ノードは、競合を引き起こす可能性のあるプッシュしているネットワーク アクションを理解しなければならず (MUST)、新しいネットワーク アクションと受信したネットワーク アクション間の競合を解決しなければなりません (MUST)。ネットワークアクションの複製による競合の通常の場合、ネットワークアクションの定義は競合解決に関する指針を提供しなければなりません(MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "8. Node Capability Signaling",
+      "section_title": true,
+      "ja": "8. ノード機能のシグナリング"
+    },
+    {
+      "indent": 3,
+      "text": "The encapsulating node MUST make sure that the NAS can be processed by the transit and egress nodes. In addition, the encapsulated packet MUST NOT exceed the path MTU as described in [RFC3032].",
+      "ja": "カプセル化ノードは、NAS が通過ノードと出力ノードによって処理できることを確認しなければなりません。さらに、カプセル化されたパケットは、[RFC3032] に記載されているパス MTU を超えてはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 6,
+      "text": "* The node responsible for selecting a path through the MPLS network needs to know and consider the MNA-capabilities and RLD of the transit nodes as well as the MNA-capabilities of the egress node as described in Section 2.3 of [RFC9789].",
+      "ja": "* MPLS ネットワークを介したパスの選択を担当するノードは、[RFC9789] のセクション 2.3 で説明されているように、通過ノードの MNA 機能と RLD、さらに出口ノードの MNA 機能を知り、考慮する必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* Information about the capabilities of the nodes may be configured, collected through management protocols, or distributed by control protocols (such as advertising by routing protocols).",
+      "ja": "* ノードの機能に関する情報は、管理プロトコルを通じて構成、収集、または制御プロトコル (ルーティング プロトコルによる広告など) によって配布できます。"
+    },
+    {
+      "indent": 6,
+      "text": "* The node responsible for selecting a path through the MPLS network learns about the capabilities of nodes using mechanisms that are out of scope for this document.",
+      "ja": "* MPLS ネットワークを介したパスの選択を担当するノードは、このドキュメントの範囲外であるメカニズムを使用してノードの機能を学習します。"
+    },
+    {
+      "indent": 6,
+      "text": "* In the case of Segment Routing over MPLS (SR-MPLS), as well as the RLD, the path computation system needs to know the Maximum SID Depth (MSD) [RFC8664] that can be imposed at the ingress node of a given SR path. This ensures that the label stack depth of a computed path does not exceed the maximum number of labels (i.e., MSD) the node is capable of imposing and the maximum number of labels that can be read by the MNA-processing nodes in the path. The MSD MUST include the MNA Sub-Stacks that will be added.",
+      "ja": "* Segment Routing over MPLS (SR-MPLS) および RLD の場合、パス計算システムは、特定の SR パスの入口ノードに適用できる最大 SID 深さ (MSD) [RFC8664] を知っている必要があります。これにより、計算されたパスのラベル スタックの深さが、ノードが課すことができるラベルの最大数 (つまり、MSD) と、パス内の MNA 処理ノードによって読み取られるラベルの最大数を超えないことが保証されます。MSD には、追加される MNA サブスタックが含まれなければなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* The encapsulating node MUST learn about the RLD of the nodes in the path as described in Section 2.3.1 of [RFC9789].",
+      "ja": "* カプセル化ノードは、[RFC9789] のセクション 2.3.1 で説明されているように、パス内のノードの RLD について学習しなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "9. Processing the Network Action Sub-Stack",
+      "section_title": true,
+      "ja": "9. ネットワークアクションサブスタックの処理"
+    },
+    {
+      "indent": 3,
+      "text": "This section defines the specific responsibilities for nodes along an LSP [RFC3031].",
+      "ja": "このセクションでは、LSP [RFC3031] に沿ったノードの特定の責任を定義します。"
+    },
+    {
+      "indent": 0,
+      "text": "9.1. Encapsulating Node Responsibilities",
+      "section_title": true,
+      "ja": "9.1. ノードの責任のカプセル化"
+    },
+    {
+      "indent": 3,
+      "text": "The encapsulating node MAY add NASes to the label stack in accordance with its policies, the placement restrictions in Section 7, and the capabilities learned from Section 8.",
+      "ja": "カプセル化ノードは、そのポリシー、セクション 7 の配置制限、およびセクション 8 から学んだ機能に従って、ラベル スタックに NAS を追加してもよい(MAY)。"
+    },
+    {
+      "indent": 3,
+      "text": "If there is an existing label stack, the encapsulating node MUST NOT modify the first 20 bits of any LSE in the label stack when the ECMP technique in the network uses hashing of the labels on the label stack.",
+      "ja": "既存のラベル スタックが存在する場合、ネットワークの ECMP 技術がラベル スタック上のラベルのハッシュを使用する場合、カプセル化ノードはラベル スタック内の LSE の最初の 20 ビットを変更してはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 0,
+      "text": "9.2. Transit Node Responsibilities",
+      "section_title": true,
+      "ja": "9.2. トランジットノードの責任"
+    },
+    {
+      "indent": 3,
+      "text": "The transit node is the node that processes a NAS in the label stack but does not push any new NAS.",
+      "ja": "トランジット ノードは、ラベル スタック内の NAS を処理しますが、新しい NAS をプッシュしないノードです。"
+    },
+    {
+      "indent": 3,
+      "text": "The transit node MUST follow the procedure for data specified in Section 5.2.",
+      "ja": "トランジットノードは、セクション 5.2 で指定されたデータの手順に従わなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Transit nodes MUST process the NASes in the label stack according to the rules set out in Section 5.5.",
+      "ja": "トランジットノードは、セクション 5.5 に定められたルールに従って、ラベルスタック内の NAS を処理しなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "A transit node that processes a NAS and does not recognize the value of an opcode MUST follow the rules according to the setting of the Unknown Network Action Handling value in the NAS as described in Section 5.4.",
+      "ja": "NAS を処理し、オペコードの値を認識しないトランジット ノードは、セクション 5.4 で説明されているように、NAS の不明なネットワーク アクション処理値の設定に従ったルールに従わなければなりません (MUST)。"
+    },
+    {
+      "indent": 0,
+      "text": "9.3. Penultimate Node Responsibilities",
+      "section_title": true,
+      "ja": "9.3. 最後から 2 番目のノードの責任"
+    },
+    {
+      "indent": 3,
+      "text": "In addition to the transit node responsibilities, the penultimate node and penultimate SR-MPLS segment node MUST NOT remove the last copy of an HbH or I2E NAS when it is exposed after removing the forwarding (transport) label. This allows the egress node to process the NAS.",
+      "ja": "トランジット ノードの責任に加えて、最後から 2 番目のノードおよび最後から 2 番目の SR-MPLS セグメント ノードは、転送 (トランスポート) ラベルを削除した後に HbH または I2E NAS が公開された場合、その最後のコピーを削除してはなりません。これにより、出力ノードが NAS を処理できるようになります。"
+    },
+    {
+      "indent": 0,
+      "text": "9.4. Egress Node Responsibilities",
+      "section_title": true,
+      "ja": "9.4. 出口ノードの責任"
+    },
+    {
+      "indent": 3,
+      "text": "The egress node MUST remove any NAS it receives.",
+      "ja": "出口ノードは、受信した NAS を削除しなければなりません。"
+    },
+    {
+      "indent": 0,
+      "text": "10. Network Action Indicator Opcode Definition",
+      "section_title": true,
+      "ja": "10. ネットワークアクションインジケーターのオペコード定義"
+    },
+    {
+      "indent": 3,
+      "text": "The following information MUST be defined for a new NAI opcode request in the document that specifies the network action. This updates the list found in Section 5 of [RFC9789] and should be used instead of that list.",
+      "ja": "次の情報は、ネットワークアクションを指定する文書内の新しい NAI オペコード要求に対して定義されなければなりません (MUST)。これは [RFC9789] のセクション 5 にあるリストを更新するものであり、そのリストの代わりに使用する必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Format:",
+      "ja": "形式："
+    },
+    {
+      "indent": 12,
+      "text": "The definition of the new network action MUST specify the LSE formats. The opcode can define the network action in Format B or C or both Formats B and C. Both Format B and C LSEs MAY optionally carry Format D LSEs.",
+      "ja": "新しいネットワーク アクションの定義では、LSE 形式を指定する必要があります。オペコードは、フォーマット B または C、またはフォーマット B と C の両方でネットワーク アクションを定義できます。フォーマット B と C の両方の LSE は、オプションでフォーマット D LSE を運ぶことができます。"
+    },
+    {
+      "indent": 3,
+      "text": "Scope:",
+      "ja": "範囲："
+    },
+    {
+      "indent": 12,
+      "text": "The definition of the new network action MUST specify at least one scope (I2E, HbH, Select) for the network action and MAY specify more than one scope.",
+      "ja": "新しいネットワーク アクションの定義では、ネットワーク アクションに対して少なくとも 1 つのスコープ (I2E、HbH、Select) を指定しなければなりません (MUST)。また、複数のスコープを指定してもよいです。"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "The definition of the new network action MUST specify the quantity, syntax, and semantics of any associated AD. The AD MAY be variable length, but the NAL MUST be computable based on the data added in the NAS.",
+      "ja": "新しいネットワーク アクションの定義では、関連付けられた AD の量、構文、およびセマンティクスを指定する必要があります。AD は可変長であってもよい (MAY) が、NAL は NAS に追加されたデータに基づいて計算可能でなければならない (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "Processing:",
+      "ja": "処理："
+    },
+    {
+      "indent": 12,
+      "text": "The definition of the new network action MUST specify the detailed procedure for processing the network action.",
+      "ja": "新しいネットワークアクションの定義では、ネットワークアクションを処理するための詳細な手順を指定しなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Interactions:",
+      "ja": "インタラクション:"
+    },
+    {
+      "indent": 12,
+      "text": "The definition of the new network action MUST specify its interaction including merging with other currently defined network action if there is any.",
+      "ja": "新しいネットワーク アクションの定義では、現在定義されている他のネットワーク アクション (存在する場合) とのマージを含む相互作用を指定する必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "An assignment for a NAI MAY make requests from any combination of the \"Network Action Opcodes\" or \"Network Action Flags Without Ancillary Data\" assignments (see Section 13). This decision should optimize for eventual encoding efficiency. If the NAI does not require any AD, then a flag is preferred as only one bit is used in the encoding.",
+      "ja": "NAI の割り当ては、「ネットワーク アクション オペコード」または「補助データのないネットワーク アクション フラグ」割り当ての任意の組み合わせからリクエストを行ってもよい(セクション 13 を参照)。この決定により、最終的なエンコード効率が最適化されます。NAI が AD を必要としない場合は、エンコードで 1 ビットのみが使用されるため、フラグが推奨されます。"
+    },
+    {
+      "indent": 0,
+      "text": "11. Security Considerations",
+      "section_title": true,
+      "ja": "11. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "The security considerations in [RFC3032] and [RFC9789] also apply to this document.",
+      "ja": "[RFC3032] および [RFC9789] のセキュリティに関する考慮事項は、この文書にも適用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "In addition, MNA creates a new dimension in security concerns:",
+      "ja": "さらに、MNA はセキュリティ上の懸念に新たな次元をもたらします。"
+    },
+    {
+      "indent": 6,
+      "text": "* The actions of an encapsulating node can affect any or all of the nodes along the path. In the most common and benign situations, a syntactically incorrect packet could result in packet loss or corruption, for example.",
+      "ja": "* カプセル化ノードのアクションは、パス上の任意のノードまたはすべてのノードに影響を与える可能性があります。最も一般的で問題のない状況では、構文的に正しくないパケットにより、パケットの損失や破損などが発生する可能性があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* The semantics of a network action are unbounded and may be insecure. A network action could be defined that makes arbitrary changes to the memory of the forwarding router, which could then be used by the encapsulating node to compromise every MNA-capable router in the network.",
+      "ja": "* ネットワーク アクションのセマンティクスには制限がなく、安全でない可能性があります。転送ルーターのメモリに任意の変更を加えるネットワーク アクションを定義すると、カプセル化ノードがその変更を使用して、ネットワーク内のすべての MNA 対応ルーターを侵害する可能性があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* The MNA architecture supports locally defined network actions. For such actions, there will be limited oversight to ensure that the semantics do not create security issues. Implementors and network operators will need to ensure that even the locally defined network actions do not compromise the security of the network by following the security considerations specified in this document.",
+      "ja": "* MNA アーキテクチャは、ローカルに定義されたネットワーク アクションをサポートします。このようなアクションについては、セマンティクスによってセキュリティ上の問題が発生しないことを保証するために、限定的な監視が行われます。実装者とネットワーク オペレータは、このドキュメントで指定されているセキュリティに関する考慮事項に従って、ローカルで定義されたネットワーク アクションであってもネットワークのセキュリティを侵害しないようにする必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* The MPLS domain border nodes MUST ensure that the MPLS packets with MNA from any domain with a different administrative control can be filtered to prevent entering the provider MPLS domain. The filtering capability MAY be enabled on a per-network-action basis, and it can be based on a local policy. The filtering capability MUST be implemented on those nodes before deploying MNA in the provider MPLS domain. The RLD on the filtering node MUST be higher than the RLD on all other nodes in the provider MPLS domain.",
+      "ja": "* MPLS ドメイン境界ノードは、異なる管理制御を持つドメインからの MNA を持つ MPLS パケットがプロバイダー MPLS ドメインに入らないようにフィルタリングできることを保証しなければなりません (MUST)。フィルタリング機能は、ネットワーク アクションごとに有効にすることができます (MAY)。また、ローカル ポリシーに基づいて有効にすることもできます。フィルタリング機能は、プロバイダー MPLS ドメインに MNA を展開する前に、これらのノードに実装する必要があります。フィルタリング ノードの RLD は、プロバイダ MPLS ドメイン内の他のすべてのノードの RLD よりも高くなければなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* The MNA architecture supports modifying the AD on the intermediate nodes so the critical network functions either should not rely on the data or should be aware of the risks and use other means to verify the security of the whole network.",
+      "ja": "* MNA アーキテクチャは中間ノード上の AD の変更をサポートしているため、重要なネットワーク機能はデータに依存しないか、リスクを認識して他の手段を使用してネットワーク全体のセキュリティを検証する必要があります。"
+    },
+    {
+      "indent": 6,
+      "text": "* System designers must be aware that information included in AD may be transmitted \"in the clear\". Network actions that require the exchange of sensitive data MUST be defined in such a way that the data is encrypted in transit. Otherwise, sensitive data MUST NOT be transmitted using these mechanisms.",
+      "ja": "* システム設計者は、AD に含まれる情報が「平文」で送信される可能性があることを認識する必要があります。機密データの交換を必要とするネットワーク アクションは、転送中にデータが暗号化されるような方法で定義しなければなりません。それ以外の場合は、これらのメカニズムを使用して機密データを送信してはなりません。"
+    },
+    {
+      "indent": 6,
+      "text": "* Mis-delivery of a packet due to malformed forwarding action data could be considered a security risk.",
+      "ja": "* 不正な転送アクション データによるパケットの誤配信は、セキュリティ リスクとみなされる可能性があります。"
+    },
+    {
+      "indent": 0,
+      "text": "12. Operational Considerations",
+      "section_title": true,
+      "ja": "12. 運用上の考慮事項"
+    },
+    {
+      "indent": 0,
+      "text": "12.1. Manageability Considerations",
+      "section_title": true,
+      "ja": "12.1. 管理性に関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "An MNA implementation MAY collect the following counters:",
+      "ja": "MNA 実装は、次のカウンタを収集してもよい (MAY)。"
+    },
+    {
+      "indent": 6,
+      "text": "* Packets with MNA received",
+      "ja": "* MNAを含むパケットを受信しました"
+    },
+    {
+      "indent": 6,
+      "text": "* MNA Sub-Stacks processed",
+      "ja": "* 処理された MNA サブスタック"
+    },
+    {
+      "indent": 6,
+      "text": "* MNA per-network-action counters",
+      "ja": "* MNA ネットワークアクションごとのカウンター"
+    },
+    {
+      "indent": 6,
+      "text": "* Packets with MNA dropped due to unknown actions",
+      "ja": "* 不明なアクションにより MNA を含むパケットがドロップされる"
+    },
+    {
+      "indent": 6,
+      "text": "* Packets with MNA skipped due to unknown actions",
+      "ja": "* 不明なアクションにより MNA を含むパケットがスキップされる"
+    },
+    {
+      "indent": 6,
+      "text": "* Packets with MNA dropped due to malformed NAS",
+      "ja": "* 不正な形式の NAS により MNA を含むパケットがドロップされる"
+    },
+    {
+      "indent": 3,
+      "text": "Additionally, tracking both successful invocations and failures for each specific network action is RECOMMENDED to provide granular visibility. Nodes MAY generate rate-limited notifications or alarms for significant operational events, such as sustained high rates of MNA packet drops or frequent encounters of malformed MNA Sub-Stacks, to alert operators to potential issues. Comprehensive logging of MNA processing details and outcomes can aid in the network diagnostics and post-mortem analysis.",
+      "ja": "さらに、詳細な可視性を提供するために、特定のネットワーク アクションごとに成功した呼び出しと失敗した呼び出しの両方を追跡することが推奨されます。ノードは、潜在的な問題についてオペレータに警告するために、継続的な高率の MNA パケットドロップや不正な MNA サブスタックの頻繁な遭遇などの重大な運用イベントに対して、レート制限された通知またはアラームを生成してもよい(MAY)。MNA 処理の詳細と結果の包括的なログは、ネットワーク診断と事後分析に役立ちます。"
+    },
+    {
+      "indent": 0,
+      "text": "12.2. Performance and Scale Considerations",
+      "section_title": true,
+      "ja": "12.2. パフォーマンスとスケールの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "Performance and scale assessments are outside the scope of this document; the authors of any future MNA application documents are encouraged to address them.",
+      "ja": "パフォーマンスとスケールの評価は、このドキュメントの範囲外です。将来の MNA 申請書類の作成者は、それらに対処することが推奨されます。"
+    },
+    {
+      "indent": 0,
+      "text": "12.3. Backward Compatibility",
+      "section_title": true,
+      "ja": "12.3. 下位互換性"
+    },
+    {
+      "indent": 3,
+      "text": "This section discusses interactions between MNA-capable and MNA-incapable nodes.",
+      "ja": "このセクションでは、MNA 対応ノードと MNA 非対応ノード間の対話について説明します。"
+    },
+    {
+      "indent": 3,
+      "text": "An MNA encapsulating node MUST ensure that the MPLS NAS is not at the top of the MPLS label stack when the packet arrives at an MNA-incapable node. If such a packet did arrive at an MNA-incapable node, it will most likely be dropped as described in Section 2.1.1 of [RFC7325].",
+      "ja": "MNA カプセル化ノードは、パケットが MNA 非対応ノードに到着するときに、MPLS NAS が MPLS ラベル スタックの最上位にないことを保証しなければなりません (MUST)。そのようなパケットが MNA 非対応ノードに到着した場合、[RFC7325] のセクション 2.1.1 で説明されているようにドロップされる可能性が高くなります。"
+    },
+    {
+      "indent": 3,
+      "text": "Any node could scan the label stack, potentially looking for a label value containing a bSPL. To ensure that the LSE formats described herein do not appear to contain a bSPL value, the opcode value of 0 has been reserved. By ensuring that there is a non-zero value in the high-order 7 bits, we are assured that the high-order 20 bits cannot be misinterpreted as containing a bSPL value (0-15).",
+      "ja": "どのノードもラベル スタックをスキャンして、bSPL を含むラベル値を探す可能性があります。ここで説明する LSE フォーマットに bSPL 値が含まれていないようにするために、オペコード値 0 が予約されています。上位 7 ビットにゼロ以外の値が存在することを保証することで、上位 20 ビットが bSPL 値 (0 ～ 15) を含むものとして誤って解釈されないことが保証されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The TC and TTL values of the Format A LSE are not repurposed for encoding, as the penultimate node on the MPLS packet path may propagate TTL from the transport (or forwarding) label to the next label on the label stack, overwriting the TTL on the next label. If the penultimate node is a legacy node, it might perform this action, potentially corrupting other values stored in the TC and TTL values. To protect against this, we retain the TC and TTL values in the Format A LSE.",
+      "ja": "MPLS パケット パス上の最後から 2 番目のノードがトランスポート (または転送) ラベルからラベル スタック上の次のラベルに TTL を伝播し、次のラベルの TTL を上書きする可能性があるため、フォーマット A LSE の TC 値と TTL 値はエンコードには再利用されません。最後から 2 番目のノードがレガシー ノードである場合、このアクションが実行され、TC 値と TTL 値に格納されている他の値が破損する可能性があります。これを防ぐために、TC 値と TTL 値をフォーマット A LSE に保持します。"
+    },
+    {
+      "indent": 3,
+      "text": "When adding the Entropy Label Indicator (ELI) (bSPL 7) and Entropy Label (EL) as defined in [RFC6790], along with an MNA NAS, the RLD MUST be considered for the placement of both, and they both can be placed in any order. If a transit LSR chooses to use as much of the whole label stack as feasible as a key for the load-balancing function, the MNA-reserved label MUST NOT be used as a key for the load-balancing function, as specified in Section 4.3 of [RFC6790]. Note that the behavior of an MNA-incapable transit LSR that scans the label stack for ELI and EL but encounters a different, unrecognized reserved label first, is not modified by this document.",
+      "ja": "MNA NAS とともに、[RFC6790] で定義されているエントロピー ラベル インジケーター (ELI) (bSPL 7) とエントロピー ラベル (EL) を追加する場合、両方の配置について RLD を考慮しなければならず (MUST)、両方を任意の順序で配置できます。トランジット LSR が負荷分散機能のキーとして可能な限りラベル スタック全体を使用することを選択した場合、[RFC6790] のセクション 4.3 に規定されているように、MNA が予約したラベルを負荷分散機能のキーとして使用してはなりません (MUST NOT)。ELI および EL のラベル スタックをスキャンするが、最初に異なる認識されていない予約ラベルに遭遇する MNA 非対応のトランジット LSR の動作は、このドキュメントでは変更されないことに注意してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Similarly, when adding the Flow-ID Label Indicator (FLI) (including the extension label 15) and Flow-ID Label (FL) as defined in [RFC9714], along with an MNA NAS, the RLD MUST be considered for the placement of both, and they both can be placed in any order. Note that the behavior of an MNA-incapable transit LSR that scans the label stack for FLI (including the extension label 15) and FL, but encounters a different, unrecognized reserved label first, is not modified by this document.",
+      "ja": "同様に、[RFC9714] で定義されている Flow-ID Label Indicator (FLI) (拡張ラベル 15 を含む) と Flow-ID Label (FL) を MNA NAS とともに追加する場合、両方の配置について RLD を考慮しなければならず (MUST)、両方を任意の順序で配置できます。FLI (拡張ラベル 15 を含む) および FL のラベル スタックをスキャンするが、最初に異なる認識されていない予約ラベルに遭遇する MNA 非対応トランジット LSR の動作は、この文書では変更されないことに注意してください。"
+    },
+    {
+      "indent": 3,
+      "text": "However, as the existing behavior is not specified for transit LSRs, upon encountering any unrecognized bSPLs or extended SPLs (eSPLs) below the top of the label stack, some existing implementations may have chosen to implement non-standardized actions, such as discarding packets. Any uses of a new bSPL or eSPL would cause issues with such existing implementations using the non-standardized actions upon encountering unrecognized bSPLs or eSPLs below the top of the label stack. Since this is a generic problem, any clarifications for the treatment of unrecognized bSPL or eSPL are outside the scope of this document.",
+      "ja": "ただし、既存の動作はトランジット LSR に対して指定されていないため、ラベル スタックの最上位より下で認識されていない bSPL または拡張 SPL (eSPL) に遭遇すると、一部の既存の実装では、パケットの破棄などの非標準化アクションの実装を選択している可能性があります。新しい bSPL または eSPL を使用すると、ラベル スタックの最上部より下に認識されない bSPL または eSPL が発生したときに、標準化されていないアクションを使用する既存の実装で問題が発生します。これは一般的な問題であるため、認識されていない bSPL または eSPL の処理に関する説明は、この文書の範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "13. IANA Considerations",
+      "section_title": true,
+      "ja": "13. IANAの考慮事項"
+    },
+    {
+      "indent": 0,
+      "text": "13.1. MNA bSPL Label",
+      "section_title": true,
+      "ja": "13.1. MNA bSPL ラベル"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has allocated the value 4 for the MNA bSPL label from the \"Base Special-Purpose MPLS Label Values\" registry to indicate the presence of an MNA Sub-Stack in the label stack. The description of the value is \"MPLS Network Actions\".",
+      "ja": "IANA は、ラベル スタック内の MNA サブスタックの存在を示すために、「Base Special-Purpose MPLS Label Values」レジストリから MNA bSPL ラベルに値 4 を割り当てました。値の説明は「MPLS ネットワーク アクション」です。"
+    },
+    {
+      "indent": 0,
+      "text": "13.2. MPLS Network Actions Parameters",
+      "section_title": true,
+      "ja": "13.2. MPLSネットワークアクションパラメータ"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has created a registry group called \"MPLS Network Actions\". This registry group contains the \"Network Action Flags Without Ancillary Data\" registry (see Section 13.2.1) and the \"Network Action Opcodes\" registry (see Section 13.2.2).",
+      "ja": "IANA は、「MPLS Network Actions」と呼ばれるレジストリ グループを作成しました。このレジストリ グループには、「補助データのないネットワーク アクション フラグ」レジストリ (セクション 13.2.1 を参照) および「ネットワーク アクション オペコード」レジストリ (セクション 13.2.2 を参照) が含まれています。"
+    },
+    {
+      "indent": 0,
+      "text": "13.2.1. Network Action Flags Without Ancillary Data",
+      "section_title": true,
+      "ja": "13.2.1. 補助データのないネットワーク アクション フラグ"
+    },
+    {
+      "indent": 3,
+      "text": "For the \"Network Action Flags Without Ancillary Data\" registry, registration requests should comply with Section 10. Depending on the range, the registration procedure for this registry is \"IETF Review\", \"Experimental Use\", or \"Private Use\" (as defined in [RFC8126]). The fields in this registry are \"Bit Position\" (integer), \"Description\" (string), and \"Reference\" (string).",
+      "ja": "「補助データを含まないネットワーク アクション フラグ」レジストリの場合、登録要求はセクション 10 に準拠する必要があります。範囲に応じて、このレジストリの登録手順は「IETF レビュー」、「実験的使用」、または ([RFC8126] で定義されている) 「私的使用」になります。このレジストリのフィールドは、「ビット位置」(整数)、「説明」(文字列)、および「参照」(文字列) です。"
+    },
+    {
+      "indent": 3,
+      "text": "Bit Position refers to the position relative to the most significant bit in LSE Format B or C Data fields and any subsequent Format D LSEs. Bit Position 0 is the most significant bit in an LSE Format B or C Data field. Bit Position 20 is the most significant bit in the first LSE Format D Data field. There are 20 bits available in LSE Format C and 30 bits available in LSE Format D. There are, at most, 14 Format D LSEs per opcode (due to the NASL limit of 15 and the constraint of Format D requiring a Format C LSE), so there are at most 20 + 14 * 30 = 440 bit positions. The value listed in the Bit Position column is an integer with value between 0-439. The initial registry has no entries.",
+      "ja": "ビット位置とは、LSE フォーマット B または C データ フィールドおよび後続のフォーマット D LSE の最上位ビットに対する相対的な位置を指します。ビット位置 0 は、LSE フォーマット B または C データ フィールドの最上位ビットです。ビット位置 20 は、最初の LSE フォーマット D データ フィールドの最上位ビットです。LSE フォーマット C では 20 ビットが利用可能で、LSE フォーマット D では 30 ビットが利用可能です。オペコードごとに最大 14 のフォーマット D LSE が存在します (NASL 制限が 15 であることと、フォーマット C LSE を必要とするフォーマット D の制約のため)。つまり、最大 20 + 14 * 30 = 440 ビット位置があります。「ビット位置」列にリストされる値は、0 ～ 439 の整数です。初期レジストリにはエントリがありません。"
+    },
+    {
+      "indent": 3,
+      "text": "The registration procedures for code point allocation for this registry are defined in Table 4:",
+      "ja": "このレジストリのコード ポイント割り当ての登録手順は、表 4 で定義されています。"
+    },
+    {
+      "indent": 20,
+      "text": "+========+========================+\n| Range  | Registration Procedure |\n+========+========================+\n| 0-14   | IETF Review            |\n+--------+------------------------+\n| 15-16  | Experimental Use       |\n+--------+------------------------+\n| 17-19  | Private Use            |\n+--------+------------------------+\n| 20-439 | IETF Review            |\n+--------+------------------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 23,
+      "text": " Table 4: Registration Procedures for the \"Network Action Flags Without Ancillary Data\" Registry",
+      "ja": "表 4: 「補助データを含まないネットワーク アクション フラグ」レジストリの登録手順"
+    },
+    {
+      "indent": 0,
+      "text": "13.2.2. Network Action Opcodes",
+      "section_title": true,
+      "ja": "13.2.2. ネットワークアクションのオペコード"
+    },
+    {
+      "indent": 3,
+      "text": "For the \"Network Action Opcodes\" registry, registration requests should comply with Section 10 as well as the Security Considerations section (Section 11). Depending on the range, the registration procedure for this registry is \"IETF Review\", \"Experimental Use\", or \"Private Use\" (as defined in [RFC8126]). The fields are \"Opcode\" (integer), \"Description\" (string), and \"Reference\" (string). Opcode is an integer with value 1-126.",
+      "ja": "「ネットワーク アクション オペコード」レジストリの場合、登録要求はセクション 10 およびセキュリティに関する考慮事項セクション (セクション 11) に準拠する必要があります。範囲に応じて、このレジストリの登録手順は「IETF レビュー」、「実験的使用」、または ([RFC8126] で定義されている) 「私的使用」のいずれかになります。フィールドは、「Opcode」（整数）、「Description」（文字列）、および「Reference」（文字列）です。オペコードは、値 1 ～ 126 の整数です。"
+    },
+    {
+      "indent": 19,
+      "text": "+=========+========================+\n| Range   | Registration Procedure |\n+=========+========================+\n| 1-110   | IETF Review            |\n+---------+------------------------+\n| 111-114 | Experimental Use       |\n+---------+------------------------+\n| 115-126 | Private Use            |\n+---------+------------------------+\n| 127     | IETF Review            |\n+---------+------------------------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 21,
+      "text": "Table 5: Registration Procedures for the \"Network Action Opcodes\" Registry",
+      "ja": "表 5: 「ネットワーク アクション オペコード」レジストリの登録手順"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has allocated values for the following network action opcodes from the \"Network Action Opcodes\" registry.",
+      "ja": "IANA は、「ネットワーク アクション オペコード」レジストリから次のネットワーク アクション オペコードの値を割り当てました。"
+    },
+    {
+      "indent": 12,
+      "text": "+========+===========================+===========+\n| Opcode |        Description        | Reference |\n+========+===========================+===========+\n| 0      | Reserved                  | RFC 9994  |\n+--------+---------------------------+-----------+\n| 1      | Flag-Based Network Action | RFC 9994  |\n|        | Indicators without AD     |           |\n+--------+---------------------------+-----------+\n| 2      | No operation Opcode       | RFC 9994  |\n+--------+---------------------------+-----------+\n| 127    | Opcode Range Extension    | RFC 9994  |\n|        | Beyond 127                |           |\n+--------+---------------------------+-----------+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 16,
+      "text": "Table 6: Initial Contents of the \"Network Action Opcodes\" Registry",
+      "ja": "表 6: 「Network Action Opcodes」レジストリの初期内容"
+    },
+    {
+      "indent": 0,
+      "text": "14. References",
+      "section_title": true,
+      "ja": "14. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "14.1. Normative References",
+      "section_title": true,
+      "ja": "14.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC2119]  Bradner, S., \"Key words for use in RFCs to Indicate\n           Requirement Levels\", BCP 14, RFC 2119,\n           DOI 10.17487/RFC2119, March 1997,\n           <https://www.rfc-editor.org/info/rfc2119>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3032]  Rosen, E., Tappan, D., Fedorkow, G., Rekhter, Y.,\n           Farinacci, D., Li, T., and A. Conta, \"MPLS Label Stack\n           Encoding\", RFC 3032, DOI 10.17487/RFC3032, January 2001,\n           <https://www.rfc-editor.org/info/rfc3032>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3270]  Le Faucheur, F., Ed., Wu, L., Davie, B., Davari, S.,\n           Vaananen, P., Krishnan, R., Cheval, P., and J. Heinanen,\n           \"Multi-Protocol Label Switching (MPLS) Support of\n           Differentiated Services\", RFC 3270, DOI 10.17487/RFC3270,\n           May 2002, <https://www.rfc-editor.org/info/rfc3270>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3443]  Agarwal, P. and B. Akyol, \"Time To Live (TTL) Processing\n           in Multi-Protocol Label Switching (MPLS) Networks\",\n           RFC 3443, DOI 10.17487/RFC3443, January 2003,\n           <https://www.rfc-editor.org/info/rfc3443>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC5462]  Andersson, L. and R. Asati, \"Multiprotocol Label Switching\n           (MPLS) Label Stack Entry: \"EXP\" Field Renamed to \"Traffic\n           Class\" Field\", RFC 5462, DOI 10.17487/RFC5462, February\n           2009, <https://www.rfc-editor.org/info/rfc5462>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6790]  Kompella, K., Drake, J., Amante, S., Henderickx, W., and\n           L. Yong, \"The Use of Entropy Labels in MPLS Forwarding\",\n           RFC 6790, DOI 10.17487/RFC6790, November 2012,\n           <https://www.rfc-editor.org/info/rfc6790>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8174]  Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC\n           2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174,\n           May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9017]  Andersson, L., Kompella, K., and A. Farrel, \"Special-\n           Purpose Label Terminology\", RFC 9017,\n           DOI 10.17487/RFC9017, April 2021,\n           <https://www.rfc-editor.org/info/rfc9017>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9789]  Andersson, L., Bryant, S., Bocci, M., and T. Li, \"MPLS\n           Network Actions (MNAs) Framework\", RFC 9789,\n           DOI 10.17487/RFC9789, July 2025,\n           <https://www.rfc-editor.org/info/rfc9789>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "14.2. Informative References",
+      "section_title": true,
+      "ja": "14.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3031]  Rosen, E., Viswanathan, A., and R. Callon, \"Multiprotocol\n           Label Switching Architecture\", RFC 3031,\n           DOI 10.17487/RFC3031, January 2001,\n           <https://www.rfc-editor.org/info/rfc3031>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,\n           D., and S. Mansfield, \"Guidelines for the Use of the \"OAM\"\n           Acronym in the IETF\", BCP 161, RFC 6291,\n           DOI 10.17487/RFC6291, June 2011,\n           <https://www.rfc-editor.org/info/rfc6291>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC7325]  Villamizar, C., Ed., Kompella, K., Amante, S., Malis, A.,\n           and C. Pignataro, \"MPLS Forwarding Compliance and\n           Performance Requirements\", RFC 7325, DOI 10.17487/RFC7325,\n           August 2014, <https://www.rfc-editor.org/info/rfc7325>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8126]  Cotton, M., Leiba, B., and T. Narten, \"Guidelines for\n           Writing an IANA Considerations Section in RFCs\", BCP 26,\n           RFC 8126, DOI 10.17487/RFC8126, June 2017,\n           <https://www.rfc-editor.org/info/rfc8126>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8664]  Sivabalan, S., Filsfils, C., Tantsura, J., Henderickx, W.,\n           and J. Hardwick, \"Path Computation Element Communication\n           Protocol (PCEP) Extensions for Segment Routing\", RFC 8664,\n           DOI 10.17487/RFC8664, December 2019,\n           <https://www.rfc-editor.org/info/rfc8664>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9613]  Bocci, M., Ed., Bryant, S., and J. Drake, \"Requirements\n           for Solutions that Support MPLS Network Actions (MNAs)\",\n           RFC 9613, DOI 10.17487/RFC9613, August 2024,\n           <https://www.rfc-editor.org/info/rfc9613>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9714]  Cheng, W., Ed., Min, X., Ed., Zhou, T., Dai, J., and Y.\n           Peleg, \"Encapsulation for MPLS Performance Measurement\n           with the Alternate-Marking Method\", RFC 9714,\n           DOI 10.17487/RFC9714, February 2025,\n           <https://www.rfc-editor.org/info/rfc9714>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9791]  Saad, T., Makhijani, K., Song, H., and G. Mirsky, \"Use\n           Cases for MPLS Network Action Indicators and Ancillary\n           Data\", RFC 9791, DOI 10.17487/RFC9791, July 2025,\n           <https://www.rfc-editor.org/info/rfc9791>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Appendix A. Examples",
+      "section_title": true,
+      "ja": "付録A. 例"
+    },
+    {
+      "indent": 0,
+      "text": "A.1. Network Action Encoding Examples",
+      "section_title": true,
+      "ja": "A.1. ネットワークアクションのエンコード例"
+    },
+    {
+      "indent": 0,
+      "text": "A.1.1. Network Action Flags Without AD",
+      "section_title": true,
+      "ja": "A.1.1. AD なしのネットワーク アクション フラグ"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|          MNA-Label=bSPL               | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=1   |        13-bit Flags     |R|IHS|S|NASL=0 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 18,
+      "text": "Figure 6: NAS with Network Action Flags",
+      "ja": "図 6: ネットワーク アクション フラグのある NAS"
+    },
+    {
+      "indent": 3,
+      "text": "This is an example of a NAS with Flag-Based NAIs without AD.",
+      "ja": "これは、AD を使用しないフラグベース NAI を備えた NAS の例です。"
+    },
+    {
+      "indent": 3,
+      "text": "Details:",
+      "ja": "詳細："
+    },
+    {
+      "indent": 3,
+      "text": "Opcode=1:",
+      "ja": "オペコード=1:"
+    },
+    {
+      "indent": 12,
+      "text": "This opcode indicates that the LSE carries Flag-Based NAIs without AD.",
+      "ja": "このオペコードは、LSE が AD なしでフラグベースの NAI を伝送することを示します。"
+    },
+    {
+      "indent": 3,
+      "text": "Data:",
+      "ja": "データ："
+    },
+    {
+      "indent": 12,
+      "text": "The data field carries the Flag-Based NAIs.",
+      "ja": "データフィールドにはフラグベースの NAI が含まれます。"
+    },
+    {
+      "indent": 3,
+      "text": "S:",
+      "ja": "S:"
+    },
+    {
+      "indent": 12,
+      "text": "This is the bottom of the stack bit. Set if and only if this LSE is the bottom of the stack.",
+      "ja": "これはスタック ビットの底部です。この LSE がスタックの最下位である場合にのみ設定します。"
+    },
+    {
+      "indent": 3,
+      "text": "U:",
+      "ja": "U:"
+    },
+    {
+      "indent": 12,
+      "text": "Action to be taken if one of the NAIs is not recognized by the processing node.",
+      "ja": "NAI の 1 つが処理ノードによって認識されない場合に実行されるアクション。"
+    },
+    {
+      "indent": 3,
+      "text": "NASL:",
+      "ja": "NASL:"
+    },
+    {
+      "indent": 12,
+      "text": "The NASL value is set to 0, as there are no additional LSEs.",
+      "ja": "追加の LSE がないため、NASL 値は 0 に設定されます。"
+    },
+    {
+      "indent": 3,
+      "text": "NAL:",
+      "ja": "NAL:"
+    },
+    {
+      "indent": 12,
+      "text": "The NAL value is set to 0, as there are no additional AD encoded using Format D.",
+      "ja": "フォーマット D を使用してエンコードされた追加の AD がないため、NAL 値は 0 に設定されます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|      MNA-Label=bSPL                   | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=2   |        Data=0           |R|IHS|S|NASL=2 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=1   |        Flag-Based NAIs        |S| NAIs  |U|NAL=1|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|1| Additional Flag-Based NAIs                |S|Flag-Based-NAIs|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 8,
+      "text": "Figure 7: Network Action Flags Without AD Using LSE Format D",
+      "ja": "図 7: LSE フォーマット D を使用した AD なしのネットワーク アクション フラグ"
+    },
+    {
+      "indent": 3,
+      "text": "In this example, the NAS contains a Format B LSE with a No-Operation Opcode value 2. The next LSE uses Format C, but the network action flag is not in a bit position contained within the Format C LSE, so a single Format D LSE has been added to the NAS to carry the flag.",
+      "ja": "この例では、NAS には No-Operation オペコード値 2 のフォーマット B LSE が含まれています。次の LSE はフォーマット C を使用しますが、ネットワーク アクション フラグはフォーマット C LSE 内に含まれるビット位置にないため、フラグを運ぶために 1 つのフォーマット D LSE が NAS に追加されています。"
+    },
+    {
+      "indent": 3,
+      "text": "NAL is set to 1 to indicate that Flag-Based NAIs are also encoded in the next LSE.",
+      "ja": "NAL は 1 に設定され、フラグベース NAI も次の LSE でエンコードされることを示します。"
+    },
+    {
+      "indent": 3,
+      "text": "NASL is set to 2 to indicate that two additional LSEs are used.",
+      "ja": "NASL は 2 に設定され、2 つの追加 LSE が使用されることを示します。"
+    },
+    {
+      "indent": 0,
+      "text": "A.1.2. Network Action Opcode with AD",
+      "section_title": true,
+      "ja": "A.1.2. AD を使用したネットワーク アクション オペコード"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|      MNA-Label=bSPL                   | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=8   |      Ancillary Data     |R|IHS|S|NASL=0 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 12,
+      "text": "Figure 8: Network Action Opcode with Ancillary Data",
+      "ja": "図 8: 補助データを含むネットワーク アクション オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "In this example, the NAS is carrying only one Network Action that requires 13 bits of AD.",
+      "ja": "この例では、NAS は 13 ビットの AD を必要とするネットワーク アクションを 1 つだけ伝送します。"
+    },
+    {
+      "indent": 3,
+      "text": "Details on the second LSE:",
+      "ja": "2 番目の LSE の詳細:"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode=8:",
+      "ja": "オペコード=8:"
+    },
+    {
+      "indent": 12,
+      "text": "A network action allocation is outside of this document.",
+      "ja": "ネットワーク アクションの割り当てについては、このドキュメントの対象外です。"
+    },
+    {
+      "indent": 3,
+      "text": "Data:",
+      "ja": "データ："
+    },
+    {
+      "indent": 12,
+      "text": "The data field contains 13 bits of AD.",
+      "ja": "データフィールドには 13 ビットの AD が含まれます。"
+    },
+    {
+      "indent": 0,
+      "text": "A.1.3. Network Action Opcode with More AD with Format B",
+      "section_title": true,
+      "ja": "A.1.3. フォーマット B の追加 AD を使用したネットワーク アクション オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "A network action may require more AD than can fit in a single LSE. In this example, a Format D LSE is added to carry additional AD.",
+      "ja": "ネットワーク アクションには、単一の LSE に収まりきらないより多くの AD が必要になる場合があります。この例では、追加の AD を伝送するためにフォーマット D LSE が追加されます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|          MNA-Label=bSPL               | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=10  |      Ancillary Data     |R|IHS|S|NASL=1 |U|NAL=1|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|1|            Ancillary Data                 |S|Ancillary Data |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 10,
+      "text": "Figure 9: Network Action with Additional Ancillary Data",
+      "ja": "図 9: 追加の補助データを含むネットワーク アクション"
+    },
+    {
+      "indent": 3,
+      "text": "In this example, opcode 10 is encoded in Format B, and it requires more than one LSE's worth of AD, so a Format D LSE is added.",
+      "ja": "この例では、オペコード 10 はフォーマット B でエンコードされており、複数の LSE に相当する AD が必要であるため、フォーマット D LSE が追加されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Details on the second LSE:",
+      "ja": "2 番目の LSE の詳細:"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode=10:",
+      "ja": "オペコード=10:"
+    },
+    {
+      "indent": 12,
+      "text": "An opcode allocation is outside of this document.",
+      "ja": "オペコードの割り当てについては、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "AD required to process the network action opcode 10.",
+      "ja": "AD はネットワーク アクション オペコード 10 を処理するために必要です。"
+    },
+    {
+      "indent": 3,
+      "text": "NAL:",
+      "ja": "NAL:"
+    },
+    {
+      "indent": 12,
+      "text": "Length of additional LSEs used to encode its AD.",
+      "ja": "AD をエンコードするために使用される追加の LSE の長さ。"
+    },
+    {
+      "indent": 3,
+      "text": "Details on the third LSE:",
+      "ja": "3 番目の LSE の詳細:"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "22 bits of additional AD.",
+      "ja": "22 ビットの追加 AD。"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "8 bits of additional AD.",
+      "ja": "8 ビットの追加 AD。"
+    },
+    {
+      "indent": 0,
+      "text": "A.1.4. Network Action Opcode with More AD with Format C",
+      "section_title": true,
+      "ja": "A.1.4. フォーマット C の追加 AD を使用したネットワーク アクション オペコード"
+    },
+    {
+      "indent": 3,
+      "text": "A network action may require more AD than can fit in a single LSE. In this example, a Format D LSE is added to carry additional AD.",
+      "ja": "ネットワーク アクションには、単一の LSE に収まりきらないより多くの AD が必要になる場合があります。この例では、追加の AD を伝送するためにフォーマット D LSE が追加されます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|          MNA-Label=bSPL               | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=2   |      Data=0             |R|IHS|S|NASL=2 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|  Opcode=9   |      Ancillary Data           |S|   AD  |U|NAL=1|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|1|            Ancillary Data                 |S|Ancillary Data |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 10,
+      "text": "Figure 10: Network Action with Additional Ancillary Data",
+      "ja": "図 10: 追加の補助データを含むネットワーク アクション"
+    },
+    {
+      "indent": 3,
+      "text": "In this example, opcode 9 requires more than one LSE's worth of AD, so a Format D LSE is added.",
+      "ja": "この例では、オペコード 9 は複数の LSE に相当する AD を必要とするため、フォーマット D LSE が追加されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Details on the third LSE:",
+      "ja": "3 番目の LSE の詳細:"
+    },
+    {
+      "indent": 3,
+      "text": "Opcode=9:",
+      "ja": "オペコード=9:"
+    },
+    {
+      "indent": 12,
+      "text": "An opcode allocation is outside of this document.",
+      "ja": "オペコードの割り当てについては、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "Most significant bits of AD.",
+      "ja": "AD の最上位ビット。"
+    },
+    {
+      "indent": 3,
+      "text": "AD:",
+      "ja": "AD:"
+    },
+    {
+      "indent": 12,
+      "text": "4 bits of additional AD.",
+      "ja": "4 ビットの追加 AD。"
+    },
+    {
+      "indent": 3,
+      "text": "Details on the fourth LSE:",
+      "ja": "4 番目の LSE の詳細:"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "22 bits of additional AD.",
+      "ja": "22 ビットの追加 AD。"
+    },
+    {
+      "indent": 3,
+      "text": "Ancillary Data:",
+      "ja": "補助データ:"
+    },
+    {
+      "indent": 12,
+      "text": "8 bits of additional AD.",
+      "ja": "8 ビットの追加 AD。"
+    },
+    {
+      "indent": 0,
+      "text": "A.2. Network Action Processing Order",
+      "section_title": true,
+      "ja": "A.2. ネットワークアクションの処理順序"
+    },
+    {
+      "indent": 3,
+      "text": "The semantics of a network action can vary widely and the results of processing one network action may affect the processing of a subsequent network action. See Section 5.5.",
+      "ja": "ネットワーク アクションのセマンティクスは大きく異なる可能性があり、1 つのネットワーク アクションの処理結果が後続のネットワーク アクションの処理に影響を与える可能性があります。セクション 5.5 を参照してください。"
+    },
+    {
+      "indent": 0,
+      "text": "A.2.1. Network Action Processing Order",
+      "section_title": true,
+      "ja": "A.2.1. ネットワークアクションの処理順序"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|           MNA-Label=bSPL              | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=8    |      Ancillary Data     |R|IHS|S|NASL=2 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=7    |      Ancillary Data7          |S|  AD7  |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=1    |      Flag-Based NAIs          |S|  NAI  |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 18,
+      "text": "Figure 11: In-Stack NA Processing Order",
+      "ja": "図 11: スタック内 NA の処理順序"
+    },
+    {
+      "indent": 3,
+      "text": "In this example, opcode 8 is processed first, then opcode 7, and then the network action flags are processed from most significant to least significant.",
+      "ja": "この例では、オペコード 8 が最初に処理され、次にオペコード 7 が処理され、その後ネットワーク アクション フラグが最上位から最下位の順に処理されます。"
+    },
+    {
+      "indent": 3,
+      "text": "In a different case, some Flag-Based NAIs may need to be processed before opcode 7, and some Flag-Based NAIs may need to be processed after opcode 7. This can be done by causing some NAIs to appear earlier in the NAS.",
+      "ja": "別のケースでは、一部のフラグベース NAI はオペコード 7 の前に処理する必要がある場合があり、一部のフラグベース NAI はオペコード 7 の後に処理する必要がある場合があります。これは、一部の NAI を NAS で以前に出現させることで実行できます。"
+    },
+    {
+      "indent": 3,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|              MNA-Label=bSPL           | TC  |S|    TTL        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=8    |      Ancillary Data     |R|IHS|S|NASL=3 |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=1    |        0x01                   |S|  NAI  |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=7    |      Ancillary Data7          |S|  AD7  |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n| Opcode=1    |        0x02                   |S|  NAI  |U|NAL=0|\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 18,
+      "text": "Figure 12: Interleaving Network Actions",
+      "ja": "図 12: インターリーブ ネットワーク アクション"
+    },
+    {
+      "indent": 3,
+      "text": "In the above example, opcode 8 is processed first, then Flag-Based NAI 0x01 is processed, then opcode 7 is processed, and finally NAI 0x02 is processed.",
+      "ja": "上記の例では、オペコード 8 が最初に処理され、次にフラグベース NAI 0x01 が処理され、次にオペコード 7 が処理され、最後に NAI 0x02 が処理されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Acknowledgments",
+      "section_title": true,
+      "ja": "謝辞"
+    },
+    {
+      "indent": 3,
+      "text": "The authors of this document would like to thank the MPLS Working Group Open Design Team for the discussions and comments on this document. The authors would also like to thank Amanda Baber for reviewing the IANA Considerations and providing many useful suggestions. The authors would like to thank Loa Andersson, Stewart Bryant, Greg Mirsky, Joel M. Halpern, and Adrian Farrel for reviewing this document and providing many useful suggestions. The authors would like to thank Fabian Ihle and Michael Menth, both from the University of Tuebingen, for reviewing and implementing the solution defined in this document in P4 pipeline. Also, thank you to Tarek Saad for the Shepherd's review, Joe Clarke for the OpsDir review, Matthew Bocci for the Rtgdir review, Derrell Piper for the Secdir review, and James Guichard for the AD review, Mohamed Boucadair, Éric Vyncke, Deb Cooley, Ketan Talaulikar, and Mahesh Jethanandani for the IESG review, which helped improve this document.",
+      "ja": "このドキュメントの作成者は、このドキュメントに関する議論とコメントを提供してくれた MPLS ワーキング グループ オープン デザイン チームに感謝の意を表します。著者らは、IANA の考慮事項をレビューし、多くの有用な提案を提供してくれた Amanda Baber にも感謝したいと思います。著者らは、この文書をレビューし、多くの有用な提案を提供してくれた Loa Andersson、Stewart Bryant、Greg Mirsky、Joel M. Halpern、および Adrian Farrel に感謝します。著者らは、本書で定義されているソリューションを P4 パイプラインでレビューおよび実装していただいたテュービンゲン大学の Fabian Ihle 氏と Michael Menth 氏に感謝の意を表します。また、Shepherd のレビューについては Tarek Saad 氏、OpsDir のレビューについては Joe Clarke、Rtgdir のレビューについては Matthew Bocci、Secdir のレビューについては Derrell Piper、AD のレビューについては James Guichard、このドキュメントの改善に貢献した IESG のレビューについては Mohamed Boucadair、Éric Vyncke、Deb Cooley、Ketan Talaulikar、Mahesh Jethanandani に感謝します。"
+    },
+    {
+      "indent": 0,
+      "text": "Contributors",
+      "section_title": true,
+      "ja": "貢献者"
+    },
+    {
+      "indent": 3,
+      "text": "The following people have substantially contributed to this document:",
+      "ja": "以下の人々がこの文書に大きく貢献しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Jisu Bhattacharya\nCisco Systems, Inc.\nEmail: jisu@cisco.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Bruno Decraene\nOrange\nEmail: bruno.decraene@orange.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Weiqiang Cheng\nChina Mobile\nEmail: chengweiqiang@chinamobile.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Xiao Min\nZTE Corp.\nEmail: xiao.min2@zte.com.cn",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Luay Jalil\nVerizon\nEmail: luay.jalil@verizon.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Jie Dong\nHuawei Technologies\nHuawei Campus, No. 156 Beiqing Rd.\nBeijing\n100095\nChina\nEmail: jie.dong@huawei.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Tianran Zhou\nHuawei Technologies\nChina\nEmail: zhoutianran@huawei.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Bin Wen\nComcast\nEmail: Bin_Wen@cable.comcast.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Sami Boutros\nCiena\nEmail: sboutros@ciena.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Tony Li\nJuniper Networks\nUnited States of America\nEmail: tony.li@tony.li",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "John Drake\nJuniper Networks\nUnited States of America\nEmail: jdrake@juniper.net",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Jaganbabu Rajamanickam (editor)\nCisco Systems, Inc.\nCanada\nEmail: jrajaman@cisco.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Rakesh Gandhi (editor)\nCisco Systems, Inc.\nCanada\nEmail: rgandhi@cisco.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Royi Zigler\nBroadcom\nEmail: royi.zigler@broadcom.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Haoyu Song\nFuturewei Technologies\nEmail: haoyu.song@futurewei.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Kireeti Kompella\nJuniper Networks\nUnited States of America\nEmail: kireeti.ietf@gmail.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}
