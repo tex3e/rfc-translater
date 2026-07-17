@@ -24,7 +24,7 @@ class RfcFile:
         """RFCのJSONなどの中間ファイル格納先ディレクトリ"""
         assert isinstance(rfc, IRfc)
         if isinstance(rfc, Rfc):
-            return os.path.join(RfcFile.OUTPUT_DATA_DIR, '%04d' % (int(rfc.get_id()) // 1000 % 10 * 1000))
+            return os.path.join(RfcFile.OUTPUT_DATA_DIR, '%04d' % (int(rfc.get_id()) // 1000 * 1000))
         elif isinstance(rfc, RfcDraft):
             return os.path.join(RfcFile.OUTPUT_DATA_DIR, RfcFile.OUTPUT_DRAFT)
 
@@ -122,6 +122,7 @@ class RfcFile:
     @staticmethod
     def write_json_file(filepath: str, obj: object):
         """JSONファイルの書き込み"""
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
         with open(filepath, 'w', encoding='utf-8', newline="\n") as f:
             json.dump(obj, f, ensure_ascii=False, indent=2)
 
@@ -135,6 +136,7 @@ class RfcFile:
     @staticmethod
     def write_html_file(filepath: str, obj: object):
         """HTMLファイルの書き込み"""
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
         with open(filepath, 'w', encoding='utf-8', newline="\n") as f:
             f.write(obj)
 
