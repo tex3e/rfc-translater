@@ -83,7 +83,7 @@ def main():
             begin = args.begin
         # リモートとローカルの差分でRFCの一覧を作成する
         rfcs = []
-        for rfc_number in diff_remote_and_local_index(RfcIndexHttpApiClient(), RfcHtmlFileRepository()):
+        for rfc_number in sorted(diff_remote_and_local_index(RfcIndexHttpApiClient(), RfcHtmlFileRepository())):
             if rfc_number >= begin:
                 rfcs.append(Rfc(str(rfc_number)))
         # 未翻訳の最初のRFCのみ取得
