@@ -27067,6 +27067,9 @@
     "wg": "xcon"
   },
   "5019": {
+    "obs_by": [
+      "9919"
+    ],
     "upd_by": [
       "8996"
     ],
@@ -27440,7 +27443,8 @@
       "4507"
     ],
     "obs_by": [
-      "8446"
+      "8446",
+      "9846"
     ],
     "upd_by": [
       "8447"
@@ -28335,7 +28339,8 @@
       "4366"
     ],
     "obs_by": [
-      "8446"
+      "8446",
+      "9846"
     ],
     "upd": [
       "4492"
@@ -30808,7 +30813,8 @@
   "5705": {
     "upd_by": [
       "8446",
-      "8447"
+      "8447",
+      "9846"
     ],
     "st": "Proposed Standard",
     "wg": "tls"
@@ -32710,7 +32716,8 @@
     "upd_by": [
       "8446",
       "8449",
-      "9325"
+      "9325",
+      "9846"
     ],
     "st": "Proposed Standard",
     "wg": "tls"
@@ -37404,7 +37411,8 @@
   },
   "6961": {
     "obs_by": [
-      "8446"
+      "8446",
+      "9846"
     ],
     "st": "Proposed Standard",
     "wg": "tls"
@@ -40736,6 +40744,9 @@
     "obs": [
       "5539"
     ],
+    "upd_by": [
+      "9918"
+    ],
     "st": "Proposed Standard",
     "wg": "netconf"
   },
@@ -40949,6 +40960,9 @@
     "wg": "dprive"
   },
   "7627": {
+    "obs_by": [
+      "9846"
+    ],
     "upd": [
       "5246"
     ],
@@ -44224,6 +44238,9 @@
     "upd": [
       "5440"
     ],
+    "upd_by": [
+      "9916"
+    ],
     "st": "Proposed Standard",
     "wg": "pce"
   },
@@ -45138,6 +45155,9 @@
     "obs": [
       "4492"
     ],
+    "obs_by": [
+      "9846"
+    ],
     "upd_by": [
       "8996"
     ],
@@ -45271,6 +45291,9 @@
       "5077",
       "5246",
       "6961"
+    ],
+    "obs_by": [
+      "9846"
     ],
     "upd": [
       "5705",
@@ -46381,7 +46404,8 @@
       "8408"
     ],
     "upd_by": [
-      "9756"
+      "9756",
+      "9933"
     ],
     "st": "Proposed Standard",
     "wg": "pce"
@@ -46971,6 +46995,9 @@
     "st": "Informational"
   },
   "8773": {
+    "obs_by": [
+      "9973"
+    ],
     "st": "Experimental",
     "wg": "tls"
   },
@@ -51271,7 +51298,8 @@
   },
   "9603": {
     "upd_by": [
-      "9756"
+      "9756",
+      "9933"
     ],
     "st": "Proposed Standard",
     "wg": "pce"
@@ -52529,6 +52557,22 @@
   "9845": {
     "st": "Informational"
   },
+  "9846": {
+    "obs": [
+      "5077",
+      "5246",
+      "6961",
+      "7627",
+      "8422",
+      "8446"
+    ],
+    "upd": [
+      "5705",
+      "6066"
+    ],
+    "st": "Proposed Standard",
+    "wg": "tls"
+  },
   "9847": {
     "upd": [
       "8447"
@@ -52541,6 +52585,14 @@
     "wg": "tls"
   },
   "9849": {
+    "st": "Proposed Standard",
+    "wg": "tls"
+  },
+  "9850": {
+    "st": "Informational",
+    "wg": "tls"
+  },
+  "9851": {
     "st": "Proposed Standard",
     "wg": "tls"
   },
@@ -52868,6 +52920,13 @@
     "st": "Internet Standard",
     "wg": "dhc"
   },
+  "9916": {
+    "upd": [
+      "8253"
+    ],
+    "st": "Proposed Standard",
+    "wg": "pce"
+  },
   "9917": {
     "upd": [
       "9350",
@@ -52875,6 +52934,20 @@
     ],
     "st": "Proposed Standard",
     "wg": "lsr"
+  },
+  "9918": {
+    "upd": [
+      "7589"
+    ],
+    "st": "Proposed Standard",
+    "wg": "netconf"
+  },
+  "9919": {
+    "obs": [
+      "5019"
+    ],
+    "st": "Proposed Standard",
+    "wg": "lamps"
   },
   "9920": {
     "obs": [
@@ -52962,6 +53035,14 @@
   },
   "9932": {
     "st": "Informational"
+  },
+  "9933": {
+    "upd": [
+      "8664",
+      "9603"
+    ],
+    "st": "Proposed Standard",
+    "wg": "pce"
   },
   "9934": {
     "st": "Proposed Standard"
@@ -53053,6 +53134,10 @@
     "st": "Proposed Standard",
     "wg": "core"
   },
+  "9954": {
+    "st": "Informational",
+    "wg": "tls"
+  },
   "9956": {
     "upd": [
       "8325"
@@ -53127,6 +53212,13 @@
   "9972": {
     "st": "Proposed Standard",
     "wg": "grow"
+  },
+  "9973": {
+    "obs": [
+      "8773"
+    ],
+    "st": "Proposed Standard",
+    "wg": "tls"
   },
   "9974": {
     "st": "Informational",
@@ -53233,8 +53325,16 @@
     "st": "Proposed Standard",
     "wg": "mpls"
   },
+  "9995": {
+    "st": "Proposed Standard",
+    "wg": "cose"
+  },
   "9998": {
     "st": "Informational"
+  },
+  "9999": {
+    "st": "Proposed Standard",
+    "wg": "rats"
   },
   "10005": {
     "st": "Proposed Standard",

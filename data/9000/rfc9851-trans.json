@@ -1,0 +1,416 @@
+{
+  "title": {
+    "text": "RFC 9851 - TLS 1.2 is in Feature Freeze",
+    "ja": "RFC 9851 - TLS 1.2は機能凍結中です"
+  },
+  "number": 9851,
+  "created_at": "2026-07-16 23:24:44.454154+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)                           R. Salz\nRequest for Comments: 9851                           Akamai Technologies\nCategory: Standards Track                                      N. Aviram\nISSN: 2070-1721                                                July 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "TLS 1.2 is in Feature Freeze",
+      "section_title": true,
+      "ja": "TLS 1.2は機能凍結中です"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "Use of TLS 1.3, which fixes some known deficiencies in TLS 1.2, is growing. This document specifies that no changes will be approved for TLS 1.2 outside of urgent security fixes (as determined by TLS Working Group consensus), new TLS Exporter Labels, and new Application-Layer Protocol Negotiation (ALPN) Protocol IDs. This applies to TLS only; it does not apply to DTLS (in any DTLS version).",
+      "ja": "TLS 1.2 の既知の欠陥を修正した TLS 1.3 の使用が増加しています。この文書では、緊急のセキュリティ修正 (TLS ワーキング グループのコンセンサスによって決定)、新しい TLS エクスポーター ラベル、および新しいアプリケーション層プロトコル ネゴシエーション (ALPN) プロトコル ID 以外の TLS 1.2 に対する変更は承認されないことを指定しています。これは TLS にのみ適用されます。DTLS (どの DTLS バージョンでも) には適用されません。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の状態"
+    },
+    {
+      "indent": 3,
+      "text": "This is an Internet Standards Track document.",
+      "ja": "これはインターネット標準化トラックの文書です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
+      "ja": "このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9851.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9851 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Implications for Post-Quantum Cryptography (PQC)\n3.  Security Considerations\n4.  IANA Considerations\n5.  References\n  5.1.  Normative References\n  5.2.  Informative References\nAcknowledgments\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "TLS 1.3 [TLS13] fixes most known deficiencies with TLS 1.2 [TLS12] and its use is growing. Some examples of the fixes include encrypting more of the traffic so that it is not readable by outsiders and removing most cryptographic primitives that are now considered weak. Importantly, TLS 1.3 enjoys robust security proofs.",
+      "ja": "TLS 1.3 [TLS13] は、TLS 1.2 [TLS12] の既知の欠陥のほとんどを修正しており、その使用が増加しています。修正の例としては、部外者が読み取れないようにより多くのトラフィックを暗号化することや、現在脆弱であると考えられているほとんどの暗号化プリミティブを削除することなどが挙げられます。重要なのは、TLS 1.3 は堅牢なセキュリティ証明を備えていることです。"
+    },
+    {
+      "indent": 3,
+      "text": "Both versions have several extension points. Items like new cryptographic algorithms, new supported groups (formerly \"named curves\"), etc., can be added without defining a new protocol. This document specifies that no changes will be approved for TLS 1.2 outside of urgent security fixes (as determined by TLS Working Group consensus) and the exceptions listed in Section 4.",
+      "ja": "どちらのバージョンにもいくつかの拡張ポイントがあります。新しい暗号アルゴリズム、新しいサポート対象グループ (以前は「名前付き曲線」) などの項目は、新しいプロトコルを定義せずに追加できます。この文書では、緊急のセキュリティ修正 (TLS ワーキング グループのコンセンサスによって決定される) およびセクション 4 にリストされている例外を除き、TLS 1.2 に対する変更は承認されないことを規定しています。"
+    },
+    {
+      "indent": 3,
+      "text": "This applies to TLS only. As such, it does not apply to DTLS, in any DTLS version.",
+      "ja": "これは TLS にのみ適用されます。したがって、どの DTLS バージョンでも DTLS には適用されません。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Implications for Post-Quantum Cryptography (PQC)",
+      "section_title": true,
+      "ja": "2. ポスト量子暗号 (PQC) への影響"
+    },
+    {
+      "indent": 3,
+      "text": "Cryptographically relevant quantum computers, once available, are likely to greatly lessen the time and effort needed to break RSA, finite-field-based Diffie-Hellman (FFDH), or Elliptic Curve Cryptography (ECC) which are currently used in TLS. In 2016, the US National Institute of Standards and Technology (NIST) started a multi-year effort to standardize algorithms that will be \"safe\" once quantum computers are feasible [PQC]. Initial discussions in the IETF community happened around the same time [CFRGSLIDES].",
+      "ja": "暗号関連の量子コンピューターが利用可能になれば、現在 TLS で使用されている RSA、有限体ベースのディフィー ヘルマン (FFDH)、または楕円曲線暗号 (ECC) を解読するのに必要な時間と労力が大幅に削減される可能性があります。2016 年、米国国立標準技術研究所 (NIST) は、量子コンピューターが実現可能になった後に「安全」となるアルゴリズムを標準化するための複数年にわたる取り組みを開始しました [PQC]。IETF コミュニティでの最初の議論はほぼ同じ時期に行われました [CFRGSLIDES]。"
+    },
+    {
+      "indent": 3,
+      "text": "In 2024, NIST released standards for [ML-KEM], [ML-DSA], and [SLH-DSA]. Many other countries and organizations are publishing their roadmaps, including the multi-national standards organization ETSI [ETSI].",
+      "ja": "2024 年に、NIST は [ML-KEM]、[ML-DSA]、および [SLH-DSA] の標準をリリースしました。多国籍標準化団体 ETSI [ETSI] を含め、他の多くの国や組織がロードマップを公開しています。"
+    },
+    {
+      "indent": 3,
+      "text": "While the industry was waiting for NIST to finish standardization, the IETF has had several efforts underway. A working group was formed in early 2023 to work on the use of Post-Quantum Cryptography (PQC) in IETF protocols [PQUIPWG]. Several other working groups, including TLS [TLSWG], are working on specifications to support hybrid algorithms and identifiers, for use during a transition from classic to a post-quantum world.",
+      "ja": "業界が NIST による標準化の完了を待っている間に、IETF はいくつかの取り組みを進めてきました。IETF プロトコルでの量子後暗号 (PQC) の使用に取り組むワーキング グループが 2023 年初頭に設立されました [PQUIPWG]。TLS [TLSWG] を含む他のいくつかの作業グループは、古典的な世界からポスト量子の世界への移行中に使用するハイブリッド アルゴリズムと識別子をサポートする仕様の策定に取り組んでいます。"
+    },
+    {
+      "indent": 3,
+      "text": "It is important to note that effort within the TLS Working Group is focused exclusively on TLS 1.3 or later. Put bluntly, PQC for TLS 1.2 will not be specified (see Section 4) at any time; anyone wishing to deploy PQC should expect to use TLS 1.3.",
+      "ja": "TLS ワーキング グループ内の取り組みは TLS 1.3 以降のみに焦点を当てていることに注意することが重要です。率直に言うと、TLS 1.2 の PQC はいかなる時点でも指定されません (セクション 4 を参照)。PQC を導入したい人は、TLS 1.3 を使用することを想定する必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Security Considerations",
+      "section_title": true,
+      "ja": "3. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This entire document is about security and provides post-quantum security concerns as an additional reason to upgrade to TLS 1.3.",
+      "ja": "このドキュメント全体はセキュリティに関するものであり、TLS 1.3 にアップグレードする追加の理由として量子化後のセキュリティに関する懸念を示しています。"
+    },
+    {
+      "indent": 0,
+      "text": "4. IANA Considerations",
+      "section_title": true,
+      "ja": "4. IANAの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "No TLS registries [TLS13REG] are being closed by this document. Rather, this document modifies the instructions to IANA and the TLS Designated Experts to constrain the type of entries that can be added to existing registries.",
+      "ja": "この文書によって閉鎖される TLS レジストリ [TLS13REG] はありません。むしろ、この文書は、既存のレジストリに追加できるエントリの種類を制限するために、IANA および TLS 指定専門家に対する指示を修正します。"
+    },
+    {
+      "indent": 3,
+      "text": "This document does not introduce any new limitations on the registrations for either of the following two registries:",
+      "ja": "このドキュメントでは、次の 2 つのレジストリのいずれの登録にも新しい制限を導入しません。"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs",
+      "ja": "* TLS アプリケーション層プロトコル ネゴシエーション (ALPN) プロトコル ID"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Exporter Labels",
+      "ja": "* TLS エクスポーターのラベル"
+    },
+    {
+      "indent": 3,
+      "text": "The following note has been added to the other TLS registries:",
+      "ja": "次の注記が他の TLS レジストリに追加されました。"
+    },
+    {
+      "indent": 0,
+      "text": "Any TLS entry added after the IESG approves publication of RFC 9851 is intended for TLS 1.3 or later, and makes no similar requirement on DTLS. Such entries should have an informal indication like \"For TLS 1.3 or later\" in that entry, such as the \"Comment\" column.",
+      "ja": "IESG が RFC 9851 の発行を承認した後に追加される TLS エントリは、TLS 1.3 以降を対象としており、DTLS に対して同様の要件は設けられていません。このようなエントリには、「コメント」列などに「TLS 1.3 以降用」などの非公式の表示を含める必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "At the time of publication, the note has been added to the following TLS registries:",
+      "ja": "公開時点で、このメモは次の TLS レジストリに追加されています。"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Alerts",
+      "ja": "* TLS アラート"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Authorization Data Formats",
+      "ja": "* TLS 認証データ形式"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS CachedInformationType Values",
+      "ja": "* TLS CachedInformationType 値"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Certificate Compression Algorithm IDs",
+      "ja": "* TLS 証明書圧縮アルゴリズム ID"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Certificate Status Types",
+      "ja": "* TLS 証明書ステータスの種類"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Certificate Types",
+      "ja": "* TLS 証明書の種類"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Cipher Suites",
+      "ja": "* TLS暗号スイート"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS ClientCertificateType Identifiers",
+      "ja": "* TLS ClientCertificateType 識別子"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS ContentType",
+      "ja": "* TLSコンテンツタイプ"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS EC Curve Types",
+      "ja": "* TLS EC 曲線の種類"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS EC Point Formats",
+      "ja": "* TLS EC ポイント形式"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS ExtensionType Values",
+      "ja": "* TLS 拡張タイプの値"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS HandshakeType",
+      "ja": "* TLSハンドシェイクタイプ"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS HashAlgorithm",
+      "ja": "* TLS ハッシュアルゴリズム"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Heartbeat Message Types",
+      "ja": "* TLS ハートビート メッセージの種類"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Heartbeat Modes",
+      "ja": "* TLS ハートビート モード"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS KDF Identifiers",
+      "ja": "* TLS KDF 識別子"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS PskKeyExchangeMode",
+      "ja": "* TLS PskKeyExchangeMode"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS SignatureAlgorithm",
+      "ja": "* TLS 署名アルゴリズム"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS SignatureScheme",
+      "ja": "* TLS 署名スキーム"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Supplemental Data Formats (SupplementalDataType)",
+      "ja": "* TLS 補足データ形式 (SupplementalDataType)"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS Supported Groups",
+      "ja": "* TLS がサポートするグループ"
+    },
+    {
+      "indent": 6,
+      "text": "* TLS UserMappingType Values",
+      "ja": "* TLS UserMappingType 値"
+    },
+    {
+      "indent": 3,
+      "text": "Any TLS registry created after this document is approved for publication should indicate whether the actions defined here are applicable.",
+      "ja": "この文書の公開が承認された後に作成される TLS レジストリには、ここで定義されているアクションが適用できるかどうかを示す必要があります。"
+    },
+    {
+      "indent": 0,
+      "text": "5. References",
+      "section_title": true,
+      "ja": "5. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "5.1. Normative References",
+      "section_title": true,
+      "ja": "5.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[TLS12]    Dierks, T. and E. Rescorla, \"The Transport Layer Security\n           (TLS) Protocol Version 1.2\", RFC 5246,\n           DOI 10.17487/RFC5246, August 2008,\n           <https://www.rfc-editor.org/info/rfc5246>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[TLS13]    Rescorla, E., \"The Transport Layer Security (TLS) Protocol\n           Version 1.3\", RFC 9846, DOI 10.17487/RFC9846, July 2026,\n           <https://www.rfc-editor.org/info/rfc9846>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[TLS13REG] Salowey, J. and S. Turner, \"IANA Registry Updates for TLS\n           and DTLS\", RFC 9847, DOI 10.17487/RFC9847, December 2025,\n           <https://www.rfc-editor.org/info/rfc9847>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "5.2. Informative References",
+      "section_title": true,
+      "ja": "5.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[CFRGSLIDES]\n           McGrew, D., \"Post Quantum Secure Cryptography Discussion\",\n           IETF 95 Proceedings, April 2016,\n           <https://www.ietf.org/proceedings/95/slides/slides-95-\n           cfrg-4.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[ETSI]     ETSI, \"CYBER; Migration strategies and recommendations to\n           Quantum Safe schemes\", Version 1.1.1, ETSI TR 103 619,\n           July 2020, <https://www.etsi.org/deliver/\n           etsi_tr/103600_103699/103619/01.01.01_60/\n           tr_103619v010101p.pdf>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[ML-DSA]   NIST, \"Module-Lattice-Based Digital Signature Standard\",\n           NIST FIPS 204, DOI 10.6028/NIST.FIPS.204, August 2024,\n           <https://csrc.nist.gov/pubs/fips/204/final>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[ML-KEM]   NIST, \"Module-Lattice-Based Key-Encapsulation Mechanism\n           Standard\", NIST FIPS 203, DOI 10.6028/NIST.FIPS.203,\n           August 2024, <https://csrc.nist.gov/pubs/fips/203/final>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[PQC]      NIST, \"Post-Quantum Cryptography (PQC)\", January 2017,\n           <https://csrc.nist.gov/projects/post-quantum-\n           cryptography>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[PQUIPWG]  IETF, \"Post-Quantum Use in Protocols\",\n           <https://datatracker.ietf.org/wg/pquip/about/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[SLH-DSA]  NIST, \"Stateless Hash-Based Digital Signature Standard\",\n           NIST FIPS 205, DOI 10.6028/NIST.FIPS.205, August 2024,\n           <https://csrc.nist.gov/pubs/fips/205/final>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[TLSWG]    IETF, \"Transport Layer Security\",\n           <https://datatracker.ietf.org/wg/tls/about/>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Acknowledgments",
+      "section_title": true,
+      "ja": "謝辞"
+    },
+    {
+      "indent": 3,
+      "text": "We gratefully acknowledge Amanda Baber, David Dong, and Sabrina Tanamal of IANA for their help in revising and clarifying Section 4.",
+      "ja": "セクション 4 の改訂と明確化にご協力いただいた IANA の Amanda Baber、David Dong、Sabrina Tanamal に感謝いたします。"
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Rich Salz\nAkamai Technologies\nEmail: rsalz@akamai.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Nimrod Aviram\nEmail: nimrod.aviram@gmail.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}
