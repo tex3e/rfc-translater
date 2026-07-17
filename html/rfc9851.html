@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFC 9851 - TLS 1.2 is in Feature Freeze 日本語訳</title>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./master.css">
+  <script src="./index.js"></script>
+
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">RFC Trans</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <div class="navbar-nav mr-auto">
+        <a class="nav-item nav-link" href="draft/index.html">Draft</a>
+        <a class="nav-item nav-link" href="contact.html">Contact</a>
+        <a class="nav-item nav-link" href="../figs/html/index.html">Figs</a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <span class="navbar-text"><small>@tex2e</small></span>
+      </div>
+    </div>
+  </nav>
+
+  <span id="rfc_number" class="hidden">9851</span>
+  <div style="height: 1ex;"></div>
+  <div class="jump-to-original-rfc-container">
+    <a href="https://www.rfc-editor.org/rfc/rfc9851.html">
+      <button type="button" class="btn btn-light btn-sm">
+        <span class="jump-to-original-rfc">Orig</span>
+      </button>
+    </a>
+  </div>
+  <div class="container">
+    <div>
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">RFC 9851 - TLS 1.2 is in Feature Freeze 日本語訳</h4>
+        <span class="URL">原文URL :
+          <a href="https://www.rfc-editor.org/rfc/rfc9851.html">
+            https://www.rfc-editor.org/rfc/rfc9851.html
+          </a>
+        </span><br>
+        <span class="title_ja">
+          タイトル : <strong>RFC 9851 - TLS 1.2は機能凍結中です</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+      </div>
+      <div id="rfc_alert" class="hidden" role="alert">
+        <div class="alert alert-danger">
+          <span id="rfc_alert_obsoleted_by"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+Internet Engineering Task Force (IETF)                           R. Salz
+Request for Comments: 9851                           Akamai Technologies
+Category: Standards Track                                      N. Aviram
+ISSN: 2070-1721                                                July 2026
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="TLS-1-2-is-in-Feature-Freeze">
+TLS 1.2 is in Feature Freeze
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+TLS 1.2は機能凍結中です
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Abstract">
+Abstract
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+概要
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Use of TLS 1.3, which fixes some known deficiencies in TLS 1.2, is growing. This document specifies that no changes will be approved for TLS 1.2 outside of urgent security fixes (as determined by TLS Working Group consensus), new TLS Exporter Labels, and new Application-Layer Protocol Negotiation (ALPN) Protocol IDs. This applies to TLS only; it does not apply to DTLS (in any DTLS version).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+TLS 1.2 の既知の欠陥を修正した TLS 1.3 の使用が増加しています。この文書では、緊急のセキュリティ修正 (TLS ワーキング グループのコンセンサスによって決定)、新しい TLS エクスポーター ラベル、および新しいアプリケーション層プロトコル ネゴシエーション (ALPN) プロトコル ID 以外の TLS 1.2 に対する変更は承認されないことを指定しています。これは TLS にのみ適用されます。DTLS (どの DTLS バージョンでも) には適用されません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Status-of-This-Memo">
+Status of This Memo
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+本文書の状態
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This is an Internet Standards Track document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これはインターネット標準化トラックの文書です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9851.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9851 で入手できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Copyright-Notice">
+Copyright Notice
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著作権表示
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Table-of-Contents">
+Table of Contents
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+目次
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace toc">
+   1.  Introduction
+   2.  Implications for Post-Quantum Cryptography (PQC)
+   3.  Security Considerations
+   4.  IANA Considerations
+   5.  References
+     5.1.  Normative References
+     5.2.  Informative References
+   Acknowledgments
+   Authors&#39; Addresses
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="1--Introduction">
+1. Introduction
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+1. はじめに
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+TLS 1.3 [TLS13] fixes most known deficiencies with TLS 1.2 [TLS12] and its use is growing. Some examples of the fixes include encrypting more of the traffic so that it is not readable by outsiders and removing most cryptographic primitives that are now considered weak. Importantly, TLS 1.3 enjoys robust security proofs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+TLS 1.3 [TLS13] は、TLS 1.2 [TLS12] の既知の欠陥のほとんどを修正しており、その使用が増加しています。修正の例としては、部外者が読み取れないようにより多くのトラフィックを暗号化することや、現在脆弱であると考えられているほとんどの暗号化プリミティブを削除することなどが挙げられます。重要なのは、TLS 1.3 は堅牢なセキュリティ証明を備えていることです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Both versions have several extension points. Items like new cryptographic algorithms, new supported groups (formerly &#34;named curves&#34;), etc., can be added without defining a new protocol. This document specifies that no changes will be approved for TLS 1.2 outside of urgent security fixes (as determined by TLS Working Group consensus) and the exceptions listed in Section 4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+どちらのバージョンにもいくつかの拡張ポイントがあります。新しい暗号アルゴリズム、新しいサポート対象グループ (以前は「名前付き曲線」) などの項目は、新しいプロトコルを定義せずに追加できます。この文書では、緊急のセキュリティ修正 (TLS ワーキング グループのコンセンサスによって決定される) およびセクション 4 にリストされている例外を除き、TLS 1.2 に対する変更は承認されないことを規定しています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This applies to TLS only. As such, it does not apply to DTLS, in any DTLS version.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これは TLS にのみ適用されます。したがって、どの DTLS バージョンでも DTLS には適用されません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2--Implications-for-Post-Quantum-Cryptography-PQC">
+2. Implications for Post-Quantum Cryptography (PQC)
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2. ポスト量子暗号 (PQC) への影響
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Cryptographically relevant quantum computers, once available, are likely to greatly lessen the time and effort needed to break RSA, finite-field-based Diffie-Hellman (FFDH), or Elliptic Curve Cryptography (ECC) which are currently used in TLS. In 2016, the US National Institute of Standards and Technology (NIST) started a multi-year effort to standardize algorithms that will be &#34;safe&#34; once quantum computers are feasible [PQC]. Initial discussions in the IETF community happened around the same time [CFRGSLIDES].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+暗号関連の量子コンピューターが利用可能になれば、現在 TLS で使用されている RSA、有限体ベースのディフィー ヘルマン (FFDH)、または楕円曲線暗号 (ECC) を解読するのに必要な時間と労力が大幅に削減される可能性があります。2016 年、米国国立標準技術研究所 (NIST) は、量子コンピューターが実現可能になった後に「安全」となるアルゴリズムを標準化するための複数年にわたる取り組みを開始しました [PQC]。IETF コミュニティでの最初の議論はほぼ同じ時期に行われました [CFRGSLIDES]。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In 2024, NIST released standards for [ML-KEM], [ML-DSA], and [SLH-DSA]. Many other countries and organizations are publishing their roadmaps, including the multi-national standards organization ETSI [ETSI].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+2024 年に、NIST は [ML-KEM]、[ML-DSA]、および [SLH-DSA] の標準をリリースしました。多国籍標準化団体 ETSI [ETSI] を含め、他の多くの国や組織がロードマップを公開しています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+While the industry was waiting for NIST to finish standardization, the IETF has had several efforts underway. A working group was formed in early 2023 to work on the use of Post-Quantum Cryptography (PQC) in IETF protocols [PQUIPWG]. Several other working groups, including TLS [TLSWG], are working on specifications to support hybrid algorithms and identifiers, for use during a transition from classic to a post-quantum world.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+業界が NIST による標準化の完了を待っている間に、IETF はいくつかの取り組みを進めてきました。IETF プロトコルでの量子後暗号 (PQC) の使用に取り組むワーキング グループが 2023 年初頭に設立されました [PQUIPWG]。TLS [TLSWG] を含む他のいくつかの作業グループは、古典的な世界からポスト量子の世界への移行中に使用するハイブリッド アルゴリズムと識別子をサポートする仕様の策定に取り組んでいます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+It is important to note that effort within the TLS Working Group is focused exclusively on TLS 1.3 or later. Put bluntly, PQC for TLS 1.2 will not be specified (see Section 4) at any time; anyone wishing to deploy PQC should expect to use TLS 1.3.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+TLS ワーキング グループ内の取り組みは TLS 1.3 以降のみに焦点を当てていることに注意することが重要です。率直に言うと、TLS 1.2 の PQC はいかなる時点でも指定されません (セクション 4 を参照)。PQC を導入したい人は、TLS 1.3 を使用することを想定する必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="3--Security-Considerations">
+3. Security Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+3. セキュリティに関する考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This entire document is about security and provides post-quantum security concerns as an additional reason to upgrade to TLS 1.3.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメント全体はセキュリティに関するものであり、TLS 1.3 にアップグレードする追加の理由として量子化後のセキュリティに関する懸念を示しています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4--IANA-Considerations">
+4. IANA Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4. IANAの考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+No TLS registries [TLS13REG] are being closed by this document. Rather, this document modifies the instructions to IANA and the TLS Designated Experts to constrain the type of entries that can be added to existing registries.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書によって閉鎖される TLS レジストリ [TLS13REG] はありません。むしろ、この文書は、既存のレジストリに追加できるエントリの種類を制限するために、IANA および TLS 指定専門家に対する指示を修正します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document does not introduce any new limitations on the registrations for either of the following two registries:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントでは、次の 2 つのレジストリのいずれの登録にも新しい制限を導入しません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS アプリケーション層プロトコル ネゴシエーション (ALPN) プロトコル ID
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Exporter Labels
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS エクスポーターのラベル
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following note has been added to the other TLS registries:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+次の注記が他の TLS レジストリに追加されました。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-0">
+Any TLS entry added after the IESG approves publication of RFC 9851 is intended for TLS 1.3 or later, and makes no similar requirement on DTLS. Such entries should have an informal indication like &#34;For TLS 1.3 or later&#34; in that entry, such as the &#34;Comment&#34; column.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-0">
+IESG が RFC 9851 の発行を承認した後に追加される TLS エントリは、TLS 1.3 以降を対象としており、DTLS に対して同様の要件は設けられていません。このようなエントリには、「コメント」列などに「TLS 1.3 以降用」などの非公式の表示を含める必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+At the time of publication, the note has been added to the following TLS registries:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+公開時点で、このメモは次の TLS レジストリに追加されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Alerts
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS アラート
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Authorization Data Formats
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 認証データ形式
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS CachedInformationType Values
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS CachedInformationType 値
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Certificate Compression Algorithm IDs
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 証明書圧縮アルゴリズム ID
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Certificate Status Types
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 証明書ステータスの種類
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Certificate Types
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 証明書の種類
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Cipher Suites
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS暗号スイート
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ClientCertificateType Identifiers
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ClientCertificateType 識別子
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ContentType
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLSコンテンツタイプ
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS EC Curve Types
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS EC 曲線の種類
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS EC Point Formats
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS EC ポイント形式
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ExtensionType Values
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 拡張タイプの値
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS HandshakeType
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLSハンドシェイクタイプ
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS HashAlgorithm
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ハッシュアルゴリズム
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Heartbeat Message Types
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ハートビート メッセージの種類
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Heartbeat Modes
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS ハートビート モード
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS KDF Identifiers
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS KDF 識別子
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS PskKeyExchangeMode
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS PskKeyExchangeMode
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS SignatureAlgorithm
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 署名アルゴリズム
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS SignatureScheme
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 署名スキーム
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Supplemental Data Formats (SupplementalDataType)
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS 補足データ形式 (SupplementalDataType)
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS Supported Groups
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS がサポートするグループ
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS UserMappingType Values
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* TLS UserMappingType 値
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Any TLS registry created after this document is approved for publication should indicate whether the actions defined here are applicable.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書の公開が承認された後に作成される TLS レジストリには、ここで定義されているアクションが適用できるかどうかを示す必要があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5--References">
+5. References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5. 参考文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-1--Normative-References">
+5.1. Normative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.1. 引用文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [TLS12]    Dierks, T. and E. Rescorla, &#34;The Transport Layer Security
+              (TLS) Protocol Version 1.2&#34;, RFC 5246,
+              DOI 10.17487/RFC5246, August 2008,
+              &lt;https://www.rfc-editor.org/info/rfc5246&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [TLS13]    Rescorla, E., &#34;The Transport Layer Security (TLS) Protocol
+              Version 1.3&#34;, RFC 9846, DOI 10.17487/RFC9846, July 2026,
+              &lt;https://www.rfc-editor.org/info/rfc9846&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [TLS13REG] Salowey, J. and S. Turner, &#34;IANA Registry Updates for TLS
+              and DTLS&#34;, RFC 9847, DOI 10.17487/RFC9847, December 2025,
+              &lt;https://www.rfc-editor.org/info/rfc9847&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-2--Informative-References">
+5.2. Informative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.2. 参考引用
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [CFRGSLIDES]
+              McGrew, D., &#34;Post Quantum Secure Cryptography Discussion&#34;,
+              IETF 95 Proceedings, April 2016,
+              &lt;https://www.ietf.org/proceedings/95/slides/slides-95-
+              cfrg-4.pdf&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [ETSI]     ETSI, &#34;CYBER; Migration strategies and recommendations to
+              Quantum Safe schemes&#34;, Version 1.1.1, ETSI TR 103 619,
+              July 2020, &lt;https://www.etsi.org/deliver/
+              etsi_tr/103600_103699/103619/01.01.01_60/
+              tr_103619v010101p.pdf&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [ML-DSA]   NIST, &#34;Module-Lattice-Based Digital Signature Standard&#34;,
+              NIST FIPS 204, DOI 10.6028/NIST.FIPS.204, August 2024,
+              &lt;https://csrc.nist.gov/pubs/fips/204/final&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [ML-KEM]   NIST, &#34;Module-Lattice-Based Key-Encapsulation Mechanism
+              Standard&#34;, NIST FIPS 203, DOI 10.6028/NIST.FIPS.203,
+              August 2024, &lt;https://csrc.nist.gov/pubs/fips/203/final&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [PQC]      NIST, &#34;Post-Quantum Cryptography (PQC)&#34;, January 2017,
+              &lt;https://csrc.nist.gov/projects/post-quantum-
+              cryptography&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [PQUIPWG]  IETF, &#34;Post-Quantum Use in Protocols&#34;,
+              &lt;https://datatracker.ietf.org/wg/pquip/about/&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [SLH-DSA]  NIST, &#34;Stateless Hash-Based Digital Signature Standard&#34;,
+              NIST FIPS 205, DOI 10.6028/NIST.FIPS.205, August 2024,
+              &lt;https://csrc.nist.gov/pubs/fips/205/final&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [TLSWG]    IETF, &#34;Transport Layer Security&#34;,
+              &lt;https://datatracker.ietf.org/wg/tls/about/&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Acknowledgments">
+Acknowledgments
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+謝辞
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+We gratefully acknowledge Amanda Baber, David Dong, and Sabrina Tanamal of IANA for their help in revising and clarifying Section 4.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+セクション 4 の改訂と明確化にご協力いただいた IANA の Amanda Baber、David Dong、Sabrina Tanamal に感謝いたします。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Authors-Addresses">
+Authors&#39; Addresses
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著者の住所
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Rich Salz
+   Akamai Technologies
+   Email: rsalz@akamai.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Nimrod Aviram
+   Email: nimrod.aviram@gmail.com
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div id="rfc_footer"></div>
+</body>
+</html>

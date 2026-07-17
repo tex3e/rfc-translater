@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RFC 9995 - CBOR Object Signing and Encryption (COSE) Hash Envelope 日本語訳</title>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tex2e.github.io/rfc-translater/favicon.ico" />
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./master.css">
+  <script src="./index.js"></script>
+
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">RFC Trans</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <div class="navbar-nav mr-auto">
+        <a class="nav-item nav-link" href="draft/index.html">Draft</a>
+        <a class="nav-item nav-link" href="contact.html">Contact</a>
+        <a class="nav-item nav-link" href="../figs/html/index.html">Figs</a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <span class="navbar-text"><small>@tex2e</small></span>
+      </div>
+    </div>
+  </nav>
+
+  <span id="rfc_number" class="hidden">9995</span>
+  <div style="height: 1ex;"></div>
+  <div class="jump-to-original-rfc-container">
+    <a href="https://www.rfc-editor.org/rfc/rfc9995.html">
+      <button type="button" class="btn btn-light btn-sm">
+        <span class="jump-to-original-rfc">Orig</span>
+      </button>
+    </a>
+  </div>
+  <div class="container">
+    <div>
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">RFC 9995 - CBOR Object Signing and Encryption (COSE) Hash Envelope 日本語訳</h4>
+        <span class="URL">原文URL :
+          <a href="https://www.rfc-editor.org/rfc/rfc9995.html">
+            https://www.rfc-editor.org/rfc/rfc9995.html
+          </a>
+        </span><br>
+        <span class="title_ja">
+          タイトル : <strong>RFC 9995 - CBOR オブジェクト署名および暗号化 (COSE) ハッシュ エンベロープ</strong></span><br>
+        <span class="updated_by">翻訳編集 : 自動生成</span><span id="rfc_status"></span><span id="rfc_wg"></span><br>
+      </div>
+      <div id="rfc_alert" class="hidden" role="alert">
+        <div class="alert alert-danger">
+          <span id="rfc_alert_obsoleted_by"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+Internet Engineering Task Force (IETF)                         O. Steele
+Request for Comments: 9995                                              
+Category: Standards Track                                      S. Lasker
+ISSN: 2070-1721                                                         
+                                                             H. Birkholz
+                                                          Fraunhofer SIT
+                                                               July 2026
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="CBOR-Object-Signing-and-Encryption-COSE-Hash-Envelope">
+CBOR Object Signing and Encryption (COSE) Hash Envelope
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+CBOR オブジェクト署名および暗号化 (COSE) ハッシュ エンベロープ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Abstract">
+Abstract
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+概要
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document defines new CBOR Object Signing and Encryption (COSE) header parameters for signaling a payload as an output of a hash function. This mechanism enables faster validation, as access to the original payload is not required for signature validation. Additionally, hints of the hashed payload&#39;s content format and availability are defined, providing references to optional discovery mechanisms that can help to find the original payload content.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書では、ハッシュ関数の出力としてペイロードを通知するための新しい CBOR Object Signing and Encryption (COSE) ヘッダー パラメーターを定義します。このメカニズムにより、署名の検証に元のペイロードへのアクセスが必要ないため、より高速な検証が可能になります。さらに、ハッシュされたペイロードのコンテンツ形式と可用性のヒントが定義され、元のペイロード コンテンツの検索に役立つオプションの検出メカニズムへの参照が提供されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Status-of-This-Memo">
+Status of This Memo
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+本文書の状態
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This is an Internet Standards Track document.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+これはインターネット標準化トラックの文書です。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されました。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9995.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9995 で入手できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Copyright-Notice">
+Copyright Notice
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著作権表示
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document is subject to BCP 78 and the IETF Trust&#39;s Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Table-of-Contents">
+Table of Contents
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+目次
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace toc">
+   1.  Introduction
+   2.  Terminology
+   3.  Header Parameters
+   4.  Hash Envelope CDDL
+     4.1.  Envelope Extended Diagnostic Notation
+   5.  Security Considerations
+     5.1.  Choice of Hash Function
+     5.2.  COSE_Encrypt
+     5.3.  Payload Verification
+   6.  IANA Considerations
+     6.1.  COSE Header Parameters
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Acknowledgments
+   Authors&#39; Addresses
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="1--Introduction">
+1. Introduction
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+1. はじめに
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Section 2 of [RFC9052] defines detached payloads for COSE, using nil as the payload. In order to verify a COSE_Sign or a COSE_Mac, the recipient requires access to the payload content. Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components. As hashes typically are smaller than the payload data they represent, they are simpler to transport. Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms. Hashes and other identifiers are commonly used as hints to discover and distinguish resources. Using a hash as an identifier for a resource has the advantage of enabling integrity checking.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+[RFC9052] のセクション 2 では、ペイロードとして nil を使用する、COSE の切り離されたペイロードを定義しています。COSE_Sign または COSE_Mac を検証するには、受信者がペイロード コンテンツにアクセスする必要があります。ハッシュは、ドキュメントやソフトウェア コンポーネントなどのペイロード データの識別子としてすでに定期的に使用されています。通常、ハッシュはそれが表すペイロード データよりも小さいため、転送が簡単になります。保護されたヘッダー内の追加のヒントにより、ハッシュおよび署名アルゴリズムの暗号化の俊敏性が保証されます。ハッシュやその他の識別子は、リソースを発見して区別するためのヒントとして一般的に使用されます。リソースの識別子としてハッシュを使用すると、整合性チェックが可能になるという利点があります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In some applications, such as remote signing procedures, conveyance of hashes instead of original payload content reduces transmission time and costs.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+リモート署名手順などの一部のアプリケーションでは、元のペイロード コンテンツの代わりにハッシュを送信することで、送信時間とコストが削減されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="2--Terminology">
+2. Terminology
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+2. 用語
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The key words &#34;MUST&#34;, &#34;MUST NOT&#34;, &#34;REQUIRED&#34;, &#34;SHALL&#34;, &#34;SHALL NOT&#34;, &#34;SHOULD&#34;, &#34;SHOULD NOT&#34;, &#34;RECOMMENDED&#34;, &#34;NOT RECOMMENDED&#34;, &#34;MAY&#34;, and &#34;OPTIONAL&#34; in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The terms &#34;COSE&#34; and &#34;CDDL&#34; are defined in [RFC9052] and [RFC8610], respectively. The term &#34;payload&#34; is defined in Section 4.1 of [RFC9052] for COSE_Sign and in Section 6.1 of [RFC9052] for COSE_Mac. The term &#34;preimage&#34; refers to the set of input values to a function that produce a given output, called the &#34;image&#34;. A hash function applied to a message (preimage) produces a digest value (image).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+「COSE」と「CDDL」という用語は、それぞれ [RFC9052] と [RFC8610] で定義されています。「ペイロード」という用語は、COSE_Sign については [RFC9052] のセクション 4.1 で定義され、COSE_Mac については [RFC9052] のセクション 6.1 で定義されています。「プリイメージ」という用語は、「イメージ」と呼ばれる特定の出力を生成する関数への入力値のセットを指します。メッセージ (プリイメージ) に適用されるハッシュ関数は、ダイジェスト値 (イメージ) を生成します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="3--Header-Parameters">
+3. Header Parameters
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+3. ヘッダーパラメータ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This document specifies the following new header parameters commonly used alongside hashes to identify resources:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントでは、リソースを識別するためにハッシュと一緒に一般的に使用される次の新しいヘッダー パラメーターを指定します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+258:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+258:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The hash algorithm used to produce the payload.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ペイロードの生成に使用されるハッシュ アルゴリズム。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+259:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+259:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+The content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number (Section 12.3 of [RFC7252]) or as a media-type name optionally with parameters (Section 8.3 of [RFC9110]).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ペイロードを生成するためにハッシュされたバイト (プリイメージ) のコンテンツ タイプ。コンテンツ フォーマット番号 ([RFC7252] のセクション 12.3)、またはオプションでパラメータを含むメディア タイプ名 ([RFC9110] のセクション 8.3) として指定されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+260:
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+260:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+An identifier enabling retrieval of the original resource (preimage) identified by the payload.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-12">
+ペイロードによって識別される元のリソース (プリイメージ) の取得を可能にする識別子。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4--Hash-Envelope-CDDL">
+4. Hash Envelope CDDL
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4. ハッシュエンベロープCDDL
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+
+   Hash_Envelope_as_COSE_Sign1 = [
+       protected: bstr .cbor Hash_Envelope_Protected_Header,
+       unprotected: Hash_Envelope_Unprotected_Header,
+       payload: bstr / nil,
+       signature: bstr
+   ]
+
+   Hash_Envelope_Protected_Header = {
+       ? &amp;(alg: 1) =&gt; int,
+       &amp;(payload_hash_alg: 258) =&gt; int,
+       ? &amp;(payload_preimage_content_type: 259) =&gt; uint / tstr,
+       ? &amp;(payload_location: 260) =&gt; tstr,
+       * (int / tstr) =&gt; any
+   }
+
+   Hash_Envelope_Unprotected_Header = {
+       * (int / tstr) =&gt; any
+   }
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Label 1 (alg) is the cryptographic algorithm to use.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ラベル 1 (alg) は、使用する暗号アルゴリズムです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Label 258 (payload_hash_alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ラベル 258 (payload_hash_alg) は、保護されたヘッダーに存在しなければならず、保護されていないヘッダーには存在してはなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Label 259 (payload_preimage_content_type) MAY be present in the protected header and MUST NOT be present in the unprotected header.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ラベル 259 (payload_preimage_content_type) は、保護されたヘッダーに存在してもよく、保護されていないヘッダーには存在してはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Label 260 (payload_location) MAY be present in the protected header and MUST NOT be present in the unprotected header.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ラベル 260 (payload_location) は、保護されたヘッダーに存在してもよく、保護されていないヘッダーには存在してはなりません (MUST NOT)。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* Label 3 (content_type) MUST NOT be present in the protected or unprotected headers.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-6">
+* ラベル 3 (content_type) は、保護されたヘッダーまたは保護されていないヘッダーに存在してはなりません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Label 3 (content_type) is easily confused with Label 259 (payload_preimage_content_type). The difference between content_type (3) and payload_preimage_content_type (259) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes that are hashed to produce the payload.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ラベル 3 (content_type) は、ラベル 259 (payload_preimage_content_type) と混同されやすいです。content_type (3) と payload_preimage_content_type (259) の違いは、content_type はペイロードに関連付けられたコンテンツ形式を識別するために使用されるのに対し、payload_preimage_content_type はペイロードを生成するためにハッシュされるバイトのコンテンツ形式を識別するために使用されることです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Output from hash algorithms is generally small; thus, the payload is typically expected to be inline. But it can also be detached, as in any other COSE message [RFC9052].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ハッシュ アルゴリズムからの出力は一般に小さいです。したがって、通常、ペイロードはインラインであることが予想されます。しかし、他の COSE メッセージ [RFC9052] と同様に、切り離すこともできます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+For example, when the actual content is a byte string (bstr), a verifier appraising the payload has to decide whether that bstr represents the digest bytes or the preimage bytes. Setting payload_preimage_content_type to bstr makes clear that the preimage bytes themselves were a bstr.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+たとえば、実際のコンテンツがバイト文字列 (bstr) である場合、ペイロードを評価する検証者は、その bstr がダイジェスト バイトを表すかプレイメージ バイトを表すかを判断する必要があります。payload_preimage_content_type を bstr に設定すると、プリイメージのバイト自体が bstr であることが明確になります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="4-1--Envelope-Extended-Diagnostic-Notation">
+4.1. Envelope Extended Diagnostic Notation
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+4.1. エンベロープ拡張診断表記法
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following informative example uses Extended Diagnostic Notation as defined in Appendix G of [RFC8610] and demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+次の有益な例では、[RFC8610] の付録 G で定義されている拡張診断表記法を使用し、ハッシュによってすでに共通に参照されているリソースのハッシュ エンベロープを構築する方法を示します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   18([ # COSE_Sign1
+     &lt;&lt;{
+       / signature alg   / 1: -35, # ES384
+       / key identifier  / 4: h&#39;75726e3a...32636573&#39;,
+       / COSE_Sign1 type / 16: &#34;application/example+cose&#34;,
+       / hash algorithm  / 258: -16, # sha256
+       / media type      / 259: &#34;application/spdx+json&#34;,
+       / location        /
+            260: &#34;https://sbom.example/.../manifest.spdx.json&#34;
+     }&gt;&gt;
+     / unprotected / {},
+     / payload     / h&#39;935b5a91...e18a588a&#39;,
+            # SHA-256 digest of manifest.spdx.json&#34;
+     / signature   / h&#39;15280897...93ef39e5&#39;
+            # ECDSA Signature with SHA-384 and P-384
+   ])
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+In this example, a System Package Data Exchange [SPDX] Software Bill of Materials (SBOM) in JSON format is already commonly identified by its SHA-256 hash. The content type for &#34;manifest.spdx.json&#34; is already well known as &#34;application/spdx+json&#34; and is registered with IANA (https://www.iana.org/assignments/media-types/application/ spdx+json).
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例では、JSON 形式の System Package Data Exchange [SPDX] ソフトウェア部品表 (SBOM) が、SHA-256 ハッシュによってすでに一般的に識別されています。「manifest.spdx.json」のコンテンツ タイプは「application/spdx+json」としてすでによく知られており、IANA (https://www.iana.org/assignments/media-types/application/spdx+json) に登録されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The full JSON SBOM is available at a URL, such as &#34;https://sbom.example/.../manifest.spdx.json&#34;.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+完全な JSON SBOM は、「https://sbom.example/.../manifest.spdx.json」などの URL で入手できます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The payload of this COSE_Sign1 is the SHA-256 hash of &#34;manifest.spdx.json&#34;.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この COSE_Sign1 のペイロードは、「manifest.spdx.json」の SHA-256 ハッシュです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The type of this COSE_Sign1 is &#34;application/example+cose&#34;, but other types may be used to establish more-specific media types for signatures of hashes.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この COSE_Sign1 のタイプは「application/example+cose」ですが、ハッシュの署名のより具体的なメディア タイプを確立するために他のタイプを使用することもできます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The signature is produced using ES384, as defined in Section 3.4 of [RFC7518], which means using the Elliptic Curve Digital Signature Algorithm (ECDSA) with the SHA-384 hash function and P-384 elliptic curve.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+署名は、[RFC7518] のセクション 3.4 で定義されている ES384 を使用して生成されます。これは、SHA-384 ハッシュ関数と P-384 楕円曲線を備えた楕円曲線デジタル署名アルゴリズム (ECDSA) を使用することを意味します。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+This example is chosen to highlight that an existing system may use a hash algorithm such as SHA-256. This hash becomes the payload of a COSE_Sign1. When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA-384, the to-be-signed structure is as described in Section 4.4 of [RFC9052].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+この例は、既存のシステムが SHA-256 などのハッシュ アルゴリズムを使用する可能性があることを強調するために選択されています。このハッシュは COSE_Sign1 のペイロードになります。SHA-384 を使用した ECDSA など、ハッシュ関数を介してパラメータ化された署名アルゴリズムで署名される場合、署名される構造は [RFC9052] のセクション 4.4 に記載されているとおりです。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type, and location of the associated resource, in this case a software bill of materials.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+結果として得られる署名は、保護されたヘッダーとペイロードに対して計算され、ハッシュ アルゴリズム、コンテンツ タイプ、関連リソース (この場合はソフトウェア部品表) の場所の整合性と信頼性が提供されます。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5--Security-Considerations">
+5. Security Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5. セキュリティに関する考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-1--Choice-of-Hash-Function">
+5.1. Choice of Hash Function
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.1. ハッシュ関数の選択
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The hash/signature algorithm combination is RECOMMENDED to be at least as strong as the payload hash algorithm. For example, if the payload was produced with SHA-256, and is signed with ECDSA, use at least P-256 and SHA-256. Note that, when using a pre-hash algorithm, the algorithm MUST be registered in the IANA &#34;COSE Algorithms&#34; registry [COSE-Algorithms] and MUST be distinguishable from non-pre-hash variants that may also be present.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+ハッシュ/署名アルゴリズムの組み合わせは、少なくともペイロード ハッシュ アルゴリズムと同じくらい強力であることが推奨されます。たとえば、ペイロードが SHA-256 で生成され、ECDSA で署名されている場合は、少なくとも P-256 と SHA-256 を使用します。プレハッシュ アルゴリズムを使用する場合、そのアルゴリズムは IANA &#34;COSE Algorithms&#34; レジストリ [COSE-Algorithms] に登録されなければならず、また存在する可能性のある非プレハッシュ バリアントと区別できなければならないことに注意してください。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-2--COSEEncrypt">
+5.2. COSE_Encrypt
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.2. COSE_暗号化
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of scope for this document. At the time of publication, there is no known use case for COSE_Encrypt/COSE_Encrypt0. It may be covered by a future extension, which would address whether the hash function is applied before or after encryption and clarify privacy considerations.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+このドキュメントの対象となるのは、COSE_Sign/COSE_Sign1 および COSE_Mac/COSE_Mac0 のみです。COSE_Encrypt/COSE_Encrypt0 はこのドキュメントの範囲外です。公開時点では、COSE_Encrypt/COSE_Encrypt0 の既知の使用例はありません。これは将来の拡張機能でカバーされる可能性があり、ハッシュ関数が暗号化の前後に適用されるかどうかに対処し、プライバシーの考慮事項が明確になります。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="5-3--Payload-Verification">
+5.3. Payload Verification
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+5.3. ペイロードの検証
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+If a payload-location is specified, a verifier can choose to fetch the content and confirm that the digest of it, produced with the function defined by payload-hash-alg, matches the payload bytes. Verifiers that do not have access to the internet and obtain the preimage via other means will not be able to perform that check nor to derive utility from it.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+payload-location が指定されている場合、検証者はコンテンツをフェッチし、payload-hash-alg で定義された関数で生成されたそのダイジェストがペイロード バイトと一致することを確認することを選択できます。インターネットにアクセスできず、他の手段でプリイメージを取得できない検証者は、そのチェックを実行することも、そこからユーティリティを引き出すこともできません。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6--IANA-Considerations">
+6. IANA Considerations
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6. IANAの考慮事項
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="6-1--COSE-Header-Parameters">
+6.1. COSE Header Parameters
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+6.1. COSEヘッダーパラメータ
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA has registered the COSE header parameters defined in Section 3 (as listed in Table 1) in the &#34;COSE Header Parameters&#34; registry [COSE-HDR-PARAMS]. They have been registered in the &#39;Integer values from 256 to 65535&#39; range per the &#39;Specification Required&#39; registration policy [RFC8126].
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+IANA は、セクション 3 で定義されている COSE ヘッダー パラメーター (表 1 にリストされている) を「COSE ヘッダー パラメーター」レジストリ [COSE-HDR-PARAMS] に登録しました。これらは、「仕様が必要」登録ポリシー [RFC8126] に従って、「256 ～ 65535 の整数値」の範囲で登録されています。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   +=========+=====+======+======================+===========+=========+
+   |Name     |Label|Value |Value Registry        |Description|Reference|
+   |         |     |Type  |                      |           |         |
+   +=========+=====+======+======================+===========+=========+
+   |payload- |258  |int   |[COSE-Algorithms]     |The hash   |RFC 9995,|
+   |hash-alg |     |      |                      |algorithm  |Section 3|
+   |         |     |      |                      |used to    |         |
+   |         |     |      |                      |produce the|         |
+   |         |     |      |                      |payload of |         |
+   |         |     |      |                      |a          |         |
+   |         |     |      |                      |COSE_Sign1 |         |
+   +---------+-----+------+----------------------+-----------+---------+
+   |preimage-|259  |uint /|[CoAP-Content-Formats]|The        |RFC 9995,|
+   |content- |     |tstr  |                      |content-   |Section 3|
+   |type     |     |      |                      |format     |         |
+   |         |     |      |                      |number or  |         |
+   |         |     |      |                      |content-   |         |
+   |         |     |      |                      |type       |         |
+   |         |     |      |                      |(media-type|         |
+   |         |     |      |                      |name) of   |         |
+   |         |     |      |                      |data that  |         |
+   |         |     |      |                      |has been   |         |
+   |         |     |      |                      |hashed to  |         |
+   |         |     |      |                      |produce the|         |
+   |         |     |      |                      |payload of |         |
+   |         |     |      |                      |the        |         |
+   |         |     |      |                      |COSE_Sign1 |         |
+   +---------+-----+------+----------------------+-----------+---------+
+   |payload- |260  |tstr  |(none)                |The string |RFC 9995,|
+   |location |     |      |                      |or URI hint|Section 3|
+   |         |     |      |                      |for the    |         |
+   |         |     |      |                      |location of|         |
+   |         |     |      |                      |the data   |         |
+   |         |     |      |                      |hashed to  |         |
+   |         |     |      |                      |produce the|         |
+   |         |     |      |                      |payload of |         |
+   |         |     |      |                      |a          |         |
+   |         |     |      |                      |COSE_Sign1 |         |
+   +---------+-----+------+----------------------+-----------+---------+
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-14">
+Table 1: Newly Registered COSE Header Parameters
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-14">
+表 1: 新しく登録された COSE ヘッダー パラメーター
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="7--References">
+7. References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+7. 参考文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="7-1--Normative-References">
+7.1. Normative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+7.1. 引用文献
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [COSE-HDR-PARAMS]
+              IANA, &#34;CBOR Object Signing and Encryption (COSE)&#34;,
+              &lt;https://www.iana.org/assignments/cose&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC2119]  Bradner, S., &#34;Key words for use in RFCs to Indicate
+              Requirement Levels&#34;, BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              &lt;https://www.rfc-editor.org/info/rfc2119&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC7252]  Shelby, Z., Hartke, K., and C. Bormann, &#34;The Constrained
+              Application Protocol (CoAP)&#34;, RFC 7252,
+              DOI 10.17487/RFC7252, June 2014,
+              &lt;https://www.rfc-editor.org/info/rfc7252&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8174]  Leiba, B., &#34;Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words&#34;, BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, &lt;https://www.rfc-editor.org/info/rfc8174&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, &#34;Concise Data
+              Definition Language (CDDL): A Notational Convention to
+              Express Concise Binary Object Representation (CBOR) and
+              JSON Data Structures&#34;, RFC 8610, DOI 10.17487/RFC8610,
+              June 2019, &lt;https://www.rfc-editor.org/info/rfc8610&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9052]  Schaad, J., &#34;CBOR Object Signing and Encryption (COSE):
+              Structures and Process&#34;, STD 96, RFC 9052,
+              DOI 10.17487/RFC9052, August 2022,
+              &lt;https://www.rfc-editor.org/info/rfc9052&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., &#34;HTTP Semantics&#34;, STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              &lt;https://www.rfc-editor.org/info/rfc9110&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="7-2--Informative-References">
+7.2. Informative References
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+7.2. 参考引用
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [CoAP-Content-Formats]
+              IANA, &#34;CoAP Content-Formats&#34;,
+              &lt;https://www.iana.org/assignments/cose&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [COSE-Algorithms]
+              IANA, &#34;COSE Algorithms&#34;,
+              &lt;https://www.iana.org/assignments/cose&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC7518]  Jones, M., &#34;JSON Web Algorithms (JWA)&#34;, RFC 7518,
+              DOI 10.17487/RFC7518, May 2015,
+              &lt;https://www.rfc-editor.org/info/rfc7518&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, &#34;Guidelines for
+              Writing an IANA Considerations Section in RFCs&#34;, BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              &lt;https://www.rfc-editor.org/info/rfc8126&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   [SPDX]     &#34;SPDX Specification&#34;,
+              &lt;https://spdx.dev/use/specifications/&gt;.
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Acknowledgments">
+Acknowledgments
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+謝辞
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+The following individuals provided input into the final form of the document: Carsten Bormann, Antoine Delignat-Lavaud, and Cedric Fournet.
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <p class="text indent-3">
+Carsten Bormann、Antoine Delignat-Lavaud、Cedric Fournet の各氏が文書の最終形式に意見を提供しました。
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2" id="Authors-Addresses">
+Authors&#39; Addresses
+        </h5>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h5 class="text mt-2">
+著者の住所
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Orie Steele
+   Email: orie@or13.io
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Steve Lasker
+   Email: stevenlasker@hotmail.com
+        </pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <pre class="text text-monospace">
+   Henk Birkholz
+   Fraunhofer SIT
+   Rheinstrasse 75
+   64295 Darmstadt
+   Germany
+   Email: henk.birkholz@ietf.contact
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div id="rfc_footer"></div>
+</body>
+</html>

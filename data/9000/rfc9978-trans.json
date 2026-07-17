@@ -1,0 +1,841 @@
+{
+  "title": {
+    "text": "RFC 9978 - Bidirectional Forwarding Detection (BFD) Stability",
+    "ja": "RFC 9978 - 双方向フォワーディング検出 (BFD) の安定性"
+  },
+  "number": 9978,
+  "created_at": "2026-07-05 23:24:44.785626+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)                         A. Mishra\nRequest for Comments: 9978                          Aalyria Technologies\nCategory: Experimental                                   M. Jethanandani\nISSN: 2070-1721                                             Arrcus, Inc.\n                                                               A. Saxena\n                                                       Ciena Corporation\n                                                           S. Pallagatti\n                                                                 Zscaler\n                                                                 M. Chen\n                                                                  Huawei\n                                                               June 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Bidirectional Forwarding Detection (BFD) Stability",
+      "section_title": true,
+      "ja": "双方向フォワーディング検出 (BFD) の安定性"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "This document describes extensions to the Bidirectional Forwarding Detection (BFD) protocol to measure BFD Stability. Specifically, it describes a mechanism for the detection of BFD packet loss.",
+      "ja": "このドキュメントでは、BFD の安定性を測定するための双方向転送検出 (BFD) プロトコルの拡張について説明します。具体的には、BFD パケット損失を検出するためのメカニズムについて説明します。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の状態"
+    },
+    {
+      "indent": 3,
+      "text": "This document is not an Internet Standards Track specification; it is published for examination, experimental implementation, and evaluation.",
+      "ja": "この文書は Internet Standards Track 仕様ではありません。試験、実験実装、評価のために公開されています。"
+    },
+    {
+      "indent": 3,
+      "text": "This document defines an Experimental Protocol for the Internet community. This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Not all documents approved by the IESG are candidates for any level of Internet Standard; see Section 2 of RFC 7841.",
+      "ja": "この文書は、インターネット コミュニティ向けの実験プロトコルを定義します。このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。IESG によって承認されたすべての文書が、あらゆるレベルのインターネット標準の候補となるわけではありません。RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9978.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9978 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Terminology\n3.  Use Cases\n4.  Functionality\n5.  NULL Auth Type\n6.  Theory of Operation\n  6.1.  Loss Measurement\n  6.2.  Out-of-Order Packets\n7.  Stability YANG Module\n  7.1.  Data Model Overview\n  7.2.  YANG Module\n8.  IANA Considerations\n  8.1.  Auth Type\n  8.2.  IETF XML Registry\n  8.3.  The \"YANG Module Names\" Registry\n9.  Security Considerations\n  9.1.  BFD NULL Auth Type Security Considerations\n  9.2.  YANG Security Considerations\n10. References\n  10.1.  Normative References\n  10.2.  Informative References\nAppendix A.  Experimental Status\nAppendix B.  Examples\n  B.1.  Single Hop BFD Configuration\n  B.2.  Use of the NULL Auth Type\nAcknowledgements\nContributors\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "The Bidirectional Forwarding Detection (BFD) [RFC5880] protocol operates by transmitting and receiving BFD control packets, generally at a high frequency, over the datapath being monitored. In order to prevent significant data loss due to a datapath failure, BFD session Detection Time as defined in [RFC5880] is set to the smallest feasible value.",
+      "ja": "Bidirectional Forwarding Detection (BFD) [RFC5880] プロトコルは、監視対象のデータパス上で通常は高頻度で BFD 制御パケットを送受信することによって動作します。データパス障害による重大なデータ損失を防ぐために、[RFC5880] で定義されている BFD セッション検出時間は、実現可能な最小値に設定されます。"
+    },
+    {
+      "indent": 3,
+      "text": "A BFD session [RFC5880] will remain in the Up state as long as it receives at least one BFD packet within the Detection Time interval. However, additional packet loss within that time interval is not noted by the BFD state machinery. Noting the other missed packets provides a valuable indicator of systemic issues or a deteriorating network that may warrant preventive action.",
+      "ja": "BFD セッション [RFC5880] は、検出時間間隔内に少なくとも 1 つの BFD パケットを受信する限り、アップ状態を維持します。ただし、その時間間隔内の追加のパケット損失は、BFD 状態機構によって認識されません。他の欠落パケットに注目することは、予防措置が必要となる可能性のある、システムの問題またはネットワークの劣化を示す貴重な指標となります。"
+    },
+    {
+      "indent": 3,
+      "text": "This document proposes an experimental mechanism to detect packet loss in a BFD session and describes the datapath fault detection mechanisms of BFD. Such a mechanism, combined with 'receive-packet-count' defined in \"YANG Data Model for Bidirectional Forwarding Detection (BFD)\" [RFC9314] permits operators to measure the stability of BFD sessions. The details of the motivation for the Experimental status of this document can be found in Appendix A. Implementations may also do additional analysis of the packet loss over a time interval. Such an analysis is outside the scope of this document.",
+      "ja": "この文書では、BFD セッションでのパケット損失を検出する実験的なメカニズムを提案し、BFD のデータパス障害検出メカニズムについて説明します。このようなメカニズムを、「双方向転送検出 (BFD) のための YANG データ モデル」[RFC9314] で定義されている「受信パケット数」と組み合わせると、オペレータは BFD セッションの安定性を測定できるようになります。この文書の実験ステータスの動機の詳細は、付録 A にあります。実装では、時間間隔にわたるパケット損失の追加分析を行うこともできます。このような分析は、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document does not propose any BFD extension to measure data traffic loss or delay on a link or tunnel, and the scope is limited to BFD packets.",
+      "ja": "このドキュメントでは、リンクまたはトンネル上のデータ トラフィックの損失や遅延を測定するための BFD 拡張は提案されておらず、範囲は BFD パケットに限定されています。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Terminology",
+      "section_title": true,
+      "ja": "2. 用語"
+    },
+    {
+      "indent": 3,
+      "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "ja": "このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The reader is expected to be familiar with BFD [RFC5880]. In particular, the term \"meticulous\" as specified in \"Meticulous Keyed ISAAC for Bidirectional Forwarding Detection (BFD) Optimized Authentication\" [RFC9986] means that the sequence number is incremented on every new packet that is sent.",
+      "ja": "読者は BFD [RFC5880] に精通していることが期待されます。特に、「双方向転送検出 (BFD) 最適化認証のための Meticulous Keyed ISAAC」[RFC9986] で指定されている「細心の注意」という用語は、送信される新しいパケットごとにシーケンス番号がインクリメントされることを意味します。"
+    },
+    {
+      "indent": 0,
+      "text": "3. Use Cases",
+      "section_title": true,
+      "ja": "3. 使用例"
+    },
+    {
+      "indent": 3,
+      "text": "Bidirectional Forwarding Detection (BFD), as defined in [RFC5880], cannot detect any BFD packet loss if the loss does not last for the Detection Time. This document proposes a method to detect dropped packets on the receiver. For example, if the receiver receives BFD control packet k at time t, but receives packet k+3 at time t+10 ms, and never receives packet k+1 and/or k+2, then it has experienced a packet loss.",
+      "ja": "[RFC5880] で定義されている双方向転送検出 (BFD) は、損失が検出時間内に継続しない場合、BFD パケット損失を検出できません。この文書では、受信側でドロップされたパケットを検出する方法を提案します。たとえば、受信機が時刻 t に BFD 制御パケット k を受信したが、時刻 t+10 ms にパケット k+3 を受信し、パケット k+1 および/または k+2 をまったく受信しなかった場合、パケット損失が発生しています。"
+    },
+    {
+      "indent": 3,
+      "text": "This proposal enables BFD implementations to generate diagnostic information on the health of each BFD session. This information could be used to preempt the probability of a failure on a datapath that BFD was monitoring by allowing time for a corrective action to be taken.",
+      "ja": "この提案により、BFD 実装で各 BFD セッションの健全性に関する診断情報を生成できるようになります。この情報を使用すると、修正措置を講じるための時間を確保することで、BFD が監視していたデータパスで障害が発生する可能性を事前に回避することができます。"
+    },
+    {
+      "indent": 3,
+      "text": "In a faulty datapath scenario, an operator can use BFD health information to trigger the delay and loss measurement Operations, Administration, and Maintenance (OAM) protocol Connectivity Fault Management (CFM) [Y-1731] or packet loss and delay measurement for MPLS networks [RFC6374] to further isolate the issue.",
+      "ja": "データパスに障害が発生したシナリオでは、オペレータは BFD 健全性情報を使用して、運用、管理、およびメンテナンス (OAM) プロトコルの接続障害管理 (CFM) [Y-1731] または MPLS ネットワークのパケット損失と遅延の測定 [RFC6374] をトリガーして、問題をさらに切り分けることができます。"
+    },
+    {
+      "indent": 0,
+      "text": "4. Functionality",
+      "section_title": true,
+      "ja": "4. 機能性"
+    },
+    {
+      "indent": 3,
+      "text": "BFD Stability measurement requires that a BFD Meticulous authentication type be configured.",
+      "ja": "BFD 安定性測定には、BFD Meticulous 認証タイプが設定されている必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The \"ietf-bfd-stability\" YANG data model, defined in this document, provides the ability to configure the BFD Stability measurement for BFD sessions by configuring the 'stability' flag. The 'lost-packet-count' leaf permits monitoring of stability issues as defined in this document for BFD sessions that have the 'stability' flag enabled.",
+      "ja": "このドキュメントで定義されている「ietf-bfd-stability」YANG データ モデルは、「stability」フラグを設定することによって、BFD セッションの BFD 安定性測定を設定する機能を提供します。「lost-packet-count」リーフでは、「stability」フラグが有効になっている BFD セッションについて、このドキュメントで定義されている安定性の問題を監視できます。"
+    },
+    {
+      "indent": 3,
+      "text": "The configuration of the BFD Stability measurement and monitoring using other methods than the attached YANG data model is out of scope of this document.",
+      "ja": "付属の YANG データ モデル以外の方法を使用した BFD 安定性測定および監視の設定は、このドキュメントの範囲外です。"
+    },
+    {
+      "indent": 0,
+      "text": "5. NULL Auth Type",
+      "section_title": true,
+      "ja": "5. NULL 認証タイプ"
+    },
+    {
+      "indent": 3,
+      "text": "The NULL Auth Type, defined in this document, can be used to provide a meticulously increasing sequence number [RFC5880] for stability measurement. It provides none of the protections desired for authentication and is used only to provide BFD Stability services to BFD sessions that otherwise have no authentication in use.",
+      "ja": "この文書で定義されている NULL 認証タイプは、安定性測定のために細心の注意を払って増加するシーケンス番号 [RFC5880] を提供するために使用できます。これは認証に必要な保護を提供せず、認証が使用されていない BFD セッションに BFD 安定性サービスを提供するためにのみ使用されます。"
+    },
+    {
+      "indent": 3,
+      "text": "If the Authentication Present (A) bit is set in the header as defined in Section 4 of [RFC5880], and the Authentication Type field contains 6, the Authentication Section has the following format:",
+      "ja": "[RFC5880] のセクション 4 で定義されているようにヘッダーに認証存在 (A) ビットが設定されており、認証タイプ フィールドに 6 が含まれている場合、認証セクションの形式は次のとおりです。"
+    },
+    {
+      "indent": 5,
+      "text": " 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|   Auth Type   |   Auth Len    |  Auth Key ID  |   Reserved    |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|                        Sequence Number                        |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 26,
+      "text": "Figure 1: NULL Auth Type",
+      "ja": "図 1: NULL 認証タイプ"
+    },
+    {
+      "indent": 3,
+      "text": "where:",
+      "ja": "ただし："
+    },
+    {
+      "indent": 3,
+      "text": "Auth Type (8 bits):",
+      "ja": "認証タイプ (8 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The Authentication Type, which in this case is 6 (NULL).",
+      "ja": "認証タイプ。この場合は 6 (NULL) です。"
+    },
+    {
+      "indent": 3,
+      "text": "Auth Len (8 bits):",
+      "ja": "認証長 (8 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The length of the NULL Auth Type in bytes (i.e., 8 bytes).",
+      "ja": "NULL 認証タイプの長さ (バイト単位) (つまり、8 バイト)。"
+    },
+    {
+      "indent": 3,
+      "text": "Auth Key ID (8 bits):",
+      "ja": "認証キー ID (8 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The authentication key ID in use for this packet. It MUST be set to zero and MUST be ignored on receipt.",
+      "ja": "このパケットに使用されている認証キー ID。これはゼロに設定しなければならず、受信時に無視しなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Reserved (8 bits):",
+      "ja": "予約済み (8 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "This byte MUST be set to zero on transmit and MUST be ignored on receipt.",
+      "ja": "このバイトは送信時にゼロに設定されなければならず、受信時には無視されなければなりません。"
+    },
+    {
+      "indent": 3,
+      "text": "Sequence Number (32 bits):",
+      "ja": "シーケンス番号 (32 ビット):"
+    },
+    {
+      "indent": 12,
+      "text": "The sequence number for this packet. This value is incremented for each successive packet transmitted for a session. Implementations will use sequence numbers (bfd.XmitAuthSeq) as defined in [RFC5880].",
+      "ja": "このパケットのシーケンス番号。この値は、セッションで送信される連続したパケットごとに増加します。実装では、[RFC5880] で定義されているシーケンス番号 (bfd.XmitAuthSeq) を使用します。"
+    },
+    {
+      "indent": 3,
+      "text": "If bfd.AuthSeqKnown is 1, and the received Sequence Number field is not equal to bfd.RcvAuthSeq + 1 (in a circular number space), then the loss count is incremented by the difference between the received sequence number and bfd.RcvAuthSeq, and bfd.RcvAuthSeq is set to the received sequence number.",
+      "ja": "bfd.AuthSeqKnown が 1 で、受信したシーケンス番号フィールドが bfd.RcvAuthSeq + 1 (循環数値空間内) に等しくない場合、損失カウントは受信したシーケンス番号と bfd.RcvAuthSeq の差分だけ増分され、bfd.RcvAuthSeq は受信したシーケンス番号に設定されます。"
+    },
+    {
+      "indent": 3,
+      "text": "Otherwise (bfd.AuthSeqKnown is 0), bfd.AuthSeqKnown MUST be set to 1, and bfd.RcvAuthSeq MUST be set to the value of the received Sequence Number field as defined in [RFC5880], Section 6.8.1, and the packet MUST be accepted.",
+      "ja": "それ以外の場合 (bfd.AuthSeqKnown が 0)、bfd.AuthSeqKnown は 1 に設定されなければならず (MUST)、bfd.RcvAuthSeq は [RFC5880] セクション 6.8.1 で定義されている受信したシーケンス番号フィールドの値に設定されなければならず、パケットは受け入れられなければなりません (MUST)。"
+    },
+    {
+      "indent": 3,
+      "text": "According to Section 6.7.3 of [RFC5880], a receiver MUST discard a received packet that lies outside the range of bfd.RcvAuthSeq and bfd.RcvAuthSeq + (3 * Detect Multi). If it is within that range, but is missing a packet, it can be used to detect a loss. In case of NULL authentication where packets containing sequence numbers are accepted on receipt, an attacker with an unauthenticated sequence number could move the sequence number forward. Meanwhile, the actual BFD neighbor that continues to send packets will find them discarded and the session would drop. To prevent such an attack, the received sequence number MUST NOT be compared with bfd.RcvAuthSeq for the purpose of discarding the BFD packets.",
+      "ja": "[RFC5880] のセクション 6.7.3 によると、受信者は bfd.RcvAuthSeq および bfd.RcvAuthSeq + (3 * Detect Multi) の範囲外にある受信パケットを破棄しなければなりません (MUST)。その範囲内であってもパケットが欠落している場合は、損失を検出するために使用できます。シーケンス番号を含むパケットが受信時に受け入れられる NULL 認証の場合、認証されていないシーケンス番号を持つ攻撃者がシーケンス番号を前方に移動する可能性があります。一方、パケットを送信し続ける実際の BFD ネイバーは、パケットが破棄されたことに気づき、セッションがドロップされます。このような攻撃を防ぐために、BFD パケットを破棄する目的で、受信したシーケンス番号を bfd.RcvAuthSeq と比較してはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 0,
+      "text": "6. Theory of Operation",
+      "section_title": true,
+      "ja": "6. 動作理論"
+    },
+    {
+      "indent": 3,
+      "text": "This mechanism allows operators to measure the loss of BFD control packets. A BFD authentication type carrying a meticulously increasing sequence number is required to support this loss measurement. Authentication types that provide for meticulously increasing sequence numbers include:",
+      "ja": "このメカニズムにより、オペレータは BFD 制御パケットの損失を測定できます。この損失測定をサポートするには、細心の注意を払って増加するシーケンス番号を伝送する BFD 認証タイプが必要です。シーケンス番号を注意深く増加させる認証タイプには、次のものがあります。"
+    },
+    {
+      "indent": 6,
+      "text": "* Meticulously Keyed MD5 and SHA1, defined in [RFC5880].",
+      "ja": "* [RFC5880] で定義されている、細心の注意を払って鍵付きの MD5 および SHA1。"
+    },
+    {
+      "indent": 6,
+      "text": "* Meticulously Keyed ISAAC, defined in [RFC9986].",
+      "ja": "* [RFC9986] で定義された細心の注意を払って鍵付きの ISAAC。"
+    },
+    {
+      "indent": 6,
+      "text": "* The NULL authentication mechanism, which does not provide for authentication but carries a meticulously increasing sequence number, is defined in this document.",
+      "ja": "* NULL 認証メカニズムは、認証を提供しないが、細心の注意を払って増加するシーケンス番号を伝達するものであり、この文書で定義されています。"
+    },
+    {
+      "indent": 3,
+      "text": "Other authentication types that provide for meticulously increasing sequence numbers appropriate for this mechanism may be defined in future specifications.",
+      "ja": "このメカニズムに適したシーケンス番号を注意深く増加させる他の認証タイプが、将来の仕様で定義される可能性があります。"
+    },
+    {
+      "indent": 0,
+      "text": "6.1. Loss Measurement",
+      "section_title": true,
+      "ja": "6.1. 損失測定"
+    },
+    {
+      "indent": 3,
+      "text": "Loss measurement counts the number of BFD control packets missed at the receiver during any Detection Time period (see [RFC5880], Section 6.8.4). The loss is detected by comparing the Sequence Number field in successive BFD control packets. The sequence number in each successive control packet generated on a BFD session by the transmitter is incremented by one. This loss count can then be exposed using the YANG module defined in the subsequent section. See discussion on out-of-order packets in Section 6.2 of this document.",
+      "ja": "損失測定では、任意の検出時間期間中に受信機で欠落した BFD 制御パケットの数をカウントします ([RFC5880]、セクション 6.8.4 を参照)。損失は、連続する BFD 制御パケットのシーケンス番号フィールドを比較することによって検出されます。送信機によって BFD セッションで生成される連続する各制御パケット内のシーケンス番号は 1 ずつ増加します。この損失数は、後続のセクションで定義される YANG モジュールを使用して公開できます。このドキュメントのセクション 6.2 の順序が乱れたパケットに関する説明を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "The first BFD Authentication Section with a non-zero sequence number, in a valid BFD control packet, processed by the receiver, is used for bootstrapping the logic.",
+      "ja": "有効な BFD 制御パケット内のゼロ以外のシーケンス番号を持つ最初の BFD 認証セクションは、受信側によって処理され、ロジックのブートストラップに使用されます。"
+    },
+    {
+      "indent": 0,
+      "text": "6.2. Out-of-Order Packets",
+      "section_title": true,
+      "ja": "6.2. 順序が乱れたパケット"
+    },
+    {
+      "indent": 3,
+      "text": "Some transmission mechanisms, for example, Link Aggregate Groups (LAGs) or Equal Cost Multipath (ECMP), can result in out-of-order packet delivery. In circumstances where BFD packets are not lost, but are delivered out of order, strict comparison of increasing sequence numbers may result in classifying the out-of-order packets as packet loss.",
+      "ja": "リンク アグリゲート グループ (LAG) や等価コスト マルチパス (ECMP) などの一部の送信メカニズムでは、順序どおりにパケットが配信されない可能性があります。BFD パケットが失われたわけではないが順序が崩れて配信される状況では、増加するシーケンス番号を厳密に比較すると、順序が乱れたパケットがパケット損失として分類される可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "Implementations MAY provide mechanisms wherein all expected packets received across an expected interval, but delivered out of order, are not considered lost packets.",
+      "ja": "実装では、予想される間隔にわたって受信された、ただし順序が狂って配信された予想されるすべてのパケットが損失パケットとみなされないメカニズムを提供してもよい(MAY)。"
+    },
+    {
+      "indent": 0,
+      "text": "7. Stability YANG Module",
+      "section_title": true,
+      "ja": "7. 安定性 YANG モジュール"
+    },
+    {
+      "indent": 0,
+      "text": "7.1. Data Model Overview",
+      "section_title": true,
+      "ja": "7.1. データモデルの概要"
+    },
+    {
+      "indent": 3,
+      "text": "This YANG module augments the base BFD YANG module to add attributes such as the 'stability' flag related to the experiment of BFD Stability. The feature statement 'stability' needs to be enabled to indicate that BFD Stability is supported by the implementation. In addition, a loss count per-session or a Label Switched Path (LSP) for BFD packets that are lost has also been added in this model.",
+      "ja": "この YANG モジュールは、基本 BFD YANG モジュールを拡張して、BFD 安定性の実験に関連する「安定性」フラグなどの属性を追加します。BFD 安定性が実装でサポートされていることを示すには、機能ステートメント「安定性」を有効にする必要があります。さらに、セッションごとの損失数、または失われた BFD パケットのラベル スイッチド パス (LSP) もこのモデルに追加されました。"
+    },
+    {
+      "indent": 3,
+      "text": "module: ietf-bfd-stability\n\n  augment /rt:routing/rt:control-plane-protocols\n            </rt:control-plane-protocol/bfd:bfd/bfd-ip-sh:ip-sh\n            /bfd-ip-sh:sessions/bfd-ip-sh:session:\n    +--rw stability?   boolean {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-ip-mh:ip-mh\n            /bfd-ip-mh:session-groups/bfd-ip-mh:session-group:\n    +--rw stability?   boolean {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-lag:lag\n            /bfd-lag:sessions/bfd-lag:session:\n    +--rw stability?   boolean {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-mpls:mpls\n            /bfd-mpls:session-groups/bfd-mpls:session-group:\n    +--rw stability?   boolean {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-ip-sh:ip-sh\n            /bfd-ip-sh:sessions/bfd-ip-sh:session\n            /bfd-ip-sh:session-statistics:\n    +--ro lost-packet-count?   yang:counter64 {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-ip-mh:ip-mh\n            /bfd-ip-mh:session-groups/bfd-ip-mh:session-group\n            /bfd-ip-mh:sessions/bfd-ip-mh:session-statistics:\n    +--ro lost-packet-count?   yang:counter64 {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-lag:lag\n            /bfd-lag:sessions/bfd-lag:session/bfd-lag:member-links\n            /bfd-lag:micro-bfd-ipv4/bfd-lag:session-statistics:\n    +--ro lost-packet-count?   yang:counter64 {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-lag:lag\n            /bfd-lag:sessions/bfd-lag:session/bfd-lag:member-links\n            /bfd-lag:micro-bfd-ipv6/bfd-lag:session-statistics:\n    +--ro lost-packet-count?   yang:counter64 {stability}?\n  augment /rt:routing/rt:control-plane-protocols\n            /rt:control-plane-protocol/bfd:bfd/bfd-mpls:mpls\n            /bfd-mpls:session-groups/bfd-mpls:session-group\n            /bfd-mpls:sessions/bfd-mpls:session-statistics:\n    +--ro lost-packet-count?   yang:counter64 {stability}?",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "7.2. YANG Module",
+      "section_title": true,
+      "ja": "7.2. ヤンモジュール"
+    },
+    {
+      "indent": 3,
+      "text": "This YANG module imports modules defined in \"Common YANG Data Types\" [RFC9911], \"YANG Data Model for Key Chains\" [RFC8177], \"A YANG Data Model for Routing Management (NMDA Version)\" [RFC8349], and \"YANG Data Model for Bidirectional Forwarding Detection (BFD)\" [RFC9314].",
+      "ja": "この YANG モジュールは、「Common YANG Data Types」[RFC9911]、「YANG Data Model for Key Chains」[RFC8177]、「A YANG Data Model for Routing Management (NMDA Version)」[RFC8349]、および「YANG Data Model for BiDirectional Forwarding Detection (BFD)」[RFC9314] で定義されたモジュールをインポートします。"
+    },
+    {
+      "indent": 3,
+      "text": "module ietf-bfd-stability {\n  yang-version 1.1;\n  namespace \"urn:ietf:params:xml:ns:yang:ietf-bfd-stability\";\n  prefix bfd-s;\n\n  import ietf-yang-types {\n    prefix yang;\n    reference\n      \"RFC 9911: Common YANG Data Types\";\n  }\n  import ietf-routing {\n    prefix rt;\n    reference\n      \"RFC 8349: A YANG Data Model for Routing Management\n       (NMDA Version)\";\n  }\n  import ietf-bfd {\n    prefix bfd;\n    reference\n      \"RFC 9314: YANG Data Model for Bidirectional\n       Forwarding Detection.\";\n  }\n  import ietf-bfd-ip-sh {\n    prefix bfd-ip-sh;\n    reference\n      \"RFC 9314: YANG Data Model for Bidirectional\n       Forwarding Detection (BFD)\";\n  }\n  import ietf-bfd-ip-mh {\n    prefix bfd-ip-mh;\n    reference\n      \"RFC 9314: YANG Data Model for Bidirectional\n       Forwarding Detection (BFD)\";\n  }\n  import ietf-bfd-lag {\n    prefix bfd-lag;\n    reference\n      \"RFC 9314: YANG Data Model for Bidirectional\n       Forwarding Detection (BFD)\";\n  }\n  import ietf-bfd-mpls {\n    prefix bfd-mpls;\n    reference\n      \"RFC 9314: YANG Data Model for Bidirectional\n       Forwarding Detection (BFD)\";\n  }\n  import ietf-key-chain {\n    prefix key-chain;\n    reference\n      \"RFC 8177: YANG Data Model for Key Chains\";\n  }\n\n  organization\n    \"IETF BFD Working Group\";\n  contact\n    \"WG Web:   <https://datatracker.ietf.org/wg/bfd>\n     WG List:  <rtg-bfd@ietf.org>\n\n     Authors: Mahesh Jethanandani (mjethanandani@gmail.com)\n              Ashesh Mishra (mishra.ashesh@gmail.com)\n              Ankur Saxena (ankurpsaxena@gmail.com)\n              Santosh Pallagatti (santosh.pallagati@gmail.com)\n              Mach(Guoyi) Chen (mach.chen@huawei.com).\";\n  description\n    \"This YANG module augments the base BFD YANG data model to add\n     experimental attributes related to BFD Stability.\n     In particular, it adds a per-session count for BFD packets\n     that are lost.\n\n     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL\n     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',\n     'MAY', and 'OPTIONAL' in this document are to be interpreted as\n     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,\n     they appear in all capitals, as shown here.\n\n     Copyright (c) 2026 IETF Trust and the persons identified as\n     authors of the code.  All rights reserved.\n\n     Redistribution and use in source and binary forms, with or\n     without modification, is permitted pursuant to, and subject to\n     the license terms contained in, the Revised BSD License set\n     forth in Section 4.c of the IETF Trust's Legal Provisions\n     Relating to IETF Documents\n     (https://trustee.ietf.org/license-info).\n\n     This version of this YANG module is part of RFC 9978; see the\n     RFC itself for full legal notices.\";\n\n  revision 2026-06-29 {\n    description\n      \"Initial version.\";\n    reference\n      \"RFC 9978: Bidirectional Forwarding Detection (BFD) Stability\";\n  }\n\n  feature stability {\n    description\n      \"This feature enables BFD sessions to be monitored for lost\n       packets.\";\n  }\n\n  identity null-auth {\n    base key-chain:crypto-algorithm;\n    description\n      \"BFD NULL Auth Type defined in this document.\";\n    reference\n      \"RFC 9978: Bidirectional Forwarding Detection (BFD) Stability\";\n  }\n\n  grouping lost-packet-count {\n    leaf lost-packet-count {\n      if-feature \"stability\";\n      type yang:counter64;\n      description\n        \"Number of BFD packets that were lost, where loss is\n         determined by the fact that the sequence number is\n         not consecutive.  This counter should be present only if\n         stability is configured.\";\n    }\n    description\n      \"Grouping of statistics related to BFD Stability.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-ip-sh:ip-sh/\"\n        + \"bfd-ip-sh:sessions/bfd-ip-sh:session\" {\n    leaf stability {\n      if-feature \"stability\";\n      type boolean;\n      must \"../bfd-ip-sh:authentication/bfd-ip-sh:meticulous = \"\n         + \"'true'\";\n      default \"false\";\n      description\n        \"If set to true, this enables the BFD session to monitor\n         for stability, i.e., to watch how many packets are getting\n         dropped.\";\n    }\n    description\n      \"Augment the 'bfd' container to add attributes related to BFD\n       Stability for IP Single Hop sessions.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-ip-mh:ip-mh/\"\n        + \"bfd-ip-mh:session-groups/bfd-ip-mh:session-group\" {\n    leaf stability {\n      if-feature \"stability\";\n      type boolean;\n      must \"../bfd-ip-mh:authentication/bfd-ip-mh:meticulous = \"\n         + \"'true'\";\n      default \"false\";\n      description\n        \"If set to true, this enables the BFD session to monitor\n         for stability, i.e., to watch how many packets are getting\n         dropped.\";\n    }\n    description\n      \"Augment the 'bfd' container to add attributes related to BFD\n       Stability for Multi Hop sessions.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-lag:lag/\"\n        + \"bfd-lag:sessions/bfd-lag:session\" {\n    leaf stability {\n      if-feature \"stability\";\n      type boolean;\n      must \"../bfd-lag:authentication/bfd-lag:meticulous = \"\n         + \"'true'\";\n      default \"false\";\n      description\n        \"If set to true, this enables the BFD session to monitor\n         for stability, i.e., to watch how many packets are getting\n         dropped.\";\n    }\n    description\n      \"Augment the 'bfd' container to add attributes related to BFD\n       Stability for LAG session.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-mpls:mpls/\"\n        + \"bfd-mpls:session-groups/bfd-mpls:session-group\" {\n    leaf stability {\n      if-feature \"stability\";\n      type boolean;\n      must \"../bfd-mpls:authentication/bfd-mpls:meticulous = \"\n         + \"'true'\";\n      default \"false\";\n      description\n        \"If set to true, this enables the BFD session to monitor\n         for stability, i.e., to watch how many packets are getting\n         dropped.\";\n    }\n    description\n      \"Augment the 'bfd' container to add attributes related to BFD\n       Stability for MPLS.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-ip-sh:ip-sh/\"\n        + \"bfd-ip-sh:sessions/bfd-ip-sh:session/\"\n        + \"bfd-ip-sh:session-statistics\" {\n    uses lost-packet-count;\n    description\n      \"Augment the 'bfd' container to add statistics related to BFD\n       Stability for IP Single Hop sessions.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-ip-mh:ip-mh/\"\n        + \"bfd-ip-mh:session-groups/bfd-ip-mh:session-group/\"\n        + \"bfd-ip-mh:sessions/bfd-ip-mh:session-statistics\" {\n    uses lost-packet-count;\n    description\n      \"Augment the 'bfd' container to add statistics related to BFD\n       Stability for IP Multi Hop sessions.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-lag:lag/\"\n        + \"bfd-lag:sessions/bfd-lag:session/bfd-lag:member-links/\"\n        + \"bfd-lag:micro-bfd-ipv4/bfd-lag:session-statistics\" {\n    uses lost-packet-count;\n    description\n      \"Augment the 'bfd' container to add statistics related to BFD\n       Stability for Micro BFD sessions for IPv4.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-lag:lag/\"\n        + \"bfd-lag:sessions/bfd-lag:session/bfd-lag:member-links/\"\n        + \"bfd-lag:micro-bfd-ipv6/bfd-lag:session-statistics\" {\n    uses lost-packet-count;\n    description\n      \"Augment the 'bfd' container to add statistics related to BFD\n       Stability for Micro BFD sessions for IPv6.\";\n  }\n\n  augment \"/rt:routing/rt:control-plane-protocols/\"\n        + \"rt:control-plane-protocol/bfd:bfd/bfd-mpls:mpls/\"\n        + \"bfd-mpls:session-groups/bfd-mpls:session-group/\"\n        + \"bfd-mpls:sessions/bfd-mpls:session-statistics\" {\n    uses lost-packet-count;\n    description\n      \"Augment the 'bfd' container to add statistics related to BFD\n       Stability for MPLS sessions.\";\n  }\n}",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "8. IANA Considerations",
+      "section_title": true,
+      "ja": "8. IANAの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This document registers a new authentication type in the \"BFD Authentication Types\" registry, a new URI in the \"ns\" registry within the \"IETF XML\" registry group [RFC3688], and a YANG module in the \"YANG Module Names\" registry.",
+      "ja": "この文書は、新しい認証タイプを「BFD Authentication Types」レジストリに登録し、新しい URI を「IETF XML」レジストリ グループ [RFC3688] 内の「ns」レジストリに登録し、YANG モジュールを「YANG Module Names」レジストリに登録します。"
+    },
+    {
+      "indent": 0,
+      "text": "8.1. Auth Type",
+      "section_title": true,
+      "ja": "8.1. 認証タイプ"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following BFD Auth Type in the \"BFD Authentication Types\" registry:",
+      "ja": "IANA は、次の BFD 認証タイプを「BFD 認証タイプ」レジストリに登録しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Address:",
+      "ja": "住所："
+    },
+    {
+      "indent": 12,
+      "text": "6",
+      "ja": "6"
+    },
+    {
+      "indent": 3,
+      "text": "BFD Authentication Type Name:",
+      "ja": "BFD 認証タイプ名:"
+    },
+    {
+      "indent": 12,
+      "text": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "indent": 3,
+      "text": "Reference",
+      "ja": "参照"
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9978",
+      "ja": "RFC 9978"
+    },
+    {
+      "indent": 0,
+      "text": "8.2. IETF XML Registry",
+      "section_title": true,
+      "ja": "8.2. IETF XML レジストリ"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following URI in the \"ns\" registry [RFC3688]:",
+      "ja": "IANA は次の URI を「ns」レジストリ [RFC3688] に登録しました。"
+    },
+    {
+      "indent": 3,
+      "text": "URI:",
+      "ja": "URI:"
+    },
+    {
+      "indent": 12,
+      "text": "urn:ietf:params:xml:ns:yang:ietf-bfd-stability",
+      "ja": "urn:ietf:params:xml:ns:yang:ietf-bfd-stability"
+    },
+    {
+      "indent": 3,
+      "text": "Registrant Contact:",
+      "ja": "登録者の連絡先:"
+    },
+    {
+      "indent": 12,
+      "text": "The IESG",
+      "ja": "IESG"
+    },
+    {
+      "indent": 3,
+      "text": "XML:",
+      "ja": "XML:"
+    },
+    {
+      "indent": 12,
+      "text": "N/A; the requested URI is an XML namespace.",
+      "ja": "該当なし。要求された URI は XML 名前空間です。"
+    },
+    {
+      "indent": 0,
+      "text": "8.3. The \"YANG Module Names\" Registry",
+      "section_title": true,
+      "ja": "8.3. 「YANG モジュール名」レジストリ"
+    },
+    {
+      "indent": 3,
+      "text": "IANA has registered the following YANG module in the \"YANG Module Names\" registry [RFC6020]:",
+      "ja": "IANA は、次の YANG モジュールを「YANG Module Names」レジストリ [RFC6020] に登録しました。"
+    },
+    {
+      "indent": 3,
+      "text": "Name:",
+      "ja": "名前："
+    },
+    {
+      "indent": 12,
+      "text": "ietf-bfd-stability",
+      "ja": "ietf-bfd-安定性"
+    },
+    {
+      "indent": 3,
+      "text": "Namespace:",
+      "ja": "名前空間:"
+    },
+    {
+      "indent": 12,
+      "text": "urn:ietf:params:xml:ns:yang:ietf-bfd-stability",
+      "ja": "urn:ietf:params:xml:ns:yang:ietf-bfd-stability"
+    },
+    {
+      "indent": 3,
+      "text": "Prefix:",
+      "ja": "プレフィックス:"
+    },
+    {
+      "indent": 12,
+      "text": "bfd-s",
+      "ja": "BFD-S"
+    },
+    {
+      "indent": 3,
+      "text": "Reference:",
+      "ja": "参照："
+    },
+    {
+      "indent": 12,
+      "text": "RFC 9978",
+      "ja": "RFC 9978"
+    },
+    {
+      "indent": 0,
+      "text": "9. Security Considerations",
+      "section_title": true,
+      "ja": "9. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 0,
+      "text": "9.1. BFD NULL Auth Type Security Considerations",
+      "section_title": true,
+      "ja": "9.1. BFD NULL 認証タイプのセキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "The use of a BFD authentication mechanism that protects the BFD packets is RECOMMENDED.",
+      "ja": "BFD パケットを保護する BFD 認証メカニズムの使用が推奨されます。"
+    },
+    {
+      "indent": 3,
+      "text": "The security considerations of [RFC5880] for unauthenticated BFD all apply to the new NULL Auth Type. The NULL Auth Type, defined in this document, provides none of the properties desired for authenticating BFD packets. It is intended to provide BFD sessions that otherwise would not use authentication with a sequence number that can be used for the purpose of detecting packet loss.",
+      "ja": "[RFC5880] の非認証 BFD に関するセキュリティ上の考慮事項はすべて、新しい NULL 認証タイプに適用されます。このドキュメントで定義されている NULL 認証タイプは、BFD パケットの認証に必要なプロパティを提供しません。これは、パケット損失を検出する目的で使用できるシーケンス番号による認証を使用しない BFD セッションを提供することを目的としています。"
+    },
+    {
+      "indent": 3,
+      "text": "The lack of a computed AuthKey/Digest over the BFD packet, but the presence of a sequence number, makes this authentication type susceptible to injection attacks. BFD without authentication is vulnerable to session resets; the NULL Auth Type does not change this.",
+      "ja": "BFD パケットには計算された AuthKey/Digest がないにもかかわらず、シーケンス番号が存在するため、この認証タイプはインジェクション攻撃を受けやすくなっています。認証のない BFD はセッションのリセットに対して脆弱です。NULL 認証タイプによってこれは変更されません。"
+    },
+    {
+      "indent": 3,
+      "text": "When the NULL Auth Type is used for BFD Stability purposes, maliciously injected packets that do not reset the BFD session can resemble high packet loss. Sessions such as multi-hop routed paths, tunnels without authentication, or MPLS Label Switched Paths (LSPs), therefore, have security guarantees that are identical to situations where BFD is run without authentication.",
+      "ja": "BFD の安定性を目的として NULL 認証タイプが使用されている場合、BFD セッションをリセットしない悪意を持って挿入されたパケットは、大量のパケット損失に似たものになる可能性があります。したがって、マルチホップ ルーティング パス、認証なしのトンネル、または MPLS ラベル スイッチド パス（LSP）などのセッションには、BFD が認証なしで実行される状況と同じセキュリティが保証されます。"
+    },
+    {
+      "indent": 0,
+      "text": "9.2. YANG Security Considerations",
+      "section_title": true,
+      "ja": "9.2. YANG のセキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This section is modeled after the template described in Section 3.7.1 of [RFC9907].",
+      "ja": "このセクションは、[RFC9907] のセクション 3.7.1 で説明されているテンプレートをモデルにしています。"
+    },
+    {
+      "indent": 3,
+      "text": "The \"ietf-bfd-stability\" YANG module defines a data model that is designed to be accessed via YANG-based management protocols, such as Network Configuration Protocol (NETCONF) [RFC6241] and RESTCONF [RFC8040]. These YANG-based management protocols (1) have to use a secure transport layer (e.g., Secure Shell (SSH) [RFC4252], TLS [RFC8446], and QUIC [RFC9000]) and (2) have to use mutual authentication.",
+      "ja": "「ietf-bfd-stability」YANG モジュールは、Network Configuration Protocol (NETCONF) [RFC6241] や RESTCONF [RFC8040] などの YANG ベースの管理プロトコル経由でアクセスするように設計されたデータ モデルを定義します。これらの YANG ベースの管理プロトコルは、(1) セキュア トランスポート層 (セキュア シェル (SSH) [RFC4252]、TLS [RFC8446]、QUIC [RFC9000] など) を使用する必要があり、(2) 相互認証を使用する必要があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The Network Configuration Access Control Model (NACM) [RFC8341] provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.",
+      "ja": "Network Configuration Access Control Model (NACM) [RFC8341] は、特定の NETCONF または RESTCONF ユーザーのアクセスを、利用可能なすべての NETCONF または RESTCONF プロトコルの操作およびコンテンツの事前構成されたサブセットに制限する手段を提供します。"
+    },
+    {
+      "indent": 3,
+      "text": "The YANG module does not define any writable/creatable/deletable data nodes that can have an adverse impact on a BFD session.",
+      "ja": "YANG モジュールは、BFD セッションに悪影響を与える可能性のある書き込み可能/作成可能/削除可能なデータ ノードを定義しません。"
+    },
+    {
+      "indent": 3,
+      "text": "Some of the readable data nodes in this YANG module may be considered sensitive or vulnerable in some network environments. It is thus important to control read access (e.g., via get, get-config, or notification) to these data nodes. Specifically, the following subtrees and data nodes have particular sensitivities/ vulnerabilities:",
+      "ja": "この YANG モジュールの読み取り可能なデータ ノードの一部は、一部のネットワーク環境では機密であるか脆弱であると見なされる場合があります。したがって、これらのデータ ノードへの読み取りアクセス (get、get-config、通知など) を制御することが重要です。具体的には、次のサブツリーとデータ ノードには特定の感度/脆弱性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The model defines a read-only node to indicate the number of packets that were lost. Access to this information may allow a malicious user information on which links are experiencing issues. In addition, and as stated in Section 6.2, on links such as LAG or ECMP, there is a possibility of packets being delivered out-of-order. A strict comparison of increasing sequence numbers may result in classifying those out-of-order packets as packet loss.",
+      "ja": "このモデルは、失われたパケットの数を示す読み取り専用ノードを定義します。この情報にアクセスすると、問題が発生しているリンクに関する情報が悪意のあるユーザーに提供される可能性があります。さらに、セクション 6.2 で述べたように、LAG や ECMP などのリンクでは、パケットが順序どおりに配信される可能性があります。増加するシーケンス番号を厳密に比較すると、順序が乱れたパケットがパケット損失として分類される可能性があります。"
+    },
+    {
+      "indent": 3,
+      "text": "The YANG module does not define any RPC operations.",
+      "ja": "YANG モジュールは RPC 操作を定義しません。"
+    },
+    {
+      "indent": 0,
+      "text": "10. References",
+      "section_title": true,
+      "ja": "10. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "10.1. Normative References",
+      "section_title": true,
+      "ja": "10.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC2119]  Bradner, S., \"Key words for use in RFCs to Indicate\n           Requirement Levels\", BCP 14, RFC 2119,\n           DOI 10.17487/RFC2119, March 1997,\n           <https://www.rfc-editor.org/info/rfc2119>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC3688]  Mealling, M., \"The IETF XML Registry\", BCP 81, RFC 3688,\n           DOI 10.17487/RFC3688, January 2004,\n           <https://www.rfc-editor.org/info/rfc3688>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC4252]  Ylonen, T. and C. Lonvick, Ed., \"The Secure Shell (SSH)\n           Authentication Protocol\", RFC 4252, DOI 10.17487/RFC4252,\n           January 2006, <https://www.rfc-editor.org/info/rfc4252>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC5880]  Katz, D. and D. Ward, \"Bidirectional Forwarding Detection\n           (BFD)\", RFC 5880, DOI 10.17487/RFC5880, June 2010,\n           <https://www.rfc-editor.org/info/rfc5880>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6020]  Bjorklund, M., Ed., \"YANG - A Data Modeling Language for\n           the Network Configuration Protocol (NETCONF)\", RFC 6020,\n           DOI 10.17487/RFC6020, October 2010,\n           <https://www.rfc-editor.org/info/rfc6020>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8174]  Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC\n           2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174,\n           May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8341]  Bierman, A. and M. Bjorklund, \"Network Configuration\n           Access Control Model\", STD 91, RFC 8341,\n           DOI 10.17487/RFC8341, March 2018,\n           <https://www.rfc-editor.org/info/rfc8341>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8349]  Lhotka, L., Lindem, A., and Y. Qu, \"A YANG Data Model for\n           Routing Management (NMDA Version)\", RFC 8349,\n           DOI 10.17487/RFC8349, March 2018,\n           <https://www.rfc-editor.org/info/rfc8349>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9314]  Jethanandani, M., Ed., Rahman, R., Ed., Zheng, L., Ed.,\n           Pallagatti, S., and G. Mirsky, \"YANG Data Model for\n           Bidirectional Forwarding Detection (BFD)\", RFC 9314,\n           DOI 10.17487/RFC9314, September 2022,\n           <https://www.rfc-editor.org/info/rfc9314>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9911]  Schönwälder, J., Ed., \"Common YANG Data Types\", RFC 9911,\n           DOI 10.17487/RFC9911, December 2025,\n           <https://www.rfc-editor.org/info/rfc9911>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "10.2. Informative References",
+      "section_title": true,
+      "ja": "10.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,\n           and A. Bierman, Ed., \"Network Configuration Protocol\n           (NETCONF)\", RFC 6241, DOI 10.17487/RFC6241, June 2011,\n           <https://www.rfc-editor.org/info/rfc6241>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC6374]  Frost, D. and S. Bryant, \"Packet Loss and Delay\n           Measurement for MPLS Networks\", RFC 6374,\n           DOI 10.17487/RFC6374, September 2011,\n           <https://www.rfc-editor.org/info/rfc6374>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, \"RESTCONF\n           Protocol\", RFC 8040, DOI 10.17487/RFC8040, January 2017,\n           <https://www.rfc-editor.org/info/rfc8040>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8177]  Lindem, A., Ed., Qu, Y., Yeung, D., Chen, I., and J.\n           Zhang, \"YANG Data Model for Key Chains\", RFC 8177,\n           DOI 10.17487/RFC8177, June 2017,\n           <https://www.rfc-editor.org/info/rfc8177>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8446]  Rescorla, E., \"The Transport Layer Security (TLS) Protocol\n           Version 1.3\", RFC 8446, DOI 10.17487/RFC8446, August 2018,\n           <https://www.rfc-editor.org/info/rfc8446>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9000]  Iyengar, J., Ed. and M. Thomson, Ed., \"QUIC: A UDP-Based\n           Multiplexed and Secure Transport\", RFC 9000,\n           DOI 10.17487/RFC9000, May 2021,\n           <https://www.rfc-editor.org/info/rfc9000>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9907]  Bierman, A., Boucadair, M., Ed., and Q. Wu, \"Guidelines\n           for Authors and Reviewers of Documents Containing YANG\n           Data Models\", BCP 216, RFC 9907, DOI 10.17487/RFC9907,\n           March 2026, <https://www.rfc-editor.org/info/rfc9907>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9986]  DeKok, A., Jethanandani, M., Agarwal, S., Mishra, A., and\n           J. Haas, \"Meticulous Keyed ISAAC for Bidirectional\n           Forwarding Detection (BFD) Optimized Authentication\",\n           RFC 9986, DOI 10.17487/RFC9986, June 2026,\n           <https://www.rfc-editor.org/info/rfc9986>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[Y-1731]   ITU-T, \"Operation, administration and maintenance (OAM)\n           functions and mechanisms for Ethernet-based networks\",\n           ITU-T Recommendation G.8013/Y.1731, June 2023,\n           <https://www.itu.int/rec/T-REC-G.8013-202306-I/en>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Appendix A. Experimental Status",
+      "section_title": true,
+      "ja": "付録A. 実験状況"
+    },
+    {
+      "indent": 3,
+      "text": "This document describes an experiment that will present a candidate solution to predict whether a given BFD session [RFC5880] will continue to be stable. The experiment will use the packet lost count and the 'receive-packet-count' defined in \"YANG Data Model for Bidirectional Forwarding Detection (BFD)\" [RFC9314] to determine how stable the session is. The reason this document is on the Experimental track is because there are no known implementations or proof of concept. As a result, the authors are not clear whether a simple lost count is enough to predict the stability or if there will be a need to be a more granular count.",
+      "ja": "この文書では、特定の BFD セッション [RFC5880] が安定し続けるかどうかを予測するための候補解を提示する実験について説明します。この実験では、パケット損失数と「双方向転送検出のための YANG データ モデル (BFD)」[RFC9314] で定義されている「受信パケット数」を使用して、セッションがどの程度安定しているかを判断します。このドキュメントが実験段階にある理由は、既知の実装や概念実証が存在しないためです。その結果、単純な損失カウントが安定性を予測するのに十分であるのか、それともより詳細なカウントが必要なのかどうか、著者らは明確ではありません。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is classified as Experimental and is not part of the IETF Standards Track.",
+      "ja": "このドキュメントは実験版として分類されており、IETF 標準トラックの一部ではありません。"
+    },
+    {
+      "indent": 0,
+      "text": "Appendix B. Examples",
+      "section_title": true,
+      "ja": "付録B. 例"
+    },
+    {
+      "indent": 3,
+      "text": "This section tries to show some examples of how the model can be configured for stability.",
+      "ja": "このセクションでは、安定性を高めるためにモデルを構成する方法の例をいくつか示します。"
+    },
+    {
+      "indent": 0,
+      "text": "B.1. Single Hop BFD Configuration",
+      "section_title": true,
+      "ja": "B.1. シングルホップ BFD 構成"
+    },
+    {
+      "indent": 3,
+      "text": "This example demonstrates how a single hop BFD session can be configured to enable monitoring of a session for stability.",
+      "ja": "この例では、シングル ホップ BFD セッションを設定して、セッションの安定性を監視できるようにする方法を示します。"
+    },
+    {
+      "indent": 3,
+      "text": "=============== NOTE: '\\' line wrapping per RFC 8792 ===============\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<key-chains\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-key-chain\"\n    xmlns:kc=\"urn:ietf:params:xml:ns:yang:ietf-key-chain\">\n  <key-chain>\n    <name>bfd-stability-config</name>\n    <description>\"An example for BFD Stability configuration.\"</de\\\nscription>\n    <key>\n      <key-id>55</key-id>\n      <lifetime>\n        <send-lifetime>\n          <start-date-time>2025-01-01T00:00:00Z</start-date-time>\n          <end-date-time>2025-02-01T00:00:00Z</end-date-time>\n        </send-lifetime>\n        <accept-lifetime>\n          <start-date-time>2024-12-31T23:59:55Z</start-date-time>\n          <end-date-time>2025-02-01T00:00:05Z</end-date-time>\n        </accept-lifetime>\n      </lifetime>\n      <crypto-algorithm>kc:sha-1</crypto-algorithm>\n    </key>\n  </key-chain>\n</key-chains>\n<interfaces\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-interfaces\"\n    xmlns:if-type=\"urn:ietf:params:xml:ns:yang:iana-if-type\">\n  <interface>\n    <name>eth0</name>\n    <type>if-type:ethernetCsmacd</type>\n  </interface>\n</interfaces>\n<routing\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-routing\"\n    xmlns:bfd-types=\"urn:ietf:params:xml:ns:yang:ietf-bfd-types\"\n    xmlns:stability=\"urn:ietf:params:xml:ns:yang:ietf-bfd-stability\\\n\">\n  <control-plane-protocols>\n    <control-plane-protocol>\n      <type>bfd-types:bfdv1</type>\n      <name>name:BFD</name>\n      <bfd xmlns=\"urn:ietf:params:xml:ns:yang:ietf-bfd\">\n        <ip-sh xmlns=\"urn:ietf:params:xml:ns:yang:ietf-bfd-ip-sh\">\n          <sessions>\n            <session>\n              <interface>eth0</interface>\n              <dest-addr>2001:db8:0:113::101</dest-addr>\n              <desired-min-tx-interval>10000</desired-min-tx-interv\\\nal>\n              <required-min-rx-interval>\n                10000\n              </required-min-rx-interval>\n              <stability:stability>true</stability:stability>\n              <authentication>\n                <key-chain>bfd-stability-config</key-chain>\n                <meticulous>true</meticulous>\n              </authentication>\n            </session>\n          </sessions>\n        </ip-sh>\n      </bfd>\n    </control-plane-protocol>\n  </control-plane-protocols>\n</routing>",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "B.2. Use of the NULL Auth Type",
+      "section_title": true,
+      "ja": "B.2. NULL 認証タイプの使用"
+    },
+    {
+      "indent": 3,
+      "text": "This example demonstrates how to configure the NULL Auth Type to enable monitoring of a session for stability.",
+      "ja": "この例では、安定性のためにセッションの監視を有効にするために NULL 認証タイプを構成する方法を示します。"
+    },
+    {
+      "indent": 3,
+      "text": "=============== NOTE: '\\' line wrapping per RFC 8792 ===============\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<key-chains\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-key-chain\"\n    xmlns:stability=\"urn:ietf:params:xml:ns:yang:ietf-bfd-stability\\\n\">\n  <key-chain>\n    <name>bfd-stability-config</name>\n    <description>\"An example for BFD Stability configuration.\"</des\\\ncription>\n    <key>\n      <key-id>55</key-id>\n      <lifetime>\n        <send-lifetime>\n          <start-date-time>2025-01-01T00:00:00Z</start-date-time>\n          <end-date-time>2025-02-01T00:00:00Z</end-date-time>\n        </send-lifetime>\n        <accept-lifetime>\n          <start-date-time>2024-12-31T23:59:55Z</start-date-time>\n          <end-date-time>2025-02-01T00:00:05Z</end-date-time>\n        </accept-lifetime>\n      </lifetime>\n      <crypto-algorithm>stability:null-auth</crypto-algorithm>\n    </key>\n  </key-chain>\n</key-chains>\n<interfaces\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-interfaces\"\n    xmlns:if-type=\"urn:ietf:params:xml:ns:yang:iana-if-type\">\n  <interface>\n    <name>eth0</name>\n    <type>if-type:ethernetCsmacd</type>\n  </interface>\n</interfaces>\n<routing\n    xmlns=\"urn:ietf:params:xml:ns:yang:ietf-routing\"\n    xmlns:bfd-types=\"urn:ietf:params:xml:ns:yang:ietf-bfd-types\"\n    xmlns:stability=\"urn:ietf:params:xml:ns:yang:ietf-bfd-stability\\\n\">\n  <control-plane-protocols>\n    <control-plane-protocol>\n      <type>bfd-types:bfdv1</type>\n      <name>name:BFD</name>\n      <bfd xmlns=\"urn:ietf:params:xml:ns:yang:ietf-bfd\">\n        <ip-sh xmlns=\"urn:ietf:params:xml:ns:yang:ietf-bfd-ip-sh\">\n          <sessions>\n            <session>\n              <interface>eth0</interface>\n              <dest-addr>2001:db8:0:113::101</dest-addr>\n              <desired-min-tx-interval>10000</desired-min-tx-interv\\\nal>\n              <required-min-rx-interval>\n                10000\n              </required-min-rx-interval>\n              <stability:stability>true</stability:stability>\n              <authentication>\n                <key-chain>bfd-stability-config</key-chain>\n                <meticulous>true</meticulous>\n              </authentication>\n            </session>\n          </sessions>\n        </ip-sh>\n      </bfd>\n    </control-plane-protocol>\n  </control-plane-protocols>\n</routing>",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Acknowledgements",
+      "section_title": true,
+      "ja": "謝辞"
+    },
+    {
+      "indent": 3,
+      "text": "The authors would like to thank Nobo Akiya, Dileep Singh, Basil Saji, Sagar Soni, Albert Fu, Peng Fang, and Mallik Mudigonda for contributing to this document. Thanks to Christian Huitema for the SECDIR review and Ebben Aries for the YANG Doctors review.",
+      "ja": "著者らは、この文書に貢献してくれた Nobo Akiya、Dileep Singh、Basil Saji、Sagar Soni、Albert Fu、Peng Fang、および Mallik Mudigonda に感謝します。SECDIR のレビューについては Christian Huitema 氏、YANG Doctors のレビューについては Ebben Aries に感謝します。"
+    },
+    {
+      "indent": 3,
+      "text": "Thanks to Reshad Rehman for being the shepherd of the document.",
+      "ja": "この文書の保護者である Reshad Rehman に感謝します。"
+    },
+    {
+      "indent": 0,
+      "text": "Contributors",
+      "section_title": true,
+      "ja": "貢献者"
+    },
+    {
+      "indent": 3,
+      "text": "The authors would like to acknowledge Jeff Haas as a contributor to this document. His contribution lead to significant improvements of the document. In addition, Manav Bhatia contributed to this document.",
+      "ja": "著者らは、この文書の貢献者として Jeff Haas を認めたいと思います。彼の貢献により、ドキュメントが大幅に改善されました。さらに、Manav Bhatia もこの文書に貢献しました。"
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Ashesh Mishra\nAalyria Technologies\nEmail: ashesh@aalyria.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Mahesh Jethanandani\nArrcus, Inc.\nUnited States of America\nEmail: mjethanandani@gmail.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Ankur Saxena\nCiena Corporation\n3939 North 1st Street\nSan Jose, CA 95134\nUnited States of America\nEmail: ankurpsaxena@gmail.com\nURI:   www.ciena.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Santosh Pallagatti\nZscaler\nBangalore 560103\nKarnataka\nIndia\nEmail: santosh.pallagatti@gmail.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Mach(Guoyi) Chen\nHuawei\nEmail: mach.chen@huawei.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}

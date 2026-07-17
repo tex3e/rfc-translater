@@ -1,0 +1,272 @@
+{
+  "title": {
+    "text": "RFC 9916 - Updates to the Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+    "ja": "RFC 9916 - パス計算要素通信プロトコル (PCEP) に安全なトランスポートを提供するための TLS の使用法の更新"
+  },
+  "number": 9916,
+  "created_at": "2026-07-15 23:24:44.214618+09:00",
+  "updated_by": "",
+  "contents": [
+    {
+      "indent": 0,
+      "text": "Internet Engineering Task Force (IETF)                          D. Dhody\nRequest for Comments: 9916                                        Huawei\nUpdates: 8253                                                  S. Turner\nCategory: Standards Track                                          sn3rd\nISSN: 2070-1721                                               R. Housley\n                                                          Vigil Security\n                                                               July 2026",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Updates to the Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+      "section_title": true,
+      "ja": "パス計算要素通信プロトコル (PCEP) に安全なトランスポートを提供するための TLS の使用法の更新"
+    },
+    {
+      "indent": 0,
+      "text": "Abstract",
+      "section_title": true,
+      "ja": "概要"
+    },
+    {
+      "indent": 3,
+      "text": "Section 3.4 of RFC 8253 specifies TLS connection establishment restrictions for PCEPS; PCEPS refers to usage of TLS to provide a secure transport for the Path Computation Element Communication Protocol (PCEP). This document adds restrictions to specify what PCEPS implementations do if they support more than one version of the TLS protocol and to restrict the use of TLS 1.3's early data.",
+      "ja": "RFC 8253 のセクション 3.4 では、PCEPS に対する TLS 接続確立の制限が規定されています。PCEPS は、Path Computation Element Communication Protocol (PCEP) に安全なトランスポートを提供するための TLS の使用を指します。この文書では、複数のバージョンの TLS プロトコルをサポートする場合に PCEPS 実装が行うことを指定し、TLS 1.3 の初期データの使用を制限する制限を追加します。"
+    },
+    {
+      "indent": 0,
+      "text": "Status of This Memo",
+      "section_title": true,
+      "ja": "本文書の状態"
+    },
+    {
+      "indent": 3,
+      "text": "This is an Internet Standards Track document.",
+      "ja": "これはインターネット標準化トラックの文書です。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is a product of the Internet Engineering Task Force (IETF). It represents the consensus of the IETF community. It has received public review and has been approved for publication by the Internet Engineering Steering Group (IESG). Further information on Internet Standards is available in Section 2 of RFC 7841.",
+      "ja": "このドキュメントは Internet Engineering Task Force (IETF) の成果物です。これは IETF コミュニティのコンセンサスを表しています。この文書は公開レビューを受け、Internet Engineering Steering Group (IESG) によって公開が承認されています。インターネット標準の詳細については、RFC 7841 のセクション 2 を参照してください。"
+    },
+    {
+      "indent": 3,
+      "text": "Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at https://www.rfc-editor.org/info/rfc9916.",
+      "ja": "この文書の現在のステータス、正誤表、およびそれに対するフィードバックの提供方法に関する情報は、https://www.rfc-editor.org/info/rfc9916 で入手できます。"
+    },
+    {
+      "indent": 0,
+      "text": "Copyright Notice",
+      "section_title": true,
+      "ja": "著作権表示"
+    },
+    {
+      "indent": 3,
+      "text": "Copyright (c) 2026 IETF Trust and the persons identified as the document authors. All rights reserved.",
+      "ja": "Copyright (c) 2026 IETF Trust および文書の著者として特定された人物。無断転載を禁じます。"
+    },
+    {
+      "indent": 3,
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.",
+      "ja": "この文書は、BCP 78 およびこの文書の発行日に有効な IETF 文書に関する IETF トラストの法的規定 (https://trustee.ietf.org/license-info) の対象となります。これらの文書には、この文書に関するお客様の権利と制限が記載されているため、注意深くお読みください。このドキュメントから抽出されたコード コンポーネントには、トラスト法的規定のセクション 4.e に記載されている改訂 BSD ライセンス テキストが含まれている必要があり、改訂 BSD ライセンスに記載されているように保証なしで提供されます。"
+    },
+    {
+      "indent": 0,
+      "text": "Table of Contents",
+      "section_title": true,
+      "ja": "目次"
+    },
+    {
+      "indent": 3,
+      "text": "1.  Introduction\n2.  Conventions\n3.  TLS Connection Establishment Restrictions\n4.  Security Considerations\n5.  IANA Considerations\n6.  References\n  6.1.  Normative References\n  6.2.  Informative References\nAcknowledgments\nAuthors' Addresses",
+      "raw": true,
+      "toc": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "1. Introduction",
+      "section_title": true,
+      "ja": "1. はじめに"
+    },
+    {
+      "indent": 3,
+      "text": "Section 3.4 of [RFC8253] specifies TLS connection establishment restrictions for PCEPS; PCEPS refers to usage of TLS to provide a secure transport for the Path Computation Element Communication Protocol (PCEP) [RFC5440]. This document adds restrictions to specify what PCEPS implementations do if they support more than one version of the TLS protocol, e.g., TLS 1.2 [RFC5246] and TLS 1.3 [RFC9846], and to restrict the use of TLS 1.3's early data, which is also known as 0-RTT data. All other provisions set forth in [RFC8253] are unchanged, including connection initiation, message framing, connection closure, certificate validation, peer identity, and failure handling.",
+      "ja": "[RFC8253] のセクション 3.4 では、PCEPS に対する TLS 接続確立の制限を指定しています。PCEPS は、Path Computation Element Communication Protocol (PCEP) [RFC5440] に安全なトランスポートを提供するための TLS の使用を指します。この文書は、TLS プロトコルの複数のバージョン (例: TLS 1.2 [RFC5246] と TLS 1.3 [RFC9846]) をサポートする場合に PCEPS 実装が行うことを指定する制限と、0-RTT データとしても知られる TLS 1.3 の初期データの使用を制限する制限を追加します。[RFC8253] に規定されている他のすべての規定 (接続の開始、メッセージ フレーミング、接続の終了、証明書の検証、ピア ID、障害処理など) は変更されていません。"
+    },
+    {
+      "indent": 0,
+      "text": "2. Conventions",
+      "section_title": true,
+      "ja": "2. 規約"
+    },
+    {
+      "indent": 3,
+      "text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "ja": "このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「NOT RECOMMENDED」、「MAY」、および「OPTIONAL」は、ここに示すようにすべて大文字で表示されている場合にのみ、BCP 14 [RFC2119] [RFC8174] で説明されているように解釈されます。"
+    },
+    {
+      "indent": 0,
+      "text": "3. TLS Connection Establishment Restrictions",
+      "section_title": true,
+      "ja": "3. TLS接続確立の制限事項"
+    },
+    {
+      "indent": 3,
+      "text": "Step 1 in Section 3.4 of [RFC8253] includes restrictions on PCEPS TLS connection establishment. This document adds the following restrictions:",
+      "ja": "[RFC8253] のセクション 3.4 のステップ 1 には、PCEPS TLS 接続の確立に関する制限が含まれています。このドキュメントでは、次の制限が追加されます。"
+    },
+    {
+      "indent": 6,
+      "text": "* Implementations that support multiple versions of the TLS protocol MUST prefer to negotiate the latest version of the TLS protocol; see Section 4.2.1 of [RFC9846].",
+      "ja": "* TLS プロトコルの複数のバージョンをサポートする実装は、TLS プロトコルの最新バージョンをネゴシエートすることを優先しなければなりません (MUST)。[RFC9846] のセクション 4.2.1 を参照してください。"
+    },
+    {
+      "indent": 6,
+      "text": "* PCEPS implementations that support TLS 1.3 or later MUST NOT use early data.",
+      "ja": "* TLS 1.3 以降をサポートする PCEPS 実装では、初期データを使用してはなりません (MUST NOT)。"
+    },
+    {
+      "indent": 12,
+      "text": "NOTE: Early data (aka 0-RTT data) is a mechanism defined in TLS 1.3 [RFC9846] that allows a client to send data (\"early data\") as part of the first flight of messages to a server. Note that TLS 1.3 can be used without early data as per Appendix F.5 of [RFC9846]. In fact, early data is permitted by TLS 1.3 only when the client and server share a Pre-Shared Key (PSK), either obtained externally or via a previous handshake. The client uses the PSK to authenticate the server and to encrypt the early data.",
+      "ja": "注: 初期データ (別名 0-RTT データ) は、TLS 1.3 [RFC9846] で定義されているメカニズムで、クライアントがサーバーへのメッセージの最初のフライトの一部としてデータ (「初期データ」) を送信できるようにします。[RFC9846] の付録 F.5 に従って、TLS 1.3 は初期データなしで使用できることに注意してください。実際、TLS 1.3 によって初期データが許可されるのは、クライアントとサーバーが、外部または以前のハンドシェイクによって取得された事前共有キー (PSK) を共有する場合に限られます。クライアントは PSK を使用してサーバーを認証し、初期データを暗号化します。"
+    },
+    {
+      "indent": 12,
+      "text": "NOTE: As noted in Section 2.3 of [RFC9846], the security properties for early data are weaker than those for subsequent TLS-protected data. In particular, early data is not forward secret, and there is no protection against the replay of early data between connections. Appendix E.5 of [RFC9846] requires applications not use early data without a profile that defines its use.",
+      "ja": "注: [RFC9846] のセクション 2.3 に記載されているように、初期のデータのセキュリティ特性は、その後の TLS で保護されたデータのセキュリティ特性よりも弱いです。特に、初期データは前方秘密ではないため、接続間での初期データの再生に対する保護はありません。[RFC9846] の付録 E.5 では、アプリケーションが初期データの用途を定義するプロファイルなしで初期データを使用しないよう要求しています。"
+    },
+    {
+      "indent": 0,
+      "text": "4. Security Considerations",
+      "section_title": true,
+      "ja": "4. セキュリティに関する考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "The security considerations of PCEP [RFC5440] [RFC8231] [RFC8253] [RFC8281] [RFC8283], TLS 1.2 [RFC5246], TLS 1.3 [RFC9846], and TLS/DTLS recommendations [RFC9325] apply here as well.",
+      "ja": "PCEP [RFC5440] [RFC8231] [RFC8253] [RFC8281] [RFC8283]、TLS 1.2 [RFC5246]、TLS 1.3 [RFC9846]、および TLS/DTLS 推奨事項 [RFC9325] のセキュリティに関する考慮事項がここにも適用されます。"
+    },
+    {
+      "indent": 0,
+      "text": "5. IANA Considerations",
+      "section_title": true,
+      "ja": "5. IANAの考慮事項"
+    },
+    {
+      "indent": 3,
+      "text": "This document has no IANA actions.",
+      "ja": "この文書には IANA のアクションはありません。"
+    },
+    {
+      "indent": 0,
+      "text": "6. References",
+      "section_title": true,
+      "ja": "6. 参考文献"
+    },
+    {
+      "indent": 0,
+      "text": "6.1. Normative References",
+      "section_title": true,
+      "ja": "6.1. 引用文献"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC2119]  Bradner, S., \"Key words for use in RFCs to Indicate\n           Requirement Levels\", BCP 14, RFC 2119,\n           DOI 10.17487/RFC2119, March 1997,\n           <https://www.rfc-editor.org/info/rfc2119>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC5246]  Dierks, T. and E. Rescorla, \"The Transport Layer Security\n           (TLS) Protocol Version 1.2\", RFC 5246,\n           DOI 10.17487/RFC5246, August 2008,\n           <https://www.rfc-editor.org/info/rfc5246>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC5440]  Vasseur, JP., Ed. and JL. Le Roux, Ed., \"Path Computation\n           Element (PCE) Communication Protocol (PCEP)\", RFC 5440,\n           DOI 10.17487/RFC5440, March 2009,\n           <https://www.rfc-editor.org/info/rfc5440>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8174]  Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC\n           2119 Key Words\", BCP 14, RFC 8174, DOI 10.17487/RFC8174,\n           May 2017, <https://www.rfc-editor.org/info/rfc8174>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8253]  Lopez, D., Gonzalez de Dios, O., Wu, Q., and D. Dhody,\n           \"PCEPS: Usage of TLS to Provide a Secure Transport for the\n           Path Computation Element Communication Protocol (PCEP)\",\n           RFC 8253, DOI 10.17487/RFC8253, October 2017,\n           <https://www.rfc-editor.org/info/rfc8253>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9325]  Sheffer, Y., Saint-Andre, P., and T. Fossati,\n           \"Recommendations for Secure Use of Transport Layer\n           Security (TLS) and Datagram Transport Layer Security\n           (DTLS)\", BCP 195, RFC 9325, DOI 10.17487/RFC9325, November\n           2022, <https://www.rfc-editor.org/info/rfc9325>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC9846]  Rescorla, E., \"The Transport Layer Security (TLS) Protocol\n           Version 1.3\", RFC 9846, DOI 10.17487/RFC9846, July 2026,\n           <https://www.rfc-editor.org/info/rfc9846>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "6.2. Informative References",
+      "section_title": true,
+      "ja": "6.2. 参考引用"
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8231]  Crabbe, E., Minei, I., Medved, J., and R. Varga, \"Path\n           Computation Element Communication Protocol (PCEP)\n           Extensions for Stateful PCE\", RFC 8231,\n           DOI 10.17487/RFC8231, September 2017,\n           <https://www.rfc-editor.org/info/rfc8231>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8281]  Crabbe, E., Minei, I., Sivabalan, S., and R. Varga, \"Path\n           Computation Element Communication Protocol (PCEP)\n           Extensions for PCE-Initiated LSP Setup in a Stateful PCE\n           Model\", RFC 8281, DOI 10.17487/RFC8281, December 2017,\n           <https://www.rfc-editor.org/info/rfc8281>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "[RFC8283]  Farrel, A., Ed., Zhao, Q., Ed., Li, Z., and C. Zhou, \"An\n           Architecture for Use of PCE and the PCE Communication\n           Protocol (PCEP) in a Network with Central Control\",\n           RFC 8283, DOI 10.17487/RFC8283, December 2017,\n           <https://www.rfc-editor.org/info/rfc8283>.",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 0,
+      "text": "Acknowledgments",
+      "section_title": true,
+      "ja": "謝辞"
+    },
+    {
+      "indent": 3,
+      "text": "We would like to thank Adrian Farrel, Stephane Litkowski, Cheng Li, and Andrew Stone for their review.",
+      "ja": "レビューをしていただいた Adrian Farrel 氏、Stephane Litkowski 氏、Cheng Li 氏、Andrew Stone 氏に感謝いたします。"
+    },
+    {
+      "indent": 0,
+      "text": "Authors' Addresses",
+      "section_title": true,
+      "ja": "著者の住所"
+    },
+    {
+      "indent": 3,
+      "text": "Dhruv Dhody\nHuawei\nEmail: dhruv.ietf@gmail.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Sean Turner\nsn3rd\nEmail: sean@sn3rd.com",
+      "raw": true,
+      "ja": ""
+    },
+    {
+      "indent": 3,
+      "text": "Russ Housley\nVigil Security, LLC\n516 Dranesville Road\nHerndon, VA 20170\nUnited States of America\nEmail: housley@vigilsec.com",
+      "raw": true,
+      "ja": ""
+    }
+  ]
+}
