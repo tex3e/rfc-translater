@@ -63324,6 +63324,11 @@
     "wg": "tls",
     "date": "2026-07"
   },
+  "10017": {
+    "st": "Best Current Practice",
+    "wg": "oauth",
+    "date": "2026-08"
+  },
   "10018": {
     "upd": [
       "6514",
@@ -63383,6 +63388,11 @@
   "10031": {
     "st": "Proposed Standard",
     "wg": "lamps",
+    "date": "2026-08"
+  },
+  "10036": {
+    "st": "Proposed Standard",
+    "wg": "httpbis",
     "date": "2026-08"
   }
 }
